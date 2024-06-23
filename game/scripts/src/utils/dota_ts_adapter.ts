@@ -6,6 +6,9 @@ export class BaseItem {}
 
 export interface BaseModifier extends CDOTA_Modifier_Lua {}
 export class BaseModifier {
+    caster: CDOTA_BaseNPC | undefined = this.GetCaster();
+    ability: CDOTABaseAbility | undefined = this.GetAbility();
+    parent: CDOTA_BaseNPC = this.GetParent();
     public static apply<T extends typeof BaseModifier>(
         this: T,
         target: CDOTA_BaseNPC,

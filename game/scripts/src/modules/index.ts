@@ -1,6 +1,8 @@
 import { Debug } from './Debug';
 import { GameConfig } from './GameConfig';
+import { CChat } from './Chat';
 import { XNetTable } from './xnet-table';
+import '../common_modifier/index';
 
 declare global {
     interface CDOTAGameRules {
@@ -21,5 +23,6 @@ export function ActivateModules() {
         new GameConfig();
         // 初始化测试模块xD
         new Debug();
+        new CChat();
     }
 }

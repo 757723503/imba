@@ -20,7 +20,7 @@ export class GameConfig {
         // GameRules.SetUseUniversalShopMode(true); // 是否启用全地图商店模式（在基地也可以购买神秘商店的物品）* 这个不是设置在任何地方都可以购买，如果要设置这个，需要将购买区域覆盖全地图
         // GameRules.SetHideKillMessageHeaders(true); // 是否隐藏顶部的英雄击杀信息
 
-        // const game: CDOTABaseGameMode = GameRules.GetGameModeEntity();
+        const game: CDOTABaseGameMode = GameRules.GetGameModeEntity();
         // game.SetRemoveIllusionsOnDeath(true); // 是否在英雄死亡的时候移除幻象
         // game.SetSelectionGoldPenaltyEnabled(false); // 是否启用选择英雄时的金钱惩罚（超时每秒扣钱）
         // game.SetLoseGoldOnDeath(false); // 是否在英雄死亡时扣除金钱
@@ -28,7 +28,7 @@ export class GameConfig {
         // game.SetDaynightCycleDisabled(true); // 是否禁用白天黑夜循环
         // game.SetForceRightClickAttackDisabled(true); // 是否禁用右键攻击
         // game.SetHudCombatEventsDisabled(true); // 是否禁用战斗事件（左下角的战斗消息）
-        // game.SetCustomGameForceHero(`npc_dota_hero_phoenix`); // 设置强制英雄（会直接跳过英雄选择阶段并直接为所有玩家选择这个英雄）
+        game.SetCustomGameForceHero(`npc_dota_hero_phoenix`); // 设置强制英雄（会直接跳过英雄选择阶段并直接为所有玩家选择这个英雄）
         // game.SetUseCustomHeroLevels(true); // 是否启用自定义英雄等级
         // game.SetCustomHeroMaxLevel(1); // 设置自定义英雄最大等级
         // game.SetCustomXPRequiredToReachNextLevel({
