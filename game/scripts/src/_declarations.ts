@@ -39,7 +39,7 @@ declare global {
         /**
          * 伤害事件 受害者触发
          */
-        OnTakeDamage_Victim = 'OnTakeDamage_Victim',
+        OnTakeDamageUnit = 'OnTakeDamageUnit',
     }
 }
 export {};

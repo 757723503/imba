@@ -3,6 +3,7 @@ enum ChatCommand {
     rs = 'rs',
     qw = '-qw',
     as = '-as',
+    cr = '-cr',
 }
 @reloadable
 export class CChat {
@@ -32,6 +33,9 @@ export class CChat {
             case ChatCommand.qw:
                 hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 5 });
                 // modifier_imba_stunned.apply()
+                break;
+            case ChatCommand.cr:
+                DebugCreateUnit(player, 'npc_dota_hero_earthshaker', DotaTeam.BADGUYS, false, (): void => {});
                 break;
             default:
                 break;

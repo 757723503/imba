@@ -11,7 +11,6 @@
     },
     "plugins": ["@typescript-eslint", "import", "prettier", "react", "react-hooks"],
     "rules": {
-       "require-super-oncreated": "error", 
         "prettier/prettier": [
             "error",
             {

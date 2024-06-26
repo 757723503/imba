@@ -1,3 +1,5 @@
+import { CDispatcher } from '../modules/dispatcher';
+
 export interface BaseAbility extends CDOTA_Ability_Lua {}
 export class BaseAbility {}
 
@@ -26,7 +28,29 @@ export class BaseModifier {
     public static remove<T extends typeof BaseModifier>(this: T, target: CDOTA_BaseNPC): void {
         target.RemoveModifierByName(this.name);
     }
-    
+
+    dispatcherIDList: number[] = [];
+    OnCreated(params: object): void {
+        if (IsServer()) {
+            print('父类');
+            const entIndex = this.GetParent().GetEntityIndex();
+            for (const value of Object.values(eventNameList)) {
+                if (this[value]) {
+                    print('注册事件', value);
+                    this.dispatcherIDList.push(CDispatcher.Register(value, entIndex, (params: any) => this[value](params)));
+                }
+            }
+        }
+    }
+
+    OnDestroy(): void {
+        if (IsServer()) {
+            print('父类');
+            for (const id of this.dispatcherIDList) {
+                CDispatcher.UnRegister(id);
+            }
+        }
+    }
 }
 
 export interface BaseModifierMotionHorizontal extends CDOTA_Modifier_Lua_Horizontal_Motion {}
@@ -153,4 +177,22 @@ function toDotaClassInstance(instance: any, table: new () => any) {
 
         prototype = getmetatable(prototype);
     }
+}
+enum eventNameList {
+    OnAttackLandedAttacker = 'OnAttackLandedAttacker', // 攻击命中(攻击别人)
+    OnAttackLandedTarget = 'OnAttackLandedTarget', // 造成伤害(攻击别人)
+    OnTakeDamageAttacker = 'OnTakeDamageAttacker', // 受到伤害(自己伤害别人)
+    OnTakeDamageUnit = 'OnTakeDamageUnit', // 受到伤害(受到别人伤害)
+    OnAbilityFullyCastAbility = 'OnAbilityFullyCastAbility', // 技能施法(所有人施法)
+    OnAbilityFullyCastItem = 'OnAbilityFullyCastItem', // 物品使用(所有人使用)
+    OnAbilityFullyCastAbilitySelf = 'OnAbilityFullyCastAbilitySelf', // 技能施法(自己施法)
+    OnAbilityFullyCastItemSelf = 'OnAbilityFullyCastItemSelf', // 物品使用(自己使用)
+    OnAttackedAttacker = 'OnAttackedAttacker', // 攻击结束(攻击别人)
+    OnAttackedTarget = 'OnAttackedTarget', // 攻击结束(被别人攻击)
+    OnModifierAddedUnit = 'OnModifierAddedUnit', // 添加MODIFIER(指定单位被添加上modifier)
+    OnHeroKilledAttacker = 'OnHeroKilledAttacker',
+    OnHeroKilledUnit = 'OnHeroKilledUnit',
+    OnHeroKilledTarget = 'OnHeroKilledTarget',
+    OnDeathAttacker = 'OnDeathAttacker',
+    OnDeathUnit = 'OnDeathUnit',
 }

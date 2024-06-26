@@ -3,11 +3,13 @@ import { GameConfig } from './GameConfig';
 import { CChat } from './Chat';
 import { XNetTable } from './xnet-table';
 import '../common_modifier/index';
+import { CDispatcher } from './dispatcher';
 
 declare global {
     interface CDOTAGameRules {
         // 声明所有的GameRules模块，这个主要是为了方便其他地方的引用（保证单例模式）
         XNetTable: XNetTable;
+        CDispatcher: CDispatcher;
     }
 }
 
@@ -24,5 +26,6 @@ export function ActivateModules() {
         // 初始化测试模块xD
         new Debug();
         new CChat();
+        new CDispatcher();
     }
 }
