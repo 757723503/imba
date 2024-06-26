@@ -11,6 +11,7 @@
     },
     "plugins": ["@typescript-eslint", "import", "prettier", "react", "react-hooks"],
     "rules": {
+       "require-super-oncreated": "error", 
         "prettier/prettier": [
             "error",
             {
@@ -27,8 +28,9 @@
                         "message": "Please import from @mui/material/styles instead. See https://material-ui.com/guides/minimizing-bundle-size/#option-2 for more information"
                     }
                 ]
-            }
+            },
         ],
+        
         "@typescript-eslint/consistent-type-imports": [
             "error",
             {

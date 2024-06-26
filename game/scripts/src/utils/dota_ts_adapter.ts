@@ -26,6 +26,7 @@ export class BaseModifier {
     public static remove<T extends typeof BaseModifier>(this: T, target: CDOTA_BaseNPC): void {
         target.RemoveModifierByName(this.name);
     }
+    
 }
 
 export interface BaseModifierMotionHorizontal extends CDOTA_Modifier_Lua_Horizontal_Motion {}
