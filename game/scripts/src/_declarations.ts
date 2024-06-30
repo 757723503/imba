@@ -1,5 +1,9 @@
+import type { CDispatcher } from './modules/dispatcher';
+
 declare global {
-    interface CDOTAGameRules {}
+    interface CDOTAGameRules {
+        CDispatcher: CDispatcher;
+    }
 
     interface CDOTA_BaseNPC {}
 

@@ -7,7 +7,7 @@
         "types": ["@moddota/dota-lua-types/normalized"], // enum简洁模式API
         // "types": ["@moddota/dota-lua-types"], // enum完整模式API
         "plugins": [
-            {"transform": "@moddota/dota-lua-types/transformer"}, // 使用简洁模式API需要同时使用transformer
+            { "transform": "@moddota/dota-lua-types/transformer" } // 使用简洁模式API需要同时使用transformer
         ],
         "moduleResolution": "node",
         "resolveJsonModule": true,
@@ -23,7 +23,7 @@
         "luaPlugins": [
             {
                 // 特殊的tstl编译插件
-                // 用来给输出的 addon_game_mode.lua 添加一个 
+                // 用来给输出的 addon_game_mode.lua 添加一个
                 // compile timestamp，避免忘记执行run dev操作了
                 // 但是还是很久没发现，如果不需要，可以删除这一行
                 "name": "../../scripts/tstl/beforeEmit.ts"

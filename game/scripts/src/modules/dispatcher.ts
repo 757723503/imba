@@ -1,63 +1,86 @@
 @reloadable
 export class CDispatcher {
-    static id: number = 0;
-    static id_callBack: { [key: number]: (params: any) => void } = {};
-    static tag_entIdxs_ids: { [key: string]: { [key: number]: { [key: number]: boolean } } } = {};
+    private id: number = 0; // 实例变量，用于生成唯一的回调函数ID
+    private id_callBack: Map<number, (params: any) => void> = new Map(); // 实例变量，存储回调函数
+    private tag_entIdxs_ids: Map<string, Map<number, Set<number>>> = new Map(); // 实例变量，存储事件与实体索引和回调函数ID的映射
+    private dispatcherThinker: CDOTA_BaseNPC; // 实例变量，用于保存dispatcher thinker对象
 
-    static dispatcherThinker: any; // 此处需要你定义CreateModifierThinker的返回类型
     constructor() {
-        CDispatcher.Init();
+        this.Init(); // 在构造函数中初始化
     }
 
-    static Init() {
-        CDispatcher.dispatcherThinker = CreateModifierThinker(
-            null,
-            null,
-            'modifier_dispatcher_thinker',
-            {},
-            Vector(0, 0, 0),
-            DotaTeam.NEUTRALS,
-            false
-        );
+    // 初始化方法，创建dispatcher thinker对象并赋值给dispatcherThinker
+    private Init() {
+        this.dispatcherThinker = CreateModifierThinker(null, null, 'modifier_dispatcher_thinker', {}, Vector(0, 0, 0), DotaTeam.NEUTRALS, false);
     }
 
-    static Register(eventName: string, enityIndex: number, callBack: (params: any) => void): number {
-        CDispatcher.id++;
-        CDispatcher.id_callBack[CDispatcher.id] = callBack;
-        if (!CDispatcher.tag_entIdxs_ids[eventName]) {
-            CDispatcher.tag_entIdxs_ids[eventName] = {};
+    // 注册事件的方法
+    // eventName: 事件名称
+    // entityIndex: 实体索引
+    // callBack: 事件触发时调用的回调函数
+    public Register(eventName: string, entityIndex: number, callBack: (params: any) => void): number {
+        this.id++; // 生成唯一的回调函数ID
+        this.id_callBack.set(this.id, callBack); // 将回调函数存储在id_callBack字典中
+
+        // 检查并初始化嵌套的Map和Set
+        if (!this.tag_entIdxs_ids.has(eventName)) {
+            this.tag_entIdxs_ids.set(eventName, new Map());
         }
-        if (!CDispatcher.tag_entIdxs_ids[eventName][enityIndex]) {
-            CDispatcher.tag_entIdxs_ids[eventName][enityIndex] = {};
+        const entityMap = this.tag_entIdxs_ids.get(eventName)!;
+
+        if (!entityMap.has(entityIndex)) {
+            entityMap.set(entityIndex, new Set());
         }
-        CDispatcher.tag_entIdxs_ids[eventName][enityIndex][CDispatcher.id] = true;
-        return CDispatcher.id;
+        const idSet = entityMap.get(entityIndex)!;
+
+        idSet.add(this.id); // 将回调函数ID记录在tag_entIdxs_ids中
+
+        return this.id; // 返回回调函数ID
     }
 
-    static UnRegister(id: number) {
-        delete CDispatcher.id_callBack[id];
+    // 注销事件的方法
+    // id: 要注销的回调函数ID
+    public UnRegister(id: number) {
+        this.id_callBack.delete(id); // 从id_callBack字典中删除该回调函数
+
+        for (const entityMap of this.tag_entIdxs_ids.values()) {
+            for (const [entityIndex, idSet] of entityMap.entries()) {
+                if (idSet.has(id)) {
+                    idSet.delete(id);
+                    if (idSet.size === 0) {
+                        entityMap.delete(entityIndex); // 使用entityIndex删除对应的键值对
+                    }
+                }
+            }
+        }
     }
 
-    static Send(eventName: string, enityIndex: number | null, params: any) {
+    // 发送事件的方法
+    // eventName: 事件名称
+    // entityIndex: 实体索引，或null表示所有实体
+    // params: 事件参数
+    public Send(eventName: string, entityIndex: number | null, params: any) {
         print('创建监听');
-        if (CDispatcher.tag_entIdxs_ids[eventName]) {
-            for (const entIdxx in CDispatcher.tag_entIdxs_ids[eventName]) {
-                if (enityIndex === null || enityIndex === parseInt(entIdxx)) {
-                    for (const id in CDispatcher.tag_entIdxs_ids[eventName][entIdxx]) {
-                        if (CDispatcher.id_callBack[id]) {
+        if (this.tag_entIdxs_ids.has(eventName)) {
+            const entityMap = this.tag_entIdxs_ids.get(eventName)!;
+            for (const [entIdx, idSet] of entityMap.entries()) {
+                if (entityIndex === null || entityIndex === entIdx) {
+                    for (const id of idSet) {
+                        const callback = this.id_callBack.get(id);
+                        if (callback) {
                             try {
-                                CDispatcher.id_callBack[id](params);
+                                callback(params);
                             } catch (e) {
                                 xpcall(
                                     () => {
-                                        CDispatcher.id_callBack[id];
+                                        callback(params);
                                     },
                                     debug.traceback,
                                     params
                                 );
                             }
                         } else {
-                            delete CDispatcher.tag_entIdxs_ids[eventName][entIdxx][id];
+                            idSet.delete(id);
                         }
                     }
                 }
@@ -65,9 +88,13 @@ export class CDispatcher {
         }
     }
 
-    static Trigger(id: number, params: any) {
-        if (CDispatcher.id_callBack[id]) {
-            CDispatcher.id_callBack[id](params);
+    // 触发单个回调的方法
+    // id: 回调函数ID
+    // params: 事件参数
+    public Trigger(id: number, params: any) {
+        const callback = this.id_callBack.get(id);
+        if (callback) {
+            callback(params);
         }
     }
 }

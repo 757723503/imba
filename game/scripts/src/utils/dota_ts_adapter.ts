@@ -37,7 +37,7 @@ export class BaseModifier {
             for (const value of Object.values(eventNameList)) {
                 if (this[value]) {
                     print('注册事件', value);
-                    this.dispatcherIDList.push(CDispatcher.Register(value, entIndex, (params: any) => this[value](params)));
+                    this.dispatcherIDList.push(GameRules.CDispatcher.Register(value, entIndex, (params: any) => this[value](params)));
                 }
             }
         }
@@ -47,7 +47,7 @@ export class BaseModifier {
         if (IsServer()) {
             print('父类');
             for (const id of this.dispatcherIDList) {
-                CDispatcher.UnRegister(id);
+                GameRules.CDispatcher.UnRegister(id);
             }
         }
     }

@@ -4,6 +4,7 @@ import { CChat } from './Chat';
 import { XNetTable } from './xnet-table';
 import '../common_modifier/index';
 import { CDispatcher } from './dispatcher';
+import { CFilter } from './Filter';
 
 declare global {
     interface CDOTAGameRules {
@@ -26,6 +27,7 @@ export function ActivateModules() {
         // 初始化测试模块xD
         new Debug();
         new CChat();
-        new CDispatcher();
+        GameRules.CDispatcher = new CDispatcher();
+        new CFilter();
     }
 }
