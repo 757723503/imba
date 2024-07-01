@@ -1,3 +1,4 @@
+import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
 declare type dispatcher_id = number & {
     readonly __tag__: 'dispatcher_id';
 };
@@ -102,3 +103,19 @@ export class CDispatcher {
         }
     }
 }
+declare module '../utils/dota_ts_adapter' {
+    // interface BaseModifier {
+    //     OnCreated(params: object): void {
+    //         print('父类OnCreated');
+    //     },
+    //     OnDestroy(): void {
+    //         print('父类销毁OnDestroy');
+    //     }
+    // }
+}
+BaseModifier.prototype.OnCreated = function () {
+    print('父类OnCreated');
+};
+BaseModifier.prototype.OnDestroy = function () {
+    print('父类OnDestroy');
+};

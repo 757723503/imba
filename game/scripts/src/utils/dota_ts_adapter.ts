@@ -26,14 +26,6 @@ export class BaseModifier {
     public static remove<T extends typeof BaseModifier>(this: T, target: CDOTA_BaseNPC): void {
         target.RemoveModifierByName(this.name);
     }
-
-    OnCreated(params: object): void {
-        print('父类OnCreated');
-    }
-
-    OnDestroy(): void {
-        print('父类销毁OnDestroy');
-    }
 }
 
 export interface BaseModifierMotionHorizontal extends CDOTA_Modifier_Lua_Horizontal_Motion {}
