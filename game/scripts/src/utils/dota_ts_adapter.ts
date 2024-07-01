@@ -1,5 +1,3 @@
-import { CDispatcher } from '../modules/dispatcher';
-
 export interface BaseAbility extends CDOTA_Ability_Lua {}
 export class BaseAbility {}
 
@@ -29,27 +27,12 @@ export class BaseModifier {
         target.RemoveModifierByName(this.name);
     }
 
-    dispatcherIDList: number[] = [];
     OnCreated(params: object): void {
-        if (IsServer()) {
-            print('父类');
-            const entIndex = this.GetParent().GetEntityIndex();
-            for (const value of Object.values(eventNameList)) {
-                if (this[value]) {
-                    print('注册事件', value);
-                    this.dispatcherIDList.push(GameRules.CDispatcher.Register(value, entIndex, (params: any) => this[value](params)));
-                }
-            }
-        }
+        print('父类OnCreated');
     }
 
     OnDestroy(): void {
-        if (IsServer()) {
-            print('父类');
-            for (const id of this.dispatcherIDList) {
-                GameRules.CDispatcher.UnRegister(id);
-            }
-        }
+        print('父类销毁OnDestroy');
     }
 }
 
@@ -104,12 +87,27 @@ export const registerModifier = (name?: string) => (modifier: new () => CDOTA_Mo
     env[name] = {};
 
     toDotaClassInstance(env[name], modifier);
-
+    const baseModifierOnCreated = BaseModifier.prototype.OnCreated;
     const originalOnCreated = (env[name] as CDOTA_Modifier_Lua).OnCreated;
     env[name].OnCreated = function (parameters: any) {
         this.____constructor();
+        if (baseModifierOnCreated) {
+            baseModifierOnCreated.call(this, parameters);
+        }
         if (originalOnCreated) {
             originalOnCreated.call(this, parameters);
+        }
+    };
+
+    const baseModifierOnDestroy = BaseModifier.prototype.OnDestroy;
+    const originalOnDestroy = (env[name] as CDOTA_Modifier_Lua).OnDestroy;
+    env[name].OnDestroy = function (parameters: any) {
+        this.____constructor();
+        if (baseModifierOnDestroy) {
+            baseModifierOnDestroy.call(this, parameters);
+        }
+        if (originalOnDestroy) {
+            originalOnDestroy.call(this, parameters);
         }
     };
 
@@ -177,22 +175,4 @@ function toDotaClassInstance(instance: any, table: new () => any) {
 
         prototype = getmetatable(prototype);
     }
-}
-enum eventNameList {
-    OnAttackLandedAttacker = 'OnAttackLandedAttacker', // 攻击命中(攻击别人)
-    OnAttackLandedTarget = 'OnAttackLandedTarget', // 造成伤害(攻击别人)
-    OnTakeDamageAttacker = 'OnTakeDamageAttacker', // 受到伤害(自己伤害别人)
-    OnTakeDamageUnit = 'OnTakeDamageUnit', // 受到伤害(受到别人伤害)
-    OnAbilityFullyCastAbility = 'OnAbilityFullyCastAbility', // 技能施法(所有人施法)
-    OnAbilityFullyCastItem = 'OnAbilityFullyCastItem', // 物品使用(所有人使用)
-    OnAbilityFullyCastAbilitySelf = 'OnAbilityFullyCastAbilitySelf', // 技能施法(自己施法)
-    OnAbilityFullyCastItemSelf = 'OnAbilityFullyCastItemSelf', // 物品使用(自己使用)
-    OnAttackedAttacker = 'OnAttackedAttacker', // 攻击结束(攻击别人)
-    OnAttackedTarget = 'OnAttackedTarget', // 攻击结束(被别人攻击)
-    OnModifierAddedUnit = 'OnModifierAddedUnit', // 添加MODIFIER(指定单位被添加上modifier)
-    OnHeroKilledAttacker = 'OnHeroKilledAttacker',
-    OnHeroKilledUnit = 'OnHeroKilledUnit',
-    OnHeroKilledTarget = 'OnHeroKilledTarget',
-    OnDeathAttacker = 'OnDeathAttacker',
-    OnDeathUnit = 'OnDeathUnit',
 }

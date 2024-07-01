@@ -1,5 +1,4 @@
 import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
-
 @registerModifier()
 export class modifier_imba_stunned extends BaseModifier {
     IsHidden(): boolean {
@@ -14,9 +13,13 @@ export class modifier_imba_stunned extends BaseModifier {
         return [ModifierFunction2.OnTakeDamageUnit];
     }
 
-    OnTakeDamageUnit(event: ModifierAttackEvent): void {
-        print('OnTakeDamageUnit触发事件却还是被打断了');
+    DeclareFunctions(): ModifierFunction[] {
+        return [ModifierFunction.ABILITY_LAYOUT];
     }
+
+    // OnTakeDamageUnit(event: ModifierAttackEvent): void {
+    //     print('OnTakeDamageUnit触发事件却还是被打断了');
+    // }
 
     // CheckState(): Partial<Record<ModifierState, boolean>> {
     //     return {
@@ -25,7 +28,10 @@ export class modifier_imba_stunned extends BaseModifier {
     // }
 
     OnCreated(params: object): void {
-        super.OnCreated(params);
-        print('子类');
+        print('子类OnCreated');
+    }
+
+    OnDestroy(): void {
+        print('子类OnDestroy');
     }
 }

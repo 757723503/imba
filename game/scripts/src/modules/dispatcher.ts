@@ -1,8 +1,11 @@
+declare type dispatcher_id = number & {
+    readonly __tag__: 'dispatcher_id';
+};
 @reloadable
 export class CDispatcher {
-    private id: number = 0; // 实例变量，用于生成唯一的回调函数ID
-    private id_callBack: Map<number, (params: any) => void> = new Map(); // 实例变量，存储回调函数
-    private tag_entIdxs_ids: Map<string, Map<number, Set<number>>> = new Map(); // 实例变量，存储事件与实体索引和回调函数ID的映射
+    private id: dispatcher_id; // 实例变量，用于生成唯一的回调函数ID
+    private id_callBack: Map<dispatcher_id, (params: any) => void> = new Map(); // 实例变量，存储回调函数
+    private tag_entIdxs_ids: Map<string, Map<EntityIndex, Set<dispatcher_id>>> = new Map(); // 实例变量，存储事件与实体索引和回调函数ID的映射
     private dispatcherThinker: CDOTA_BaseNPC; // 实例变量，用于保存dispatcher thinker对象
 
     constructor() {
@@ -11,6 +14,7 @@ export class CDispatcher {
 
     // 初始化方法，创建dispatcher thinker对象并赋值给dispatcherThinker
     private Init() {
+        this.id = 0 as dispatcher_id;
         this.dispatcherThinker = CreateModifierThinker(null, null, 'modifier_dispatcher_thinker', {}, Vector(0, 0, 0), DotaTeam.NEUTRALS, false);
     }
 
@@ -18,7 +22,7 @@ export class CDispatcher {
     // eventName: 事件名称
     // entityIndex: 实体索引
     // callBack: 事件触发时调用的回调函数
-    public Register(eventName: string, entityIndex: number, callBack: (params: any) => void): number {
+    public Register(eventName: string, entityIndex: EntityIndex, callBack: (params: any) => void): dispatcher_id {
         this.id++; // 生成唯一的回调函数ID
         this.id_callBack.set(this.id, callBack); // 将回调函数存储在id_callBack字典中
 
@@ -40,7 +44,7 @@ export class CDispatcher {
 
     // 注销事件的方法
     // id: 要注销的回调函数ID
-    public UnRegister(id: number) {
+    public UnRegister(id: dispatcher_id) {
         this.id_callBack.delete(id); // 从id_callBack字典中删除该回调函数
 
         for (const entityMap of this.tag_entIdxs_ids.values()) {
@@ -59,7 +63,7 @@ export class CDispatcher {
     // eventName: 事件名称
     // entityIndex: 实体索引，或null表示所有实体
     // params: 事件参数
-    public Send(eventName: string, entityIndex: number | null, params: any) {
+    public Send(eventName: string, entityIndex: EntityIndex | null, params: any) {
         print('创建监听');
         if (this.tag_entIdxs_ids.has(eventName)) {
             const entityMap = this.tag_entIdxs_ids.get(eventName)!;
@@ -91,7 +95,7 @@ export class CDispatcher {
     // 触发单个回调的方法
     // id: 回调函数ID
     // params: 事件参数
-    public Trigger(id: number, params: any) {
+    public Trigger(id: dispatcher_id, params: any) {
         const callback = this.id_callBack.get(id);
         if (callback) {
             callback(params);

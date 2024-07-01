@@ -4,8 +4,14 @@ declare global {
     interface CDOTAGameRules {
         CDispatcher: CDispatcher;
     }
-
-    interface CDOTA_BaseNPC {}
+    interface CDOTA_BaseNPC {
+        AddNewModifier(
+            caster: CDOTA_BaseNPC | undefined,
+            ability: CDOTABaseAbility | undefined,
+            modifierName: string,
+            modifierTable: object | undefined
+        ): CDOTA_Buff;
+    }
 
     interface CDOTA_BaseNPC_Hero {}
 

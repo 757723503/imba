@@ -31,7 +31,7 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 5 });
+                hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 5, hero: 5 });
                 // modifier_imba_stunned.apply()
                 break;
             case ChatCommand.cr:

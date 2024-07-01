@@ -1,6 +1,10 @@
-// //@ts-nocheck
+//@ts-nocheck
 
-// declare const enum ModifierFunction {
+declare interface ModifierHealEvent extends ModifierUnitEvent {
+    gain: number;
+    inflictor?: CDOTABaseAbility;
+}
+// const enum ModifierFunction {
 //     /**
 //      * Method Name: "GetModifierPreAttack_BonusDamage"
 //      * 额外攻击伤害
@@ -1324,3 +1328,4 @@
 //     AVOID_DAMAGE_AFTER_REDUCTIONS = 271,
 //     INVALID = 65535,
 // }
+export {};

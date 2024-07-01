@@ -1,14 +1,3 @@
-export {};
-declare global {
-    interface CDOTA_BaseNPC {
-        AddNewModifier(
-            caster: CDOTA_BaseNPC | undefined,
-            ability: CDOTABaseAbility | undefined,
-            modifierName: string,
-            modifierTable: object | undefined
-        ): CDOTA_Buff;
-    }
-}
 {
     const originalAddNewModifier = CDOTA_BaseNPC.AddNewModifier;
     CDOTA_BaseNPC.AddNewModifier = function (
