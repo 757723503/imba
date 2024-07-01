@@ -1,8 +1,11 @@
-//@ts-nocheck
-
-declare interface ModifierHealEvent extends ModifierUnitEvent {
-    gain: number;
-    inflictor?: CDOTABaseAbility;
+declare global {
+    interface ModifierHealEvent extends ModifierUnitEvent {
+        gain: number;
+        inflictor?: CDOTABaseAbility;
+    }
+    type dispatcher_id = number & {
+        readonly __tag__: 'dispatcher_id';
+    };
 }
 // const enum ModifierFunction {
 //     /**

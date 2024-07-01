@@ -9,23 +9,91 @@ export class modifier_imba_stunned extends BaseModifier {
         return true;
     }
 
-    CustomDeclareFunctions(): ModifierFunction2[] {
-        return [ModifierFunction2.OnTakeDamageUnit];
-    }
+    // CustomDeclareFunctions(): ModifierFunctions[] {
+    //     return [ModifierFunctions.OnAttackLanded_Attacker];
+    // }
 
+    // OnAttackLanded_Attacker(event: ApplyDamageOptions): void {
+    //     print('modifier_imba_stunned OnAttackLanded_Attacker');
+    // }
     DeclareFunctions(): ModifierFunction[] {
-        return [ModifierFunction.ABILITY_LAYOUT];
+        return [
+            ModifierFunction.ON_ATTACK_START,
+            ModifierFunction.ON_ATTACKED,
+            ModifierFunction.ON_ATTACK_LANDED,
+            ModifierFunction.ON_ATTACK_ALLIED,
+            ModifierFunction.ON_ATTACK_FAIL,
+            ModifierFunction.ON_ATTACK_FINISHED,
+            ModifierFunction.ON_ATTACK_RECORD,
+            ModifierFunction.ON_ATTACK_RECORD_DESTROY,
+            ModifierFunction.ON_ATTACK_CANCELLED,
+            ModifierFunction.ON_ATTACK,
+        ];
     }
 
-    // OnTakeDamageUnit(event: ModifierAttackEvent): void {
-    //     print('OnTakeDamageUnit触发事件却还是被打断了');
-    // }
+    OnAttackStart(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttackStart');
+    }
 
-    // CheckState(): Partial<Record<ModifierState, boolean>> {
-    //     return {
-    //         [ModifierState.STUNNED]: true,
-    //     };
-    // }
+    OnAttacked(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttacked');
+    }
+
+    OnAttackLanded(event: ModifierAttackEvent): void {
+        print(
+            'modifier_imba_stunned OnAttackLanded',
+            event.original_damage,
+            event.damage,
+            event.damage_type,
+            event.damage_category,
+            event.damage_flags
+        );
+    }
+
+    OnAttackAllied(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttackAllied');
+    }
+
+    OnAttackFail(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttackFail');
+    }
+
+    OnAttackFinished(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttackFinished');
+    }
+
+    OnAttackRecord(event: ModifierAttackEvent): void {
+        const int = event;
+        int.attacker = null;
+        int.target = null;
+        // DeepPrintTable(event);
+
+        print(
+            'modifier_imba_stunned OnAttackRecord',
+            event.record,
+            event.original_damage,
+            event.damage,
+            event.damage_type,
+            event.damage_category,
+            event.damage_flags
+        );
+    }
+
+    OnAttackRecordDestroy(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttackRecordDestroy');
+    }
+
+    OnAttackCancelled(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttackCancelled');
+    }
+
+    OnAttack(event: ModifierAttackEvent): void {
+        print('modifier_imba_stunned OnAttack', event.damage);
+    }
+
+    OnAttackLaunch(event: ApplyDamageOptions): void {
+        print('modifier_imba_stunned OnAttackLaunch');
+    }
 
     OnCreated(params: object): void {
         print('子类OnCreated');

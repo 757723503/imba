@@ -12,10 +12,28 @@ export class CFilter {
     }
 
     _ProjectileFilter(event: TrackingProjectileFilterEvent): boolean {
-        return false;
+        return true;
     }
 
     _DamageFilter(event: DamageFilterEvent): boolean {
-        return false;
+        if (!event.entindex_attacker_const) return true;
+        if (!event.entindex_victim_const) return true;
+        const attacker = EntIndexToHScript(event.entindex_attacker_const) as CDOTA_BaseNPC;
+        const victim = EntIndexToHScript(event.entindex_victim_const) as CDOTA_BaseNPC;
+        const ability = EntIndexToHScript(event.entindex_inflictor_const ?? (-1 as EntityIndex)) as CDOTABaseAbility;
+        if (victim.IsNull() || !victim.IsAlive() || !IsValidEntity(victim)) return;
+
+        if (event.damage == 0) return;
+        if (!ability) {
+            // ApplyDamage({
+            //     attacker: attacker,
+            //     victim: victim,
+            //     damage: event.damage,
+            //     damage_type: event.damagetype_const,
+            //     damage_flags: DamageFlag.NONE,
+            // });
+            // return false;
+        }
+        return true;
     }
 }

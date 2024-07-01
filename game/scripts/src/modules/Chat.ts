@@ -32,7 +32,7 @@ export class CChat {
                 break;
             case ChatCommand.qw:
                 hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 5, hero: 5 });
-                // modifier_imba_stunned.apply()
+                // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 break;
             case ChatCommand.cr:
                 DebugCreateUnit(player, 'npc_dota_hero_earthshaker', DotaTeam.BADGUYS, false, (): void => {});

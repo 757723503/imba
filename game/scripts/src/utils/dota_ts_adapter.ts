@@ -1,3 +1,5 @@
+import { CDispatcher } from '../modules/dispatcher/Dispatcher';
+
 export interface BaseAbility extends CDOTA_Ability_Lua {}
 export class BaseAbility {}
 
@@ -26,16 +28,64 @@ export class BaseModifier {
     public static remove<T extends typeof BaseModifier>(this: T, target: CDOTA_BaseNPC): void {
         target.RemoveModifierByName(this.name);
     }
+
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
+
+    protected dispatcherIDList: Map<number, dispatcher_id[]>;
+
+    OnCreated(params: object): void {
+        const functions = this.CustomDeclareFunctions();
+        if (functions) {
+            this.dispatcherIDList = new Map();
+            const parent_index = this.GetParent().entindex();
+            functions.forEach(func => {
+                if (this[func] && typeof this[func] === 'function') {
+                    const boundFunction = (this[func] as Function).bind(this);
+                    const dispatcherId = CDispatcher.Register(func, parent_index, boundFunction);
+                    if (!this.dispatcherIDList.has(parent_index)) {
+                        this.dispatcherIDList.set(parent_index, []);
+                    }
+                    this.dispatcherIDList.get(parent_index)!.push(dispatcherId);
+                }
+            });
+        }
+    }
+
+    OnDestroy(): void {
+        if (this.dispatcherIDList) {
+            const parent_index = this.GetParent().entindex();
+            const dispatcherList = this.dispatcherIDList.get(parent_index);
+            if (dispatcherList) {
+                dispatcherList.forEach(dispatcherId => {
+                    CDispatcher.UnRegister(dispatcherId);
+                });
+            }
+        }
+    }
 }
 
 export interface BaseModifierMotionHorizontal extends CDOTA_Modifier_Lua_Horizontal_Motion {}
-export class BaseModifierMotionHorizontal extends BaseModifier {}
+export class BaseModifierMotionHorizontal extends BaseModifier {
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
+}
 
 export interface BaseModifierMotionVertical extends CDOTA_Modifier_Lua_Vertical_Motion {}
-export class BaseModifierMotionVertical extends BaseModifier {}
+export class BaseModifierMotionVertical extends BaseModifier {
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
+}
 
 export interface BaseModifierMotionBoth extends CDOTA_Modifier_Lua_Motion_Both {}
-export class BaseModifierMotionBoth extends BaseModifier {}
+export class BaseModifierMotionBoth extends BaseModifier {
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
+}
 
 // Add standard base classes to prototype chain to make `super.*` work as `self.BaseClass.*`
 setmetatable(BaseAbility.prototype, { __index: CDOTA_Ability_Lua ?? C_DOTA_Ability_Lua });

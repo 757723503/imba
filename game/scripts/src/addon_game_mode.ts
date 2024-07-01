@@ -1,8 +1,8 @@
+import './UtilityFunctions';
 import 'utils/index';
 import { ActivateModules } from './modules';
 import Precache from './utils/precache';
-import './UtilityFunctions';
-
+import './modules/extends/Extends';
 Object.assign(getfenv(), {
     Activate: () => {
         ActivateModules();
