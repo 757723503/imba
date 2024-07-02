@@ -8,6 +8,8 @@ declare global {
               modifierTable: object | undefined
           ) => CDOTA_Buff)
         | undefined;
+
+    var originalApplyDamage: (options: ApplyDamageOptions) => number | undefined;
 }
 
 if (!globalThis.originalAddNewModifier) {

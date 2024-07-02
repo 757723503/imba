@@ -31,8 +31,15 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 5, hero: 5 });
+                // hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 5, hero: 5 });
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
+                ApplyDamage({
+                    attacker: hero,
+                    victim: hero,
+                    damage: 500,
+                    ability: null,
+                    damage_type: DamageTypes.NONE,
+                });
                 break;
             case ChatCommand.cr:
                 DebugCreateUnit(player, 'npc_dota_hero_earthshaker', DotaTeam.BADGUYS, false, (): void => {});
