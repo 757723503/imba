@@ -9,91 +9,85 @@ export class modifier_imba_stunned extends BaseModifier {
         return true;
     }
 
-    // CustomDeclareFunctions(): ModifierFunctions[] {
-    //     return [ModifierFunctions.OnAttackLanded_Attacker];
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [ModifierFunctions.DamageFixed_MagicShieldBlock, ModifierFunctions.OnAttackLanded_Attacker];
+    }
+
+    DamageFixed_MagicShieldBlock(dmgTable: ApplyDamageOptions): number {
+        print(dmgTable?.attacker?.GetName(), dmgTable?.victim?.GetName());
+        return 80;
+    }
+
+    OnAttackLanded_Attacker(event: ApplyDamageOptions): void {
+        print('modifier_imba_stunned OnAttackLanded_Attacker');
+    }
+    // DeclareFunctions(): ModifierFunction[] {
+    //     return [
+    //         ModifierFunction.ON_ATTACK_START,
+    //         ModifierFunction.ON_ATTACKED,
+    //         ModifierFunction.ON_ATTACK_LANDED,
+    //         ModifierFunction.ON_ATTACK_ALLIED,
+    //         ModifierFunction.ON_ATTACK_FAIL,
+    //         ModifierFunction.ON_ATTACK_FINISHED,
+    //         ModifierFunction.ON_ATTACK_RECORD,
+    //         ModifierFunction.ON_ATTACK_RECORD_DESTROY,
+    //         ModifierFunction.ON_ATTACK_CANCELLED,
+    //         ModifierFunction.ON_ATTACK,
+    //     ];
     // }
 
-    // OnAttackLanded_Attacker(event: ApplyDamageOptions): void {
-    //     print('modifier_imba_stunned OnAttackLanded_Attacker');
+    // OnAttackStart(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttackStart');
     // }
-    DeclareFunctions(): ModifierFunction[] {
-        return [
-            ModifierFunction.ON_ATTACK_START,
-            ModifierFunction.ON_ATTACKED,
-            ModifierFunction.ON_ATTACK_LANDED,
-            ModifierFunction.ON_ATTACK_ALLIED,
-            ModifierFunction.ON_ATTACK_FAIL,
-            ModifierFunction.ON_ATTACK_FINISHED,
-            ModifierFunction.ON_ATTACK_RECORD,
-            ModifierFunction.ON_ATTACK_RECORD_DESTROY,
-            ModifierFunction.ON_ATTACK_CANCELLED,
-            ModifierFunction.ON_ATTACK,
-        ];
-    }
 
-    OnAttackStart(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttackStart');
-    }
+    // OnAttacked(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttacked');
+    // }
 
-    OnAttacked(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttacked');
-    }
+    // OnAttackLanded(event: ModifierAttackEvent): void {
+    //     print(
+    //         'modifier_imba_stunned OnAttackLanded',
+    //         event.original_damage,
+    //         event.damage,
+    //         event.damage_type,
+    //         event.damage_category,
+    //         event.damage_flags
+    //     );
+    // }
 
-    OnAttackLanded(event: ModifierAttackEvent): void {
-        print(
-            'modifier_imba_stunned OnAttackLanded',
-            event.original_damage,
-            event.damage,
-            event.damage_type,
-            event.damage_category,
-            event.damage_flags
-        );
-    }
+    // OnAttackAllied(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttackAllied');
+    // }
 
-    OnAttackAllied(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttackAllied');
-    }
+    // OnAttackFail(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttackFail');
+    // }
 
-    OnAttackFail(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttackFail');
-    }
+    // OnAttackFinished(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttackFinished');
+    // }
 
-    OnAttackFinished(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttackFinished');
-    }
+    // OnAttackRecord(event: ModifierAttackEvent): void {
+    //     const int = event;
+    //     int.attacker = null;
+    //     int.target = null;
+    // }
 
-    OnAttackRecord(event: ModifierAttackEvent): void {
-        const int = event;
-        int.attacker = null;
-        int.target = null;
-        // DeepPrintTable(event);
+    // OnAttackRecordDestroy(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttackRecordDestroy');
+    // }
 
-        print(
-            'modifier_imba_stunned OnAttackRecord',
-            event.record,
-            event.original_damage,
-            event.damage,
-            event.damage_type,
-            event.damage_category,
-            event.damage_flags
-        );
-    }
+    // OnAttackCancelled(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttackCancelled');
+    // }
 
-    OnAttackRecordDestroy(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttackRecordDestroy');
-    }
+    // OnAttack(event: ModifierAttackEvent): void {
+    //     print('modifier_imba_stunned OnAttack', event.damage);
+    // }
 
-    OnAttackCancelled(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttackCancelled');
-    }
-
-    OnAttack(event: ModifierAttackEvent): void {
-        print('modifier_imba_stunned OnAttack', event.damage);
-    }
-
-    OnAttackLaunch(event: ApplyDamageOptions): void {
-        print('modifier_imba_stunned OnAttackLaunch');
-    }
+    // OnAttackLaunch(event: ApplyDamageOptions): void {
+    //     print('modifier_imba_stunned OnAttackLaunch');
+    // }
 
     OnCreated(params: object): void {
         print('子类OnCreated');

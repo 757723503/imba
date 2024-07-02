@@ -7,6 +7,117 @@ declare global {
         readonly __tag__: 'dispatcher_id';
     };
 }
+declare interface LocalEventDeclarations {
+    /** 原始伤害结算事件 */
+    DAMAGE_ORIGIN_DAMAGE_EVENT: DamageTable;
+    /**
+     * - 攻击溅射和攻击弹射的伤害传递 只有攻击者,攻击伤害能接收, 攻击者是英雄时触发
+     * - 本事件只传递物理攻击伤害, 所以只需要数值
+     */
+    DAMAGE_ATTACKER_BOUNCE_EVENT: { victim: CDOTA_BaseNPC; damage: number };
+    /**
+     * - 剑刃风暴的攻击伤害无效化 只有攻击者,攻击伤害能接收
+     * 设置result为true时, 本次伤害直接=0
+     */
+    DAMAGE_FIXED_ATTACKER_BLADE_STORM_ATK: { victim: CDOTA_BaseNPC; result: boolean };
+    /**
+     * - 攻击特效伤害 只有攻击者,攻击伤害能接收 物理 + 魔法, 并回传
+     * - PS: 经过测试, 胸针和奶绿大招的伤害类型转换和这个不在同一步, 这一步只需要初始化物理攻击和魔法攻击伤害并回收
+     * - 可修改:
+     * - addedAtkPhysicalDamage // 额外增加物理攻击伤害
+     * - addedAtkMagicalDamage // 额外增加魔法攻击伤害
+     */
+    DAMAGE_FIXED_ATTACKER_ATK_DAMAGE: DamageFixedAttackEffectData;
+    /** 攻击分裂的伤害传递 只有攻击者,攻击伤害能接收, 只传递受害者和物理攻击伤害  */
+    DAMAGE_ATTACKER_ATK_CLEAVE_EVENT: { victim: CDOTA_BaseNPC; damage: number };
+    /**
+     * - 伤害共享和伤害反弹的伤害传递 反射伤害时不触发 只传递给受击者 带着攻击者一起
+     */
+    DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT: { attacker: CDOTA_BaseNPC; damage: number; type: DamageTypes };
+    /**
+     * - 魔法护盾的伤害格挡百分比 只有受击者能接受, 返回一个伤害吸收百分比, 缩放原伤害数值(0- 100)
+     */
+    DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT: { block_pct: number; origin_table: FixedDamageTable };
+    /** 魔法伤害格挡常量(如果魔法伤害>0)(受击者英雄专属)(只通知受击者) */
+    // DAMAGE_FIXED_VICITIM_MAGIC_DAMAGE_BLOCK: { origin_damage: number; block_damage: number };
+    /** 物理伤害格挡常量(如果物理伤害>0)(受击者英雄专属)(只通知受击者) */
+    // DAMAGE_FIXED_VICITIM_PHYSICAL_DAMAGE_BLOCK: { origin_damage: number; block_damage: number };
+    /** 物理伤害无效化 只有受击者 */
+    DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE: { origin_physical: number; ignore: boolean };
+    /** 魔法伤害无效化 只有受击者 */
+    DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE: { origin_magic: number; ignore: boolean };
+    /** 纯粹伤害无效化 只有受击者 */
+    DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE: { origin_pure: number; ignore: boolean };
+    /** 全域伤害无效化 只有受击者, 所有伤害能接受  */
+    DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE: { origin_all: number; ignore: boolean; attacker: CDOTA_BaseNPC };
+    // /**
+    //  * - 需要专门的处理类
+    //  * - 伤害护盾(6.83) 只有受击者, 所有伤害能接受
+    //  * - 1. 物理攻击伤害护盾, 只吸收物理攻击伤害，不吸收物理技能伤害。
+    //  * - 2. 魔法伤害护盾, 只吸收魔法伤害
+    //  * - 3. 全类型伤害护盾, 吸收所有类型的伤害，不包括具有生命移除标识的伤害。
+    //  * - 4. 物理伤害护盾 只吸收物理伤害，包括物理技能伤害。
+    //  */
+    // DAMAGE_FIXED_VICITIM_SHIELD: FixedDamageTable;
+    /** 特殊物理伤害调整, 只有受击者触发, 加法叠加, add_pct为受到伤害增加 如果传入负数则为伤害减少 */
+    DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE: { add_pct: number; dmgTable: FixedDamageTable };
+    /** 核心攻击伤害调整  双方触发 */
+    DAMAGE_FIXED_CORE_ATTACK_DAMAGE: { scale_pct: number; attacker: CDOTA_BaseNPC; victim: CDOTA_BaseNPC };
+    /** 核心技能伤害调整 受击者触发 */
+    DAMAGE_FIXED_CORE_ABILITY_DAMAGE: { scale_pct: number };
+    /** 核心伤害调整 攻击者和受击者都触发 */
+    DAMAGE_FIXED_CORE_ALL_DAMAGE: { scale_pct: number; attacker: CDOTA_BaseNPC; victim: CDOTA_BaseNPC };
+    /** 尖刺外壳的伤害无效化 只有受击者, 传入原总伤害, 回传true false, 如果true则把伤害归零 */
+    DAMAGE_FIXED_VICITIM_SPIKED_CARAPACE: { spiked_carapace_result: boolean; total_dmg: number; attacker: CDOTA_BaseNPC };
+    /** 虚妄之诺的伤害无效化 只有受击者, 传入原总伤害, 回传true false, 如果true则把伤害归零 */
+    DAMAGE_FIXED_VICITIM_FALSE_PROMISE: {
+        attacker: CDOTA_BaseNPC;
+        damage_type: DamageType;
+        damage_flag: DamageFlags;
+        false_promise_result: boolean;
+        total_dmg: number;
+        ability?: CDOTABaseAbility;
+    };
+    /** 回光返照的友方伤害记录 受害者是英雄时 受击者触发 */
+    DAMAGE_BORROWED_TIME_EVENT: {
+        attacker: CDOTA_BaseNPC;
+        victim: CDOTA_BaseNPC;
+        damage: number;
+        damage_property: DamageProperty;
+        damage_type: DamageType;
+        damage_flag: DamageFlags;
+    };
+    /** 末端伤害格挡 只有受击者, 同时触发时，仅数值最高者生效。 */
+    DAMAGE_FIXED_VICITIM_END_BLOCK: { total_dmg: number; block_pct: number };
+    /** 末端伤害结算事件 双方都能触发 */
+    DAMAGE_END_DAMAGE_EVENT: {
+        damage_property: DamageProperty;
+        damage_type: DamageType;
+        damage_flag: DamageFlags;
+        damage: number;
+        attacker: CDOTA_BaseNPC;
+        victim: CDOTA_BaseNPC;
+        ability?: CDOTABaseAbility;
+    };
+    /** 飞溅的伤害传递, 攻击者触发, 只会传结算到此处的物理攻击伤害的值 */
+    DAMAGE_PSI_BLADE_EVENT: { victim: CDOTA_BaseNPC; damage: number };
+    /** 攻击吸血的基础值传递 攻击者触发 */
+    DAMAGE_ATTACK_LEECH_EVENT: number;
+    /** 技能吸血的基础值传递 攻击者触发 */
+    DAMAGE_ABILITY_LEECH_EVENT: number;
+    // /** 末端伤害传递 攻击者, 所有伤害接收 */
+    // DAMAGE_ATTACKER_END_DAMAGE_BOUNCE_EVENT: FixedDamageTable;
+    /** 幻象结算之后伤害结算事件 - 过完幻象的伤害增幅后触发 - 攻击者+受击者 */
+    DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT: {
+        attacker: CDOTA_BaseNPC;
+        victim: CDOTA_BaseNPC;
+        damage: number;
+        damage_flag: DamageFlags;
+        inflictor?: CDOTABaseAbility;
+    };
+    /** 特殊溅射攻击广播 - 攻击者 */
+    DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT: { victim: CDOTA_BaseNPC; damage: number };
+}
 // const enum ModifierFunction {
 //     /**
 //      * Method Name: "GetModifierPreAttack_BonusDamage"

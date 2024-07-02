@@ -1,4 +1,3 @@
-import { CDispatcher } from '../modules/dispatcher/Dispatcher';
 import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
 
 @registerModifier()

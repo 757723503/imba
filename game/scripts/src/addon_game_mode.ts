@@ -1,3 +1,4 @@
+import './modules/dispatcher/Dispatcher';
 import './UtilityFunctions';
 import 'utils/index';
 import { ActivateModules } from './modules';

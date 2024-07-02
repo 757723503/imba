@@ -25,14 +25,16 @@ export class CFilter {
 
         if (event.damage == 0) return;
         if (!ability) {
-            // ApplyDamage({
-            //     attacker: attacker,
-            //     victim: victim,
-            //     damage: event.damage,
-            //     damage_type: event.damagetype_const,
-            //     damage_flags: DamageFlag.NONE,
-            // });
-            // return false;
+            AddDamage({
+                attacker: attacker,
+                victim: victim,
+                damage: event.damage,
+                damageProperty: DamageProperty.Attack,
+                damageType: DamageType.Physical,
+                //TODO 标识普攻来源
+                sourceAbility: ability,
+            });
+            return false;
         }
         return true;
     }

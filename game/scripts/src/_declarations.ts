@@ -1,5 +1,3 @@
-import type { CDispatcher } from './modules/dispatcher/Dispatcher';
-
 declare global {
     interface CDOTAGameRules {
         CDispatcher: CDispatcher;

@@ -89,7 +89,10 @@ declare const enum ModifierFunctions {
      * 特殊溅射攻击广播 - 攻击者触发 事件名 DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT
      */
     DamageEvent_SpecialBounceAttack = 'DamageEvent_SpecialBounceAttack',
-
+    /**
+     * 攻击特效伤害的添加 - 常量, 事件名 DAMAGE_FIXED_ATTACKER_ATK_DAMAGE
+     */
+    DamageFixed_AttackEffectDamage = 'DamageFixed_AttackEffectDamage',
     /**
      * 击杀任意单位，事件名 UNIT_KILL_UNIT 。
      * 击杀者触发
