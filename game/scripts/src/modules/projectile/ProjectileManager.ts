@@ -62,7 +62,8 @@ export class CProjectileManager {
         //起始位置 优先使用传入的起始位置  其次使用附着位置  最后使用英雄位置
         const start_position = data.start_position ?? attach_pos ?? dota_hero.GetAbsOrigin();
         const pfx = this.TrackingPlayerEffect(data, start_position);
-        const hull_radius = math.max(dota_target.GetHullRadius(), 50) ?? 50;
+        // const hull_radius = math.max(dota_target.GetHullRadius(), 50) ?? 50;
+        const hull_radius = 30;
         this._projectile_map[ProjectileID] = {
             data: data,
             effect: pfx,
@@ -99,6 +100,7 @@ export class CProjectileManager {
         ParticleManager.SetParticleControl(pfx, 0, start_position);
         ParticleManager.SetParticleControl(pfx, 1, end_pos);
         ParticleManager.SetParticleControl(pfx, 2, Vector(data.moveSpeed, 0, 0));
+        ParticleManager.SetParticleControl(pfx, 9, start_position);
         return pfx;
     }
 
@@ -188,7 +190,7 @@ export class CProjectileManager {
         const new_pos = keys.now_pos.__add(direction.__mul(data.moveSpeed * FrameTime()));
         // 判断距离或者两点是否相交 用于避免速度太快引起鬼畜投射物+
         if (
-            new_pos.__sub(target_pos).Length2D() <= keys.hull_radius ||
+            new_pos.__sub(target_pos).Length2D() < keys.hull_radius ||
             (keys.need_intersect && this._isCapsuleIntersect(keys.last_pos, keys.now_pos, 20, target_pos, keys.last_target_pos, keys.hull_radius))
         ) {
             //判断是否击中 如有需要可以和线性投射物一样 触发每个碰到单位的回调

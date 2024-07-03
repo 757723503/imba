@@ -22,15 +22,14 @@ export class CFilter {
                 source: attacker,
                 effectName: attacker.GetRangedProjectileName(),
                 OnHitUnit: () => {
-                    //TODO 标识弹道来源
-                    // AddDamage({
-                    //     attacker: attacker,
-                    //     victim: target,
-                    //     damage: attacker.GetAttackDamage(),
-                    //     damageProperty: DamageProperty.Attack,
-                    //     damageType: DamageType.Physical,
-                    //     sourceAbility: attacker.base_attack_ability,
-                    // });
+                    AddDamage({
+                        attacker: attacker,
+                        victim: target,
+                        damage: attacker.GetAttackDamage(),
+                        damageProperty: DamageProperty.Attack,
+                        damageType: DamageType.Physical,
+                        sourceAbility: attacker.base_attack_ability,
+                    });
                 },
             });
         }

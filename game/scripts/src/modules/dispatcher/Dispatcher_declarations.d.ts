@@ -57,10 +57,7 @@ declare const enum ModifierFunctions {
      * 受害者触发 共享 / 反射 伤害时
      */
     DamageEvent_ReflectSharedDamage = 'DamageEvent_ReflectSharedDamage',
-    /**
-     * 尖刺外壳(小强壳)的伤害无效化和记录
-     */
-    DamageFixed_SpikedCarapaceIgnoreDamage = 'DamageFixed_SpikedCarapaceIgnoreDamage',
+
     /**
      * 虚妄之诺(神谕大招)的伤害无效化和记录
      */
@@ -132,7 +129,7 @@ declare const enum ModifierFunctions {
     /** 攻击前摇前  触发者是攻击者 */
     OnAttackTargetStart = 'OnAttackTargetStart',
     /** 任意单位攻击投射物发射 */
-    // OnAttackLaunch = 'OnAttackLaunch',
+    OnAttackLaunch = 'OnAttackLaunch',
 
     /** 任意单位攻击命中，事件名 。`任意单位攻击命中都会触发回调。子类需要判断攻击者和受击者` */
     OnAttackLanded = 'OnAttackLanded',

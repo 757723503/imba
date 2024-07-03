@@ -62,7 +62,48 @@ export class CChat {
 
                 break;
             case ChatCommand.cr:
-                DebugCreateUnit(player, DotaHero.alchemist, DotaTeam.BADGUYS, false, (): void => {});
+                DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.BADGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
+                DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.BADGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
+                DebugCreateUnit(player, 'npc_dota_furion_treant_large', DotaTeam.BADGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
+
+                DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.GOODGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
+                DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.GOODGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
+                DebugCreateUnit(player, 'npc_dota_furion_treant_large', DotaTeam.GOODGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
+
+                DebugCreateUnit(player, 'npc_dota_badguys_tower2_mid', DotaTeam.BADGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
+                DebugCreateUnit(player, 'npc_dota_badguys_tower2_mid', DotaTeam.GOODGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
                 break;
             case ChatCommand.hero:
                 DebugCreateUnit(player, DotaHero.alchemist, DotaTeam.BADGUYS, false, (): void => {});

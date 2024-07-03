@@ -23,7 +23,7 @@ function AddDamage(not_use_dmgTable: DamageTable) {
     // =========================
     if (!victim.IsAlive()) return;
 
-    if (damage_property == DamageProperty.Attack && not_use_dmgTable.sourceAbility != attacker.base_attack_ability) {
+    if (damage_property == DamageProperty.Attack && !not_use_dmgTable.sourceAbility) {
         if (!attacker.base_attack_ability) {
             print('报错,此单位没有基础攻击技能记录', attacker, attacker.GetUnitName());
             return;
@@ -343,20 +343,21 @@ namespace DamageHelper {
 
         // - 护甲处理数值(如果有物理)
         if (dmgTable.attack_physical_damage > 0) {
-            // 先计算war3护甲类型
-            // const war3_defence_type_factor = PhysicalWar3DefenceTypeFactor(origin_dmg_table.attacker, origin_dmg_table.victim);
-            // dmgTable.attack_physical_damage *= war3_defence_type_factor;
+            // 先计算护甲类型穿刺\绵力\坚锐
+            const defence_type_factor = PhysicalDefenceTypeFactor(origin_dmg_table.attacker, origin_dmg_table.victim);
+            print(defence_type_factor);
+            dmgTable.attack_physical_damage *= defence_type_factor;
             if (record_list) {
-                // DamageHelper.AddRecord(
-                //     record_list,
-                //     string.format(
-                //         '攻击者攻击类型 %s, 受害者护甲类型 %s, 护甲缩放系数 %.2f, 剩余物理伤害 %.2f',
-                //         // origin_dmg_table.attacker.GetAttackType(),
-                //         // origin_dmg_table.victim.GetDefenctType(),
-                //         // war3_defence_type_factor,
-                //         dmgTable.attack_physical_damage
-                //     )
-                // );
+                DamageHelper.AddRecord(
+                    record_list,
+                    string.format(
+                        '护甲缩放系数 %.2f, 剩余物理伤害 %.2f',
+                        // origin_dmg_table.attacker.GetAttackType(),
+                        // origin_dmg_table.victim.GetDefenctType(),
+                        defence_type_factor,
+                        dmgTable.attack_physical_damage
+                    )
+                );
             }
             // 再计算dota护甲系数缩放
             const scale = PhysicalArmorScale(
@@ -1006,13 +1007,42 @@ namespace DamageHelper {
         };
     }
 
-    /** 在计算护甲减伤前，先计算war3护甲类型系数印象，这部分是和护甲穿透无关的 */
-    // export function PhysicalWar3DefenceTypeFactor(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): number {
-    //     const attack_type = attacker.GetAttackType();
-    //     const defence_type = victim.GetDefenctType();
-    //     const war3_armor_factor = GlobalConsts.ATTACK_DAMAGE_WAR3_ARMOR_TYPE_FACTOR[attack_type][defence_type];
-    //     return war3_armor_factor;
-    // }
+    /** 在计算护甲减伤前，先计算护甲类型穿刺\绵力\坚锐，这部分是和护甲穿透无关的 */
+    export function PhysicalDefenceTypeFactor(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): number {
+        let armor_factor = 1;
+        if (attacker.HasAbility('creep_piercing')) {
+            if (!victim.IsHero() && !victim.HasAbility('creep_siege')) {
+                // 对非英雄、非坚锐单位造成额外50%伤害
+                armor_factor = 1.5;
+            } else if (victim.IsHero() || victim.HasAbility('creep_siege')) {
+                // 对英雄和坚锐单位造成的伤害减少50%
+                armor_factor = 0.5;
+            }
+        }
+        if (attacker.HasAbility('creep_siege')) {
+            if (victim.HasAbility('creep_siege') || victim.IsBuilding()) {
+                // 坚锐单位和建筑对其他坚锐单位和建筑造成额外150%伤害
+                armor_factor = 2.5;
+            }
+        } else {
+            if (victim.HasAbility('creep_siege') || victim.IsBuilding()) {
+                // 英雄攻击坚锐单位和建筑的伤害降低50%
+                if (attacker.IsHero()) {
+                    armor_factor = 0.5;
+                } else {
+                    // 非英雄攻击坚锐单位和建筑的伤害降低30%
+                    armor_factor = 0.7;
+                }
+            }
+        }
+        if (attacker.HasAbility('creep_irresolute')) {
+            if (victim.IsHero()) {
+                // 绵力单位对英雄单位造成的伤害会减少25%
+                armor_factor = 0.75;
+            }
+        }
+        return armor_factor;
+    }
 
     /** 获得护甲缩放, 默认为1, 不变 */
     export function PhysicalArmorScale(unit: CDOTA_BaseNPC, ignoreArmor?: boolean, ignoreArmorPct?: number, ignoreBaseArmorPct?: number): number {
@@ -1035,7 +1065,7 @@ namespace DamageHelper {
             green_armor = green_armor * (1 - result_ignoreArmorPct);
         }
 
-        // 计算总护甲 war3特性 护甲小于-20的部分无效
+        // 计算总护甲
         // const total_armor = math.max(-20, base_armor + green_armor);
         const total_armor = base_armor + green_armor;
         if (total_armor > 0) {
@@ -1210,7 +1240,7 @@ namespace DamageHelper {
 
     /** 当单位收到伤害时的后置处理。包括吸血、判定击杀、设置血量 */
     export function OnUnitDamaged(damageTable: EndDamageTable) {
-        // print('OnUnitDamaged', damageTable.victim.GetUnitName(), damageTable.true_damage);
+        print('OnUnitDamaged', damageTable.victim.GetUnitName(), damageTable.true_damage);
         let damage_type: DamageTypes;
         if (damageTable.damageType == DamageType.Pure) {
             damage_type = DamageTypes.PURE;
