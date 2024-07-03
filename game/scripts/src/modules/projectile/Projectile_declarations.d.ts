@@ -3,9 +3,9 @@ interface ProjectileBaseData {
     /** 投射物特效名称 */
     effectName?: string;
     /** 投射物技能 */
-    ability?: CDOTABaseAbility;
+    ability?: SLAbilityType;
     /** 投射物来源 */
-    source: CDOTA_BaseNPC;
+    source: CSLBaseUnit;
     /** 是否提供视野 */
     providesVision?: boolean;
     /** 视野半径 */
@@ -22,7 +22,7 @@ interface ProjectileBaseData {
     moveSpeed: number;
 
     /** 命中回调 */
-    OnHitUnit?: (unit: CDOTA_BaseNPC, position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
+    OnHitUnit?: (unit: CSLBaseUnit, position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
     /** 移动回调 */
     OnThink?: (position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
 }
@@ -30,11 +30,11 @@ type SLProjectileID = number;
 /** 跟踪投射物数据 */
 interface TrackingProjectileData extends ProjectileBaseData {
     /** 投射物目标 */
-    target: CDOTA_BaseNPC;
-    /** 是否可闪避 默认false*/
+    target: CSLBaseUnit;
+    /** 是否可躲避 默认可躲避*/
     dodgeable?: boolean;
     /** 躲避后回调 */
-    OnDodge?: (unit: CDOTA_BaseNPC, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
+    OnDodge?: (unit: CSLBaseUnit, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
 }
 /**线性投射物数据 */
 interface LinearProjectileData extends ProjectileBaseData {
@@ -72,22 +72,24 @@ interface ProjectileMoveData {
     now_pos: Vector;
     /** 投射物上一帧位置 */
     last_pos: Vector;
-
     /** 投射物目标上一帧位置 */
     last_target_pos?: Vector;
-
     /** 投射物产生时间 */
     create_time?: number;
-
     /** 是否被躲避 */
     is_dodge?: boolean;
     /** 投射物类型*/
     type: SLProjectileType;
-
     /** 投射物开始位置 */
     start_pos: Vector;
     /** 投射物销毁原因 */
     destroy_reason?: SLProjectileDestroyReason;
+    /** 目标index */
+    target_index?: EntityIndex;
+    /** 目标碰撞范围 */
+    hull_radius?: number;
+    /** 需要叉乘计算 */
+    need_intersect?: boolean;
 }
 
 declare const enum SLProjectileType {
@@ -106,6 +108,8 @@ declare const enum SLProjectileDestroyReason {
     RELOAD = 'reload',
     /** 调用Destroy 销毁 */
     DESTROY = 'destroy',
+    /**  目标为null */
+    NO_TARGET = 'no_target',
 }
 declare const enum SLProjectileAttachment {
     NONE = '',
