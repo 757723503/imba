@@ -5,7 +5,7 @@
 // Template: https://github.com/XavierCHN/x-template
 "XLSXContent"
 {
-	"ability_test" {
+	"base_attack_ability" {
 		"BaseClass" "ability_lua"
 		"AbilityValues" {
 			"damage" "0.1 0.2 0.3 0.4"
@@ -20,6 +20,8 @@
 		"MaxLevel" "2"
 		"AbilityCooldown" "1 2 3 4"
 		"AbilityManaCost" "1 1 1 1"
+		"AbilityTextureName" "attr_damage"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN "
 		"PlainKV" {
 "test" "this is test of plain kv"
 }

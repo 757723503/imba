@@ -10,17 +10,16 @@ export class modifier_imba_stunned extends BaseModifier {
     }
 
     CustomDeclareFunctions(): ModifierFunctions[] {
-        return [ModifierFunctions.DamageFixed_MagicShieldBlock, ModifierFunctions.OnAttackLanded_Attacker];
+        return [ModifierFunctions.DamageEvent_ReflectSharedDamage];
     }
 
-    DamageFixed_MagicShieldBlock(dmgTable: ApplyDamageOptions): number {
-        print(dmgTable?.attacker?.GetName(), dmgTable?.victim?.GetName());
-        return 80;
+    DamageEvent_ReflectSharedDamage(attacker: CDOTA_BaseNPC, DamageTypes: DamageTypes, damage: number): void {
+        print('modifier_imba_stunned DamageEvent_ReflectSharedDamage', attacker.GetName(), DamageTypes, damage);
     }
 
-    OnAttackLanded_Attacker(event: ApplyDamageOptions): void {
-        print('modifier_imba_stunned OnAttackLanded_Attacker');
-    }
+    // OnAttackLanded_Attacker(event: ApplyDamageOptions): void {
+    //     print('modifier_imba_stunned OnAttackLanded_Attacker');
+    // }
     // DeclareFunctions(): ModifierFunction[] {
     //     return [
     //         ModifierFunction.ON_ATTACK_START,
