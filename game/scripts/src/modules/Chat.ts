@@ -61,7 +61,7 @@ export class CChat {
 
                 break;
             case ChatCommand.cr:
-                DebugCreateUnit(player, 'npc_dota_hero_earthshaker', DotaTeam.BADGUYS, false, (): void => {});
+                DebugCreateUnit(player, DotaHero.alchemist, DotaTeam.BADGUYS, false, (): void => {});
                 break;
             default:
                 break;

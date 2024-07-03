@@ -49,7 +49,7 @@ export class CEngineEvent {
 
         Timers.CreateTimer(FrameTime(), () => {
             if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') === false) {
-                entity.AddAbility('base_attack_ability');
+                entity.base_attack_ability = entity.AddAbility('base_attack_ability');
             }
         });
     }

@@ -12,7 +12,30 @@ export class CFilter {
     }
 
     _ProjectileFilter(event: TrackingProjectileFilterEvent): boolean {
-        return true;
+        const target = EntIndexToHScript(event.entindex_target_const) as CDOTA_BaseNPC;
+        const attacker = EntIndexToHScript(event.entindex_source_const) as CDOTA_BaseNPC;
+        if (target.IsNull() || attacker.IsNull()) return false;
+        if (event.is_attack) {
+            // print(event.move_speed, attacker.GetRangedProjectileName());
+            GameRules.CProjectileManager.CreateTrackingProjectile({
+                target: target,
+                moveSpeed: event.move_speed,
+                source: attacker,
+                effectName: attacker.GetRangedProjectileName(),
+                OnHitUnit: () => {
+                    //TODO 标识弹道来源
+                    AddDamage({
+                        attacker: attacker,
+                        victim: target,
+                        damage: attacker.GetAttackDamage(),
+                        damageProperty: DamageProperty.Attack,
+                        damageType: DamageType.Physical,
+                        sourceAbility: attacker.base_attack_ability,
+                    });
+                },
+            });
+        }
+        return false;
     }
 
     _DamageFilter(event: DamageFilterEvent): boolean {
@@ -32,7 +55,7 @@ export class CFilter {
                 damageProperty: DamageProperty.Attack,
                 damageType: DamageType.Physical,
                 //TODO 标识普攻来源
-                sourceAbility: ability,
+                sourceAbility: attacker.base_attack_ability,
             });
             return false;
         }

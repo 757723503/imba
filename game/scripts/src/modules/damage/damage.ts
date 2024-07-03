@@ -7,7 +7,7 @@ function AddDamage(not_use_dmgTable: DamageTable) {
     not_use_dmgTable.extra_data = not_use_dmgTable.extra_data ?? {};
     const victim = not_use_dmgTable.victim;
     const attacker = not_use_dmgTable.attacker;
-
+    const damage_property = not_use_dmgTable.damageProperty;
     const attacker_handle = attacker.GetEntityIndex();
     const victim_handle = victim.GetEntityIndex();
     // =========================
@@ -22,6 +22,14 @@ function AddDamage(not_use_dmgTable: DamageTable) {
     // 死亡的单位 直接跳过
     // =========================
     if (!victim.IsAlive()) return;
+
+    if (damage_property == DamageProperty.Attack && not_use_dmgTable.sourceAbility != attacker.base_attack_ability) {
+        if (!attacker.base_attack_ability) {
+            print('报错,此单位没有基础攻击技能记录', attacker, attacker.GetUnitName());
+            return;
+        }
+        not_use_dmgTable.sourceAbility = attacker.base_attack_ability;
+    }
     // 合法性检测 打印
     // assert(not_use_dmgTable.attacker, '本次没有伤害攻击者!');
     // assert(not_use_dmgTable.damageType, '本次没有伤害类型!');
@@ -183,7 +191,6 @@ function AddDamage(not_use_dmgTable: DamageTable) {
     }
     DamageHelper.AddRecord(record_list, string.format('最终伤害:%.2f', end_dmg_tb.true_damage));
     DamageHelper.AddRecord(record_list, '===本次伤害记录结束\n');
-    print('===本次伤害记录结束\n', record_list);
     if (record_list) {
         // 打印伤害流程触发过程
         print('打印伤害流程\n', table.concat(record_list, '\n'));
@@ -1219,6 +1226,7 @@ namespace DamageHelper {
             victim: damageTable.victim,
             damage: damageTable.true_damage,
             damage_type: damage_type,
+            ability: damageTable.sourceAbility,
             damage_flags:
                 DamageFlag.HPLOSS +
                 DamageFlag.NO_SPELL_AMPLIFICATION +

@@ -1,3 +1,5 @@
+import type { BaseAbility } from './utils/dota_ts_adapter';
+
 declare global {
     interface CDOTAGameRules {
         CDispatcher: CDispatcher;
@@ -13,7 +15,9 @@ declare global {
 
     interface CDOTA_BaseNPC_Hero {}
 
-    interface CBaseEntity {}
+    interface CBaseEntity {
+        base_attack_ability: CDOTABaseAbility;
+    }
 
     interface ModifierAddedEventCustom {}
 

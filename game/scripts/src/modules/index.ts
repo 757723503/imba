@@ -1,19 +1,20 @@
 import { CGameMode } from './GameMode';
-import './damage/damage'; // 造成伤害模块
 import { XNetTable } from './xnet-table';
-import '../common_modifier/index';
 import { GameConfig } from './GameConfig';
 import { Debug } from './Debug';
 import { CChat } from './Chat';
-import { CFilter } from './Filter';
-
-import '../base_attack_ability/base_attack_ability';
 import { CEngineEvent } from './EngineEvent';
+import { CFilter } from './Filter';
+import { CProjectileManager } from './projectile/ProjectileManager';
+import './damage/damage'; // 造成伤害模块
+import '../common_modifier/index';
+import '../base_attack_ability/base_attack_ability';
 declare global {
     interface CDOTAGameRules {
         // 声明所有的GameRules模块，这个主要是为了方便其他地方的引用（保证单例模式）
         XNetTable: XNetTable;
         CGameMode: CGameMode;
+        CProjectileManager: CProjectileManager;
     }
 }
 
@@ -32,5 +33,6 @@ export function ActivateModules() {
         new CDispatcher();
         new CFilter();
         new CEngineEvent();
+        GameRules.CProjectileManager = new CProjectileManager();
     }
 }
