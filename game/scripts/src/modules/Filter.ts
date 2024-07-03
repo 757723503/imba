@@ -16,7 +16,6 @@ export class CFilter {
         const attacker = EntIndexToHScript(event.entindex_source_const) as CDOTA_BaseNPC;
         if (target.IsNull() || attacker.IsNull()) return false;
         if (event.is_attack) {
-            // print(event.move_speed, attacker.GetRangedProjectileName());
             GameRules.CProjectileManager.CreateTrackingProjectile({
                 target: target,
                 moveSpeed: event.move_speed,
@@ -24,14 +23,14 @@ export class CFilter {
                 effectName: attacker.GetRangedProjectileName(),
                 OnHitUnit: () => {
                     //TODO 标识弹道来源
-                    AddDamage({
-                        attacker: attacker,
-                        victim: target,
-                        damage: attacker.GetAttackDamage(),
-                        damageProperty: DamageProperty.Attack,
-                        damageType: DamageType.Physical,
-                        sourceAbility: attacker.base_attack_ability,
-                    });
+                    // AddDamage({
+                    //     attacker: attacker,
+                    //     victim: target,
+                    //     damage: attacker.GetAttackDamage(),
+                    //     damageProperty: DamageProperty.Attack,
+                    //     damageType: DamageType.Physical,
+                    //     sourceAbility: attacker.base_attack_ability,
+                    // });
                 },
             });
         }

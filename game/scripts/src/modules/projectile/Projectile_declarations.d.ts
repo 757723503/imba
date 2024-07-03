@@ -3,9 +3,9 @@ interface ProjectileBaseData {
     /** 投射物特效名称 */
     effectName?: string;
     /** 投射物技能 */
-    ability?: SLAbilityType;
+    ability?: CDOTABaseAbility;
     /** 投射物来源 */
-    source: CSLBaseUnit;
+    source: CDOTA_BaseNPC;
     /** 是否提供视野 */
     providesVision?: boolean;
     /** 视野半径 */
@@ -22,7 +22,7 @@ interface ProjectileBaseData {
     moveSpeed: number;
 
     /** 命中回调 */
-    OnHitUnit?: (unit: CSLBaseUnit, position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
+    OnHitUnit?: (unit: CDOTA_BaseNPC, position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
     /** 移动回调 */
     OnThink?: (position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
 }
@@ -30,11 +30,11 @@ type SLProjectileID = number;
 /** 跟踪投射物数据 */
 interface TrackingProjectileData extends ProjectileBaseData {
     /** 投射物目标 */
-    target: CSLBaseUnit;
+    target: CDOTA_BaseNPC;
     /** 是否可躲避 默认可躲避*/
     dodgeable?: boolean;
     /** 躲避后回调 */
-    OnDodge?: (unit: CSLBaseUnit, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
+    OnDodge?: (unit: CDOTA_BaseNPC, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
 }
 /**线性投射物数据 */
 interface LinearProjectileData extends ProjectileBaseData {

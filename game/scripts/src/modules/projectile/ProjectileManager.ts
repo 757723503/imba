@@ -1,8 +1,8 @@
 declare global {
-    var SLProjectileManager: SLProjectileManager;
+    var CProjectileManager: CProjectileManager;
 }
 @reloadable
-export class SLProjectileManager {
+export class CProjectileManager {
     protected _all_projectile_id: SLProjectileID[];
     protected _projectile_const_max: number;
     protected _projectile_map: Record<SLProjectileID, ProjectileMoveData>;
@@ -10,7 +10,7 @@ export class SLProjectileManager {
     protected _projectile_timer: string;
     constructor() {
         this.ProjectileManagerInIt();
-        SLPrint('投射物管理器已创建');
+        print('投射物管理器已创建');
     }
 
     /** 投射物管理器初始化 */
@@ -32,7 +32,7 @@ export class SLProjectileManager {
         const id = this._all_projectile_id.shift();
         // print('获取ID', id);
         if (id == null || id == undefined) {
-            SLError('投射物ID不足');
+            print('投射物ID不足');
             return;
         }
         return id;
@@ -43,22 +43,26 @@ export class SLProjectileManager {
         this._all_projectile_id.push(id);
     }
 
+    GetUnitHitAttachment(unit: CDOTA_BaseNPC): Vector {
+        return unit.GetAttachmentOrigin(unit.ScriptLookupAttachment(SLProjectileAttachment.HITLOCATION));
+    }
+
     /** 创建跟踪投射物 */
     CreateTrackingProjectile(data: TrackingProjectileData): SLProjectileID {
-        if (!IsValid(data.target.GetEngineEntity())) return;
+        if (!IsValidEntity(data.target)) return;
         data.extraData = data.extraData ?? {};
         const ProjectileID = this.GetProjectileID();
         if (!ProjectileID) return;
-        const dota_hero = data.source.GetEngineEntity();
-        const data_target = data.target.GetEngineEntity();
-        const target_pos = data_target.GetAbsOrigin();
+        const dota_hero = data.source;
+        const dota_target = data.target;
+        const target_pos = this.GetUnitHitAttachment(dota_target) ?? dota_target.GetAbsOrigin();
         const attach_pos = !data.sourceAttachment
-            ? dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(SLProjectileAttachment.HITLOCATION))
+            ? dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(SLProjectileAttachment.ATTACK_1))
             : dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(data.sourceAttachment));
         //起始位置 优先使用传入的起始位置  其次使用附着位置  最后使用英雄位置
         const start_position = data.start_position ?? attach_pos ?? dota_hero.GetAbsOrigin();
         const pfx = this.TrackingPlayerEffect(data, start_position);
-        const hull_radius = math.max(data_target.GetHullRadius(), 50) ?? 50;
+        const hull_radius = math.max(dota_target.GetHullRadius(), 50) ?? 50;
         this._projectile_map[ProjectileID] = {
             data: data,
             effect: pfx,
@@ -69,14 +73,14 @@ export class SLProjectileManager {
             is_dodge: false,
             type: SLProjectileType.TRACKING,
             start_pos: start_position,
-            target_index: data_target.GetEntityIndex(),
+            target_index: dota_target.GetEntityIndex(),
             hull_radius: hull_radius,
             need_intersect: data.moveSpeed * 0.03 >= hull_radius,
         };
-        if (!this._projectile_target_map[data_target.GetEntityIndex()]) {
-            this._projectile_target_map[data_target.GetEntityIndex()] = [];
+        if (!this._projectile_target_map[dota_target.GetEntityIndex()]) {
+            this._projectile_target_map[dota_target.GetEntityIndex()] = [];
         }
-        this._projectile_target_map[data_target.GetEntityIndex()].push(ProjectileID);
+        this._projectile_target_map[dota_target.GetEntityIndex()].push(ProjectileID);
         return ProjectileID;
     }
 
@@ -90,18 +94,18 @@ export class SLProjectileManager {
     protected TrackingPlayerEffect(data: TrackingProjectileData, start_position: Vector): ParticleID {
         if (!data.effectName) return;
         const pfx = ParticleManager.CreateParticle(data.effectName, ParticleAttachment.CUSTOMORIGIN, null);
-        const dota_unit = data.target.GetEngineEntity();
+        const dota_unit = data.target;
         const end_pos = dota_unit.GetAbsOrigin();
-        ParticleManager.SetParticleControl(pfx, 0, start_position.__add(Vector(0, 0, 80)));
-        ParticleManager.SetParticleControl(pfx, 1, end_pos.__add(Vector(0, 0, 80)));
+        ParticleManager.SetParticleControl(pfx, 0, start_position);
+        ParticleManager.SetParticleControl(pfx, 1, end_pos);
         ParticleManager.SetParticleControl(pfx, 2, Vector(data.moveSpeed, 0, 0));
         return pfx;
     }
 
     /** 躲避投射物 */
-    ProjectileDodge(target: CSLBaseUnit): void {
-        if (!IsValid(target?.GetEngineEntity())) return;
-        const ProjectileIDs = this._projectile_target_map[target.GetEngineEntity().GetEntityIndex()];
+    ProjectileDodge(target: CDOTA_BaseNPC): void {
+        if (!IsValidEntity(target)) return;
+        const ProjectileIDs = this._projectile_target_map[target.GetEntityIndex()];
         if (!ProjectileIDs) {
             // SLWarning('没有投射物可以躲避');
             return;
@@ -161,7 +165,7 @@ export class SLProjectileManager {
 
     protected _calTrackingThinkaHit(ProjectileID: SLProjectileID, keys: ProjectileMoveData): void {
         const data = keys.data as TrackingProjectileData;
-        const dota_target = data.target.GetEngineEntity();
+        const dota_target = data.target;
         const now_duration = GameRules.GetGameTime() - keys.create_time;
         //暂时设置15秒超时
         if (now_duration > 15) {
@@ -169,13 +173,17 @@ export class SLProjectileManager {
             this._RemoveProjectile(ProjectileID);
             return;
         }
-        if (!IsValid(dota_target)) {
+        if (!IsValidEntity(dota_target)) {
             this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.NO_TARGET;
             this._RemoveProjectile(ProjectileID);
             return;
         }
         //目标点 如果被躲避 那么这个点就永远是上一帧的目标点
-        const target_pos = dota_target.IsAlive() ? (keys.is_dodge ? keys.last_target_pos : dota_target.GetAbsOrigin()) : keys.last_target_pos;
+        const target_pos = dota_target.IsAlive()
+            ? keys.is_dodge
+                ? keys.last_target_pos
+                : this.GetUnitHitAttachment(dota_target)
+            : keys.last_target_pos;
         const direction = target_pos.__sub(keys.now_pos).Normalized();
         const new_pos = keys.now_pos.__add(direction.__mul(data.moveSpeed * FrameTime()));
         // 判断距离或者两点是否相交 用于避免速度太快引起鬼畜投射物+
@@ -191,7 +199,7 @@ export class SLProjectileManager {
             this._RemoveProjectile(ProjectileID);
         } else {
             //投射物正在移动 更新特效和数据
-            keys.effect && ParticleManager.SetParticleControl(keys.effect, 1, new_pos.__add(Vector(0, 0, 80)));
+            keys.effect && ParticleManager.SetParticleControl(keys.effect, 1, new_pos);
             this._projectile_map[ProjectileID] = {
                 data: data,
                 effect: keys.effect,
@@ -284,7 +292,7 @@ export class SLProjectileManager {
     CreateLinearProjectile(data: LinearProjectileData): SLProjectileID {
         data.extraData = data.extraData ?? {};
         const ProjectileID = this.GetProjectileID();
-        const dota_hero = data.source.GetEngineEntity();
+        const dota_hero = data.source;
         const start_position = data.start_position ?? dota_hero.GetAbsOrigin();
         const pfx = this.LinearPlayerEffect(data, start_position);
         this._projectile_map[ProjectileID] = {
@@ -318,7 +326,7 @@ export class SLProjectileManager {
             this._RemoveProjectile(ProjectileID);
             return;
         }
-        const dota_unit = data.source.GetEngineEntity();
+        const dota_unit = data.source;
         const end_pos = data.endPosition;
         let direction = data.direction ?? end_pos.__sub(keys.start_pos).Normalized();
         //解决0向量问题
@@ -362,7 +370,7 @@ export class SLProjectileManager {
             );
             for (const target of targets) {
                 if (data.OnHitUnit) {
-                    const sl_unit_entity = SLEntityManager.GetSLEntityByEngineEntity(target) as CSLBaseUnit;
+                    const sl_unit_entity = target;
                     data.OnHitUnit(sl_unit_entity, keys.now_pos, data.extraData, ProjectileID);
                 }
 

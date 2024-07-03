@@ -5,6 +5,7 @@ enum ChatCommand {
     as = '-as',
     cr = '-cr',
     da = '-da',
+    hero = '-hero',
 }
 @reloadable
 export class CChat {
@@ -63,6 +64,8 @@ export class CChat {
             case ChatCommand.cr:
                 DebugCreateUnit(player, DotaHero.alchemist, DotaTeam.BADGUYS, false, (): void => {});
                 break;
+            case ChatCommand.hero:
+                DebugCreateUnit(player, DotaHero.alchemist, DotaTeam.BADGUYS, false, (): void => {});
             default:
                 break;
         }
