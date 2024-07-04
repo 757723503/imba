@@ -1,5 +1,5 @@
 /** 基础投射物数据 */
-interface ProjectileBaseData {
+interface CProjectileBaseData {
     /** 投射物特效名称 */
     effectName?: string;
     /** 投射物技能 */
@@ -28,7 +28,7 @@ interface ProjectileBaseData {
 }
 type SLProjectileID = number;
 /** 跟踪投射物数据 */
-interface TrackingProjectileData extends ProjectileBaseData {
+interface CTrackingProjectileData extends CProjectileBaseData {
     /** 投射物目标 */
     target: CDOTA_BaseNPC;
     /** 是否可躲避 默认可躲避*/
@@ -37,7 +37,7 @@ interface TrackingProjectileData extends ProjectileBaseData {
     OnDodge?: (unit: CDOTA_BaseNPC, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
 }
 /**线性投射物数据 */
-interface LinearProjectileData extends ProjectileBaseData {
+interface CLinearProjectileData extends CProjectileBaseData {
     /** 投射物方向 */
     direction: Vector;
     /** 投射物距离 */
@@ -65,7 +65,7 @@ interface ProjectileExtraData {
 }
 interface ProjectileMoveData {
     /** 投射物数据 */
-    data: TrackingProjectileData | LinearProjectileData;
+    data: CTrackingProjectileData | CLinearProjectileData;
     /** 投射物特效 */
     effect: ParticleID;
     /** 投射物现在位置 */

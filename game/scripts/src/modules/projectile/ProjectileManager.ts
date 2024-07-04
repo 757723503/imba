@@ -1,6 +1,3 @@
-declare global {
-    var CProjectileManager: CProjectileManager;
-}
 @reloadable
 export class CProjectileManager {
     protected _all_projectile_id: SLProjectileID[];
@@ -48,7 +45,7 @@ export class CProjectileManager {
     }
 
     /** 创建跟踪投射物 */
-    CreateTrackingProjectile(data: TrackingProjectileData): SLProjectileID {
+    CreateTrackingProjectile(data: CTrackingProjectileData): SLProjectileID {
         if (!IsValidEntity(data.target)) return;
         data.extraData = data.extraData ?? {};
         const ProjectileID = this.GetProjectileID();
@@ -92,7 +89,7 @@ export class CProjectileManager {
         this._RemoveProjectile(ProjectileID);
     }
 
-    protected TrackingPlayerEffect(data: TrackingProjectileData, start_position: Vector): ParticleID {
+    protected TrackingPlayerEffect(data: CTrackingProjectileData, start_position: Vector): ParticleID {
         if (!data.effectName) return;
         const pfx = ParticleManager.CreateParticle(data.effectName, ParticleAttachment.CUSTOMORIGIN, null);
         const dota_unit = data.target;
@@ -114,7 +111,7 @@ export class CProjectileManager {
         }
         for (const ProjectileID of ProjectileIDs) {
             const keys = this._projectile_map[ProjectileID];
-            const data = keys.data as TrackingProjectileData;
+            const data = keys.data as CTrackingProjectileData;
             //如果投射物是可以被躲避的
             if (data.dodgeable == false) return;
             if (data.OnDodge) {
@@ -166,7 +163,7 @@ export class CProjectileManager {
     }
 
     protected _calTrackingThinkaHit(ProjectileID: SLProjectileID, keys: ProjectileMoveData): void {
-        const data = keys.data as TrackingProjectileData;
+        const data = keys.data as CTrackingProjectileData;
         const dota_target = data.target;
         const now_duration = GameRules.GetGameTime() - keys.create_time;
         //暂时设置15秒超时
@@ -291,7 +288,7 @@ export class CProjectileManager {
     }
 
     /** 创建线性投射物 */
-    CreateLinearProjectile(data: LinearProjectileData): SLProjectileID {
+    CreateLinearProjectile(data: CLinearProjectileData): SLProjectileID {
         data.extraData = data.extraData ?? {};
         const ProjectileID = this.GetProjectileID();
         const dota_hero = data.source;
@@ -310,7 +307,7 @@ export class CProjectileManager {
     }
 
     //创建线性投射物特效
-    protected LinearPlayerEffect(data: LinearProjectileData, start_position: Vector): ParticleID {
+    protected LinearPlayerEffect(data: CLinearProjectileData, start_position: Vector): ParticleID {
         if (!data.effectName) return;
         const direction = data.direction;
         const speed = data.moveSpeed;
@@ -321,7 +318,7 @@ export class CProjectileManager {
     }
 
     protected _calLinearThinkaHit(ProjectileID: SLProjectileID, keys: ProjectileMoveData): void {
-        const data = keys.data as LinearProjectileData;
+        const data = keys.data as CLinearProjectileData;
         const now_duration = GameRules.GetGameTime() - keys.create_time;
         if (now_duration > 15) {
             this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.TIMEOUT;
@@ -430,4 +427,7 @@ export class CProjectileManager {
             return validTargets;
         }
     }
+}
+declare global {
+    var CProjectileManager: CProjectileManager;
 }

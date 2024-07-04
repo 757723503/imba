@@ -121,10 +121,9 @@ declare const enum ModifierFunctions {
 
     /**
      * 被攻击前摇之前 事件名
-     * `UNIT_ATTACKED_START`
      * `受击者触发`
      */
-    OnAttackedStart = 'OnAttackedStart',
+    OnAttackedStart_Target = 'OnAttackedStart_Target',
 
     /** 攻击前摇前  触发者是攻击者 */
     OnAttackTargetStart = 'OnAttackTargetStart',
