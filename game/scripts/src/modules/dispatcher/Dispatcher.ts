@@ -1,4 +1,3 @@
-print('CDispatcher OnCreated');
 @reloadable
 class CDispatcher {
     private static id: number = 0; // 实例变量，用于生成唯一的回调函数ID
@@ -90,6 +89,7 @@ class CDispatcher {
                                 );
                             }
                         } else {
+                            print('callback is null');
                             idSet.delete(id);
                         }
                     }

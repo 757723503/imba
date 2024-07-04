@@ -119,21 +119,20 @@ declare const enum ModifierFunctions {
      */
     OnRespawn = 'OnRespawn',
 
-    /**
-     * 被攻击前摇之前 事件名
-     * `受击者触发`
-     */
-    OnAttackedStart_Target = 'OnAttackedStart_Target',
+    /** 攻击前摇前  触发者是受害者 */
+    OnAttackStart_Target = 'OnAttackStart_Target',
 
-    /** 攻击前摇前  触发者是攻击者 */
-    OnAttackTargetStart = 'OnAttackTargetStart',
-    /** 任意单位攻击投射物发射 */
-    OnAttackLaunch = 'OnAttackLaunch',
+    /** 攻击前摇前  触发者是 攻击者 */
+    OnAttackStart_Attacker = 'OnAttackStart_Attacker',
 
-    /** 任意单位攻击命中，事件名 。`任意单位攻击命中都会触发回调。子类需要判断攻击者和受击者` */
-    OnAttackLanded = 'OnAttackLanded',
+    /** 攻击记录前  触发者是攻击者 */
+    OnAttackRecord_Attack = 'OnAttackRecord_Attack',
+
     /** 攻击命中时，事件名 。`攻击者触发` */
     OnAttackLanded_Attacker = 'OnAttackLanded_Attacker',
     /** 受到攻击命中时，事件名 。`受害者触发` */
     OnAttackLanded_Target = 'OnAttackLanded_Target',
+
+    /** 攻击失败后  触发者是双方 */
+    OnAttackFail_Both = 'OnAttackFail_Both',
 }

@@ -9,6 +9,7 @@ import { CProjectileManager } from './projectile/ProjectileManager';
 import './damage/damage'; // 造成伤害模块
 import '../common_modifier/index';
 import '../base_attack_ability/base_attack_ability';
+import { CAttackDataManager } from './attack/AttackManager';
 declare global {
     interface CDOTAGameRules {
         // 声明所有的GameRules模块，这个主要是为了方便其他地方的引用（保证单例模式）
@@ -34,5 +35,6 @@ export function ActivateModules() {
         new CFilter();
         new CEngineEvent();
         GameRules.CProjectileManager = new CProjectileManager();
+        globalThis.CAttackData = new CAttackDataManager();
     }
 }

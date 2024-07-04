@@ -250,7 +250,6 @@ namespace DamageHelper {
             if (result_pct > 0) {
                 const remain_value = 1 - result_pct * 0.01;
                 // 给所有伤害缩减百分比
-                print(remain_value);
                 dmgTable.attack_physical_damage *= remain_value;
                 dmgTable.attack_magical_damage *= remain_value;
                 DamageHelper.AddRecord(
@@ -345,7 +344,6 @@ namespace DamageHelper {
         if (dmgTable.attack_physical_damage > 0) {
             // 先计算护甲类型穿刺\绵力\坚锐
             const defence_type_factor = PhysicalDefenceTypeFactor(origin_dmg_table.attacker, origin_dmg_table.victim);
-            print(defence_type_factor);
             dmgTable.attack_physical_damage *= defence_type_factor;
             if (record_list) {
                 DamageHelper.AddRecord(
@@ -1240,7 +1238,7 @@ namespace DamageHelper {
 
     /** 当单位收到伤害时的后置处理。包括吸血、判定击杀、设置血量 */
     export function OnUnitDamaged(damageTable: EndDamageTable) {
-        print('OnUnitDamaged', damageTable.victim.GetUnitName(), damageTable.true_damage);
+        // print('OnUnitDamaged', damageTable.victim.GetUnitName(), damageTable.true_damage);
         let damage_type: DamageTypes;
         if (damageTable.damageType == DamageType.Pure) {
             damage_type = DamageTypes.PURE;
@@ -1266,7 +1264,8 @@ namespace DamageHelper {
                 DamageFlag.NO_DIRECTOR_EVENT +
                 DamageFlag.IGNORES_BASE_PHYSICAL_ARMOR +
                 DamageFlag.IGNORES_PHYSICAL_ARMOR +
-                DamageFlag.IGNORES_MAGIC_ARMOR,
+                DamageFlag.IGNORES_MAGIC_ARMOR +
+                DamageFlag.ATTACK_MODIFIER,
         });
     }
     /** 添加record */
@@ -1371,11 +1370,32 @@ interface DamageTable {
     /** 是否使用攻击特效 */
     use_attack_effect?: boolean;
     /** 暴击对象 */
-    // crit_obj?: SLCrit;
+    crit_obj?: CritData;
     /** 此次攻击的自定义数据 */
     extra_data?: DamageTableExtraData;
 }
-
+declare interface CritData {
+    /** 暴击概率 */
+    crit_chance: number;
+    /** 暴击倍率（百分数 200 = 2倍暴击。不要低于100） */
+    crit_rate: number;
+    /** 触发暴击的回调 */
+    on_crit?: (attack_data: UnitEventAttackDamageData) => void;
+}
+declare interface UnitEventAttackDamageData {
+    damageTable: DamageTable;
+    /** 远程攻击 - 投射物弹道 */
+    projectile?: string;
+    /** 远程攻击 - 投射物速度 */
+    projectile_speed?: number;
+    /** 丢失概率 */
+    lose_chance?: number;
+    /** 是否是一次带有攻击特效的攻击 */
+    use_effect?: boolean;
+    /** 是否是一次触发的攻击(非正常流程的) */
+    is_trigger: boolean;
+    record: number;
+}
 /** 伤害表的自定义数据 */
 interface DamageTableExtraData {
     [key: string]: any;

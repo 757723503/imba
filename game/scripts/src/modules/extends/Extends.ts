@@ -25,4 +25,15 @@ if (!globalThis.originalAddNewModifier) {
     };
 }
 
+//实装 CDOTA_BaseNPC的GetMissChance 方法
+if (!CDOTA_BaseNPC.GetMissChance) {
+    CDOTA_BaseNPC.GetMissChance = function (this: CDOTA_BaseNPC): number {
+        if (!this._miss_chance) this._miss_chance = 0;
+        return this._miss_chance ?? 0;
+    };
+}
+CDOTA_BaseNPC.IsEnemy = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
+    return this.GetTeamNumber() !== unit.GetTeamNumber();
+};
+
 export {};

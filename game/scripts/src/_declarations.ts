@@ -9,6 +9,14 @@ declare global {
             modifierName: string,
             modifierTable: object | undefined
         ): CDOTA_Buff;
+        /**获得攻击丢失概率 */
+        GetMissChance(): number;
+        IsEnemy(unit: CDOTA_BaseNPC): boolean;
+        _miss_chance: number;
+        /**储存所有暴击数据和回调 */
+        _crits_data_calls: CritData[];
+        /**储存最后一次攻击的暴击数据 */
+        _last_attack_trigger_crit: CritData;
     }
 
     interface CDOTA_BaseNPC_Hero {}
@@ -290,71 +298,19 @@ declare module './utils/dota_ts_adapter' {
          * - 触发者：只有buff拥有者复活时触发
          */
         OnRespawn?(event: ModifierUnitEvent): void;
-        /**
-         * 单位开始自动警戒攻击 事件名 UNIT_ATTENTION_TO_ATTACK_TARGET
-         * - 触发者：攻击者
-         */
-        // OnAttentionToAttackTarget?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): void;
-        /**
-         * 目标在单位获取范围内(类似警戒范围) 事件名 UNIT_ATTENTION_TARGET_IN_RANGE
-         * - 触发者：攻击者
-         */
-        OnAttentionTargetInRange?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): void;
-        /**
-         * 被攻击前摇之前 事件名 UNIT_ATTACKED_START
-         * - 触发者：受击者
-         */
-        OnAttackedStart?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): void;
 
-        OnAttackedStart_Target?(event: CAttackEvent): void;
+        OnAttackedStart_Target?(event: UnitEventAttackDamageData): void;
         /**攻击前摇  触发者 攻击者 */
-        OnAttackTargetStart?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): void;
-        /** 攻击发射事件 */
-        OnAttackLaunch?(event: ApplyDamageOptions): void;
-        /**
-         * 任意单位攻击命中 事件名 UNIT_ATTACK_LANDED
-         */
-        // OnAttackLanded?(event: ApplyDamageOptions): void;
+        OnAttackTargetStart?(event: UnitEventAttackDamageData): void;
+        /**攻击记录前  触发者 攻击者 */
+        OnAttackRecord_Attack?(event: UnitEventAttackDamageData): void;
+
         /** 攻击命中时，事件名 。`攻击者触发` */
-        OnAttackLanded_Attacker?(event: ApplyDamageOptions): void;
+        OnAttackLanded_Attacker?(event: UnitEventAttackDamageData): void;
         /** 受到攻击命中时，事件名 。`受害者触发` */
-        OnAttackLanded_Target?(event: ApplyDamageOptions): void;
-
-        /** 任意单位施法前摇开始 */
-        OnAbilityStart?(event: ModifierAbilityEvent): void;
-
-        /** 技能成功结束前摇，开始执行 (结束前摇，准备进入持续施法或施法) */
-        OnAbilityExecuted?(event: ModifierAbilityEvent): void;
-
-        /** 任意单位施法完成 */
-        OnAbilityFullyCast?(event: ModifierAbilityEvent): void;
-        /**
-         * 任意单位魔法减少 事件名 UNIT_FIXED_REDUCE_MANA
-         * - 触发者：魔法减少单位
-         */
-        //  OnReduceMana?(event: UnitEventManaData): void;
-        /**
-         * 任意单位消耗魔法 事件名 UNIT_FIXED_SPEND_MANA
-         * - 触发者：消耗单位
-         */
-        //  OnSpendMana?(event: UnitEventManaData): void;
-
-        /**
-         * 任意单位触发林肯法球
-         */
-        //  OnSpellBlock?(event: UnitEventDataAbility): void;
-
-        /**
-         * 单位拾取神符时 事件名 UNIT_FIXED_GET_RUNE
-         * - 触发者：拾取单位
-         */
-        //  OnGetRune?(event: UnitEventItemData & { continue: boolean }): void;
-
-        /**
-         * 任意单位发出指令 事件名 DOTA_UNIT_EXECUTE_ORDER
-         */
-        OnOrder?(event: ModifierUnitEvent): void;
-
+        OnAttackLanded_Target?(event: UnitEventAttackDamageData): void;
+        /**攻击失败时 双方触发 */
+        OnAttackFail_Both?(event: UnitEventAttackDamageData): void;
         /**
          * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
          */

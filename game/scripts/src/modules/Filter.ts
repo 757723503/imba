@@ -16,22 +16,7 @@ export class CFilter {
         const attacker = EntIndexToHScript(event.entindex_source_const) as CDOTA_BaseNPC;
         if (target.IsNull() || attacker.IsNull()) return false;
         if (event.is_attack) {
-            GameRules.CProjectileManager.CreateTrackingProjectile({
-                target: target,
-                moveSpeed: event.move_speed,
-                source: attacker,
-                effectName: attacker.GetRangedProjectileName(),
-                OnHitUnit: () => {
-                    AddDamage({
-                        attacker: attacker,
-                        victim: target,
-                        damage: attacker.GetAttackDamage(),
-                        damageProperty: DamageProperty.Attack,
-                        damageType: DamageType.Physical,
-                        sourceAbility: attacker.base_attack_ability,
-                    });
-                },
-            });
+            // CAttackData.PerformAttack(attacker, target, { use_projectile: true, use_effect: true });
         }
         return false;
     }
@@ -46,15 +31,7 @@ export class CFilter {
 
         if (event.damage == 0) return;
         if (!ability) {
-            AddDamage({
-                attacker: attacker,
-                victim: victim,
-                damage: event.damage,
-                damageProperty: DamageProperty.Attack,
-                damageType: DamageType.Physical,
-                //TODO 标识普攻来源
-                sourceAbility: attacker.base_attack_ability,
-            });
+            // CAttackData.PerformAttack(attacker, victim, { use_effect: true });
             return false;
         }
         return true;

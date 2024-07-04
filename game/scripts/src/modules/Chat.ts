@@ -52,12 +52,11 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.da:
-                AddDamage({
+                ApplyDamage({
                     attacker: hero,
                     victim: hero,
                     damage: 500,
-                    damageProperty: DamageProperty.Attack,
-                    damageType: DamageType.Physical,
+                    damage_type: DamageTypes.NONE,
                 });
 
                 break;
@@ -106,7 +105,7 @@ export class CChat {
                 });
                 break;
             case ChatCommand.hero:
-                DebugCreateUnit(player, DotaHero.alchemist, DotaTeam.BADGUYS, false, (): void => {});
+                DebugCreateUnit(player, DotaHero.tinker, DotaTeam.BADGUYS, false, (): void => {});
             default:
                 break;
         }
