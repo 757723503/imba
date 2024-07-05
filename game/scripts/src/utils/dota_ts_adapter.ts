@@ -34,7 +34,7 @@ export class BaseModifier {
     protected dispatcherIDList: Map<number, dispatcher_id[]>;
 
     OnCreated(params: object): void {
-        if (!IsServer()) return;
+        if (!IsServer() || !this.GetParent()) return;
         const functions = this.CustomDeclareFunctions();
         if (functions) {
             this.dispatcherIDList = new Map();
@@ -53,7 +53,7 @@ export class BaseModifier {
     }
 
     OnDestroy(): void {
-        if (!IsServer()) return;
+        if (!IsServer() || !this.GetParent()) return;
         if (this.dispatcherIDList) {
             const parent_index = this.GetParent().entindex();
             const dispatcherList = this.dispatcherIDList.get(parent_index);

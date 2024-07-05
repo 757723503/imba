@@ -35,5 +35,11 @@ if (!CDOTA_BaseNPC.GetMissChance) {
 CDOTA_BaseNPC.IsEnemy = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
     return this.GetTeamNumber() !== unit.GetTeamNumber();
 };
+CDOTA_BaseNPC.IsAlly = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
+    return this.GetTeamNumber() === unit.GetTeamNumber();
+};
+CDOTA_BaseNPC.IsUnit = function (this: CDOTA_BaseNPC): boolean {
+    return this.IsHero() || this.IsCreep() || this.IsBoss();
+};
 
 export {};

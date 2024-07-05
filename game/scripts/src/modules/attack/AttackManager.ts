@@ -41,6 +41,7 @@ export class CAttackDataManager {
     }
 
     public OnAttackLanded(event: ModifierAttackEvent): void {
+        //近战触发这里 命中后
         print('CAttack OnAttackLanded', event.record);
         const attackDataValue = this.attack_data.get(event.record);
         if (!attackDataValue) {
@@ -114,25 +115,26 @@ export class CAttackDataManager {
     }
 
     /** 攻击命中判断躲避。触发躲避事件 */
-    // _CheckMissOnAttackLanded(attacker: CDOTA_BaseNPC, target: CDOTA_BaseNPC): void {
-    //     // 判断丢失
-    //     let lose_chance;
-    //     if (attacker.IsUnableToMiss() || target.IsEvadeDisabled()) {
-    //         lose_chance = undefined;
-    //     } else {
-    //         lose_chance = target.GetEvasion() + attacker.GetMissChance();
-    //         for (const evasion of attacker._evasion_data_calls) {
-    //             on_evasion;
-    //         }
-    //         if (is_ranged_attacker) {
-    //             const attacker_high = GetGroundHeight(attacker.GetAbsOrigin(), attacker);
-    //             const target_high = GetGroundHeight(target.GetAbsOrigin(), target);
-    //             if (attacker_high < target_high) {
-    //                 lose_chance += 0.25;
-    //             }
-    //         }
-    //     }
-    // }
+    _CheckMissOnAttackLanded(attacker: CDOTA_BaseNPC, target: CDOTA_BaseNPC): boolean {
+        // 判断丢失
+        let lose_chance;
+        if (attacker.IsUnableToMiss() || target.IsEvadeDisabled()) {
+            lose_chance = 0;
+        } else {
+            lose_chance = target.GetEvasion() + attacker.GetMissChance();
+            // for (const evasion of attacker._evasion_data_calls) {
+            //     on_evasion;
+            // }
+            if (attacker.IsRangedAttacker()) {
+                const attacker_high = GetGroundHeight(attacker.GetAbsOrigin(), attacker);
+                const target_high = GetGroundHeight(target.GetAbsOrigin(), target);
+                if (attacker_high < target_high) {
+                    lose_chance += 0.25;
+                }
+            }
+        }
+        return Random.RollPercentage(lose_chance, target, 'miss');
+    }
 
     public PerformAttack(
         attacker: CDOTA_BaseNPC,
@@ -223,6 +225,7 @@ export class CAttackDataManager {
                 source: attacker,
                 effectName: attacker.GetRangedProjectileName(),
                 OnHitUnit: () => {
+                    //远程触发这里 命中后
                     print('CAttack OnAttackLanded', extra_pamams.record);
                     CDispatcher.Send(ModifierFunctions.OnAttackLanded_Target, target.entindex(), attack_data);
                     CDispatcher.Send(ModifierFunctions.OnAttackLanded_Attacker, attacker.entindex(), attack_data);

@@ -11,7 +11,12 @@ declare global {
         ): CDOTA_Buff;
         /**获得攻击丢失概率 */
         GetMissChance(): number;
+        /**是否是敌人 */
         IsEnemy(unit: CDOTA_BaseNPC): boolean;
+        /**是否是有效单位 */
+        IsUnit(): boolean;
+        /** 是否是友军 */
+        IsAlly(unit: CDOTA_BaseNPC): boolean;
         _miss_chance: number;
         /**储存所有暴击数据和回调 */
         _crits_data_calls: CritData[];

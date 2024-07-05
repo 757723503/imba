@@ -77,17 +77,9 @@ class CDispatcher {
                     for (const id of idSet) {
                         const callback = CDispatcher.id_callBack.get(id);
                         if (callback) {
-                            try {
-                                return callback(params);
-                            } catch (e) {
-                                xpcall(
-                                    () => {
-                                        return callback(params);
-                                    },
-                                    debug.traceback,
-                                    params
-                                );
-                            }
+                            CSafelyCall(() => {
+                                callback;
+                            });
                         } else {
                             print('callback is null');
                             idSet.delete(id);
