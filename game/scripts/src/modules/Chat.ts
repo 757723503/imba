@@ -105,7 +105,9 @@ export class CChat {
                 });
                 break;
             case ChatCommand.hero:
-                DebugCreateUnit(player, DotaHero.tinker, DotaTeam.BADGUYS, false, (): void => {});
+                DebugCreateUnit(player, DotaHero.nyx_assassin, DotaTeam.BADGUYS, false, (unit): void => {
+                    unit.AddItemByName(DotaItem.blade_mail);
+                });
             default:
                 break;
         }

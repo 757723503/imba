@@ -10,15 +10,15 @@ class CDispatcher {
 
     // 初始化方法，创建dispatcher thinker对象并赋值给dispatcherThinker
     private static Init() {
-        CDispatcher.dispatcherThinker = CreateModifierThinker(
-            null,
-            null,
-            'modifier_dispatcher_thinker',
-            {},
-            Vector(0, 0, 0),
-            DotaTeam.NEUTRALS,
-            false
-        );
+        // CDispatcher.dispatcherThinker = CreateModifierThinker(
+        //     null,
+        //     null,
+        //     'modifier_dispatcher_thinker',
+        //     {},
+        //     Vector(0, 0, 0),
+        //     DotaTeam.NEUTRALS,
+        //     false
+        // );
     }
 
     // 注册事件的方法

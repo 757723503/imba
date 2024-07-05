@@ -17,6 +17,9 @@ declare global {
         _crits_data_calls: CritData[];
         /**储存最后一次攻击的暴击数据 */
         _last_attack_trigger_crit: CritData;
+
+        /**储存所有闪避数据和回调 */
+        _evasion_data_calls: EvasionData[];
     }
 
     interface CDOTA_BaseNPC_Hero {}

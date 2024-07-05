@@ -113,14 +113,34 @@ export class CAttackDataManager {
         return trigger_crit;
     }
 
+    /** 攻击命中判断躲避。触发躲避事件 */
+    // _CheckMissOnAttackLanded(attacker: CDOTA_BaseNPC, target: CDOTA_BaseNPC): void {
+    //     // 判断丢失
+    //     let lose_chance;
+    //     if (attacker.IsUnableToMiss() || target.IsEvadeDisabled()) {
+    //         lose_chance = undefined;
+    //     } else {
+    //         lose_chance = target.GetEvasion() + attacker.GetMissChance();
+    //         for (const evasion of attacker._evasion_data_calls) {
+    //             on_evasion;
+    //         }
+    //         if (is_ranged_attacker) {
+    //             const attacker_high = GetGroundHeight(attacker.GetAbsOrigin(), attacker);
+    //             const target_high = GetGroundHeight(target.GetAbsOrigin(), target);
+    //             if (attacker_high < target_high) {
+    //                 lose_chance += 0.25;
+    //             }
+    //         }
+    //     }
+    // }
+
     public PerformAttack(
         attacker: CDOTA_BaseNPC,
         target: CDOTA_BaseNPC,
         extra_pamams?: {
             /** 不会丢失 */
             never_miss?: boolean;
-            /** 使用法球（只有自动施法状态的法球会生效，且会排除手动法球） */
-            use_orb?: boolean;
+
             /** 使用攻击特效 */
             use_effect?: boolean;
             /** 使用弹道模型（true则是一次远程攻击，为空则是近战攻击） */
@@ -132,24 +152,10 @@ export class CAttackDataManager {
             extra_data?: DamageTableExtraData;
         }
     ) {
-        const { never_miss, use_effect, use_orb, use_projectile } = extra_pamams ?? {};
+        const { never_miss, use_effect, use_projectile } = extra_pamams ?? {};
         extra_pamams.extra_data = extra_pamams.extra_data ?? {};
         // 攻击发射时，计算暴击、伤害、丢失
         const is_ranged_attacker = attacker.IsRangedAttacker();
-        // 判断丢失
-        let lose_chance;
-        if (never_miss || attacker.IsUnableToMiss() || target.IsEvadeDisabled()) {
-            lose_chance = undefined;
-        } else {
-            lose_chance = target.GetEvasion() + attacker.GetMissChance();
-            if (is_ranged_attacker) {
-                const attacker_high = GetGroundHeight(attacker.GetAbsOrigin(), attacker);
-                const target_high = GetGroundHeight(target.GetAbsOrigin(), target);
-                if (attacker_high < target_high) {
-                    lose_chance += 0.25;
-                }
-            }
-        }
 
         // 获取伤害
         const attack_damage = attacker.GetAttackDamage();
@@ -180,10 +186,11 @@ export class CAttackDataManager {
         // 初始化攻击数据
         const attack_data: UnitEventAttackDamageData = {
             damageTable: dmgTable,
-            lose_chance: lose_chance,
+            // lose_chance: lose_chance,
             projectile: attacker.GetRangedProjectileName(),
             projectile_speed: attacker.GetProjectileSpeed(),
             is_trigger: extra_pamams.is_trigger,
+            never_miss: never_miss,
             record: extra_pamams.record,
         };
 
@@ -252,9 +259,25 @@ export class modifier_attackdata_thinker extends BaseModifier {
             ModifierFunction.ON_ATTACK_CANCELLED,
             ModifierFunction.ON_ATTACK,
             ModifierFunction.ON_MODIFIER_ADDED,
+
+            ModifierFunction.ON_TAKEDAMAGE,
         ];
     }
 
+    OnTakeDamage(event: ModifierInstanceEvent): void {
+        //检查 event.DamageFlag  是否含有枚举
+        print(
+            ' OnTakeDamage',
+            event.damage_category,
+            event.damage_flags,
+            event.damage_type,
+            event.damage,
+            event.original_damage,
+            event.ranged_attack,
+            event.unit.GetName(),
+            event.record
+        );
+    }
     // OnAttackStart(event: ModifierAttackEvent): void {
     //     CAttackData.OnAttackStart(event);
     // this.GetParent().StartGestureWithFadeAndPlaybackRate(
@@ -266,6 +289,7 @@ export class modifier_attackdata_thinker extends BaseModifier {
     // }
 
     OnAttackRecord(event: ModifierAttackEvent): void {
+        event.fail_type = AttackRecord.FAIL_TERRAIN_MISS;
         CAttackData.OnAttackRecord(event);
     }
 
@@ -326,8 +350,38 @@ export class modifier_attackdata_thinker extends BaseModifier {
             if (!modifier.HasFunction(ModifierFunction.MISS_PERCENTAGE) || !(modifier as any).GetModifierMiss_Percentage) continue;
             const miss = (modifier as any).GetModifierMiss_Percentage();
             all_miss += miss;
-            print(modifier.GetName(), (modifier as any).GetModifierMiss_Percentage());
+            // print(modifier.GetName(), (modifier as any).GetModifierMiss_Percentage());
         }
         unit._miss_chance = all_miss / 100;
+    }
+}
+@registerModifier()
+export class modifier_attackdata_miss extends BaseModifier {
+    IsHidden(): boolean {
+        return true;
+    }
+
+    IsDebuff(): boolean {
+        return true;
+    }
+
+    IsPurgable(): boolean {
+        return false;
+    }
+
+    IsPurgeException(): boolean {
+        return false;
+    }
+
+    RemoveOnDeath(): boolean {
+        return false;
+    }
+
+    DeclareFunctions(): modifierfunction[] {
+        return [ModifierFunction.MISS_PERCENTAGE];
+    }
+
+    GetModifierMiss_Percentage(): number {
+        return 1000;
     }
 }

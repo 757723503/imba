@@ -1249,24 +1249,25 @@ namespace DamageHelper {
         if (damageTable.damageType == DamageType.Magical) {
             damage_type = DamageTypes.MAGICAL;
         }
-        ApplyDamage({
-            attacker: damageTable.attacker,
-            victim: damageTable.victim,
-            damage: damageTable.true_damage,
-            damage_type: damage_type,
-            ability: damageTable.sourceAbility,
-            damage_flags:
-                DamageFlag.HPLOSS +
-                DamageFlag.NO_SPELL_AMPLIFICATION +
-                DamageFlag.NO_DAMAGE_MULTIPLIERS +
-                DamageFlag.NO_SPELL_LIFESTEAL +
-                DamageFlag.REFLECTION +
-                DamageFlag.NO_DIRECTOR_EVENT +
-                DamageFlag.IGNORES_BASE_PHYSICAL_ARMOR +
-                DamageFlag.IGNORES_PHYSICAL_ARMOR +
-                DamageFlag.IGNORES_MAGIC_ARMOR +
-                DamageFlag.ATTACK_MODIFIER,
-        });
+        // ApplyDamage({
+        //     attacker: damageTable.attacker,
+        //     victim: damageTable.victim,
+        //     damage: damageTable.true_damage,
+        //     damage_type: damage_type,
+        //     ability: damageTable.sourceAbility,
+        //     damage_flags:
+        //         DamageFlag.HPLOSS +
+        //         DamageFlag.NO_SPELL_AMPLIFICATION +
+        //         DamageFlag.NO_DAMAGE_MULTIPLIERS +
+        //         DamageFlag.NO_SPELL_LIFESTEAL +
+        //         DamageFlag.REFLECTION +
+        //         DamageFlag.NO_DIRECTOR_EVENT +
+        //         DamageFlag.IGNORES_BASE_PHYSICAL_ARMOR +
+        //         DamageFlag.IGNORES_PHYSICAL_ARMOR +
+        //         DamageFlag.IGNORES_MAGIC_ARMOR +
+        //         DamageFlag.ATTACK_MODIFIER +
+        //         DamageFlag.BYPASSES_BLOCK,
+        // });
     }
     /** 添加record */
     export function AddRecord(list: string[], str: string) {
@@ -1382,14 +1383,20 @@ declare interface CritData {
     /** 触发暴击的回调 */
     on_crit?: (attack_data: UnitEventAttackDamageData) => void;
 }
+declare interface EvasionData {
+    /** 闪避概率 */
+    evasion_chance: number;
+    /** 触发闪避的回调 */
+    on_evasion?: (evasion_data: UnitEventAttackDamageData) => void;
+}
 declare interface UnitEventAttackDamageData {
     damageTable: DamageTable;
     /** 远程攻击 - 投射物弹道 */
     projectile?: string;
     /** 远程攻击 - 投射物速度 */
     projectile_speed?: number;
-    /** 丢失概率 */
-    lose_chance?: number;
+    /** 不会丢失? */
+    never_miss?: boolean;
     /** 是否是一次带有攻击特效的攻击 */
     use_effect?: boolean;
     /** 是否是一次触发的攻击(非正常流程的) */

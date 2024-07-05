@@ -47,9 +47,12 @@ export class CEngineEvent {
     private _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): void {
         const entity = EntIndexToHScript(data.entindex) as CDOTA_BaseNPC_Hero;
 
-        Timers.CreateTimer(FrameTime(), () => {
-            if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') === false) {
+        Timers.CreateTimer(FrameTime() * 5, () => {
+            if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') == false) {
                 entity.base_attack_ability = entity.AddAbility('base_attack_ability');
+            }
+            if (entity.HasModifier != null && entity.HasModifier('modifier_attackdata_miss') == false) {
+                entity.AddNewModifier(entity, null, 'modifier_attackdata_miss', {});
             }
         });
     }
