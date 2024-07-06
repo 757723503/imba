@@ -26,15 +26,28 @@ if (!globalThis.originalAddNewModifier) {
 }
 
 //实装 CDOTA_BaseNPC的GetMissChance 方法
-if (!CDOTA_BaseNPC.GetMissChance) {
-    CDOTA_BaseNPC.GetMissChance = function (this: CDOTA_BaseNPC): number {
-        if (!this._miss_chance) this._miss_chance = 0;
-        return this._miss_chance ?? 0;
+if (!CDOTA_BaseNPC.GetBlindChance) {
+    CDOTA_BaseNPC.GetBlindChance = function (this: CDOTA_BaseNPC): number {
+        return this._all_blind_chance;
     };
 }
-CDOTA_BaseNPC.IsEnemy = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
-    return this.GetTeamNumber() !== unit.GetTeamNumber();
-};
+if (!CDOTA_BaseNPC.GetEvasionChance) {
+    CDOTA_BaseNPC.GetEvasionChance = function (this: CDOTA_BaseNPC): number {
+        return this._all_evasion_chance;
+    };
+}
+
+if (!CDOTA_BaseNPC.GetAccuracyChance) {
+    CDOTA_BaseNPC.GetAccuracyChance = function (this: CDOTA_BaseNPC): number {
+        return this._all_accuracy_chance;
+    };
+}
+
+if (!CDOTA_BaseNPC.IsEnemy) {
+    CDOTA_BaseNPC.IsEnemy = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
+        return this.GetTeamNumber() !== unit.GetTeamNumber();
+    };
+}
 CDOTA_BaseNPC.IsAlly = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
     return this.GetTeamNumber() === unit.GetTeamNumber();
 };

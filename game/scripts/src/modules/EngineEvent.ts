@@ -45,15 +45,25 @@ export class CEngineEvent {
     }
 
     private _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): void {
+        if (data.entindex == null || data.entindex <= 0) return;
         const entity = EntIndexToHScript(data.entindex) as CDOTA_BaseNPC_Hero;
-
-        Timers.CreateTimer(FrameTime() * 5, () => {
-            if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') == false) {
-                entity.base_attack_ability = entity.AddAbility('base_attack_ability');
-            }
-            if (entity.HasModifier != null && entity.HasModifier('modifier_attackdata_miss') == false) {
-                entity.AddNewModifier(entity, null, 'modifier_attackdata_miss', {});
-            }
-        });
+        if (entity.IsBaseNPC()) {
+            // 初始化自定义属性
+            entity._all_evasion_chance = 0;
+            entity._evasion_data_calls = [];
+            entity._all_blind_chance = 0;
+            entity._blind_data_calls = [];
+            entity._all_accuracy_chance = 0;
+            entity._accuracy_data_calls = [];
+            entity._crits_data_calls = [];
+            Timers.CreateTimer(FrameTime() * 5, () => {
+                if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') == false) {
+                    entity.base_attack_ability = entity.AddAbility('base_attack_ability');
+                }
+                if (entity.HasModifier != null && entity.HasModifier('modifier_attackdata_miss') == false) {
+                    entity.AddNewModifier(entity, null, 'modifier_attackdata_miss', {});
+                }
+            });
+        }
     }
 }

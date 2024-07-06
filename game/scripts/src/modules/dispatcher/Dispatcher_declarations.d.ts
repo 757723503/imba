@@ -64,6 +64,7 @@ declare const enum ModifierFunctions {
     DamageFixed_FalsePromiseIgnoreDamage = 'DamageFixed_FalsePromiseIgnoreDamage',
     /**
      * 回光返照的友方伤害事件记录
+     * DAMAGE_BORROWED_TIME_EVENT
      */
     DamageEvent_BorrowedTimeRecord = 'DamageEvent_BorrowedTimeRecord',
     /**
@@ -94,7 +95,7 @@ declare const enum ModifierFunctions {
      * 击杀任意单位，事件名 UNIT_KILL_UNIT 。
      * 击杀者触发
      */
-    OnKill = 'OnKill',
+    // OnKill = 'OnKill',
 
     /**
      * 死亡的单位触发 事件名 UNIT_DEATH
@@ -117,7 +118,7 @@ declare const enum ModifierFunctions {
     /**
      * 单位复活事件
      */
-    OnRespawn = 'OnRespawn',
+    // OnRespawn = 'OnRespawn',
 
     /** 攻击前摇前  触发者是受害者 */
     OnAttackStart_Target = 'OnAttackStart_Target',
@@ -125,8 +126,8 @@ declare const enum ModifierFunctions {
     /** 攻击前摇前  触发者是 攻击者 */
     OnAttackStart_Attacker = 'OnAttackStart_Attacker',
 
-    /** 攻击记录前  触发者是攻击者 */
-    OnAttackRecord_Attack = 'OnAttackRecord_Attack',
+    // /** 攻击记录前  触发者是攻击者 */
+    // OnAttackRecord_Attack = 'OnAttackRecord_Attack',
 
     /** 攻击命中时，事件名 。`攻击者触发` */
     OnAttackLanded_Attacker = 'OnAttackLanded_Attacker',
@@ -135,4 +136,16 @@ declare const enum ModifierFunctions {
 
     /** 攻击失败后  触发者是双方 */
     OnAttackFail_Both = 'OnAttackFail_Both',
+
+    /**增加暴击 数据 */
+    AddParentAttackCritData = 'AddParentAttackCritData',
+
+    /** 增加闪避 数据 */
+    AddParentEvasionData = 'AddParentEvasionData',
+
+    /** 增加必中 数据 */
+    AddParentAccuracyData = 'AddParentAccuracyData',
+
+    /** 增加致盲 数据 */
+    AddParentBlindData = 'AddParentBlindData',
 }

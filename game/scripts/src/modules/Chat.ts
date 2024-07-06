@@ -52,12 +52,23 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.da:
-                ApplyDamage({
-                    attacker: hero,
-                    victim: hero,
-                    damage: 500,
-                    damage_type: DamageTypes.NONE,
-                });
+                const enemies = FindUnitsInRadius(
+                    hero.GetTeamNumber(),
+                    hero.GetAbsOrigin(),
+                    null,
+                    500,
+                    UnitTargetTeam.ENEMY,
+                    UnitTargetType.HERO,
+                    UnitTargetFlags.FOW_VISIBLE,
+                    FindOrder.ANY,
+                    false
+                );
+                for (const enemy of enemies) {
+                    CAttackData.PerformAttack(hero, enemy, {
+                        is_trigger: true,
+                        use_projectile: false,
+                    });
+                }
 
                 break;
             case ChatCommand.cr:

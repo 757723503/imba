@@ -9,8 +9,19 @@ export class modifier_imba_stunned extends BaseModifier {
         return true;
     }
 
+    GetAttributes(): ModifierAttribute {
+        return ModifierAttribute.MULTIPLE;
+    }
+
     CustomDeclareFunctions(): ModifierFunctions[] {
-        return [ModifierFunctions.OnAttackStart_Target];
+        return [ModifierFunctions.AddParentAttackCritData];
+    }
+
+    AddParentAttackCritData(): CritData {
+        return {
+            crit_chance: 100,
+            crit_rate: 200,
+        };
     }
 
     // OnAttackFail_Both(event: ModifierAttackEvent): void {
