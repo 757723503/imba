@@ -3,7 +3,6 @@
  * @param not_use_dmgTable 这个dmgTable不要直接使用
  */
 function AddDamage(not_use_dmgTable: DamageTable) {
-    // not_use_dmgTable.extra_data = table.deepcopy(not_use_dmgTable.extra_data ?? {});
     not_use_dmgTable.extra_data = not_use_dmgTable.extra_data ?? {};
     const victim = not_use_dmgTable.victim;
     const attacker = not_use_dmgTable.attacker;
@@ -72,10 +71,12 @@ function AddDamage(not_use_dmgTable: DamageTable) {
             DamageHelper.CritFloatingText(victim, not_use_dmgTable.extra_data?.illusion_crit_show_damage ?? not_use_dmgTable.damage);
             DamageHelper.AddRecord(record_list, '本次攻击暴击');
         }
-
+        const disable_celled = (not_use_dmgTable.damageFlags & DamageFlags.DisableCelled) > 0;
         if (attacker.IsHero()) {
-            // - 攻击溅射和攻击弹射的伤害传递(只有一个物理伤害), 不能传递的伤害忽略
-            CDispatcher.Send('DAMAGE_ATTACKER_BOUNCE_EVENT', victim_handle, not_use_dmgTable);
+            if (!disable_celled) {
+                // - 攻击溅射和攻击弹射的伤害传递(只有一个物理伤害), 不能传递的伤害忽略
+                CDispatcher.Send('DAMAGE_ATTACKER_BOUNCE_EVENT', victim_handle, not_use_dmgTable);
+            }
             // 普通目标才走
             if (isNormalTarget) {
                 // - 剑刃风暴的攻击伤害无效化(只有一个物理伤害和受害者)
@@ -211,6 +212,7 @@ namespace DamageHelper {
         const attacker_is_hero = attacker.IsHero();
         const victim_handle = victim.GetEntityIndex();
         const victim_is_hero = victim.IsHero();
+        const disable_celled = (dmgTable.damageFlags & DamageFlags.DisableCelled) > 0;
         // 生命移除需要跳过一些阶段
 
         const is_hp_remove = (dmgTable.damageFlags & DamageFlags.HPRemove) > 0;
@@ -220,7 +222,7 @@ namespace DamageHelper {
         // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
         // - TODO: 暂无: 炽烈火雨的攻击伤害调整
         // 生命移除不走
-        if (!is_hp_remove && !is_reflect) {
+        if (!is_hp_remove && !is_reflect && !disable_celled) {
             // - 攻击分裂的伤害传递(只传递物理攻击伤害和受害者)
             const phy_dmg = dmgTable.attack_physical_damage;
             if (attacker_is_hero && phy_dmg > 0 && isNormalTarget) {
@@ -1337,6 +1339,10 @@ declare const enum DamageFlags {
     KillFriendly = 64,
     /** 暴击 标记普攻用 用于显示暴击数字 */
     AttackCrit = 128,
+
+    /** 这次伤害跳过分裂 溅射等 */
+    DisableCelled = 256,
+
     // @废弃
     // /** 反弹标记 除了原始伤害广播其他没啥用?或者说就没用 */
     // Reflect = 128,
@@ -1373,6 +1379,7 @@ interface DamageTable {
     use_attack_effect?: boolean;
     /** 暴击对象 */
     crit_obj?: CritData;
+
     /** 此次攻击的自定义数据 */
     extra_data?: DamageTableExtraData;
 }
@@ -1413,8 +1420,10 @@ declare interface UnitEventAttackDamageData {
     /** 是否是一次带有攻击特效的攻击 */
     use_effect?: boolean;
     /** 是否是一次触发的攻击(非正常流程的) */
-    is_trigger: boolean;
-    record: number;
+    is_trigger?: boolean;
+    /** 禁用此次攻击分裂/溅射/弹射 */
+    disable_celled?: boolean;
+    record?: number;
 }
 /** 伤害表的自定义数据 */
 interface DamageTableExtraData {

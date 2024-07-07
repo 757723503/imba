@@ -14,7 +14,29 @@ export class modifier_imba_stunned extends BaseModifier {
     }
 
     CustomDeclareFunctions(): ModifierFunctions[] {
-        return [ModifierFunctions.AddParentAttackCritData];
+        return [
+            ModifierFunctions.AddParentAttackCritData,
+            ModifierFunctions.AddParentEvasionData,
+            ModifierFunctions.AddParentBlindData,
+            ModifierFunctions.OnAttackStart_Attacker,
+        ];
+    }
+
+    OnAttackStart_Attacker(AttackData: UnitEventAttackDamageData): void {
+        print('modifier_imba_stunned OnAttackStart_Attacker');
+        AttackData.projectile = 'particles/econ/items/drow/drow_arcana/drow_arcana_base_attack_v2.vpcf';
+    }
+
+    AddParentEvasionData(): EvasionData {
+        return {
+            evasion_chance: 50,
+        };
+    }
+
+    AddParentBlindData(): BlindData {
+        return {
+            blind_chance: 50,
+        };
     }
 
     AddParentAttackCritData(): CritData {

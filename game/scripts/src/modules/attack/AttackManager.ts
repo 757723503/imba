@@ -1,12 +1,12 @@
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 @reloadable
 export class CAttackDataManager {
-    attack_data: Map<number, DamageTable> = new Map<number, DamageTable>();
-    trigger_attack_data: Map<number, DamageTable> = new Map<number, DamageTable>();
+    attack_data: Map<number, UnitEventAttackDamageData> = new Map<number, UnitEventAttackDamageData>();
+    trigger_attack_data: Map<number, UnitEventAttackDamageData> = new Map<number, UnitEventAttackDamageData>();
     trigger_attack_record: number = -1;
     attack_thinker: CDOTA_BaseNPC;
     constructor() {
-        this.attack_thinker = CreateModifierThinker(null, null, 'modifier_attackdata_thinker', {}, Vector(0, 0, 0), DotaTeam.NEUTRALS, false);
+        this.attack_thinker = CreateModifierThinker(null, null, 'modifier_attack_data_thinker', {}, Vector(0, 0, 0), DotaTeam.NEUTRALS, false);
     }
 
     //实际是使用OnAttackRecord 充当OnAttackStart
@@ -25,21 +25,29 @@ export class CAttackDataManager {
             damageFlags: crit_obj ? DamageFlags.AttackCrit : undefined,
             crit_obj: crit_obj,
         };
-        this.attack_data.set(event.record, dmgTable);
-        CDispatcher.Send('ON_ATTACK_START_TARGET', target.entindex(), dmgTable);
-        CDispatcher.Send('ON_ATTACK_START_ATTACKER', attacker.entindex(), dmgTable);
+        // 初始化攻击数据
+        const attack_data: UnitEventAttackDamageData = {
+            damageTable: dmgTable,
+            projectile: attacker.GetRangedProjectileName(),
+            projectile_speed: attacker.GetProjectileSpeed(),
+            record: event.record,
+        };
+
+        this.attack_data.set(event.record, attack_data);
+        CDispatcher.Send('ON_ATTACK_START_TARGET', target.entindex(), attack_data);
+        CDispatcher.Send('ON_ATTACK_START_ATTACKER', attacker.entindex(), attack_data);
 
         // crit_obj && attacker.StartGestureWithFadeAndPlaybackRate(GameActivity.DOTA_ATTACK_EVENT, 0.0, 0.0, attacker.GetDisplayAttackSpeed() / 100);
     }
 
     public OnAttack(event: ModifierAttackEvent): void {
         print('CAttack OnAttack', event.record);
-        const DamageTable = this.attack_data.get(event.record);
+        const attack_data = this.attack_data.get(event.record);
         CAttackData.PerformAttack(event.attacker, event.target, {
             use_projectile: event.attacker.IsRangedAttacker(),
             use_effect: true,
             is_trigger: false,
-            record: [event.record, DamageTable],
+            record: [event.record, attack_data],
         });
     }
 
@@ -128,9 +136,11 @@ export class CAttackDataManager {
             /** 使用弹道模型（true则是一次远程攻击，为空则是近战攻击） */
             use_projectile?: boolean;
             /** 是否是一次触发的攻击(非正常流程的) */
-            is_trigger: boolean;
+            is_trigger?: boolean;
             /**如果有记录，那么会使用提前计算好的数据 */
-            record?: [id: number, dmgTable: DamageTable];
+            record?: [id: number, attack_data: UnitEventAttackDamageData];
+            /** 是否禁用分裂 */
+            disable_celled?: boolean;
             /** 自定义数据 */
             extra_data?: DamageTableExtraData;
         }
@@ -151,33 +161,33 @@ export class CAttackDataManager {
         //     attack_damage = illusion_attack_fixed;
         //     damage_before = attack_damage;
         // }
-        // 判断暴击 如果不是正常攻击，那么需要重新计算暴击，否则使用在攻击抬手时计算的暴击
-        const [record, dmg] = extra_pamams.record ?? [undefined, undefined];
-        const crit_obj = dmg?.crit_obj ?? this._CheckCritOnAttack(attacker, target);
-        const dmgTable = dmg ?? {
-            attacker: attacker,
-            victim: target,
-            damage: attack_damage,
-            damageProperty: DamageProperty.Attack,
-            damageType: DamageType.Physical,
-            damageFlags: crit_obj ? DamageFlags.AttackCrit : undefined,
-            crit_obj: crit_obj,
-            extra_data: extra_pamams.extra_data,
-        };
+        // 如果没有预先数据 那么就原地创建
+        const [record, attackdata] = extra_pamams.record ?? [undefined, undefined];
+        let attack_data = attackdata;
+        let dmgTable = attackdata?.damageTable;
+        if (!record || !attackdata || !dmgTable) {
+            const crit_obj = this._CheckCritOnAttack(attacker, target);
+            dmgTable = {
+                attacker: attacker,
+                victim: target,
+                damage: attack_damage,
+                damageProperty: DamageProperty.Attack,
+                damageType: DamageType.Physical,
+                damageFlags: (crit_obj ? DamageFlags.AttackCrit : 0) + (extra_pamams.disable_celled ? DamageFlags.DisableCelled : 0),
+                crit_obj: crit_obj,
+                extra_data: extra_pamams.extra_data,
+            };
 
-        // 初始化攻击数据
-        // const attack_data: UnitEventAttackDamageData = {
-        //     damageTable: dmgTable,
-        //     // lose_chance: lose_chance,
-        //     projectile: attacker.GetRangedProjectileName(),
-        //     projectile_speed: attacker.GetProjectileSpeed(),
-        //     is_trigger: extra_pamams.is_trigger,
-        //     never_miss: never_miss,
-        //     record: extra_pamams.record,
-        // };
+            attack_data = {
+                damageTable: dmgTable,
+                projectile: attacker.GetRangedProjectileName(),
+                projectile_speed: attacker.GetProjectileSpeed(),
+                record: record,
+            };
+        }
 
-        if (crit_obj) {
-            const { crit_chance, crit_rate } = crit_obj;
+        if (dmgTable.crit_obj) {
+            const { crit_chance, crit_rate } = dmgTable.crit_obj;
             dmgTable.damage = dmgTable.damage * (crit_rate / 100);
             // if (illusion_cirt_show) {
             //     // 根据缩放值，还原等同于本体的伤害，不会被中途的事件所影响
@@ -191,41 +201,43 @@ export class CAttackDataManager {
         //     this.trigger_attack_data.set(record, attack_data);
         // }
 
+        const _fun_attack_effect = (attacker: CDOTA_BaseNPC, target: CDOTA_BaseNPC, use_effect?: boolean): void => {
+            if (!this._CheckMissOnAttackLanded(attacker, target, never_miss || attack_data.never_miss)) {
+                print('CAttack OnAttackLanded', extra_pamams.record);
+                CDispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), attack_data);
+                CDispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), attack_data);
+                if (attack_data.damageTable.crit_obj?.on_crit) {
+                    attack_data.damageTable.crit_obj.on_crit(attack_data.damageTable);
+                }
+                AddDamage(attack_data.damageTable);
+                // const damage_pfx = 'particles/generic_gameplay/damage_flash.vpcf';
+                // const pfx = ParticleManager.CreateParticle(damage_pfx, ParticleAttachment.CUSTOMORIGIN, target);
+                // ParticleManager.SetParticleControlEnt(pfx, 0, target, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', target.GetAbsOrigin(), true);
+                // ParticleManager.ReleaseParticleIndex(pfx);
+
+                // const hit_pfx = 'particles/generic_gameplay/damage_flash.vpcf';
+                // const pfx2 = ParticleManager.CreateParticle(hit_pfx, ParticleAttachment.CUSTOMORIGIN, target);
+                // ParticleManager.SetParticleControlEnt(pfx2, 0, target, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', target.GetAbsOrigin(), true);
+                // ParticleManager.ReleaseParticleIndex(pfx2);
+            } else {
+                PopupMiss(target, attacker.GetPlayerOwner());
+                PopupEvasion(target, target.GetPlayerOwner());
+                CDispatcher.Send('ON_ATTACK_FAIL_BOTH', target.entindex(), attack_data);
+                CDispatcher.Send('ON_ATTACK_FAIL_BOTH', attacker.entindex(), attack_data);
+            }
+        };
+
         // 如果是近战攻击，那么发射后立刻命中。远程攻击则在投射物的命中中回调
         if (!use_projectile) {
-            if (!this._CheckMissOnAttackLanded(attacker, target, never_miss)) {
-                CDispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), dmgTable);
-                CDispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), dmgTable);
-                // 暴击触发了的回调
-                if (crit_obj?.on_crit) {
-                    crit_obj.on_crit(dmgTable);
-                }
-                AddDamage(dmgTable);
-            } else {
-                CDispatcher.Send('ON_ATTACK_FAIL_BOTH', target.entindex(), dmgTable);
-                CDispatcher.Send('ON_ATTACK_FAIL_BOTH', attacker.entindex(), dmgTable);
-            }
+            _fun_attack_effect(attacker, target, use_effect);
         } else {
             GameRules.CProjectileManager.CreateTrackingProjectile({
                 target: target,
-                moveSpeed: attacker.GetProjectileSpeed(),
+                moveSpeed: attack_data.projectile_speed ?? attacker.GetProjectileSpeed(),
                 source: attacker,
-                effectName: attacker.GetRangedProjectileName(),
+                effectName: attack_data.projectile ?? attacker.GetRangedProjectileName(),
                 OnHitUnit: () => {
-                    if (!this._CheckMissOnAttackLanded(attacker, target, never_miss)) {
-                        //远程触发这里 命中后
-                        print('CAttack OnAttackLanded', extra_pamams.record);
-                        CDispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), dmgTable);
-                        CDispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), dmgTable);
-                        // 暴击触发了的回调
-                        if (dmgTable.crit_obj?.on_crit) {
-                            dmgTable.crit_obj.on_crit(dmgTable);
-                        }
-                        AddDamage(dmgTable);
-                    } else {
-                        CDispatcher.Send('ON_ATTACK_FAIL_BOTH', target.entindex(), dmgTable);
-                        CDispatcher.Send('ON_ATTACK_FAIL_BOTH', attacker.entindex(), dmgTable);
-                    }
+                    _fun_attack_effect(attacker, target, use_effect);
                 },
             });
         }
@@ -236,7 +248,7 @@ declare global {
     var CAttackData: CAttackDataManager;
 }
 @registerModifier()
-export class modifier_attackdata_thinker extends BaseModifier {
+export class modifier_attack_data_thinker extends BaseModifier {
     IsHidden(): boolean {
         return false;
     }
@@ -247,22 +259,12 @@ export class modifier_attackdata_thinker extends BaseModifier {
 
     DeclareFunctions(): ModifierFunction[] {
         return [
-            // ModifierFunction.ON_ATTACK_FAIL,
             ModifierFunction.ON_ATTACK_RECORD,
             ModifierFunction.ON_ATTACK_CANCELLED,
             ModifierFunction.ON_ATTACK,
             ModifierFunction.ON_ATTACK_FINISHED,
         ];
     }
-    // OnAttackStart(event: ModifierAttackEvent): void {
-    //     CAttackData.OnAttackStart(event);
-    // this.GetParent().StartGestureWithFadeAndPlaybackRate(
-    //     GameActivity.DOTA_ATTACK_EVENT,
-    //     0.0,
-    //     0.0,
-    //     this.GetParent().GetDisplayAttackSpeed() / 100
-    // );
-    // }
 
     OnAttackRecord(event: ModifierAttackEvent): void {
         event.fail_type = AttackRecord.FAIL_TERRAIN_MISS;
@@ -273,13 +275,8 @@ export class modifier_attackdata_thinker extends BaseModifier {
         CAttackData.OnAttack(event);
     }
 
-    // OnAttackFail(event: ModifierAttackEvent): void {
-    //     CAttackData.OnAttackFail(event);
-    // }
-
     OnAttackCancelled(event: ModifierAttackEvent): void {
         CAttackData.OnAttackCancelled(event);
-        // this.GetParent().FadeGesture(GameActivity.DOTA_ATTACK_EVENT);
     }
 
     OnAttackFinished(event: ModifierAttackEvent): void {
@@ -287,7 +284,7 @@ export class modifier_attackdata_thinker extends BaseModifier {
     }
 }
 @registerModifier()
-export class modifier_attackdata_miss extends BaseModifier {
+export class modifier_attack_data_miss extends BaseModifier {
     IsHidden(): boolean {
         return true;
     }

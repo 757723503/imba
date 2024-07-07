@@ -31,7 +31,7 @@ export class BaseModifier {
         return [];
     }
 
-    dispatcherIDList: Map<EntityIndex, dispatcher_id[]> = new Map();
+    dispatcherIDList: Map<EntityIndex, dispatcher_id[]>;
 
     frameBasedTimers: {
         key: string;
@@ -45,29 +45,33 @@ export class BaseModifier {
         const parent_index = this.GetParent().entindex();
         const functions = this.CustomDeclareFunctions();
         if (functions.length > 0) {
+            this.dispatcherIDList = new Map();
+            if (!this.dispatcherIDList.has(parent_index)) {
+                this.dispatcherIDList.set(parent_index, []);
+            }
             functions.forEach(element => {
                 const func = _modifier_methods[element].registerFunc;
                 CSafelyCall(() => {
                     func(this, parent_index);
                 }, `Error in registering function for ${element}`);
 
-                if (_modifier_methods[element].Use_Frametime) {
-                    this.funs.push(element);
-                }
+                // if (_modifier_methods[element].Use_Frametime) {
+                //     this.funs.push(element);
+                // }
             });
         }
-        if (this.funs.length > 0) {
-            const timers = Timers.CreateTimer(0.0333, () => {
-                this.funs.forEach(element => {
-                    const func = _modifier_methods[element].registerFunc;
-                    CSafelyCall(() => {
-                        func(this, parent_index);
-                    }, `Error in registering function for ${element}`);
-                });
-                return 0.0333;
-            });
-            this.frameBasedTimers = { key: timers, value: this.funs };
-        }
+        // if (this.funs.length > 0) {
+        //     const timers = Timers.CreateTimer(0.0333, () => {
+        //         this.funs.forEach(element => {
+        //             const func = _modifier_methods[element].registerFunc;
+        //             CSafelyCall(() => {
+        //                 func(this, parent_index);
+        //             }, `Error in registering function for ${element}`);
+        //         });
+        //         return 0.0333;
+        //     });
+        //     this.frameBasedTimers = { key: timers, value: this.funs };
+        // }
     }
 
     OnDestroy(): void {
@@ -84,9 +88,9 @@ export class BaseModifier {
 
             this.dispatcherIDList.delete(parent_index);
         }
-        if (this.frameBasedTimers) {
-            Timers.RemoveTimer(this.frameBasedTimers.key);
-        }
+        // if (this.frameBasedTimers) {
+        //     Timers.RemoveTimer(this.frameBasedTimers.key);
+        // }
     }
 }
 

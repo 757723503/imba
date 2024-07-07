@@ -134,16 +134,16 @@ declare interface LocalEventDeclarations {
     /** 特殊溅射攻击广播 - 攻击者 */
     DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT: DamageTable;
     /** 攻击命中时，事件名 。`攻击者触发` */
-    ON_ATTACK_LANDED_ATTACKER: DamageTable;
+    ON_ATTACK_LANDED_ATTACKER: UnitEventAttackDamageData;
     /** 受到攻击命中时，事件名 。`受害者触发` */
-    ON_ATTACK_LANDED_TARGET: DamageTable;
+    ON_ATTACK_LANDED_TARGET: UnitEventAttackDamageData;
 
     /** 攻击前摇前  触发者是受害者 */
     //  OnAttackStart_Target = 'OnAttackStart_Target',
-    ON_ATTACK_START_TARGET: DamageTable;
+    ON_ATTACK_START_TARGET: UnitEventAttackDamageData;
     /** 攻击前摇前  触发者是 攻击者 */
     //  OnAttackStart_Attacker = 'OnAttackStart_Attacker',
-    ON_ATTACK_START_ATTACKER: DamageTable;
+    ON_ATTACK_START_ATTACKER: UnitEventAttackDamageData;
 
     UNIT_DEATH: DamageTable;
     UNIT_HERO_DEATH: DamageTable;
@@ -151,7 +151,7 @@ declare interface LocalEventDeclarations {
 
     // OnAttackFail_Both
 
-    ON_ATTACK_FAIL_BOTH: DamageTable;
+    ON_ATTACK_FAIL_BOTH: UnitEventAttackDamageData;
 }
 
 // const enum ModifierFunction {

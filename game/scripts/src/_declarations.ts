@@ -298,18 +298,18 @@ declare module './utils/dota_ts_adapter' {
          */
         // OnRespawn?(dmgTable: DamageTable): void;
 
-        OnAttackStart_Target?(dmgTable: DamageTable): void;
+        OnAttackStart_Target?(AttackData: UnitEventAttackDamageData): void;
         /**攻击前摇  触发者 攻击者 */
-        OnAttackStart_Attacker?(dmgTable: DamageTable): void;
+        OnAttackStart_Attacker?(AttackData: UnitEventAttackDamageData): void;
         /**攻击记录前  触发者 攻击者 */
-        OnAttackRecord_Attack?(dmgTable: DamageTable): void;
+        OnAttackRecord_Attack?(AttackData: UnitEventAttackDamageData): void;
 
         /** 攻击命中时，事件名 。`攻击者触发` */
-        OnAttackLanded_Attacker?(dmgTable: DamageTable): void;
+        OnAttackLanded_Attacker?(AttackData: UnitEventAttackDamageData): void;
         /** 受到攻击命中时，事件名 。`受害者触发` */
-        OnAttackLanded_Target?(dmgTable: DamageTable): void;
+        OnAttackLanded_Target?(AttackData: UnitEventAttackDamageData): void;
         /**攻击失败时 双方触发 */
-        OnAttackFail_Both?(dmgTable: DamageTable): void;
+        OnAttackFail_Both?(AttackData: UnitEventAttackDamageData): void;
         /**增加暴击 数据 */
         AddParentAttackCritData?(): CritData;
 

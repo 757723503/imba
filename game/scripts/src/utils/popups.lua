@@ -45,7 +45,7 @@ end
 
 function PopupCriticalDamage(target, amount, player)
 	PopupNumbers(target, "particles/msg_fx/msg_crit.vpcf", Vector(255, 0, 0),
-		1.0, amount, nil, POPUP_SYMBOL_POST_LIGHTNING, player)
+		1.5, amount, nil, POPUP_SYMBOL_POST_LIGHTNING, player)
 end
 
 function PopupCriticalDamageColored(target, amount, color, player) 
@@ -74,17 +74,20 @@ function PopupManaGain(target, amount, player)
 end
 
 function PopupMiss(target, player)
-	PopupNumbers(target, "particles/msg_fx/msg_miss.vpcf", Vector(255, 0, 0),
-		1.0, nil, POPUP_SYMBOL_PRE_MISS, nil, player)
+	PopupNumbers(target, "particles/msg_fx/custom_msg_miss.vpcf", Vector(255, 0, 0),
+		1.0, nil, POPUP_SYMBOL_PRE_MISS + 390, nil, player,3)	
+end
+function PopupEvasion(target, player)
+	PopupNumbers(target, "particles/msg_fx/custom_msg_evade.vpcf", Vector(255, 255, 255),
+		1.0, nil, POPUP_SYMBOL_PRE_EVADE + 390, nil, player,3)
 end
 
-function PopupNumbers(target, pfx, color, lifetime, number, presymbol, postsymbol, player)
+function PopupNumbers(target, pfx, color, lifetime, number, presymbol, postsymbol, player,bdigits)
 	local pidx = nil
 	if player then
-		pidx = ParticleManager:CreateParticleForPlayer(pfx, PATTACH_OVERHEAD_FOLLOW, target, player)
-		-- pidx = ParticleManager:CreateParticle(pfx, PATTACH_OVERHEAD_FOLLOW, target)
+		pidx = ParticleManager:CreateParticleForPlayer(pfx, PATTACH_CUSTOMORIGIN_FOLLOW, target, player)
 	else
-		pidx = ParticleManager:CreateParticle(pfx, PATTACH_OVERHEAD_FOLLOW, target)
+		pidx = ParticleManager:CreateParticle(pfx, PATTACH_CUSTOMORIGIN_FOLLOW, target)
 	end
 
 	local digits = 0
@@ -97,7 +100,8 @@ function PopupNumbers(target, pfx, color, lifetime, number, presymbol, postsymbo
 	if postsymbol ~= nil then
 		digits = digits + 1
 	end
-
+	digits = bdigits or digits
+	ParticleManager:SetParticleControlEnt(pidx, 0, target, PATTACH_CUSTOMORIGIN_FOLLOW, "attach_hitloc", target:GetOrigin(), true)
 	ParticleManager:SetParticleControl(pidx, 1, Vector(tonumber(presymbol), tonumber(number), tonumber(postsymbol)))
 	ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
 	ParticleManager:SetParticleControl(pidx, 3, color)

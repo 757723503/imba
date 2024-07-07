@@ -9,5 +9,6 @@ declare function PopupDamageBlock(target: CDOTA_BaseNPC, amount: number, player?
 declare function PopupGoldGain(target: CDOTA_BaseNPC, amount: number, player?: CDOTAPlayerController): void;
 declare function PopupManaGain(target: CDOTA_BaseNPC, amount: number, player?: CDOTAPlayerController): void;
 declare function PopupMiss(target: CDOTA_BaseNPC, player?: CDOTAPlayerController): void;
+declare function PopupEvasion(target: CDOTA_BaseNPC, player?: CDOTAPlayerController): void;
 declare function PopupDamageBig(target: CDOTA_BaseNPC, amount: number, player?: CDOTAPlayerController): void;
 declare function PopupAddGold(target: CDOTA_BaseNPC, amount: number, player?: CDOTAPlayerController): void;
