@@ -13,8 +13,8 @@ export class CProjectileManager {
     /** 投射物管理器初始化 */
     protected ProjectileManagerInIt(): void {
         this._all_projectile_id = [];
-        for (let i = 0; i < 1000; i++) {
-            this._all_projectile_id.push(i);
+        for (let i = 0; i < 10000; i++) {
+            this._all_projectile_id.push(i as SLProjectileID);
         }
         /** 投射物数据表 */
         this._projectile_map = {};
@@ -133,7 +133,7 @@ export class CProjectileManager {
         this._projectile_timer = Timers.CreateTimer(FrameTime(), () => {
             // for (const [ProjectileID, keys] of this._projectile_map) {
             for (const key of Object.entries(this._projectile_map)) {
-                const ProjectileID = Number(key[0]);
+                const ProjectileID = Number(key[0]) as SLProjectileID;
                 if (!this.IsValidProjectile(ProjectileID)) {
                     // print('这个投射物已经被销毁', this._projectile_map[ProjectileID]?.destroy_reason, ProjectileID);
                     return;
@@ -264,27 +264,6 @@ export class CProjectileManager {
 
             return (t1 >= 0 && t1 <= 1) || (t2 >= 0 && t2 <= 1);
         }
-    }
-
-    //重载前后
-    protected ___BeforeReload(): void {
-        // print('ProjectileManager ___BeforeReload');
-        // Timers.RemoveTimer(this._projectile_timer);
-        // this._projectile_timer = undefined;
-        for (const key of Object.entries(this._projectile_map)) {
-            const ProjectileID = Number(key);
-            this._projectile_map[ProjectileID]?.destroy_reason;
-            this._RemoveProjectile(ProjectileID);
-        }
-    }
-
-    //重载后
-    protected ___AfterReload(): void {
-        // print('ProjectileManager ___AfterReload');
-        //? 重新初始化 延迟就正常  非延迟会出问题
-        Timers.CreateTimer(FrameTime(), () => {
-            this.ProjectileManagerInIt();
-        });
     }
 
     /** 创建线性投射物 */

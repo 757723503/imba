@@ -6,6 +6,8 @@ enum ChatCommand {
     cr = '-cr',
     da = '-da',
     hero = '-hero',
+    dm = '-dm',
+    mem = '-mem',
 }
 @reloadable
 export class CChat {
@@ -33,7 +35,7 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 10 });
+                hero.AddNewModifier(hero, null, 'modifier_imba_stunned', {});
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,
@@ -52,23 +54,33 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.da:
-                const enemies = FindUnitsInRadius(
-                    hero.GetTeamNumber(),
-                    hero.GetAbsOrigin(),
-                    null,
-                    500,
-                    UnitTargetTeam.ENEMY,
-                    UnitTargetType.HERO,
-                    UnitTargetFlags.FOW_VISIBLE,
-                    FindOrder.ANY,
-                    false
-                );
-                for (const enemy of enemies) {
-                    CAttackData.PerformAttack(hero, enemy, {
-                        is_trigger: true,
-                        use_projectile: false,
-                    });
-                }
+                let cont = 0;
+                Timers.CreateTimer(1, () => {
+                    const enemies = FindUnitsInRadius(
+                        hero.GetTeamNumber(),
+                        hero.GetAbsOrigin(),
+                        null,
+                        500,
+                        UnitTargetTeam.ENEMY,
+                        UnitTargetType.HERO,
+                        UnitTargetFlags.FOW_VISIBLE,
+                        FindOrder.ANY,
+                        false
+                    );
+                    for (const enemy of enemies) {
+                        for (let index = 0; index < 5; index++) {
+                            CAttackData.PerformAttack(hero, enemy, {
+                                // is_trigger: true,
+                                use_projectile: true,
+                            });
+                        }
+                    }
+                    cont++;
+                    if (cont < 10000) {
+                        return FrameTime();
+                    }
+                    return null;
+                });
 
                 break;
             case ChatCommand.cr:
@@ -119,6 +131,14 @@ export class CChat {
                 DebugCreateUnit(player, DotaHero.nyx_assassin, DotaTeam.BADGUYS, false, (unit): void => {
                     unit.AddItemByName(DotaItem.blade_mail);
                 });
+                break;
+            case ChatCommand.dm:
+                const dummy = CreateUnitByName('npc_dota_hero_target_dummy', hero.GetAbsOrigin(), true, null, null, DotaTeam.NEUTRALS);
+                dummy.SetControllableByPlayer(keys.playerid, true);
+                break;
+            case ChatCommand.mem:
+                MEM.m_cMethods.DumpMemorySnapshot(null, null, -1);
+                break;
             default:
                 break;
         }

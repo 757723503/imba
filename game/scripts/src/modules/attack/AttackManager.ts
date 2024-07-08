@@ -33,9 +33,9 @@ export class CAttackDataManager {
             record: event.record,
         };
 
-        this.attack_data.set(event.record, attack_data);
         CDispatcher.Send('ON_ATTACK_START_TARGET', target.entindex(), attack_data);
         CDispatcher.Send('ON_ATTACK_START_ATTACKER', attacker.entindex(), attack_data);
+        this.attack_data.set(event.record, attack_data);
 
         // crit_obj && attacker.StartGestureWithFadeAndPlaybackRate(GameActivity.DOTA_ATTACK_EVENT, 0.0, 0.0, attacker.GetDisplayAttackSpeed() / 100);
     }
@@ -165,7 +165,7 @@ export class CAttackDataManager {
         const [record, attackdata] = extra_pamams.record ?? [undefined, undefined];
         let attack_data = attackdata;
         let dmgTable = attackdata?.damageTable;
-        if (!record || !attackdata || !dmgTable) {
+        if (!record || !attack_data || !dmgTable) {
             const crit_obj = this._CheckCritOnAttack(attacker, target);
             dmgTable = {
                 attacker: attacker,

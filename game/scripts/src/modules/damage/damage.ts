@@ -22,13 +22,6 @@ function AddDamage(not_use_dmgTable: DamageTable) {
     // =========================
     if (!victim.IsAlive()) return;
 
-    if (damage_property == DamageProperty.Attack && !not_use_dmgTable.sourceAbility) {
-        if (!attacker.base_attack_ability) {
-            print('报错,此单位没有基础攻击技能记录', attacker, attacker.GetUnitName());
-            return;
-        }
-        not_use_dmgTable.sourceAbility = attacker.base_attack_ability;
-    }
     // 合法性检测 打印
     // assert(not_use_dmgTable.attacker, '本次没有伤害攻击者!');
     // assert(not_use_dmgTable.damageType, '本次没有伤害类型!');
@@ -1252,12 +1245,13 @@ namespace DamageHelper {
         if (damageTable.damageType == DamageType.Magical) {
             damage_type = DamageTypes.MAGICAL;
         }
+
         ApplyDamage({
             attacker: damageTable.attacker,
             victim: damageTable.victim,
             damage: damageTable.true_damage,
             damage_type: damage_type,
-            ability: damageTable.sourceAbility,
+            ability: damageTable.sourceAbility ?? damageTable.attacker.base_attack_ability,
             damage_flags:
                 DamageFlag.HPLOSS +
                 DamageFlag.NO_SPELL_AMPLIFICATION +

@@ -26,7 +26,9 @@ interface CProjectileBaseData {
     /** 移动回调 */
     OnThink?: (position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
 }
-type SLProjectileID = number;
+type SLProjectileID = number & {
+    readonly __SLProjectileIDTag__: '__SLProjectileIDTag__';
+};
 /** 跟踪投射物数据 */
 interface CTrackingProjectileData extends CProjectileBaseData {
     /** 投射物目标 */

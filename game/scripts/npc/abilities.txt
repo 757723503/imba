@@ -17,11 +17,11 @@
 "special_bonus_unique_abaddon_2" "+30"
 }
 		}
-		"MaxLevel" "2"
-		"AbilityCooldown" "1 2 3 4"
-		"AbilityManaCost" "1 1 1 1"
+		"MaxLevel" "1"
+		"AbilityCooldown" "0"
+		"AbilityManaCost" "0"
 		"AbilityTextureName" "attr_damage"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN + DOTA_ABILITY_BEHAVIOR_PASSIVE "
 		"PlainKV" {
 "test" "this is test of plain kv"
 }

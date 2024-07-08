@@ -1,3 +1,4 @@
+_G.MEM = _G.MEM ?? require('./lib/MemoryReferenceInfo');
 import { CGameMode } from './GameMode';
 import { XNetTable } from './xnet-table';
 import { GameConfig } from './GameConfig';
@@ -25,7 +26,12 @@ declare global {
     type dispatcher_id = number & {
         readonly __tag__: 'dispatcher_id';
     };
+    interface MemoryReferenceInfo {
+        m_cMethods: Record<string, (this: void, ...args: any[]) => any>;
+    }
+    var MEM: MemoryReferenceInfo;
 }
+math.randomseed(Time());
 
 /**
  * 这个方法会在game_mode实体生成之后调用，且仅调用一次
