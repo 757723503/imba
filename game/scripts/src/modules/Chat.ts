@@ -35,7 +35,7 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                hero.AddNewModifier(hero, null, 'modifier_imba_stunned', {});
+                // hero.AddNewModifier(hero, null, 'modifier_imba_stunned', {});
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,
@@ -52,6 +52,31 @@ export class CChat {
                 //     damageProperty: DamageProperty.Ability,
                 //     damageType: DamageType.Physical,
                 // });
+                let time = 0;
+                Timers.CreateTimer(0, () => {
+                    const _all_projectile_id = CProjectileManager.GetTrackingProjectilesID(hero);
+                    if (_all_projectile_id && _all_projectile_id.length != 0) {
+                        for (const id of _all_projectile_id) {
+                            const pro_pos = CProjectileManager.GetTrackingProjectilePosition(id);
+                            const target_pos = GetGroundPosition(
+                                hero.GetAbsOrigin().__add(GetDirection(pro_pos, hero.GetAbsOrigin()).__mul(300)),
+                                null
+                            );
+                            const pro_speed = CProjectileManager.GetTrackingProjectileSpeed(id);
+                            const distance = GetDistance(pro_pos, hero.GetAbsOrigin());
+                            // if (distance < 300) {
+                            // CProjectileManager.SetTrackingProjectileSpeedOnFrame(id, -1500);
+                            // }
+                            CProjectileManager.SetTrackingProjectileOrigin(id, Vector(0, 0, 500));
+                        }
+                    }
+                    // CProjectileManager.ProjectileDodge(hero);
+
+                    time++;
+                    if (time < 60) {
+                        return FrameTime();
+                    }
+                });
                 break;
             case ChatCommand.da:
                 let cont = 0;
@@ -128,7 +153,7 @@ export class CChat {
                 });
                 break;
             case ChatCommand.hero:
-                DebugCreateUnit(player, DotaHero.nyx_assassin, DotaTeam.BADGUYS, false, (unit): void => {
+                DebugCreateUnit(player, DotaHero.drow_ranger, DotaTeam.BADGUYS, false, (unit): void => {
                     unit.AddItemByName(DotaItem.blade_mail);
                 });
                 break;

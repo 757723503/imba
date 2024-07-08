@@ -57,12 +57,14 @@ export class CEngineEvent {
             entity._accuracy_data_calls = [];
             entity._crits_data_calls = [];
             Timers.CreateTimer(FrameTime() * 5, () => {
-                if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') == false) {
-                    entity.base_attack_ability = entity.AddAbility('base_attack_ability');
+                //会引起内存泄露 ?
+                // if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') == false) {
+                // entity.base_attack_ability = entity.AddAbility('base_attack_ability');
+                // }
+                if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
+                    entity.AddNewModifier(entity, null, 'modifier_attack_data_miss', {});
                 }
-                if (entity.HasModifier != null && entity.HasModifier('modifier_attackdata_miss') == false) {
-                    entity.AddNewModifier(entity, null, 'modifier_attackdata_miss', {});
-                }
+                return null;
             });
         }
     }

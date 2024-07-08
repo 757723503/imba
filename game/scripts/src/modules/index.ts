@@ -17,7 +17,6 @@ declare global {
         // 声明所有的GameRules模块，这个主要是为了方便其他地方的引用（保证单例模式）
         XNetTable: XNetTable;
         CGameMode: CGameMode;
-        CProjectileManager: CProjectileManager;
     }
     interface ModifierHealEvent extends ModifierUnitEvent {
         gain: number;
@@ -48,7 +47,7 @@ export function ActivateModules() {
         new CDispatcher();
         new CFilter();
         new CEngineEvent();
-        GameRules.CProjectileManager = new CProjectileManager();
+        globalThis.CProjectileManager = new CProjectileManager();
         globalThis.CAttackData = new CAttackDataManager();
         globalThis.Random = new PseudoRandom();
     }

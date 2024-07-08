@@ -231,7 +231,7 @@ export class CAttackDataManager {
         if (!use_projectile) {
             _fun_attack_effect(attacker, target, use_effect);
         } else {
-            GameRules.CProjectileManager.CreateTrackingProjectile({
+            CProjectileManager.CreateTrackingProjectile({
                 target: target,
                 moveSpeed: attack_data.projectile_speed ?? attacker.GetProjectileSpeed(),
                 source: attacker,

@@ -44,6 +44,34 @@ export class CProjectileManager {
         return unit.GetAttachmentOrigin(unit.ScriptLookupAttachment(SLProjectileAttachment.HITLOCATION));
     }
 
+    GetTrackingProjectilesID(target: CDOTA_BaseNPC): SLProjectileID[] {
+        return this._projectile_target_map[target.GetEntityIndex()];
+    }
+
+    /** 获得跟踪投射物的速度 */
+    GetTrackingProjectileSpeed(ProjectileID: SLProjectileID): number {
+        if (!this.IsValidProjectile(ProjectileID)) return;
+        return this._projectile_map[ProjectileID].data.moveSpeed;
+    }
+
+    /** 设置这一帧跟踪投射物的速度 */
+    SetTrackingProjectileSpeedOnFrame(ProjectileID: SLProjectileID, speed: number): void {
+        if (!this.IsValidProjectile(ProjectileID)) return;
+        this._projectile_map[ProjectileID].cover_speed = speed;
+    }
+
+    /** 获得原始投射物位置 */
+    GetTrackingProjectilePosition(ProjectileID: SLProjectileID): Vector {
+        if (!this.IsValidProjectile(ProjectileID)) return;
+        return this._projectile_map[ProjectileID].now_pos;
+    }
+
+    /** 覆盖跟踪投射物的现在位置 */
+    SetTrackingProjectileOrigin(ProjectileID: SLProjectileID, origin: Vector): void {
+        if (!this.IsValidProjectile(ProjectileID)) return;
+        this._projectile_map[ProjectileID].cover_pos = origin;
+    }
+
     /** 创建跟踪投射物 */
     CreateTrackingProjectile(data: CTrackingProjectileData): SLProjectileID {
         if (!IsValidEntity(data.target)) return;
@@ -58,7 +86,7 @@ export class CProjectileManager {
             : dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(data.sourceAttachment));
         //起始位置 优先使用传入的起始位置  其次使用附着位置  最后使用英雄位置
         const start_position = data.start_position ?? attach_pos ?? dota_hero.GetAbsOrigin();
-        const pfx = this.TrackingPlayerEffect(data, start_position);
+        const pfx = this.TrackingPlayerEffect(data, start_position, target_pos);
         // const hull_radius = math.max(dota_target.GetHullRadius(), 50) ?? 50;
         const hull_radius = 30;
         this._projectile_map[ProjectileID] = {
@@ -89,22 +117,23 @@ export class CProjectileManager {
         this._RemoveProjectile(ProjectileID);
     }
 
-    protected TrackingPlayerEffect(data: CTrackingProjectileData, start_position: Vector): ParticleID {
+    protected TrackingPlayerEffect(data: CTrackingProjectileData, start_position: Vector, end_position: Vector): ParticleID {
         if (!data.effectName) return;
         const pfx = ParticleManager.CreateParticle(data.effectName, ParticleAttachment.CUSTOMORIGIN, null);
         const dota_unit = data.target;
-        const end_pos = dota_unit.GetAbsOrigin();
+        const end_pos = end_position;
         ParticleManager.SetParticleControl(pfx, 0, start_position);
         ParticleManager.SetParticleControl(pfx, 1, end_pos);
         ParticleManager.SetParticleControl(pfx, 2, Vector(data.moveSpeed, 0, 0));
         ParticleManager.SetParticleControl(pfx, 9, start_position);
+        ParticleManager.SetParticleShouldCheckFoW(pfx, false);
         return pfx;
     }
 
     /** 躲避投射物 */
     ProjectileDodge(target: CDOTA_BaseNPC): void {
         if (!IsValidEntity(target)) return;
-        const ProjectileIDs = this._projectile_target_map[target.GetEntityIndex()];
+        const ProjectileIDs = this.GetTrackingProjectilesID(target);
         if (!ProjectileIDs) {
             // SLWarning('没有投射物可以躲避');
             return;
@@ -183,22 +212,27 @@ export class CProjectileManager {
                 ? keys.last_target_pos
                 : this.GetUnitHitAttachment(dota_target)
             : keys.last_target_pos;
+        const speed = keys.cover_speed ?? data.moveSpeed;
         const direction = target_pos.__sub(keys.now_pos).Normalized();
-        const new_pos = keys.now_pos.__add(direction.__mul(data.moveSpeed * FrameTime()));
+        const new_pos = keys.cover_pos ?? keys.now_pos.__add(direction.__mul(speed * FrameTime()));
         // 判断距离或者两点是否相交 用于避免速度太快引起鬼畜投射物+
         if (
             new_pos.__sub(target_pos).Length2D() < keys.hull_radius ||
             (keys.need_intersect && this._isCapsuleIntersect(keys.last_pos, keys.now_pos, 20, target_pos, keys.last_target_pos, keys.hull_radius))
         ) {
             //判断是否击中 如有需要可以和线性投射物一样 触发每个碰到单位的回调
-            if (data.OnHitUnit && !keys.is_dodge) {
+            if (data.OnHitUnit && !keys.is_dodge && !(dota_target.IsInvisible() && !data.source.CanEntityBeSeenByMyTeam(dota_target))) {
                 data.OnHitUnit(data.target, new_pos, data.extraData, ProjectileID);
             }
             this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.HIT;
             this._RemoveProjectile(ProjectileID);
         } else {
             //投射物正在移动 更新特效和数据
-            keys.effect && ParticleManager.SetParticleControl(keys.effect, 1, new_pos);
+            if (keys.effect) {
+                ParticleManager.SetParticleControl(keys.effect, 1, new_pos);
+                // ParticleManager.SetParticleControl(keys.effect, 2, Vector(speed, 0, 0));
+                // DebugDrawCircle(new_pos, Vector(255, 0, 0), 50, 5, true, 5);
+            }
             this._projectile_map[ProjectileID] = {
                 data: data,
                 effect: keys.effect,
@@ -216,6 +250,8 @@ export class CProjectileManager {
             if (data.OnThink) {
                 data.OnThink(new_pos, data.extraData, ProjectileID);
             }
+            keys.cover_pos = undefined;
+            keys.cover_speed = undefined;
         }
     }
 

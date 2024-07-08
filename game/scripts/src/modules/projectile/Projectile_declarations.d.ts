@@ -92,6 +92,10 @@ interface ProjectileMoveData {
     hull_radius?: number;
     /** 需要叉乘计算 */
     need_intersect?: boolean;
+    /** 投射物覆盖位置  有这个数据会在那一帧使用此位置 后面的位置也会发生改动*/
+    cover_pos?: Vector;
+    /** 覆盖投射物速度 有这个数据会在那一帧使用此速度 后面的位置也会发生改动 */
+    cover_speed?: number;
 }
 
 declare const enum SLProjectileType {

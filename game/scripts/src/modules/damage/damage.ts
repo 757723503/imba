@@ -1251,7 +1251,7 @@ namespace DamageHelper {
             victim: damageTable.victim,
             damage: damageTable.true_damage,
             damage_type: damage_type,
-            ability: damageTable.sourceAbility ?? damageTable.attacker.base_attack_ability,
+            ability: damageTable.sourceAbility ?? damageTable.attacker.FindAbilityByName('base_attack_ability'),
             damage_flags:
                 DamageFlag.HPLOSS +
                 DamageFlag.NO_SPELL_AMPLIFICATION +
@@ -1336,12 +1336,6 @@ declare const enum DamageFlags {
 
     /** 这次伤害跳过分裂 溅射等 */
     DisableCelled = 256,
-
-    // @废弃
-    // /** 反弹标记 除了原始伤害广播其他没啥用?或者说就没用 */
-    // Reflect = 128,
-    // /** 可以被格挡的技能物理伤害 */
-    // BlockAblityPhysicalDamage = 512,
 }
 
 interface DamageTable {
