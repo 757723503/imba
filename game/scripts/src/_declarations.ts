@@ -39,6 +39,16 @@ declare global {
         _all_accuracy_chance: number;
         /**储存所有必中数据和回调 */
         _accuracy_data_calls: AccuracyData[];
+
+        /** 物理伤害格挡 */
+        physic_damage_blocks: CBlock_Physic[];
+        /** 魔法伤害格挡 */
+        magic_damage_blocks: CBlock_Magic[];
+
+        /** 物理伤害格挡 */
+        GetDamageBlocks_Physic(): CBlock_Physic[];
+        /** 魔法伤害格挡 */
+        GetDamageBlocks_Magic(): CBlock_Magic[];
     }
 
     interface CDOTA_BaseNPC_Hero {}
@@ -75,6 +85,7 @@ declare global {
         // report_max?: boolean;
     }
 }
+
 declare module './utils/dota_ts_adapter' {
     interface BaseModifier {
         /**

@@ -37,6 +37,8 @@ interface CTrackingProjectileData extends CProjectileBaseData {
     dodgeable?: boolean;
     /** 躲避后回调 */
     OnDodge?: (unit: CDOTA_BaseNPC, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
+    /** 标记投射物是否是攻击 默认false 业务禁止调用*/
+    _is_attack?: boolean;
 }
 /**线性投射物数据 */
 interface CLinearProjectileData extends CProjectileBaseData {

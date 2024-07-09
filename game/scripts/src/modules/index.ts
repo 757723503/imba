@@ -12,6 +12,7 @@ import '../common_modifier/index';
 import '../base_attack_ability/base_attack_ability';
 import { CAttackDataManager } from './attack/AttackManager';
 import { PseudoRandom } from './lib/PseudoRandom';
+import { CIllusionManager } from './IllusionManager';
 declare global {
     interface CDOTAGameRules {
         // 声明所有的GameRules模块，这个主要是为了方便其他地方的引用（保证单例模式）
@@ -48,6 +49,7 @@ export function ActivateModules() {
         new CFilter();
         new CEngineEvent();
         globalThis.CProjectileManager = new CProjectileManager();
+        globalThis.CIllusionManager = new CIllusionManager();
         globalThis.CAttackData = new CAttackDataManager();
         globalThis.Random = new PseudoRandom();
     }

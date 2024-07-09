@@ -47,6 +47,7 @@ export class CEngineEvent {
     private _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): void {
         if (data.entindex == null || data.entindex <= 0) return;
         const entity = EntIndexToHScript(data.entindex) as CDOTA_BaseNPC_Hero;
+        // print(entity?.GetUnitName(), entity?.GetClassname(), entity?.IsNPC(), entity?.IsBaseNPC(), entity?.IsDOTANPC());
         if (entity.IsBaseNPC()) {
             // 初始化自定义属性
             entity._all_evasion_chance = 0;
@@ -56,6 +57,9 @@ export class CEngineEvent {
             entity._all_accuracy_chance = 0;
             entity._accuracy_data_calls = [];
             entity._crits_data_calls = [];
+            entity.physic_damage_blocks = [];
+            entity.magic_damage_blocks = [];
+
             Timers.CreateTimer(FrameTime() * 5, () => {
                 //会引起内存泄露 ?
                 // if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') == false) {
@@ -64,6 +68,7 @@ export class CEngineEvent {
                 if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
                     entity.AddNewModifier(entity, null, 'modifier_attack_data_miss', {});
                 }
+
                 return null;
             });
         }

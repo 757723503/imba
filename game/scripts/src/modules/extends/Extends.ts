@@ -55,4 +55,14 @@ CDOTA_BaseNPC.IsUnit = function (this: CDOTA_BaseNPC): boolean {
     return this.IsHero() || this.IsCreep() || this.IsBoss();
 };
 
+if (!CDOTA_BaseNPC.GetDamageBlocks_Physic) {
+    CDOTA_BaseNPC.GetDamageBlocks_Physic = function (this: CDOTA_BaseNPC): CBlock_Physic[] {
+        return this.physic_damage_blocks;
+    };
+}
+if (!CDOTA_BaseNPC.GetDamageBlocks_Magic) {
+    CDOTA_BaseNPC.GetDamageBlocks_Magic = function (this: CDOTA_BaseNPC): CBlock_Magic[] {
+        return this.magic_damage_blocks;
+    };
+}
 export {};

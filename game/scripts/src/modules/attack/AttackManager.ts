@@ -11,15 +11,17 @@ export class CAttackDataManager {
 
     //实际是使用OnAttackRecord 充当OnAttackStart
     public OnAttackStart(event: ModifierAttackEvent): void {
-        print('CAttack OnAttackRecord', event.record);
+        // print('CAttack OnAttackRecord', event.record);
         const target = event.target;
         const attacker = event.attacker;
+        // DebugPrint('CAttack OnAttackRecord', attacker.GetAverageTrueAttackDamage(null));
+        // DebugPrint('CAttack GetAttackDamage', attacker.GetAttackDamage());
         const crit_obj = this._CheckCritOnAttack(attacker, target);
         // 攻击开始就算伤害了
         const dmgTable: DamageTable = {
             attacker: attacker,
             victim: target,
-            damage: attacker.GetAverageTrueAttackDamage(target),
+            damage: attacker.GetAverageTrueAttackDamage(null),
             damageProperty: DamageProperty.Attack,
             damageType: DamageType.Physical,
             damageFlags: crit_obj ? DamageFlags.AttackCrit : undefined,
@@ -41,7 +43,7 @@ export class CAttackDataManager {
     }
 
     public OnAttack(event: ModifierAttackEvent): void {
-        print('CAttack OnAttack', event.record);
+        // print('CAttack OnAttack1', event.record);
         const attack_data = this.attack_data.get(event.record);
         CAttackData.PerformAttack(event.attacker, event.target, {
             use_projectile: event.attacker.IsRangedAttacker(),
@@ -52,7 +54,7 @@ export class CAttackDataManager {
     }
 
     public OnAttackFinished(event: ModifierAttackEvent): void {
-        print('CAttack OnAttackFinished');
+        // print('CAttack OnAttackFinished', event.record);
         //删除记录数据
         this.attack_data.delete(event.record);
         // event.attacker.FadeGesture(GameActivity.DOTA_ATTACK_EVENT);
@@ -64,7 +66,7 @@ export class CAttackDataManager {
     // }
 
     public OnAttackCancelled(event: ModifierAttackEvent): void {
-        print('CAttack OnAttackCancelled');
+        // print('CAttack OnAttackCancelled', event.record);
         //删除记录数据
         this.attack_data.delete(event.record);
         // event.attacker.FadeGesture(GameActivity.DOTA_ATTACK_EVENT);
@@ -150,7 +152,7 @@ export class CAttackDataManager {
         // 攻击发射时，计算暴击、伤害、丢失
 
         // 获取伤害
-        const attack_damage = attacker.GetAverageTrueAttackDamage(target);
+        const attack_damage = attacker.GetAverageTrueAttackDamage(null);
         const damage_before: number = attack_damage;
         let illusion_cirt_show: number;
         // 幻象攻击修正
@@ -203,9 +205,11 @@ export class CAttackDataManager {
 
         const _fun_attack_effect = (attacker: CDOTA_BaseNPC, target: CDOTA_BaseNPC, use_effect?: boolean): void => {
             if (!this._CheckMissOnAttackLanded(attacker, target, never_miss || attack_data.never_miss)) {
-                print('CAttack OnAttackLanded', extra_pamams.record);
-                CDispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), attack_data);
-                CDispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), attack_data);
+                // print('CAttack OnAttackLanded', extra_pamams.record[0]);
+                if (use_effect) {
+                    CDispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), attack_data);
+                    CDispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), attack_data);
+                }
                 if (attack_data.damageTable.crit_obj?.on_crit) {
                     attack_data.damageTable.crit_obj.on_crit(attack_data.damageTable);
                 }
@@ -236,6 +240,7 @@ export class CAttackDataManager {
                 moveSpeed: attack_data.projectile_speed ?? attacker.GetProjectileSpeed(),
                 source: attacker,
                 effectName: attack_data.projectile ?? attacker.GetRangedProjectileName(),
+                _is_attack: true,
                 OnHitUnit: () => {
                     _fun_attack_effect(attacker, target, use_effect);
                 },
@@ -267,19 +272,22 @@ export class modifier_attack_data_thinker extends BaseModifier {
     }
 
     OnAttackRecord(event: ModifierAttackEvent): void {
-        event.fail_type = AttackRecord.FAIL_TERRAIN_MISS;
+        if (!IsServer()) return;
         CAttackData.OnAttackStart(event);
     }
 
     OnAttack(event: ModifierAttackEvent): void {
+        if (!IsServer()) return;
         CAttackData.OnAttack(event);
     }
 
     OnAttackCancelled(event: ModifierAttackEvent): void {
+        if (!IsServer()) return;
         CAttackData.OnAttackCancelled(event);
     }
 
     OnAttackFinished(event: ModifierAttackEvent): void {
+        if (!IsServer()) return;
         CAttackData.OnAttackFinished(event);
     }
 }

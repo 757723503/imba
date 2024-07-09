@@ -342,13 +342,7 @@ namespace DamageHelper {
             if (record_list) {
                 DamageHelper.AddRecord(
                     record_list,
-                    string.format(
-                        '护甲缩放系数 %.2f, 剩余物理伤害 %.2f',
-                        // origin_dmg_table.attacker.GetAttackType(),
-                        // origin_dmg_table.victim.GetDefenctType(),
-                        defence_type_factor,
-                        dmgTable.attack_physical_damage
-                    )
+                    string.format('护甲缩放系数 %.2f, 剩余物理伤害 %.2f', defence_type_factor, dmgTable.attack_physical_damage)
                 );
             }
             // 再计算dota护甲系数缩放
@@ -845,11 +839,12 @@ namespace DamageHelper {
                     all: false,
                 };
                 //     纯粹伤害无效化 伤害无视技能减益免疫时 不触发
-                if (!origin_dmg_table.ignoreMagicImmune && isNormalTarget && dmgTable.pure_damage > 0) {
+                if (isNormalTarget && dmgTable.pure_damage > 0) {
                     const ignore_pct_tb = { origin_pure: dmgTable.pure_damage, ignore: false };
                     // 纯粹伤害无效化 只有受击者
                     CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE', victim_handle, ignore_pct_tb);
-                    ignore_pct.pure = ignore_pct_tb.ignore;
+                    // 减益免疫时 无视  纯粹伤害  除非是无视减益免疫
+                    ignore_pct.pure = !origin_dmg_table.ignoreMagicImmune && ignore_pct_tb.ignore;
                 }
                 if (!ignore_pct.pure) {
                     //     - 全类型伤害无效化
@@ -858,10 +853,13 @@ namespace DamageHelper {
                         // 全类型伤害无效化 只有受击者
                         CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
                         ignore_pct.all = ignore_pct_tb.ignore;
+                        if (ignore_pct.all == true) {
+                            ignore_pct.pure = true;
+                        }
                     }
                 }
                 // 如果纯粹
-                if (ignore_pct.all) {
+                if (ignore_pct.pure) {
                     dmgTable.pure_damage = 0;
                     DamageHelper.AddRecord(record_list, '纯粹伤害无效化');
                 }
@@ -1079,66 +1077,61 @@ namespace DamageHelper {
 
     /** 暴击红字 */
     export function CritFloatingText(target: CDOTA_BaseNPC, damage: number) {
-        // FloatingTextManager.CreateCritText(damage, position);
         PopupCriticalDamage(target, damage);
     }
 
     /** 定值物理伤害格挡。返回格挡了的伤害 */
     function _CalDamageBlockOnPhysicDamaged(damageTable: FixedDamageTable): number {
-        // const { attacker, victim } = damageTable;
-        // // 判断格挡禁用
-        // if (victim.IsBlockDisabled()) return 0;
-        // // 同时触发时，最高的生效
-        // // const block_cache: Record<string, number> = {};
-        // let trigger_block: SLBlock_Physic;
-        // let block_value: number;
-        // // 传递的伤害表，修改了值也无效！ 这里不要用deepcopy,否则表内的对象会变成一个新的。
-        // const event_table: FixedDamageTable = Object.assign({}, damageTable);
-        // // 多个格挡来源会计算每一个，但是格挡值只取一个最高值
-        // for (const block of victim.GetDamageBlocks_Physic()) {
-        //     const chance = block.get_block_chance(event_table);
-        //     if (RollPercentage(chance)) {
-        //         // const attack_type = victim.GetAttackCapability();
-        //         const value = block.get_block_value(event_table);
-        //         // const value = attack_type == AttackCapability.MELEE ? block.value_melee : block.value_range;
-        //         block_value = block_value ?? value;
-        //         block_value = block_value < value ? value : block_value;
-        //         trigger_block = block_value < value ? block : trigger_block ?? block;
-        //     }
-        // }
-        // if (block_value) {
-        //     // 回调
-        //     if (trigger_block && trigger_block.on_block) {
-        //         trigger_block.on_block(event_table);
-        //     }
-        //     return block_value;
-        // } else {
-        return 0;
-        // }
+        const { attacker, victim } = damageTable;
+        // 判断格挡禁用
+        if (victim.IsBlockDisabled()) return 0;
+        // 同时触发时，最高的生效
+        let trigger_block: CBlock_Physic;
+        let block_value: number;
+        // 传递的伤害表，修改了值也无效！ 这里不要用deepcopy,否则表内的对象会变成一个新的。
+        const event_table: FixedDamageTable = Object.assign({}, damageTable);
+        // 多个格挡来源会计算每一个，但是格挡值只取一个最高值
+        for (const block of victim.GetDamageBlocks_Physic()) {
+            const chance = block.get_block_chance(event_table);
+            if (Random.RollPercentage(chance, victim, 'BlockOnPhysic')) {
+                const value = block.get_block_value(event_table);
+                block_value = block_value ?? value;
+                block_value = block_value < value ? value : block_value;
+                trigger_block = block_value < value ? block : trigger_block ?? block;
+            }
+        }
+        if (block_value) {
+            if (trigger_block && trigger_block.on_block) {
+                trigger_block.on_block(event_table);
+            }
+            return block_value;
+        } else {
+            return 0;
+        }
     }
 
     /** 魔法伤害定值格挡 */
     function _CalDamageBlockOnMagicDamaged(original_damage: number, victim: CDOTA_BaseNPC): number {
-        // let block_value: number;
-        // let trigger_block: SLBlock_Magic;
-        // for (const block of victim.GetDamageBlocks_Magic()) {
-        //     const damage_min = block.damage_min ?? 0;
-        //     if (original_damage < damage_min) {
-        //         continue;
-        //     }
-        //     block_value = block_value ?? block.value;
-        //     block_value = block_value < block.value ? block.value : block_value;
-        //     trigger_block = block_value < block.value ? block : trigger_block ?? block;
-        // }
-        // if (block_value) {
-        //     // 回调
-        //     if (trigger_block && trigger_block.on_block) {
-        //         trigger_block.on_block(trigger_block);
-        //     }
-        //     return block_value;
-        // } else {
-        return 0;
-        // }
+        let block_value: number;
+        let trigger_block: CBlock_Magic;
+        for (const block of victim.GetDamageBlocks_Magic()) {
+            const damage_min = block.damage_min ?? 0;
+            if (original_damage < damage_min) {
+                continue;
+            }
+            block_value = block_value ?? block.value;
+            block_value = block_value < block.value ? block.value : block_value;
+            trigger_block = block_value < block.value ? block : trigger_block ?? block;
+        }
+        if (block_value) {
+            // 回调
+            if (trigger_block && trigger_block.on_block) {
+                trigger_block.on_block(trigger_block);
+            }
+            return block_value;
+        } else {
+            return 0;
+        }
     }
 
     /** 能量护盾吸收伤害 */
@@ -1396,6 +1389,31 @@ declare interface AccuracyData {
     accuracy_chance: number;
     /** 触发必中的回调 */
     // on_evasion?: (evasion_data: UnitEventAttackDamageData) => void;
+}
+
+declare interface CBlock_Physic {
+    /** 多个同源格挡若同时生效，只取最高值 */
+    // 暂定所有物理格挡都是同源
+    // source_name: string;
+    /** 格挡拥有者受击时计算格挡概率 `伤害表内的数值修改无效` */
+    get_block_chance: (damageTable: FixedDamageTable) => number;
+    /** 格挡拥有者受击时计算数值 `伤害表内的数值修改无效` */
+    get_block_value: (damageTable: FixedDamageTable) => number;
+    /** 回调。可自行自定义参数 `伤害表内的数值修改无效` */
+    on_block?: (damageTable: FixedDamageTable) => void;
+}
+
+/** 魔法伤害格挡 */
+declare interface CBlock_Magic {
+    // /** 多个同源格挡若同时生效，只取最高值 */
+    // source_name: string;
+    // /** 格挡概率 */
+    // chance: number;
+    /** 格挡数值 */
+    value: number;
+    /** 触发格挡最小伤害 */
+    damage_min?: number;
+    on_block?: (blocl: CBlock_Magic) => void;
 }
 declare interface UnitEventAttackDamageData {
     damageTable: DamageTable;

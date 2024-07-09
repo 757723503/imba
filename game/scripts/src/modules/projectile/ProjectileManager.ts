@@ -81,8 +81,12 @@ export class CProjectileManager {
         const dota_hero = data.source;
         const dota_target = data.target;
         const target_pos = this.GetUnitHitAttachment(dota_target) ?? dota_target.GetAbsOrigin();
+        let attachment = SLProjectileAttachment.ATTACK_1;
+        if (data._is_attack) {
+            attachment = dota_hero.GetSequence().includes('2') ? SLProjectileAttachment.ATTACK_2 : SLProjectileAttachment.ATTACK_1;
+        }
         const attach_pos = !data.sourceAttachment
-            ? dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(SLProjectileAttachment.ATTACK_1))
+            ? dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(attachment))
             : dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(data.sourceAttachment));
         //起始位置 优先使用传入的起始位置  其次使用附着位置  最后使用英雄位置
         const start_position = data.start_position ?? attach_pos ?? dota_hero.GetAbsOrigin();
@@ -144,7 +148,7 @@ export class CProjectileManager {
             //如果投射物是可以被躲避的
             if (data.dodgeable == false) return;
             if (data.OnDodge) {
-                data.OnDodge(data.target, data.extraData, ProjectileID);
+                CSafelyCall(() => data.OnDodge(data.target, data.extraData, ProjectileID));
             }
             //标识投射物被躲避
             this._projectile_map[ProjectileID].is_dodge = true;
@@ -185,7 +189,7 @@ export class CProjectileManager {
                     this._calTrackingThinkaHit(ProjectileID, data);
                 }
             }
-            const size = Object.keys(this._projectile_target_map).length;
+            // const size = Object.keys(this._projectile_target_map).length;
             // print('ID' + this._all_projectile_id.length, 'this._projectile_target_map' + size);
             return FrameTime();
         });
@@ -222,7 +226,7 @@ export class CProjectileManager {
         ) {
             //判断是否击中 如有需要可以和线性投射物一样 触发每个碰到单位的回调
             if (data.OnHitUnit && !keys.is_dodge && !(dota_target.IsInvisible() && !data.source.CanEntityBeSeenByMyTeam(dota_target))) {
-                data.OnHitUnit(data.target, new_pos, data.extraData, ProjectileID);
+                CSafelyCall(() => data.OnHitUnit(data.target, new_pos, data.extraData, ProjectileID));
             }
             this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.HIT;
             this._RemoveProjectile(ProjectileID);
@@ -230,7 +234,7 @@ export class CProjectileManager {
             //投射物正在移动 更新特效和数据
             if (keys.effect) {
                 ParticleManager.SetParticleControl(keys.effect, 1, new_pos);
-                // ParticleManager.SetParticleControl(keys.effect, 2, Vector(speed, 0, 0));
+                ParticleManager.SetParticleControl(keys.effect, 2, Vector(math.abs(speed), 0, 0));
                 // DebugDrawCircle(new_pos, Vector(255, 0, 0), 50, 5, true, 5);
             }
             this._projectile_map[ProjectileID] = {
@@ -248,7 +252,7 @@ export class CProjectileManager {
                 need_intersect: keys.need_intersect,
             };
             if (data.OnThink) {
-                data.OnThink(new_pos, data.extraData, ProjectileID);
+                CSafelyCall(() => data.OnThink(new_pos, data.extraData, ProjectileID));
             }
             keys.cover_pos = undefined;
             keys.cover_speed = undefined;
@@ -329,6 +333,7 @@ export class CProjectileManager {
         const pfx = ParticleManager.CreateParticle(data.effectName, ParticleAttachment.WORLDORIGIN, null);
         ParticleManager.SetParticleControl(pfx, 0, start_position);
         ParticleManager.SetParticleControl(pfx, 1, direction.__mul(speed));
+        ParticleManager.SetParticleShouldCheckFoW(pfx, false);
         return pfx;
     }
 
@@ -355,7 +360,7 @@ export class CProjectileManager {
         //判断是否到达终点
         if (now_distance >= max_distance) {
             if (data.OnFinish) {
-                data.OnFinish(keys.now_pos, data.extraData, ProjectileID);
+                CSafelyCall(() => data.OnFinish(keys.now_pos, data.extraData, ProjectileID));
             }
             this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.FINISH;
             this._RemoveProjectile(ProjectileID);
@@ -385,12 +390,12 @@ export class CProjectileManager {
             for (const target of targets) {
                 if (data.OnHitUnit) {
                     const sl_unit_entity = target;
-                    data.OnHitUnit(sl_unit_entity, keys.now_pos, data.extraData, ProjectileID);
+                    CSafelyCall(() => data.OnHitUnit(sl_unit_entity, keys.now_pos, data.extraData, ProjectileID));
                 }
 
                 if (data.removeOnRadiusHit) {
                     if (data.OnFinish) {
-                        data.OnFinish(keys.now_pos, data.extraData, ProjectileID);
+                        CSafelyCall(() => data.OnFinish(keys.now_pos, data.extraData, ProjectileID));
                     }
                     this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.HIT;
                     this._RemoveProjectile(ProjectileID);
@@ -398,7 +403,7 @@ export class CProjectileManager {
                 }
             }
             if (data.OnThink) {
-                data.OnThink(new_pos, data.extraData, ProjectileID);
+                CSafelyCall(() => data.OnThink(new_pos, data.extraData, ProjectileID));
             }
         }
     }

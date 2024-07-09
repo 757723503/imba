@@ -15,8 +15,6 @@ declare interface LocalEventDeclarations {
      * - 攻击特效伤害 只有攻击者,攻击伤害能接收 物理 + 魔法, 并回传
      * - PS: DamageTable;
      * - 可修改:
-     * - addedAtkPhysicalDamage // 额外增加物理攻击伤害
-     * - addedAtkMagicalDamage // 额外增加魔法攻击伤害
      */
     DAMAGE_FIXED_ATTACKER_ATK_DAMAGE: FixedDamageTable;
     /** 攻击分裂的伤害传递 只有攻击者,攻击伤害能接收, 只传递受害者和物理攻击伤害  */
@@ -36,10 +34,6 @@ declare interface LocalEventDeclarations {
         block_pct: number;
         origin_table: FixedDamageTable;
     };
-    /** 魔法伤害格挡常量(如果魔法伤害>0)(受击者英雄专属)(只通知受击者) */
-    // DAMAGE_FIXED_VICITIM_MAGIC_DAMAGE_BLOCK: DamageTable;
-    /** 物理伤害格挡常量(如果物理伤害>0)(受击者英雄专属)(只通知受击者) */
-    // DAMAGE_FIXED_VICITIM_PHYSICAL_DAMAGE_BLOCK: DamageTable;
     /** 物理伤害无效化 只有受击者 */
     DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE: { origin_physical: number; ignore: boolean };
     /** 魔法伤害无效化 只有受击者 */
@@ -139,17 +133,13 @@ declare interface LocalEventDeclarations {
     ON_ATTACK_LANDED_TARGET: UnitEventAttackDamageData;
 
     /** 攻击前摇前  触发者是受害者 */
-    //  OnAttackStart_Target = 'OnAttackStart_Target',
     ON_ATTACK_START_TARGET: UnitEventAttackDamageData;
     /** 攻击前摇前  触发者是 攻击者 */
-    //  OnAttackStart_Attacker = 'OnAttackStart_Attacker',
     ON_ATTACK_START_ATTACKER: UnitEventAttackDamageData;
 
     UNIT_DEATH: DamageTable;
     UNIT_HERO_DEATH: DamageTable;
     UNIT_BUILDING_DEATH: DamageTable;
-
-    // OnAttackFail_Both
 
     ON_ATTACK_FAIL_BOTH: UnitEventAttackDamageData;
 }
