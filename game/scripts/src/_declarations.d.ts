@@ -1,7 +1,4 @@
 declare global {
-    interface CDOTAGameRules {
-        CDispatcher: CDispatcher;
-    }
     interface CDOTA_BaseNPC {
         AddNewModifier(
             caster: CDOTA_BaseNPC | undefined,
@@ -85,7 +82,23 @@ declare global {
         // report_max?: boolean;
     }
 }
-
+declare interface ModifierHealEvent extends ModifierUnitEvent {
+    gain: number;
+    inflictor?: CDOTABaseAbility;
+}
+declare type ModifierParamData<T> = T extends string | number
+    ? T
+    : T extends boolean
+      ? 0 | 1
+      : T extends Function
+        ? undefined
+        : T extends []
+          ? undefined
+          : T extends object
+            ? {
+                  [K in keyof T]: ModifierParamData<T[K]>;
+              }
+            : never;
 declare module './utils/dota_ts_adapter' {
     interface BaseModifier {
         /**

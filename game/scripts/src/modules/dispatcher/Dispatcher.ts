@@ -1,5 +1,10 @@
+import { reloadable } from '../../utils/tstl-utils';
+// declare global {
+//     var CDispatcher: CDispatcher;
+// }
+
 @reloadable
-class CDispatcher {
+export class CDispatcher {
     private static id: number = 0; // 实例变量，用于生成唯一的回调函数ID
     private static id_callBack: Map<dispatcher_id, (params: any) => void> = new Map(); // 实例变量，存储回调函数
     private static tag_entIdxs_ids: Map<string, Map<EntityIndex, Set<dispatcher_id>>> = new Map(); // 实例变量，存储事件与实体索引和回调函数ID的映射
@@ -114,4 +119,4 @@ class CDispatcher {
         }
     }
 }
-type LocalEventCallBack<TName extends keyof LocalEventDeclarations> = (event: LocalEventDeclarations[TName]) => void;
+globalThis.CDispatcher = CDispatcher;

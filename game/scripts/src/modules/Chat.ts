@@ -1,3 +1,4 @@
+import { reloadable } from '../utils/tstl-utils';
 enum ChatCommand {
     r = 'r',
     rs = 'rs',
@@ -37,7 +38,7 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                // hero.AddNewModifier(hero, null, 'modifier_imba_stunned', {});
+                hero.AddNewModifier(hero, null, 'modifier_imba_stunned', { duration: 5 });
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,
@@ -167,16 +168,21 @@ export class CChat {
                 MEM.m_cMethods.DumpMemorySnapshot(null, null, -1);
                 break;
             case ChatCommand.in:
-                // const ill = CIllusionManager.CreateIllusions(hero, hero, { duration: 5 }, 1, 100, true, true);
+                const ill = CIllusionManager.CreateIllusions(hero, hero, { duration: 5 }, 1, 100, true, true);
                 let time1 = 0;
                 Timers.CreateTimer(0, () => {
-                    const ill = CIllusionManager.CreateIllusions(hero, hero, { duration: 0.2 }, 5, 100, true, true);
-                    // for (const illusion of ill) {
-                    //     DebugPrint(illusion?.IsNull(), IsValidEntity(illusion));
-                    // }
+                    // const ill = CIllusionManager.CreateIllusions(hero, hero, { duration: 0.2 }, 5, 100, true, true);
+                    for (const illusion of ill) {
+                        print(ill);
+                        DebugPrint(illusion?.IsNull(), IsValidEntity(illusion));
+                    }
                     time1 += FrameTime();
-                    if (time1 < 50) {
+                    if (time1 < 10) {
                         return FrameTime();
+                    }
+                    for (const illusion of ill) {
+                        illusion.RespawnUnit();
+                        illusion.AddNewModifier(illusion, null, 'modifier_illusion', { duration: 5 });
                     }
                 });
                 break;

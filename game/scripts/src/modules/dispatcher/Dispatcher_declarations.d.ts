@@ -1,3 +1,5 @@
+type LocalEventCallBack<TName extends keyof LocalEventDeclarations> = (event: LocalEventDeclarations[TName]) => void;
+
 declare const enum ModifierFunctions {
     /**
      * 原始伤害结算事件 , 事件名 DamageEvent_OriginDamage

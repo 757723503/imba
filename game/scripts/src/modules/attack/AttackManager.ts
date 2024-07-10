@@ -1,4 +1,6 @@
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
+import { reloadable } from '../../utils/tstl-utils';
+import { CDispatcher } from '../dispatcher/Dispatcher';
 @reloadable
 export class CAttackDataManager {
     attack_data: Map<number, UnitEventAttackDamageData> = new Map<number, UnitEventAttackDamageData>();

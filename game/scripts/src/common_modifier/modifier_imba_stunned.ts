@@ -1,6 +1,7 @@
+import { CustomBaseModifier } from '../modules/custom_base_modifier';
 import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
 @registerModifier()
-export class modifier_imba_stunned extends BaseModifier {
+export class modifier_imba_stunned extends CustomBaseModifier {
     IsHidden(): boolean {
         return false;
     }
@@ -138,10 +139,14 @@ export class modifier_imba_stunned extends BaseModifier {
     }
 
     OnCreated(params: object): void {
-        print('子类OnCreated');
+        if (IsServer()) {
+            print('modifier_imba_stunned OnCreated');
+        }
     }
 
     OnDestroy(): void {
-        print('子类OnDestroy');
+        if (IsServer()) {
+            print('modifier_imba_stunned OnDestroy');
+        }
     }
 }

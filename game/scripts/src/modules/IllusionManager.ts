@@ -1,3 +1,4 @@
+import { reloadable } from '../utils/tstl-utils';
 declare global {
     var CIllusionManager: CIllusionManager;
 }
@@ -62,6 +63,10 @@ export class CIllusionManager {
         //     playerIllusions = [];
         // }
         // playerIllusions.push(...illusions);
+        illusions.forEach(illusion => {
+            illusion.SetUnitCanRespawn(true);
+            // illusion.RespawnHero(false, false);
+        });
         return illusions;
     }
 

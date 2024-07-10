@@ -1,3 +1,4 @@
+import { reloadable } from '../utils/tstl-utils';
 @reloadable
 export class Debug {
     DebugEnabled = false;
