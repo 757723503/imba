@@ -1,6 +1,6 @@
 import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 import { reloadable } from '../../utils/tstl-utils';
-import { CDispatcher } from '../dispatcher/Dispatcher';
+
 @reloadable
 export class CAttackDataManager {
     attack_data: Map<number, UnitEventAttackDamageData> = new Map<number, UnitEventAttackDamageData>();
@@ -37,8 +37,8 @@ export class CAttackDataManager {
             record: event.record,
         };
 
-        CDispatcher.Send('ON_ATTACK_START_TARGET', target.entindex(), attack_data);
-        CDispatcher.Send('ON_ATTACK_START_ATTACKER', attacker.entindex(), attack_data);
+        Dispatcher.Send('ON_ATTACK_START_TARGET', target.entindex(), attack_data);
+        Dispatcher.Send('ON_ATTACK_START_ATTACKER', attacker.entindex(), attack_data);
         this.attack_data.set(event.record, attack_data);
 
         // crit_obj && attacker.StartGestureWithFadeAndPlaybackRate(GameActivity.DOTA_ATTACK_EVENT, 0.0, 0.0, attacker.GetDisplayAttackSpeed() / 100);
@@ -212,8 +212,8 @@ export class CAttackDataManager {
             if (!this._CheckMissOnAttackLanded(attacker, target, never_miss || attack_data.never_miss)) {
                 // print('CAttack OnAttackLanded', extra_pamams.record[0]);
                 if (use_effect) {
-                    CDispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), attack_data);
-                    CDispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), attack_data);
+                    Dispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), attack_data);
+                    Dispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), attack_data);
                 }
                 if (attack_data.damageTable.crit_obj?.on_crit) {
                     attack_data.damageTable.crit_obj.on_crit(attack_data.damageTable);
@@ -231,8 +231,8 @@ export class CAttackDataManager {
             } else {
                 PopupMiss(target, attacker.GetPlayerOwner());
                 PopupEvasion(target, target.GetPlayerOwner());
-                CDispatcher.Send('ON_ATTACK_FAIL_BOTH', target.entindex(), attack_data);
-                CDispatcher.Send('ON_ATTACK_FAIL_BOTH', attacker.entindex(), attack_data);
+                Dispatcher.Send('ON_ATTACK_FAIL_BOTH', target.entindex(), attack_data);
+                Dispatcher.Send('ON_ATTACK_FAIL_BOTH', attacker.entindex(), attack_data);
             }
         };
 

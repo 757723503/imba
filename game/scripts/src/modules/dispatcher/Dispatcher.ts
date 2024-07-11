@@ -1,6 +1,6 @@
 import { reloadable } from '../../utils/tstl-utils';
 declare global {
-    var CDispatcher: CDispatcher;
+    var Dispatcher: CDispatcher;
 }
 
 @reloadable
@@ -10,11 +10,11 @@ export class CDispatcher {
     private static tag_entIdxs_ids: Map<string, Map<EntityIndex, Set<dispatcher_id>>> = new Map(); // 实例变量，存储事件与实体索引和回调函数ID的映射
     // private static dispatcherThinker: CDOTA_BaseNPC; // 实例变量，用于保存dispatcher thinker对象
     constructor() {
-        CDispatcher.Init(); // 在构造函数中初始化
+        this.Init(); // 在构造函数中初始化
     }
 
     // 初始化方法，创建dispatcher thinker对象并赋值给dispatcherThinker
-    private static Init() {
+    Init() {
         // CDispatcher.dispatcherThinker = CreateModifierThinker(
         //     null,
         //     null,
@@ -30,7 +30,7 @@ export class CDispatcher {
     // eventName: 事件名称
     // entityIndex: 实体索引
     // callBack: 事件触发时调用的回调函数
-    static Register<TName extends keyof LocalEventDeclarations>(
+    Register<TName extends keyof LocalEventDeclarations>(
         eventName: TName,
         entityIndex: EntityIndex,
         callBack: LocalEventCallBack<TName>
@@ -52,17 +52,17 @@ export class CDispatcher {
         return id; // 返回回调函数ID
     }
 
-    static RegisterLocalEvents<TName extends keyof LocalEventDeclarations>(
+    RegisterLocalEvents<TName extends keyof LocalEventDeclarations>(
         eventName: TName,
         callback: LocalEventCallBack<TName>,
         entityIndex?: EntityIndex
     ) {
-        CDispatcher.Register(eventName, entityIndex, event => callback(event));
+        this.Register(eventName, entityIndex, event => callback(event));
     }
 
     // 注销事件的方法
     // id: 要注销的回调函数ID
-    static UnRegister(id: dispatcher_id) {
+    UnRegister(id: dispatcher_id) {
         CDispatcher.id_callBack.delete(id); // 删除回调函数
         for (const [eventName, entityMap] of CDispatcher.tag_entIdxs_ids) {
             for (const [entityIndex, idSet] of entityMap) {
@@ -84,11 +84,7 @@ export class CDispatcher {
     // entityIndex: 实体索引，或null表示所有实体
     // params: 事件参数
 
-    public static Send<TName extends keyof LocalEventDeclarations>(
-        eventName: TName,
-        entityIndex: EntityIndex,
-        params: LocalEventDeclarations[TName]
-    ) {
+    Send<TName extends keyof LocalEventDeclarations>(eventName: TName, entityIndex: EntityIndex, params: LocalEventDeclarations[TName]) {
         if (CDispatcher.tag_entIdxs_ids.has(eventName)) {
             const entityMap = CDispatcher.tag_entIdxs_ids.get(eventName)!;
             for (const [entIdx, idSet] of entityMap.entries()) {
@@ -112,11 +108,10 @@ export class CDispatcher {
     // 触发单个回调的方法
     // id: 回调函数ID
     // params: 事件参数
-    static Trigger(id: dispatcher_id, params: any) {
+    Trigger(id: dispatcher_id, params: any) {
         const callback = CDispatcher.id_callBack.get(id);
         if (callback) {
             callback(params);
         }
     }
 }
-globalThis.CDispatcher = CDispatcher;

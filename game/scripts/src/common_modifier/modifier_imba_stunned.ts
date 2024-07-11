@@ -1,7 +1,7 @@
 import { CustomBaseModifier } from '../modules/custom_base_modifier';
 import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
 @registerModifier()
-export class modifier_imba_stunned extends CustomBaseModifier {
+export class modifier_imba_stunned extends BaseModifier {
     IsHidden(): boolean {
         return false;
     }
@@ -25,7 +25,7 @@ export class modifier_imba_stunned extends CustomBaseModifier {
 
     OnAttackStart_Attacker(AttackData: UnitEventAttackDamageData): void {
         print('modifier_imba_stunned OnAttackStart_Attacker');
-        AttackData.projectile = 'particles/econ/items/drow/drow_arcana/drow_arcana_base_attack_v2.vpcf';
+        // AttackData.projectile = 'particles/econ/items/drow/drow_arcana/drow_arcana_base_attack_v2.vpcf';
     }
 
     AddParentEvasionData(): EvasionData {

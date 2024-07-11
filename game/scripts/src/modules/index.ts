@@ -53,7 +53,7 @@ export function ActivateModules() {
         globalThis.CIllusionManager = new CIllusionManager();
         globalThis.CAttackData = new CAttackDataManager();
         globalThis.Random = new PseudoRandom();
-        globalThis.CDispatcher = new CDispatcher();
+        globalThis.Dispatcher = new CDispatcher();
         globalThis.AddDamage = CustomApplyDamage;
     }
 }

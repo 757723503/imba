@@ -23,16 +23,40 @@ export class BaseModifier {
     public static remove<T extends typeof BaseModifier>(this: T, target: CDOTA_BaseNPC): void {
         target.RemoveModifierByName(this.name);
     }
+
+    dispatcherIDList: Map<EntityIndex, dispatcher_id[]>;
+
+    frameBasedTimers: {
+        key: string;
+        value: Partial<ModifierFunctions[]>;
+    };
+
+    funs: Partial<ModifierFunctions[]> = [];
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
 }
 
 export interface BaseModifierMotionHorizontal extends CDOTA_Modifier_Lua_Horizontal_Motion {}
-export class BaseModifierMotionHorizontal extends BaseModifier {}
+export class BaseModifierMotionHorizontal extends BaseModifier {
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
+}
 
 export interface BaseModifierMotionVertical extends CDOTA_Modifier_Lua_Vertical_Motion {}
-export class BaseModifierMotionVertical extends BaseModifier {}
+export class BaseModifierMotionVertical extends BaseModifier {
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
+}
 
 export interface BaseModifierMotionBoth extends CDOTA_Modifier_Lua_Motion_Both {}
-export class BaseModifierMotionBoth extends BaseModifier {}
+export class BaseModifierMotionBoth extends BaseModifier {
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [];
+    }
+}
 
 // Add standard base classes to prototype chain to make `super.*` work as `self.BaseClass.*`
 setmetatable(BaseAbility.prototype, { __index: CDOTA_Ability_Lua ?? C_DOTA_Ability_Lua });
@@ -75,26 +99,25 @@ export const registerModifier = (name?: string) => (modifier: new () => CDOTA_Mo
     env[name] = {};
 
     toDotaClassInstance(env[name], modifier);
-    const baseModifierOnCreated = CustomBaseModifier.prototype.OnCreated;
     const originalOnCreated = (env[name] as CDOTA_Modifier_Lua).OnCreated;
     env[name].OnCreated = function (parameters: any) {
         this.____constructor();
         if (!IsServer()) return;
-        if (baseModifierOnCreated) {
-            baseModifierOnCreated.call(this, parameters);
+
+        if (COnCreated) {
+            COnCreated.call(this, this);
         }
         if (originalOnCreated) {
             originalOnCreated.call(this, parameters);
         }
     };
 
-    const baseModifierOnDestroy = CustomBaseModifier.prototype.OnDestroy;
     const originalOnDestroy = (env[name] as CDOTA_Modifier_Lua).OnDestroy;
     env[name].OnDestroy = function (parameters: any) {
         this.____constructor();
         if (!IsServer()) return;
-        if (baseModifierOnDestroy) {
-            baseModifierOnDestroy.call(this, parameters);
+        if (COnDestroy) {
+            COnDestroy.call(this, this);
         }
         if (originalOnDestroy) {
             originalOnDestroy.call(this, parameters);
@@ -119,6 +142,40 @@ export const registerModifier = (name?: string) => (modifier: new () => CDOTA_Mo
     }
 
     LinkLuaModifier(name, fileName, type);
+};
+const COnCreated = (modifier: BaseModifier) => {
+    const parent_index = modifier.GetParent().entindex();
+    const functions = modifier.CustomDeclareFunctions();
+    if (functions.length > 0) {
+        modifier.dispatcherIDList = new Map();
+        if (!modifier.dispatcherIDList.has(parent_index)) {
+            modifier.dispatcherIDList.set(parent_index, []);
+        }
+        functions.forEach(element => {
+            const func = _modifier_methods[element].registerFunc;
+            CSafelyCall(() => {
+                func(modifier, parent_index);
+            }, `Error in registering function for ${element}`);
+
+            // if (_modifier_methods[element].Use_Frametime) {
+            //     this.funs.push(element);
+            // }
+        });
+    }
+};
+const COnDestroy = (modifier: BaseModifier) => {
+    const functions = modifier.CustomDeclareFunctions();
+    if (functions.length > 0) {
+        const parent_index = modifier.GetParent().entindex();
+        functions.forEach(element => {
+            const func = _modifier_methods[element].removeFunc;
+            CSafelyCall(() => {
+                func(modifier, parent_index);
+            }, `Error in removing function for ${element}`);
+        });
+
+        modifier.dispatcherIDList.delete(parent_index);
+    }
 };
 // export const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_Lua) => {
 //     if (name !== undefined) {
@@ -222,337 +279,10 @@ function toDotaClassInstance(instance: any, table: new () => any) {
         prototype = getmetatable(prototype);
     }
 }
-// import { BaseModifier } from '../utils/dota_ts_adapter';
-export interface CustomBaseModifier extends BaseModifier {}
-
-import { CDispatcher } from '../../src/modules/dispatcher/Dispatcher';
-
-export class CustomBaseModifier extends BaseModifier {
-    caster: CDOTA_BaseNPC | undefined = this.GetCaster();
-    ability: CDOTABaseAbility | undefined = this.GetAbility();
-    parent: CDOTA_BaseNPC = this.GetParent();
-    CustomDeclareFunctions(): ModifierFunctions[] {
-        return [];
-    }
-
-    dispatcherIDList: Map<EntityIndex, dispatcher_id[]>;
-
-    frameBasedTimers: {
-        key: string;
-        value: Partial<ModifierFunctions[]>;
-    };
-
-    funs: Partial<ModifierFunctions[]> = [];
-
-    OnCreated(params: object): void {
-        print('新创建');
-        if (!IsServer() || !this.GetParent()) return;
-        const parent_index = this.GetParent().entindex();
-        const functions = this.CustomDeclareFunctions();
-        if (functions.length > 0) {
-            this.dispatcherIDList = new Map();
-            if (!this.dispatcherIDList.has(parent_index)) {
-                this.dispatcherIDList.set(parent_index, []);
-            }
-            functions.forEach(element => {
-                const func = _modifier_methods[element].registerFunc;
-                CSafelyCall(() => {
-                    func(this, parent_index);
-                }, `Error in registering function for ${element}`);
-
-                // if (_modifier_methods[element].Use_Frametime) {
-                //     this.funs.push(element);
-                // }
-            });
-        }
-        // if (this.funs.length > 0) {
-        //     const timers = Timers.CreateTimer(0.0333, () => {
-        //         this.funs.forEach(element => {
-        //             const func = _modifier_methods[element].registerFunc;
-        //             CSafelyCall(() => {
-        //                 func(this, parent_index);
-        //             }, `Error in registering function for ${element}`);
-        //         });
-        //         return 0.0333;
-        //     });
-        //     this.frameBasedTimers = { key: timers, value: this.funs };
-        // }
-    }
-
-    OnDestroy(): void {
-        if (!IsServer() || !this.GetParent()) return;
-        const functions = this.CustomDeclareFunctions();
-        if (functions.length > 0) {
-            const parent_index = this.GetParent().entindex();
-            functions.forEach(element => {
-                const func = _modifier_methods[element].removeFunc;
-                CSafelyCall(() => {
-                    func(this, parent_index);
-                }, `Error in removing function for ${element}`);
-            });
-
-            this.dispatcherIDList.delete(parent_index);
-        }
-        // if (this.frameBasedTimers) {
-        //     Timers.RemoveTimer(this.frameBasedTimers.key);
-        // }
-    }
-
-    // declare module './utils/dota_ts_adapter' {
-    //     interface BaseModifier {
-    /**
-     * 原始伤害结算事件 , 事件名 DamageEvent_OriginDamage
-     * - 触发者: 攻击方, 受击方
-     * @param dmgTable 伤害表
-     */
-    DamageEvent_OriginDamage?(dmgTable: DamageTable): void;
-    /**
-     * 攻击弹射和溅射, 和 **分裂** 不一样, 事件名 DAMAGE_ATTACKER_BOUNCE_EVENT
-     * - 触发者: 攻击方
-     * @param victim 受害者
-     * @param damage 物理攻击伤害的值
-     */
-    DamageEvent_AttackBounce?(dmgTable: DamageTable): void;
-    /**
-     * 剑刃风暴的攻击伤害无效化, 事件名 DAMAGE_FIXED_ATTACKER_BLADE_STORM_ATK
-     * - 触发者: 攻击方
-     * @param victim 受害者
-     * @returns 返回true时本次攻击伤害无效
-     */
-    DamageFixed_BladeStormAttack?(victim: CDOTA_BaseNPC): boolean;
-    // 封装到攻击特效基类buff下了
-    // /**
-    //  * 攻击特效伤害的添加 - 常量, 事件名 DAMAGE_FIXED_ATTACKER_ATK_DAMAGE
-    //  * - 触发者: 攻击方
-    //  * @param attackEffectData 攻击特效数据, 直接修改内容即可, 只有从物理转变为魔法时才需要添加 sourceAbility, 其他情况不需要
-    //  */
-    DamageFixed_AttackEffectDamage?(dmgTable: FixedDamageTable): void;
-    /**
-     * 攻击分裂的广播, 和 **溅射** 不一样, 事件名 DAMAGE_ATTACKER_ATK_CLEAVE_EVENT
-     * - 触发者: 攻击方
-     * @param victim 受害者
-     * @param damage 物理攻击伤害的值
-     */
-    DamageEvent_AttackCleave?(dmgTable: FixedDamageTable): void;
-    /**
-     * 魔法护盾的伤害格挡 - 百分比, 事件名 DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT
-     * - 触发者: 受击方
-     * @param dmgTable 伤害表, 自行查阅数值, 计算并返回
-     * @returns 返回本次应该格挡伤害的百分比
-     */
-    DamageFixed_MagicShieldBlock?(dmgTable: FixedDamageTable): number;
-    /**
-     * 物理伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE
-     * - 触发者: 受击方
-     * @param originPhysicalDamage 初始物理伤害
-     * @returns 是否无效化
-     */
-    DamageFixed_VictimIgnorePhysicalDamage?(origin_physical: number): boolean;
-    /**
-     * 魔法伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE
-     * - 触发者: 受击方
-     * @param originMagicalDamage 初始魔法伤害
-     * @returns 是否无效化
-     */
-    DamageFixed_VictimIgnoreMagicalDamage?(origin_magic: number): boolean;
-    /**
-     * 纯粹伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE
-     * - 触发者: 受击方
-     * @param originPureDamage 初始纯粹伤害
-     * @returns 是否无效化
-     */
-    DamageFixed_VictimIgnorePureDamage?(origin_pure: number): boolean;
-    /**
-     * 全类型伤害伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE
-     * - 触发者: 受击方
-     * @param originAllDamage 初始全类型伤害
-     * @param attacker 攻击方
-     * @returns 是否无效化
-     */
-    DamageFixed_VictimIgnoreAllDamage?(origin_all: number, attacker: CDOTA_BaseNPC): boolean;
-    /**
-     * 特殊物理伤害调整 - 百分比, 事件名 DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE
-     * - 触发者: 受击方
-     * @param dmgTable 原伤害table
-     * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
-     */
-    DamageFixed_VictimSpecialPhysicalDamagePercent?(dmgTable: FixedDamageTable): number;
-    /**
-     * 核心攻击伤害调整 - 百分比, 事件名 DAMAGE_FIXED_CORE_ATTACK_DAMAGE
-     * - 触发者: 双方触发
-     * @param dmgTable 原伤害table
-     * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
-     */
-    DamageFixed_CoreAttackDamagePercent?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): number;
-    /**
-     * 核心技能伤害调整 - 百分比, 事件名 DAMAGE_FIXED_CORE_ABILITY_DAMAGE
-     * - 触发者: 受击方
-     * @param dmgTable 原伤害table
-     * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
-     */
-    DamageFixed_VictimCoreAbilityDamagePercent?(): number;
-    /**
-     * 核心伤害调整 - 百分比, 事件名 DAMAGE_FIXED_CORE_ALL_DAMAGE
-     * - 触发者: 双方触发
-     * @param dmgTable 原伤害table
-     * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
-     */
-    DamageFixed_CoreAllDamagePercent?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): number;
-    /**
-     * 共享 / 反射 伤害时
-     * 事件:DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT
-     * - 触发者: 受击方
-     * @param attacker 攻击者
-     * @param DamageTypes 伤害类型
-     * @param damage 伤害值
-     */
-    DamageEvent_ReflectSharedDamage?(attacker: CDOTA_BaseNPC, damage_type: DamageType, damage: number): void;
-    /**
-     * 虚妄之诺 的伤害无效化和记录
-     * - 触发者: 受击方
-     * @param damage 当次受到的伤害值
-     * @returns 是否进行无效化, 无效化时伤害会变为0
-     */
-    DamageFixed_FalsePromiseIgnoreDamage?(attacker: CDOTA_BaseNPC, damage_type: DamageType, damage_flag: DamageFlags, damage: number): boolean;
-
-    /**
-     * DAMAGE_BORROWED_TIME_EVENT
-     * 回光返照的友方伤害事件记录
-     *
-     * - 触发者: 受击者
-     * @param attacker
-     * @param victim
-     * @param damage
-     * @param damage_property
-     * @param damage_type
-     * @param damage_flag
-     */
-    DamageEvent_BorrowedTimeRecord?(
-        attacker: CDOTA_BaseNPC,
-        victim: CDOTA_BaseNPC_Hero,
-        damage: number,
-        damage_property: DamageProperty,
-        damage_type: DamageType,
-        damage_flag: DamageFlags
-    ): void;
-
-    /**
-     * 末端伤害格挡 - 百分比, 事件名 DAMAGE_FIXED_VICITIM_END_BLOCK
-     * - 触发者: 受击方
-     * @param damage 伤害值
-     * @returns 返回格挡百分比, 同时触发时，仅数值最高者生效。
-     */
-    DamageFixed_EndBlockPercent?(damage: number): number;
-    /**
-     * 末端伤害结算事件, 事件名 DAMAGE_END_DAMAGE_EVENT
-     * - 双方触发
-     * @param attacker 攻击者
-     * @param victim 受击者
-     * @param damage_property 伤害类型
-     * @param damage_type 伤害类型
-     * @param damage_flag 特殊伤害标识
-     * @param damage 伤害值
-     * @param ability 伤害来源技能
-     */
-    DamageEvent_EndDamage?(
-        attacker: CDOTA_BaseNPC,
-        victim: CDOTA_BaseNPC,
-        damage_property: DamageProperty,
-        damage_type: DamageType,
-        damage_flag: DamageFlags,
-        damage: number
-    ): void;
-
-    /**
-     * 飞溅的伤害传递(dmgTable: DamageTable), 事件名 DAMAGE_PSI_BLADE_EVENT
-     * - 触发者: 攻击方
-     * @param victim 受害者
-     * @param damage 伤害值
-     */
-    DamageEvent_PsiBlade?(victim: CDOTA_BaseNPC, damage: number): void;
-
-    /**
-     * 幻象结算之后伤害结算事件 - 过完幻象的伤害增幅后触发 - 攻击者+受击者 事件名 DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT
-     * - 触发者: 攻击方 和 受击方
-     * @param attacker
-     * @param victim
-     * @param damage
-     * @param damage_flag
-     * @param inflictor
-     */
-    DamageEvent_AfterIllusionDamage?(dmgTable: DamageTable);
-
-    /**
-     * 特殊溅射攻击广播 - 攻击者触发 事件名 DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT
-     * - 触发者: 攻击者
-     * @param victim 受击者
-     * @param damage 伤害
-     */
-    DamageEvent_SpecialBounceAttack?(dmgTable: DamageTable);
-
-    /**
-     * 击杀任意单位 事件名 UNIT_KILL_UNIT
-     * - 触发者：击杀者
-     * @param event
-     */
-    // OnKill?(dmgTable: DamageTable): void;
-
-    /**
-     * 单位死亡 事件名 UNIT_DEATH
-     * - 触发者：任意死亡单位
-     */
-    OnUnitDeath?(dmgTable: DamageTable): void;
-
-    /**
-     * 英雄死亡 事件名 UNIT_HERO_DEATH
-     * - 触发者：任意死亡单位
-     */
-    OnHeroDeath?(dmgTable: DamageTable): void;
-
-    /**
-     * 建筑死亡 事件名 UNIT_BUILDING_DEATH
-     * - 触发者：任意死亡建筑
-     */
-    OnBuildingDeath?(dmgTable: DamageTable): void;
-
-    /**
-     * 单位复活事件 事件名 UNIT_RESPAWN
-     * - 触发者：只有buff拥有者复活时触发
-     */
-    // OnRespawn?(dmgTable: DamageTable): void;
-
-    OnAttackStart_Target?(AttackData: UnitEventAttackDamageData): void;
-    /**攻击前摇  触发者 攻击者 */
-    OnAttackStart_Attacker?(AttackData: UnitEventAttackDamageData): void;
-    /**攻击记录前  触发者 攻击者 */
-    OnAttackRecord_Attack?(AttackData: UnitEventAttackDamageData): void;
-
-    /** 攻击命中时，事件名 。`攻击者触发` */
-    OnAttackLanded_Attacker?(AttackData: UnitEventAttackDamageData): void;
-    /** 受到攻击命中时，事件名 。`受害者触发` */
-    OnAttackLanded_Target?(AttackData: UnitEventAttackDamageData): void;
-    /**攻击失败时 双方触发 */
-    OnAttackFail_Both?(AttackData: UnitEventAttackDamageData): void;
-    /**增加暴击 数据 */
-    AddParentAttackCritData?(): CritData;
-
-    /**增加闪避 数据 */
-    AddParentEvasionData?(): EvasionData;
-    /**增加致盲 数据 */
-    AddParentBlindData?(): BlindData;
-    /**增加必中 数据 */
-    AddParentAccuracyData?(): AccuracyData;
-    /**
-     * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
-     */
-    // OnHealthGained?(dmgTable: DamageTable): void;
-    // }
-    // }
-}
 const _modifier_methods: {
     [key in ModifierFunctions]: {
-        registerFunc?: (instance: CustomBaseModifier, parent_index: EntityIndex) => void;
-        removeFunc?: (instance: CustomBaseModifier, parent_index: EntityIndex) => void;
+        registerFunc?: (instance: BaseModifier, parent_index: EntityIndex) => void;
+        removeFunc?: (instance: BaseModifier, parent_index: EntityIndex) => void;
         /**
          * 是否每帧调用registerFunc 自行在registerFunc中做好重复逻辑判断
          */
@@ -561,7 +291,7 @@ const _modifier_methods: {
 } = {
     [ModifierFunctions.DamageEvent_OriginDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_ORIGIN_DAMAGE_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_ORIGIN_DAMAGE_EVENT', parent_index, event => {
                 if (instance.DamageEvent_OriginDamage) instance.DamageEvent_OriginDamage(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -570,14 +300,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     [ModifierFunctions.DamageEvent_EndDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_END_DAMAGE_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_END_DAMAGE_EVENT', parent_index, event => {
                 if (instance.DamageEvent_EndDamage)
                     instance.DamageEvent_EndDamage(
                         event.attacker,
@@ -594,14 +324,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     [ModifierFunctions.DamageEvent_AfterIllusionDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT', parent_index, event => {
                 if (instance.DamageEvent_AfterIllusionDamage) instance.DamageEvent_AfterIllusionDamage(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -610,14 +340,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     [ModifierFunctions.DamageEvent_PsiBlade]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_PSI_BLADE_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_PSI_BLADE_EVENT', parent_index, event => {
                 if (instance.DamageEvent_PsiBlade) instance.DamageEvent_PsiBlade(event.victim, event.damage);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -626,14 +356,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     [ModifierFunctions.DamageEvent_SpecialBounceAttack]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT', parent_index, event => {
                 if (instance.DamageEvent_SpecialBounceAttack) instance.DamageEvent_SpecialBounceAttack(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -642,7 +372,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -650,7 +380,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.OnUnitDeath]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('UNIT_DEATH', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('UNIT_DEATH', parent_index, event => {
                 if (instance.OnUnitDeath) instance.OnUnitDeath(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -659,14 +389,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     [ModifierFunctions.OnHeroDeath]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('UNIT_HERO_DEATH', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('UNIT_HERO_DEATH', parent_index, event => {
                 if (instance.OnHeroDeath) instance.OnHeroDeath(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -675,14 +405,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     [ModifierFunctions.OnBuildingDeath]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('UNIT_BUILDING_DEATH', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('UNIT_BUILDING_DEATH', parent_index, event => {
                 if (instance.OnBuildingDeath) instance.OnBuildingDeath(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -691,7 +421,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -699,7 +429,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.OnAttackStart_Attacker]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('ON_ATTACK_START_ATTACKER', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('ON_ATTACK_START_ATTACKER', parent_index, event => {
                 if (instance.OnAttackStart_Attacker) instance.OnAttackStart_Attacker(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -708,7 +438,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -716,7 +446,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.OnAttackStart_Target]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('ON_ATTACK_START_TARGET', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('ON_ATTACK_START_TARGET', parent_index, event => {
                 if (instance.OnAttackStart_Target) instance.OnAttackStart_Target(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -725,7 +455,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -733,7 +463,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.OnAttackLanded_Attacker]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('ON_ATTACK_LANDED_ATTACKER', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('ON_ATTACK_LANDED_ATTACKER', parent_index, event => {
                 if (instance.OnAttackLanded_Attacker) instance.OnAttackLanded_Attacker(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -742,14 +472,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     [ModifierFunctions.OnAttackLanded_Target]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('ON_ATTACK_LANDED_TARGET', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('ON_ATTACK_LANDED_TARGET', parent_index, event => {
                 if (instance.OnAttackLanded_Target) instance.OnAttackLanded_Target(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -758,7 +488,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -768,7 +498,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.OnAttackFail_Both]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('ON_ATTACK_FAIL_BOTH', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('ON_ATTACK_FAIL_BOTH', parent_index, event => {
                 if (instance.OnAttackFail_Both) instance.OnAttackFail_Both(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -777,14 +507,14 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
     },
     // [ModifierFunctions.OnAttackRecord_Attack]: {
     //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = CDispatcher.Register('ON_ATTACK_RECORD_ATTACK', parent_index, event => {
+    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_RECORD_ATTACK', parent_index, event => {
     //             if (instance.OnAttackRecord_Attack) instance.OnAttackRecord_Attack(event);
     //         });
     //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -793,7 +523,7 @@ const _modifier_methods: {
     //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
     //         if (dispatcherList) {
     //             dispatcherList.forEach(dispatcherId => {
-    //                 CDispatcher.UnRegister(dispatcherId);
+    //                 Dispatcher.UnRegister(dispatcherId);
     //             });
     //         }
     //     },
@@ -801,7 +531,7 @@ const _modifier_methods: {
 
     // [ModifierFunctions.OnAttack]: {
     //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = CDispatcher.Register('ON_ATTACK', parent_index, event => {
+    //         const dispatcherId = Dispatcher.Register('ON_ATTACK', parent_index, event => {
     //             if (instance.OnAttack) instance.OnAttack(event);
     //         });
     //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -810,7 +540,7 @@ const _modifier_methods: {
     //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
     //         if (dispatcherList) {
     //             dispatcherList.forEach(dispatcherId => {
-    //                 CDispatcher.UnRegister(dispatcherId);
+    //                 Dispatcher.UnRegister(dispatcherId);
     //             });
     //         }
     //     },
@@ -818,7 +548,7 @@ const _modifier_methods: {
 
     // [ModifierFunctions.OnAttackFinished]: {
     //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = CDispatcher.Register('ON_ATTACK_FINISHED', parent_index, event => {
+    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_FINISHED', parent_index, event => {
     //             if (instance.OnAttackFinished) instance.OnAttackFinished(event);
     //         });
     //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -827,7 +557,7 @@ const _modifier_methods: {
     //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
     //         if (dispatcherList) {
     //             dispatcherList.forEach(dispatcherId => {
-    //                 CDispatcher.UnRegister(dispatcherId);
+    //                 Dispatcher.UnRegister(dispatcherId);
     //             });
     //         }
     //     },
@@ -835,7 +565,7 @@ const _modifier_methods: {
 
     // [ModifierFunctions.OnAttackRecordDestroy]: {
     //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = CDispatcher.Register('ON_ATTACK_RECORD_DESTROY', parent_index, event => {
+    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_RECORD_DESTROY', parent_index, event => {
     //             if (instance.OnAttackRecordDestroy) instance.OnAttackRecordDestroy(event);
     //         });
     //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -844,7 +574,7 @@ const _modifier_methods: {
     //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
     //         if (dispatcherList) {
     //             dispatcherList.forEach(dispatcherId => {
-    //                 CDispatcher.UnRegister(dispatcherId);
+    //                 Dispatcher.UnRegister(dispatcherId);
     //             });
     //         }
     //     },
@@ -852,7 +582,7 @@ const _modifier_methods: {
 
     // [ModifierFunctions.OnAttackCancelled]: {
     //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = CDispatcher.Register('ON_ATTACK_CANCELLED', parent_index, event => {
+    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_CANCELLED', parent_index, event => {
     //             if (instance.OnAttackCancelled) instance.OnAttackCancelled(event);
     //         });
     //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -861,7 +591,7 @@ const _modifier_methods: {
     //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
     //         if (dispatcherList) {
     //             dispatcherList.forEach(dispatcherId => {
-    //                 CDispatcher.UnRegister(dispatcherId);
+    //                 Dispatcher.UnRegister(dispatcherId);
     //             });
     //         }
     //     },
@@ -869,7 +599,7 @@ const _modifier_methods: {
 
     // [ModifierFunctions.OnAttackFail]: {
     //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = CDispatcher.Register('ON_ATTACK_FAIL', parent_index, event => {
+    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_FAIL', parent_index, event => {
     //             if (instance.OnAttackFail) instance.OnAttackFail(event);
     //         });
     //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -878,7 +608,7 @@ const _modifier_methods: {
     //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
     //         if (dispatcherList) {
     //             dispatcherList.forEach(dispatcherId => {
-    //                 CDispatcher.UnRegister(dispatcherId);
+    //                 Dispatcher.UnRegister(dispatcherId);
     //             });
     //         }
     //     },
@@ -886,7 +616,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageEvent_AttackBounce]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_ATTACKER_BOUNCE_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_ATTACKER_BOUNCE_EVENT', parent_index, event => {
                 if (instance.DamageEvent_AttackBounce) instance.DamageEvent_AttackBounce(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -895,7 +625,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -903,7 +633,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_BladeStormAttack]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_ATTACKER_BLADE_STORM_ATK', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_ATTACKER_BLADE_STORM_ATK', parent_index, event => {
                 let result = false;
                 if (instance.DamageFixed_BladeStormAttack) result = instance.DamageFixed_BladeStormAttack(event.victim);
                 event.result = result;
@@ -914,7 +644,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -924,7 +654,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_AttackEffectDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_ATTACKER_ATK_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_ATTACKER_ATK_DAMAGE', parent_index, event => {
                 if (instance.DamageFixed_AttackEffectDamage) instance.DamageFixed_AttackEffectDamage(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -933,7 +663,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -943,7 +673,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageEvent_AttackCleave]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_ATTACKER_ATK_CLEAVE_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_ATTACKER_ATK_CLEAVE_EVENT', parent_index, event => {
                 if (instance.DamageEvent_AttackCleave) instance.DamageEvent_AttackCleave(event);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -952,7 +682,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -961,7 +691,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_MagicShieldBlock]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', parent_index, event => {
                 let block_pct = 0;
                 if (instance.DamageFixed_MagicShieldBlock) block_pct = instance.DamageFixed_MagicShieldBlock(event.origin_table);
                 event.block_pct += block_pct ?? 0;
@@ -972,7 +702,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -981,7 +711,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_VictimIgnorePhysicalDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE', parent_index, event => {
                 let ignore = false;
                 if (instance.DamageFixed_VictimIgnorePhysicalDamage) ignore = instance.DamageFixed_VictimIgnorePhysicalDamage(event.origin_physical);
                 event.ignore = ignore;
@@ -992,7 +722,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1001,7 +731,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_VictimIgnoreMagicalDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE', parent_index, event => {
                 let ignore = false;
                 if (instance.DamageFixed_VictimIgnoreMagicalDamage) ignore = instance.DamageFixed_VictimIgnoreMagicalDamage(event.origin_magic);
                 event.ignore = ignore;
@@ -1012,7 +742,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1021,7 +751,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_VictimIgnorePureDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE', parent_index, event => {
                 let ignore = false;
                 if (instance.DamageFixed_VictimIgnorePureDamage) ignore = instance.DamageFixed_VictimIgnorePureDamage(event.origin_pure);
                 event.ignore = ignore;
@@ -1033,7 +763,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1042,7 +772,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_VictimIgnoreAllDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', parent_index, event => {
                 let ignore = false;
                 if (instance.DamageFixed_VictimIgnoreAllDamage) ignore = instance.DamageFixed_VictimIgnoreAllDamage(event.origin_all, event.attacker);
                 event.ignore = ignore;
@@ -1053,7 +783,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1063,7 +793,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_VictimSpecialPhysicalDamagePercent]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE', parent_index, event => {
                 let add_pct = 0;
                 if (instance.DamageFixed_VictimSpecialPhysicalDamagePercent)
                     add_pct = instance.DamageFixed_VictimSpecialPhysicalDamagePercent(event.dmgTable);
@@ -1075,7 +805,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1083,7 +813,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_CoreAttackDamagePercent]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_CORE_ATTACK_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_CORE_ATTACK_DAMAGE', parent_index, event => {
                 if (instance.DamageFixed_CoreAttackDamagePercent) {
                     event.scale_pct += instance.DamageFixed_CoreAttackDamagePercent(event.attacker, event.victim) ?? 0;
                 }
@@ -1094,7 +824,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1102,7 +832,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_VictimCoreAbilityDamagePercent]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_CORE_ABILITY_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_CORE_ABILITY_DAMAGE', parent_index, event => {
                 if (instance.DamageFixed_VictimCoreAbilityDamagePercent) {
                     event.scale_pct += instance.DamageFixed_VictimCoreAbilityDamagePercent() ?? 0;
                 }
@@ -1113,7 +843,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1121,7 +851,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_CoreAllDamagePercent]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_CORE_ALL_DAMAGE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_CORE_ALL_DAMAGE', parent_index, event => {
                 if (instance.DamageFixed_CoreAllDamagePercent) {
                     event.scale_pct += instance.DamageFixed_CoreAllDamagePercent(event.attacker, event.victim) ?? 0;
                 }
@@ -1132,7 +862,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1140,7 +870,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageEvent_ReflectSharedDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', parent_index, event => {
                 if (instance.DamageEvent_ReflectSharedDamage) instance.DamageEvent_ReflectSharedDamage(event.attacker, event.type, event.damage);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
@@ -1149,7 +879,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1157,7 +887,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_FalsePromiseIgnoreDamage]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_VICITIM_FALSE_PROMISE', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_VICITIM_FALSE_PROMISE', parent_index, event => {
                 const ignore = false;
                 if (instance.DamageFixed_FalsePromiseIgnoreDamage)
                     instance.DamageFixed_FalsePromiseIgnoreDamage(event.attacker, event.damage_type, event.damage_flag, event.total_dmg);
@@ -1169,7 +899,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1177,7 +907,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageEvent_BorrowedTimeRecord]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_BORROWED_TIME_EVENT', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_BORROWED_TIME_EVENT', parent_index, event => {
                 if (instance.DamageEvent_BorrowedTimeRecord)
                     instance.DamageEvent_BorrowedTimeRecord(
                         event.attacker,
@@ -1194,7 +924,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1202,7 +932,7 @@ const _modifier_methods: {
 
     [ModifierFunctions.DamageFixed_EndBlockPercent]: {
         registerFunc: (instance, parent_index) => {
-            const dispatcherId = CDispatcher.Register('DAMAGE_FIXED_VICITIM_END_BLOCK', parent_index, event => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_VICITIM_END_BLOCK', parent_index, event => {
                 if (instance.DamageFixed_EndBlockPercent) {
                     const result = instance.DamageFixed_EndBlockPercent(event.total_dmg) ?? 0;
                     if (result > event.block_pct) event.block_pct = result;
@@ -1214,7 +944,7 @@ const _modifier_methods: {
             const dispatcherList = instance.dispatcherIDList.get(parent_index);
             if (dispatcherList) {
                 dispatcherList.forEach(dispatcherId => {
-                    CDispatcher.UnRegister(dispatcherId);
+                    Dispatcher.UnRegister(dispatcherId);
                 });
             }
         },
@@ -1369,3 +1099,253 @@ const _modifier_methods: {
         },
     },
 };
+declare module './dota_ts_adapter' {
+    interface BaseModifier {
+        /**
+         * 原始伤害结算事件 , 事件名 DamageEvent_OriginDamage
+         * - 触发者: 攻击方, 受击方
+         * @param dmgTable 伤害表
+         */
+        DamageEvent_OriginDamage?(dmgTable: DamageTable): void;
+        /**
+         * 攻击弹射和溅射, 和 **分裂** 不一样, 事件名 DAMAGE_ATTACKER_BOUNCE_EVENT
+         * - 触发者: 攻击方
+         * @param victim 受害者
+         * @param damage 物理攻击伤害的值
+         */
+        DamageEvent_AttackBounce?(dmgTable: DamageTable): void;
+        /**
+         * 剑刃风暴的攻击伤害无效化, 事件名 DAMAGE_FIXED_ATTACKER_BLADE_STORM_ATK
+         * - 触发者: 攻击方
+         * @param victim 受害者
+         * @returns 返回true时本次攻击伤害无效
+         */
+        DamageFixed_BladeStormAttack?(victim: CDOTA_BaseNPC): boolean;
+        // 封装到攻击特效基类buff下了
+        // /**
+        //  * 攻击特效伤害的添加 - 常量, 事件名 DAMAGE_FIXED_ATTACKER_ATK_DAMAGE
+        //  * - 触发者: 攻击方
+        //  * @param attackEffectData 攻击特效数据, 直接修改内容即可, 只有从物理转变为魔法时才需要添加 sourceAbility, 其他情况不需要
+        //  */
+        DamageFixed_AttackEffectDamage?(dmgTable: FixedDamageTable): void;
+        /**
+         * 攻击分裂的广播, 和 **溅射** 不一样, 事件名 DAMAGE_ATTACKER_ATK_CLEAVE_EVENT
+         * - 触发者: 攻击方
+         * @param victim 受害者
+         * @param damage 物理攻击伤害的值
+         */
+        DamageEvent_AttackCleave?(dmgTable: FixedDamageTable): void;
+        /**
+         * 魔法护盾的伤害格挡 - 百分比, 事件名 DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT
+         * - 触发者: 受击方
+         * @param dmgTable 伤害表, 自行查阅数值, 计算并返回
+         * @returns 返回本次应该格挡伤害的百分比
+         */
+        DamageFixed_MagicShieldBlock?(dmgTable: FixedDamageTable): number;
+        /**
+         * 物理伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE
+         * - 触发者: 受击方
+         * @param originPhysicalDamage 初始物理伤害
+         * @returns 是否无效化
+         */
+        DamageFixed_VictimIgnorePhysicalDamage?(origin_physical: number): boolean;
+        /**
+         * 魔法伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE
+         * - 触发者: 受击方
+         * @param originMagicalDamage 初始魔法伤害
+         * @returns 是否无效化
+         */
+        DamageFixed_VictimIgnoreMagicalDamage?(origin_magic: number): boolean;
+        /**
+         * 纯粹伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE
+         * - 触发者: 受击方
+         * @param originPureDamage 初始纯粹伤害
+         * @returns 是否无效化
+         */
+        DamageFixed_VictimIgnorePureDamage?(origin_pure: number): boolean;
+        /**
+         * 全类型伤害伤害无效化, 事件名 DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE
+         * - 触发者: 受击方
+         * @param originAllDamage 初始全类型伤害
+         * @param attacker 攻击方
+         * @returns 是否无效化
+         */
+        DamageFixed_VictimIgnoreAllDamage?(origin_all: number, attacker: CDOTA_BaseNPC): boolean;
+        /**
+         * 特殊物理伤害调整 - 百分比, 事件名 DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE
+         * - 触发者: 受击方
+         * @param dmgTable 原伤害table
+         * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
+         */
+        DamageFixed_VictimSpecialPhysicalDamagePercent?(dmgTable: FixedDamageTable): number;
+        /**
+         * 核心攻击伤害调整 - 百分比, 事件名 DAMAGE_FIXED_CORE_ATTACK_DAMAGE
+         * - 触发者: 双方触发
+         * @param dmgTable 原伤害table
+         * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
+         */
+        DamageFixed_CoreAttackDamagePercent?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): number;
+        /**
+         * 核心技能伤害调整 - 百分比, 事件名 DAMAGE_FIXED_CORE_ABILITY_DAMAGE
+         * - 触发者: 受击方
+         * @param dmgTable 原伤害table
+         * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
+         */
+        DamageFixed_VictimCoreAbilityDamagePercent?(): number;
+        /**
+         * 核心伤害调整 - 百分比, 事件名 DAMAGE_FIXED_CORE_ALL_DAMAGE
+         * - 触发者: 双方触发
+         * @param dmgTable 原伤害table
+         * @returns 加法叠加, 返回 正数为受到伤害增加, 负数则为伤害减少
+         */
+        DamageFixed_CoreAllDamagePercent?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC): number;
+        /**
+         * 共享 / 反射 伤害时
+         * 事件:DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT
+         * - 触发者: 受击方
+         * @param attacker 攻击者
+         * @param DamageTypes 伤害类型
+         * @param damage 伤害值
+         */
+        DamageEvent_ReflectSharedDamage?(attacker: CDOTA_BaseNPC, damage_type: DamageType, damage: number): void;
+        /**
+         * 虚妄之诺 的伤害无效化和记录
+         * - 触发者: 受击方
+         * @param damage 当次受到的伤害值
+         * @returns 是否进行无效化, 无效化时伤害会变为0
+         */
+        DamageFixed_FalsePromiseIgnoreDamage?(attacker: CDOTA_BaseNPC, damage_type: DamageType, damage_flag: DamageFlags, damage: number): boolean;
+
+        /**
+         * DAMAGE_BORROWED_TIME_EVENT
+         * 回光返照的友方伤害事件记录
+         *
+         * - 触发者: 受击者
+         * @param attacker
+         * @param victim
+         * @param damage
+         * @param damage_property
+         * @param damage_type
+         * @param damage_flag
+         */
+        DamageEvent_BorrowedTimeRecord?(
+            attacker: CDOTA_BaseNPC,
+            victim: CDOTA_BaseNPC_Hero,
+            damage: number,
+            damage_property: DamageProperty,
+            damage_type: DamageType,
+            damage_flag: DamageFlags
+        ): void;
+
+        /**
+         * 末端伤害格挡 - 百分比, 事件名 DAMAGE_FIXED_VICITIM_END_BLOCK
+         * - 触发者: 受击方
+         * @param damage 伤害值
+         * @returns 返回格挡百分比, 同时触发时，仅数值最高者生效。
+         */
+        DamageFixed_EndBlockPercent?(damage: number): number;
+        /**
+         * 末端伤害结算事件, 事件名 DAMAGE_END_DAMAGE_EVENT
+         * - 双方触发
+         * @param attacker 攻击者
+         * @param victim 受击者
+         * @param damage_property 伤害类型
+         * @param damage_type 伤害类型
+         * @param damage_flag 特殊伤害标识
+         * @param damage 伤害值
+         * @param ability 伤害来源技能
+         */
+        DamageEvent_EndDamage?(
+            attacker: CDOTA_BaseNPC,
+            victim: CDOTA_BaseNPC,
+            damage_property: DamageProperty,
+            damage_type: DamageType,
+            damage_flag: DamageFlags,
+            damage: number
+        ): void;
+
+        /**
+         * 飞溅的伤害传递(dmgTable: DamageTable), 事件名 DAMAGE_PSI_BLADE_EVENT
+         * - 触发者: 攻击方
+         * @param victim 受害者
+         * @param damage 伤害值
+         */
+        DamageEvent_PsiBlade?(victim: CDOTA_BaseNPC, damage: number): void;
+
+        /**
+         * 幻象结算之后伤害结算事件 - 过完幻象的伤害增幅后触发 - 攻击者+受击者 事件名 DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT
+         * - 触发者: 攻击方 和 受击方
+         * @param attacker
+         * @param victim
+         * @param damage
+         * @param damage_flag
+         * @param inflictor
+         */
+        DamageEvent_AfterIllusionDamage?(dmgTable: DamageTable);
+
+        /**
+         * 特殊溅射攻击广播 - 攻击者触发 事件名 DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT
+         * - 触发者: 攻击者
+         * @param victim 受击者
+         * @param damage 伤害
+         */
+        DamageEvent_SpecialBounceAttack?(dmgTable: DamageTable);
+
+        /**
+         * 击杀任意单位 事件名 UNIT_KILL_UNIT
+         * - 触发者：击杀者
+         * @param event
+         */
+        // OnKill?(dmgTable: DamageTable): void;
+
+        /**
+         * 单位死亡 事件名 UNIT_DEATH
+         * - 触发者：任意死亡单位
+         */
+        OnUnitDeath?(dmgTable: DamageTable): void;
+
+        /**
+         * 英雄死亡 事件名 UNIT_HERO_DEATH
+         * - 触发者：任意死亡单位
+         */
+        OnHeroDeath?(dmgTable: DamageTable): void;
+
+        /**
+         * 建筑死亡 事件名 UNIT_BUILDING_DEATH
+         * - 触发者：任意死亡建筑
+         */
+        OnBuildingDeath?(dmgTable: DamageTable): void;
+
+        /**
+         * 单位复活事件 事件名 UNIT_RESPAWN
+         * - 触发者：只有buff拥有者复活时触发
+         */
+        // OnRespawn?(dmgTable: DamageTable): void;
+
+        OnAttackStart_Target?(AttackData: UnitEventAttackDamageData): void;
+        /**攻击前摇  触发者 攻击者 */
+        OnAttackStart_Attacker?(AttackData: UnitEventAttackDamageData): void;
+        /**攻击记录前  触发者 攻击者 */
+        OnAttackRecord_Attack?(AttackData: UnitEventAttackDamageData): void;
+
+        /** 攻击命中时，事件名 。`攻击者触发` */
+        OnAttackLanded_Attacker?(AttackData: UnitEventAttackDamageData): void;
+        /** 受到攻击命中时，事件名 。`受害者触发` */
+        OnAttackLanded_Target?(AttackData: UnitEventAttackDamageData): void;
+        /**攻击失败时 双方触发 */
+        OnAttackFail_Both?(AttackData: UnitEventAttackDamageData): void;
+        /**增加暴击 数据 */
+        AddParentAttackCritData?(): CritData;
+
+        /**增加闪避 数据 */
+        AddParentEvasionData?(): EvasionData;
+        /**增加致盲 数据 */
+        AddParentBlindData?(): BlindData;
+        /**增加必中 数据 */
+        AddParentAccuracyData?(): AccuracyData;
+        /**
+         * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
+         */
+        // OnHealthGained?(dmgTable: DamageTable): void;
+    }
+}

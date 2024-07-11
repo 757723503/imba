@@ -1,5 +1,3 @@
-import { CDispatcher } from '../dispatcher/Dispatcher';
-
 /**
  * 造成伤害 - 新版 3.0
  * @param not_use_dmgTable 这个dmgTable不要直接使用
@@ -30,8 +28,8 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     const flag = not_use_dmgTable.damageFlags ?? DamageFlags.None;
     not_use_dmgTable.damageFlags = flag;
     // 原始伤害结算事件
-    CDispatcher.Send('DAMAGE_ORIGIN_DAMAGE_EVENT', attacker_handle, not_use_dmgTable);
-    CDispatcher.Send('DAMAGE_ORIGIN_DAMAGE_EVENT', victim_handle, not_use_dmgTable);
+    Dispatcher.Send('DAMAGE_ORIGIN_DAMAGE_EVENT', attacker_handle, not_use_dmgTable);
+    Dispatcher.Send('DAMAGE_ORIGIN_DAMAGE_EVENT', victim_handle, not_use_dmgTable);
     // 是否是斩杀 斩杀跳过一些阶段
     const is_cullingdown = (flag & DamageFlags.CullingDown) > 0;
     // 受害者是否是正常目标, 如果不是正常目标有很多逻辑不走
@@ -70,7 +68,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
         if (attacker.IsHero()) {
             if (!disable_celled) {
                 // - 攻击溅射和攻击弹射的伤害传递(只有一个物理伤害), 不能传递的伤害忽略
-                CDispatcher.Send('DAMAGE_ATTACKER_BOUNCE_EVENT', victim_handle, not_use_dmgTable);
+                Dispatcher.Send('DAMAGE_ATTACKER_BOUNCE_EVENT', victim_handle, not_use_dmgTable);
             }
             // 普通目标才走
             if (isNormalTarget) {
@@ -78,7 +76,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
                 // 创建剑刃风暴无效化的参数
                 const blame_tb = { victim: victim, result: false };
                 // 剑刃风暴的攻击伤害无效化 只有攻击者,攻击伤害能接收
-                CDispatcher.Send('DAMAGE_FIXED_ATTACKER_BLADE_STORM_ATK', attacker_handle, blame_tb);
+                Dispatcher.Send('DAMAGE_FIXED_ATTACKER_BLADE_STORM_ATK', attacker_handle, blame_tb);
                 if (blame_tb.result == true) {
                     // 无效化本次初始伤害
                     fixed_tb.attack_physical_damage = 0;
@@ -100,7 +98,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
                 extra_data: not_use_dmgTable.extra_data,
             };
             // 攻击特效伤害 只有攻击者,攻击伤害能接收 物理 + 魔法, 并回传
-            CDispatcher.Send('DAMAGE_FIXED_ATTACKER_ATK_DAMAGE', attacker_handle, fixed_tb);
+            Dispatcher.Send('DAMAGE_FIXED_ATTACKER_ATK_DAMAGE', attacker_handle, fixed_tb);
             // 如果本次攻击伤害变为魔法 那所有的物理特效触发都转化为同数值的魔法攻击特效
             if (atk_effct_tb.damageType == DamageType.Magical) {
                 fixed_tb.attack_magical_damage = fixed_tb.attack_physical_damage;
@@ -222,13 +220,13 @@ namespace DamageHelper {
             const phy_dmg = dmgTable.attack_physical_damage;
             if (attacker_is_hero && phy_dmg > 0 && isNormalTarget) {
                 // 攻击分裂的伤害传递 只有攻击者,攻击伤害能接收 只传递物理攻击伤害
-                CDispatcher.Send('DAMAGE_ATTACKER_ATK_CLEAVE_EVENT', attacker_handle, dmgTable);
+                Dispatcher.Send('DAMAGE_ATTACKER_ATK_CLEAVE_EVENT', attacker_handle, dmgTable);
             }
         }
         // - 伤害共享和伤害反弹的伤害传递(只传递物理攻击伤害和攻击者)
 
         if (!is_hp_remove && !is_reflect && dmgTable.attack_physical_damage > 0 && isNormalTarget) {
-            CDispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
+            Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
                 damage: dmgTable.attack_physical_damage,
                 attacker: dmgTable.attacker,
                 type: dmgTable.damageType,
@@ -241,7 +239,7 @@ namespace DamageHelper {
                 origin_table: dmgTable,
             };
             // 魔法护盾的伤害格挡 只有受击者, 所有伤害能接受 包含生命移除
-            CDispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
+            Dispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
             const result_pct = mg_shield_tb.block_pct;
             if (result_pct > 0) {
                 const remain_value = 1 - result_pct * 0.01;
@@ -300,7 +298,7 @@ namespace DamageHelper {
         if (dmgTable.attack_physical_damage > 0) {
             const ignore_pct_tb = { origin_physical: dmgTable.attack_physical_damage, ignore: false };
             // 物理伤害无效化 只有受击者
-            CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
 
             ignore_pct.phy = ignore_pct_tb.ignore;
         }
@@ -308,14 +306,14 @@ namespace DamageHelper {
         if (isNormalTarget && dmgTable.attack_magical_damage > 0) {
             const ignore_pct_tb = { origin_magic: dmgTable.attack_physical_damage, ignore: false };
             // 魔法伤害无效化 只有受击者
-            CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE', victim_handle, ignore_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE', victim_handle, ignore_pct_tb);
             ignore_pct.mag = ignore_pct_tb.ignore;
         }
         //     - 全类型伤害无效化
         if ((isNormalTarget && dmgTable.attack_physical_damage > 0) || dmgTable.attack_magical_damage > 0) {
             const ignore_pct_tb = { origin_all: dmgTable.attack_physical_damage + dmgTable.attack_magical_damage, ignore: false, attacker: attacker };
             // 全类型伤害无效化 只有受击者
-            CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
             ignore_pct.all = ignore_pct_tb.ignore;
             if (ignore_pct_tb.ignore == true) {
                 ignore_pct.phy = true;
@@ -384,7 +382,7 @@ namespace DamageHelper {
             if (dmgTable.attack_physical_damage > 0) {
                 /** 特殊物理伤害调整, 只有受击者触发, 加法叠加,  add_pct为受到伤害增加 如果传入负数则为伤害减少 */
                 const ignore_pct_tb = { add_pct: 0, dmgTable: dmgTable };
-                CDispatcher.Send('DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
+                Dispatcher.Send('DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
                 if (ignore_pct_tb.add_pct != 0) {
                     dmgTable.attack_physical_damage *= 1 + ignore_pct_tb.add_pct * 0.01;
                     DamageHelper.AddRecord(
@@ -405,12 +403,12 @@ namespace DamageHelper {
             {
                 //     - 核心攻击伤害调整(双方触发)
                 const phy_pct_tb = { scale_pct: 0, attacker: attacker, victim: victim };
-                CDispatcher.Send('DAMAGE_FIXED_CORE_ATTACK_DAMAGE', attacker_handle, phy_pct_tb);
-                CDispatcher.Send('DAMAGE_FIXED_CORE_ATTACK_DAMAGE', victim_handle, phy_pct_tb);
+                Dispatcher.Send('DAMAGE_FIXED_CORE_ATTACK_DAMAGE', attacker_handle, phy_pct_tb);
+                Dispatcher.Send('DAMAGE_FIXED_CORE_ATTACK_DAMAGE', victim_handle, phy_pct_tb);
                 //     - 核心全类型伤害调整(双方触发)
                 const all_pct_tb = { scale_pct: 0, attacker: attacker, victim: victim };
-                CDispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', attacker_handle, all_pct_tb);
-                CDispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', victim_handle, all_pct_tb);
+                Dispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', attacker_handle, all_pct_tb);
+                Dispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', victim_handle, all_pct_tb);
                 const result_scale_pct = phy_pct_tb.scale_pct + all_pct_tb.scale_pct;
                 if (result_scale_pct != 0) {
                     const result_scale = 1 + result_scale_pct * 0.01;
@@ -440,7 +438,7 @@ namespace DamageHelper {
                     false_promise_result: false,
                     total_dmg: total_dmg_2,
                 };
-                CDispatcher.Send('DAMAGE_FIXED_VICITIM_FALSE_PROMISE', victim_handle, false_promise_tb);
+                Dispatcher.Send('DAMAGE_FIXED_VICITIM_FALSE_PROMISE', victim_handle, false_promise_tb);
                 if (false_promise_tb.false_promise_result == true) {
                     DamageHelper.AddRecord(record_list, '虚妄之诺的伤害无效化');
                     dmgTable.attack_physical_damage = 0;
@@ -458,12 +456,12 @@ namespace DamageHelper {
                         damage_flag: dmgTable.damageFlags,
                     };
                     // - 回光返照的友方伤害记录(传入原伤害table并记录)
-                    CDispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', victim_handle, total_dmg_tb);
+                    Dispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', victim_handle, total_dmg_tb);
 
                     // - 末端伤害格挡
                     // 同时触发时，仅数值最高者生效。
                     const end_block_tb = { total_dmg: total_dmg3, block_pct: 0 };
-                    CDispatcher.Send('DAMAGE_FIXED_VICITIM_END_BLOCK', victim_handle, end_block_tb);
+                    Dispatcher.Send('DAMAGE_FIXED_VICITIM_END_BLOCK', victim_handle, end_block_tb);
                     const block_pct = end_block_tb.block_pct;
                     if (block_pct > 0) {
                         dmgTable.attack_physical_damage *= 1 - block_pct * 0.01;
@@ -491,8 +489,8 @@ namespace DamageHelper {
                             damage_flag: dmgTable.damageFlags,
                             damage: total_dmg3,
                         };
-                        CDispatcher.Send('DAMAGE_END_DAMAGE_EVENT', victim_handle, end_attack_tb);
-                        CDispatcher.Send('DAMAGE_END_DAMAGE_EVENT', attacker_handle, end_attack_tb);
+                        Dispatcher.Send('DAMAGE_END_DAMAGE_EVENT', victim_handle, end_attack_tb);
+                        Dispatcher.Send('DAMAGE_END_DAMAGE_EVENT', attacker_handle, end_attack_tb);
                     }
                 }
             }
@@ -503,7 +501,7 @@ namespace DamageHelper {
             if (end_atk_phy_dmg > 0) {
                 if (attacker_is_hero) {
                     //     - 飞溅的伤害传递(物理攻击伤害)
-                    CDispatcher.Send('DAMAGE_PSI_BLADE_EVENT', attacker_handle, { victim: victim, damage: end_atk_phy_dmg });
+                    Dispatcher.Send('DAMAGE_PSI_BLADE_EVENT', attacker_handle, { victim: victim, damage: end_atk_phy_dmg });
                 }
             }
         }
@@ -550,7 +548,7 @@ namespace DamageHelper {
         // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
         // - 伤害共享和伤害反弹的伤害传递(只传递物理攻击伤害和攻击者)
         if (!is_hp_remove && !is_hp_cost && !is_reflect && dmgTable.ability_physical_damage > 0 && isNormalTarget) {
-            CDispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
+            Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
                 damage: dmgTable.ability_physical_damage,
                 attacker: attacker,
                 type: DamageType.Physical,
@@ -563,7 +561,7 @@ namespace DamageHelper {
                 origin_table: dmgTable,
             };
             // 魔法护盾的伤害格挡 只有受击者, 所有伤害能接受 包含生命移除
-            CDispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
+            Dispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
             const result_pct = mg_shield_tb.block_pct;
             if (result_pct > 0) {
                 const remain_value = 1 - result_pct * 0.01;
@@ -599,7 +597,7 @@ namespace DamageHelper {
         if (dmgTable.ability_physical_damage > 0) {
             const ignore_pct_tb = { origin_physical: dmgTable.ability_physical_damage, ignore: false };
             // 物理伤害无效化 只有受击者
-            CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
             ignore_pct.phy = ignore_pct_tb.ignore;
         }
         if (!ignore_pct.phy) {
@@ -607,7 +605,7 @@ namespace DamageHelper {
             if (isNormalTarget && dmgTable.ability_physical_damage > 0) {
                 const ignore_pct_tb = { origin_all: dmgTable.ability_physical_damage, ignore: false, attacker: dmgTable.attacker };
                 // 全类型伤害无效化 只有受击者
-                CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
+                Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
                 ignore_pct.all = ignore_pct_tb.ignore;
                 if (ignore_pct_tb.ignore == true) {
                     ignore_pct.phy = true;
@@ -644,7 +642,7 @@ namespace DamageHelper {
         if (dmgTable.ability_physical_damage > 0) {
             /** 特殊物理伤害调整, 只有受击者触发, 加法叠加,  add_pct为受到伤害增加 如果传入负数则为伤害减少 */
             const ignore_pct_tb = { add_pct: 0, dmgTable: dmgTable };
-            CDispatcher.Send('DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE', victim_handle, ignore_pct_tb);
             if (ignore_pct_tb.add_pct != 0) {
                 dmgTable.ability_physical_damage *= 1 + ignore_pct_tb.add_pct * 0.01;
                 DamageHelper.AddRecord(
@@ -686,7 +684,7 @@ namespace DamageHelper {
         }
         // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
         if (!is_hp_remove && !is_hp_cost && !is_reflect && dmgTable.ability_magical_damage > 0 && isNormalTarget) {
-            CDispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
+            Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
                 damage: dmgTable.ability_magical_damage,
                 attacker: attacker,
                 type: DamageType.Magical,
@@ -699,7 +697,7 @@ namespace DamageHelper {
                 origin_table: dmgTable,
             };
             // 魔法护盾的伤害格挡 只有受击者, 所有伤害能接受 包含生命移除
-            CDispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
+            Dispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
             const result_pct = mg_shield_tb.block_pct;
             if (result_pct > 0) {
                 const remain_value = 1 - result_pct * 0.01;
@@ -735,7 +733,7 @@ namespace DamageHelper {
         if (isNormalTarget && dmgTable.ability_magical_damage > 0) {
             const ignore_pct_tb = { origin_magic: dmgTable.ability_magical_damage, ignore: false };
             // 魔法伤害无效化 只有受击者
-            CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE', victim_handle, ignore_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_MAGIC_DAMAGE', victim_handle, ignore_pct_tb);
             ignore_pct.mag = ignore_pct_tb.ignore;
         }
         if (!ignore_pct.mag) {
@@ -743,7 +741,7 @@ namespace DamageHelper {
             if (isNormalTarget && dmgTable.ability_magical_damage > 0) {
                 const ignore_pct_tb = { origin_all: dmgTable.ability_magical_damage, ignore: false, attacker: dmgTable.attacker };
                 // 全类型伤害无效化 只有受击者
-                CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
+                Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
                 ignore_pct.all = ignore_pct_tb.ignore;
                 if (ignore_pct_tb.ignore == true) {
                     ignore_pct.mag = true;
@@ -808,7 +806,7 @@ namespace DamageHelper {
                 // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
 
                 if (!is_hp_remove && !is_hp_cost && !is_reflect && dmgTable.pure_damage > 0 && isNormalTarget) {
-                    CDispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
+                    Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
                         damage: dmgTable.pure_damage,
                         attacker: attacker,
                         type: DamageType.Pure,
@@ -822,7 +820,7 @@ namespace DamageHelper {
                         origin_table: dmgTable,
                     };
                     // 魔法护盾的伤害格挡 只有受击者, 所有伤害能接受 包含生命移除
-                    CDispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
+                    Dispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
                     const result_pct = mg_shield_tb.block_pct;
                     if (result_pct > 0) {
                         const remain_value = 1 - result_pct * 0.01;
@@ -844,7 +842,7 @@ namespace DamageHelper {
                 if (isNormalTarget && dmgTable.pure_damage > 0) {
                     const ignore_pct_tb = { origin_pure: dmgTable.pure_damage, ignore: false };
                     // 纯粹伤害无效化 只有受击者
-                    CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE', victim_handle, ignore_pct_tb);
+                    Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE', victim_handle, ignore_pct_tb);
                     // 减益免疫时 无视  纯粹伤害  除非是无视减益免疫
                     ignore_pct.pure = !origin_dmg_table.ignoreMagicImmune && ignore_pct_tb.ignore;
                 }
@@ -853,7 +851,7 @@ namespace DamageHelper {
                     if (isNormalTarget && dmgTable.pure_damage > 0) {
                         const ignore_pct_tb = { origin_all: dmgTable.pure_damage, ignore: false, attacker: dmgTable.attacker };
                         // 全类型伤害无效化 只有受击者
-                        CDispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
+                        Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
                         ignore_pct.all = ignore_pct_tb.ignore;
                         if (ignore_pct.all == true) {
                             ignore_pct.pure = true;
@@ -892,11 +890,11 @@ namespace DamageHelper {
         if (!is_hp_remove && !is_hp_cost) {
             //     - 核心技能伤害调整(只有受击者)
             const abi_pct_tb = { scale_pct: 0 };
-            CDispatcher.Send('DAMAGE_FIXED_CORE_ABILITY_DAMAGE', victim_handle, abi_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_CORE_ABILITY_DAMAGE', victim_handle, abi_pct_tb);
             //     - 核心全类型伤害调整(只有受击者)
             const all_pct_tb = { scale_pct: 0, attacker: attacker, victim: victim };
-            CDispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', attacker_handle, all_pct_tb);
-            CDispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', victim_handle, all_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', attacker_handle, all_pct_tb);
+            Dispatcher.Send('DAMAGE_FIXED_CORE_ALL_DAMAGE', victim_handle, all_pct_tb);
             const result_scale_pct = abi_pct_tb.scale_pct + all_pct_tb.scale_pct;
             if (result_scale_pct != 0) {
                 const origin_dmg = dmgTable.true_damage;
@@ -922,7 +920,7 @@ namespace DamageHelper {
                         total_dmg: total_dmg,
                         ability: dmgTable.sourceAbility,
                     };
-                    CDispatcher.Send('DAMAGE_FIXED_VICITIM_FALSE_PROMISE', victim_handle, false_promise_tb);
+                    Dispatcher.Send('DAMAGE_FIXED_VICITIM_FALSE_PROMISE', victim_handle, false_promise_tb);
                     if (false_promise_tb.false_promise_result == true) {
                         DamageHelper.AddRecord(record_list, '虚妄之诺的伤害无效化');
                         dmgTable.true_damage = 0;
@@ -933,7 +931,7 @@ namespace DamageHelper {
                     const total_dmg2 = dmgTable.true_damage;
                     if (total_dmg2 > 0) {
                         // - 回光返照的友方伤害记录(传入原伤害table并记录)
-                        CDispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', victim_handle, {
+                        Dispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', victim_handle, {
                             attacker: attacker,
                             victim: victim,
                             damage: total_dmg2,
@@ -945,7 +943,7 @@ namespace DamageHelper {
                         // - 末端伤害格挡
                         // 同时触发时，仅数值最高者生效。
                         const end_block_tb = { total_dmg: total_dmg2, block_pct: 0 };
-                        CDispatcher.Send('DAMAGE_FIXED_VICITIM_END_BLOCK', victim_handle, end_block_tb);
+                        Dispatcher.Send('DAMAGE_FIXED_VICITIM_END_BLOCK', victim_handle, end_block_tb);
                         const block_pct = end_block_tb.block_pct;
                         if (block_pct > 0) {
                             dmgTable.true_damage *= 1 - block_pct * 0.01;
@@ -969,8 +967,8 @@ namespace DamageHelper {
                             damage: total_dmg3,
                             ability: dmgTable.sourceAbility,
                         };
-                        CDispatcher.Send('DAMAGE_END_DAMAGE_EVENT', victim_handle, end_total_tb);
-                        CDispatcher.Send('DAMAGE_END_DAMAGE_EVENT', attacker_handle, end_total_tb);
+                        Dispatcher.Send('DAMAGE_END_DAMAGE_EVENT', victim_handle, end_total_tb);
+                        Dispatcher.Send('DAMAGE_END_DAMAGE_EVENT', attacker_handle, end_total_tb);
                     }
                 }
             }

@@ -79,7 +79,7 @@ declare global {
         /**
          * 自定义注册函数
          */
-        CustomDeclareFunctions?(dmgTable: DamageTable): ModifierFunctions[];
+        CustomDeclareFunctions?(): ModifierFunctions[];
     }
 
     interface CDOTA_Buff {}

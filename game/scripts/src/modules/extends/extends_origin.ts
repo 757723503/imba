@@ -75,8 +75,6 @@ if (!CDOTA_BaseNPC.AddModifier) {
     ): CDOTA_Buff {
         const modifierName = ModifierClass.name;
         const modifier = this.AddNewModifier(caster, ability, modifierName, modifierTable as any);
-        print(modifierName, modifier);
-
         return modifier;
     };
 }
