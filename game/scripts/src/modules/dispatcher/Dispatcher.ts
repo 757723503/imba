@@ -1,7 +1,7 @@
 import { reloadable } from '../../utils/tstl-utils';
-// declare global {
-//     var CDispatcher: CDispatcher;
-// }
+declare global {
+    var CDispatcher: CDispatcher;
+}
 
 @reloadable
 export class CDispatcher {

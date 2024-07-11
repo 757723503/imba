@@ -139,14 +139,14 @@ export class modifier_imba_stunned extends CustomBaseModifier {
     }
 
     OnCreated(params: object): void {
-        if (IsServer()) {
-            print('modifier_imba_stunned OnCreated');
-        }
+        // if (IsServer()) {
+        print('modifier_imba_stunned OnCreated');
+        // }
     }
 
     OnDestroy(): void {
-        if (IsServer()) {
-            print('modifier_imba_stunned OnDestroy');
-        }
+        // if (IsServer()) {
+        print('modifier_imba_stunned OnDestroy');
+        // }
     }
 }

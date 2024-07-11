@@ -9,7 +9,6 @@ import { CFilter } from './Filter';
 import { CProjectileManager } from './projectile/ProjectileManager';
 import { CDispatcher } from './dispatcher/Dispatcher';
 import './damage/damage'; // 造成伤害模块
-import '../common_modifier/index';
 import '../base_attack_ability/base_attack_ability';
 import { CAttackDataManager } from './attack/AttackManager';
 import { PseudoRandom } from './lib/PseudoRandom';
@@ -50,11 +49,11 @@ export function ActivateModules() {
         new CChat();
         new CFilter();
         new CEngineEvent();
-        globalThis.CDispatcher = CDispatcher;
         globalThis.CProjectileManager = new CProjectileManager();
         globalThis.CIllusionManager = new CIllusionManager();
         globalThis.CAttackData = new CAttackDataManager();
         globalThis.Random = new PseudoRandom();
+        globalThis.CDispatcher = new CDispatcher();
         globalThis.AddDamage = CustomApplyDamage;
     }
 }

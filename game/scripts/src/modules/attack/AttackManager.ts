@@ -76,12 +76,15 @@ export class CAttackDataManager {
 
     /** 攻击出手时判断暴击。返回触发了的暴击对象 */
     _CheckCritOnAttack(attacker: CDOTA_BaseNPC, attacking_target: CDOTA_BaseNPC): CritData | undefined {
+        print(attacker._crits_data_calls.length);
+
         if (attacker._crits_data_calls.length == 0) return;
         // 目标允许
         if (attacking_target.IsWard() || attacking_target.IsBuilding() || !attacker.IsEnemy(attacking_target)) {
             return;
         }
         let trigger_crit: CritData;
+
         for (const crit of attacker._crits_data_calls) {
             const { crit_chance, crit_rate } = crit;
             if (Random.RollPercentage(crit_chance, attacker, 'crit')) {
