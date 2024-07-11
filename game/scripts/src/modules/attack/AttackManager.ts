@@ -1,4 +1,4 @@
-import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
+// import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 import { reloadable } from '../../utils/tstl-utils';
 
 @reloadable

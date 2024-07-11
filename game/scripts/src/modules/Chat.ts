@@ -1,4 +1,3 @@
-import { modifier_imba_stunned } from '../common_modifier/modifier_imba_stunned';
 import { reloadable } from '../utils/tstl-utils';
 enum ChatCommand {
     r = 'r',
@@ -39,7 +38,11 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5, absc: 5 });
+                const all_modifier = hero.FindAllModifiers();
+                for (const modifier of all_modifier) {
+                    print(modifier.GetName(), modifier.GetCaster()?.GetUnitName());
+                }
+                // hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5, absc: 5 });
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,

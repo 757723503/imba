@@ -1,3 +1,4 @@
+import './utils/dota_ts_adapter';
 import { ActivateModules } from './modules';
 import './UtilityFunctions';
 import 'utils/index';

@@ -1,4 +1,4 @@
-import { BaseModifier } from '../utils/dota_ts_adapter';
+// import { BaseModifier } from '../utils/dota_ts_adapter';
 import { CDispatcher } from './dispatcher/Dispatcher';
 // export interface CustomBaseModifier extends BaseModifier {}
 export class CustomBaseModifier extends BaseModifier {
