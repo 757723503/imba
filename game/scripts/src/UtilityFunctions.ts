@@ -103,6 +103,21 @@ function GetDistance3D(vEndPoint: Vector, vStartPoint: Vector): number {
     const distance = pos1.__sub(pos2).Length();
     return distance;
 }
+// function convertModifierParamData<T>(data: T): ModifierParamData<T> {
+//     if (typeof data === 'boolean') {
+//         return (data ? 1 : 0) as ModifierParamData<T>;
+//     } else if (typeof data === 'object' && data !== null) {
+//         const result: any = Array.isArray(data) ? [] : {};
+//         for (const key in data) {
+//             if (data.hasOwnProperty(key)) {
+//                 result[key] = convertModifierParamData((data as any)[key]);
+//             }
+//         }
+//         return result;
+//     } else {
+//         return data as ModifierParamData<T>;
+//     }
+// }
 // -- 获取距离
 // function CGetDistance(ent1, ent2)
 // 	local pos1 = ent1

@@ -138,8 +138,9 @@ class modifier_imba_stunned extends BaseModifier {
         this.GetParent().FadeGesture(GameActivity.DOTA_ATTACK_EVENT);
     }
 
-    OnCreated(params: object): void {
+    OnCreated(keys: ModifierParams & { a: boolean }): void {
         // if (IsServer()) {
+        const b = keys.a;
         print('modifier_imba_stunned OnCreated');
         // }
     }

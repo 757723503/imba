@@ -8,7 +8,7 @@ declare global {
             caster: CDOTA_BaseNPC | undefined,
             ability: CDOTABaseAbility | undefined,
             ModifierClass: T,
-            modifierTable: InstanceType<T> extends { OnCreated(params: infer P): any } ? P : never
+            modifierTable: InstanceType<T> extends { OnCreated(params: infer P): any } ? ModifierParamData<P> : never
         ): CDOTA_Buff;
 
         /**获得自定义致盲攻击丢失概率 */
@@ -52,19 +52,19 @@ declare global {
         /** 魔法伤害格挡 */
         GetDamageBlocks_Magic(): CBlock_Magic[];
 
-        // /**
-        //  * @deprecated
-        //  */
-        // AddNewModifier(
-        //     caster: CDOTA_BaseNPC | undefined,
-        //     ability: CDOTABaseAbility | undefined,
-        //     modifierName: string,
-        //     modifierTable: object | undefined
-        // ): CDOTA_Buff;
-        // /**
-        //  * @deprecated
-        //  */
-        // GetEvasion(): number;
+        /**
+         * @deprecated
+         */
+        AddNewModifier(
+            caster: CDOTA_BaseNPC | undefined,
+            ability: CDOTABaseAbility | undefined,
+            modifierName: string,
+            modifierTable: object | undefined
+        ): CDOTA_Buff;
+        /**
+         * @deprecated
+         */
+        GetEvasion(): number;
     }
 
     interface CDOTA_BaseNPC_Hero {}
@@ -173,19 +173,20 @@ declare global {
          */
         UpdateLinearProjectileDirection(projectile: ProjectileID, direction: Vector, speed: number): void;
     }
+
+    type ModifierParamData<T> = T extends string | number
+        ? T
+        : T extends boolean
+          ? 0 | 1
+          : T extends Function
+            ? undefined
+            : T extends []
+              ? undefined
+              : T extends object
+                ? {
+                      [K in keyof T]: ModifierParamData<T[K]>;
+                  }
+                : never;
 }
-declare type ModifierParamData<T> = T extends string | number
-    ? T
-    : T extends boolean
-      ? 0 | 1
-      : T extends Function
-        ? undefined
-        : T extends []
-          ? undefined
-          : T extends object
-            ? {
-                  [K in keyof T]: ModifierParamData<T[K]>;
-              }
-            : never;
 
 export {};
