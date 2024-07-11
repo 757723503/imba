@@ -1,5 +1,9 @@
 ﻿Tokens,SChinese,English
 ability_test,测试技能,
 ability_test_Description,测试技能的描述,
-base_attack_ability,普通攻击,
-base_attack_ability_Description,测试技能的描述,
+ability_custom_base_attack,普通攻击,
+ability_custom_base_attack_Description,测试技能的描述,
+"ability_custom_base_attack ",普通攻击,
+ability_custom_base_attack _Description,测试技能的描述,
+ability_custom_base_attack,普通攻击,
+ability_custom_base_attack_Description,测试技能的描述,

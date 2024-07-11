@@ -67,11 +67,14 @@ declare global {
         GetEvasion(): number;
     }
 
-    interface CDOTA_BaseNPC_Hero {}
-
-    interface CBaseEntity {
-        base_attack_ability: CDOTABaseAbility;
+    interface CDOTA_BaseNPC_Hero {
+        _illusions_outgoing_damage?: number;
+        _illusions_incoming_damage?: number;
+        _illusions_outgoing_damage_structure?: number;
+        _illusions_outgoing_damage_roshan?: number;
     }
+
+    interface CBaseEntity {}
 
     interface ModifierAddedEventCustom {}
 
@@ -80,6 +83,8 @@ declare global {
          * 自定义注册函数
          */
         CustomDeclareFunctions?(): ModifierFunctions[];
+
+        OnCreated(params: ModifierParams): void;
     }
 
     interface CDOTA_Buff {}

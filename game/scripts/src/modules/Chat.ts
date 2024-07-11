@@ -1,4 +1,5 @@
 import { reloadable } from '../utils/tstl-utils';
+import { modifier_imba_stunned } from '../common_modifier/modifier_imba_stunned';
 enum ChatCommand {
     r = 'r',
     rs = 'rs',
@@ -38,11 +39,8 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                const all_modifier = hero.FindAllModifiers();
-                for (const modifier of all_modifier) {
-                    print(modifier.GetName(), modifier.GetCaster()?.GetUnitName());
-                }
-                hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5, a: 1 });
+                hero.AddAbility('ability_imba_life_stealer_open_wounds');
+                hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,
@@ -160,13 +158,13 @@ export class CChat {
                 });
                 break;
             case ChatCommand.hero:
-                DebugCreateUnit(player, DotaHero.drow_ranger, DotaTeam.BADGUYS, false, (unit): void => {
+                DebugCreateUnit(player, DotaHero.life_stealer, DotaTeam.BADGUYS, false, (unit): void => {
                     unit.AddItemByName(DotaItem.blade_mail);
                 });
                 break;
             case ChatCommand.dm:
                 const dummy = CreateUnitByName('npc_dota_hero_target_dummy', hero.GetAbsOrigin(), true, null, null, DotaTeam.NEUTRALS);
-                dummy.SetControllableByPlayer(keys.playerid, true);
+                // dummy.SetControllableByPlayer(keys.playerid, true);
                 break;
             case ChatCommand.mem:
                 MEM.m_cMethods.DumpMemorySnapshot(null, null, -1);

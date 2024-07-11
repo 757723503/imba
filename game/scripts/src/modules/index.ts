@@ -9,11 +9,12 @@ import { CFilter } from './Filter';
 import { CProjectileManager } from './projectile/ProjectileManager';
 import { CDispatcher } from './dispatcher/Dispatcher';
 import './damage/damage'; // 造成伤害模块
-import '../base_attack_ability/base_attack_ability';
+import '../ability_custom_base_attack/ability_custom_base_attack';
 import { CAttackDataManager } from './attack/AttackManager';
 import { PseudoRandom } from './lib/PseudoRandom';
 import { CIllusionManager } from './IllusionManager';
 import { CustomApplyDamage } from './damage/damage';
+
 declare global {
     interface CDOTAGameRules {
         // 声明所有的GameRules模块，这个主要是为了方便其他地方的引用（保证单例模式）
@@ -45,6 +46,7 @@ export function ActivateModules() {
         GameRules.XNetTable = new XNetTable();
         GameRules.CGameMode = new CGameMode();
         new GameConfig();
+
         new Debug();
         new CChat();
         new CFilter();

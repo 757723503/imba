@@ -23,8 +23,6 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     if (!victim.IsAlive()) return;
 
     // 合法性检测 打印
-    // assert(not_use_dmgTable.attacker, '本次没有伤害攻击者!');
-    // assert(not_use_dmgTable.damageType, '本次没有伤害类型!');
     const flag = not_use_dmgTable.damageFlags ?? DamageFlags.None;
     not_use_dmgTable.damageFlags = flag;
     // 原始伤害结算事件
@@ -181,7 +179,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
             DamageHelper.Calc_Ability_Damage_2(end_dmg_tb, isNormalTarget, record_list);
         }
     } else {
-        error('DamageProperty出错');
+        DebugError('DamageProperty出错');
     }
     DamageHelper.AddRecord(record_list, string.format('最终伤害:%.2f', end_dmg_tb.true_damage));
     DamageHelper.AddRecord(record_list, '⬆️⬆️⬆️本次伤害记录结束⬆️⬆️⬆️\n');
@@ -205,12 +203,13 @@ namespace DamageHelper {
         const attacker_is_hero = attacker.IsHero();
         const victim_handle = victim.GetEntityIndex();
         const victim_is_hero = victim.IsHero();
+
         const disable_celled = (dmgTable.damageFlags & DamageFlags.DisableCelled) > 0;
         // 生命移除需要跳过一些阶段
 
-        const is_hp_remove = (dmgTable.damageFlags & DamageFlags.HPRemove) > 0;
+        const is_hp_remove = checkTag(dmgTable.damageFlags, DamageFlags.HPRemove);
         // 是反射(带有不反弹标记)需要跳过一些阶段
-        const is_reflect = (dmgTable.damageFlags & DamageFlags.DoNotReflect) > 0;
+        const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
 
         // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
         // - TODO: 暂无: 炽烈火雨的攻击伤害调整
@@ -225,7 +224,7 @@ namespace DamageHelper {
         }
         // - 伤害共享和伤害反弹的伤害传递(只传递物理攻击伤害和攻击者)
 
-        if (!is_hp_remove && !is_reflect && dmgTable.attack_physical_damage > 0 && isNormalTarget) {
+        if (!is_hp_remove && !is_reflect && dmgTable.attack_physical_damage > 0 && isNormalTarget && dmgTable.damageFlags) {
             Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
                 damage: dmgTable.attack_physical_damage,
                 attacker: dmgTable.attacker,
@@ -316,6 +315,15 @@ namespace DamageHelper {
             Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
             ignore_pct.all = ignore_pct_tb.ignore;
             if (ignore_pct_tb.ignore == true) {
+                ignore_pct.phy = true;
+                ignore_pct.mag = true;
+            }
+            if (
+                !origin_dmg_table.ignoreMagicImmune &&
+                origin_dmg_table.victim.IsDebuffImmune() &&
+                checkTag(origin_dmg_table.damageFlags, DamageFlags.DoNotReflect)
+            ) {
+                DamageHelper.AddRecord(record_list, '减益免疫,免疫攻击的物理和魔法的反射伤害');
                 ignore_pct.phy = true;
                 ignore_pct.mag = true;
             }
@@ -532,12 +540,12 @@ namespace DamageHelper {
         const victim_handle = victim.GetEntityIndex();
         const victim_is_hero = victim.IsHero();
         // 生命移除需要跳过一些阶段
-        const is_hp_remove = (dmgTable.damageFlags & DamageFlags.HPRemove) > 0;
+        const is_hp_remove = checkTag(dmgTable.damageFlags, DamageFlags.HPRemove);
         // 可以被格挡的技能物理伤害
-        const is_reflect = (dmgTable.damageFlags & DamageFlags.DoNotReflect) > 0;
+        const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
         const attacker = dmgTable.attacker;
         // 是否是生命流失 如果是生命流失跳过一些阶段
-        const is_hp_cost = (dmgTable.damageFlags & DamageFlags.HPCost) > 0;
+        const is_hp_cost = checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
         // 其他全干掉
         dmgTable.attack_physical_damage = 0;
         dmgTable.attack_magical_damage = 0;
@@ -612,6 +620,14 @@ namespace DamageHelper {
                 }
             }
         }
+        if (
+            !origin_dmg_table.ignoreMagicImmune &&
+            origin_dmg_table.victim.IsDebuffImmune() &&
+            checkTag(origin_dmg_table.damageFlags, DamageFlags.DoNotReflect)
+        ) {
+            DamageHelper.AddRecord(record_list, '减益免疫,免疫技能的物理的反射伤害');
+            ignore_pct.phy = true;
+        }
         // 如果物理
         if (ignore_pct.phy) {
             DamageHelper.AddRecord(record_list, '物理伤害无效化');
@@ -666,11 +682,11 @@ namespace DamageHelper {
         const victim_handle = victim.GetEntityIndex();
         const victim_is_hero = victim.IsHero();
         // 生命移除需要跳过一些阶段
-        const is_hp_remove = (dmgTable.damageFlags & DamageFlags.HPRemove) > 0;
+        const is_hp_remove = checkTag(dmgTable.damageFlags, DamageFlags.HPRemove);
         const attacker = dmgTable.attacker;
         // 是否是生命流失 如果是生命流失跳过一些阶段
-        const is_hp_cost = (dmgTable.damageFlags & DamageFlags.HPCost) > 0;
-        const is_reflect = (dmgTable.damageFlags & DamageFlags.DoNotReflect) > 0;
+        const is_hp_cost = checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
+        const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
         // 其他全干掉
         dmgTable.attack_physical_damage = 0;
         dmgTable.pure_damage = 0;
@@ -748,6 +764,14 @@ namespace DamageHelper {
                 }
             }
         }
+        if (
+            !origin_dmg_table.ignoreMagicImmune &&
+            origin_dmg_table.victim.IsDebuffImmune() &&
+            checkTag(origin_dmg_table.damageFlags, DamageFlags.DoNotReflect)
+        ) {
+            DamageHelper.AddRecord(record_list, '减益免疫,免疫技能的魔法的反射伤害');
+            ignore_pct.mag = true;
+        }
         // 如果魔法
         if (ignore_pct.mag) {
             dmgTable.ability_magical_damage = 0;
@@ -790,10 +814,11 @@ namespace DamageHelper {
         // 斩杀 需要跳过一些阶段
         const is_culling_down = (dmgTable.damageFlags & DamageFlags.CullingDown) > 0;
         // 是否是生命流失 如果是生命流失跳过一些阶段
-        const is_hp_cost = (dmgTable.damageFlags & DamageFlags.HPCost) > 0;
-        const is_hp_remove = (dmgTable.damageFlags & DamageFlags.HPRemove) > 0;
+        const is_hp_cost = checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
+        checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
+        const is_hp_remove = checkTag(dmgTable.damageFlags, DamageFlags.HPRemove);
         const attacker = dmgTable.attacker;
-        const is_reflect = (dmgTable.damageFlags & DamageFlags.DoNotReflect) > 0;
+        const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
         // 其他全干掉
         dmgTable.attack_physical_damage = 0;
         dmgTable.attack_magical_damage = 0;
@@ -858,6 +883,14 @@ namespace DamageHelper {
                         }
                     }
                 }
+                if (
+                    !origin_dmg_table.ignoreMagicImmune &&
+                    origin_dmg_table.victim.IsDebuffImmune() &&
+                    checkTag(origin_dmg_table.damageFlags, DamageFlags.DoNotReflect)
+                ) {
+                    DamageHelper.AddRecord(record_list, '减益免疫,免疫技能纯粹的反射伤害');
+                    ignore_pct.pure = true;
+                }
                 // 如果纯粹
                 if (ignore_pct.pure) {
                     dmgTable.pure_damage = 0;
@@ -881,11 +914,11 @@ namespace DamageHelper {
         const victim_handle = victim.GetEntityIndex();
         const victim_is_hero = victim.IsHero();
         // 生命移除需要跳过一些阶段
-        const is_hp_remove = (dmgTable.damageFlags & DamageFlags.HPRemove) > 0;
+        const is_hp_remove = checkTag(dmgTable.damageFlags, DamageFlags.HPRemove);
         // 是反射(带有不反弹标记)需要跳过一些阶段
-        const is_reflect = (dmgTable.damageFlags & DamageFlags.DoNotReflect) > 0;
+        const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
         // 是否是生命流失 如果是生命流失跳过一些阶段
-        const is_hp_cost = (dmgTable.damageFlags & DamageFlags.HPCost) > 0;
+        const is_hp_cost = checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
         // - 核心伤害调整(加法计算)(返回缩放百分比, 之后重新计算伤害table)
         if (!is_hp_remove && !is_hp_cost) {
             //     - 核心技能伤害调整(只有受击者)
@@ -1244,7 +1277,7 @@ namespace DamageHelper {
             victim: damageTable.victim,
             damage: damageTable.true_damage,
             damage_type: damage_type,
-            ability: damageTable.sourceAbility ?? damageTable.attacker.FindAbilityByName('base_attack_ability'),
+            ability: damageTable.sourceAbility ?? damageTable.attacker.FindAbilityByName('ability_custom_base_attack'),
             damage_flags:
                 DamageFlag.HPLOSS +
                 DamageFlag.NO_SPELL_AMPLIFICATION +

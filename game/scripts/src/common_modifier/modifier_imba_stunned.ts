@@ -1,7 +1,13 @@
 // import { CustomBaseModifier } from '../modules/custom_base_modifier';
 // import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
 @registerModifier()
-class modifier_imba_stunned extends BaseModifier {
+export class modifier_imba_stunned extends BaseModifier {
+    constructor() {
+        super();
+
+        DebugPrint('modifier_imba_stunned constructor');
+    }
+
     IsHidden(): boolean {
         return false;
     }
@@ -52,11 +58,11 @@ class modifier_imba_stunned extends BaseModifier {
     //     print(event.record, event.damage_category, event.fail_type);
     // }
 
-    // CheckState(): Partial<Record<modifierstate, boolean>> {
-    //     return {
-    //         [ModifierState.BLIND]: true,
-    //     };
-    // }
+    CheckState(): Partial<Record<modifierstate, boolean>> {
+        return {
+            [ModifierState.STUNNED]: true,
+        };
+    }
 
     // OnAttackStart_Target(event: CAttackEvent): void {
     //     print('modifier_imba_stunned OnAttackStart_Target');
@@ -72,20 +78,20 @@ class modifier_imba_stunned extends BaseModifier {
     //     print('modifier_imba_stunned OnAttackLanded');
     //     print(event.damage, event.record, event.ranged_attack, event.original_damage, event.fail_type);
     // }
-    // DeclareFunctions(): ModifierFunction[] {
-    //     return [
-    //         ModifierFunction.ON_ATTACK_START,
-    //         ModifierFunction.ON_ATTACKED,
-    //         ModifierFunction.ON_ATTACK_LANDED,
-    //         ModifierFunction.ON_ATTACK_ALLIED,
-    //         ModifierFunction.ON_ATTACK_FAIL,
-    //         ModifierFunction.ON_ATTACK_FINISHED,
-    //         ModifierFunction.ON_ATTACK_RECORD,
-    //         ModifierFunction.ON_ATTACK_RECORD_DESTROY,
-    //         ModifierFunction.ON_ATTACK_CANCELLED,
-    //         ModifierFunction.ON_ATTACK,
-    //     ];
-    // }
+    DeclareFunctions(): ModifierFunction[] {
+        return [
+            ModifierFunction.ON_ATTACK_START,
+            ModifierFunction.ON_ATTACKED,
+            ModifierFunction.ON_ATTACK_LANDED,
+            ModifierFunction.ON_ATTACK_ALLIED,
+            ModifierFunction.ON_ATTACK_FAIL,
+            ModifierFunction.ON_ATTACK_FINISHED,
+            ModifierFunction.ON_ATTACK_RECORD,
+            ModifierFunction.ON_ATTACK_RECORD_DESTROY,
+            ModifierFunction.ON_ATTACK_CANCELLED,
+            ModifierFunction.ON_ATTACK,
+        ];
+    }
 
     // GetModifierMiss_Percentage(): number {
     //     return 100;
@@ -138,9 +144,8 @@ class modifier_imba_stunned extends BaseModifier {
         this.GetParent().FadeGesture(GameActivity.DOTA_ATTACK_EVENT);
     }
 
-    OnCreated(keys: ModifierParams & { a: boolean }): void {
+    OnCreated(keys: ModifierParams): void {
         // if (IsServer()) {
-        const b = keys.a;
         print('modifier_imba_stunned OnCreated');
         // }
     }

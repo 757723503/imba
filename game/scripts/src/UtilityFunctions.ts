@@ -52,6 +52,12 @@ function CDeepPrintTable(obj: any, level: number = 1, currentLevel: number = 0):
         }
     }
 }
+function CIsValid(entity: CBaseEntity): boolean {
+    return entity !== null && !entity.IsNull() && IsValidEntity(entity);
+}
+function CIsAlive(entity: CBaseEntity): boolean {
+    return CIsValid(entity) && entity.IsAlive();
+}
 // -- 获取平面方向
 // function CGetDirection2D(vEndPoint, vStartPoint,vDeDir)
 //     local pos1 = vEndPoint
@@ -102,6 +108,17 @@ function GetDistance3D(vEndPoint: Vector, vStartPoint: Vector): number {
     const pos2 = Vector(vStartPoint.x, vStartPoint.y, vStartPoint.z);
     const distance = pos1.__sub(pos2).Length();
     return distance;
+}
+function checkTag(tag: number, ...values: number[]): boolean {
+    if (!tag || tag <= 0) {
+        return false;
+    }
+    for (const value of values) {
+        if (value > 0 && (tag & value) === value) {
+            return true;
+        }
+    }
+    return false;
 }
 // function convertModifierParamData<T>(data: T): ModifierParamData<T> {
 //     if (typeof data === 'boolean') {

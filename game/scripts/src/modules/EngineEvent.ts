@@ -63,8 +63,8 @@ export class CEngineEvent {
 
             Timers.CreateTimer(FrameTime() * 5, () => {
                 //会引起内存泄露 ?
-                // if (entity.AddAbility != null && entity.HasAbility('base_attack_ability') == false) {
-                // entity.base_attack_ability = entity.AddAbility('base_attack_ability');
+                // if (entity.AddAbility != null && entity.HasAbility('ability_custom_base_attack') == false) {
+                // entity.ability_custom_base_attack = entity.AddAbility('ability_custom_base_attack');
                 // }
                 if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
                     entity.AddNewModifier(entity, null, 'modifier_attack_data_miss', {});

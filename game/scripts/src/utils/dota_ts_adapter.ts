@@ -63,14 +63,15 @@ setmetatable(BaseAbility.prototype, { __index: CDOTA_Ability_Lua ?? C_DOTA_Abili
 setmetatable(BaseItem.prototype, { __index: CDOTA_Item_Lua ?? C_DOTA_Item_Lua });
 setmetatable(BaseModifier.prototype, { __index: CDOTA_Modifier_Lua });
 const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua | CDOTA_Item_Lua) => {
-    print(IsClient());
     if (name !== undefined) {
         // @ts-ignore
         ability.name = name;
     } else {
         name = ability.name;
     }
-
+    if (!name.startsWith('ability_')) {
+        DebugError('技能名必须以ability_开头', name);
+    }
     const [env] = getFileScope();
 
     env[name] = {};
@@ -93,7 +94,9 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     } else {
         name = modifier.name;
     }
-
+    if (!name.startsWith('modifier_')) {
+        DebugError('Buff名必须以modifier_开头', name);
+    }
     const [env, source] = getFileScope();
     const [fileName] = string.gsub(source, '.*scripts[\\/]vscripts[\\/]', '');
 

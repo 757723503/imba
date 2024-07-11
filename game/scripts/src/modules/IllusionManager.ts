@@ -64,7 +64,7 @@ export class CIllusionManager {
         // }
         // playerIllusions.push(...illusions);
         illusions.forEach(illusion => {
-            illusion.SetUnitCanRespawn(true);
+            // illusion.SetUnitCanRespawn(true);
             // illusion.RespawnHero(false, false);
         });
         return illusions;
