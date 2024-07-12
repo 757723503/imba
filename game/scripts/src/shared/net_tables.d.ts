@@ -9,12 +9,6 @@ declare interface CustomNetTableDeclarations {
     hero_list: {
         hero_list: Record<string, string> | string[];
     };
-    custom_net_table_1: {
-        key_1: number;
-        key_2: string;
-    };
-    custom_net_table_3: {
-        key_1: number;
-        key_2: string;
-    };
+
+    ability_textur: Record<string, { name: string }>;
 }

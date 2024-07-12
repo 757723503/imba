@@ -71,12 +71,30 @@ if (!CDOTA_BaseNPC.AddModifier) {
         caster: CDOTA_BaseNPC | undefined,
         ability: CDOTABaseAbility | undefined,
         ModifierClass: T,
-        modifierTable: InstanceType<T> extends { OnCreated(params: infer P): any } ? P : never
+        modifierTable: InstanceType<T> extends { OnCreated(params: infer P): any } ? P : never,
+        cal_resist?: boolean,
+        ignore_immune_debuff?: boolean
     ): CDOTA_Buff {
+        let origin_ability = ability;
+        let origin_duration = (modifierTable as any).duration ?? 0;
         const modifierName = ModifierClass.name;
-        const modifier = this.AddNewModifier(caster, ability, modifierName, modifierTable as any);
+        if (cal_resist == true && origin_duration != 0) {
+            origin_duration = origin_duration * (1 - this.GetStatusResistance());
+            (modifierTable as any).duration = origin_duration;
+        }
+        if (ignore_immune_debuff == true) {
+            origin_ability = this.FindAbilityByName('ability_custom_debuff_immune');
+            (modifierTable as any)._ignore_debuff_immunity = 1;
+            ability && ((modifierTable as any)._origin_ability = ability.GetAbilityName());
+        }
+        const modifier = this.AddNewModifier(caster, origin_ability, modifierName, modifierTable as any);
         return modifier;
     };
 }
+// const originalGetAbility = CDOTA_Modifier_Lua.GetAbility;
+// CDOTA_Modifier_Lua.GetAbility = function (this: CDOTA_Modifier_Lua): CDOTABaseAbility | undefined {
+//     print('重写GetAbility');
+//     return originalGetAbility.call(this);
+// };
 
 export {};

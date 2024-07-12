@@ -40,7 +40,8 @@ export class CChat {
                 break;
             case ChatCommand.qw:
                 hero.AddAbility('ability_imba_life_stealer_open_wounds');
-                hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
+                const modifier = hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
+
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,

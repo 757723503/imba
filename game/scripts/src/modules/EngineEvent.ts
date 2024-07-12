@@ -66,6 +66,10 @@ export class CEngineEvent {
                 // if (entity.AddAbility != null && entity.HasAbility('ability_custom_base_attack') == false) {
                 // entity.ability_custom_base_attack = entity.AddAbility('ability_custom_base_attack');
                 // }
+                if (entity.AddAbility != null) {
+                    entity.AddAbility('ability_custom_base_attack')?.SetAbilityIndex(30);
+                    entity.AddAbility('ability_custom_debuff_immune').SetAbilityIndex(31);
+                }
                 if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
                     entity.AddNewModifier(entity, null, 'modifier_attack_data_miss', {});
                 }

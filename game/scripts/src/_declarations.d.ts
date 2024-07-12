@@ -3,12 +3,22 @@ declare global {
     enum CustomModifier {}
     type Constructor<T = {}> = new (...args: any[]) => T;
     interface CDOTA_BaseNPC {
+        /**添加modifier
+         * @param caster 施法者
+         * @param ability 技能
+         * @param ModifierClass modifier类
+         * @param modifierTable modifier参数
+         * @param cal_resist 是否计算抗性
+         * @param immune_debuff 是否免疫debuff
+         */
         AddModifier<T extends Constructor>(
             this: CDOTA_BaseNPC,
             caster: CDOTA_BaseNPC | undefined,
             ability: CDOTABaseAbility | undefined,
             ModifierClass: T,
-            modifierTable: InstanceType<T> extends { OnCreated(params: infer P): any } ? ModifierParamData<P> : never
+            modifierTable: InstanceType<T> extends { OnCreated(params: infer P): any } ? ModifierParamData<P> : never,
+            cal_resist?: boolean,
+            ignore_immune_debuff?: boolean
         ): CDOTA_Buff;
 
         /**获得自定义致盲攻击丢失概率 */
@@ -85,6 +95,8 @@ declare global {
         CustomDeclareFunctions?(): ModifierFunctions[];
 
         OnCreated(params: ModifierParams): void;
+
+        // GetAbility(): CDOTABaseAbility | undefined;
     }
 
     interface CDOTA_Buff {}
@@ -107,6 +119,8 @@ declare global {
     }
     interface ModifierParams {
         duration: number;
+        _ignore_debuff_immunity?: boolean;
+        _origin_ability?: string;
     }
     interface ModifierHealEvent extends ModifierUnitEvent {
         gain: number;

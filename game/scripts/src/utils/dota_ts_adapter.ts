@@ -24,8 +24,11 @@ class BaseModifier {
         target.RemoveModifierByName(this.name);
     }
 
+    _ignore_immune_debuff = false;
+    _origin_ability_name: string;
+    _origin_ability_textur: string;
     dispatcherIDList: Map<EntityIndex, dispatcher_id[]>;
-
+    _originalGetAbility: () => CDOTABaseAbility | undefined;
     frameBasedTimers: {
         key: string;
         value: Partial<ModifierFunctions[]>;
@@ -34,6 +37,10 @@ class BaseModifier {
     funs: Partial<ModifierFunctions[]> = [];
     CustomDeclareFunctions(): ModifierFunctions[] {
         return [];
+    }
+
+    GetTexture(): string {
+        return this._origin_ability_textur;
     }
 }
 
@@ -94,6 +101,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     } else {
         name = modifier.name;
     }
+
     if (!name.startsWith('modifier_')) {
         DebugError('Buff名必须以modifier_开头', name);
     }
@@ -104,8 +112,29 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
 
     toDotaClassInstance(env[name], modifier);
     const originalOnCreated = (env[name] as CDOTA_Modifier_Lua).OnCreated;
+    // const originalGetTexture = (env[name] as CDOTA_Modifier_Lua).GetTexture;
     env[name].OnCreated = function (parameters: any) {
+        //传入无视减益免疫参数
+        if (parameters._ignore_debuff_immunity == 1) {
+            env[name]._originalGetAbility = (env[name] as CDOTA_Modifier_Lua).GetAbility;
+            env[name]._ignore_immune_debuff = true;
+            env[name]._origin_ability_name = parameters._origin_ability;
+            (env[name] as CDOTA_Modifier_Lua).GetAbility = function (this: CDOTA_Modifier_Lua): CDOTABaseAbility | undefined {
+                const origin_ability = this.GetCaster()?.FindAbilityByName(env[name]._origin_ability_name);
+                if (!origin_ability) DebugError('无法找到原始技能');
+                DebugPrint('使用的是马甲无视减益免疫技能,重写getability,得到原始技能');
+                return origin_ability;
+            };
+
+            env[name]._origin_ability_textur = GetAbilityTextureNameForAbility(parameters._origin_ability);
+            CustomNetTables.SetTableValue('ability_textur', (this as CDOTA_Modifier_Lua).GetCaster().GetEntityIndex().toString(), { name: name });
+            print(CustomNetTables.GetTableValue('ability_textur', (this as CDOTA_Modifier_Lua).GetCaster().GetEntityIndex().toString()), '检测');
+            // (env[name] as CDOTA_Modifier_Lua).GetTexture = function (this: CDOTA_Modifier_Lua): string | undefined {
+            //     return env[name]._origin_ability_textur;
+            // };
+        }
         this.____constructor();
+
         if (!IsServer()) return;
 
         if (COnCreated) {
@@ -118,7 +147,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
 
     const originalOnDestroy = (env[name] as CDOTA_Modifier_Lua).OnDestroy;
     env[name].OnDestroy = function (parameters: any) {
-        this.____constructor();
+        // this.____constructor();
         if (!IsServer()) return;
         if (COnDestroy) {
             COnDestroy.call(this, this);
@@ -128,6 +157,13 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
         }
     };
 
+    // const originalGetAbility = (env[name] as CDOTA_Modifier_Lua).GetAbility;
+    // env[name].GetAbility = function (parameters: any) {
+    //     if (!IsServer()) return;
+    //     if (originalGetAbility) {
+    //         originalGetAbility.call(this);
+    //     }
+    // };
     let type = LuaModifierMotionType.NONE;
     let base = (modifier as any).____super;
     while (base) {

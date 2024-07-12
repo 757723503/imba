@@ -4,8 +4,12 @@
 export class modifier_imba_stunned extends BaseModifier {
     constructor() {
         super();
-
-        DebugPrint('modifier_imba_stunned constructor');
+        // const caster = this.GetCaster();
+        // for (let index = 0; index < 8; index++) {
+        //     const ability = caster.GetAbilityByIndex(index);
+        //     this.SetAbility() = ability;
+        // }
+        // DebugPrint('modifier_imba_stunned constructor');
     }
 
     IsHidden(): boolean {
@@ -16,9 +20,9 @@ export class modifier_imba_stunned extends BaseModifier {
         return true;
     }
 
-    GetAttributes(): ModifierAttribute {
-        return ModifierAttribute.MULTIPLE;
-    }
+    // GetAttributes(): ModifierAttribute {
+    //     return ModifierAttribute.MULTIPLE;
+    // }
 
     CustomDeclareFunctions(): ModifierFunctions[] {
         return [
@@ -60,7 +64,8 @@ export class modifier_imba_stunned extends BaseModifier {
 
     CheckState(): Partial<Record<modifierstate, boolean>> {
         return {
-            [ModifierState.STUNNED]: true,
+            // [ModifierState.STUNNED]: true,
+            [ModifierState.HEXED]: true,
         };
     }
 
@@ -78,6 +83,10 @@ export class modifier_imba_stunned extends BaseModifier {
     //     print('modifier_imba_stunned OnAttackLanded');
     //     print(event.damage, event.record, event.ranged_attack, event.original_damage, event.fail_type);
     // }
+    GetModifierModelChange(): string {
+        return 'models/props_gameplay/chicken.vmdl';
+    }
+
     DeclareFunctions(): ModifierFunction[] {
         return [
             ModifierFunction.ON_ATTACK_START,
@@ -90,6 +99,7 @@ export class modifier_imba_stunned extends BaseModifier {
             ModifierFunction.ON_ATTACK_RECORD_DESTROY,
             ModifierFunction.ON_ATTACK_CANCELLED,
             ModifierFunction.ON_ATTACK,
+            ModifierFunction.MODEL_CHANGE,
         ];
     }
 
@@ -145,14 +155,24 @@ export class modifier_imba_stunned extends BaseModifier {
     }
 
     OnCreated(keys: ModifierParams): void {
+        print(this.GetCaster().GetEntityIndex().toString());
+        const name = CustomNetTables.GetTableValue('ability_textur', this.GetCaster().GetEntityIndex().toString());
+        print(name, '===');
+        // DebugPrint('modifier_imba_stunned OnCreated', this.GetAbility()?.GetAbilityName(), this._origin_ability_textur);
         // if (IsServer()) {
-        print('modifier_imba_stunned OnCreated');
         // }
+    }
+
+    GetTexture(): string {
+        print(this.GetCaster().GetEntityIndex().toString());
+        const name = CustomNetTables.GetTableValue('ability_textur', this.GetCaster().GetEntityIndex().toString());
+        print(name, '===');
+        // print(this._origin_ability_textur, IsServer(), this.GetAbility()?.GetAbilityName());
+        return this._origin_ability_textur;
     }
 
     OnDestroy(): void {
         // if (IsServer()) {
-        print('modifier_imba_stunned OnDestroy');
         // }
     }
 }

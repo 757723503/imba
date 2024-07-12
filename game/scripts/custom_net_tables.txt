@@ -4,5 +4,6 @@
     [
         "hero_list",
         "game_timer"
+        "ability_textur",
     ]
 }

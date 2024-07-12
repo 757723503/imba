@@ -7,6 +7,7 @@
 {
 	"ability_custom_base_attack" {
 		"BaseClass" "ability_lua"
+		"ScriptFile" "ability_custom/ability_custom_base_attack"
 		"AbilityValues" {
 			"damage" "0.1 0.2 0.3 0.4"
 			"radius" "1 2 3 4"
@@ -22,6 +23,30 @@
 		"AbilityManaCost" "0"
 		"AbilityTextureName" "attr_damage"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN + DOTA_ABILITY_BEHAVIOR_PASSIVE "
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
+		"PlainKV" {
+"test" "this is test of plain kv"
+}
+	}
+	"ability_custom_debuff_immune" {
+		"BaseClass" "ability_lua"
+		"ScriptFile" "ability_custom/ability_custom_debuff_immune"
+		"AbilityValues" {
+			"damage" "0.1 0.2 0.3 0.4"
+			"radius" "1 2 3 4"
+			"test" "1"
+			"another_test" "10.5 2.3 3.3 1.1"
+			"target_damage" {
+"value" "110 120 130"
+"special_bonus_unique_abaddon_2" "+30"
+}
+		}
+		"MaxLevel" "1"
+		"AbilityCooldown" "0"
+		"AbilityManaCost" "0"
+		"AbilityTextureName" "marci_unleash_flurry"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN + DOTA_ABILITY_BEHAVIOR_PASSIVE "
+		"SpellImmunityType" "SPELL_IMMUNITY_ENEMIES_YES"
 		"PlainKV" {
 "test" "this is test of plain kv"
 }
