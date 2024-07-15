@@ -788,7 +788,7 @@ namespace DamageHelper {
             DamageHelper.AddRecord(
                 record_list,
                 string.format(
-                    '魔抗 %.0f, 魔抗缩放 %.1f, 剩余技能魔法伤害 %.2f',
+                    '魔抗 %.2f, 魔抗缩放 %.2f, 剩余技能魔法伤害 %.2f',
                     victim.Script_GetMagicalArmorValue(false, null),
                     scale,
                     dmgTable.ability_magical_damage
@@ -1113,7 +1113,6 @@ namespace DamageHelper {
         if (ignoreDebuffImmune && debuffImmuneModifiers.length > 0) {
             const modifiersToRemove: CDOTA_Buff[] = [];
             for (const mod of debuffImmuneModifiers) {
-                // const mod = unit.FindModifierByName(modName);
                 if (mod && mod['GetModifierMagicalResistanceBonus']) {
                     const modMagicResistPct = mod['GetModifierMagicalResistanceBonus']();
                     const modMagicDamageMultiplier = 1 - modMagicResistPct / 100;
@@ -1142,7 +1141,7 @@ namespace DamageHelper {
             // 如果 combinedMagicDamageMultiplier 仍然为 1，说明没有有效的魔抗需要忽视
             if (combinedMagicDamageMultiplier === 1) {
                 print('没有有效的魔抗需要忽视');
-                return magicResistPct;
+                return totalMagicDamageMultiplier;
             }
 
             // 计算忽视这些魔抗来源后的剩余魔法伤害乘数

@@ -302,7 +302,7 @@ export class modifier_attack_data_thinker extends BaseModifier {
             const check_table = {};
             event.added_buff.CheckStateToTable(check_table);
             if (check_table[tostring(ModifierState.DEBUFF_IMMUNE)]) {
-                // const modifier_name = event.added_buff.GetName();
+                print('添加减益免疫buff魔抗', event.added_buff.GetName());
                 event.unit._debuff_immunity_magical_resistance.push(event.added_buff);
             }
         }

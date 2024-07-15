@@ -85,6 +85,8 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.da:
+                print(hero._debuff_immunity_magical_resistance.length);
+                CDeepPrintTable(hero._debuff_immunity_magical_resistance);
                 // let cont = 0;
                 // Timers.CreateTimer(1, () => {
                 //     const enemies = FindUnitsInRadius(
