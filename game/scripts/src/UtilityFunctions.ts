@@ -30,7 +30,18 @@ function CSafelyCall<T extends (...params: any) => any>(func: () => ReturnType<T
     }
     return result;
 }
-
+/**此技能是否是无视减益免疫*/
+function IsIgnoreDebuffImmunity(ability: CDOTABaseAbility): boolean {
+    if (ability) {
+        if (
+            ability._SpellDispellableType == 'SPELL_IMMUNITY_ENEMIES_YES' ||
+            ability._AbilityUnitTargetFlags == 'DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES'
+        ) {
+            return true;
+        }
+    }
+    return false;
+}
 /**
  * 保留小数
  * @param num 数据源

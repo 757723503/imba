@@ -371,14 +371,15 @@ namespace DamageHelper {
                 )
             );
         }
+        const ignore_debuff_immunity = IsIgnoreDebuffImmunity(origin_dmg_table.sourceAbility) || origin_dmg_table.ignoreMagicImmune;
         // - 魔抗处理数据(如果有魔法)
         if (dmgTable.attack_magical_damage > 0) {
-            const scale = MagicalResistanceScale(victim);
+            const scale = MagicalResistanceScale(victim, ignore_debuff_immunity);
             dmgTable.attack_magical_damage *= scale;
             DamageHelper.AddRecord(
                 record_list,
                 string.format(
-                    '当前魔抗 %.0f 魔抗缩放 %.1f, 剩余魔法攻击伤害 %.1f',
+                    '当前魔抗 %.2f 魔抗缩放 %.3f, 剩余魔法攻击伤害 %.3f',
                     victim.Script_GetMagicalArmorValue(false, null),
                     scale,
                     dmgTable.attack_magical_damage
@@ -681,6 +682,7 @@ namespace DamageHelper {
         const victim = dmgTable.victim;
         const victim_handle = victim.GetEntityIndex();
         const victim_is_hero = victim.IsHero();
+        const ignore_debuff_immunity = IsIgnoreDebuffImmunity(origin_dmg_table.sourceAbility) || origin_dmg_table.ignoreMagicImmune;
         // 生命移除需要跳过一些阶段
         const is_hp_remove = checkTag(dmgTable.damageFlags, DamageFlags.HPRemove);
         const attacker = dmgTable.attacker;
@@ -781,7 +783,7 @@ namespace DamageHelper {
         // _CalShieldAbsorbOnDamaged(dmgTable);
         // - 魔抗处理数据(如果有魔法)
         if (dmgTable.ability_magical_damage > 0) {
-            const scale = MagicalResistanceScale(victim);
+            const scale = MagicalResistanceScale(victim, ignore_debuff_immunity);
             dmgTable.ability_magical_damage *= scale;
             DamageHelper.AddRecord(
                 record_list,
@@ -1101,11 +1103,59 @@ namespace DamageHelper {
         return math.max(-1, math.min(1, scale));
     }
     /** 获得魔抗缩放伤害 */
-    export function MagicalResistanceScale(unit: CDOTA_BaseNPC): number {
-        // 获得单位的魔抗百分比
-        const magic_resistance_pct = unit.Script_GetMagicalArmorValue(false, null);
-        const result = math.max(0, 1 - magic_resistance_pct);
-        return result;
+    export function MagicalResistanceScale(unit: CDOTA_BaseNPC, ignoreDebuffImmune: boolean): number {
+        // 获得单位的魔抗，假设已是小数形式（1代表100%）
+        const magicResistPct = unit.Script_GetMagicalArmorValue(false, null);
+        // 将小数形式的魔抗转换为魔法伤害乘数
+        const totalMagicDamageMultiplier = 1 - magicResistPct;
+        const debuffImmuneModifiers = unit._debuff_immunity_magical_resistance;
+        let combinedMagicDamageMultiplier = 1;
+        if (ignoreDebuffImmune && debuffImmuneModifiers.length > 0) {
+            const modifiersToRemove: CDOTA_Buff[] = [];
+            for (const mod of debuffImmuneModifiers) {
+                // const mod = unit.FindModifierByName(modName);
+                if (mod && mod['GetModifierMagicalResistanceBonus']) {
+                    const modMagicResistPct = mod['GetModifierMagicalResistanceBonus']();
+                    const modMagicDamageMultiplier = 1 - modMagicResistPct / 100;
+
+                    if (modMagicDamageMultiplier <= 0) {
+                        // 忽视100%或更高的魔抗，因为它会使乘数变为0或负数
+                        print(modMagicResistPct, `忽视此魔抗：${modMagicResistPct}%`);
+                        continue;
+                    }
+                    combinedMagicDamageMultiplier *= modMagicDamageMultiplier;
+                    print(modMagicResistPct, '忽视此魔抗');
+                } else {
+                    // 记录需要移除的modifier
+                    modifiersToRemove.push(mod);
+                }
+            }
+
+            // 移除不存在的modifier
+            for (const modName of modifiersToRemove) {
+                const index = debuffImmuneModifiers.indexOf(modName);
+                if (index > -1) {
+                    debuffImmuneModifiers.splice(index, 1);
+                }
+            }
+
+            // 如果 combinedMagicDamageMultiplier 仍然为 1，说明没有有效的魔抗需要忽视
+            if (combinedMagicDamageMultiplier === 1) {
+                print('没有有效的魔抗需要忽视');
+                return magicResistPct;
+            }
+
+            // 计算忽视这些魔抗来源后的剩余魔法伤害乘数
+            const remainingMagicDamageMultiplier = totalMagicDamageMultiplier / combinedMagicDamageMultiplier;
+
+            // 计算最终的剩余魔抗
+            const remainingMagicResist = 1 - remainingMagicDamageMultiplier;
+            print(totalMagicDamageMultiplier, combinedMagicDamageMultiplier, remainingMagicDamageMultiplier, remainingMagicResist);
+
+            // 返回最终的剩余魔抗，以小数形式返回（1代表100%）
+            return remainingMagicResist;
+        }
+        return totalMagicDamageMultiplier;
     }
 
     /** 暴击红字 */

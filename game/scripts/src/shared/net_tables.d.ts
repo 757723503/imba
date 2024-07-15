@@ -10,5 +10,5 @@ declare interface CustomNetTableDeclarations {
         hero_list: Record<string, string> | string[];
     };
 
-    ability_textur: Record<string, { name: string }>;
+    custom_ability_textur: Record<string, { name: string }>;
 }

@@ -75,15 +75,17 @@ declare global {
          * @deprecated
          */
         GetEvasion(): number;
+
+        _debuff_immunity_magical_resistance: CDOTA_Buff[];
     }
 
     interface CDOTA_BaseNPC_Hero {
-        _illusions_outgoing_damage?: number;
-        _illusions_incoming_damage?: number;
-        _illusions_outgoing_damage_structure?: number;
-        _illusions_outgoing_damage_roshan?: number;
+        _modifierKeys: CreateIllusionsModifierKeys;
     }
-
+    interface CDOTABaseAbility {
+        _SpellDispellableType: string;
+        _AbilityUnitTargetFlags: string;
+    }
     interface CBaseEntity {}
 
     interface ModifierAddedEventCustom {}

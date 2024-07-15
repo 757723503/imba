@@ -3,12 +3,33 @@ declare global {
     var CIllusionManager: CIllusionManager;
 }
 declare interface CreateIllusionsModifierKeys {
+    /**
+     * 造成的伤害百分比
+     */
     outgoing_damage?: number;
+    /**
+     * 受到的伤害百分比
+     */
     incoming_damage?: number;
+    /**
+     * 奖励基础金钱
+     */
     bounty_base?: number;
+    /**
+     * 奖励金钱增长
+     */
     bounty_growth?: number;
+    /**
+     * 对建筑造成的伤害百分比
+     */
     outgoing_damage_structure?: number;
+    /**
+     * 对肉山造成的伤害百分比
+     */
     outgoing_damage_roshan?: number;
+    /**
+     * 幻象持续时间
+     */
     duration?: number;
 }
 
@@ -64,8 +85,7 @@ export class CIllusionManager {
         // }
         // playerIllusions.push(...illusions);
         illusions.forEach(illusion => {
-            // illusion.SetUnitCanRespawn(true);
-            // illusion.RespawnHero(false, false);
+            illusion._modifierKeys = modifierKeys;
         });
         return illusions;
     }

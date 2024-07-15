@@ -273,6 +273,7 @@ export class modifier_attack_data_thinker extends BaseModifier {
             ModifierFunction.ON_ATTACK_CANCELLED,
             ModifierFunction.ON_ATTACK,
             ModifierFunction.ON_ATTACK_FINISHED,
+            ModifierFunction.ON_MODIFIER_ADDED,
         ];
     }
 
@@ -294,6 +295,17 @@ export class modifier_attack_data_thinker extends BaseModifier {
     OnAttackFinished(event: ModifierAttackEvent): void {
         if (!IsServer()) return;
         CAttackData.OnAttackFinished(event);
+    }
+
+    OnModifierAdded(event: ModifierAddedEvent): void {
+        if (event.added_buff.HasFunction(ModifierFunction.MAGICAL_RESISTANCE_BONUS)) {
+            const check_table = {};
+            event.added_buff.CheckStateToTable(check_table);
+            if (check_table[tostring(ModifierState.DEBUFF_IMMUNE)]) {
+                // const modifier_name = event.added_buff.GetName();
+                event.unit._debuff_immunity_magical_resistance.push(event.added_buff);
+            }
+        }
     }
 }
 @registerModifier()

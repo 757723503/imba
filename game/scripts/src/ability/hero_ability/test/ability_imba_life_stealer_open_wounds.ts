@@ -28,6 +28,15 @@ export class ability_imba_life_stealer_open_wounds extends BaseAbility {
         //         // target.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 });
         //     }
         // }
-        target.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 }, null, true);
+        // target.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 });
+        AddDamage({
+            attacker: caster,
+            victim: target,
+            damage: 100,
+            damageType: DamageType.Magical,
+            sourceAbility: this,
+            damageFlags: DamageFlags.None,
+            damageProperty: DamageProperty.Ability,
+        });
     }
 }

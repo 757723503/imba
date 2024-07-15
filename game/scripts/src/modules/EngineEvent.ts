@@ -60,7 +60,7 @@ export class CEngineEvent {
             entity._crits_data_calls = [];
             entity.physic_damage_blocks = [];
             entity.magic_damage_blocks = [];
-
+            entity._debuff_immunity_magical_resistance = [];
             Timers.CreateTimer(FrameTime() * 5, () => {
                 //会引起内存泄露 ?
                 // if (entity.AddAbility != null && entity.HasAbility('ability_custom_base_attack') == false) {

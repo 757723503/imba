@@ -26,7 +26,6 @@ class BaseModifier {
 
     _ignore_immune_debuff = false;
     _origin_ability_name: string;
-    _origin_ability_textur: string;
     dispatcherIDList: Map<EntityIndex, dispatcher_id[]>;
     _originalGetAbility: () => CDOTABaseAbility | undefined;
     frameBasedTimers: {
@@ -39,9 +38,11 @@ class BaseModifier {
         return [];
     }
 
-    GetTexture(): string {
-        return this._origin_ability_textur;
-    }
+    // GetTexture(): string {
+    //     const name = CustomNetTables.GetTableValue('custom_ability_textur', this.GetCaster().GetEntityIndex().toString()).name;
+    //     print('GetTexture', name, IsServer());
+    //     return GetAbilityTextureNameForAbility(name);
+    // }
 }
 
 interface BaseModifierMotionHorizontal extends CDOTA_Modifier_Lua_Horizontal_Motion {}
@@ -91,6 +92,15 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
         if (originalSpawn) {
             originalSpawn.call(this);
         }
+
+        // print((env[name] as CDOTA_Ability_Lua).GetAbilityKeyValues, 'GetAbilityKeyValues');
+        if (IsServer() && (env[name] as CDOTA_Ability_Lua).GetAbilityKeyValues) {
+            const ability_special_value = this.GetAbilityKeyValues();
+            if (ability_special_value) {
+                this._SpellDispellableType = ability_special_value['SpellImmunityType'];
+                this._AbilityUnitTargetFlags = ability_special_value['AbilityUnitTargetFlags'];
+            }
+        }
     };
 };
 
@@ -112,7 +122,6 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
 
     toDotaClassInstance(env[name], modifier);
     const originalOnCreated = (env[name] as CDOTA_Modifier_Lua).OnCreated;
-    // const originalGetTexture = (env[name] as CDOTA_Modifier_Lua).GetTexture;
     env[name].OnCreated = function (parameters: any) {
         //传入无视减益免疫参数
         if (parameters._ignore_debuff_immunity == 1) {
@@ -126,12 +135,9 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
                 return origin_ability;
             };
 
-            env[name]._origin_ability_textur = GetAbilityTextureNameForAbility(parameters._origin_ability);
-            CustomNetTables.SetTableValue('ability_textur', (this as CDOTA_Modifier_Lua).GetCaster().GetEntityIndex().toString(), { name: name });
-            print(CustomNetTables.GetTableValue('ability_textur', (this as CDOTA_Modifier_Lua).GetCaster().GetEntityIndex().toString()), '检测');
-            // (env[name] as CDOTA_Modifier_Lua).GetTexture = function (this: CDOTA_Modifier_Lua): string | undefined {
-            //     return env[name]._origin_ability_textur;
-            // };
+            CustomNetTables.SetTableValue('custom_ability_textur', tostring(this.GetCaster()?.GetEntityIndex()), {
+                name: parameters._origin_ability,
+            });
         }
         this.____constructor();
 
@@ -147,7 +153,6 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
 
     const originalOnDestroy = (env[name] as CDOTA_Modifier_Lua).OnDestroy;
     env[name].OnDestroy = function (parameters: any) {
-        // this.____constructor();
         if (!IsServer()) return;
         if (COnDestroy) {
             COnDestroy.call(this, this);
@@ -156,14 +161,14 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
             originalOnDestroy.call(this, parameters);
         }
     };
+    if (!('GetTexture' in env[name])) {
+        env[name].GetTexture = function (): string {
+            const caster = this.GetCaster();
+            const customTextureName = CustomNetTables.GetTableValue('custom_ability_textur', tostring(caster?.GetEntityIndex()))?.name;
+            return GetAbilityTextureNameForAbility(customTextureName);
+        };
+    }
 
-    // const originalGetAbility = (env[name] as CDOTA_Modifier_Lua).GetAbility;
-    // env[name].GetAbility = function (parameters: any) {
-    //     if (!IsServer()) return;
-    //     if (originalGetAbility) {
-    //         originalGetAbility.call(this);
-    //     }
-    // };
     let type = LuaModifierMotionType.NONE;
     let base = (modifier as any).____super;
     while (base) {

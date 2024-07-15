@@ -64,7 +64,7 @@ export class modifier_imba_stunned extends BaseModifier {
 
     CheckState(): Partial<Record<modifierstate, boolean>> {
         return {
-            // [ModifierState.STUNNED]: true,
+            [ModifierState.DEBUFF_IMMUNE]: true,
             [ModifierState.HEXED]: true,
         };
     }
@@ -100,7 +100,12 @@ export class modifier_imba_stunned extends BaseModifier {
             ModifierFunction.ON_ATTACK_CANCELLED,
             ModifierFunction.ON_ATTACK,
             ModifierFunction.MODEL_CHANGE,
+            ModifierFunction.MAGICAL_RESISTANCE_BONUS,
         ];
+    }
+
+    GetModifierMagicalResistanceBonus(event: ModifierAttackEvent): number {
+        return 80;
     }
 
     // GetModifierMiss_Percentage(): number {
@@ -155,20 +160,9 @@ export class modifier_imba_stunned extends BaseModifier {
     }
 
     OnCreated(keys: ModifierParams): void {
-        print(this.GetCaster().GetEntityIndex().toString());
-        const name = CustomNetTables.GetTableValue('ability_textur', this.GetCaster().GetEntityIndex().toString());
-        print(name, '===');
         // DebugPrint('modifier_imba_stunned OnCreated', this.GetAbility()?.GetAbilityName(), this._origin_ability_textur);
         // if (IsServer()) {
         // }
-    }
-
-    GetTexture(): string {
-        print(this.GetCaster().GetEntityIndex().toString());
-        const name = CustomNetTables.GetTableValue('ability_textur', this.GetCaster().GetEntityIndex().toString());
-        print(name, '===');
-        // print(this._origin_ability_textur, IsServer(), this.GetAbility()?.GetAbilityName());
-        return this._origin_ability_textur;
     }
 
     OnDestroy(): void {
