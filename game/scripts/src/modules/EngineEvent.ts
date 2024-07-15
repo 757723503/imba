@@ -71,7 +71,7 @@ export class CEngineEvent {
                     entity.AddAbility('ability_custom_debuff_immune').SetAbilityIndex(31);
                 }
                 if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
-                    entity.AddNewModifier(entity, null, 'modifier_attack_data_miss', {});
+                    entity.AddNewModifier(entity, entity.FindAbilityByName('ability_custom_debuff_immune'), 'modifier_attack_data_miss', {});
                 }
 
                 return null;

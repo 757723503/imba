@@ -377,7 +377,8 @@ const _modifier_methods: {
     [ModifierFunctions.DamageEvent_AfterIllusionDamage]: {
         registerFunc: (instance, parent_index) => {
             const dispatcherId = Dispatcher.Register('DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT', parent_index, event => {
-                if (instance.DamageEvent_AfterIllusionDamage) instance.DamageEvent_AfterIllusionDamage(event);
+                if (instance.DamageEvent_AfterIllusionDamage)
+                    instance.DamageEvent_AfterIllusionDamage(event.attacker, event.victim, event.damage, event.damage_flag);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
@@ -409,7 +410,8 @@ const _modifier_methods: {
     [ModifierFunctions.DamageEvent_SpecialBounceAttack]: {
         registerFunc: (instance, parent_index) => {
             const dispatcherId = Dispatcher.Register('DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT', parent_index, event => {
-                if (instance.DamageEvent_SpecialBounceAttack) instance.DamageEvent_SpecialBounceAttack(event);
+                if (instance.DamageEvent_SpecialBounceAttack)
+                    instance.DamageEvent_SpecialBounceAttack(event.attacker, event.victim, event.damage, event.damage_flag);
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
@@ -1326,7 +1328,7 @@ interface BaseModifier {
      * @param damage_flag
      * @param inflictor
      */
-    DamageEvent_AfterIllusionDamage?(dmgTable: DamageTable);
+    DamageEvent_AfterIllusionDamage?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC, damage: number, damage_flag: DamageFlags);
 
     /**
      * 特殊溅射攻击广播 - 攻击者触发 事件名 DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT
@@ -1334,7 +1336,7 @@ interface BaseModifier {
      * @param victim 受击者
      * @param damage 伤害
      */
-    DamageEvent_SpecialBounceAttack?(dmgTable: DamageTable);
+    DamageEvent_SpecialBounceAttack?(attacker: CDOTA_BaseNPC, victim: CDOTA_BaseNPC, damage: number, damage_flag: DamageFlags);
 
     /**
      * 击杀任意单位 事件名 UNIT_KILL_UNIT

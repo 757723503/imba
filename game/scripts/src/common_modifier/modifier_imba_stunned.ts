@@ -38,17 +38,17 @@ export class modifier_imba_stunned extends BaseModifier {
         // AttackData.projectile = 'particles/econ/items/drow/drow_arcana/drow_arcana_base_attack_v2.vpcf';
     }
 
-    AddParentEvasionData(): EvasionData {
-        return {
-            evasion_chance: 50,
-        };
-    }
+    // AddParentEvasionData(): EvasionData {
+    //     return {
+    //         evasion_chance: 50,
+    //     };
+    // }
 
-    AddParentBlindData(): BlindData {
-        return {
-            blind_chance: 50,
-        };
-    }
+    // AddParentBlindData(): BlindData {
+    //     return {
+    //         blind_chance: 50,
+    //     };
+    // }
 
     AddParentAttackCritData(): CritData {
         return {
@@ -101,9 +101,63 @@ export class modifier_imba_stunned extends BaseModifier {
             ModifierFunction.ON_ATTACK,
             ModifierFunction.MODEL_CHANGE,
             ModifierFunction.MAGICAL_RESISTANCE_BONUS,
+            ModifierFunction.INCOMING_DAMAGE_CONSTANT,
         ];
     }
+    //     GetModifierIncomingPhysicalDamageConstant(event: ModifierAttackEvent): number {
 
+    //     }
+    //     GetModifierIncomingDamageConstant(event: ModifierAttackEvent): number {
+    //         return 80;
+
+    //     }
+    // function modifier_centaur_3_1:GetModifierIncomingDamageConstant(keys)
+    //     if IsClient() then
+    //         if keys.report_max then
+    //             return self.max_shield_hp
+    //         else
+    //             return self:GetStackCount() -- current shield hp
+    //         end
+    //     else
+    //         local parent = self:GetParent()
+    //         local damage = keys.damage
+    //         local barrier_hp = self:GetStackCount()
+
+    //         -- Don't react to damage with HP removal flag
+    //         if bit.band(keys.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) == DOTA_DAMAGE_FLAG_HPLOSS then
+    //           return 0
+    //         end
+
+    //         -- Don't react on self damage
+    //         if keys.attacker == parent then
+    //             return 0
+    //         end
+
+    //         -- Don't block more than remaining hp
+    //         local block_amount = math.min(damage, barrier_hp)
+
+    //         -- Reduce barrier hp
+    //         self:SetStackCount(math.max(barrier_hp - block_amount,0))
+
+    //         if block_amount > 0 then
+    //           -- Visual effect
+    //           local alert_type = OVERHEAD_ALERT_MAGICAL_BLOCK
+    //           if keys.damage_type == DAMAGE_TYPE_PHYSICAL then
+    //             alert_type = OVERHEAD_ALERT_BLOCK
+    //           end
+
+    //           SendOverheadEventMessage(nil, alert_type, parent, block_amount, nil)
+    //         end
+
+    //         -- Remove the barrier if hp is reduced to nothing
+    //         if self:GetStackCount() <= 0 then
+    //             self:Destroy()
+    //         end
+
+    //         return -block_amount
+    //     end
+
+    // end
     GetModifierMagicalResistanceBonus(event: ModifierAttackEvent): number {
         return 80;
     }

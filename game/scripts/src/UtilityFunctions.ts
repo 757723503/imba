@@ -63,12 +63,13 @@ function CDeepPrintTable(obj: any, level: number = 1, currentLevel: number = 0):
         }
     }
 }
-function CIsValid(entity: CBaseEntity): boolean {
+function CIsValid(entity: undefined | null | CDOTA_Buff | CBaseEntity): boolean {
     return entity !== null && !entity.IsNull() && IsValidEntity(entity);
 }
-function CIsAlive(entity: CBaseEntity): boolean {
+function CIsAlive(entity: CDOTA_BaseNPC | undefined | null): boolean {
     return CIsValid(entity) && entity.IsAlive();
 }
+
 // -- 获取平面方向
 // function CGetDirection2D(vEndPoint, vStartPoint,vDeDir)
 //     local pos1 = vEndPoint

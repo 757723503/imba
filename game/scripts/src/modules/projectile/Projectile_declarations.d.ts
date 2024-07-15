@@ -98,6 +98,8 @@ interface ProjectileMoveData {
     cover_pos?: Vector;
     /** 覆盖投射物速度 有这个数据会在那一帧使用此速度 后面的位置也会发生改动 */
     cover_speed?: number;
+    /**已经伤害过的敌人 */
+    hit_enemy?: EntityIndex[];
 }
 
 declare const enum SLProjectileType {

@@ -35,7 +35,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
-    if (attacker.IsRealHero()) record_list = [];
+    if (attacker.IsHero()) record_list = [];
 
     // 先创建fixed damage table
     const fixed_tb: FixedDamageTable = <FixedDamageTable>{
@@ -517,15 +517,17 @@ namespace DamageHelper {
         // TODO: 造成伤害显示数值
         // 幻象承受伤害调整
         if (victim.IsHero() && victim.IsIllusion()) {
-            // const illusion_taken_dmg_scale = victim.GetIllusionDamageInputPercent() * 0.01;
-            // dmgTable.attack_physical_damage *= illusion_taken_dmg_scale;
-            // dmgTable.attack_magical_damage *= illusion_taken_dmg_scale;
+            const illusion_taken_dmg_scale = victim._modifierKeys.incoming_damage * 0.01;
+            dmgTable.attack_physical_damage *= illusion_taken_dmg_scale;
+            dmgTable.attack_magical_damage *= illusion_taken_dmg_scale;
         }
         const end_dmg = dmgTable.attack_physical_damage + dmgTable.attack_magical_damage;
         // 幻象之后的伤害结算事件 DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT
-        // const illu_dmg_table = { attacker: attacker, victim: victim, damage: end_dmg, damage_flag: dmgTable.damageFlags };
+        const illu_dmg_table = { attacker: attacker, victim: victim, damage: end_dmg, damage_flag: dmgTable.damageFlags };
+        Dispatcher.Send('DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT', attacker_handle, illu_dmg_table);
+        Dispatcher.Send('DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT', victim_handle, illu_dmg_table);
         // 特殊攻击溅射和特殊攻击弹射的伤害传递
-        // LocalEvents.Trigger('DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT', illu_dmg_table, attacker_handle, true);
+        Dispatcher.Send('DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT', attacker_handle, illu_dmg_table);
     }
 
     /**
@@ -1019,10 +1021,10 @@ namespace DamageHelper {
 
         // TODO: 造成伤害显示数值
         // 幻象承受伤害调整
-        // if (victim.IsHero() && victim.IsIllusion()) {
-        //     const illusion_taken_dmg_scale = victim.GetIllusionDamageInputPercent() * 0.01;
-        //     dmgTable.true_damage *= illusion_taken_dmg_scale;
-        // }
+        if (victim.IsHero() && victim.IsIllusion()) {
+            const illusion_taken_dmg_scale = victim._modifierKeys.incoming_damage * 0.01;
+            dmgTable.true_damage *= illusion_taken_dmg_scale;
+        }
         // 幻象之后的伤害结算事件 DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT
         const illu_dmg_table = {
             attacker: attacker,
@@ -1031,6 +1033,8 @@ namespace DamageHelper {
             damage_flag: dmgTable.damageFlags,
             inflictor: dmgTable.sourceAbility,
         };
+        Dispatcher.Send('DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT', attacker_handle, illu_dmg_table);
+        Dispatcher.Send('DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT', victim_handle, illu_dmg_table);
     }
 
     /** 在计算护甲减伤前，先计算护甲类型穿刺\绵力\坚锐，这部分是和护甲穿透无关的 */
@@ -1113,7 +1117,7 @@ namespace DamageHelper {
         if (ignoreDebuffImmune && debuffImmuneModifiers.length > 0) {
             const modifiersToRemove: CDOTA_Buff[] = [];
             for (const mod of debuffImmuneModifiers) {
-                if (mod && mod['GetModifierMagicalResistanceBonus']) {
+                if (CIsValid(mod) && mod['GetModifierMagicalResistanceBonus']) {
                     const modMagicResistPct = mod['GetModifierMagicalResistanceBonus']();
                     const modMagicDamageMultiplier = 1 - modMagicResistPct / 100;
 
@@ -1123,7 +1127,7 @@ namespace DamageHelper {
                         continue;
                     }
                     combinedMagicDamageMultiplier *= modMagicDamageMultiplier;
-                    print(modMagicResistPct, '忽视此魔抗');
+                    print(modMagicResistPct, '忽视此魔抗', mod.GetName());
                 } else {
                     // 记录需要移除的modifier
                     modifiersToRemove.push(mod);
@@ -1149,7 +1153,6 @@ namespace DamageHelper {
 
             // 计算最终的剩余魔抗
             const remainingMagicResist = 1 - remainingMagicDamageMultiplier;
-            print(totalMagicDamageMultiplier, combinedMagicDamageMultiplier, remainingMagicDamageMultiplier, remainingMagicResist);
 
             // 返回最终的剩余魔抗，以小数形式返回（1代表100%）
             return remainingMagicResist;
@@ -1159,6 +1162,7 @@ namespace DamageHelper {
 
     /** 暴击红字 */
     export function CritFloatingText(target: CDOTA_BaseNPC, damage: number) {
+        if (damage <= 0) return;
         PopupCriticalDamage(target, damage);
     }
 
@@ -1320,7 +1324,6 @@ namespace DamageHelper {
         if (damageTable.damageType == DamageType.Magical) {
             damage_type = DamageTypes.MAGICAL;
         }
-
         ApplyDamage({
             attacker: damageTable.attacker,
             victim: damageTable.victim,

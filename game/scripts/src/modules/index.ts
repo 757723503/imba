@@ -46,16 +46,15 @@ export function ActivateModules() {
         GameRules.XNetTable = new XNetTable();
         GameRules.CGameMode = new CGameMode();
         new GameConfig();
-
-        new Debug();
-        new CChat();
-        new CFilter();
-        new CEngineEvent();
-        globalThis.CProjectileManager = new CProjectileManager();
-        globalThis.CIllusionManager = new CIllusionManager();
-        globalThis.CAttackData = new CAttackDataManager();
-        globalThis.Random = new PseudoRandom();
-        globalThis.Dispatcher = new CDispatcher();
-        globalThis.AddDamage = CustomApplyDamage;
     }
+    new Debug();
+    new CChat();
+    new CFilter();
+    new CEngineEvent();
+    globalThis.CProjectileManager = new CProjectileManager();
+    globalThis.CIllusionManager = new CIllusionManager();
+    globalThis.CAttackData = new CAttackDataManager();
+    globalThis.Random = new PseudoRandom();
+    globalThis.Dispatcher = new CDispatcher();
+    globalThis.AddDamage = CustomApplyDamage;
 }

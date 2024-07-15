@@ -123,10 +123,20 @@ declare interface LocalEventDeclarations {
     // /** 末端伤害传递 攻击者, 所有伤害接收 */
     // DAMAGE_ATTACKER_END_DAMAGE_BOUNCE_EVENT: DamageTable;
     /** 幻象结算之后伤害结算事件 - 过完幻象的伤害增幅后触发 - 攻击者+受击者 */
-    DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT: DamageTable;
+    DAMAGE_AFTER_ILLUSION_DAMAGE_EVENT: {
+        attacker: CDOTA_BaseNPC;
+        victim: CDOTA_BaseNPC;
+        damage: number;
+        damage_flag: DamageFlags;
+    };
 
     /** 特殊溅射攻击广播 - 攻击者 */
-    DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT: DamageTable;
+    DAMAGE_SPECIAL_BOUNCE_ATTACK_EVENT: {
+        attacker: CDOTA_BaseNPC;
+        victim: CDOTA_BaseNPC;
+        damage: number;
+        damage_flag: DamageFlags;
+    };
     /** 攻击命中时，事件名 。`攻击者触发` */
     ON_ATTACK_LANDED_ATTACKER: UnitEventAttackDamageData;
     /** 受到攻击命中时，事件名 。`受害者触发` */

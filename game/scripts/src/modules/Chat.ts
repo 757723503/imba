@@ -173,23 +173,19 @@ export class CChat {
                 MEM.m_cMethods.DumpMemorySnapshot(null, null, -1);
                 break;
             case ChatCommand.in:
-                const ill = CIllusionManager.CreateIllusions(hero, hero, { duration: 5 }, 1, 100, true, true);
-                let time1 = 0;
-                Timers.CreateTimer(0, () => {
-                    // const ill = CIllusionManager.CreateIllusions(hero, hero, { duration: 0.2 }, 5, 100, true, true);
-                    for (const illusion of ill) {
-                        print(ill);
-                        DebugPrint(illusion?.IsNull(), IsValidEntity(illusion));
-                    }
-                    time1 += FrameTime();
-                    if (time1 < 10) {
-                        return FrameTime();
-                    }
-                    for (const illusion of ill) {
-                        illusion.RespawnUnit();
-                        illusion.AddNewModifier(illusion, null, 'modifier_illusion', { duration: 5 });
-                    }
-                });
+                const ill = CIllusionManager.CreateIllusions(
+                    hero,
+                    hero,
+                    { duration: 10, outgoing_damage: 10, incoming_damage: 1000 },
+                    1,
+                    100,
+                    true,
+                    true
+                );
+                for (const illusion of ill) {
+                    illusion.AddModifier(illusion, null, modifier_imba_stunned, { duration: 10 });
+                }
+
                 break;
             case ChatCommand.ge:
                 break;

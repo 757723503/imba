@@ -78,14 +78,24 @@ export class CIllusionManager {
         findClearSpace: boolean
     ): CDOTA_BaseNPC_Hero[] {
         const playerID = owner.GetPlayerOwnerID();
-        const illusions = CreateIllusions(owner, heroToCopy, modifierKeys, numIllusions, padding, scramblePosition, findClearSpace);
+        const config = {
+            outgoing_damage: 0,
+            incoming_damage: 0,
+            bounty_base: heroToCopy.GetLevel() * 2,
+            bounty_growth: 0,
+            outgoing_damage_structure: -60,
+            outgoing_damage_roshan: -80,
+            duration: 0,
+            ...modifierKeys,
+        };
+        const illusions = CreateIllusions(owner, heroToCopy, config, numIllusions, padding, scramblePosition, findClearSpace);
         // let playerIllusions = this._all_illusions.get(playerID);
         // if (!playerIllusions) {
         //     playerIllusions = [];
         // }
         // playerIllusions.push(...illusions);
         illusions.forEach(illusion => {
-            illusion._modifierKeys = modifierKeys;
+            illusion._modifierKeys = config;
         });
         return illusions;
     }

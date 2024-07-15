@@ -28,7 +28,7 @@ export class ability_imba_life_stealer_open_wounds extends BaseAbility {
         //         // target.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 });
         //     }
         // }
-        target.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 });
+        target.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 }, null, true);
         // print(target.Script_GetMagicalArmorValue(false, null));
         AddDamage({
             attacker: caster,

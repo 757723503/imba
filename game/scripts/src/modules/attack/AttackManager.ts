@@ -13,17 +13,18 @@ export class CAttackDataManager {
 
     //实际是使用OnAttackRecord 充当OnAttackStart
     public OnAttackStart(event: ModifierAttackEvent): void {
-        // print('CAttack OnAttackRecord', event.record);
         const target = event.target;
         const attacker = event.attacker;
+
         // DebugPrint('CAttack OnAttackRecord', attacker.GetAverageTrueAttackDamage(null));
         // DebugPrint('CAttack GetAttackDamage', attacker.GetAttackDamage());
         const crit_obj = this._CheckCritOnAttack(attacker, target);
+        const diff = attacker.GetBaseDamageMax() - attacker.GetBaseDamageMin();
         // 攻击开始就算伤害了
         const dmgTable: DamageTable = {
             attacker: attacker,
             victim: target,
-            damage: attacker.GetAverageTrueAttackDamage(null),
+            damage: attacker.GetAverageTrueAttackDamage(null) + math.random(-diff, diff),
             damageProperty: DamageProperty.Attack,
             damageType: DamageType.Physical,
             damageFlags: crit_obj ? DamageFlags.AttackCrit : undefined,
@@ -76,8 +77,6 @@ export class CAttackDataManager {
 
     /** 攻击出手时判断暴击。返回触发了的暴击对象 */
     _CheckCritOnAttack(attacker: CDOTA_BaseNPC, attacking_target: CDOTA_BaseNPC): CritData | undefined {
-        print(attacker._crits_data_calls.length);
-
         if (attacker._crits_data_calls.length == 0) return;
         // 目标允许
         if (attacking_target.IsWard() || attacking_target.IsBuilding() || !attacker.IsEnemy(attacking_target)) {
@@ -153,38 +152,21 @@ export class CAttackDataManager {
         }
     ) {
         const { never_miss, use_effect, use_projectile } = extra_pamams ?? {};
-        extra_pamams.extra_data = extra_pamams.extra_data ?? {};
-        // 攻击发射时，计算暴击、伤害、丢失
-
-        // 获取伤害
-        const attack_damage = attacker.GetAverageTrueAttackDamage(null);
-        const damage_before: number = attack_damage;
-        let illusion_cirt_show: number;
-        // 幻象攻击修正
-        // if (attacker.IsHero() && attacker.IsIllusion()) {
-        //     illusion_cirt_show = attack_damage;
-        //     // 幻象不享受绿字攻击
-        //     const illusion_attack_fixed = attacker.getdamage() * (attacker.GetIllusionDamageOutputPercent() / 100);
-        //     attack_damage = illusion_attack_fixed;
-        //     damage_before = attack_damage;
-        // }
         // 如果没有预先数据 那么就原地创建
         const [record, attackdata] = extra_pamams.record ?? [undefined, undefined];
         let attack_data = attackdata;
         let dmgTable = attackdata?.damageTable;
-        if (!record || !attack_data || !dmgTable) {
+        if ((!record || !attack_data || !dmgTable) && extra_pamams.is_trigger) {
             const crit_obj = this._CheckCritOnAttack(attacker, target);
             dmgTable = {
                 attacker: attacker,
                 victim: target,
-                damage: attack_damage,
+                damage: attacker.GetAverageTrueAttackDamage(null),
                 damageProperty: DamageProperty.Attack,
                 damageType: DamageType.Physical,
                 damageFlags: (crit_obj ? DamageFlags.AttackCrit : 0) + (extra_pamams.disable_celled ? DamageFlags.DisableCelled : 0),
                 crit_obj: crit_obj,
-                extra_data: extra_pamams.extra_data,
             };
-
             attack_data = {
                 damageTable: dmgTable,
                 projectile: attacker.GetRangedProjectileName(),
@@ -192,16 +174,29 @@ export class CAttackDataManager {
                 record: record,
             };
         }
-
+        dmgTable.extra_data = extra_pamams.extra_data ?? {};
+        // 获取伤害
+        // let damage_before: number = dmgTable.damage;
+        let illusion_cirt_show: number;
+        // 幻象攻击修正
+        if (attacker.IsHero() && attacker.IsIllusion()) {
+            illusion_cirt_show = dmgTable.damage;
+            // 幻象不享受绿字攻击
+            const illusion_attack_fixed = attacker.GetAttackDamage() * (attacker._modifierKeys.outgoing_damage / 100);
+            dmgTable.damage = illusion_attack_fixed;
+            // damage_before = dmgTable.damage;
+        }
         if (dmgTable.crit_obj) {
             const { crit_chance, crit_rate } = dmgTable.crit_obj;
             dmgTable.damage = dmgTable.damage * (crit_rate / 100);
-            // if (illusion_cirt_show) {
-            //     // 根据缩放值，还原等同于本体的伤害，不会被中途的事件所影响
-            //     // 否则一旦在中途事件修改了攻击力，且事件能同时作用于幻想和本体，那么幻象的暴击就一定和本体暴击不相等
-            //     illusion_cirt_show *= scaled_rate;
-            //     extra_pamams.extra_data.illusion_crit_show_damage = illusion_cirt_show * (crit_rate / 100);
-            // }
+            // const damage_after: number = attack_data.damageTable.damage;
+            // const scaled_rate = damage_after / damage_before;
+            if (illusion_cirt_show) {
+                // 根据缩放值，还原等同于本体的伤害，不会被中途的事件所影响
+                // 否则一旦在中途事件修改了攻击力，且事件能同时作用于幻想和本体，那么幻象的暴击就一定和本体暴击不相等
+                // illusion_cirt_show *= scaled_rate;
+                attack_data.damageTable.extra_data.illusion_crit_show_damage = illusion_cirt_show * (crit_rate / 100);
+            }
         }
         // else {
         //     const record = this.trigger_attack_record++;
@@ -301,8 +296,7 @@ export class modifier_attack_data_thinker extends BaseModifier {
         if (event.added_buff.HasFunction(ModifierFunction.MAGICAL_RESISTANCE_BONUS)) {
             const check_table = {};
             event.added_buff.CheckStateToTable(check_table);
-            if (check_table[tostring(ModifierState.DEBUFF_IMMUNE)]) {
-                print('添加减益免疫buff魔抗', event.added_buff.GetName());
+            if (check_table[tostring(ModifierState.DEBUFF_IMMUNE)] && event.added_buff['GetModifierMagicalResistanceBonus']) {
                 event.unit._debuff_immunity_magical_resistance.push(event.added_buff);
             }
         }

@@ -283,6 +283,7 @@ export class CProjectileManager {
             }
             this._projectile_map[ProjectileID] = undefined;
         } else if (keys.type === SLProjectileType.LINEAR) {
+            this._projectile_map[ProjectileID].hit_enemy = undefined;
             this._projectile_map[ProjectileID] = undefined;
         }
 
@@ -322,6 +323,7 @@ export class CProjectileManager {
             start_pos: start_position,
             create_time: GameRules.GetGameTime(),
             type: SLProjectileType.LINEAR,
+            hit_enemy: [],
         };
         return ProjectileID;
     }
@@ -374,6 +376,7 @@ export class CProjectileManager {
                 create_time: keys.create_time,
                 type: SLProjectileType.LINEAR,
                 start_pos: keys.start_pos,
+                hit_enemy: keys.hit_enemy,
             };
             const targets = this._FindUnitInLine(
                 dota_unit.GetTeamNumber(),
@@ -389,9 +392,10 @@ export class CProjectileManager {
                 data.iUnitTargetFlags
             );
             for (const target of targets) {
-                if (data.OnHitUnit) {
+                if (data.OnHitUnit && !keys.hit_enemy.includes(target.GetEntityIndex())) {
                     const sl_unit_entity = target;
                     CSafelyCall(() => data.OnHitUnit(sl_unit_entity, keys.now_pos, data.extraData, ProjectileID));
+                    keys.hit_enemy.push(target.GetEntityIndex());
                 }
 
                 if (data.removeOnRadiusHit) {
