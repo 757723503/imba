@@ -45,22 +45,31 @@ export class CEngineEvent {
         }
     }
 
+    //初始化映射表 防止遗漏
+    private _npc_custom_properties: Custom_BaseNPC_Properties = {
+        _crits_data_calls: [],
+        _all_evasion_chance: 0,
+        _evasion_data_calls: [],
+        _all_blind_chance: 0,
+        _blind_data_calls: [],
+        _all_accuracy_chance: 0,
+        _accuracy_data_calls: [],
+        physic_damage_blocks: [],
+        magic_damage_blocks: [],
+        _shields_data_calls: [],
+        _debuff_immunity_magical_resistance: [],
+    };
+
     private _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): void {
         if (data.entindex == null || data.entindex <= 0) return;
         const entity = EntIndexToHScript(data.entindex) as CDOTA_BaseNPC_Hero;
-        // print(entity?.GetUnitName(), entity?.GetClassname(), entity?.IsNPC(), entity?.IsBaseNPC(), entity?.IsDOTANPC());
         if (entity.IsBaseNPC()) {
             // 初始化自定义属性
-            entity._all_evasion_chance = 0;
-            entity._evasion_data_calls = [];
-            entity._all_blind_chance = 0;
-            entity._blind_data_calls = [];
-            entity._all_accuracy_chance = 0;
-            entity._accuracy_data_calls = [];
-            entity._crits_data_calls = [];
-            entity.physic_damage_blocks = [];
-            entity.magic_damage_blocks = [];
-            entity._debuff_immunity_magical_resistance = [];
+            for (const key in this._npc_custom_properties) {
+                if (this._npc_custom_properties.hasOwnProperty(key)) {
+                    (entity as any)[key] = (this._npc_custom_properties as any)[key];
+                }
+            }
             Timers.CreateTimer(FrameTime() * 5, () => {
                 //会引起内存泄露 ?
                 // if (entity.AddAbility != null && entity.HasAbility('ability_custom_base_attack') == false) {

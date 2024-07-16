@@ -100,6 +100,28 @@ declare interface AccuracyData {
     /** 触发必中的回调 */
     // on_evasion?: (evasion_data: UnitEventAttackDamageData) => void;
 }
+/** 护盾数据*/
+declare interface ShieldData {
+    /** 护盾吸收伤害类型类型 */
+    shield_type: ShieldType;
+    /** 伤害吸收比例？默认是100。1~100 */
+    absorb_rate?: number;
+    /** 当前护盾值 */
+    value?: number;
+    /** 护盾值 */
+    max_value: number;
+    /** 护盾吸收伤害时的回调 */
+    on_absorb?: (shield: ShieldData) => void;
+    /** 护盾归零时回调 */
+    on_remove?: (shiled: ShieldData) => void;
+}
+
+declare const enum ShieldType {
+    Physic_Attack = 'Physic_Attack',
+    Physic = 'Physic',
+    Magic = 'Magic',
+    All = 'All',
+}
 
 declare interface CBlock_Physic {
     /** 多个同源格挡若同时生效，只取最高值 */

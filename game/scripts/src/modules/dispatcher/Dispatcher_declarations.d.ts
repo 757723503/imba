@@ -150,4 +150,7 @@ declare const enum ModifierFunctions {
 
     /** 增加致盲 数据 */
     AddParentBlindData = 'AddParentBlindData',
+
+    /** 增加护盾 数据 */
+    AddParentShieldData = 'AddParentShieldData',
 }

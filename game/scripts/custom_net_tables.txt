@@ -5,5 +5,6 @@
         "hero_list",
         "game_timer",
         "custom_ability_textur",
+        "custom_shield_data",
     ]
 }

@@ -48,12 +48,16 @@ if (!CDOTA_BaseNPC.IsEnemy) {
         return this.GetTeamNumber() !== unit.GetTeamNumber();
     };
 }
-CDOTA_BaseNPC.IsAlly = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
-    return this.GetTeamNumber() === unit.GetTeamNumber();
-};
-CDOTA_BaseNPC.IsUnit = function (this: CDOTA_BaseNPC): boolean {
-    return this.IsHero() || this.IsCreep() || this.IsBoss();
-};
+if (!CDOTA_BaseNPC.IsAlly) {
+    CDOTA_BaseNPC.IsAlly = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
+        return this.GetTeamNumber() === unit.GetTeamNumber();
+    };
+}
+if (!CDOTA_BaseNPC.IsUnit) {
+    CDOTA_BaseNPC.IsUnit = function (this: CDOTA_BaseNPC): boolean {
+        return this.IsHero() || this.IsCreep() || this.IsBoss();
+    };
+}
 
 if (!CDOTA_BaseNPC.GetDamageBlocks_Physic) {
     CDOTA_BaseNPC.GetDamageBlocks_Physic = function (this: CDOTA_BaseNPC): CBlock_Physic[] {
@@ -89,6 +93,44 @@ if (!CDOTA_BaseNPC.AddModifier) {
         }
         const modifier = this.AddNewModifier(caster, origin_ability, modifierName, modifierTable as any);
         return modifier;
+    };
+}
+if (!CDOTA_BaseNPC._refresh_shields) {
+    CDOTA_BaseNPC._refresh_shields = function (this: CDOTA_BaseNPC): void {
+        const shieldDataContainer: Record<ShieldType, ShieldData[]> = {
+            [ShieldType.Physic_Attack]: [],
+            [ShieldType.Physic]: [],
+            [ShieldType.Magic]: [],
+            [ShieldType.All]: [],
+        };
+        const all_shields_data_calls = this._shields_data_calls;
+        all_shields_data_calls.reduce((acc, shieldData) => {
+            acc[shieldData.shield_type].push(shieldData);
+            return acc;
+        }, shieldDataContainer);
+        const shieldDataForNetTable: Record<string, { max_shield: string; now_shield: string }> = {
+            Physic_Attack: { max_shield: '0', now_shield: '0' },
+            Physic: { max_shield: '0', now_shield: '0' },
+            Magic: { max_shield: '0', now_shield: '0' },
+            All: { max_shield: '0', now_shield: '0' },
+        };
+
+        for (const shieldType in shieldDataContainer) {
+            const shields = shieldDataContainer[shieldType];
+            let maxShield = 0;
+            let nowShield = 0;
+            for (const shield of shields) {
+                maxShield += shield.max_value;
+                nowShield += shield.value ?? shield.max_value;
+            }
+            shieldDataForNetTable[shieldType] = {
+                max_shield: maxShield.toString(),
+                now_shield: nowShield.toString(),
+            };
+        }
+
+        CustomNetTables.SetTableValue('custom_shield_data', tostring(this?.GetEntityIndex()), shieldDataForNetTable);
+        shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
     };
 }
 // const originalGetAbility = CDOTA_Modifier_Lua.GetAbility;

@@ -35,7 +35,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
-    if (attacker.IsHero()) record_list = [];
+    // if (attacker.IsHero()) record_list = [];
 
     // 先创建fixed damage table
     const fixed_tb: FixedDamageTable = <FixedDamageTable>{
@@ -339,9 +339,6 @@ namespace DamageHelper {
             dmgTable.attack_magical_damage = 0;
         }
 
-        // 伤害护盾(6.83) 单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
-        // _CalShieldAbsorbOnDamaged(dmgTable);
-
         // - 护甲处理数值(如果有物理)
         if (dmgTable.attack_physical_damage > 0) {
             // 先计算护甲类型穿刺\绵力\坚锐
@@ -404,6 +401,8 @@ namespace DamageHelper {
                     );
                 }
             }
+            // 伤害护盾  单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
+            _CalShieldAbsorbOnDamaged(dmgTable);
             // - 减益免疫的魔法伤害调整(如果有魔法)(乘法叠加)
             if (!origin_dmg_table.ignoreMagicImmune && !is_hp_remove && dmgTable.attack_magical_damage > 0) {
                 // TODO: 这个暂缓
@@ -636,8 +635,7 @@ namespace DamageHelper {
             DamageHelper.AddRecord(record_list, '物理伤害无效化');
             dmgTable.ability_physical_damage = 0;
         }
-        // 伤害护盾(6.83) 单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
-        // _CalShieldAbsorbOnDamaged(dmgTable);
+
         // - 护甲处理数值(如果有物理)
         if (dmgTable.ability_physical_damage > 0) {
             const scale = PhysicalArmorScale(
@@ -670,6 +668,8 @@ namespace DamageHelper {
                 );
             }
         }
+        // 伤害护盾  单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
+        _CalShieldAbsorbOnDamaged(dmgTable);
     }
 
     /**
@@ -781,8 +781,7 @@ namespace DamageHelper {
             dmgTable.ability_magical_damage = 0;
             DamageHelper.AddRecord(record_list, '魔法伤害无效化');
         }
-        // 伤害护盾(6.83) 单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
-        // _CalShieldAbsorbOnDamaged(dmgTable);
+
         // - 魔抗处理数据(如果有魔法)
         if (dmgTable.ability_magical_damage > 0) {
             const scale = MagicalResistanceScale(victim, ignore_debuff_immunity);
@@ -801,6 +800,8 @@ namespace DamageHelper {
         if (!origin_dmg_table.ignoreMagicImmune && !is_hp_remove && dmgTable.ability_magical_damage > 0) {
             // TODO: 这个暂缓
         }
+        // 伤害护盾  单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
+        _CalShieldAbsorbOnDamaged(dmgTable);
     }
 
     /**
@@ -901,8 +902,8 @@ namespace DamageHelper {
                     DamageHelper.AddRecord(record_list, '纯粹伤害无效化');
                 }
 
-                // 伤害护盾(6.83) 单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
-                // _CalShieldAbsorbOnDamaged(dmgTable);
+                // 伤害护盾 单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
+                _CalShieldAbsorbOnDamaged(dmgTable);
             }
         }
     }
@@ -1221,87 +1222,110 @@ namespace DamageHelper {
     }
 
     /** 能量护盾吸收伤害 */
-    // function _CalShieldAbsorbOnDamaged(damageTable: FixedDamageTable) {
-    //     const { victim } = damageTable;
-    //     // 多个同类型护盾，消耗先注册的
-    //     const physic_attack_shields = victim.GetShields(ShieldType.Physic_Attack);
-    //     const physic_shields = victim.GetShields(ShieldType.Physic);
-    //     const magic_shields = victim.GetShields(ShieldType.Magic);
-    //     const alltype_shields = victim.GetShields(ShieldType.All);
-    //     const callback_shields: SLTable<SLShield, boolean> = new SLTable();
-    //     const remove_shields: SLTable<SLShield, boolean> = new SLTable();
-
-    //     /**
-    //      * @param shields 检验的护盾
-    //      * @param damage 传入的原始伤害
-    //      * @returns 返回经过护盾吸收后的剩余伤害
-    //      */
-    //     function _on_shield(shields: SLShield[], damage: number | undefined): number | undefined {
-    //         if (!damage || damage <= 0) return damage;
-    //         for (const shield of shields) {
-    //             const shield_value = shield.value ?? shield.max_value;
-    //             if (shield_value <= 0) {
-    //                 continue;
-    //             }
-    //             const rate = shield.absorb_rate ? math.limit(shield.absorb_rate, 1, 100) : 100;
-    //             // 需要去吸收的伤害
-    //             const attempt_to_absorb_damage = damage * (rate / 100);
-    //             // 实际吸收了的伤害
-    //             const absorbed_damage = shield_value <= attempt_to_absorb_damage ? shield_value : attempt_to_absorb_damage;
-    //             // 护盾剩余
-    //             const shield_left_value = shield_value - absorbed_damage;
-    //             // 扣除护盾值
-    //             shield.value = shield_left_value;
-    //             // 记录回调和移除。移除和回调都放到最后
-    //             if (shield.on_absorb) {
-    //                 callback_shields.set(shield, true);
-    //             }
-    //             if (shield.value <= 0) {
-    //                 remove_shields.set(shield, true);
-    //             }
-    //             // 如果伤害未全部吸收，继续调用下一个护盾
-    //             damage -= absorbed_damage;
-    //             if (damage <= 0) return damage;
-    //         }
-    //         // 返回经过护盾吸收后的剩余伤害
-    //         return damage;
-    //     }
-    //     // 我好他妈的难受啊
-
-    //     // 纪念一下阴间写法。
-    //     // damageTable.attack_physical_damage = _on_shield(
-    //     //     physic_shields,
-    //     //     _on_shield(alltype_shields, _on_shield(physic_attack_shields, damageTable.attack_physical_damage))
-    //     // );
-
-    //     // dota2顺序 - 物理攻击伤害护盾、魔法伤害护盾 - 全伤害护盾 - 物理伤害护盾
-    //     // 散夜tsdota1顺序  - 物理攻击伤害护盾 - 物理伤害护盾、魔法伤害护盾 - 全伤害护盾
-    //     // 不为什么。我觉得这样更合理
-    //     damageTable.attack_physical_damage = _on_shield(physic_attack_shields, damageTable.attack_physical_damage);
-    //     damageTable.attack_physical_damage = _on_shield(physic_shields, damageTable.attack_physical_damage);
-    //     damageTable.attack_physical_damage = _on_shield(alltype_shields, damageTable.attack_physical_damage);
-    //     // 魔法攻击伤害
-    //     damageTable.attack_magical_damage = _on_shield(magic_shields, damageTable.attack_magical_damage);
-    //     damageTable.attack_magical_damage = _on_shield(alltype_shields, damageTable.attack_magical_damage);
-    //     // 魔法伤害
-    //     damageTable.ability_magical_damage = _on_shield(magic_shields, damageTable.ability_magical_damage);
-    //     damageTable.ability_magical_damage = _on_shield(alltype_shields, damageTable.ability_magical_damage);
-    //     // 纯粹伤害
-    //     damageTable.pure_damage = _on_shield(alltype_shields, damageTable.pure_damage);
-    //     // 物理伤害
-    //     damageTable.ability_physical_damage = _on_shield(physic_shields, damageTable.ability_physical_damage);
-    //     damageTable.ability_physical_damage = _on_shield(alltype_shields, damageTable.ability_physical_damage);
-
-    //     // 遍历完之后再回调或删除
-    //     for (const [shield] of callback_shields) {
-    //         if (shield.on_absorb) {
-    //             shield.on_absorb(shield);
-    //         }
-    //     }
-    //     for (const [shield] of remove_shields) {
-    //         victim.RemoveShield(shield);
-    //     }
-    // }
+    function _CalShieldAbsorbOnDamaged(damageTable: FixedDamageTable) {
+        // const { victim } = damageTable;
+        // // 多个同类型护盾，消耗先注册的
+        // const shieldDataContainer: Record<ShieldType, ShieldData[]> = {
+        //     [ShieldType.Physic_Attack]: [],
+        //     [ShieldType.Physic]: [],
+        //     [ShieldType.Magic]: [],
+        //     [ShieldType.All]: [],
+        // };
+        // const all_shields_data_calls = victim._shields_data_calls;
+        // all_shields_data_calls.reduce((acc, shieldData) => {
+        //     acc[shieldData.shield_type].push(shieldData);
+        //     return acc;
+        // }, shieldDataContainer);
+        // // 临时变量存储回调的护盾
+        // const callbackShields: ShieldData[] = [];
+        // const removeShields: ShieldData[] = [];
+        // /**
+        //  * @param shields 检验的护盾
+        //  * @param damage 传入的原始伤害
+        //  * @returns 返回经过护盾吸收后的剩余伤害
+        //  */
+        // function _on_shield(shields: ShieldData[], damage: number | undefined): number | undefined {
+        //     if (!damage || damage <= 0) return damage;
+        //     for (const shield of shields) {
+        //         const shieldValue = shield.value ?? shield.max_value;
+        //         if (shieldValue <= 0) {
+        //             continue;
+        //         }
+        //         const rate = shield.absorb_rate ? Math.min(Math.max(shield.absorb_rate, 1), 100) : 100;
+        //         // 需要去吸收的伤害
+        //         const attemptToAbsorbDamage = damage * (rate / 100);
+        //         // 实际吸收了的伤害
+        //         const absorbedDamage = shieldValue <= attemptToAbsorbDamage ? shieldValue : attemptToAbsorbDamage;
+        //         // 护盾剩余
+        //         const shieldLeftValue = shieldValue - absorbedDamage;
+        //         // 扣除护盾值
+        //         shield.value = shieldLeftValue;
+        //         // 记录回调和移除。移除和回调都放到最后
+        //         if (shield.on_absorb) {
+        //             callbackShields.push(shield);
+        //         }
+        //         if (shield.value <= 0) {
+        //             removeShields.push(shield);
+        //         }
+        //         // 如果伤害未全部吸收，继续调用下一个护盾
+        //         damage -= absorbedDamage;
+        //         if (damage <= 0) return damage;
+        //     }
+        //     // 返回经过护盾吸收后的剩余伤害
+        //     return damage;
+        // }
+        // // dota2顺序 - 物理攻击伤害护盾、魔法伤害护盾 - 全伤害护盾 - 物理伤害护盾
+        // damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic_Attack], damageTable.attack_physical_damage);
+        // damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.attack_physical_damage);
+        // damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_physical_damage);
+        // // 魔法攻击伤害
+        // damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.attack_magical_damage);
+        // damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_magical_damage);
+        // // 魔法伤害
+        // damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.ability_magical_damage);
+        // damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_magical_damage);
+        // // 纯粹伤害
+        // damageTable.pure_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.pure_damage);
+        // // 物理伤害
+        // damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.ability_physical_damage);
+        // damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_physical_damage);
+        // // 更新护盾数据到网表
+        // const shieldDataForNetTable: Record<string, { max_shield: string; now_shield: string }> = {
+        //     Physic_Attack: { max_shield: '0', now_shield: '0' },
+        //     Physic: { max_shield: '0', now_shield: '0' },
+        //     Magic: { max_shield: '0', now_shield: '0' },
+        //     All: { max_shield: '0', now_shield: '0' },
+        // };
+        // for (const shieldType in shieldDataContainer) {
+        //     const shields = shieldDataContainer[shieldType];
+        //     let maxShield = 0;
+        //     let nowShield = 0;
+        //     for (const shield of shields) {
+        //         maxShield += shield.max_value;
+        //         nowShield += shield.value ?? shield.max_value;
+        //     }
+        //     shieldDataForNetTable[shieldType] = {
+        //         max_shield: maxShield.toString(),
+        //         now_shield: nowShield.toString(),
+        //     };
+        // }
+        // CustomNetTables.SetTableValue('custom_shield_data', tostring(victim?.GetEntityIndex()), shieldDataForNetTable);
+        // // 遍历完之后再回调或删除
+        // for (const shield of callbackShields) {
+        //     if (shield.on_absorb) {
+        //         shield.on_absorb(shield);
+        //     }
+        // }
+        // for (const shield of removeShields) {
+        //     if (shield.on_remove) {
+        //         shield.on_remove(shield);
+        //     }
+        // }
+        // // 清理临时变量
+        // callbackShields.length = 0;
+        // removeShields.length = 0;
+        // shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
+    }
 
     /** 吸血单位类型筛选 */
     function FilterLifeStealTarget(victim: CDOTA_BaseNPC): boolean {
@@ -1324,12 +1348,12 @@ namespace DamageHelper {
         if (damageTable.damageType == DamageType.Magical) {
             damage_type = DamageTypes.MAGICAL;
         }
-        ApplyDamage({
+        let damage_table = {
             attacker: damageTable.attacker,
             victim: damageTable.victim,
             damage: damageTable.true_damage,
             damage_type: damage_type,
-            ability: damageTable.sourceAbility ?? damageTable.attacker.FindAbilityByName('ability_custom_base_attack'),
+            // ability: damageTable.attacker.FindAbilityByName('ability_custom_base_attack'),
             damage_flags:
                 DamageFlag.HPLOSS +
                 DamageFlag.NO_SPELL_AMPLIFICATION +
@@ -1342,7 +1366,15 @@ namespace DamageHelper {
                 DamageFlag.IGNORES_MAGIC_ARMOR +
                 DamageFlag.ATTACK_MODIFIER +
                 DamageFlag.BYPASSES_BLOCK,
-        });
+        };
+        ApplyDamage(damage_table);
+        damage_table.attacker = undefined;
+        damage_table.victim = undefined;
+        damage_table.damage = undefined;
+        damage_table.damage_type = undefined;
+        // damage_table.ability = undefined;
+        damage_table.damage_flags = undefined;
+        damage_table = undefined;
     }
     /** 添加record */
     export function AddRecord(list: string[], str: string) {

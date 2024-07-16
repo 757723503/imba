@@ -20,17 +20,25 @@ export class modifier_imba_stunned extends BaseModifier {
         return true;
     }
 
-    // GetAttributes(): ModifierAttribute {
-    //     return ModifierAttribute.MULTIPLE;
-    // }
+    GetAttributes(): ModifierAttribute {
+        return ModifierAttribute.MULTIPLE;
+    }
 
     CustomDeclareFunctions(): ModifierFunctions[] {
         return [
-            ModifierFunctions.AddParentAttackCritData,
-            ModifierFunctions.AddParentEvasionData,
-            ModifierFunctions.AddParentBlindData,
-            ModifierFunctions.OnAttackStart_Attacker,
+            // ModifierFunctions.AddParentAttackCritData,
+            // ModifierFunctions.AddParentEvasionData,
+            // ModifierFunctions.AddParentBlindData,
+            // ModifierFunctions.OnAttackStart_Attacker,
+            ModifierFunctions.AddParentShieldData,
         ];
+    }
+
+    AddParentShieldData(): ShieldData {
+        return {
+            max_value: 1000,
+            shield_type: ShieldType.All,
+        };
     }
 
     OnAttackStart_Attacker(AttackData: UnitEventAttackDamageData): void {
@@ -101,63 +109,22 @@ export class modifier_imba_stunned extends BaseModifier {
             ModifierFunction.ON_ATTACK,
             ModifierFunction.MODEL_CHANGE,
             ModifierFunction.MAGICAL_RESISTANCE_BONUS,
-            ModifierFunction.INCOMING_DAMAGE_CONSTANT,
+            // ModifierFunction.INCOMING_DAMAGE_CONSTANT,
         ];
     }
-    //     GetModifierIncomingPhysicalDamageConstant(event: ModifierAttackEvent): number {
 
+    // GetModifierIncomingDamageConstant(keys: ModifierAttackEvent): number {
+    //     if (IsClient()) {
+    //         if (keys.report_max) {
+    //             return 500;
+    //         } else {
+    //             return 200;
+    //         }
+    //     } else {
+    //         return -20;
     //     }
-    //     GetModifierIncomingDamageConstant(event: ModifierAttackEvent): number {
-    //         return 80;
+    // }
 
-    //     }
-    // function modifier_centaur_3_1:GetModifierIncomingDamageConstant(keys)
-    //     if IsClient() then
-    //         if keys.report_max then
-    //             return self.max_shield_hp
-    //         else
-    //             return self:GetStackCount() -- current shield hp
-    //         end
-    //     else
-    //         local parent = self:GetParent()
-    //         local damage = keys.damage
-    //         local barrier_hp = self:GetStackCount()
-
-    //         -- Don't react to damage with HP removal flag
-    //         if bit.band(keys.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) == DOTA_DAMAGE_FLAG_HPLOSS then
-    //           return 0
-    //         end
-
-    //         -- Don't react on self damage
-    //         if keys.attacker == parent then
-    //             return 0
-    //         end
-
-    //         -- Don't block more than remaining hp
-    //         local block_amount = math.min(damage, barrier_hp)
-
-    //         -- Reduce barrier hp
-    //         self:SetStackCount(math.max(barrier_hp - block_amount,0))
-
-    //         if block_amount > 0 then
-    //           -- Visual effect
-    //           local alert_type = OVERHEAD_ALERT_MAGICAL_BLOCK
-    //           if keys.damage_type == DAMAGE_TYPE_PHYSICAL then
-    //             alert_type = OVERHEAD_ALERT_BLOCK
-    //           end
-
-    //           SendOverheadEventMessage(nil, alert_type, parent, block_amount, nil)
-    //         end
-
-    //         -- Remove the barrier if hp is reduced to nothing
-    //         if self:GetStackCount() <= 0 then
-    //             self:Destroy()
-    //         end
-
-    //         return -block_amount
-    //     end
-
-    // end
     GetModifierMagicalResistanceBonus(event: ModifierAttackEvent): number {
         return 80;
     }

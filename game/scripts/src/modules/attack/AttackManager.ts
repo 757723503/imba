@@ -133,10 +133,9 @@ export class CAttackDataManager {
     public PerformAttack(
         attacker: CDOTA_BaseNPC,
         target: CDOTA_BaseNPC,
-        extra_pamams?: {
+        extra_params?: {
             /** 不会丢失 */
             never_miss?: boolean;
-
             /** 使用攻击特效 */
             use_effect?: boolean;
             /** 使用弹道模型（true则是一次远程攻击，为空则是近战攻击） */
@@ -151,12 +150,24 @@ export class CAttackDataManager {
             extra_data?: DamageTableExtraData;
         }
     ) {
-        const { never_miss, use_effect, use_projectile } = extra_pamams ?? {};
-        // 如果没有预先数据 那么就原地创建
-        const [record, attackdata] = extra_pamams.record ?? [undefined, undefined];
-        let attack_data = attackdata;
-        let dmgTable = attackdata?.damageTable;
-        if ((!record || !attack_data || !dmgTable) && extra_pamams.is_trigger) {
+        // 解构参数并设置默认值
+        const {
+            never_miss = false,
+            use_effect = false,
+            use_projectile = false,
+            is_trigger = true,
+            record = [undefined, undefined],
+            disable_celled = false,
+            extra_data = {},
+        } = extra_params ?? {};
+
+        const [recordId, attackData] = record;
+
+        let attack_data = attackData;
+        let dmgTable = attackData?.damageTable;
+
+        // 如果没有预先数据并且是一次触发的攻击，则创建新的攻击数据
+        if ((!recordId || !attack_data || !dmgTable) && is_trigger) {
             const crit_obj = this._CheckCritOnAttack(attacker, target);
             dmgTable = {
                 attacker: attacker,
@@ -164,48 +175,39 @@ export class CAttackDataManager {
                 damage: attacker.GetAverageTrueAttackDamage(null),
                 damageProperty: DamageProperty.Attack,
                 damageType: DamageType.Physical,
-                damageFlags: (crit_obj ? DamageFlags.AttackCrit : 0) + (extra_pamams.disable_celled ? DamageFlags.DisableCelled : 0),
+                damageFlags: (crit_obj ? DamageFlags.AttackCrit : 0) + (disable_celled ? DamageFlags.DisableCelled : 0),
                 crit_obj: crit_obj,
             };
             attack_data = {
                 damageTable: dmgTable,
                 projectile: attacker.GetRangedProjectileName(),
                 projectile_speed: attacker.GetProjectileSpeed(),
-                record: record,
+                record: recordId,
             };
         }
-        dmgTable.extra_data = extra_pamams.extra_data ?? {};
-        // 获取伤害
-        // let damage_before: number = dmgTable.damage;
-        let illusion_cirt_show: number;
+
+        // 设置额外数据
+        dmgTable.extra_data = extra_data;
+
         // 幻象攻击修正
         if (attacker.IsHero() && attacker.IsIllusion()) {
-            illusion_cirt_show = dmgTable.damage;
-            // 幻象不享受绿字攻击
             const illusion_attack_fixed = attacker.GetAttackDamage() * (attacker._modifierKeys.outgoing_damage / 100);
             dmgTable.damage = illusion_attack_fixed;
-            // damage_before = dmgTable.damage;
         }
+
+        // 处理暴击
         if (dmgTable.crit_obj) {
-            const { crit_chance, crit_rate } = dmgTable.crit_obj;
-            dmgTable.damage = dmgTable.damage * (crit_rate / 100);
-            // const damage_after: number = attack_data.damageTable.damage;
-            // const scaled_rate = damage_after / damage_before;
-            if (illusion_cirt_show) {
-                // 根据缩放值，还原等同于本体的伤害，不会被中途的事件所影响
-                // 否则一旦在中途事件修改了攻击力，且事件能同时作用于幻想和本体，那么幻象的暴击就一定和本体暴击不相等
-                // illusion_cirt_show *= scaled_rate;
-                attack_data.damageTable.extra_data.illusion_crit_show_damage = illusion_cirt_show * (crit_rate / 100);
+            const { crit_rate } = dmgTable.crit_obj;
+            dmgTable.damage *= crit_rate / 100;
+
+            if (attacker.IsHero() && attacker.IsIllusion()) {
+                attack_data.damageTable.extra_data.illusion_crit_show_damage = dmgTable.damage;
             }
         }
-        // else {
-        //     const record = this.trigger_attack_record++;
-        //     this.trigger_attack_data.set(record, attack_data);
-        // }
 
+        // 处理攻击效果
         const _fun_attack_effect = (attacker: CDOTA_BaseNPC, target: CDOTA_BaseNPC, use_effect?: boolean): void => {
             if (!this._CheckMissOnAttackLanded(attacker, target, never_miss || attack_data.never_miss)) {
-                // print('CAttack OnAttackLanded', extra_pamams.record[0]);
                 if (use_effect) {
                     Dispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), attack_data);
                     Dispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), attack_data);
@@ -214,15 +216,6 @@ export class CAttackDataManager {
                     attack_data.damageTable.crit_obj.on_crit(attack_data.damageTable);
                 }
                 AddDamage(attack_data.damageTable);
-                // const damage_pfx = 'particles/generic_gameplay/damage_flash.vpcf';
-                // const pfx = ParticleManager.CreateParticle(damage_pfx, ParticleAttachment.CUSTOMORIGIN, target);
-                // ParticleManager.SetParticleControlEnt(pfx, 0, target, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', target.GetAbsOrigin(), true);
-                // ParticleManager.ReleaseParticleIndex(pfx);
-
-                // const hit_pfx = 'particles/generic_gameplay/damage_flash.vpcf';
-                // const pfx2 = ParticleManager.CreateParticle(hit_pfx, ParticleAttachment.CUSTOMORIGIN, target);
-                // ParticleManager.SetParticleControlEnt(pfx2, 0, target, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', target.GetAbsOrigin(), true);
-                // ParticleManager.ReleaseParticleIndex(pfx2);
             } else {
                 PopupMiss(target, attacker.GetPlayerOwner());
                 PopupEvasion(target, target.GetPlayerOwner());
@@ -231,7 +224,7 @@ export class CAttackDataManager {
             }
         };
 
-        // 如果是近战攻击，那么发射后立刻命中。远程攻击则在投射物的命中中回调
+        // 处理近战或远程攻击
         if (!use_projectile) {
             _fun_attack_effect(attacker, target, use_effect);
         } else {
@@ -302,6 +295,8 @@ export class modifier_attack_data_thinker extends BaseModifier {
         }
     }
 }
+/**通用管理modifier */
+
 @registerModifier()
 export class modifier_attack_data_miss extends BaseModifier {
     IsHidden(): boolean {
@@ -325,10 +320,65 @@ export class modifier_attack_data_miss extends BaseModifier {
     }
 
     DeclareFunctions(): modifierfunction[] {
-        return [ModifierFunction.MISS_PERCENTAGE];
+        return [
+            ModifierFunction.MISS_PERCENTAGE,
+            ModifierFunction.INCOMING_DAMAGE_CONSTANT,
+            ModifierFunction.INCOMING_PHYSICAL_DAMAGE_CONSTANT,
+            ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT,
+        ];
+    }
+
+    OnCreated(params: ModifierParams): void {
+        if (IsServer()) {
+            CustomNetTables.SetTableValue('custom_shield_data', tostring(this.GetParent()?.GetEntityIndex()), {
+                Physic_Attack: { max_shield: tostring(0), now_shield: tostring(0) },
+                Physic: { max_shield: tostring(0), now_shield: tostring(0) },
+                Magic: { max_shield: tostring(0), now_shield: tostring(0) },
+                All: { max_shield: tostring(0), now_shield: tostring(0) },
+            });
+        }
+    }
+
+    GetModifierIncomingDamageConstant(event: ModifierAttackEvent): number {
+        if (IsClient()) {
+            const custom_shield_data = CustomNetTables.GetTableValue('custom_shield_data', tostring(this.GetParent()?.GetEntityIndex()));
+            if (event.report_max) {
+                return tonumber(custom_shield_data.All.max_shield) ?? 0;
+            } else {
+                return tonumber(custom_shield_data.All.now_shield) ?? 0;
+            }
+        }
+    }
+
+    GetModifierIncomingPhysicalDamageConstant(event: ModifierAttackEvent): number {
+        if (IsClient()) {
+            const custom_shield_data = CustomNetTables.GetTableValue('custom_shield_data', tostring(this.GetParent()?.GetEntityIndex()));
+            if (event.report_max) {
+                return tonumber(custom_shield_data.Physic.max_shield + custom_shield_data.Physic_Attack.max_shield) ?? 0;
+            } else {
+                return tonumber(custom_shield_data.Physic.now_shield + custom_shield_data.Physic_Attack.now_shield) ?? 0;
+            }
+        }
+    }
+
+    GetModifierIncomingSpellDamageConstant(event: ModifierAttackEvent): number {
+        if (IsClient()) {
+            const custom_shield_data = CustomNetTables.GetTableValue('custom_shield_data', tostring(this.GetParent()?.GetEntityIndex()));
+            if (event.report_max) {
+                return tonumber(custom_shield_data.Magic.max_shield) ?? 0;
+            } else {
+                return tonumber(custom_shield_data.Magic.now_shield) ?? 0;
+            }
+        }
     }
 
     GetModifierMiss_Percentage(): number {
         return 1000;
+    }
+
+    OnDestroy(): void {
+        if (IsServer()) {
+            CustomNetTables.SetTableValue('custom_shield_data', tostring(this.GetParent()?.GetEntityIndex()), null);
+        }
     }
 }

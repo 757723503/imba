@@ -2,7 +2,7 @@ declare global {
     /**自定义所有modifier类 */
     enum CustomModifier {}
     type Constructor<T = {}> = new (...args: any[]) => T;
-    interface CDOTA_BaseNPC {
+    interface CDOTA_BaseNPC extends Custom_BaseNPC_Properties {
         /**添加modifier
          * @param caster 施法者
          * @param ability 技能
@@ -20,7 +20,6 @@ declare global {
             cal_resist?: boolean,
             ignore_immune_debuff?: boolean
         ): CDOTA_Buff;
-
         /**获得自定义致盲攻击丢失概率 */
         GetBlindChance(): number;
         /**获得自定义闪避概率 */
@@ -33,35 +32,12 @@ declare global {
         IsUnit(target: CDOTA_BaseNPC): boolean;
         /** 是否是友军 */
         IsAlly(target: CDOTA_BaseNPC): boolean;
-
-        /**储存所有暴击数据和回调 */
-        _crits_data_calls: CritData[];
-
-        // 总躲避概率
-        _all_evasion_chance: number;
-        /**储存所有躲避数据和回调 */
-        _evasion_data_calls: EvasionData[];
-
-        // 总致盲概率
-        _all_blind_chance: number;
-        /**储存所有致盲数据和回调 */
-        _blind_data_calls: BlindData[];
-
-        // 总必中概率
-        _all_accuracy_chance: number;
-        /**储存所有必中数据和回调 */
-        _accuracy_data_calls: AccuracyData[];
-
-        /** 物理伤害格挡 */
-        physic_damage_blocks: CBlock_Physic[];
-        /** 魔法伤害格挡 */
-        magic_damage_blocks: CBlock_Magic[];
-
+        /** 刷新护盾显示 */
+        _refresh_shields(): void;
         /** 物理伤害格挡 */
         GetDamageBlocks_Physic(): CBlock_Physic[];
         /** 魔法伤害格挡 */
         GetDamageBlocks_Magic(): CBlock_Magic[];
-
         /**
          * @deprecated
          */
@@ -75,10 +51,32 @@ declare global {
          * @deprecated
          */
         GetEvasion(): number;
-
+    }
+    //CDOTA_BaseNPC 初始化表 自定义内容
+    interface Custom_BaseNPC_Properties {
+        /**储存所有暴击数据和回调 */
+        _crits_data_calls: CritData[];
+        // 总躲避概率
+        _all_evasion_chance: number;
+        /**储存所有躲避数据和回调 */
+        _evasion_data_calls: EvasionData[];
+        // 总致盲概率
+        _all_blind_chance: number;
+        /**储存所有致盲数据和回调 */
+        _blind_data_calls: BlindData[];
+        // 总必中概率
+        _all_accuracy_chance: number;
+        /**储存所有必中数据和回调 */
+        _accuracy_data_calls: AccuracyData[];
+        /** 物理伤害格挡 */
+        physic_damage_blocks: CBlock_Physic[];
+        /** 魔法伤害格挡 */
+        magic_damage_blocks: CBlock_Magic[];
+        /**储存所有护盾数据和回调 */
+        _shields_data_calls: ShieldData[];
+        /**储存带有减益免疫和模块的modifier 用来处理无视减益免疫和对应魔抗的问题 */
         _debuff_immunity_magical_resistance: CDOTA_Buff[];
     }
-
     interface CDOTA_BaseNPC_Hero {
         _modifierKeys: CreateIllusionsModifierKeys;
     }

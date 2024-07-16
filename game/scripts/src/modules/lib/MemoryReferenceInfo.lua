@@ -770,7 +770,7 @@ local function OutputMemorySnapshot(strSavePath, strExtraFileName, nMaxRescords,
                     end
 				else
                     cOutputer(GetOriginalToStringResult(v) .. "\t" .. cNameInfo[v] .. "\t" .. tostring(cRefInfo[v]) .. "\n")
-					-- pcall(function() DeepPrintTable(v) end)
+					pcall(function() DeepPrintTable(v, 'NO_COMPARE') end)
                 end
 			end
 		end

@@ -39,9 +39,8 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                hero.AddAbility('ability_imba_life_stealer_open_wounds');
+                // hero.AddAbility('ability_imba_life_stealer_open_wounds');
                 const modifier = hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
-
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,
@@ -85,35 +84,36 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.da:
-                print(hero._debuff_immunity_magical_resistance.length);
-                CDeepPrintTable(hero._debuff_immunity_magical_resistance);
-                // let cont = 0;
-                // Timers.CreateTimer(1, () => {
-                //     const enemies = FindUnitsInRadius(
-                //         hero.GetTeamNumber(),
-                //         hero.GetAbsOrigin(),
-                //         null,
-                //         500,
-                //         UnitTargetTeam.ENEMY,
-                //         UnitTargetType.HERO,
-                //         UnitTargetFlags.FOW_VISIBLE,
-                //         FindOrder.ANY,
-                //         false
-                //     );
-                //     for (const enemy of enemies) {
-                //         for (let index = 0; index < 5; index++) {
-                //             CAttackData.PerformAttack(hero, enemy, {
-                //                 // is_trigger: true,
-                //                 use_projectile: true,
-                //             });
-                //         }
-                //     }
-                //     cont++;
-                //     if (cont < 10000) {
-                //         return FrameTime();
-                //     }
-                //     return null;
-                // });
+                // print(hero._debuff_immunity_magical_resistance.length);
+                // CDeepPrintTable(hero._debuff_immunity_magical_resistance);
+                let cont = 0;
+                Timers.CreateTimer(1, () => {
+                    const enemies = FindUnitsInRadius(
+                        hero.GetTeamNumber(),
+                        hero.GetAbsOrigin(),
+                        null,
+                        500,
+                        UnitTargetTeam.ENEMY,
+                        UnitTargetType.HERO,
+                        UnitTargetFlags.FOW_VISIBLE,
+                        FindOrder.ANY,
+                        false
+                    );
+                    for (const enemy of enemies) {
+                        // enemy.AddModifier(hero, null, modifier_imba_stunned, { duration: 1 });
+                        // hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 1 });
+                        for (let index = 0; index < 5; index++) {
+                            CAttackData.PerformAttack(hero, enemy, {
+                                use_projectile: false,
+                            });
+                        }
+                    }
+                    cont++;
+                    if (cont < 10000) {
+                        return FrameTime();
+                    }
+                    return null;
+                });
 
                 break;
             case ChatCommand.cr:
@@ -122,43 +122,43 @@ export class CChat {
                     unit.SetControllableByPlayer(keys.playerid, true);
                     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
                 });
-                DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.BADGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                });
-                DebugCreateUnit(player, 'npc_dota_furion_treant_large', DotaTeam.BADGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                });
+                // DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.BADGUYS, false, (unit): void => {
+                //     //设置控制权
+                //     unit.SetControllableByPlayer(keys.playerid, true);
+                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // });
+                // DebugCreateUnit(player, 'npc_dota_furion_treant_large', DotaTeam.BADGUYS, false, (unit): void => {
+                //     //设置控制权
+                //     unit.SetControllableByPlayer(keys.playerid, true);
+                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // });
 
-                DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.GOODGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                });
-                DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.GOODGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                });
-                DebugCreateUnit(player, 'npc_dota_furion_treant_large', DotaTeam.GOODGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                });
+                // DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.GOODGUYS, false, (unit): void => {
+                //     //设置控制权
+                //     unit.SetControllableByPlayer(keys.playerid, true);
+                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // });
+                // DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.GOODGUYS, false, (unit): void => {
+                //     //设置控制权
+                //     unit.SetControllableByPlayer(keys.playerid, true);
+                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // });
+                // DebugCreateUnit(player, 'npc_dota_furion_treant_large', DotaTeam.GOODGUYS, false, (unit): void => {
+                //     //设置控制权
+                //     unit.SetControllableByPlayer(keys.playerid, true);
+                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // });
 
-                DebugCreateUnit(player, 'npc_dota_badguys_tower2_mid', DotaTeam.BADGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                });
-                DebugCreateUnit(player, 'npc_dota_badguys_tower2_mid', DotaTeam.GOODGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                });
+                // DebugCreateUnit(player, 'npc_dota_badguys_tower2_mid', DotaTeam.BADGUYS, false, (unit): void => {
+                //     //设置控制权
+                //     unit.SetControllableByPlayer(keys.playerid, true);
+                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // });
+                // DebugCreateUnit(player, 'npc_dota_badguys_tower2_mid', DotaTeam.GOODGUYS, false, (unit): void => {
+                //     //设置控制权
+                //     unit.SetControllableByPlayer(keys.playerid, true);
+                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // });
                 break;
             case ChatCommand.hero:
                 DebugCreateUnit(player, DotaHero.life_stealer, DotaTeam.BADGUYS, false, (unit): void => {

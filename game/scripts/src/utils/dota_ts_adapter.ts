@@ -160,6 +160,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
         if (originalOnDestroy) {
             originalOnDestroy.call(this, parameters);
         }
+        CustomNetTables.SetTableValue('custom_ability_textur', tostring(this.GetCaster()?.GetEntityIndex()), null);
     };
     if (!('GetTexture' in env[name])) {
         env[name].GetTexture = function (): string {
@@ -1145,6 +1146,33 @@ const _modifier_methods: {
             }
         },
     },
+
+    [ModifierFunctions.AddParentShieldData]: {
+        registerFunc: (instance, parent_index) => {
+            if (instance.AddParentShieldData) {
+                const parent = instance.GetParent();
+                instance['ShieldData_Saved'] = instance.AddParentShieldData();
+                if (instance['ShieldData_Saved']) {
+                    parent._shields_data_calls.push(instance['ShieldData_Saved']);
+                }
+                parent._refresh_shields();
+            }
+        },
+        removeFunc: (instance, parent_index) => {
+            if (instance.AddParentShieldData) {
+                const parent = instance.GetParent();
+                const shieldData = instance['ShieldData_Saved'];
+                if (parent._shields_data_calls === undefined) return;
+                const index = parent._shields_data_calls.indexOf(shieldData);
+                if (index != -1) {
+                    parent._shields_data_calls.splice(index, 1);
+                } else {
+                    print(`[AddParentShieldData] Remove failed`);
+                }
+                parent._refresh_shields();
+            }
+        },
+    },
 };
 // declare module './dota_ts_adapter' {
 interface BaseModifier {
@@ -1390,6 +1418,9 @@ interface BaseModifier {
     AddParentBlindData?(): BlindData;
     /**增加必中 数据 */
     AddParentAccuracyData?(): AccuracyData;
+
+    /**增加护盾 数据 */
+    AddParentShieldData?(): ShieldData;
     /**
      * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
      */
