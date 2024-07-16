@@ -39,8 +39,9 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                // hero.AddAbility('ability_imba_life_stealer_open_wounds');
-                const modifier = hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
+                hero.AddAbility('ability_imba_life_stealer_open_wounds');
+                hero.CHeal({ reason: HealReason.Heal, amount: 1000, show_number: true });
+                // const modifier = hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({
                 //     attacker: hero,
@@ -50,7 +51,7 @@ export class CChat {
                 //     damage_type: DamageTypes.NONE,
                 // });
 
-                // AddDamage({
+                // CAddDamage({
                 //     attacker: hero,
                 //     victim: hero,
                 //     damage: 500,
@@ -94,7 +95,7 @@ export class CChat {
                         null,
                         500,
                         UnitTargetTeam.ENEMY,
-                        UnitTargetType.HERO,
+                        UnitTargetType.HERO + UnitTargetType.BASIC,
                         UnitTargetFlags.FOW_VISIBLE,
                         FindOrder.ANY,
                         false
@@ -117,11 +118,20 @@ export class CChat {
 
                 break;
             case ChatCommand.cr:
-                DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.BADGUYS, false, (unit): void => {
-                    //设置控制权
-                    unit.SetControllableByPlayer(keys.playerid, true);
-                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                let coo = 0;
+                Timers.CreateTimer(1, () => {
+                    DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.BADGUYS, false, (unit): void => {
+                        //设置控制权
+                        unit.SetControllableByPlayer(keys.playerid, true);
+                        FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                    });
+                    if (coo < 10000) {
+                        coo++;
+                        return FrameTime();
+                    }
+                    return null;
                 });
+
                 // DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.BADGUYS, false, (unit): void => {
                 //     //设置控制权
                 //     unit.SetControllableByPlayer(keys.playerid, true);
@@ -161,7 +171,7 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.hero:
-                DebugCreateUnit(player, DotaHero.life_stealer, DotaTeam.BADGUYS, false, (unit): void => {
+                DebugCreateUnit(player, DotaHero.abaddon, DotaTeam.BADGUYS, false, (unit): void => {
                     unit.AddItemByName(DotaItem.blade_mail);
                 });
                 break;

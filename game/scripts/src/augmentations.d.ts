@@ -116,10 +116,9 @@ declare interface LocalEventDeclarations {
 
     /** 飞溅的伤害传递, 攻击者触发, 只会传结算到此处的物理攻击伤害的值 */
     DAMAGE_PSI_BLADE_EVENT: { victim: CDOTA_BaseNPC; damage: number };
-    /** 攻击吸血的基础值传递 攻击者触发 */
-    DAMAGE_ATTACK_LEECH_EVENT: DamageTable;
-    /** 技能吸血的基础值传递 攻击者触发 */
-    DAMAGE_ABILITY_LEECH_EVENT: DamageTable;
+
+    /** 吸血的基础值传递 攻击者触发 攻击技能都触发 */
+    DAMAGE_LIFE_LEECH_EVENT: DamageTable;
     // /** 末端伤害传递 攻击者, 所有伤害接收 */
     // DAMAGE_ATTACKER_END_DAMAGE_BOUNCE_EVENT: DamageTable;
     /** 幻象结算之后伤害结算事件 - 过完幻象的伤害增幅后触发 - 攻击者+受击者 */

@@ -17,7 +17,7 @@ export class modifier_imba_stunned extends BaseModifier {
     }
 
     IsDebuff(): boolean {
-        return true;
+        return false;
     }
 
     GetAttributes(): ModifierAttribute {
@@ -37,7 +37,7 @@ export class modifier_imba_stunned extends BaseModifier {
     AddParentShieldData(): ShieldData {
         return {
             max_value: 1000,
-            shield_type: ShieldType.All,
+            shield_type: ShieldType.Physic,
         };
     }
 
@@ -97,22 +97,51 @@ export class modifier_imba_stunned extends BaseModifier {
 
     DeclareFunctions(): ModifierFunction[] {
         return [
-            ModifierFunction.ON_ATTACK_START,
-            ModifierFunction.ON_ATTACKED,
-            ModifierFunction.ON_ATTACK_LANDED,
-            ModifierFunction.ON_ATTACK_ALLIED,
-            ModifierFunction.ON_ATTACK_FAIL,
-            ModifierFunction.ON_ATTACK_FINISHED,
-            ModifierFunction.ON_ATTACK_RECORD,
-            ModifierFunction.ON_ATTACK_RECORD_DESTROY,
-            ModifierFunction.ON_ATTACK_CANCELLED,
-            ModifierFunction.ON_ATTACK,
-            ModifierFunction.MODEL_CHANGE,
-            ModifierFunction.MAGICAL_RESISTANCE_BONUS,
+            // ModifierFunction.ON_ATTACK_START,
+            // ModifierFunction.ON_ATTACKED,
+            // ModifierFunction.ON_ATTACK_LANDED,
+            // ModifierFunction.ON_ATTACK_ALLIED,
+            // ModifierFunction.ON_ATTACK_FAIL,
+            // ModifierFunction.ON_ATTACK_FINISHED,
+            // ModifierFunction.ON_ATTACK_RECORD,
+            // ModifierFunction.ON_ATTACK_RECORD_DESTROY,
+            // ModifierFunction.ON_ATTACK_CANCELLED,
+            // ModifierFunction.ON_ATTACK,
+            // ModifierFunction.MODEL_CHANGE,
+            // ModifierFunction.MAGICAL_RESISTANCE_BONUS,
             // ModifierFunction.INCOMING_DAMAGE_CONSTANT,
+            ModifierFunction.SPELL_AMPLIFY_PERCENTAGE,
+            ModifierFunction.HEAL_AMPLIFY_PERCENTAGE_SOURCE,
+            ModifierFunction.HEAL_AMPLIFY_PERCENTAGE_TARGET,
+            ModifierFunction.HP_REGEN_AMPLIFY_PERCENTAGE,
+            ModifierFunction.LIFESTEAL_AMPLIFY_PERCENTAGE,
+            ModifierFunction.SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
         ];
     }
 
+    GetModifierSpellAmplify_Percentage(event: ModifierAttackEvent): number {
+        return 100;
+    }
+
+    GetModifierHealAmplify_PercentageSource(): number {
+        return 100;
+    }
+
+    GetModifierHealAmplify_PercentageTarget(): number {
+        return 100;
+    }
+
+    GetModifierHPRegenAmplify_Percentage(): number {
+        return 100;
+    }
+
+    GetModifierLifestealRegenAmplify_Percentage(): number {
+        return 100;
+    }
+
+    GetModifierSpellLifestealRegenAmplify_Percentage(): number {
+        return 100;
+    }
     // GetModifierIncomingDamageConstant(keys: ModifierAttackEvent): number {
     //     if (IsClient()) {
     //         if (keys.report_max) {

@@ -58,12 +58,13 @@ export class CEngineEvent {
         magic_damage_blocks: [],
         _shields_data_calls: [],
         _debuff_immunity_magical_resistance: [],
+        _life_steal_data_calls: [],
     };
 
     private _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): void {
         if (data.entindex == null || data.entindex <= 0) return;
         const entity = EntIndexToHScript(data.entindex) as CDOTA_BaseNPC_Hero;
-        if (entity.IsBaseNPC()) {
+        if (entity.IsBaseNPC() && data.is_respawn == 0) {
             // 初始化自定义属性
             for (const key in this._npc_custom_properties) {
                 if (this._npc_custom_properties.hasOwnProperty(key)) {
@@ -71,13 +72,13 @@ export class CEngineEvent {
                 }
             }
             Timers.CreateTimer(FrameTime() * 5, () => {
-                //会引起内存泄露 ?
-                // if (entity.AddAbility != null && entity.HasAbility('ability_custom_base_attack') == false) {
-                // entity.ability_custom_base_attack = entity.AddAbility('ability_custom_base_attack');
-                // }
+                //会引起内存泄露 ? (造成伤害带有原技能会有内存泄露)
+                if (entity.AddAbility != null && entity.HasAbility('ability_custom_base_attack') == false) {
+                    entity._ability_custom_base_attack = entity.AddAbility('ability_custom_base_attack');
+                }
                 if (entity.AddAbility != null) {
                     entity.AddAbility('ability_custom_base_attack')?.SetAbilityIndex(30);
-                    entity.AddAbility('ability_custom_debuff_immune').SetAbilityIndex(31);
+                    entity.AddAbility('ability_custom_debuff_immune')?.SetAbilityIndex(31);
                 }
                 if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
                     entity.AddNewModifier(entity, entity.FindAbilityByName('ability_custom_debuff_immune'), 'modifier_attack_data_miss', {});

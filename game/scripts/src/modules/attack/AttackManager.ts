@@ -215,7 +215,7 @@ export class CAttackDataManager {
                 if (attack_data.damageTable.crit_obj?.on_crit) {
                     attack_data.damageTable.crit_obj.on_crit(attack_data.damageTable);
                 }
-                AddDamage(attack_data.damageTable);
+                CAddDamage(attack_data.damageTable);
             } else {
                 PopupMiss(target, attacker.GetPlayerOwner());
                 PopupEvasion(target, target.GetPlayerOwner());
@@ -354,9 +354,9 @@ export class modifier_attack_data_miss extends BaseModifier {
         if (IsClient()) {
             const custom_shield_data = CustomNetTables.GetTableValue('custom_shield_data', tostring(this.GetParent()?.GetEntityIndex()));
             if (event.report_max) {
-                return tonumber(custom_shield_data.Physic.max_shield + custom_shield_data.Physic_Attack.max_shield) ?? 0;
+                return tonumber(custom_shield_data.Physic.max_shield) + tonumber(custom_shield_data.Physic_Attack.max_shield) ?? 0;
             } else {
-                return tonumber(custom_shield_data.Physic.now_shield + custom_shield_data.Physic_Attack.now_shield) ?? 0;
+                return tonumber(custom_shield_data.Physic.now_shield) + tonumber(custom_shield_data.Physic_Attack.now_shield) ?? 0;
             }
         }
     }

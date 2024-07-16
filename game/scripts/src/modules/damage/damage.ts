@@ -203,7 +203,7 @@ namespace DamageHelper {
         const attacker_is_hero = attacker.IsHero();
         const victim_handle = victim.GetEntityIndex();
         const victim_is_hero = victim.IsHero();
-
+        const is_no_vampirism = checkTag(dmgTable.damageFlags, DamageFlags.NoLifeSteal);
         const disable_celled = (dmgTable.damageFlags & DamageFlags.DisableCelled) > 0;
         // 生命移除需要跳过一些阶段
 
@@ -510,6 +510,19 @@ namespace DamageHelper {
                 if (attacker_is_hero) {
                     //     - 飞溅的伤害传递(物理攻击伤害)
                     Dispatcher.Send('DAMAGE_PSI_BLADE_EVENT', attacker_handle, { victim: victim, damage: end_atk_phy_dmg });
+                }
+                if (!is_no_vampirism) {
+                    //攻击吸血的基础值传递
+                    const life_total_tb = {
+                        attacker: attacker,
+                        victim: victim,
+                        damageProperty: DamageProperty.Attack,
+                        damageType: dmgTable.damageType,
+                        damage_flag: dmgTable.damageFlags,
+                        damage: end_atk_phy_dmg,
+                        ability: origin_dmg_table.sourceAbility,
+                    };
+                    Dispatcher.Send('DAMAGE_LIFE_LEECH_EVENT', attacker_handle, life_total_tb);
                 }
             }
         }
@@ -924,6 +937,8 @@ namespace DamageHelper {
         const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
         // 是否是生命流失 如果是生命流失跳过一些阶段
         const is_hp_cost = checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
+        // 是否不吸血
+        const is_no_vampirism = checkTag(dmgTable.damageFlags, DamageFlags.NoLifeSteal);
         // - 核心伤害调整(加法计算)(返回缩放百分比, 之后重新计算伤害table)
         if (!is_hp_remove && !is_hp_cost) {
             //     - 核心技能伤害调整(只有受击者)
@@ -1014,9 +1029,18 @@ namespace DamageHelper {
         // - 末端伤害传递
         if (!!is_hp_remove && !is_hp_cost && isNormalTarget) {
             const end_dmg = dmgTable.true_damage;
-            if (end_dmg > 0) {
-                //     - 技能吸血的基础值传递
-                // LocalEvents.Trigger('DAMAGE_ABILITY_LEECH_EVENT', end_dmg, attacker_handle, true);
+            if (end_dmg > 0 && !is_no_vampirism) {
+                //技能吸血的基础值传递
+                const life_total_tb = {
+                    attacker: attacker,
+                    victim: victim,
+                    damageProperty: DamageProperty.Ability,
+                    damageType: dmgTable.damageType,
+                    damage_flag: dmgTable.damageFlags,
+                    damage: end_dmg,
+                    ability: dmgTable.sourceAbility,
+                };
+                Dispatcher.Send('DAMAGE_LIFE_LEECH_EVENT', attacker_handle, life_total_tb);
             }
         }
 
@@ -1223,108 +1247,112 @@ namespace DamageHelper {
 
     /** 能量护盾吸收伤害 */
     function _CalShieldAbsorbOnDamaged(damageTable: FixedDamageTable) {
-        // const { victim } = damageTable;
-        // // 多个同类型护盾，消耗先注册的
-        // const shieldDataContainer: Record<ShieldType, ShieldData[]> = {
-        //     [ShieldType.Physic_Attack]: [],
-        //     [ShieldType.Physic]: [],
-        //     [ShieldType.Magic]: [],
-        //     [ShieldType.All]: [],
-        // };
-        // const all_shields_data_calls = victim._shields_data_calls;
-        // all_shields_data_calls.reduce((acc, shieldData) => {
-        //     acc[shieldData.shield_type].push(shieldData);
-        //     return acc;
-        // }, shieldDataContainer);
-        // // 临时变量存储回调的护盾
-        // const callbackShields: ShieldData[] = [];
-        // const removeShields: ShieldData[] = [];
-        // /**
-        //  * @param shields 检验的护盾
-        //  * @param damage 传入的原始伤害
-        //  * @returns 返回经过护盾吸收后的剩余伤害
-        //  */
-        // function _on_shield(shields: ShieldData[], damage: number | undefined): number | undefined {
-        //     if (!damage || damage <= 0) return damage;
-        //     for (const shield of shields) {
-        //         const shieldValue = shield.value ?? shield.max_value;
-        //         if (shieldValue <= 0) {
-        //             continue;
-        //         }
-        //         const rate = shield.absorb_rate ? Math.min(Math.max(shield.absorb_rate, 1), 100) : 100;
-        //         // 需要去吸收的伤害
-        //         const attemptToAbsorbDamage = damage * (rate / 100);
-        //         // 实际吸收了的伤害
-        //         const absorbedDamage = shieldValue <= attemptToAbsorbDamage ? shieldValue : attemptToAbsorbDamage;
-        //         // 护盾剩余
-        //         const shieldLeftValue = shieldValue - absorbedDamage;
-        //         // 扣除护盾值
-        //         shield.value = shieldLeftValue;
-        //         // 记录回调和移除。移除和回调都放到最后
-        //         if (shield.on_absorb) {
-        //             callbackShields.push(shield);
-        //         }
-        //         if (shield.value <= 0) {
-        //             removeShields.push(shield);
-        //         }
-        //         // 如果伤害未全部吸收，继续调用下一个护盾
-        //         damage -= absorbedDamage;
-        //         if (damage <= 0) return damage;
-        //     }
-        //     // 返回经过护盾吸收后的剩余伤害
-        //     return damage;
-        // }
-        // // dota2顺序 - 物理攻击伤害护盾、魔法伤害护盾 - 全伤害护盾 - 物理伤害护盾
-        // damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic_Attack], damageTable.attack_physical_damage);
-        // damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.attack_physical_damage);
-        // damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_physical_damage);
-        // // 魔法攻击伤害
-        // damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.attack_magical_damage);
-        // damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_magical_damage);
-        // // 魔法伤害
-        // damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.ability_magical_damage);
-        // damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_magical_damage);
-        // // 纯粹伤害
-        // damageTable.pure_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.pure_damage);
-        // // 物理伤害
-        // damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.ability_physical_damage);
-        // damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_physical_damage);
-        // // 更新护盾数据到网表
-        // const shieldDataForNetTable: Record<string, { max_shield: string; now_shield: string }> = {
-        //     Physic_Attack: { max_shield: '0', now_shield: '0' },
-        //     Physic: { max_shield: '0', now_shield: '0' },
-        //     Magic: { max_shield: '0', now_shield: '0' },
-        //     All: { max_shield: '0', now_shield: '0' },
-        // };
-        // for (const shieldType in shieldDataContainer) {
-        //     const shields = shieldDataContainer[shieldType];
-        //     let maxShield = 0;
-        //     let nowShield = 0;
-        //     for (const shield of shields) {
-        //         maxShield += shield.max_value;
-        //         nowShield += shield.value ?? shield.max_value;
-        //     }
-        //     shieldDataForNetTable[shieldType] = {
-        //         max_shield: maxShield.toString(),
-        //         now_shield: nowShield.toString(),
-        //     };
-        // }
-        // CustomNetTables.SetTableValue('custom_shield_data', tostring(victim?.GetEntityIndex()), shieldDataForNetTable);
-        // // 遍历完之后再回调或删除
-        // for (const shield of callbackShields) {
-        //     if (shield.on_absorb) {
-        //         shield.on_absorb(shield);
-        //     }
-        // }
-        // for (const shield of removeShields) {
-        //     if (shield.on_remove) {
-        //         shield.on_remove(shield);
-        //     }
-        // }
-        // // 清理临时变量
-        // callbackShields.length = 0;
-        // removeShields.length = 0;
-        // shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
+        const { victim } = damageTable;
+        if (victim._shields_data_calls.length <= 0) {
+            // print('没有护盾数据返回');
+            return;
+        }
+        // 多个同类型护盾，消耗先注册的
+        const shieldDataContainer: Record<ShieldType, ShieldData[]> = {
+            [ShieldType.Physic_Attack]: [],
+            [ShieldType.Physic]: [],
+            [ShieldType.Magic]: [],
+            [ShieldType.All]: [],
+        };
+        const all_shields_data_calls = victim._shields_data_calls;
+        all_shields_data_calls.reduce((acc, shieldData) => {
+            acc[shieldData.shield_type].push(shieldData);
+            return acc;
+        }, shieldDataContainer);
+        // 临时变量存储回调的护盾
+        const callbackShields: ShieldData[] = [];
+        const removeShields: ShieldData[] = [];
+        /**
+         * @param shields 检验的护盾
+         * @param damage 传入的原始伤害
+         * @returns 返回经过护盾吸收后的剩余伤害
+         */
+        function _on_shield(shields: ShieldData[], damage: number | undefined): number | undefined {
+            if (!damage || damage <= 0) return damage;
+            for (const shield of shields) {
+                const shieldValue = shield.value ?? shield.max_value;
+                if (shieldValue <= 0) {
+                    continue;
+                }
+                const rate = shield.absorb_rate ? Math.min(Math.max(shield.absorb_rate, 1), 100) : 100;
+                // 需要去吸收的伤害
+                const attemptToAbsorbDamage = damage * (rate / 100);
+                // 实际吸收了的伤害
+                const absorbedDamage = shieldValue <= attemptToAbsorbDamage ? shieldValue : attemptToAbsorbDamage;
+                // 护盾剩余
+                const shieldLeftValue = shieldValue - absorbedDamage;
+                // 扣除护盾值
+                shield.value = shieldLeftValue;
+                // 记录回调和移除。移除和回调都放到最后
+                if (shield.on_absorb) {
+                    callbackShields.push(shield);
+                }
+                if (shield.value <= 0) {
+                    removeShields.push(shield);
+                }
+                // 如果伤害未全部吸收，继续调用下一个护盾
+                damage -= absorbedDamage;
+                if (damage <= 0) return damage;
+            }
+            // 返回经过护盾吸收后的剩余伤害
+            return damage;
+        }
+        // dota2顺序 - 物理攻击伤害护盾、魔法伤害护盾 - 全伤害护盾 - 物理伤害护盾
+        damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic_Attack], damageTable.attack_physical_damage);
+        damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.attack_physical_damage);
+        damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_physical_damage);
+        // 魔法攻击伤害
+        damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.attack_magical_damage);
+        damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_magical_damage);
+        // 魔法伤害
+        damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.ability_magical_damage);
+        damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_magical_damage);
+        // 纯粹伤害
+        damageTable.pure_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.pure_damage);
+        // 物理伤害
+        damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.ability_physical_damage);
+        damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_physical_damage);
+        // 更新护盾数据到网表
+        const shieldDataForNetTable: Record<string, { max_shield: string; now_shield: string }> = {
+            Physic_Attack: { max_shield: '0', now_shield: '0' },
+            Physic: { max_shield: '0', now_shield: '0' },
+            Magic: { max_shield: '0', now_shield: '0' },
+            All: { max_shield: '0', now_shield: '0' },
+        };
+        for (const shieldType in shieldDataContainer) {
+            const shields = shieldDataContainer[shieldType];
+            let maxShield = 0;
+            let nowShield = 0;
+            for (const shield of shields) {
+                maxShield += shield.max_value;
+                nowShield += shield.value ?? shield.max_value;
+            }
+            shieldDataForNetTable[shieldType] = {
+                max_shield: maxShield.toString(),
+                now_shield: nowShield.toString(),
+            };
+        }
+        CustomNetTables.SetTableValue('custom_shield_data', tostring(victim?.GetEntityIndex()), shieldDataForNetTable);
+        // 遍历完之后再回调或删除
+        for (const shield of callbackShields) {
+            if (shield.on_absorb) {
+                shield.on_absorb(shield);
+            }
+        }
+        for (const shield of removeShields) {
+            if (shield.on_remove) {
+                shield.on_remove(shield);
+            }
+        }
+        // 清理临时变量
+        callbackShields.length = 0;
+        removeShields.length = 0;
+        shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
     }
 
     /** 吸血单位类型筛选 */
@@ -1335,8 +1363,11 @@ namespace DamageHelper {
         return true;
     }
 
-    /** 当单位收到伤害时的后置处理。包括吸血、判定击杀、设置血量 */
+    /** 当单位收到伤害时的后置处理。包括吸血 */
     export function OnUnitDamaged(damageTable: EndDamageTable) {
+        const victim = damageTable.victim;
+        const attacker = damageTable.attacker;
+        const true_damage = damageTable.true_damage;
         // print('OnUnitDamaged', damageTable.victim.GetUnitName(), damageTable.true_damage);
         let damage_type: DamageTypes;
         if (damageTable.damageType == DamageType.Pure) {
@@ -1348,12 +1379,17 @@ namespace DamageHelper {
         if (damageTable.damageType == DamageType.Magical) {
             damage_type = DamageTypes.MAGICAL;
         }
-        let damage_table = {
+
+        // 吸血
+        if (FilterLifeStealTarget(victim)) {
+        }
+
+        const damage_table = {
             attacker: damageTable.attacker,
             victim: damageTable.victim,
-            damage: damageTable.true_damage,
+            damage: true_damage,
             damage_type: damage_type,
-            // ability: damageTable.attacker.FindAbilityByName('ability_custom_base_attack'),
+            ability: damageTable.victim.IsRealHero() ? damageTable.sourceAbility ?? damageTable.attacker._ability_custom_base_attack : null,
             damage_flags:
                 DamageFlag.HPLOSS +
                 DamageFlag.NO_SPELL_AMPLIFICATION +
@@ -1368,13 +1404,6 @@ namespace DamageHelper {
                 DamageFlag.BYPASSES_BLOCK,
         };
         ApplyDamage(damage_table);
-        damage_table.attacker = undefined;
-        damage_table.victim = undefined;
-        damage_table.damage = undefined;
-        damage_table.damage_type = undefined;
-        // damage_table.ability = undefined;
-        damage_table.damage_flags = undefined;
-        damage_table = undefined;
     }
     /** 添加record */
     export function AddRecord(list: string[], str: string) {

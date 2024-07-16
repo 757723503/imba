@@ -1421,6 +1421,7 @@ interface BaseModifier {
 
     /**增加护盾 数据 */
     AddParentShieldData?(): ShieldData;
+
     /**
      * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
      */

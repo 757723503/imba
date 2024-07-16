@@ -39,6 +39,8 @@ declare const enum DamageFlags {
 
     /** 这次伤害跳过分裂 溅射等 */
     DisableCelled = 256,
+    /** 这次伤害跳过吸血 */
+    NoLifeSteal = 512,
 }
 
 interface DamageTable {
@@ -114,6 +116,16 @@ declare interface ShieldData {
     on_absorb?: (shield: ShieldData) => void;
     /** 护盾归零时回调 */
     on_remove?: (shiled: ShieldData) => void;
+}
+declare interface LifeStealData {
+    /** 攻击吸血数据 */
+    attack_lifesteal?: number;
+    /** 攻击吸血小兵数据 */
+    attack_lifesteal_creep?: number;
+    /** 技能吸血数据 */
+    ability_lifesteal?: number;
+    /** 技能吸血小兵数据 */
+    ability_lifesteal_creep?: number;
 }
 
 declare const enum ShieldType {

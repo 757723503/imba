@@ -95,6 +95,22 @@ if (!CDOTA_BaseNPC.AddModifier) {
         return modifier;
     };
 }
+if (!CDOTA_BaseNPC.CHeal) {
+    CDOTA_BaseNPC.CHeal = function (this: CDOTA_BaseNPC, keys: CustomHeal): void {
+        const heal = keys.amount;
+        const inflictor = keys.inflictor;
+        const heal_reason = keys.reason;
+        const source = keys.source;
+        const show_number = keys.show_number;
+        if (heal <= 0) {
+            return;
+        }
+        if (show_number) {
+            PopupHealing(this, heal);
+        }
+        this.HealWithParams(heal, inflictor, heal_reason == HealReason.Life_Steal, true, source, heal_reason == HealReason.Spell_Life_Steal);
+    };
+}
 if (!CDOTA_BaseNPC._refresh_shields) {
     CDOTA_BaseNPC._refresh_shields = function (this: CDOTA_BaseNPC): void {
         const shieldDataContainer: Record<ShieldType, ShieldData[]> = {

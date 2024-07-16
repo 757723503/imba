@@ -38,6 +38,8 @@ declare global {
         GetDamageBlocks_Physic(): CBlock_Physic[];
         /** 魔法伤害格挡 */
         GetDamageBlocks_Magic(): CBlock_Magic[];
+        /**自定义治疗 */
+        CHeal(keys: CustomHeal): void;
         /**
          * @deprecated
          */
@@ -51,7 +53,17 @@ declare global {
          * @deprecated
          */
         GetEvasion(): number;
+        /**
+         * @deprecated
+         */
+        Heal(amount: number, inflictor: CDOTABaseAbility | undefined): void;
+        /**
+         * @deprecated
+         */
+        HealWithParams(amount: number, inflictor: object, lifesteal: boolean, amplify: boolean, source: object, spellLifesteal: boolean): void;
+        _ability_custom_base_attack: CDOTABaseAbility;
     }
+
     //CDOTA_BaseNPC 初始化表 自定义内容
     interface Custom_BaseNPC_Properties {
         /**储存所有暴击数据和回调 */
@@ -76,6 +88,31 @@ declare global {
         _shields_data_calls: ShieldData[];
         /**储存带有减益免疫和模块的modifier 用来处理无视减益免疫和对应魔抗的问题 */
         _debuff_immunity_magical_resistance: CDOTA_Buff[];
+
+        /** 储存声明偷取数据 */
+        _life_steal_data_calls: LifeStealData[];
+    }
+    interface CustomHeal {
+        /**治疗量 */
+        amount: number;
+        /**治疗原因 */
+        reason: HealReason;
+        /**治疗来源技能 */
+        inflictor?: CDOTABaseAbility;
+        /**是否读取增强 */
+        amplify?: boolean;
+        /**治疗来源单位 */
+        source?: CDOTA_BaseNPC;
+        /**显示治疗特效数字  */
+        show_number?: boolean;
+    }
+    const enum HealReason {
+        /** 治疗 */
+        Heal = 0,
+        /** 吸血 */
+        Life_Steal = 1,
+        /** 技能吸血 */
+        Spell_Life_Steal = 2,
     }
     interface CDOTA_BaseNPC_Hero {
         _modifierKeys: CreateIllusionsModifierKeys;
@@ -97,6 +134,22 @@ declare global {
         OnCreated(params: ModifierParams): void;
 
         // GetAbility(): CDOTABaseAbility | undefined;
+        /**
+         * 造成的治疗 增强
+         */
+        GetModifierHealAmplify_PercentageSource?(): number;
+        /**
+         * 受到的治疗 增强
+         */
+        GetModifierHealAmplify_PercentageTarget?(): number;
+        /**
+         * 生命偷取增强
+         */
+        GetModifierLifestealRegenAmplify_Percentage?(): number;
+        /**
+         * 法术生命偷取增强
+         */
+        GetModifierSpellLifestealRegenAmplify_Percentage?(): number;
     }
 
     interface CDOTA_Buff {}

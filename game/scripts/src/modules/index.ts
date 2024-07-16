@@ -32,7 +32,7 @@ declare global {
         m_cMethods: Record<string, (this: void, ...args: any[]) => any>;
     }
     var MEM: MemoryReferenceInfo;
-    var AddDamage: typeof CustomApplyDamage;
+    var CAddDamage: typeof CustomApplyDamage;
 }
 math.randomseed(Time());
 
@@ -56,5 +56,5 @@ export function ActivateModules() {
     globalThis.CAttackData = new CAttackDataManager();
     globalThis.Random = new PseudoRandom();
     globalThis.Dispatcher = new CDispatcher();
-    globalThis.AddDamage = CustomApplyDamage;
+    globalThis.CAddDamage = CustomApplyDamage;
 }
