@@ -77,8 +77,8 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
     } else {
         name = ability.name;
     }
-    if (!name.startsWith('ability_')) {
-        DebugError('技能名必须以ability_开头', name);
+    if (!name.startsWith('imba_')) {
+        DebugError('技能名必须以imba_开头', name);
     }
     const [env] = getFileScope();
 

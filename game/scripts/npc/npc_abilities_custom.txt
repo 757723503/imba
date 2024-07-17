@@ -2,10 +2,10 @@
 
 "DOTAAbilities"
 {
-    "ability_imba_life_stealer_open_wounds"
+    "imba_life_stealer_open_wounds"
 	{   
         "BaseClass"                     "ability_lua"
-		"ScriptFile"	"ability/hero_ability/test/ability_imba_life_stealer_open_wounds"
+		"ScriptFile"	"ability/hero_ability/test/imba_life_stealer_open_wounds"
         "AbilityTextureName"	"life_stealer_open_wounds"
 		// General
 		//-------------------------------------------------------------------------------------------------------------

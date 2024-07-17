@@ -1,7 +1,7 @@
 import { modifier_imba_stunned } from '../../../common_modifier/modifier_imba_stunned';
 
 @registerAbility()
-export class ability_imba_life_stealer_open_wounds extends BaseAbility {
+export class imba_life_stealer_open_wounds extends BaseAbility {
     // CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
     //     if (IsServer()) {
     //         // return UnitFilter(

@@ -5,9 +5,9 @@
 // Template: https://github.com/XavierCHN/x-template
 "XLSXContent"
 {
-	"ability_custom_base_attack" {
+	"imba_custom_base_attack" {
 		"BaseClass" "ability_lua"
-		"ScriptFile" "ability_custom/ability_custom_base_attack"
+		"ScriptFile" "ability_custom/imba_custom_base_attack"
 		"AbilityValues" {
 			"damage" "0.1 0.2 0.3 0.4"
 			"radius" "1 2 3 4"
@@ -28,9 +28,9 @@
 "test" "this is test of plain kv"
 }
 	}
-	"ability_custom_debuff_immune" {
+	"imba_custom_debuff_immune" {
 		"BaseClass" "ability_lua"
-		"ScriptFile" "ability_custom/ability_custom_debuff_immune"
+		"ScriptFile" "ability_custom/imba_custom_debuff_immune"
 		"AbilityValues" {
 			"damage" "0.1 0.2 0.3 0.4"
 			"radius" "1 2 3 4"

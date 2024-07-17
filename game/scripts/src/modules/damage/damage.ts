@@ -35,7 +35,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
-    // if (attacker.IsHero()) record_list = [];
+    if (attacker.IsHero()) record_list = [];
 
     // 先创建fixed damage table
     const fixed_tb: FixedDamageTable = <FixedDamageTable>{
@@ -1368,7 +1368,6 @@ namespace DamageHelper {
         const victim = damageTable.victim;
         const attacker = damageTable.attacker;
         const true_damage = damageTable.true_damage;
-        // print('OnUnitDamaged', damageTable.victim.GetUnitName(), damageTable.true_damage);
         let damage_type: DamageTypes;
         if (damageTable.damageType == DamageType.Pure) {
             damage_type = DamageTypes.PURE;
@@ -1381,8 +1380,8 @@ namespace DamageHelper {
         }
 
         // 吸血
-        if (FilterLifeStealTarget(victim)) {
-        }
+        // if (FilterLifeStealTarget(victim)) {
+        // }
 
         const damage_table = {
             attacker: damageTable.attacker,

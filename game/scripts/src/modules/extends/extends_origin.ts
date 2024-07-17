@@ -87,7 +87,7 @@ if (!CDOTA_BaseNPC.AddModifier) {
             (modifierTable as any).duration = origin_duration;
         }
         if (ignore_immune_debuff == true) {
-            origin_ability = this.FindAbilityByName('ability_custom_debuff_immune');
+            origin_ability = this.FindAbilityByName('imba_custom_debuff_immune');
             (modifierTable as any)._ignore_debuff_immunity = 1;
             ability && ((modifierTable as any)._origin_ability = ability.GetAbilityName());
         }

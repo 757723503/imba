@@ -39,8 +39,54 @@ export class CChat {
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
                 break;
             case ChatCommand.qw:
-                hero.AddAbility('ability_imba_life_stealer_open_wounds');
-                hero.CHeal({ reason: HealReason.Heal, amount: 1000, show_number: true });
+                const items = LoadKeyValues('/scripts/npc/file.txt');
+                CDeepPrintTable(items);
+                // for (let index = -1; index < 100; index++) {
+                //     const qw = hero.GetTogglableWearable(index);
+                //     if (qw) {
+                //         DebugPrint(qw.GetName(), 'GetTogglableWearable');
+                //     }
+                // }
+                // const temp = hero.GetChildren();
+                // for (const iterator of temp) {
+                //     const item_class_name = iterator.GetClassname();
+
+                //     if (item_class_name == 'dota_item_wearable') {
+                //         const item = iterator as CBaseModelEntity;
+                //         const item_model_name = item.GetModelName();
+                //         const material_group_hash = item.GetMaterialGroupHash();
+                //         DebugPrint(item_model_name, material_group_hash);
+                //     }
+                // }
+
+                // CProjectileManager.CreateLinearProjectile({
+                //     direction: Vector(1, 0, 0),
+                //     distance: 1000,
+                //     endRadius: 100,
+                //     iUnitTargetFlags: UnitTargetFlags.NONE,
+                //     iUnitTargetTeam: UnitTargetTeam.ENEMY,
+                //     iUnitTargetType: UnitTargetType.NONE,
+                //     moveSpeed: 1000,
+                //     removeOnRadiusHit: true,
+                //     source: hero,
+                //     startRadius: 100,
+                //     effectName: ParticleManager.GetParticleReplacement('particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf', hero),
+                // });
+                // print(ParticleManager.GetParticleReplacement('particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf', hero));
+                // ProjectileManager.CreateLinearProjectile({
+                //     fStartRadius: 100,
+                //     vVelocity: Vector(1, 0, 0).__mul(1000),
+                //     Source: hero,
+                //     fExpireTime: GameRules.GetGameTime() + 10,
+                //     fDistance: 1000,
+
+                //     EffectName: 'particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf',
+                // });
+
+                // hero.AddAbility('ability_imba_life_stealer_open_wounds');
+                // hero.CHeal({ reason: HealReason.Heal, amount: 1000, show_number: true });
+                // hero.GetTogglableWearable(LoadoutType.PERSONA_1_END);
+
                 // const modifier = hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
                 // hero.PerformAttack(hero, true, true, true, true, true, false, true);
                 // ApplyDamage({

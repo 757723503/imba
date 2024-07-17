@@ -9,7 +9,7 @@ import { CFilter } from './Filter';
 import { CProjectileManager } from './projectile/ProjectileManager';
 import { CDispatcher } from './dispatcher/Dispatcher';
 import './damage/damage'; // 造成伤害模块
-import '../ability_custom/ability_custom_base_attack';
+import '../ability_custom/imba_custom_base_attack';
 import { CAttackDataManager } from './attack/AttackManager';
 import { PseudoRandom } from './lib/PseudoRandom';
 import { CIllusionManager } from './IllusionManager';

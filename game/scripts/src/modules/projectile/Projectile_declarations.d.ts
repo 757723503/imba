@@ -17,7 +17,7 @@ interface CProjectileBaseData {
     /** 投射物起始位置 */
     start_position?: Vector;
     /** 投射物源附件 */
-    sourceAttachment?: SLProjectileAttachment;
+    sourceAttachment?: CProjectileAttachment;
     /** 投射物速度 */
     moveSpeed: number;
 
@@ -83,11 +83,11 @@ interface ProjectileMoveData {
     /** 是否被躲避 */
     is_dodge?: boolean;
     /** 投射物类型*/
-    type: SLProjectileType;
+    type: CProjectileType;
     /** 投射物开始位置 */
     start_pos: Vector;
     /** 投射物销毁原因 */
-    destroy_reason?: SLProjectileDestroyReason;
+    destroy_reason?: CProjectileDestroyReason;
     /** 目标index */
     target_index?: EntityIndex;
     /** 目标碰撞范围 */
@@ -102,12 +102,12 @@ interface ProjectileMoveData {
     hit_enemy?: EntityIndex[];
 }
 
-declare const enum SLProjectileType {
+declare const enum CProjectileType {
     TRACKING = 'tracking',
     LINEAR = 'linear',
 }
 //destroy_reason
-declare const enum SLProjectileDestroyReason {
+declare const enum CProjectileDestroyReason {
     /** 命中销毁 */
     HIT = 'hit',
     /** 结束销毁 */
@@ -121,7 +121,7 @@ declare const enum SLProjectileDestroyReason {
     /**  目标为null */
     NO_TARGET = 'no_target',
 }
-declare const enum SLProjectileAttachment {
+declare const enum CProjectileAttachment {
     NONE = '',
     ATTACK_1 = 'attach_attack1',
     ATTACK_2 = 'attach_attack2',

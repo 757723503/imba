@@ -42,7 +42,7 @@ export class CProjectileManager {
     }
 
     GetUnitHitAttachment(unit: CDOTA_BaseNPC): Vector {
-        return unit.GetAttachmentOrigin(unit.ScriptLookupAttachment(SLProjectileAttachment.HITLOCATION));
+        return unit.GetAttachmentOrigin(unit.ScriptLookupAttachment(CProjectileAttachment.HITLOCATION));
     }
 
     GetTrackingProjectilesID(target: CDOTA_BaseNPC): SLProjectileID[] {
@@ -82,9 +82,9 @@ export class CProjectileManager {
         const dota_hero = data.source;
         const dota_target = data.target;
         const target_pos = this.GetUnitHitAttachment(dota_target) ?? dota_target.GetAbsOrigin();
-        let attachment = SLProjectileAttachment.ATTACK_1;
+        let attachment = CProjectileAttachment.ATTACK_1;
         if (data._is_attack) {
-            attachment = dota_hero.GetSequence().includes('2') ? SLProjectileAttachment.ATTACK_2 : SLProjectileAttachment.ATTACK_1;
+            attachment = dota_hero.GetSequence().includes('2') ? CProjectileAttachment.ATTACK_2 : CProjectileAttachment.ATTACK_1;
         }
         const attach_pos = !data.sourceAttachment
             ? dota_hero?.GetAttachmentOrigin(dota_hero?.ScriptLookupAttachment(attachment))
@@ -102,7 +102,7 @@ export class CProjectileManager {
             last_target_pos: target_pos,
             create_time: GameRules.GetGameTime(),
             is_dodge: false,
-            type: SLProjectileType.TRACKING,
+            type: CProjectileType.TRACKING,
             start_pos: start_position,
             target_index: dota_target.GetEntityIndex(),
             hull_radius: hull_radius,
@@ -118,7 +118,7 @@ export class CProjectileManager {
     /** 移除投射物 */
     DestroyProjectile(ProjectileID: SLProjectileID): void {
         if (!this.IsValidProjectile(ProjectileID)) return;
-        this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.DESTROY;
+        this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.DESTROY;
         this._RemoveProjectile(ProjectileID);
     }
 
@@ -184,9 +184,9 @@ export class CProjectileManager {
                         AddFOWViewer(data.data.visionTeamNumber, data.now_pos, vision_radius, FrameTime(), false);
                     }
                 }
-                if (projectile_type === SLProjectileType.LINEAR) {
+                if (projectile_type === CProjectileType.LINEAR) {
                     this._calLinearThinkaHit(ProjectileID, data);
-                } else if (projectile_type === SLProjectileType.TRACKING) {
+                } else if (projectile_type === CProjectileType.TRACKING) {
                     this._calTrackingThinkaHit(ProjectileID, data);
                 }
             }
@@ -202,12 +202,12 @@ export class CProjectileManager {
         const now_duration = GameRules.GetGameTime() - keys.create_time;
         //暂时设置15秒超时
         if (now_duration > 15) {
-            this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.TIMEOUT;
+            this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.TIMEOUT;
             this._RemoveProjectile(ProjectileID);
             return;
         }
         if (!IsValidEntity(dota_target)) {
-            this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.NO_TARGET;
+            this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.NO_TARGET;
             this._RemoveProjectile(ProjectileID);
             return;
         }
@@ -229,7 +229,7 @@ export class CProjectileManager {
             if (data.OnHitUnit && !keys.is_dodge && !(dota_target.IsInvisible() && !data.source.CanEntityBeSeenByMyTeam(dota_target))) {
                 CSafelyCall(() => data.OnHitUnit(data.target, new_pos, data.extraData, ProjectileID));
             }
-            this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.HIT;
+            this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.HIT;
             this._RemoveProjectile(ProjectileID);
         } else {
             //投射物正在移动 更新特效和数据
@@ -246,7 +246,7 @@ export class CProjectileManager {
                 last_target_pos: target_pos,
                 create_time: keys.create_time,
                 is_dodge: keys.is_dodge,
-                type: SLProjectileType.TRACKING,
+                type: CProjectileType.TRACKING,
                 start_pos: keys.start_pos,
                 target_index: keys.target_index,
                 hull_radius: keys.hull_radius,
@@ -270,7 +270,7 @@ export class CProjectileManager {
             ParticleManager.DestroyParticle(keys.effect, false);
             ParticleManager.ReleaseParticleIndex(keys.effect);
         }
-        if (keys.type === SLProjectileType.TRACKING) {
+        if (keys.type === CProjectileType.TRACKING) {
             const target_index = this._projectile_map[ProjectileID].target_index;
             if (target_index) {
                 const idIndex = this._projectile_target_map[target_index].indexOf(ProjectileID);
@@ -282,7 +282,7 @@ export class CProjectileManager {
                 }
             }
             this._projectile_map[ProjectileID] = undefined;
-        } else if (keys.type === SLProjectileType.LINEAR) {
+        } else if (keys.type === CProjectileType.LINEAR) {
             this._projectile_map[ProjectileID].hit_enemy = undefined;
             this._projectile_map[ProjectileID] = undefined;
         }
@@ -322,7 +322,7 @@ export class CProjectileManager {
             last_pos: start_position,
             start_pos: start_position,
             create_time: GameRules.GetGameTime(),
-            type: SLProjectileType.LINEAR,
+            type: CProjectileType.LINEAR,
             hit_enemy: [],
         };
         return ProjectileID;
@@ -344,7 +344,7 @@ export class CProjectileManager {
         const data = keys.data as CLinearProjectileData;
         const now_duration = GameRules.GetGameTime() - keys.create_time;
         if (now_duration > 15) {
-            this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.TIMEOUT;
+            this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.TIMEOUT;
             this._RemoveProjectile(ProjectileID);
             return;
         }
@@ -365,7 +365,7 @@ export class CProjectileManager {
             if (data.OnFinish) {
                 CSafelyCall(() => data.OnFinish(keys.now_pos, data.extraData, ProjectileID));
             }
-            this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.FINISH;
+            this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.FINISH;
             this._RemoveProjectile(ProjectileID);
         } else {
             this._projectile_map[ProjectileID] = {
@@ -374,7 +374,7 @@ export class CProjectileManager {
                 now_pos: new_pos,
                 last_pos: keys.now_pos,
                 create_time: keys.create_time,
-                type: SLProjectileType.LINEAR,
+                type: CProjectileType.LINEAR,
                 start_pos: keys.start_pos,
                 hit_enemy: keys.hit_enemy,
             };
@@ -402,7 +402,7 @@ export class CProjectileManager {
                     if (data.OnFinish) {
                         CSafelyCall(() => data.OnFinish(keys.now_pos, data.extraData, ProjectileID));
                     }
-                    this._projectile_map[ProjectileID].destroy_reason = SLProjectileDestroyReason.HIT;
+                    this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.HIT;
                     this._RemoveProjectile(ProjectileID);
                     break;
                 }
