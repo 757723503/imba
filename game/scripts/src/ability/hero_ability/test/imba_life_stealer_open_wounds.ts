@@ -1,45 +1,7 @@
-import { modifier_imba_stunned } from '../../../common_modifier/modifier_imba_stunned';
-
+enum HeroParticleList {
+    imba_life_stealer_open_wounds = 'xxxxxxxxxxxxxxxxx',
+}
 @registerAbility()
 export class imba_life_stealer_open_wounds extends BaseAbility {
-    // CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
-    //     if (IsServer()) {
-    //         // return UnitFilter(
-    //         //     target,
-    //         //     this.GetAbilityTargetTeam(),
-    //         //     this.GetAbilityTargetType(),
-    //         //     UnitTargetFlags.MAGIC_IMMUNE_ENEMIES,
-    //         //     this.GetCaster().GetTeamNumber()
-    //         // );
-    //         if (!target.IsDebuffImmune()) return UnitFilterResult.SUCCESS;
-    //         return UnitFilterResult.FAIL_MAGIC_IMMUNE_ENEMY;
-    //     }
-    // }
-
-    OnSpellStart(): void {
-        const caster = this.GetCaster();
-        const target = this.GetCursorTarget();
-        // for (let index = 0; index < 8; index++) {
-        //     const ability = caster.GetAbilityByIndex(index);
-        //     if (!ability) return;
-        //     if (ability.GetAbilityName() == 'puck_dream_coil') {
-        //         ability.GetAbilityKeyValues();
-        //         CDeepPrintTable(ability.GetAbilityKeyValues());
-        //         // target.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 });
-        //     }
-        // }
-        caster.AddModifier(caster, this, modifier_imba_stunned, { duration: 5 }, null, true);
-
-        caster.HealWithParams(100, this, false, true, caster, false);
-        // print(target.Script_GetMagicalArmorValue(false, null));
-        // CAddDamage({
-        //     attacker: target,
-        //     victim: caster,
-        //     damage: 1000,
-        //     damageType: DamageType.Magical,
-        //     sourceAbility: this,
-        //     damageFlags: DamageFlags.None,
-        //     damageProperty: DamageProperty.Ability,
-        // });
-    }
+    OnSpellStart(): void {}
 }

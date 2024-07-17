@@ -77,6 +77,7 @@ export class CAttackDataManager {
 
     /** 攻击出手时判断暴击。返回触发了的暴击对象 */
     _CheckCritOnAttack(attacker: CDOTA_BaseNPC, attacking_target: CDOTA_BaseNPC): CritData | undefined {
+        if (!attacker._crits_data_calls) DebugWarning(attacker.GetUnitName(), 'attacker._crits_data_calls is not array');
         if (attacker._crits_data_calls.length == 0) return;
         // 目标允许
         if (attacking_target.IsWard() || attacking_target.IsBuilding() || !attacker.IsEnemy(attacking_target)) {

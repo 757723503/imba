@@ -164,25 +164,25 @@ export class CChat {
 
                 break;
             case ChatCommand.cr:
-                let coo = 0;
-                Timers.CreateTimer(1, () => {
-                    DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.BADGUYS, false, (unit): void => {
-                        //设置控制权
-                        unit.SetControllableByPlayer(keys.playerid, true);
-                        FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
-                    });
-                    if (coo < 10000) {
-                        coo++;
-                        return FrameTime();
-                    }
-                    return null;
-                });
-
-                // DebugCreateUnit(player, 'npc_dota_creep_badguys_flagbearer', DotaTeam.BADGUYS, false, (unit): void => {
-                //     //设置控制权
-                //     unit.SetControllableByPlayer(keys.playerid, true);
-                //     FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                // let coo = 0;
+                // Timers.CreateTimer(1, () => {
+                //     DebugCreateUnit(player, 'npc_dota_creep_badguys_ranged', DotaTeam.BADGUYS, false, (unit): void => {
+                //         //设置控制权
+                //         unit.SetControllableByPlayer(keys.playerid, true);
+                //         FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                //     });
+                //     if (coo < 10000) {
+                //         coo++;
+                //         return FrameTime();
+                //     }
+                //     return null;
                 // });
+
+                DebugCreateUnit(player, 'npc_dota_creep_badguys_melee', DotaTeam.BADGUYS, false, (unit): void => {
+                    //设置控制权
+                    unit.SetControllableByPlayer(keys.playerid, true);
+                    FindClearSpaceForUnit(unit, hero.GetAbsOrigin(), true);
+                });
                 // DebugCreateUnit(player, 'npc_dota_furion_treant_large', DotaTeam.BADGUYS, false, (unit): void => {
                 //     //设置控制权
                 //     unit.SetControllableByPlayer(keys.playerid, true);

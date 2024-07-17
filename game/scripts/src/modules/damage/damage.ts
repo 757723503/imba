@@ -1202,6 +1202,7 @@ namespace DamageHelper {
         // 传递的伤害表，修改了值也无效！ 这里不要用deepcopy,否则表内的对象会变成一个新的。
         const event_table: FixedDamageTable = Object.assign({}, damageTable);
         // 多个格挡来源会计算每一个，但是格挡值只取一个最高值
+        if (!victim.GetDamageBlocks_Physic()) DebugWarning(' victim.GetDamageBlocks_Physic() 不存在');
         for (const block of victim.GetDamageBlocks_Physic()) {
             const chance = block.get_block_chance(event_table);
             if (Random.RollPercentage(chance, victim, 'BlockOnPhysic')) {

@@ -1,0 +1,327 @@
+"DOTAAbilities"
+{
+	"Version"		"1"
+	"imba_oracle_fortunes_end"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_fortunes_end"
+		"AbilityTextureName"	"oracle_fortunes_end"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"		"1"
+		"AbilitySound"		"Hero_Oracle.FortunesEnd.Target"
+		"AbilityCastRange"		"850"
+		"AbilityCastPoint"		"0"
+		"AbilityCooldown"		"18 14 10 6"
+		"AbilityManaCost"		"100"
+		"AbilityValues"
+		{
+			"channel_time"
+			{
+				"value"		"2.5"
+			}
+			"damage"
+			{
+				"value"		"100 160 220 280"
+			}
+			"bolt_speed"		"1200"
+			"minimum_purge_duration"
+			{
+				"value"		"0.75"
+				"special_bonus_unique_oracle_2"		"0.5"
+			}
+			"maximum_purge_duration"
+			{
+				"value"		"2.75"
+				"special_bonus_unique_oracle_2"		"0.5"
+			}
+			"radius"
+			{
+				"value"		"350"
+				"affected_by_aoe_increase"		"1"
+			}
+			"damage_per_buff"
+			{
+				"value"		"0"
+				"special_bonus_unique_oracle_damage_per_purge"		"60"
+			}
+			"heal_per_debuff"
+			{
+				"value"		"0"
+				"special_bonus_unique_oracle_damage_per_purge"		"60"
+			}
+			"purge_constantly"
+			{
+				"special_bonus_unique_oracle_7"		"=1"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+	"imba_oracle_fates_edict"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_fates_edict"
+		"AbilityTextureName"	"oracle_fates_edict"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"AbilitySound"		"Hero_Oracle.FatesEdict.Cast"
+		"AbilityCastRange"		"500 600 700 800"
+		"AbilityCastPoint"		"0.3"
+		"AbilityCooldown"		"20 17 14 11"
+		"AbilityManaCost"		"95 100 105 110"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityValues"
+		{
+			"duration"
+			{
+				"value"		"3.5 4.0 4.5 5.0"
+			}
+			"magic_damage_resistance_pct_tooltip"
+			{
+				"value"		"100"
+			}
+		}
+	}
+	"imba_oracle_purifying_flames"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_purifying_flames"
+		"AbilityTextureName"	"oracle_purifying_flames"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"		"1"
+		"AbilitySound"		"Hero_Oracle.PurifyingFlames.Damage"
+		"AbilityCastRange"		"850"
+		"AbilityCastPoint"		"0.1"
+		"AbilityCooldown"		"2.5"
+		"AbilityManaCost"		"75"
+		"AbilityValues"
+		{
+			"damage"		"90 180 270 360"
+			"heal_per_second"		"15 25 35 45"
+			"total_heal_tooltip"		"150 250 350 450"
+			"duration"		"10"
+			"tick_rate"		"0.1"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+	"imba_oracle_false_promise"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_false_promise"
+		"AbilityTextureName"	"oracle_false_promise"
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"AbilitySound"		"Hero_Oracle.FalsePromise.Cast"
+		"HasScepterUpgrade"		"1"
+		"AbilityDraftUltShardAbility"		"oracle_rain_of_destiny"
+		"AbilityCastRange"		"700 800 900"
+		"AbilityCastPoint"		"0.3"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_6"
+		"AbilityManaCost"		"100 150 200"
+		"AbilityValues"
+		{
+			"duration"
+			{
+				"value"		"7 8.5 10"
+				"special_bonus_unique_oracle"		"1.5"
+			}
+			"radius"
+			{
+				"value"		"400"
+				"affected_by_aoe_increase"		"1"
+			}
+			"shard_fade_time"
+			{
+				"value"		"0.15"
+				"RequiresShard"		"1"
+			}
+			"shard_spell_amp_bonus"
+			{
+				"value"		"25"
+				"RequiresShard"		"1"
+			}
+			"shard_bat_bonus"
+			{
+				"value"		"0.25"
+				"RequiresShard"		"1"
+			}
+			"AbilityCooldown"
+			{
+				"value"		"110 85 60"
+				"special_bonus_unique_oracle_6"		"-20"
+			}
+			"bonus_armor"
+			{
+				"value"		"0"
+				"special_bonus_unique_oracle_9"		"8"
+			}
+			"heal_amp_pct"
+			{
+				"value"		"100"
+				"special_bonus_shard"		"0"
+			}
+		}
+	}
+	"imba_oracle_rain_of_destiny"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_rain_of_destiny"
+		"AbilityTextureName"	"oracle_rain_of_destiny"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"IsGrantedByShard"		"1"
+		"MaxLevel"		"1"
+		"AbilityCastPoint"		"0.2"
+		"AbilityCastRange"		"650"
+		"AbilityCooldown"		"40"
+		"AbilityManaCost"		"150"
+		"AbilityValues"
+		{
+			"radius"
+			{
+				"value"		"650"
+				"affected_by_aoe_increase"		"1"
+			}
+			"duration"		"10"
+			"damage"
+			{
+				"value"		"40"
+				"CalculateSpellDamageTooltip"		"1"
+			}
+			"tick_rate"		"1"
+			"heal_amp"		"20"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
+	}
+	"imba_oracle_clairvoyant_curse"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_clairvoyant_curse"
+		"AbilityTextureName"	"oracle_clairvoyant_curse"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"MaxLevel"		"1"
+		"AbilityValues"
+		{
+			"spell_amplification"		"0.75"
+		}
+	}
+	"imba_oracle_clairvoyant_cure"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_clairvoyant_cure"
+		"AbilityTextureName"	"oracle_clairvoyant_cure"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"MaxLevel"		"1"
+		"AbilityValues"
+		{
+			"heal_amplification"		"0.75"
+		}
+	}
+	"imba_oracle_prognosticate"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/oracle/imba_oracle_prognosticate"
+		"AbilityTextureName"	"oracle_prognosticate"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+	}
+	"special_bonus_imba_oracle"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_imba_oracle_2"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"value"
+			{
+				"value"		"0.4"
+				"ad_linked_abilities"		"oracle_fortunes_end"
+			}
+		}
+	}
+	"special_bonus_imba_oracle_5"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"value"
+			{
+				"value"		"1"
+				"ad_linked_abilities"		"oracle_purifying_flames"
+			}
+		}
+	}
+	"special_bonus_imba_oracle_6"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_imba_oracle_7"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"value"
+			{
+				"value"		"2.5"
+				"ad_linked_abilities"		"oracle_fortunes_end"
+			}
+		}
+	}
+	"special_bonus_imba_oracle_8"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"value"
+			{
+				"value"		"30"
+				"ad_linked_abilities"		"oracle_purifying_flames"
+			}
+		}
+	}
+	"special_bonus_imba_oracle_9"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_imba_oracle_damage_per_purge"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+}

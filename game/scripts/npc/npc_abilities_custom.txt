@@ -1,5 +1,7 @@
 #base "abilities.txt"
 
+
+#base "custom_heroes/npc_dota_hero_abaddon.txt"
 "DOTAAbilities"
 {
     "imba_life_stealer_open_wounds"

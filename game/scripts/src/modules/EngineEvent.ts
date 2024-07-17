@@ -40,7 +40,19 @@ export class CEngineEvent {
 
     private _GameRulesStateChange(data: GameEventProvidedProperties & object): void {
         const state = GameRules.State_Get();
-
+        if (state == GameState.CUSTOM_GAME_SETUP) {
+            const all_towers = Entities.FindAllByClassname('npc_dota_tower');
+            for (let index = 0; index < all_towers.length; index++) {
+                const tower = all_towers[index] as CDOTA_BaseNPC_Building;
+                if (tower != null) {
+                    for (const key in this._npc_custom_properties) {
+                        if (this._npc_custom_properties.hasOwnProperty(key)) {
+                            (tower as any)[key] = (this._npc_custom_properties as any)[key];
+                        }
+                    }
+                }
+            }
+        }
         if (state >= GameState.STRATEGY_TIME) {
         }
     }
@@ -67,11 +79,12 @@ export class CEngineEvent {
         if (entity.IsBaseNPC() && data.is_respawn == 0) {
             // 初始化自定义属性
             for (const key in this._npc_custom_properties) {
+                DebugPrint(entity.GetUnitName(), this._npc_custom_properties.hasOwnProperty(key));
                 if (this._npc_custom_properties.hasOwnProperty(key)) {
                     (entity as any)[key] = (this._npc_custom_properties as any)[key];
                 }
             }
-            Timers.CreateTimer(FrameTime() * 5, () => {
+            Timers.CreateTimer(FrameTime() * 2, () => {
                 //会引起内存泄露 ? (造成伤害带有原技能会有内存泄露)
                 if (entity.AddAbility != null && entity.HasAbility('imba_custom_base_attack') == false) {
                     entity._ability_custom_base_attack = entity.AddAbility('imba_custom_base_attack');
