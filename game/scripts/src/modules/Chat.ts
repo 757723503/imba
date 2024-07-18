@@ -37,10 +37,9 @@ export class CChat {
             case ChatCommand.rs:
                 SendToServerConsole('restart');
                 GameRules.SendCustomMessage('重启游戏。', 0, 0);
+
                 break;
             case ChatCommand.qw:
-                const items = LoadKeyValues('/scripts/npc/file.txt');
-                CDeepPrintTable(items);
                 // for (let index = -1; index < 100; index++) {
                 //     const qw = hero.GetTogglableWearable(index);
                 //     if (qw) {

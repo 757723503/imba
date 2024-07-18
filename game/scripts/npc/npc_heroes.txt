@@ -26601,26 +26601,19 @@
 		"Ability17"		"special_bonus_unique_abaddon_4"
 		"Facets"
 		{
-			"abaddon_death_dude"
+			"abaddon_facets_imba_1"
 			{
 				"Icon"				"cooldown"
-				"Color"				"Gray"
-				"GradientID"		"0"
+				"Color"				"Green"
+				"GradientID"		"4"
 
 				"Abilities"
 				{
 					"Ability1"
 					{
-						"AbilityName"	"abaddon_the_quickening"
+						"AbilityName"	"imba_abaddon_the_quickening"
 					}
 				}
-			}
-
-			"abaddon_mephitic_shroud" 
-			{
-				"Icon"				"barrier"
-				"Color"				"Blue"
-				"GradientID"		"1"
 			}
 		}
 //		"VariantAbility1"		""

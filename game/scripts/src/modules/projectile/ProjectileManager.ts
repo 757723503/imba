@@ -83,7 +83,7 @@ export class CProjectileManager {
         const dota_target = data.target;
         const target_pos = this.GetUnitHitAttachment(dota_target) ?? dota_target.GetAbsOrigin();
         let attachment = CProjectileAttachment.ATTACK_1;
-        if (data._is_attack) {
+        if (data._is_attack && dota_hero.IsHero()) {
             attachment = dota_hero.GetSequence().includes('2') ? CProjectileAttachment.ATTACK_2 : CProjectileAttachment.ATTACK_1;
         }
         const attach_pos = !data.sourceAttachment
