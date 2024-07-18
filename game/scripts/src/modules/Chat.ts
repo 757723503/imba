@@ -40,6 +40,7 @@ export class CChat {
 
                 break;
             case ChatCommand.qw:
+                DebugPrint(hero.GetHeroFacetID());
                 // for (let index = -1; index < 100; index++) {
                 //     const qw = hero.GetTogglableWearable(index);
                 //     if (qw) {

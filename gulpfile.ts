@@ -1,9 +1,11 @@
 import gulp from 'gulp';
+import fs from 'fs';
 import * as dotax from 'gulp-dotax';
 import path from 'path';
 import less from 'gulp-less';
 import replace from 'gulp-replace';
-
+import type { LocalizationData } from './@liu/localizationInterfaces';
+import { LocalizationCompiler } from './@liu/localizationCompiler';
 const paths: { [key: string]: string } = {
     excels: 'excels',
     kv: 'game/scripts/npc',
@@ -11,7 +13,60 @@ const paths: { [key: string]: string } = {
     panorama_json: 'content/panorama/src/json',
     panorama: 'content/panorama',
     game_resource: 'game/resource',
+    localization: 'game/resource/localization',
 };
+
+function loadLocalizationData(): LocalizationData {
+    const localizationData: LocalizationData = {
+        AbilityArray: [],
+        ModifierArray: [],
+        StandardArray: [],
+        TalentArray: [],
+        FacetArray: [],
+    };
+
+    const modulesDir = path.resolve(__dirname, paths.localization);
+    const moduleFiles = fs.readdirSync(modulesDir);
+    console.log(moduleFiles);
+    moduleFiles.forEach(file => {
+        const filePath = path.join(modulesDir, file);
+        if (fs.lstatSync(filePath).isFile() && file.endsWith('.ts')) {
+            const module = require(filePath);
+            if (module.generateLocalizationData) {
+                const data = module.generateLocalizationData();
+                !localizationData.AbilityArray && (localizationData.AbilityArray = []);
+                !localizationData.ModifierArray && (localizationData.ModifierArray = []);
+                !localizationData.StandardArray && (localizationData.StandardArray = []);
+                !localizationData.TalentArray && (localizationData.TalentArray = []);
+                !localizationData.FacetArray && (localizationData.FacetArray = []);
+                localizationData.AbilityArray.push(...data.AbilityArray);
+                localizationData.ModifierArray.push(...data.ModifierArray);
+                localizationData.StandardArray.push(...data.StandardArray);
+                localizationData.TalentArray.push(...data.TalentArray);
+                localizationData.FacetArray.push(...data.FacetArray);
+            }
+        }
+    });
+
+    return localizationData;
+}
+
+function generateKVTask(watch: boolean = false) {
+    return () => {
+        const localizationFile = `${paths.localization}/**/*.ts`;
+        const transpileLocalization = () => {
+            const data = loadLocalizationData();
+            const compiler = new LocalizationCompiler();
+            compiler.OnLocalizationDataChanged({ data }, paths.game_resource);
+        };
+
+        if (watch) {
+            return gulp.watch(localizationFile, transpileLocalization);
+        } else {
+            return transpileLocalization();
+        }
+    };
+}
 
 /**
  * @description 将excel文件转换为kv文件
@@ -205,10 +260,20 @@ gulp.task('csv_to_localization:watch', csv_to_localization(true));
 gulp.task('compile_less', compile_less());
 gulp.task('compile_less:watch', compile_less(true));
 
+gulp.task('generate_kv', generateKVTask());
+gulp.task('generate_kv:watch', generateKVTask(true));
+
 gulp.task('predev', gulp.series('sheet_2_kv', 'kv_2_js', 'csv_to_localization', 'create_image_precache'));
 gulp.task(
     'dev',
-    gulp.parallel('sheet_2_kv:watch', 'csv_to_localization:watch', 'create_image_precache:watch', 'kv_2_js:watch', 'compile_less:watch')
+    gulp.parallel(
+        'sheet_2_kv:watch',
+        'csv_to_localization:watch',
+        'create_image_precache:watch',
+        'kv_2_js:watch',
+        'compile_less:watch',
+        'generate_kv:watch'
+    )
 );
 gulp.task('build', gulp.series('predev'));
 gulp.task('jssync', gulp.series('sheet_2_kv', 'kv_2_js'));
