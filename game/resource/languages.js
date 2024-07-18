@@ -1,14 +1,14 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.Language = void 0;
 var Language;
 (function (Language) {
-    Language['None'] = 'none';
+    Language["None"] = "none";
     // Brazilian = 'brazilian',
     // Bulgarian = 'bulgarian',
     // Czech = 'czech',
     // Danish = 'danish',
-    Language['English'] = 'english';
+    Language["English"] = "english";
     // Finnish = 'finnish',
     // French = `french`,
     // German = `german`,
@@ -21,8 +21,8 @@ var Language;
     // Norwegian = `norwegian`,
     // Polish = 'polish',
     // Portuguese = `portuguese`,
-    Language['Russian'] = 'russian';
-    Language['Schinese'] = 'schinese';
+    Language["Russian"] = "russian";
+    Language["Schinese"] = "schinese";
     // Spanish = `spanish`,
     // Swedish = `swedish`,
     // TChinese = `tchinese`,
@@ -30,4 +30,4 @@ var Language;
     // Turkish = 'turkish',
     // Ukrainian = 'ukrainian',
     // Vietnamese = `vietnamese`
-})((Language = exports.Language || (exports.Language = {})));
+})(Language = exports.Language || (exports.Language = {}));
