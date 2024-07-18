@@ -16,11 +16,19 @@ export function GenerateLocalizationData(): LocalizationData {
         StandardArray: StandardTooltips,
     };
     //#endregion
-
     // Enter localization data below!
-    StandardTooltips.push({
-        classname: 'Hello',
-        name: 'test',
+    Abilities.push({
+        ability_classname: 'reimagined_abyssal_underlord_firestorm',
+        name: 'Firestorm',
+        description:
+            'Calls down waves of fire that damage enemy units in the target area, and continues to burn them for additional damage over time.',
+        language_overrides: [
+            {
+                language: Language.Schinese,
+                description_override: '中文叙述',
+                name_override: '中文技能名字',
+            },
+        ],
     });
 
     // Return data to compiler
