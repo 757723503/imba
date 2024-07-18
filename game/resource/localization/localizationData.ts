@@ -17,14 +17,11 @@ export function GenerateLocalizationData(): LocalizationData {
     };
     //#endregion
 
-    Abilities.push({
-        ability_classname: 'ability_name',
-        name: 'Ability Name',
-        description: 'Ability Description',
-        lore: 'Ability Lore',
+    // Enter localization data below!
+    StandardTooltips.push({
+        classname: 'Hello',
+        name: 'test',
     });
-    
-     
 
     // Return data to compiler
     return localization_info;
