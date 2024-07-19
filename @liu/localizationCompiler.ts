@@ -8,7 +8,8 @@ import type {
     ModifierLocalization,
     StandardLocalization,
     HeroTalents,
-    FacetLocalization,
+    Facet_A,
+    Facet_B,
 } from './localizationInterfaces';
 import { Language } from './languages';
 
@@ -17,6 +18,55 @@ export class LocalizationCompiler {
     filepath_format: string = '.txt';
     currentWrites: Set<string> = new Set();
     writeTimeout?: NodeJS.Timeout;
+    loadLocalizationData = (paths: string): LocalizationData => {
+        const Abilities: AbilityLocalization[] = [];
+        const Modifiers: ModifierLocalization[] = [];
+        const StandardTooltips: StandardLocalization[] = [];
+        const Talents: HeroTalents[] = [];
+        const Facets_A: Facet_A[] = [];
+        const Facets_B: Facet_B[] = [];
+
+        const localizationData: LocalizationData = {
+            AbilityArray: Abilities,
+            ModifierArray: Modifiers,
+            StandardArray: StandardTooltips,
+            TalentArray: Talents,
+            FacetArray_A: Facets_A,
+            FacetArray_B: Facets_B,
+        };
+
+        const processFile = (filePath: string) => {
+            const module = require(filePath);
+
+            const data = module.data as LocalizationData;
+
+            if (data.AbilityArray) Abilities.push(...data.AbilityArray);
+            if (data.ModifierArray) Modifiers.push(...data.ModifierArray);
+            if (data.StandardArray) StandardTooltips.push(...data.StandardArray);
+            if (data.TalentArray) Talents.push(...data.TalentArray);
+            // if (data.FacetArray) Facets.push(...data.FacetArray);
+            if (data.FacetArray_A) Facets_A.push(...data.FacetArray_A);
+            if (data.FacetArray_B) Facets_B.push(...data.FacetArray_B);
+        };
+
+        const traverseDirectories = (dir: string) => {
+            const filesAndDirs = fs.readdirSync(dir);
+            filesAndDirs.forEach(fileOrDir => {
+                const fullPath = path.join(dir, fileOrDir);
+                const stat = fs.lstatSync(fullPath);
+                if (stat.isDirectory()) {
+                    traverseDirectories(fullPath);
+                } else if (stat.isFile() && fileOrDir.endsWith('.ts')) {
+                    processFile(fullPath);
+                }
+            });
+        };
+
+        const modulesDir = path.resolve(__dirname, paths);
+        traverseDirectories(modulesDir);
+
+        return localizationData;
+    };
 
     // Helper functions
     TransformForLocalization(text: string, modifier: boolean): string {
@@ -38,35 +88,13 @@ export class LocalizationCompiler {
         }
     }
 
-    OnLocalizationDataChanged(allData: { [path: string]: LocalizationData }, outputDir: string) {
+    OnLocalizationDataChanged(allData: LocalizationData, outputDir: string) {
         this.addon_filepath = path.join(outputDir, 'addon_'); // 更新输出目录路径
-
-        const Abilities: Array<AbilityLocalization> = [];
-        const Modifiers: Array<ModifierLocalization> = [];
-        const StandardTooltips: Array<StandardLocalization> = [];
-        const Talents: Array<HeroTalents> = [];
-        const Facets: Array<FacetLocalization> = [];
-
-        const localization_info: LocalizationData = {
-            AbilityArray: Abilities,
-            ModifierArray: Modifiers,
-            StandardArray: StandardTooltips,
-            TalentArray: Talents,
-            FacetArray: Facets,
-        };
-
-        for (const data of Object.values(allData)) {
-            if (data.AbilityArray) Abilities.push(...data.AbilityArray);
-            if (data.ModifierArray) Modifiers.push(...data.ModifierArray);
-            if (data.StandardArray) StandardTooltips.push(...data.StandardArray);
-            if (data.TalentArray) Talents.push(...data.TalentArray);
-            if (data.FacetArray) Facets.push(...data.FacetArray);
-        }
-
         const languages = Object.values(Language).filter(v => typeof v !== 'number');
         for (const language of languages) {
             if (language !== Language.None) {
-                const tokens: KVObject = this.GenerateContentStringForLanguage(language, localization_info);
+                const tokens: KVObject = this.GenerateContentStringForLanguage(language, allData);
+
                 this.WriteContentToAddonFile(language, tokens);
             }
         }
@@ -227,7 +255,6 @@ export class LocalizationCompiler {
                 }
             }
         }
-
         // Go over modifiers
         if (localized_data.ModifierArray) {
             for (const modifier of localized_data.ModifierArray) {
@@ -314,28 +341,59 @@ export class LocalizationCompiler {
         }
 
         // 处理 Facets
-        if (localized_data.FacetArray) {
-            for (const facet of localized_data.FacetArray) {
-                const facet_string = `DOTA_Tooltip_Facet_${facet.facet_classname}`;
+        if (localized_data.FacetArray_A) {
+            for (const facet of localized_data.FacetArray_A) {
+                const facet_string = `DOTA_Tooltip_ability_${facet.facet_classname}`;
                 tokens[facet_string] = facet.name;
                 tokens[`${facet_string}_description`] = facet.description;
                 if (facet.note0) {
                     tokens[`${facet_string}_Note0`] = facet.note0;
                 }
+            }
+        }
+        if (localized_data.FacetArray_B) {
+            for (const facet of localized_data.FacetArray_B) {
+                const facet_string = `DOTA_Tooltip_facet_${facet.facet_classname}`;
+                tokens[facet_string] = facet.name;
+                tokens[`${facet_string}_description`] = facet.description;
+
                 if (facet.related_abilities) {
                     for (const relatedAbility of facet.related_abilities) {
-                        const related_ability_string = `DOTA_Tooltip_Ability_${relatedAbility.ability_classname}_${relatedAbility.facet_name}`;
-                        tokens[related_ability_string] = facet.description;
+                        const related_ability_string = `DOTA_Tooltip_ability_${relatedAbility.ability_classname}_${facet.facet_classname}`;
+                        tokens[related_ability_string] = relatedAbility.description;
                     }
                 }
                 if (facet.related_talents) {
                     for (const relatedTalent of facet.related_talents) {
-                        const related_talent_string = `${relatedTalent.talent_key}_${relatedTalent.facet_name}`;
+                        const related_talent_string = `${relatedTalent.talent_key}_${facet.name}`;
                         tokens[related_talent_string] = facet.description;
                     }
                 }
             }
         }
+
+        // if (localized_data.FacetArray) {
+        //     for (const facet of localized_data.FacetArray) {
+        //         const facet_string = `DOTA_Tooltip_Facet_${facet.facet_classname}`;
+        //         tokens[facet_string] = facet.name;
+        //         tokens[`${facet_string}_description`] = facet.description;
+        //         if (facet.note0) {
+        //             tokens[`${facet_string}_Note0`] = facet.note0;
+        //         }
+        //         if (facet.related_abilities) {
+        //             for (const relatedAbility of facet.related_abilities) {
+        //                 const related_ability_string = `DOTA_Tooltip_Ability_${relatedAbility.ability_classname}_${relatedAbility.facet_name}`;
+        //                 tokens[related_ability_string] = facet.description;
+        //             }
+        //         }
+        //         if (facet.related_talents) {
+        //             for (const relatedTalent of facet.related_talents) {
+        //                 const related_talent_string = `${relatedTalent.talent_key}_${relatedTalent.facet_name}`;
+        //                 tokens[related_talent_string] = facet.description;
+        //             }
+        //         }
+        //     }
+        // }
         return tokens;
     }
 

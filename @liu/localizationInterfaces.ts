@@ -81,27 +81,46 @@ export interface TalentLocalizationOverrides {
 }
 
 export interface LocalizationData {
-    AbilityArray?: Array<AbilityLocalization>;
-    ModifierArray?: Array<ModifierLocalization>;
-    StandardArray?: Array<StandardLocalization>;
-    TalentArray?: Array<HeroTalents>;
-    FacetArray?: Array<FacetLocalization>; // 新增
+    AbilityArray?: AbilityLocalization[];
+    ModifierArray?: ModifierLocalization[];
+    StandardArray?: StandardLocalization[];
+    TalentArray?: HeroTalents[];
+    /**
+     * 命石类型A(修改技能属性ability开头)
+     */
+    FacetArray_A?: Facet_A[]; // 新增
+    /**
+     * 命石类型B(修改技能属性facet开头)
+     */
+    FacetArray_B?: Facet_B[]; // 新增
 }
-export interface FacetLocalization {
+/**
+ * 命石类型A(修改技能属性ability开头)
+ * 命石自身的名字
+ */
+export interface Facet_A {
     facet_classname: string;
     name: string;
     description: string;
     note0?: string;
-    related_abilities?: Array<RelatedAbility>;
-    related_talents?: Array<RelatedTalent>;
 }
-
+/**
+ * 命石类型B(修改技能属性facet开头)
+ * 命石自身的名字
+ */
+export interface Facet_B {
+    facet_classname: string;
+    name: string;
+    description: string;
+    related_abilities?: RelatedAbility[];
+    related_talents?: RelatedTalent[];
+}
 export interface RelatedAbility {
     ability_classname: string;
-    facet_name: string;
+    description: string;
 }
 
 export interface RelatedTalent {
     talent_key: string;
-    facet_name: string;
+    description: string;
 }

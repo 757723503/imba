@@ -4159,9 +4159,9 @@
 			"particle"		"particles/econ/events/anniversary_10th/anniversary_10th_hat_ambient_npc_dota_hero_skywrath_mage.vpcf"
 		}
 	}
-	"npc_dota_hero_abaddon_custom"
+	"npc_dota_hero_abaddon"
 	{
-		"override_hero"		"npc_dota_hero_abaddon"
+		// "override_hero"		"npc_dota_hero_abaddon"
 		"Ability1"		"imba_abaddon_death_coil"
 		"Ability2"		"abaddon_aphotic_shield"
 		"Ability3"		"abaddon_frostmourne"
