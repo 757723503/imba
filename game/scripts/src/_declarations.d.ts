@@ -118,8 +118,23 @@ declare global {
         _modifierKeys: CreateIllusionsModifierKeys;
     }
     interface CDOTABaseAbility {
+        /**
+         * 判断减益免疫相关 技能kv标识相关
+         */
         _SpellDispellableType: string;
+        /**
+         * 判断减益免疫相关 技能kv标识相关
+         */
         _AbilityUnitTargetFlags: string;
+        /**
+         * 自定义获得技能kv 强类型
+         */
+        GetSpecialValue: <T extends AbilityValueKeys>(name: T) => number;
+
+        /**
+         * @deprecated
+         */
+        GetSpecialValueFor: (name: string) => number;
     }
     interface CBaseEntity {}
 
@@ -259,6 +274,30 @@ declare global {
                       [K in keyof T]: ModifierParamData<T[K]>;
                   }
                 : never;
+
+    type DotaJSON = Record<HeroAbility, DotaJSONAbility[]>;
+    interface DotaJSONAbility {
+        BaseClass: string;
+        ScriptFile: string;
+        AbilityTextureName: string;
+        AbilityBehavior: string;
+        AbilityUnitTargetTeam: string;
+        AbilityUnitTargetType: string[];
+        SpellImmunityType: string;
+        AbilityUnitDamageType: string;
+        FightRecapLevel: number;
+        AbilitySound: string;
+        HasShardUpgrade: number;
+        AbilityCastRange: string;
+        AbilityCastPoint: number;
+        AbilityCooldown: string;
+        AbilityManaCost: number;
+        AbilityValues: {
+            [key: string]: number[];
+        };
+        AbilityCastAnimation: string;
+    }
+    type AbilityValueKeys = keyof DotaJSONAbility['AbilityValues'];
 }
 
 export {};

@@ -149,6 +149,17 @@ if (!CDOTA_BaseNPC._refresh_shields) {
         shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
     };
 }
+// import * as DotaJSON from '../../json/custom_heroes/index.ts';
+if (!CDOTABaseAbility.GetSpecialValue) {
+    CDOTABaseAbility.GetSpecialValue = function <T extends AbilityValueKeys>(this: CDOTABaseAbility, value: T): number {
+        this.GetSpecialValueFor(tostring(value));
+        return 1;
+    };
+    // HeroAbility.abaddon_frostmourne;
+    // game\scripts\src\json\custom_heroes\npc_dota_hero_abaddon.json
+    // DotaJSON.imba_abaddon_aphotic_shield.AbilityValues.AbilityCooldown;
+    // };
+}
 // const originalGetAbility = CDOTA_Modifier_Lua.GetAbility;
 // CDOTA_Modifier_Lua.GetAbility = function (this: CDOTA_Modifier_Lua): CDOTABaseAbility | undefined {
 //     print('重写GetAbility');

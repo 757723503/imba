@@ -12,6 +12,6 @@ declare global {
         /** 死亡缠绕 */
         imba_abaddon_death_coil = 'imba_abaddon_death_coil',
         /** 霜之哀伤*/
-        abaddon_frostmourne = 'abaddon_frostmourne',
+        imba_abaddon_frostmourne = 'imba_abaddon_frostmourne',
     }
 }
