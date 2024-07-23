@@ -13,6 +13,7 @@ import '../ability_custom/imba_custom_base_attack';
 import { CAttackDataManager } from './attack/AttackManager';
 import { PseudoRandom } from './lib/PseudoRandom';
 import { CIllusionManager } from './IllusionManager';
+import { CParticleManager } from './particle/CParticleManager';
 import { CustomApplyDamage } from './damage/damage';
 
 declare global {
@@ -56,5 +57,11 @@ export function ActivateModules() {
     globalThis.CAttackData = new CAttackDataManager();
     globalThis.Random = new PseudoRandom();
     globalThis.Dispatcher = new CDispatcher();
+    globalThis.CParticleManager = new CParticleManager();
+
     globalThis.CAddDamage = CustomApplyDamage;
+    globalThis.CCreateParticle = CParticleManager.prototype.CreateParticle;
+    globalThis.CSetParticleControl = CParticleManager.prototype.SetParticleControl;
+    globalThis.SetParticleControlEnt = CParticleManager.prototype.SetParticleControlEnt;
+    globalThis.CDestroyParticle = CParticleManager.prototype.DestroyParticle;
 }

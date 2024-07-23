@@ -191,7 +191,17 @@ export class LocalizationCompiler {
                 // Add description localization
                 if (ability_description) {
                     ability_description = this.TransformForLocalization(ability_description, false);
-                    tokens[`${ability_string}_description`] = ability_description;
+                    let effects = '';
+                    if (reimagined_effects) {
+                        let counter = 1;
+                        for (const reimagined_effect of reimagined_effects) {
+                            const reimagined_effect_description = this.TransformForLocalization(reimagined_effect.description, false);
+                            effects += `\n<h1><font color='#FF7800'>${reimagined_effect.title}</font></h1>${reimagined_effect_description}<br>\n`;
+                            counter++;
+                        }
+                    }
+
+                    tokens[`${ability_string}_description`] = ability_description + effects;
                 }
 
                 // Lore, if any
@@ -238,19 +248,6 @@ export class LocalizationCompiler {
                         ability_special_text += ability_special.text;
 
                         tokens[`${ability_string}_${ability_special.ability_special}`] = ability_special_text;
-                    }
-                }
-                // Reimagined effects, if any
-                if (reimagined_effects) {
-                    let counter = 1;
-                    for (const reimagined_effect of reimagined_effects) {
-                        // Reimagined title
-                        tokens[`${ability_string}_rmg_title_${counter}`] = reimagined_effect.title;
-                        // Reimagined description
-                        const reimagined_effect_description = this.TransformForLocalization(reimagined_effect.description, false);
-                        tokens[`${ability_string}_rmg_description_${counter}`] = reimagined_effect_description;
-
-                        counter++;
                     }
                 }
             }
@@ -325,8 +322,10 @@ export class LocalizationCompiler {
                     tokens[talent_string] = talent_name;
 
                     // Talent description
-                    talent_description = this.TransformForLocalization(talent_description, false);
-                    tokens[`${talent_string}_Description`] = talent_description;
+                    if (talent_description) {
+                        talent_description = this.TransformForLocalization(talent_description, false);
+                        tokens[`${talent_string}_description`] = talent_description;
+                    }
 
                     // Talent lore
                     if (talent_lore) {

@@ -33,7 +33,7 @@ export class CAttackDataManager {
         // 初始化攻击数据
         const attack_data: UnitEventAttackDamageData = {
             damageTable: dmgTable,
-            projectile: attacker.GetRangedProjectileName(),
+            projectile: attacker.GetRangedProjectileName() as ParticleList,
             projectile_speed: attacker.GetProjectileSpeed(),
             record: event.record,
         };
@@ -181,7 +181,7 @@ export class CAttackDataManager {
             };
             attack_data = {
                 damageTable: dmgTable,
-                projectile: attacker.GetRangedProjectileName(),
+                projectile: attacker.GetRangedProjectileName() as ParticleList,
                 projectile_speed: attacker.GetProjectileSpeed(),
                 record: recordId,
             };
@@ -233,7 +233,7 @@ export class CAttackDataManager {
                 target: target,
                 moveSpeed: attack_data.projectile_speed ?? attacker.GetProjectileSpeed(),
                 source: attacker,
-                effectName: attack_data.projectile ?? attacker.GetRangedProjectileName(),
+                effectName: attack_data.projectile ?? (attacker.GetRangedProjectileName() as ParticleList),
                 _is_attack: true,
                 OnHitUnit: () => {
                     _fun_attack_effect(attacker, target, use_effect);

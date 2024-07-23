@@ -124,14 +124,17 @@ export class CProjectileManager {
 
     protected TrackingPlayerEffect(data: CTrackingProjectileData, start_position: Vector, end_position: Vector): ParticleID {
         if (!data.effectName) return;
-        const pfx = ParticleManager.CreateParticle(data.effectName, ParticleAttachment.CUSTOMORIGIN, null);
+        const pfx = CCreateParticle({
+            particleName: data.effectName,
+            particleAttach: ParticleAttachment.WORLDORIGIN,
+            extraData: { CheckFoW: false },
+        });
         const dota_unit = data.target;
         const end_pos = end_position;
-        ParticleManager.SetParticleControl(pfx, 0, start_position);
-        ParticleManager.SetParticleControl(pfx, 1, end_pos);
-        ParticleManager.SetParticleControl(pfx, 2, Vector(data.moveSpeed, 0, 0));
-        ParticleManager.SetParticleControl(pfx, 9, start_position);
-        ParticleManager.SetParticleShouldCheckFoW(pfx, false);
+        CSetParticleControl(pfx, 0, start_position);
+        CSetParticleControl(pfx, 1, end_pos);
+        CSetParticleControl(pfx, 2, Vector(data.moveSpeed, 0, 0));
+        CSetParticleControl(pfx, 9, start_position);
         return pfx;
     }
 
@@ -333,10 +336,13 @@ export class CProjectileManager {
         if (!data.effectName) return;
         const direction = data.direction;
         const speed = data.moveSpeed;
-        const pfx = ParticleManager.CreateParticle(data.effectName, ParticleAttachment.WORLDORIGIN, null);
-        ParticleManager.SetParticleControl(pfx, 0, start_position);
-        ParticleManager.SetParticleControl(pfx, 1, direction.__mul(speed));
-        ParticleManager.SetParticleShouldCheckFoW(pfx, false);
+        const pfx = CCreateParticle({
+            particleName: data.effectName,
+            particleAttach: ParticleAttachment.WORLDORIGIN,
+            extraData: { CheckFoW: false },
+        });
+        CSetParticleControl(pfx, 0, start_position);
+        CSetParticleControl(pfx, 1, direction.__mul(speed));
         return pfx;
     }
 

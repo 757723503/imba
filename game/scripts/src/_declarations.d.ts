@@ -1,3 +1,5 @@
+import type { allSpecialValue } from './json/all_special_value';
+
 declare global {
     /**自定义所有modifier类 */
     enum CustomModifier {}
@@ -129,8 +131,7 @@ declare global {
         /**
          * 自定义获得技能kv 强类型
          */
-        GetSpecialValue: <T extends AbilityValueKeys>(name: T) => number;
-
+        GetSpecialValue: <T extends AbilityNames>(abilityName: T, valueName: AbilityValues<T>) => number;
         /**
          * @deprecated
          */
@@ -201,12 +202,12 @@ declare global {
     /**原生所有modifier名字 */
     const enum DotaModifier {}
 
-    // interface CScriptParticleManager {
-    //     /**
-    //      * @deprecated
-    //      */
-    //     CreateParticle(particleName: string, particleAttach: ParticleAttachment_t, owner: CBaseEntity | undefined): ParticleID;
-    // }
+    interface CScriptParticleManager {
+        /**
+         * @deprecated
+         */
+        CreateParticle(particleName: string, particleAttach: ParticleAttachment_t, owner: CBaseEntity | undefined): ParticleID;
+    }
     /**
      * @deprecated
      */
@@ -275,7 +276,6 @@ declare global {
                   }
                 : never;
 
-    type DotaJSON = Record<HeroAbility, DotaJSONAbility[]>;
     interface DotaJSONAbility {
         BaseClass: string;
         ScriptFile: string;
@@ -297,7 +297,8 @@ declare global {
         };
         AbilityCastAnimation: string;
     }
-    type AbilityValueKeys = keyof DotaJSONAbility['AbilityValues'];
-}
 
+    type AbilityNames = keyof typeof allSpecialValue;
+    type AbilityValues<T extends AbilityNames> = keyof (typeof allSpecialValue)[T];
+}
 export {};

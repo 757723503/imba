@@ -1,4 +1,5 @@
 import fs from 'fs';
+import through2 from 'through2';
 import gulp from 'gulp';
 import * as dotax from 'gulp-dotax';
 import path from 'path';
@@ -6,6 +7,7 @@ import less from 'gulp-less';
 import replace from 'gulp-replace';
 // import type { LocalizationData } from './@liu/localizationInterfaces';
 import { LocalizationCompiler } from './@liu/localizationCompiler';
+import { connected } from 'process';
 const paths: { [key: string]: string } = {
     excels: 'excels',
     kv: 'game/scripts/npc',
@@ -71,6 +73,7 @@ const sheet_2_kv =
 const kv_2_js =
     (watch: boolean = false) =>
     () => {
+        console.log('===============================================转换json');
         const kvFiles = `${paths.kv}/**/*.{kv,txt}`;
         const transpileKVToJS = () => {
             return gulp.src(kvFiles).pipe(dotax.kvToJS()).pipe(gulp.dest(paths.panorama_json)).pipe(gulp.dest(paths.src_json));
@@ -211,67 +214,109 @@ const start_file_server = (callback: Function) => {
  * @description 将 json_localization 目录下的所有 JSON 文件合并为一个 all.json 文件
  * @description Merge all JSON files in json_localization directory into one all.json file
  */
-const merge_json = () => {
-    const jsonLocalizationPath = paths.json_localization;
-    const outputPath = paths.json_output;
+const merge_json =
+    (watch = false) =>
+    () => {
+        console.log('===============================================合并任务启动');
+        const jsonLocalizationPath = paths.json_localization;
+        const outputPath = paths.json_output;
+        const outputFile = path.join(outputPath, 'all.json');
 
-    // 将函数标记为异步
-    gulp.watch(`${jsonLocalizationPath}/**/*.json`, async function mergeAndOutput() {
-        const allData = {};
-        const files = fs.readdirSync(jsonLocalizationPath);
-        for (const file of files) {
-            if (path.extname(file) === '.json') {
-                const filePath = path.join(jsonLocalizationPath, file);
-                // 使用异步读取并等待结果
-                const fileData = JSON.parse(await fs.promises.readFile(filePath, 'utf8'));
-                Object.assign(allData, fileData);
-            }
+        const transpileJSON = () => {
+            let allData = {};
+
+            return gulp.src(`${jsonLocalizationPath}/**/*.json`).pipe(
+                through2.obj(
+                    function (file, enc, cb) {
+                        const json = JSON.parse(file.contents.toString());
+                        allData = { ...allData, ...json };
+                        cb();
+                    },
+                    function (cb) {
+                        const outputData = JSON.stringify(allData, null, 2);
+                        fs.writeFileSync(outputFile, outputData);
+                        console.log('===============================================合并任务完成');
+                        cb();
+                    }
+                )
+            );
+        };
+
+        if (watch) {
+            console.log('===============================================启动JSON合并监视');
+            return gulp.watch(`${jsonLocalizationPath}/**/*.json`, done => {
+                console.log('文件变化检测到，执行合并任务');
+                transpileJSON();
+                done();
+            });
+        } else {
+            return transpileJSON();
         }
+    };
+const format_all_json =
+    (watch = false) =>
+    (done?: () => void) => {
+        console.log('===============================================格式化 all.json 任务启动');
+        const inputFile = path.join(paths.json_output, 'all.json');
+        const outputFile = path.join(paths.json_output, 'all_special_value.ts');
 
-        // 使用异步写入并等待完成
-        await fs.promises.writeFile(`${outputPath}/all.json`, JSON.stringify(allData, null, 2), 'utf8');
-        console.log('All JSON files have been merged into all.json');
-    });
-};
+        const formatJSON = () => {
+            const data = JSON.parse(fs.readFileSync(inputFile, 'utf8'));
+            const formattedData: { [key: string]: any } = {};
 
-gulp.task('merge_json', merge_json());
-gulp.task('merge_json:watch', merge_json(true));
+            Object.keys(data).forEach(key => {
+                if (key !== 'Version') {
+                    const abilityValues = data[key].AbilityValues || {};
+                    formattedData[key] = { ...abilityValues };
+                }
+            });
+
+            const tsContent = `export const allSpecialValue = ${JSON.stringify(formattedData, null, 2)} as const;`;
+
+            fs.writeFileSync(outputFile, tsContent);
+            console.log('===============================================格式化 all.json 任务完成');
+            if (done) done(); // 完成异步任务
+        };
+
+        if (watch) {
+            console.log('===============================================启动 all.json 格式化监视');
+            return gulp.watch(inputFile, fileDone => {
+                console.log('all.json 文件变化检测到，执行格式化任务');
+                formatJSON();
+                fileDone();
+            });
+        } else {
+            formatJSON();
+        }
+    };
 
 gulp.task('start_file_server', start_file_server);
 
-// gulp.task('localization_2_csv', localization_2_csv);
-
-gulp.task(`create_image_precache`, create_image_precache());
 gulp.task('create_image_precache:watch', create_image_precache(true));
-
+gulp.task('create_image_precache', create_image_precache());
 gulp.task('sheet_2_kv', sheet_2_kv());
 gulp.task('sheet_2_kv:watch', sheet_2_kv(true));
-
 gulp.task('kv_2_js', kv_2_js());
 gulp.task('kv_2_js:watch', kv_2_js(true));
-
-// gulp.task('csv_to_localization', csv_to_localization());
-// gulp.task('csv_to_localization:watch', csv_to_localization(true));
-
 gulp.task('compile_less', compile_less());
 gulp.task('compile_less:watch', compile_less(true));
-// gulp.task('generate_kv', generateKVTask());
-// gulp.task('generate_kv:watch', generateKVTask(true));
-
-// gulp.task('predev', gulp.series('sheet_2_kv', 'kv_2_js', 'csv_to_localization', 'create_image_precache'));
-gulp.task('predev', gulp.series('sheet_2_kv', 'kv_2_js', 'create_image_precache', 'merge_json'));
+gulp.task('merge_json', merge_json());
+gulp.task('merge_json:watch', merge_json(true));
+gulp.task('format_all_json', format_all_json());
+gulp.task('format_all_json:watch', format_all_json(true));
+gulp.task('predev', gulp.series('sheet_2_kv', 'kv_2_js', 'create_image_precache', 'merge_json', 'format_all_json'));
 gulp.task(
     'dev',
     gulp.parallel(
         'sheet_2_kv:watch',
-        // 'csv_to_localization:watch',
         'create_image_precache:watch',
         'kv_2_js:watch',
         'compile_less:watch',
-        'merge_json:watch'
+        'merge_json:watch',
+        'format_all_json:watch'
     )
 );
 gulp.task('build', gulp.series('predev'));
-gulp.task('jssync', gulp.series('sheet_2_kv', 'kv_2_js'));
+gulp.task('jssync', gulp.series('sheet_2_kv', 'kv_2_js', 'merge_json', 'format_all_json'));
 gulp.task('kv_to_local', kv_to_local());
 gulp.task('prod', gulp.series('predev'));

@@ -1,16 +1,33 @@
 import type { Language } from './languages';
 
 export interface AbilityLocalization {
+    /**
+     * 技能的类名(ability_开头)
+     */
     ability_classname: string;
+    /**
+     * 技能的名字
+     */
     name?: string;
+    /**
+     * 技能的描述
+     */
     description?: string;
+    /**神杖描述 */
     scepter_description?: string;
+    /**魔晶描述 */
     shard_description?: string;
+
+    /** 技能背景描述 */
     lore?: string;
+    /**  技能备注(alt) */
     notes?: Array<string>;
-    reimagined_effects?: Array<ReimaginedEffect>;
-    ability_specials?: Array<AbilitySpecialLocalization>;
-    language_overrides?: Array<AbilityLocalizationContent>;
+    /** IBMA效果 */
+    reimagined_effects?: ReimaginedEffect[];
+    /** 技能KV 属性 */
+    ability_specials?: AbilitySpecialLocalization[];
+    /** 语言覆盖 */
+    language_overrides?: AbilityLocalizationContent[];
 }
 
 export interface AbilityLocalizationContent {
@@ -68,8 +85,8 @@ export interface HeroTalents {
 
 export interface HeroTalentLocalization {
     name: string;
-    description: string;
-    lore: string;
+    description?: string;
+    lore?: string;
     language_overrides?: Array<TalentLocalizationOverrides>;
 }
 
@@ -81,9 +98,21 @@ export interface TalentLocalizationOverrides {
 }
 
 export interface LocalizationData {
+    /**
+     * 技能组
+     */
     AbilityArray?: AbilityLocalization[];
+    /**
+     * modifier组
+     */
     ModifierArray?: ModifierLocalization[];
+    /**
+     * 标准组
+     */
     StandardArray?: StandardLocalization[];
+    /**
+     * 天赋组
+     */
     TalentArray?: HeroTalents[];
     /**
      * 命石类型A(修改技能属性ability开头)

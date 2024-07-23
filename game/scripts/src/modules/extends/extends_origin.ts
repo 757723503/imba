@@ -1,30 +1,3 @@
-// declare global {
-//     var originalAddNewModifier:
-//         | ((
-//               this: CDOTA_BaseNPC,
-//               caster: CDOTA_BaseNPC | undefined,
-//               ability: CDOTABaseAbility | undefined,
-//               modifierName: string,
-//               modifierTable: object | undefined
-//           ) => CDOTA_Buff)
-//         | undefined;
-
-//     var originalApplyDamage: (options: ApplyDamageOptions) => number | undefined;
-// }
-
-// if (!globalThis.originalAddNewModifier) {
-//     globalThis.originalAddNewModifier = CDOTA_BaseNPC.AddNewModifier;
-//     CDOTA_BaseNPC.AddNewModifier = function (
-//         this: CDOTA_BaseNPC,
-//         caster: CDOTA_BaseNPC | undefined,
-//         ability: CDOTABaseAbility | undefined,
-//         modifierName: string,
-//         modifierTable: ModifierParams
-//     ): CDOTA_Buff {
-//         return globalThis.originalAddNewModifier!.call(this, caster, ability, modifierName, modifierTable);
-//     };
-// }
-
 //实装 CDOTA_BaseNPC的GetMissChance 方法
 if (!CDOTA_BaseNPC.GetBlindChance) {
     CDOTA_BaseNPC.GetBlindChance = function (this: CDOTA_BaseNPC): number {
@@ -149,21 +122,13 @@ if (!CDOTA_BaseNPC._refresh_shields) {
         shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
     };
 }
-// import * as DotaJSON from '../../json/custom_heroes/index.ts';
 if (!CDOTABaseAbility.GetSpecialValue) {
-    CDOTABaseAbility.GetSpecialValue = function <T extends AbilityValueKeys>(this: CDOTABaseAbility, value: T): number {
-        this.GetSpecialValueFor(tostring(value));
-        return 1;
+    CDOTABaseAbility.GetSpecialValue = function <T extends AbilityNames>(
+        this: CDOTABaseAbility,
+        abilityName: T,
+        valueName: AbilityValues<T>
+    ): number {
+        return this.GetSpecialValueFor(valueName as string);
     };
-    // HeroAbility.abaddon_frostmourne;
-    // game\scripts\src\json\custom_heroes\npc_dota_hero_abaddon.json
-    // DotaJSON.imba_abaddon_aphotic_shield.AbilityValues.AbilityCooldown;
-    // };
 }
-// const originalGetAbility = CDOTA_Modifier_Lua.GetAbility;
-// CDOTA_Modifier_Lua.GetAbility = function (this: CDOTA_Modifier_Lua): CDOTABaseAbility | undefined {
-//     print('重写GetAbility');
-//     return originalGetAbility.call(this);
-// };
-
 export {};

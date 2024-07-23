@@ -6,7 +6,8 @@ const localizationCompiler = new LocalizationCompiler();
 // 定义输入路径和输出路径
 // const inputPath = '../game/resource/localization'; // 修改为你的实际输入路径
 const inputPath = './localization'; // 修改为你的实际输入路径
-const outputPath = __dirname;
+// const outputPath = __dirname;
+const outputPath = '../game/resource/';
 
 if (!fs.existsSync(outputPath)) {
     fs.mkdirSync(outputPath);

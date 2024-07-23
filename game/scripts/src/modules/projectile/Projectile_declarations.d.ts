@@ -1,7 +1,7 @@
 /** 基础投射物数据 */
 interface CProjectileBaseData {
     /** 投射物特效名称 */
-    effectName?: string;
+    effectName?: ParticleList;
     /** 投射物技能 */
     ability?: CDOTABaseAbility;
     /** 投射物来源 */

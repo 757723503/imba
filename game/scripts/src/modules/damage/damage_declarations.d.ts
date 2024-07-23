@@ -162,7 +162,7 @@ declare interface CBlock_Magic {
 declare interface UnitEventAttackDamageData {
     damageTable: DamageTable;
     /** 远程攻击 - 投射物弹道 */
-    projectile?: string;
+    projectile?: ParticleList;
     /** 远程攻击 - 投射物速度 */
     projectile_speed?: number;
     /** 不会丢失? */

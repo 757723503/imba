@@ -26607,13 +26607,13 @@
 				"Color"				"Green"
 				"GradientID"		"4"
 
-				"Abilities"
-				{
-					"Ability1"
-					{
-						"AbilityName"	"imba_abaddon_the_quickening"
-					}
-				}
+				// "Abilities"
+				// {
+				// 	"Ability1"
+				// 	{
+				// 		"AbilityName"	"imba_abaddon_the_quickening"
+				// 	}
+				// }
 			}
 		}
 //		"VariantAbility1"		""
