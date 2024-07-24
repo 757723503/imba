@@ -1,11 +1,29 @@
 interface BaseAbility extends CDOTA_Ability_Lua {}
-class BaseAbility {}
+class BaseAbility {
+    /**施法者 */
+    caster: CDOTA_BaseNPC;
+    /**本技能 */
+    ability: CDOTABaseAbility;
+    /**施法者 */
+    parent: CDOTA_BaseNPC;
+    /**目标 */
+    target: CDOTA_BaseNPC;
+    /**目标位置 */
+    target_pos: Vector;
+}
 
 interface BaseItem extends CDOTA_Item_Lua {}
 class BaseItem {}
 
 interface BaseModifier extends CDOTA_Modifier_Lua {}
 class BaseModifier {
+    /**施法者 */
+    caster: CDOTA_BaseNPC;
+    /**本技能 */
+    ability: CDOTABaseAbility;
+    /** buff拥有者 */
+    parent: CDOTA_BaseNPC;
+    AddParticle_all_particle: ParticleID[] = [];
     public static apply<T extends typeof BaseModifier>(
         this: T,
         target: CDOTA_BaseNPC,
@@ -34,9 +52,6 @@ class BaseModifier {
     };
 
     funs: Partial<ModifierFunctions[]> = [];
-    CustomDeclareFunctions(): ModifierFunctions[] {
-        return [];
-    }
 
     // GetTexture(): string {
     //     const name = CustomNetTables.GetTableValue('custom_ability_textur', this.GetCaster().GetEntityIndex().toString()).name;
@@ -46,25 +61,13 @@ class BaseModifier {
 }
 
 interface BaseModifierMotionHorizontal extends CDOTA_Modifier_Lua_Horizontal_Motion {}
-class BaseModifierMotionHorizontal extends BaseModifier {
-    CustomDeclareFunctions(): ModifierFunctions[] {
-        return [];
-    }
-}
+class BaseModifierMotionHorizontal extends BaseModifier {}
 
 interface BaseModifierMotionVertical extends CDOTA_Modifier_Lua_Vertical_Motion {}
-class BaseModifierMotionVertical extends BaseModifier {
-    CustomDeclareFunctions(): ModifierFunctions[] {
-        return [];
-    }
-}
+class BaseModifierMotionVertical extends BaseModifier {}
 
 interface BaseModifierMotionBoth extends CDOTA_Modifier_Lua_Motion_Both {}
-class BaseModifierMotionBoth extends BaseModifier {
-    CustomDeclareFunctions(): ModifierFunctions[] {
-        return [];
-    }
-}
+class BaseModifierMotionBoth extends BaseModifier {}
 
 // Add standard base classes to prototype chain to make `super.*` work as `self.BaseClass.*`
 setmetatable(BaseAbility.prototype, { __index: CDOTA_Ability_Lua ?? C_DOTA_Ability_Lua });
@@ -85,9 +88,12 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
     env[name] = {};
 
     toDotaClassInstance(env[name], ability);
-
     const originalSpawn = (env[name] as CDOTA_Ability_Lua).Spawn;
+    // const originalOnSpellStart = (env[name] as CDOTA_Ability_Lua).OnSpellStart;
     env[name].Spawn = function () {
+        // this.caster = this.GetCaster();
+        // this.ability = this;
+        // this.parent = this.GetCaster();
         this.____constructor();
         if (originalSpawn) {
             originalSpawn.call(this);
@@ -102,6 +108,15 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
             }
         }
     };
+
+    // env[name].OnSpellStart = function (keys?: SpellStartParams) {
+    //     this.target = this.GetCursorTarget();
+    //     this.target_pos = this.GetCursorPosition();
+    //     this.____constructor();
+    //     if (originalOnSpellStart) {
+    //         originalOnSpellStart.call(this, keys);
+    //     }
+    // };
 };
 
 const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_Lua) => {
@@ -139,6 +154,9 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
                 name: parameters._origin_ability,
             });
         }
+        this.caster = this.GetCaster();
+        this.ability = this.GetAbility();
+        this.parent = this.GetParent();
         this.____constructor();
 
         if (!IsServer()) return;
@@ -161,6 +179,11 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
             originalOnDestroy.call(this, parameters);
         }
         CustomNetTables.SetTableValue('custom_ability_textur', tostring(this.GetCaster()?.GetEntityIndex()), null);
+        if ((this.AddParticle_all_particle as ParticleID[]) && (this.AddParticle_all_particle as ParticleID[]).length > 0) {
+            (this.AddParticle_all_particle as ParticleID[]).forEach(particleID => {
+                CParticleManager.DestroyParticle(particleID, false);
+            });
+        }
     };
     if (!('GetTexture' in env[name])) {
         env[name].GetTexture = function (): string {
@@ -169,7 +192,51 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
             return GetAbilityTextureNameForAbility(customTextureName);
         };
     }
-
+    if ('GetModifierConfig' in env[name]) {
+        const originalGetModifier = env[name] as CDOTA_Modifier_Lua;
+        if (!originalGetModifier.GetModifierConfig || !originalGetModifier.GetModifierConfig()) return;
+        const originalGetModifierConfig = originalGetModifier.GetModifierConfig() as ModifierConfig;
+        if (originalGetModifierConfig.is_debuff) {
+            originalGetModifier.IsDebuff = function (): boolean {
+                return originalGetModifierConfig.is_debuff;
+            };
+        }
+        if (originalGetModifierConfig.is_hidden) {
+            originalGetModifier.IsHidden = function (): boolean {
+                return originalGetModifierConfig.is_hidden;
+            };
+        }
+        if (originalGetModifierConfig.not_purgable) {
+            originalGetModifier.IsPurgable = function (): boolean {
+                return originalGetModifierConfig.not_purgable;
+            };
+        }
+        if (originalGetModifierConfig.not_purgable_exception) {
+            originalGetModifier.IsPurgeException = function (): boolean {
+                return originalGetModifierConfig.not_purgable_exception;
+            };
+        }
+        if (originalGetModifierConfig.allow_illusion_duplicate) {
+            originalGetModifier.AllowIllusionDuplicate = function (): boolean {
+                return originalGetModifierConfig.allow_illusion_duplicate;
+            };
+        }
+        if (originalGetModifierConfig.not_destroy_on_expire) {
+            originalGetModifier.DestroyOnExpire = function (): boolean {
+                return originalGetModifierConfig.not_destroy_on_expire;
+            };
+        }
+        if (originalGetModifierConfig.not_remove_on_death) {
+            originalGetModifier.RemoveOnDeath = function (): boolean {
+                return originalGetModifierConfig.not_remove_on_death;
+            };
+        }
+        if (originalGetModifierConfig.is_multiple) {
+            originalGetModifier.GetAttributes = function (): number {
+                return originalGetModifierConfig.is_multiple ? ModifierAttribute.MULTIPLE : ModifierAttribute.NONE;
+            };
+        }
+    }
     let type = LuaModifierMotionType.NONE;
     let base = (modifier as any).____super;
     while (base) {
@@ -190,6 +257,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     LinkLuaModifier(name, fileName, type);
 };
 const COnCreated = (modifier: BaseModifier) => {
+    if (!modifier.CustomDeclareFunctions) return;
     const parent_index = modifier.GetParent().entindex();
     const functions = modifier.CustomDeclareFunctions();
     if (functions.length > 0) {
@@ -210,6 +278,7 @@ const COnCreated = (modifier: BaseModifier) => {
     }
 };
 const COnDestroy = (modifier: BaseModifier) => {
+    if (!modifier.CustomDeclareFunctions) return;
     const functions = modifier.CustomDeclareFunctions();
     if (functions.length > 0) {
         const parent_index = modifier.GetParent().entindex();

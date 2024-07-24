@@ -79,7 +79,7 @@ export class CEngineEvent {
         if (entity.IsBaseNPC() && data.is_respawn == 0) {
             // 初始化自定义属性
             for (const key in this._npc_custom_properties) {
-                DebugPrint(entity.GetUnitName(), this._npc_custom_properties.hasOwnProperty(key));
+                // DebugPrint(entity.GetUnitName(), this._npc_custom_properties.hasOwnProperty(key));
                 if (this._npc_custom_properties.hasOwnProperty(key)) {
                     (entity as any)[key] = (this._npc_custom_properties as any)[key];
                 }

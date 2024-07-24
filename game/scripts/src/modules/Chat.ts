@@ -52,17 +52,17 @@ export class CChat {
                 //         DebugPrint(item_model_name, material_group_hash);
                 //     }
                 // }
-                const temp = hero.GetChildren();
-                for (const iterator of temp) {
-                    const item_class_name = iterator.GetClassname();
+                // const temp = hero.GetChildren();
+                // for (const iterator of temp) {
+                //     const item_class_name = iterator.GetClassname();
 
-                    if (item_class_name == 'dota_item_wearable') {
-                        const item = iterator as CBaseModelEntity;
-                        const item_model_name = item.GetModelName();
-                        const material_group_hash = item.GetMaterialGroupHash();
-                        DebugPrint(item_model_name, material_group_hash);
-                    }
-                }
+                //     if (item_class_name == 'dota_item_wearable') {
+                //         const item = iterator as CBaseModelEntity;
+                //         const item_model_name = item.GetModelName();
+                //         const material_group_hash = item.GetMaterialGroupHash();
+                //         DebugPrint(item_model_name, material_group_hash);
+                //     }
+                // }
 
                 // CProjectileManager.CreateLinearProjectile({
                 //     direction: Vector(1, 0, 0),
@@ -88,7 +88,7 @@ export class CChat {
                 //     EffectName: 'particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf',
                 // });
 
-                // hero.AddAbility('ability_imba_life_stealer_open_wounds');
+                hero.AddAbility('imba_life_stealer_open_wounds');
                 // hero.CHeal({ reason: HealReason.Heal, amount: 1000, show_number: true });
                 // hero.GetTogglableWearable(LoadoutType.PERSONA_1_END);
 

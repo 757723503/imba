@@ -100,13 +100,13 @@ declare global {
         /**治疗原因 */
         reason: HealReason;
         /**治疗来源技能 */
-        inflictor?: CDOTABaseAbility;
-        /**是否读取增强 */
-        amplify?: boolean;
+        inflictor: CDOTABaseAbility;
         /**治疗来源单位 */
-        source?: CDOTA_BaseNPC;
+        source: CDOTA_BaseNPC;
         /**显示治疗特效数字  */
         show_number?: boolean;
+        /**是否读取增强 */
+        amplify?: boolean;
     }
     const enum HealReason {
         /** 治疗 */
@@ -146,7 +146,10 @@ declare global {
          * 自定义注册函数
          */
         CustomDeclareFunctions?(): ModifierFunctions[];
-
+        /**
+         * 自定义modifier配置
+         */
+        GetModifierConfig?(): ModifierConfig;
         OnCreated(params: ModifierParams): void;
 
         // GetAbility(): CDOTABaseAbility | undefined;
@@ -168,7 +171,31 @@ declare global {
         GetModifierSpellLifestealRegenAmplify_Percentage?(): number;
     }
 
-    interface CDOTA_Buff {}
+    interface CDOTA_Buff {
+        /**
+         * @deprecated
+         */
+        AddParticle(
+            index: number,
+            destroyImmediately: boolean,
+            statusEffect: boolean,
+            priority: number,
+            heroEffect: boolean,
+            overheadEffect: boolean
+        ): void;
+    }
+    interface SpellStartParams {
+        [key: string]: any;
+    }
+    // interface CDOTA_Ability_Lua {
+    //     OnSpellStart(keys?: SpellStartParams): void;
+    // }
+    // interface BaseAbility {
+    //     OnSpellStart(keys?: SpellStartParams): void;
+    // }
+    // interface CDOTA_Item_Lua {
+    //     OnSpellStart(keys?: SpellStartParams): void;
+    // }
 
     interface CDOTA_Item {}
     interface CAttackEvent {
@@ -300,5 +327,33 @@ declare global {
 
     type AbilityNames = keyof typeof allSpecialValue;
     type AbilityValues<T extends AbilityNames> = keyof (typeof allSpecialValue)[T];
+
+    interface ModifierConfig {
+        /** 是否是负面效果 默认是`false` */
+        is_debuff?: boolean;
+        /** 不显示buff图标（如果有的话） 默认是`false` */
+        is_hidden?: boolean;
+        /** 不可驱散（弱驱散） 如果配置为true，只有强驱散可以驱散buff  默认是`fasle` */
+        not_purgable?: boolean;
+        /** 不可驱散（强驱散） 如果配置为true，buff绝对不可驱散  默认是`fasle` */
+        not_purgable_exception?: boolean;
+        /** 是否可叠加 默认是`false` */
+        is_multiple?: boolean;
+        /** 死亡时不移除  默认是`fasle` */
+        not_remove_on_death?: boolean;
+        /** 生命周期结束时不移除 默认是`false` */
+        not_destroy_on_expire?: boolean;
+        /** 允许幻象复制 默认是`false` */
+        allow_illusion_duplicate?: boolean;
+    }
+    interface FindUnitsInRadiusOptions {
+        team: DotaTeam;
+        location: Vector;
+        radius: number;
+        teamFilter: UnitTargetTeam;
+        typeFilter: UnitTargetType;
+        flagFilter: UnitTargetFlags;
+        order: FindOrder;
+    }
 }
 export {};

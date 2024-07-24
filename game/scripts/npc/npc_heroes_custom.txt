@@ -4165,7 +4165,7 @@
 		"Ability1"		"imba_abaddon_death_coil"
 		"Ability2"		"imba_abaddon_aphotic_shield"
 		"Ability3"		"imba_abaddon_frostmourne"
-		"Ability4"		"imba_abaddon_font_of_avernus"
+		"Ability4"		"abaddon_font_of_avernus"
 		"Ability5"		"generic_hidden"
 		"Ability6"		"imba_abaddon_borrowed_time"
 		"Ability10"		"special_bonus_imba_abaddon_1"

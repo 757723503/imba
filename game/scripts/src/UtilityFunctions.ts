@@ -69,6 +69,20 @@ function CIsValid(entity: undefined | null | CDOTA_Buff | CBaseEntity): boolean 
 function CIsAlive(entity: CDOTA_BaseNPC | undefined | null): boolean {
     return CIsValid(entity) && entity.IsAlive();
 }
+function CFindUnitsInRadius(keys: FindUnitsInRadiusOptions): CDOTA_BaseNPC[] {
+    const allUnits = FindUnitsInRadius(
+        keys.team,
+        keys.location,
+        undefined,
+        keys.radius,
+        keys.teamFilter,
+        keys.typeFilter,
+        keys.flagFilter,
+        keys.order,
+        false
+    );
+    return allUnits;
+}
 
 // -- 获取平面方向
 // function CGetDirection2D(vEndPoint, vStartPoint,vDeDir)

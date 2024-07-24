@@ -26,6 +26,10 @@ export class CParticleManager {
         if (data.extraData && data.extraData.CheckFoW) {
             ParticleManager.SetParticleShouldCheckFoW(particleID, data.extraData.CheckFoW);
         }
+        if (data.modifier) {
+            data.modifier['AddParticle_all_particle'] = data.modifier['AddParticle_all_particle'] || [];
+            data.modifier['AddParticle_all_particle'].push(particleID);
+        }
         const duration = data.extraData?.duration ?? 60;
         Timers.CreateTimer(duration, () => {
             ParticleManager.DestroyParticle(particleID, data.extraData.immediate);

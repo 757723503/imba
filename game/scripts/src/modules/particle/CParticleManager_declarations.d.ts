@@ -9,6 +9,8 @@ interface CParticleData {
     player?: CDOTAPlayerController;
     /** 针对播放对象(队伍) */
     team?: DotaTeam;
+    /**绑定的modifier */
+    modifier?: CDOTA_Buff;
     /** 自定义数据 */
     extraData?: {
         /** 持续时间(默认持续60秒) */

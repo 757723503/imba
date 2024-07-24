@@ -14,7 +14,7 @@ export const data: LocalizationData = {
             ],
             ability_specials: [
                 { ability_special: 'target_damage', text: '伤害/治疗' },
-                { ability_special: 'self_damage', text: '对自身伤害' },
+                { ability_special: 'self_damage', text: '对自身伤害', percentage: true },
             ],
             shard_description: '使迷雾缠绕也会造成攻击伤害，并且施加来自物品和技能的效果。',
         },
