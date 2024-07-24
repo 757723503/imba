@@ -107,7 +107,7 @@ export interface LocalizationData {
      */
     ModifierArray?: ModifierLocalization[];
     /**
-     * 标准组
+     * 标准组?
      */
     StandardArray?: StandardLocalization[];
     /**

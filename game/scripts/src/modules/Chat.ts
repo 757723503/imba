@@ -40,27 +40,29 @@ export class CChat {
 
                 break;
             case ChatCommand.qw:
-                DebugPrint(hero.GetHeroFacetID());
-                const ability = hero.GetAbilityByIndex(0);
-                ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'duration');
+                // DebugPrint(hero.GetHeroFacetID());
+                // const ability = hero.GetAbilityByIndex(0);
+                // ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'duration');
                 // ability.GetSpecialValue('222');
                 // for (let index = -1; index < 100; index++) {
                 //     const qw = hero.GetTogglableWearable(index);
                 //     if (qw) {
-                //         DebugPrint(qw.GetName(), 'GetTogglableWearable');
-                //     }
-                // }
-                // const temp = hero.GetChildren();
-                // for (const iterator of temp) {
-                //     const item_class_name = iterator.GetClassname();
-
-                //     if (item_class_name == 'dota_item_wearable') {
-                //         const item = iterator as CBaseModelEntity;
-                //         const item_model_name = item.GetModelName();
-                //         const material_group_hash = item.GetMaterialGroupHash();
+                //         const item_model_name = qw.GetModelName();
+                //         const material_group_hash = qw.GetMaterialGroupHash();
                 //         DebugPrint(item_model_name, material_group_hash);
                 //     }
                 // }
+                const temp = hero.GetChildren();
+                for (const iterator of temp) {
+                    const item_class_name = iterator.GetClassname();
+
+                    if (item_class_name == 'dota_item_wearable') {
+                        const item = iterator as CBaseModelEntity;
+                        const item_model_name = item.GetModelName();
+                        const material_group_hash = item.GetMaterialGroupHash();
+                        DebugPrint(item_model_name, material_group_hash);
+                    }
+                }
 
                 // CProjectileManager.CreateLinearProjectile({
                 //     direction: Vector(1, 0, 0),
