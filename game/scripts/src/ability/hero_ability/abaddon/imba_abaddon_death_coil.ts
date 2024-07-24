@@ -1,10 +1,7 @@
-enum HeroParticleList {
-    imba_abaddon_death_coil = 'particles/units/heroes/hero_abaddon/abaddon_death_coil.vpcf',
-}
-
 @registerAbility()
-class imba_abaddon_death_coil extends BaseAbility {
+export class imba_abaddon_death_coil extends BaseAbility {
     OnSpellStart(keys?: SpellStartParams): void {
+        print(this.caster);
         const target_damage = this.GetSpecialValue('imba_abaddon_death_coil', 'target_damage');
         const self_damage = this.GetSpecialValue('imba_abaddon_death_coil', 'self_damage') * target_damage * 0.01;
         const heal_amount = this.GetSpecialValue('imba_abaddon_death_coil', 'heal_amount');
@@ -14,7 +11,7 @@ class imba_abaddon_death_coil extends BaseAbility {
             target: this.target,
             ability: this,
             effectName: HeroParticleList.imba_abaddon_death_coil,
-            OnHitUnit(unit, position, extraData, thisProjectileID) {
+            OnHitUnit: (unit, position, extraData, thisProjectileID) => {
                 if (unit.IsEnemy(this.caster)) {
                     CAddDamage({
                         attacker: this.caster,
@@ -34,7 +31,7 @@ class imba_abaddon_death_coil extends BaseAbility {
                 }
             },
         });
-        if (!keys['trigger']) {
+        if (!keys || !keys['trigger']) {
             CAddDamage({
                 attacker: this.caster,
                 damage: self_damage,

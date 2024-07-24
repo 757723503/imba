@@ -3,4 +3,11 @@
 import './utils/dota_ts_adapter';
 import './UtilityFunctions';
 import './common_modifier/index';
+// globalThis.HeroParticleList = {};
+// globalThis.GeneircParticleList = {};
+// globalThis.HeroParticleList = {};
+// globalThis.AvatarHeroParticleList = {};
+// globalThis.ItemParticleList = {};
+// globalThis.AvatarItemParticleList = {};
+// globalThis.UnitParticleList = {};
 DebugPrint('Client script loaded!');

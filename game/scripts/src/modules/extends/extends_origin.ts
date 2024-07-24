@@ -18,12 +18,12 @@ if (!CDOTA_BaseNPC.GetAccuracyChance) {
 
 if (!CDOTA_BaseNPC.IsEnemy) {
     CDOTA_BaseNPC.IsEnemy = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
-        return this.GetTeamNumber() !== unit.GetTeamNumber();
+        return this.GetTeamNumber() != unit.GetTeamNumber();
     };
 }
 if (!CDOTA_BaseNPC.IsAlly) {
     CDOTA_BaseNPC.IsAlly = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
-        return this.GetTeamNumber() === unit.GetTeamNumber();
+        return this.GetTeamNumber() == unit.GetTeamNumber();
     };
 }
 if (!CDOTA_BaseNPC.IsUnit) {

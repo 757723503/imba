@@ -187,15 +187,15 @@ declare global {
     interface SpellStartParams {
         [key: string]: any;
     }
-    // interface CDOTA_Ability_Lua {
-    //     OnSpellStart(keys?: SpellStartParams): void;
-    // }
-    // interface BaseAbility {
-    //     OnSpellStart(keys?: SpellStartParams): void;
-    // }
-    // interface CDOTA_Item_Lua {
-    //     OnSpellStart(keys?: SpellStartParams): void;
-    // }
+    interface CDOTA_Ability_Lua {
+        OnSpellStart(keys?: SpellStartParams): void;
+    }
+    interface BaseAbility {
+        OnSpellStart(keys?: SpellStartParams): void;
+    }
+    interface CDOTA_Item_Lua {
+        OnSpellStart(keys?: SpellStartParams): void;
+    }
 
     interface CDOTA_Item {}
     interface CAttackEvent {
@@ -355,5 +355,32 @@ declare global {
         flagFilter: UnitTargetFlags;
         order: FindOrder;
     }
+    // /** 通用特效 */
+    // var GeneircParticleList: { [key: string]: string };
+    // /** 英雄特效 */
+    // var HeroParticleList: { [key: string]: string };
+    // /** 英雄饰品特效 */
+    // var AvatarHeroParticleList: { [key: string]: string };
+    // /** 物品特效 */
+    // var ItemParticleList: { [key: string]: string };
+    // /** 物品饰品特效 */
+    // var AvatarItemParticleList: { [key: string]: string };
+    // /** 单位技能特效 */
+    // var UnitParticleList: { [key: string]: string };
+
+    // type GeneircParticleListType = keyof typeof GeneircParticleList;
+    // type HeroParticleListType = keyof typeof HeroParticleList;
+    // type AvatarHeroParticleListType = keyof typeof AvatarHeroParticleList;
+    // type ItemParticleListType = keyof typeof ItemParticleList;
+    // type AvatarItemParticleListType = keyof typeof AvatarItemParticleList;
+    // type UnitParticleListType = keyof typeof UnitParticleList;
+
+    // type ParticleList =
+    //     | GeneircParticleListType
+    //     | HeroParticleListType
+    //     | AvatarHeroParticleListType
+    //     | ItemParticleListType
+    //     | AvatarItemParticleListType
+    //     | UnitParticleListType;
 }
 export {};

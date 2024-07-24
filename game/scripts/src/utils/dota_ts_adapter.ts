@@ -1,15 +1,15 @@
 interface BaseAbility extends CDOTA_Ability_Lua {}
 class BaseAbility {
     /**施法者 */
-    caster: CDOTA_BaseNPC;
+    readonly caster: CDOTA_BaseNPC;
     /**本技能 */
-    ability: CDOTABaseAbility;
+    readonly ability: CDOTABaseAbility;
     /**施法者 */
-    parent: CDOTA_BaseNPC;
+    readonly parent: CDOTA_BaseNPC;
     /**目标 */
-    target: CDOTA_BaseNPC;
+    readonly target: CDOTA_BaseNPC;
     /**目标位置 */
-    target_pos: Vector;
+    readonly target_pos: Vector;
 }
 
 interface BaseItem extends CDOTA_Item_Lua {}
@@ -18,12 +18,12 @@ class BaseItem {}
 interface BaseModifier extends CDOTA_Modifier_Lua {}
 class BaseModifier {
     /**施法者 */
-    caster: CDOTA_BaseNPC;
+    readonly caster: CDOTA_BaseNPC;
     /**本技能 */
-    ability: CDOTABaseAbility;
+    readonly ability: CDOTABaseAbility;
     /** buff拥有者 */
-    parent: CDOTA_BaseNPC;
-    AddParticle_all_particle: ParticleID[] = [];
+    readonly parent: CDOTA_BaseNPC;
+    readonly AddParticle_all_particle: ParticleID[] = [];
     public static apply<T extends typeof BaseModifier>(
         this: T,
         target: CDOTA_BaseNPC,
@@ -89,11 +89,11 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
 
     toDotaClassInstance(env[name], ability);
     const originalSpawn = (env[name] as CDOTA_Ability_Lua).Spawn;
-    // const originalOnSpellStart = (env[name] as CDOTA_Ability_Lua).OnSpellStart;
+    const originalOnSpellStart = (env[name] as CDOTA_Ability_Lua).OnSpellStart;
     env[name].Spawn = function () {
-        // this.caster = this.GetCaster();
-        // this.ability = this;
-        // this.parent = this.GetCaster();
+        this.caster = this.GetCaster();
+        this.ability = this;
+        this.parent = this.GetCaster();
         this.____constructor();
         if (originalSpawn) {
             originalSpawn.call(this);
@@ -109,14 +109,14 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
         }
     };
 
-    // env[name].OnSpellStart = function (keys?: SpellStartParams) {
-    //     this.target = this.GetCursorTarget();
-    //     this.target_pos = this.GetCursorPosition();
-    //     this.____constructor();
-    //     if (originalOnSpellStart) {
-    //         originalOnSpellStart.call(this, keys);
-    //     }
-    // };
+    env[name].OnSpellStart = function (keys?: SpellStartParams) {
+        this.target = this.GetCursorTarget();
+        this.target_pos = this.GetCursorPosition();
+        this.____constructor();
+        if (originalOnSpellStart) {
+            originalOnSpellStart.call(this, keys);
+        }
+    };
 };
 
 const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_Lua) => {
@@ -140,6 +140,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     env[name].OnCreated = function (parameters: any) {
         //传入无视减益免疫参数
         if (parameters._ignore_debuff_immunity == 1) {
+            DebugPrint('使用的无视减益免疫参数');
             env[name]._originalGetAbility = (env[name] as CDOTA_Modifier_Lua).GetAbility;
             env[name]._ignore_immune_debuff = true;
             env[name]._origin_ability_name = parameters._origin_ability;
@@ -153,6 +154,14 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
             CustomNetTables.SetTableValue('custom_ability_textur', tostring(this.GetCaster()?.GetEntityIndex()), {
                 name: parameters._origin_ability,
             });
+            if (!('GetTexture' in env[name])) {
+                env[name].GetTexture = function (): string {
+                    print('GetTexture运行 更改技能图标(无视减益免疫技能)');
+                    const caster = this.GetCaster();
+                    const customTextureName = CustomNetTables.GetTableValue('custom_ability_textur', tostring(caster?.GetEntityIndex()))?.name;
+                    return GetAbilityTextureNameForAbility(customTextureName);
+                };
+            }
         }
         this.caster = this.GetCaster();
         this.ability = this.GetAbility();
@@ -185,13 +194,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
             });
         }
     };
-    if (!('GetTexture' in env[name])) {
-        env[name].GetTexture = function (): string {
-            const caster = this.GetCaster();
-            const customTextureName = CustomNetTables.GetTableValue('custom_ability_textur', tostring(caster?.GetEntityIndex()))?.name;
-            return GetAbilityTextureNameForAbility(customTextureName);
-        };
-    }
+
     if ('GetModifierConfig' in env[name]) {
         const originalGetModifier = env[name] as CDOTA_Modifier_Lua;
         if (!originalGetModifier.GetModifierConfig || !originalGetModifier.GetModifierConfig()) return;

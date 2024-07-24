@@ -47,6 +47,14 @@ export function ActivateModules() {
         GameRules.XNetTable = new XNetTable();
         GameRules.CGameMode = new CGameMode();
         new GameConfig();
+
+        // globalThis.HeroParticleList = {};
+        // globalThis.GeneircParticleList = {};
+        // globalThis.HeroParticleList = {};
+        // globalThis.AvatarHeroParticleList = {};
+        // globalThis.ItemParticleList = {};
+        // globalThis.AvatarItemParticleList = {};
+        // globalThis.UnitParticleList = {};
     }
     new Debug();
     new CChat();
@@ -62,6 +70,6 @@ export function ActivateModules() {
     globalThis.CAddDamage = CustomApplyDamage;
     globalThis.CCreateParticle = CParticleManager.prototype.CreateParticle;
     globalThis.CSetParticleControl = CParticleManager.prototype.SetParticleControl;
-    globalThis.SetParticleControlEnt = CParticleManager.prototype.SetParticleControlEnt;
+    globalThis.CSetParticleControlEnt = CParticleManager.prototype.SetParticleControlEnt;
     globalThis.CDestroyParticle = CParticleManager.prototype.DestroyParticle;
 }

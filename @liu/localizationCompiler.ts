@@ -364,7 +364,7 @@ export class LocalizationCompiler {
                 }
                 if (facet.related_talents) {
                     for (const relatedTalent of facet.related_talents) {
-                        const related_talent_string = `${relatedTalent.talent_key}_${facet.name}`;
+                        const related_talent_string = `${relatedTalent.talent_key}_facet_${facet.name}`;
                         tokens[related_talent_string] = facet.description;
                     }
                 }

@@ -6,7 +6,16 @@ enum GeneircParticleList {
 }
 
 /** 英雄特效 */
-enum HeroParticleList {}
+print('英雄特效初始化');
+enum HeroParticleList {
+    /** 死亡缠绕弹道*/
+    imba_abaddon_death_coil = 'particles/units/heroes/hero_abaddon/abaddon_death_coil.vpcf',
+    /**无光之盾*/
+    imba_abaddon_aphotic_shield = 'particles/units/heroes/hero_abaddon/abaddon_aphotic_shield.vpcf',
+    /**无光之盾击中 */
+    imba_abaddon_aphotic_shield_hit = 'particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_hit.vpcf',
+    imba_abaddon_borrowed_time = 'particles/units/heroes/hero_abaddon/abaddon_borrowed_time.vpcf',
+}
 
 /** 英雄饰品特效 */
 enum AvatarHeroParticleList {

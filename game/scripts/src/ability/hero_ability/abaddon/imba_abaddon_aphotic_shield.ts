@@ -1,12 +1,9 @@
-enum HeroParticleList {
-    imba_abaddon_aphotic_shield = 'particles/units/heroes/hero_abaddon/abaddon_aphotic_shield.vpcf',
-    imba_abaddon_aphotic_shield_hit = 'particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_hit.vpcf',
-}
-
 @registerAbility()
-class imba_abaddon_aphotic_shield extends BaseAbility {
+export class imba_abaddon_aphotic_shield extends BaseAbility {
     OnSpellStart(): void {
-        print('imba_abaddon_aphotic_shield');
+        if (this.target.HasModifier('modifier_imba_abaddon_aphotic_shield')) {
+            this.target.FindModifierByName('modifier_imba_abaddon_aphotic_shield')?.Destroy();
+        }
         this.target.AddModifier(this.caster, this, modifier_imba_abaddon_aphotic_shield, {
             duration: this.GetSpecialValue('imba_abaddon_aphotic_shield', 'duration'),
         });
@@ -25,24 +22,19 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
     }
 
     OnCreated(params: ModifierParams): void {
-        if (!IsServer()) return;
-        const pfx = CParticleManager.CreateParticle({
+        if (!IsServer() || !CIsValid(this.ability)) return;
+        const pfx = CCreateParticle({
             particleName: HeroParticleList.imba_abaddon_aphotic_shield,
             particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
             owner: this.parent,
             modifier: this,
         });
         const ex = this.parent.GetModelScale() * 100;
-        CParticleManager.SetParticleControlEnt(
-            pfx,
-            0,
-            this.parent,
-            ParticleAttachment.ABSORIGIN_FOLLOW,
-            'attach_hitloc',
-            this.parent.GetAbsOrigin(),
-            false
-        );
-        CParticleManager.SetParticleControl(pfx, 1, Vector(ex, 0, 0));
+        CSetParticleControlEnt(pfx, 0, this.parent, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), true);
+        CSetParticleControl(pfx, 1, Vector(ex, 0, 0));
+        CSetParticleControl(pfx, 2, this.parent.GetAbsOrigin());
+        CSetParticleControl(pfx, 4, this.parent.GetAbsOrigin());
+        CSetParticleControl(pfx, 5, this.parent.GetAbsOrigin());
     }
 
     _shield_value = [ModifierFunctions.AddParentShieldData];
@@ -60,7 +52,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
     }
 
     OnDestroy(): void {
-        if (!IsServer()) return;
+        if (!IsServer() || !CIsValid(this.ability)) return;
         const radius = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'radius');
         const enemy = CFindUnitsInRadius({
             team: this.caster.GetTeamNumber(),

@@ -29,17 +29,17 @@
 			"target_damage"
 			{
 				"value"		"100 175 250 325"
-				"special_bonus_unique_abaddon_2"		"40"
+				"special_bonus_imba_abaddon_2"		"40"
 			}
 			"heal_amount"
 			{
 				"value"		"100 175 250 325"
-				"special_bonus_unique_abaddon_2"		"40"
+				"special_bonus_imba_abaddon_2"		"40"
 			}
 			"effect_radius"
 			{
 				"value"		"0"
-				"special_bonus_unique_abaddon_4"		"400"
+				"special_bonus_imba_abaddon_4"		"400"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -67,40 +67,40 @@
 			"AbilityCooldown"
 			{
 				"value"		"12 10 8 6"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"2"
+				"special_bonus_facet_abaddon_facets_imba_1"		"2"
 			}
 			"duration"
 			{
 				"value"		"15"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"2"
+				"special_bonus_facet_abaddon_facets_imba_1"		"2"
 			}
 			"radius"
 			{
 				"value"		"675"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"=0"
+				"special_bonus_facet_abaddon_facets_imba_1"		"=0"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage_absorb"
 			{
 				"value"		"120 150 180 210"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"=170 =210 =250 =290"
-				"special_bonus_unique_abaddon"		"100"
+				"special_bonus_facet_abaddon_facets_imba_1"		"=170 =210 =250 =290"
+				"special_bonus_imba_abaddon"		"100"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 			}
 			"regen"
 			{
 				"value"		"0"
-				"special_bonus_unique_abaddon_7"		"15"
+				"special_bonus_imba_abaddon_7"		"15"
 			}
 			"absorb_to_damage"
 			{
 				"value"		"0"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"75"
+				"special_bonus_facet_abaddon_facets_imba_1"		"75"
 			}
 			"absorb_damage_aoe"
 			{
 				"value"		"0"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"675"
+				"special_bonus_facet_abaddon_facets_imba_1"		"675"
 				"affected_by_aoe_increase"		"1"
 			}
 		}

@@ -2,14 +2,26 @@
 // 导出的预载入方法，用来给addon_game_mode.ts调用
 export default function Precache(context: CScriptPrecacheContext) {
     // 需要预载的所有资源
-    precacheResource(
-        [
-            // '***.vpcf',
-            // 'soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts',
-            // '***.vmdl',
-        ],
-        context
-    );
+    const resourceList: string[] = [];
+    const allParticleLists = [
+        GeneircParticleList,
+        HeroParticleList,
+        AvatarHeroParticleList,
+        ItemParticleList,
+        AvatarItemParticleList,
+        UnitParticleList,
+    ];
+    print(`[Precache] Start precache...`);
+    for (const list of allParticleLists) {
+        for (const key in list) {
+            if (list.hasOwnProperty(key)) {
+                print(`[Precache] Precaching resource: ${list[key]}`);
+                resourceList.push(list[key]);
+            }
+        }
+    }
+    print(`[Precache] Precaching ${resourceList.length} resources...`);
+    precacheResource(resourceList, context);
     // 需要预载入的kv文件，会自动解析KV文件中的所有vpcf资源等等
     precacheEveryResourceInKV(
         [

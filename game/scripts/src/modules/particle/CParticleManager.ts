@@ -4,7 +4,7 @@ declare global {
     var CParticleManager: CParticleManager;
     var CCreateParticle: CParticleManager['CreateParticle'];
     var CSetParticleControl: CParticleManager['SetParticleControl'];
-    var SetParticleControlEnt: CParticleManager['SetParticleControlEnt'];
+    var CSetParticleControlEnt: CParticleManager['SetParticleControlEnt'];
     var CDestroyParticle: CParticleManager['DestroyParticle'];
 }
 
@@ -27,15 +27,15 @@ export class CParticleManager {
             ParticleManager.SetParticleShouldCheckFoW(particleID, data.extraData.CheckFoW);
         }
         if (data.modifier) {
-            data.modifier['AddParticle_all_particle'] = data.modifier['AddParticle_all_particle'] || [];
-            data.modifier['AddParticle_all_particle'].push(particleID);
+            (data.modifier['AddParticle_all_particle'] as ParticleID[]) = (data.modifier['AddParticle_all_particle'] as ParticleID[]) || [];
+            (data.modifier['AddParticle_all_particle'] as ParticleID[]).push(particleID);
         }
         const duration = data.extraData?.duration ?? 60;
         Timers.CreateTimer(duration, () => {
-            ParticleManager.DestroyParticle(particleID, data.extraData.immediate);
+            ParticleManager.DestroyParticle(particleID, data.extraData?.immediate ?? false);
             ParticleManager.ReleaseParticleIndex(particleID);
-            if (data.extraData.endCallback) {
-                CSafelyCall(() => data.extraData.endCallback());
+            if (data.extraData?.endCallback) {
+                CSafelyCall(() => data.extraData?.endCallback());
             }
             return undefined;
         });
@@ -59,8 +59,8 @@ export class CParticleManager {
         ParticleManager.SetParticleControlEnt(particle, controlPoint, unit, particleAttach, attachment, offset, lockOrientation);
     }
 
-    DestroyParticle(particleID: ParticleID, immediate: boolean): void {
-        ParticleManager.DestroyParticle(particleID, immediate);
+    DestroyParticle(particleID: ParticleID, immediate?: boolean): void {
+        ParticleManager.DestroyParticle(particleID, immediate ?? false);
         ParticleManager.ReleaseParticleIndex(particleID);
     }
 }

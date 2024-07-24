@@ -7,7 +7,7 @@
     "imba_life_stealer_open_wounds"
 	{   
         "BaseClass"                     "ability_lua"
-		"ScriptFile"	"ability/hero_ability/test/imba_life_stealer_open_wounds"
+		"ScriptFile"	"ability/test/imba_life_stealer_open_wounds"
         "AbilityTextureName"	"life_stealer_open_wounds"
 		// General
 		//-------------------------------------------------------------------------------------------------------------

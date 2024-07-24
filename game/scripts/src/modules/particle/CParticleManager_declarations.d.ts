@@ -4,7 +4,7 @@ interface CParticleData {
     /** 附着点 */
     particleAttach: ParticleAttachment;
     /** 拥有者 */
-    owner?: CBaseEntity | undefined;
+    owner: CBaseEntity | undefined;
     /** 针对播放对象(玩家) */
     player?: CDOTAPlayerController;
     /** 针对播放对象(队伍) */
