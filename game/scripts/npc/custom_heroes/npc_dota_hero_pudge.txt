@@ -233,37 +233,37 @@
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
-	"special_bonus_imba_pudge_1"
+	"special_bonus_unique_imba_pudge_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"pudge_flesh_heap"
 	}
-	"special_bonus_imba_pudge_3"
+	"special_bonus_unique_imba_pudge_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"pudge_dismember"
 	}
-	"special_bonus_imba_pudge_4"
+	"special_bonus_unique_imba_pudge_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_pudge_5"
+	"special_bonus_unique_imba_pudge_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_pudge_6"
+	"special_bonus_unique_imba_pudge_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"pudge_dismember"
 	}
-	"special_bonus_imba_pudge_7"
+	"special_bonus_unique_imba_pudge_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

@@ -259,37 +259,37 @@
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 	}
-	"special_bonus_imba_tidehunter"
+	"special_bonus_unique_imba_tidehunter"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tidehunter_2"
+	"special_bonus_unique_imba_tidehunter_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tidehunter_3"
+	"special_bonus_unique_imba_tidehunter_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tidehunter_5"
+	"special_bonus_unique_imba_tidehunter_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tidehunter_7"
+	"special_bonus_unique_imba_tidehunter_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tidehunter_8"
+	"special_bonus_unique_imba_tidehunter_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -302,13 +302,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_tidehunter_9"
+	"special_bonus_unique_imba_tidehunter_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tidehunter_10"
+	"special_bonus_unique_imba_tidehunter_10"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

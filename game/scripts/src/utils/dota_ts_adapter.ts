@@ -23,7 +23,10 @@ class BaseModifier {
     readonly ability: CDOTABaseAbility;
     /** buff拥有者 */
     readonly parent: CDOTA_BaseNPC;
-    readonly AddParticle_all_particle: ParticleID[] = [];
+    readonly AddParticle_all_particle: ParticleID[];
+
+    /** 禁止在onrefresh中调用oncreated */
+    readonly _ignore_onrefresh_oncreated: boolean;
     public static apply<T extends typeof BaseModifier>(
         this: T,
         target: CDOTA_BaseNPC,
@@ -42,7 +45,7 @@ class BaseModifier {
         target.RemoveModifierByName(this.name);
     }
 
-    _ignore_immune_debuff = false;
+    _ignore_immune_debuff: boolean;
     _origin_ability_name: string;
     dispatcherIDList: Map<EntityIndex, dispatcher_id[]>;
     _originalGetAbility: () => CDOTABaseAbility | undefined;
@@ -51,7 +54,7 @@ class BaseModifier {
         value: Partial<ModifierFunctions[]>;
     };
 
-    funs: Partial<ModifierFunctions[]> = [];
+    // funs: Partial<ModifierFunctions[]> = [];
 
     // GetTexture(): string {
     //     const name = CustomNetTables.GetTableValue('custom_ability_textur', this.GetCaster().GetEntityIndex().toString()).name;
@@ -136,15 +139,20 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     env[name] = {};
 
     toDotaClassInstance(env[name], modifier);
-    const originalOnCreated = (env[name] as CDOTA_Modifier_Lua).OnCreated;
+    const originalGetModifier = env[name] as CDOTA_Modifier_Lua;
+
+    const originalOnCreated = originalGetModifier.OnCreated;
     env[name].OnCreated = function (parameters: any) {
+        if (this._ignore_onrefresh_oncreated) {
+            DebugError('禁止在onrefresh中调用oncreated');
+        }
         //传入无视减益免疫参数
         if (parameters._ignore_debuff_immunity == 1) {
             DebugPrint('使用的无视减益免疫参数');
-            env[name]._originalGetAbility = (env[name] as CDOTA_Modifier_Lua).GetAbility;
+            env[name]._originalGetAbility = originalGetModifier.GetAbility;
             env[name]._ignore_immune_debuff = true;
             env[name]._origin_ability_name = parameters._origin_ability;
-            (env[name] as CDOTA_Modifier_Lua).GetAbility = function (this: CDOTA_Modifier_Lua): CDOTABaseAbility | undefined {
+            originalGetModifier.GetAbility = function (this: CDOTA_Modifier_Lua): CDOTABaseAbility | undefined {
                 const origin_ability = this.GetCaster()?.FindAbilityByName(env[name]._origin_ability_name);
                 if (!origin_ability) DebugError('无法找到原始技能');
                 DebugPrint('使用的是马甲无视减益免疫技能,重写getability,得到原始技能');
@@ -168,7 +176,6 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
         this.parent = this.GetParent();
         this.____constructor();
         if (!IsServer()) return;
-
         if (COnCreated) {
             COnCreated.call(this, this);
         }
@@ -177,7 +184,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
         }
     };
 
-    const originalOnDestroy = (env[name] as CDOTA_Modifier_Lua).OnDestroy;
+    const originalOnDestroy = originalGetModifier.OnDestroy;
     env[name].OnDestroy = function (parameters: any) {
         if (!IsServer()) return;
         if (COnDestroy) {
@@ -193,10 +200,20 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
             });
         }
     };
+    const originalOnRefresh = originalGetModifier.OnRefresh;
+    env[name].OnRefresh = function (parameters: any) {
+        this._ignore_onrefresh_oncreated = true;
+        if (!IsServer()) return;
+        // this.____constructor();
+        if (originalOnRefresh) {
+            originalOnRefresh.call(this, parameters);
+        }
+    };
 
     if ('GetModifierConfig' in env[name]) {
-        const originalGetModifier = env[name] as CDOTA_Modifier_Lua;
-        if (!originalGetModifier.GetModifierConfig || !originalGetModifier.GetModifierConfig()) return;
+        if (!originalGetModifier.GetModifierConfig || !originalGetModifier.GetModifierConfig()) {
+            return;
+        }
         const originalGetModifierConfig = originalGetModifier.GetModifierConfig() as ModifierConfig;
         if (originalGetModifierConfig.is_debuff) {
             originalGetModifier.IsDebuff = function (): boolean {
@@ -210,12 +227,12 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
         }
         if (originalGetModifierConfig.not_purgable) {
             originalGetModifier.IsPurgable = function (): boolean {
-                return originalGetModifierConfig.not_purgable;
+                return !originalGetModifierConfig.not_purgable;
             };
         }
         if (originalGetModifierConfig.not_purgable_exception) {
             originalGetModifier.IsPurgeException = function (): boolean {
-                return originalGetModifierConfig.not_purgable_exception;
+                return !originalGetModifierConfig.not_purgable_exception;
             };
         }
         if (originalGetModifierConfig.allow_illusion_duplicate) {
@@ -225,18 +242,42 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
         }
         if (originalGetModifierConfig.not_destroy_on_expire) {
             originalGetModifier.DestroyOnExpire = function (): boolean {
-                return originalGetModifierConfig.not_destroy_on_expire;
+                return !originalGetModifierConfig.not_destroy_on_expire;
             };
         }
         if (originalGetModifierConfig.not_remove_on_death) {
             originalGetModifier.RemoveOnDeath = function (): boolean {
-                return originalGetModifierConfig.not_remove_on_death;
+                return !originalGetModifierConfig.not_remove_on_death;
             };
         }
         if (originalGetModifierConfig.is_multiple) {
             originalGetModifier.GetAttributes = function (): number {
                 return originalGetModifierConfig.is_multiple ? ModifierAttribute.MULTIPLE : ModifierAttribute.NONE;
             };
+        }
+    } else {
+        if (!originalGetModifier.GetModifierConfig || !originalGetModifier.GetModifierConfig()) {
+            //此modifier为技能的默认modifier  默认不可驱散 死亡不移除 不显示
+            DebugWarning('未设置modifier配置 默认不可驱散 死亡不移除 不显示', name);
+            if (
+                originalGetModifier.GetAbility &&
+                originalGetModifier.GetAbility() &&
+                originalGetModifier.GetAbility().GetIntrinsicModifierName() === name
+            ) {
+                originalGetModifier.IsHidden = function (): boolean {
+                    return true;
+                };
+                originalGetModifier.IsPurgable = function (): boolean {
+                    return false;
+                };
+                originalGetModifier.IsPurgeException = function (): boolean {
+                    return false;
+                };
+                originalGetModifier.RemoveOnDeath = function (): boolean {
+                    return false;
+                };
+            }
+            return;
         }
     }
     let type = LuaModifierMotionType.NONE;
@@ -263,7 +304,7 @@ const COnCreated = (modifier: BaseModifier) => {
     const parent_index = modifier.GetParent().entindex();
     const functions = modifier.CustomDeclareFunctions();
     if (functions.length > 0) {
-        modifier.dispatcherIDList = new Map();
+        modifier.dispatcherIDList = modifier.dispatcherIDList ?? new Map();
         if (!modifier.dispatcherIDList.has(parent_index)) {
             modifier.dispatcherIDList.set(parent_index, []);
         }

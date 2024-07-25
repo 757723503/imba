@@ -382,24 +382,24 @@
 			"debuff_duration"		"2"
 		}
 	}
-	"special_bonus_imba_tinker"
+	"special_bonus_unique_imba_tinker"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tinker_4"
+	"special_bonus_unique_imba_tinker_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_tinker_5"
+	"special_bonus_unique_imba_tinker_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tinker_7"
+	"special_bonus_unique_imba_tinker_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -412,19 +412,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_tinker_rearm_magic_resistance"
+	"special_bonus_unique_imba_tinker_rearm_magic_resistance"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tinker_march_duration"
+	"special_bonus_unique_imba_tinker_march_duration"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tinker_defense_matrix_status_resistance"
+	"special_bonus_unique_imba_tinker_defense_matrix_status_resistance"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

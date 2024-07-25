@@ -235,19 +235,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_riki_1"
+	"special_bonus_unique_imba_riki_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_riki_2"
+	"special_bonus_unique_imba_riki_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"riki_tricks_of_the_trade"
 	}
-	"special_bonus_imba_riki_3"
+	"special_bonus_unique_imba_riki_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -260,23 +260,23 @@
 			}
 		}
 	}
-	"special_bonus_imba_riki_5"
+	"special_bonus_unique_imba_riki_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"riki_tricks_of_the_trade"
 	}
-	"special_bonus_imba_riki_6"
+	"special_bonus_unique_imba_riki_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_riki_7"
+	"special_bonus_unique_imba_riki_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_riki_8"
+	"special_bonus_unique_imba_riki_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -289,7 +289,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_riki_9"
+	"special_bonus_unique_imba_riki_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

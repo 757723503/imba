@@ -286,37 +286,37 @@
 			}
 		}
 	}
-	"special_bonus_imba_mars_spear_bonus_damage"
+	"special_bonus_unique_imba_mars_spear_bonus_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_mars_gods_rebuke_extra_crit"
+	"special_bonus_unique_imba_mars_gods_rebuke_extra_crit"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_mars_bulwark_redirect_chance"
+	"special_bonus_unique_imba_mars_bulwark_redirect_chance"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_mars_rebuke_cooldown"
+	"special_bonus_unique_imba_mars_rebuke_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_mars_spear_stun_duration"
+	"special_bonus_unique_imba_mars_spear_stun_duration"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_mars_arena_of_blood_hp_regen"
+	"special_bonus_unique_imba_mars_arena_of_blood_hp_regen"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -329,19 +329,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_mars_bulwark_damage_reduction"
+	"special_bonus_unique_imba_mars_bulwark_damage_reduction"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_mars_rebuke_radius"
+	"special_bonus_unique_imba_mars_rebuke_radius"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_mars_bulwark_cooldown"
+	"special_bonus_unique_imba_mars_bulwark_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

@@ -246,25 +246,25 @@
 			"blade_dance_lifesteal_consumed_tooltip"		"15"
 		}
 	}
-	"special_bonus_imba_juggernaut_2"
+	"special_bonus_unique_imba_juggernaut_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_juggernaut_3"
+	"special_bonus_unique_imba_juggernaut_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_juggernaut_4"
+	"special_bonus_unique_imba_juggernaut_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_juggernaut_5"
+	"special_bonus_unique_imba_juggernaut_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -277,26 +277,26 @@
 			}
 		}
 	}
-	"special_bonus_imba_juggernaut_blade_dance_lifesteal"
+	"special_bonus_unique_imba_juggernaut_blade_dance_lifesteal"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 		"ad_linked_abilities"		"juggernaut_blade_dance"
 	}
-	"special_bonus_imba_juggernaut_omnislash_duration"
+	"special_bonus_unique_imba_juggernaut_omnislash_duration"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_juggernaut_blade_fury_cooldown"
+	"special_bonus_unique_imba_juggernaut_blade_fury_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_juggernaut_blade_fury_movespeed"
+	"special_bonus_unique_imba_juggernaut_blade_fury_movespeed"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

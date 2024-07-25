@@ -289,13 +289,13 @@
 			"bonus_hp_tooltip"		"1"
 		}
 	}
-	"special_bonus_imba_marci_grapple_stun_duration"
+	"special_bonus_unique_imba_marci_grapple_stun_duration"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_marci_guardian_lifesteal"
+	"special_bonus_unique_imba_marci_guardian_lifesteal"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -308,37 +308,37 @@
 			}
 		}
 	}
-	"special_bonus_imba_marci_lunge_range"
+	"special_bonus_unique_imba_marci_lunge_range"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_marci_unleash_speed"
+	"special_bonus_unique_imba_marci_unleash_speed"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_marci_grapple_damage"
+	"special_bonus_unique_imba_marci_grapple_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_marci_unleash_extend_duration"
+	"special_bonus_unique_imba_marci_unleash_extend_duration"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_marci_lunge_movespeed"
+	"special_bonus_unique_imba_marci_lunge_movespeed"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_marci_guardian_damage"
+	"special_bonus_unique_imba_marci_guardian_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

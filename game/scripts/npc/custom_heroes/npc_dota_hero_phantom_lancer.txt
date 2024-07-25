@@ -207,13 +207,13 @@
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
-	"special_bonus_imba_phantom_lancer"
+	"special_bonus_unique_imba_phantom_lancer"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_phantom_lancer_2"
+	"special_bonus_unique_imba_phantom_lancer_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -226,7 +226,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_phantom_lancer_4"
+	"special_bonus_unique_imba_phantom_lancer_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -239,7 +239,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_phantom_lancer_5"
+	"special_bonus_unique_imba_phantom_lancer_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -252,19 +252,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_phantom_lancer_6"
+	"special_bonus_unique_imba_phantom_lancer_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_phantom_lancer_lance_damage"
+	"special_bonus_unique_imba_phantom_lancer_lance_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_phantom_lancer_phantom_rush_agility"
+	"special_bonus_unique_imba_phantom_lancer_phantom_rush_agility"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

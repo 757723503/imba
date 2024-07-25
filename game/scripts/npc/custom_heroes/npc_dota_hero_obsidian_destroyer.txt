@@ -217,25 +217,25 @@
 			}
 		}
 	}
-	"special_bonus_imba_outworld_devourer"
+	"special_bonus_unique_imba_outworld_devourer"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_outworld_devourer_3"
+	"special_bonus_unique_imba_outworld_devourer_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_outworld_devourer_4"
+	"special_bonus_unique_imba_outworld_devourer_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_outworld_devourer_5"
+	"special_bonus_unique_imba_outworld_devourer_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -248,7 +248,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_outworld_devourer_astral_castrange"
+	"special_bonus_unique_imba_outworld_devourer_astral_castrange"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

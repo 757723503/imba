@@ -328,49 +328,49 @@
 			"xp_bounty"		"20 30 40"
 		}
 	}
-	"special_bonus_imba_underlord"
+	"special_bonus_unique_imba_underlord"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_pit_of_malice"
 	}
-	"special_bonus_imba_underlord_3"
+	"special_bonus_unique_imba_underlord_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_atrophy_aura"
 	}
-	"special_bonus_imba_underlord_4"
+	"special_bonus_unique_imba_underlord_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_firestorm"
 	}
-	"special_bonus_imba_underlord_5"
+	"special_bonus_unique_imba_underlord_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_firestorm"
 	}
-	"special_bonus_imba_underlord_6"
+	"special_bonus_unique_imba_underlord_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_pit_of_malice"
 	}
-	"special_bonus_imba_underlord_7"
+	"special_bonus_unique_imba_underlord_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_underlord_8"
+	"special_bonus_unique_imba_underlord_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_firestorm"
 	}
-	"special_bonus_imba_underlord_9"
+	"special_bonus_unique_imba_underlord_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

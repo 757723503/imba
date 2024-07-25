@@ -277,12 +277,12 @@
 			"damage_per_armor"		"0.3"
 		}
 	}
-	"special_bonus_imba_clockwerk"
+	"special_bonus_unique_imba_clockwerk"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_clockwerk_3"
+	"special_bonus_unique_imba_clockwerk_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -295,7 +295,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_clockwerk_4"
+	"special_bonus_unique_imba_clockwerk_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -308,32 +308,32 @@
 			}
 		}
 	}
-	"special_bonus_imba_clockwerk_5"
+	"special_bonus_unique_imba_clockwerk_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_clockwerk_6"
+	"special_bonus_unique_imba_clockwerk_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 		"ad_linked_abilities"		"rattletrap_power_cogs"
 	}
-	"special_bonus_imba_clockwerk_7"
+	"special_bonus_unique_imba_clockwerk_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_clockwerk_9"
+	"special_bonus_unique_imba_clockwerk_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_clockwerk_flare_damage"
+	"special_bonus_unique_imba_clockwerk_flare_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

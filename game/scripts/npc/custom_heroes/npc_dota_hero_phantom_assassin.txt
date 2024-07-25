@@ -221,7 +221,7 @@
 			"duration"		"6 8 10"
 		}
 	}
-	"special_bonus_imba_phantom_assassin"
+	"special_bonus_unique_imba_phantom_assassin"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -233,40 +233,40 @@
 			}
 		}
 	}
-	"special_bonus_imba_phantom_assassin_2"
+	"special_bonus_unique_imba_phantom_assassin_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 		"ad_linked_abilities"		"phantom_assassin_coup_de_grace"
 	}
-	"special_bonus_imba_phantom_assassin_3"
+	"special_bonus_unique_imba_phantom_assassin_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_phantom_assassin_4"
+	"special_bonus_unique_imba_phantom_assassin_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_phantom_assassin_5"
+	"special_bonus_unique_imba_phantom_assassin_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_phantom_assassin_6"
+	"special_bonus_unique_imba_phantom_assassin_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_phantom_assassin_7"
+	"special_bonus_unique_imba_phantom_assassin_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_phantom_assassin_strike_aspd"
+	"special_bonus_unique_imba_phantom_assassin_strike_aspd"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

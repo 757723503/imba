@@ -279,18 +279,18 @@
 			"secondary_stat_bonus_pct"		"25"
 		}
 	}
-	"special_bonus_imba_void_spirit_1"
+	"special_bonus_unique_imba_void_spirit_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_void_spirit_2"
+	"special_bonus_unique_imba_void_spirit_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_void_spirit_3"
+	"special_bonus_unique_imba_void_spirit_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -303,7 +303,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_void_spirit_4"
+	"special_bonus_unique_imba_void_spirit_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -316,7 +316,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_void_spirit_7"
+	"special_bonus_unique_imba_void_spirit_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -330,7 +330,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_void_spirit_8"
+	"special_bonus_unique_imba_void_spirit_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -343,7 +343,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_void_spirit_dissimilate_outerring"
+	"special_bonus_unique_imba_void_spirit_dissimilate_outerring"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

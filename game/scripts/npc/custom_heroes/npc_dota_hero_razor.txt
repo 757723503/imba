@@ -217,19 +217,19 @@
 			"spell_amp_mult"		"1"
 		}
 	}
-	"special_bonus_imba_razor"
+	"special_bonus_unique_imba_razor"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_razor_2"
+	"special_bonus_unique_imba_razor_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_razor_3"
+	"special_bonus_unique_imba_razor_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -242,7 +242,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_razor_4"
+	"special_bonus_unique_imba_razor_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -255,19 +255,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_razor_plasmafield_second_ring"
+	"special_bonus_unique_imba_razor_plasmafield_second_ring"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_razor_static_link_aspd"
+	"special_bonus_unique_imba_razor_static_link_aspd"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_razor_storm_surge_damage_and_slow"
+	"special_bonus_unique_imba_razor_storm_surge_damage_and_slow"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

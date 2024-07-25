@@ -257,7 +257,7 @@
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_INVALID"
 	}
-	"special_bonus_imba_windranger_2"
+	"special_bonus_unique_imba_windranger_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -270,13 +270,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_windranger_3"
+	"special_bonus_unique_imba_windranger_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"windrunner_powershot"
 	}
-	"special_bonus_imba_windranger_4"
+	"special_bonus_unique_imba_windranger_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -289,19 +289,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_windranger_6"
+	"special_bonus_unique_imba_windranger_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_windranger_8"
+	"special_bonus_unique_imba_windranger_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_windranger_9"
+	"special_bonus_unique_imba_windranger_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -314,13 +314,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_windranger_windrun_undispellable"
+	"special_bonus_unique_imba_windranger_windrun_undispellable"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_windranger_powershot_slow"
+	"special_bonus_unique_imba_windranger_powershot_slow"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

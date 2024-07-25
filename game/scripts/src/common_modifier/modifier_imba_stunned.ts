@@ -2,22 +2,13 @@
 // import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
 @registerModifier()
 export class modifier_imba_stunned extends BaseModifier {
-    constructor() {
-        super();
-        // const caster = this.GetCaster();
-        // for (let index = 0; index < 8; index++) {
-        //     const ability = caster.GetAbilityByIndex(index);
-        //     this.SetAbility() = ability;
-        // }
-        // DebugPrint('modifier_imba_stunned constructor');
-    }
-
-    IsHidden(): boolean {
-        return false;
-    }
-
-    IsDebuff(): boolean {
-        return false;
+    GetModifierConfig(): ModifierConfig {
+        return {
+            is_hidden: false,
+            is_debuff: false,
+            not_purgable: false,
+            not_purgable_exception: false,
+        };
     }
 
     GetAttributes(): ModifierAttribute {

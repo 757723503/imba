@@ -272,7 +272,7 @@
 			"damage_threshold"		"100"
 		}
 	}
-	"special_bonus_imba_nyx"
+	"special_bonus_unique_imba_nyx"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -285,25 +285,25 @@
 			}
 		}
 	}
-	"special_bonus_imba_nyx_2"
+	"special_bonus_unique_imba_nyx_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_nyx_4"
+	"special_bonus_unique_imba_nyx_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_nyx_5"
+	"special_bonus_unique_imba_nyx_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"nyx_assassin_jolt"
 	}
-	"special_bonus_imba_nyx_6"
+	"special_bonus_unique_imba_nyx_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -316,25 +316,25 @@
 			}
 		}
 	}
-	"special_bonus_imba_nyx_carapace_reflect_duration"
+	"special_bonus_unique_imba_nyx_carapace_reflect_duration"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_nyx_vendetta_damage"
+	"special_bonus_unique_imba_nyx_vendetta_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_nyx_vendetta_cd_manacost"
+	"special_bonus_unique_imba_nyx_vendetta_cd_manacost"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_nyx_jolt_cooldown"
+	"special_bonus_unique_imba_nyx_jolt_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

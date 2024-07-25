@@ -369,7 +369,7 @@
 			"respawn_delay"		"2"
 		}
 	}
-	"special_bonus_imba_undying"
+	"special_bonus_unique_imba_undying"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -382,7 +382,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_undying_2"
+	"special_bonus_unique_imba_undying_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -395,7 +395,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_undying_3"
+	"special_bonus_unique_imba_undying_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -408,13 +408,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_undying_4"
+	"special_bonus_unique_imba_undying_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_undying_5"
+	"special_bonus_unique_imba_undying_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -427,13 +427,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_undying_6"
+	"special_bonus_unique_imba_undying_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_undying_7"
+	"special_bonus_unique_imba_undying_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -443,7 +443,7 @@
 			"zombie_master_flesh_golem_cooldown"		"20"
 		}
 	}
-	"special_bonus_imba_undying_8"
+	"special_bonus_unique_imba_undying_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

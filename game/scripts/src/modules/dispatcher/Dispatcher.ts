@@ -96,7 +96,7 @@ export class CDispatcher {
                                 callback(params);
                             });
                         } else {
-                            print('callback is null');
+                            DebugWarning('callback is null', id, eventName, EntIndexToHScript(entityIndex)?.GetName(), params);
                             idSet.delete(id);
                         }
                     }

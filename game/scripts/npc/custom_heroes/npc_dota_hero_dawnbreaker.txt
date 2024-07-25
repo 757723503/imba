@@ -299,44 +299,44 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 	}
-	"special_bonus_imba_dawnbreaker_solar_guardian_radius"
+	"special_bonus_unique_imba_dawnbreaker_solar_guardian_radius"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_dawnbreaker_fire_wreath_cooldown"
+	"special_bonus_unique_imba_dawnbreaker_fire_wreath_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 		"ad_linked_abilities"		"dawnbreaker_fire_wreath"
 	}
-	"special_bonus_imba_dawnbreaker_celestial_hammer_cast_range"
+	"special_bonus_unique_imba_dawnbreaker_celestial_hammer_cast_range"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_dawnbreaker_luminosity_crit"
+	"special_bonus_unique_imba_dawnbreaker_luminosity_crit"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_dawnbreaker_solar_guardian_cooldown"
+	"special_bonus_unique_imba_dawnbreaker_solar_guardian_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_dawnbreaker_luminosity_attack_count"
+	"special_bonus_unique_imba_dawnbreaker_luminosity_attack_count"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_dawnbreaker_fire_wreath_swipe"
+	"special_bonus_unique_imba_dawnbreaker_fire_wreath_swipe"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -349,7 +349,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_dawnbreaker_celestial_hammer_slow"
+	"special_bonus_unique_imba_dawnbreaker_celestial_hammer_slow"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

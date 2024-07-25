@@ -265,49 +265,49 @@
 			"night_cast_range_pct"		"20"
 		}
 	}
-	"special_bonus_imba_luna_1"
+	"special_bonus_unique_imba_luna_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lucent_beam"
 	}
-	"special_bonus_imba_luna_2"
+	"special_bonus_unique_imba_luna_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lucent_beam"
 	}
-	"special_bonus_imba_luna_3"
+	"special_bonus_unique_imba_luna_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lunar_blessing"
 	}
-	"special_bonus_imba_luna_4"
+	"special_bonus_unique_imba_luna_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lucent_beam"
 	}
-	"special_bonus_imba_luna_5"
+	"special_bonus_unique_imba_luna_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_eclipse"
 	}
-	"special_bonus_imba_luna_6"
+	"special_bonus_unique_imba_luna_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_eclipse"
 	}
-	"special_bonus_imba_luna_7"
+	"special_bonus_unique_imba_luna_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_moon_glaive"
 	}
-	"special_bonus_imba_luna_8"
+	"special_bonus_unique_imba_luna_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

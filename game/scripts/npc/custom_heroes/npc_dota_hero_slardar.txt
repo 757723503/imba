@@ -239,17 +239,17 @@
 			}
 		}
 	}
-	"special_bonus_imba_slardar"
+	"special_bonus_unique_imba_slardar"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_slardar_2"
+	"special_bonus_unique_imba_slardar_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_slardar_3"
+	"special_bonus_unique_imba_slardar_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -262,7 +262,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_slardar_4"
+	"special_bonus_unique_imba_slardar_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -275,19 +275,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_slardar_5"
+	"special_bonus_unique_imba_slardar_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"slardar_amplify_damage"
 	}
-	"special_bonus_imba_slardar_7"
+	"special_bonus_unique_imba_slardar_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_slardar_slithereen_crush_stun"
+	"special_bonus_unique_imba_slardar_slithereen_crush_stun"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

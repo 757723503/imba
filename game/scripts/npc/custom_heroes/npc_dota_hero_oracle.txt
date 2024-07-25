@@ -248,13 +248,13 @@
 		"MaxLevel"		"1"
 		"Innate"		"1"
 	}
-	"special_bonus_imba_oracle"
+	"special_bonus_unique_imba_oracle"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_oracle_2"
+	"special_bonus_unique_imba_oracle_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -267,7 +267,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_oracle_5"
+	"special_bonus_unique_imba_oracle_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -280,13 +280,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_oracle_6"
+	"special_bonus_unique_imba_oracle_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_oracle_7"
+	"special_bonus_unique_imba_oracle_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -299,7 +299,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_oracle_8"
+	"special_bonus_unique_imba_oracle_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -312,13 +312,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_oracle_9"
+	"special_bonus_unique_imba_oracle_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_oracle_damage_per_purge"
+	"special_bonus_unique_imba_oracle_damage_per_purge"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

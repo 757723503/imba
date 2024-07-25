@@ -368,32 +368,32 @@
 			"armor_duration"		"5"
 		}
 	}
-	"special_bonus_imba_snapfire_1"
+	"special_bonus_unique_imba_snapfire_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_snapfire_2"
+	"special_bonus_unique_imba_snapfire_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 		"ad_linked_abilities"		"snapfire_lil_shredder"
 	}
-	"special_bonus_imba_snapfire_3"
+	"special_bonus_unique_imba_snapfire_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"snapfire_firesnap_cookie"
 	}
-	"special_bonus_imba_snapfire_5"
+	"special_bonus_unique_imba_snapfire_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"snapfire_firesnap_cookie"
 	}
-	"special_bonus_imba_snapfire_6"
+	"special_bonus_unique_imba_snapfire_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -406,13 +406,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_snapfire_7"
+	"special_bonus_unique_imba_snapfire_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_snapfire_8"
+	"special_bonus_unique_imba_snapfire_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -425,7 +425,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_snapfire_mortimer_kisses_impact_damage"
+	"special_bonus_unique_imba_snapfire_mortimer_kisses_impact_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

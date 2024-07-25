@@ -245,19 +245,19 @@
 			"bonus_channel_speed"		"1"
 		}
 	}
-	"special_bonus_imba_wisp"
+	"special_bonus_unique_imba_wisp"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_wisp_3"
+	"special_bonus_unique_imba_wisp_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"wisp_tether"
 	}
-	"special_bonus_imba_wisp_4"
+	"special_bonus_unique_imba_wisp_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -270,7 +270,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_wisp_6"
+	"special_bonus_unique_imba_wisp_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -283,7 +283,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_wisp_8"
+	"special_bonus_unique_imba_wisp_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -296,7 +296,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_wisp_9"
+	"special_bonus_unique_imba_wisp_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -309,13 +309,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_wisp_10"
+	"special_bonus_unique_imba_wisp_10"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"wisp_overcharge"
 	}
-	"special_bonus_imba_wisp_11"
+	"special_bonus_unique_imba_wisp_11"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

@@ -335,26 +335,26 @@
 			"attack_speed_penalty"		"75"
 		}
 	}
-	"special_bonus_imba_elder_titan"
+	"special_bonus_unique_imba_elder_titan"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"elder_titan_ancestral_spirit"
 	}
-	"special_bonus_imba_elder_titan_bonus_spirit_speed"
+	"special_bonus_unique_imba_elder_titan_bonus_spirit_speed"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 		"ad_linked_abilities"		"elder_titan_ancestral_spirit"
 	}
-	"special_bonus_imba_elder_titan_2"
+	"special_bonus_unique_imba_elder_titan_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_elder_titan_3"
+	"special_bonus_unique_imba_elder_titan_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -367,13 +367,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_elder_titan_4"
+	"special_bonus_unique_imba_elder_titan_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_elder_titan_5"
+	"special_bonus_unique_imba_elder_titan_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

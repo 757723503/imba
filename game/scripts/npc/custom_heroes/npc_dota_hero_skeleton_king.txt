@@ -220,19 +220,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_wraith_king_2"
+	"special_bonus_unique_imba_wraith_king_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_wraith_king_3"
+	"special_bonus_unique_imba_wraith_king_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_wraith_king_4"
+	"special_bonus_unique_imba_wraith_king_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -245,7 +245,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_wraith_king_10"
+	"special_bonus_unique_imba_wraith_king_10"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -258,7 +258,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_wraith_king_11"
+	"special_bonus_unique_imba_wraith_king_11"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

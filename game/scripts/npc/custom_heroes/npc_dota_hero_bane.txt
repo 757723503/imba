@@ -203,13 +203,13 @@
 		"MaxLevel"		"1"
 		"Innate"		"1"
 	}
-	"special_bonus_imba_bane_2"
+	"special_bonus_unique_imba_bane_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"bane_brain_sap"
 	}
-	"special_bonus_imba_bane_3"
+	"special_bonus_unique_imba_bane_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -222,19 +222,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_bane_5"
+	"special_bonus_unique_imba_bane_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"bane_nightmare"
 	}
-	"special_bonus_imba_bane_8"
+	"special_bonus_unique_imba_bane_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"bane_brain_sap"
 	}
-	"special_bonus_imba_bane_9"
+	"special_bonus_unique_imba_bane_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -247,13 +247,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_bane_10"
+	"special_bonus_unique_imba_bane_10"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_bane_11"
+	"special_bonus_unique_imba_bane_11"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

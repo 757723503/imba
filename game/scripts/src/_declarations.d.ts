@@ -44,6 +44,10 @@ declare global {
         CHeal(keys: CustomHeal): void;
         /**获得AOE增加 */
         GetAOEIncrease(): number;
+        /**判断魔晶 */
+        HasShard(): boolean;
+        /**自定义驱散 */
+        CPurge(keys: PurgeData): void;
         /**
          * @deprecated
          */
@@ -61,6 +65,10 @@ declare global {
          * @deprecated
          */
         Heal(amount: number, inflictor: CDOTABaseAbility | undefined): void;
+        /**
+         * @deprecated
+         */
+        Purge(removePositiveBuffs: boolean, removeDebuffs: boolean, frameOnly: boolean, removeStuns: boolean, removeExceptions: boolean): void;
         /**
          * @deprecated
          */
@@ -354,6 +362,19 @@ declare global {
         typeFilter: UnitTargetType;
         flagFilter: UnitTargetFlags;
         order: FindOrder;
+    }
+    interface PurgeData {
+        // removePositiveBuffs: boolean,
+        // removeDebuffs: boolean,
+        // frameOnly: boolean,
+        // removeStuns: boolean,
+        // removeExceptions: boolean,
+        /**移除正面buff */
+        removePositiveBuffs: boolean;
+        /**移除负面buff */
+        removeDebuffs: boolean;
+        /**强驱散buff */
+        removeExceptions: boolean;
     }
     // /** 通用特效 */
     // var GeneircParticleList: { [key: string]: string };

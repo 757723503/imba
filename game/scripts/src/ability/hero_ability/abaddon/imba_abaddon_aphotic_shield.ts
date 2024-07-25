@@ -1,9 +1,15 @@
 @registerAbility()
 export class imba_abaddon_aphotic_shield extends BaseAbility {
     OnSpellStart(): void {
+        print('OnSpellStart', this.GetSpecialValue('imba_abaddon_aphotic_shield', 'damage_absorb'));
         if (this.target.HasModifier('modifier_imba_abaddon_aphotic_shield')) {
             this.target.FindModifierByName('modifier_imba_abaddon_aphotic_shield')?.Destroy();
         }
+        this.target.CPurge({
+            removeDebuffs: true,
+            removeExceptions: true,
+            removePositiveBuffs: false,
+        });
         this.target.AddModifier(this.caster, this, modifier_imba_abaddon_aphotic_shield, {
             duration: this.GetSpecialValue('imba_abaddon_aphotic_shield', 'duration'),
         });
@@ -12,7 +18,6 @@ export class imba_abaddon_aphotic_shield extends BaseAbility {
 @registerModifier()
 class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
     GetModifierConfig(): ModifierConfig {
-        if (!IsServer()) return;
         return {
             is_debuff: false,
             is_hidden: false,

@@ -58,7 +58,7 @@
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/meepo/imba_meepo_poof"
 		"AbilityTextureName"	"meepo_poof"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | 0 | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -296,7 +296,7 @@
 			"bonus_choice"		"1"
 		}
 	}
-	"special_bonus_imba_meepo_2"
+	"special_bonus_unique_imba_meepo_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -309,7 +309,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_meepo_3"
+	"special_bonus_unique_imba_meepo_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -318,7 +318,7 @@
 			"value"		"2.5"
 		}
 	}
-	"special_bonus_imba_meepo_4"
+	"special_bonus_unique_imba_meepo_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -331,13 +331,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_meepo_6"
+	"special_bonus_unique_imba_meepo_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_meepo_poof_cast_point"
+	"special_bonus_unique_imba_meepo_poof_cast_point"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

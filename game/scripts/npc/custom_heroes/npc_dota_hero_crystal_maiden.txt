@@ -281,37 +281,37 @@
 			"mana_regen_multiplier"		"50"
 		}
 	}
-	"special_bonus_imba_crystal_maiden_1"
+	"special_bonus_unique_imba_crystal_maiden_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_frostbite"
 	}
-	"special_bonus_imba_crystal_maiden_2"
+	"special_bonus_unique_imba_crystal_maiden_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_crystal_nova"
 	}
-	"special_bonus_imba_crystal_maiden_3"
+	"special_bonus_unique_imba_crystal_maiden_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_freezing_field"
 	}
-	"special_bonus_imba_crystal_maiden_5"
+	"special_bonus_unique_imba_crystal_maiden_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_crystal_nova"
 	}
-	"special_bonus_imba_crystal_maiden_6"
+	"special_bonus_unique_imba_crystal_maiden_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_crystal_nova"
 	}
-	"special_bonus_imba_crystal_maiden_frostbite_castrange"
+	"special_bonus_unique_imba_crystal_maiden_frostbite_castrange"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

@@ -122,6 +122,17 @@ if (!CDOTA_BaseNPC._refresh_shields) {
         shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
     };
 }
+if (!CDOTA_BaseNPC.HasShard) {
+    CDOTA_BaseNPC.HasShard = function (this: CDOTA_BaseNPC): boolean {
+        return this.HasModifier('modifier_item_aghanims_shard');
+    };
+}
+
+if (!CDOTA_BaseNPC.CPurge) {
+    CDOTA_BaseNPC.CPurge = function (this: CDOTA_BaseNPC, keys: PurgeData): void {
+        this.Purge(keys.removePositiveBuffs, keys.removeDebuffs, false, false, keys.removeExceptions);
+    };
+}
 if (!CDOTA_BaseNPC.GetAOEIncrease) {
     CDOTA_BaseNPC.GetAOEIncrease = function (this: CDOTA_BaseNPC): number {
         return this.custom_aoe_increase;

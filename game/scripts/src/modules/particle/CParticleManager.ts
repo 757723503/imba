@@ -16,6 +16,12 @@ export class CParticleManager {
         if (data.caster.IsBaseNPC && data.caster.IsBaseNPC() && data.caster.IsHero()) {
             pfx_name = ParticleManager.GetParticleReplacement(data.particleName as string, data.caster) as ParticleList;
         }
+        if (data.caster && data.extraData?.limits) {
+            if (!this.CheckParticleLimit(data.caster, pfx_name, data.extraData.limits.time, data.extraData.limits.limit)) {
+                DebugPrint('Particle Limit Exceeded,达到上限', pfx_name, data.caster.GetUnitName());
+                return -1 as ParticleID;
+            }
+        }
         let particleID: ParticleID;
         if (data.player) {
             particleID = ParticleManager.CreateParticleForPlayer(pfx_name as string, data.particleAttach, data.owner, data.player);
@@ -37,7 +43,7 @@ export class CParticleManager {
             return particleID;
         }
         Timers.CreateTimer(duration, () => {
-            this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
+            CDestroyParticle(particleID, data.extraData?.immediate ?? false);
             if (data.extraData?.endCallback) {
                 CSafelyCall(() => data.extraData?.endCallback());
             }
@@ -47,18 +53,39 @@ export class CParticleManager {
         return particleID;
     }
 
-    CheckParticleLimit(caster: CDOTA_BaseNPC, particleName: ParticleList, time: number, limit: number): boolean {
+    // 检查粒子特效限制
+    public CheckParticleLimit(caster: CDOTA_BaseNPC, particleName: ParticleList, time: number, limit: number): boolean {
         const index = caster.GetEntityIndex();
-        const particle_map = this._particle_map.get(index);
+
+        // 获取或初始化该实体的粒子特效映射
+        let particle_map = this._particle_map.get(index);
+        if (!particle_map) {
+            particle_map = {};
+            this._particle_map.set(index, particle_map);
+        }
+        // 获取当前游戏时间
         const now = GameRules.GetGameTime();
+
+        // 如果粒子特效映射中不存在该粒子特效名，则初始化为空数组
         if (!particle_map[particleName]) {
             particle_map[particleName] = [];
         }
-        particle_map[particleName] = particle_map[particleName].filter(t => now - t < time);
-        if (particle_map[particleName].length >= limit) {
+
+        // 获取该粒子特效的时间戳数组
+        const timestamps = particle_map[particleName] as number[];
+
+        // 过滤掉时间戳数组中过期的时间戳，只保留在指定时间段内的时间戳
+        const filteredTimestamps = timestamps.filter((t: number) => now - t < time);
+        particle_map[particleName] = filteredTimestamps;
+        // 如果过滤后的时间戳数组长度超过限制，返回 false
+        if (filteredTimestamps.length >= limit) {
             return false;
         }
-        particle_map[particleName].push(now);
+        // 将当前时间戳添加到时间戳数组中
+        filteredTimestamps.push(now);
+        particle_map[particleName] = filteredTimestamps;
+
+        // 如果未超过限制，返回 true
         return true;
     }
 
@@ -78,17 +105,23 @@ export class CParticleManager {
         ParticleManager.SetParticleControlEnt(particle, controlPoint, unit, particleAttach, attachment, offset, lockOrientation);
     }
 
-    DestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
+    public DestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
         if (data && data.caster) {
             const index = data.caster.GetEntityIndex();
             const particle_map = this._particle_map.get(index);
             if (particle_map) {
                 for (const key in particle_map) {
-                    particle_map[key] = particle_map[key].filter(t => t != particleID);
+                    // 将 key 断言为 ParticleList 类型
+                    const particleName = key as ParticleList;
+                    // 从时间戳数组中移除最早的时间戳
+                    if (particle_map[particleName] && particle_map[particleName].length > 0) {
+                        particle_map[particleName].shift();
+                    }
                 }
             }
         }
         ParticleManager.DestroyParticle(particleID, immediate ?? false);
         ParticleManager.ReleaseParticleIndex(particleID);
+        data = undefined;
     }
 }

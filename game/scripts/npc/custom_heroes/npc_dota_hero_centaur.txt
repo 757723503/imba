@@ -290,7 +290,7 @@
 			"upgrade_rate"		"120"
 		}
 	}
-	"special_bonus_imba_centaur_1"
+	"special_bonus_unique_imba_centaur_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -303,25 +303,25 @@
 			}
 		}
 	}
-	"special_bonus_imba_centaur_2"
+	"special_bonus_unique_imba_centaur_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"centaur_hoof_stomp"
 	}
-	"special_bonus_imba_centaur_3"
+	"special_bonus_unique_imba_centaur_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"centaur_return"
 	}
-	"special_bonus_imba_centaur_4"
+	"special_bonus_unique_imba_centaur_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"centaur_double_edge"
 	}
-	"special_bonus_imba_centaur_5"
+	"special_bonus_unique_imba_centaur_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

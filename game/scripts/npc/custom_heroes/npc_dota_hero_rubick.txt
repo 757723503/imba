@@ -283,19 +283,19 @@
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_INVALID"
 	}
-	"special_bonus_imba_rubick"
+	"special_bonus_unique_imba_rubick"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_rubick_2"
+	"special_bonus_unique_imba_rubick_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_rubick_3"
+	"special_bonus_unique_imba_rubick_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -308,13 +308,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_rubick_4"
+	"special_bonus_unique_imba_rubick_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_rubick_5"
+	"special_bonus_unique_imba_rubick_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -327,7 +327,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_rubick_6"
+	"special_bonus_unique_imba_rubick_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -340,12 +340,12 @@
 			}
 		}
 	}
-	"special_bonus_imba_rubick_7"
+	"special_bonus_unique_imba_rubick_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_rubick_8"
+	"special_bonus_unique_imba_rubick_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

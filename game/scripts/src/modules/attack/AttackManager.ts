@@ -1,6 +1,10 @@
 // import { BaseModifier, registerModifier } from '../../utils/dota_ts_adapter';
 import { reloadable } from '../../utils/tstl-utils';
-
+declare global {
+    var CAttackData: CAttackDataManager;
+    /**进行一次攻击 */
+    var CPerformAttack: typeof CAttackData.PerformAttack;
+}
 @reloadable
 export class CAttackDataManager {
     attack_data: Map<number, UnitEventAttackDamageData> = new Map<number, UnitEventAttackDamageData>();
@@ -18,7 +22,7 @@ export class CAttackDataManager {
 
         // DebugPrint('CAttack OnAttackRecord', attacker.GetAverageTrueAttackDamage(null));
         // DebugPrint('CAttack GetAttackDamage', attacker.GetAttackDamage());
-        const crit_obj = this._CheckCritOnAttack(attacker, target);
+        const crit_obj = CAttackData._CheckCritOnAttack(attacker, target);
         const diff = attacker.GetBaseDamageMax() - attacker.GetBaseDamageMin();
         // 攻击开始就算伤害了
         const dmgTable: DamageTable = {
@@ -169,7 +173,7 @@ export class CAttackDataManager {
 
         // 如果没有预先数据并且是一次触发的攻击，则创建新的攻击数据
         if ((!recordId || !attack_data || !dmgTable) && is_trigger) {
-            const crit_obj = this._CheckCritOnAttack(attacker, target);
+            const crit_obj = CAttackData._CheckCritOnAttack(attacker, target);
             dmgTable = {
                 attacker: attacker,
                 victim: target,
@@ -208,7 +212,7 @@ export class CAttackDataManager {
 
         // 处理攻击效果
         const _fun_attack_effect = (attacker: CDOTA_BaseNPC, target: CDOTA_BaseNPC, use_effect?: boolean): void => {
-            if (!this._CheckMissOnAttackLanded(attacker, target, never_miss || attack_data.never_miss)) {
+            if (!CAttackData._CheckMissOnAttackLanded(attacker, target, never_miss || attack_data.never_miss)) {
                 if (use_effect) {
                     Dispatcher.Send('ON_ATTACK_LANDED_TARGET', target.entindex(), attack_data);
                     Dispatcher.Send('ON_ATTACK_LANDED_ATTACKER', attacker.entindex(), attack_data);
@@ -243,17 +247,15 @@ export class CAttackDataManager {
     }
 }
 
-declare global {
-    var CAttackData: CAttackDataManager;
-}
 @registerModifier()
 export class modifier_attack_data_thinker extends BaseModifier {
-    IsHidden(): boolean {
-        return false;
-    }
-
-    IsDebuff(): boolean {
-        return true;
+    GetModifierConfig(): ModifierConfig {
+        return {
+            is_hidden: true,
+            is_debuff: false,
+            not_purgable: true,
+            not_purgable_exception: true,
+        };
     }
 
     DeclareFunctions(): ModifierFunction[] {
@@ -300,6 +302,16 @@ export class modifier_attack_data_thinker extends BaseModifier {
 
 @registerModifier()
 export class modifier_attack_data_miss extends BaseModifier {
+    GetModifierConfig(): ModifierConfig {
+        return {
+            is_hidden: true,
+            is_debuff: true,
+            not_purgable: true,
+            not_purgable_exception: true,
+            not_remove_on_death: true,
+        };
+    }
+
     IsHidden(): boolean {
         return true;
     }

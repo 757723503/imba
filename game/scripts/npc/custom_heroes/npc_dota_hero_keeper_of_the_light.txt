@@ -376,13 +376,13 @@
 			"bonus_mana_pct"		"15"
 		}
 	}
-	"special_bonus_imba_keeper_of_the_light"
+	"special_bonus_unique_imba_keeper_of_the_light"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_keeper_of_the_light_2"
+	"special_bonus_unique_imba_keeper_of_the_light_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -395,7 +395,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_keeper_of_the_light_5"
+	"special_bonus_unique_imba_keeper_of_the_light_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -408,7 +408,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_keeper_of_the_light_7"
+	"special_bonus_unique_imba_keeper_of_the_light_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -421,19 +421,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_keeper_of_the_light_8"
+	"special_bonus_unique_imba_keeper_of_the_light_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_keeper_of_the_light_11"
+	"special_bonus_unique_imba_keeper_of_the_light_11"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_keeper_of_the_light_14"
+	"special_bonus_unique_imba_keeper_of_the_light_14"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -446,7 +446,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_keeper_of_the_light_illuminate_cooldown"
+	"special_bonus_unique_imba_keeper_of_the_light_illuminate_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

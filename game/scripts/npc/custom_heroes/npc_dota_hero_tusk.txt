@@ -320,25 +320,25 @@
 			"creep_cooldown_reduction_pct"		"50"
 		}
 	}
-	"special_bonus_imba_tusk"
+	"special_bonus_unique_imba_tusk"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tusk_2"
+	"special_bonus_unique_imba_tusk_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tusk_3"
+	"special_bonus_unique_imba_tusk_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tusk_4"
+	"special_bonus_unique_imba_tusk_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -351,7 +351,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_tusk_5"
+	"special_bonus_unique_imba_tusk_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -364,7 +364,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_tusk_6"
+	"special_bonus_unique_imba_tusk_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -377,7 +377,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_tusk_7"
+	"special_bonus_unique_imba_tusk_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

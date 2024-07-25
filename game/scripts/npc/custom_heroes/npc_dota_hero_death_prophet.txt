@@ -228,26 +228,26 @@
 			"movement_bonus"		"4 8 12"
 		}
 	}
-	"special_bonus_imba_death_prophet"
+	"special_bonus_unique_imba_death_prophet"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"death_prophet_exorcism"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_death_prophet_2"
+	"special_bonus_unique_imba_death_prophet_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"death_prophet_carrion_swarm"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_death_prophet_3"
+	"special_bonus_unique_imba_death_prophet_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_death_prophet_5"
+	"special_bonus_unique_imba_death_prophet_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -260,7 +260,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_death_prophet_crypt_swarm_damage"
+	"special_bonus_unique_imba_death_prophet_crypt_swarm_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

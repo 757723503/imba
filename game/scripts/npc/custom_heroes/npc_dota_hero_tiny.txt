@@ -284,13 +284,13 @@
 			"move_speed"		"10 20 30"
 		}
 	}
-	"special_bonus_imba_tiny"
+	"special_bonus_unique_imba_tiny"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tiny_2"
+	"special_bonus_unique_imba_tiny_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -326,7 +326,7 @@
 			"str_to_status_resist_pct"		"10"
 		}
 	}
-	"special_bonus_imba_tiny_3"
+	"special_bonus_unique_imba_tiny_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -339,13 +339,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_tiny_4"
+	"special_bonus_unique_imba_tiny_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tiny_5"
+	"special_bonus_unique_imba_tiny_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -358,13 +358,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_tiny_6"
+	"special_bonus_unique_imba_tiny_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_tiny_7"
+	"special_bonus_unique_imba_tiny_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

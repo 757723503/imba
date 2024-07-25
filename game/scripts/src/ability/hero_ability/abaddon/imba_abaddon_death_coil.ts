@@ -12,6 +12,11 @@ export class imba_abaddon_death_coil extends BaseAbility {
             effectName: HeroParticleList.imba_abaddon_death_coil,
             OnHitUnit: (unit, position, extraData, thisProjectileID) => {
                 if (unit.IsEnemy(this.caster)) {
+                    if (this.caster.HasShard()) {
+                        CPerformAttack(this.caster, unit, {
+                            use_effect: true,
+                        });
+                    }
                     CAddDamage({
                         attacker: this.caster,
                         damage: target_damage,

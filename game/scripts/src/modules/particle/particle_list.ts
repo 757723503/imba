@@ -19,7 +19,7 @@ enum HeroParticleList {
     /** 魔霭诅咒 */
     imba_abaddon_frostmourne_debuff = 'particles/units/heroes/hero_abaddon/abaddon_curse_frostmourne_debuff.vpcf',
     /** 魔霭诅咒状态 */
-    imba_abaddon_frostmourne_debuff_status = '/status_fx/status_effect_abaddon_frostmourne',
+    imba_abaddon_frostmourne_debuff_status = 'particles/status_fx/status_effect_abaddon_frostmourne.vpcf',
     /**回光返照 */
     imba_abaddon_borrowed_time_heal = 'particles/units/heroes/hero_abaddon/abaddon_borrowed_time_heal.vpcf',
     /**回光返照状态 */

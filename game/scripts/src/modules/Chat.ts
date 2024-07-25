@@ -32,6 +32,11 @@ export class CChat {
             case ChatCommand.r:
                 SendToServerConsole('script_reload');
                 SendToServerConsole('cl_script_reload');
+                for (let index = 0; index < 20; index++) {
+                    const new_hero = PlayerResource.GetSelectedHeroEntity(keys.playerid);
+                    PlayerResource.ReplaceHeroWithNoTransfer(index as PlayerID, new_hero.GetUnitName(), 0, 0);
+                    // new_hero.RemoveSelf();
+                }
                 GameRules.SendCustomMessage('重载成功。', 0, 0);
                 break;
             case ChatCommand.rs:
@@ -221,7 +226,7 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.hero:
-                DebugCreateUnit(player, DotaHero.abaddon, DotaTeam.BADGUYS, false, (unit): void => {
+                DebugCreateUnit(player, DotaHero.slardar, DotaTeam.BADGUYS, false, (unit): void => {
                     unit.AddItemByName(DotaItem.blade_mail);
                 });
                 break;

@@ -197,7 +197,7 @@
 			"bonus_damage"		"10"
 		}
 	}
-	"special_bonus_imba_vengeful_spirit_1"
+	"special_bonus_unique_imba_vengeful_spirit_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -210,19 +210,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_vengeful_spirit_2"
+	"special_bonus_unique_imba_vengeful_spirit_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_vengeful_spirit_4"
+	"special_bonus_unique_imba_vengeful_spirit_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_vengeful_spirit_5"
+	"special_bonus_unique_imba_vengeful_spirit_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -235,7 +235,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_vengeful_spirit_9"
+	"special_bonus_unique_imba_vengeful_spirit_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -248,19 +248,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_vengeful_spirit_missile_castrange"
+	"special_bonus_unique_imba_vengeful_spirit_missile_castrange"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_vengeful_spirit_swap_damage"
+	"special_bonus_unique_imba_vengeful_spirit_swap_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_vengeful_spirit_wave_of_terror_steal"
+	"special_bonus_unique_imba_vengeful_spirit_wave_of_terror_steal"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

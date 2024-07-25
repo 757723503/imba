@@ -233,7 +233,7 @@
 		"MaxLevel"		"1"
 		"Innate"		"1"
 	}
-	"special_bonus_imba_spectre"
+	"special_bonus_unique_imba_spectre"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -246,19 +246,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_spectre_2"
+	"special_bonus_unique_imba_spectre_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_spectre_3"
+	"special_bonus_unique_imba_spectre_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_spectre_4"
+	"special_bonus_unique_imba_spectre_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -271,7 +271,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_spectre_5"
+	"special_bonus_unique_imba_spectre_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -284,13 +284,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_spectre_6"
+	"special_bonus_unique_imba_spectre_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_spectre_desolate_radius"
+	"special_bonus_unique_imba_spectre_desolate_radius"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

@@ -213,7 +213,7 @@
 		"AbilityCooldown"		"0.5"
 		"AbilityManaCost"		"0"
 	}
-	"special_bonus_imba_muerta_dead_shot_charges"
+	"special_bonus_unique_imba_muerta_dead_shot_charges"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -222,37 +222,37 @@
 			"value"		"2"
 		}
 	}
-	"special_bonus_imba_muerta_dead_shot_damage"
+	"special_bonus_unique_imba_muerta_dead_shot_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_muerta_dead_shot_range"
+	"special_bonus_unique_imba_muerta_dead_shot_range"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_muerta_calling_hp_regen"
+	"special_bonus_unique_imba_muerta_calling_hp_regen"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_muerta_gunslinger_bonus_damage"
+	"special_bonus_unique_imba_muerta_gunslinger_bonus_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_muerta_the_calling_num_revenants"
+	"special_bonus_unique_imba_muerta_the_calling_num_revenants"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_muerta_gunslinger_double_shot_chance"
+	"special_bonus_unique_imba_muerta_gunslinger_double_shot_chance"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

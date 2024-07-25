@@ -24,6 +24,6 @@ interface CParticleData {
         /** 是否检查视野 */
         CheckFoW?: boolean;
         /** 特效数量约束(以产生者为单位) */
-        limits?: [time: number, limit: number];
+        limits?: { time: number; limit: number };
     };
 }

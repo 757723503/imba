@@ -299,7 +299,7 @@
 			"redirect_chance"		"15 20 25 30"
 		}
 	}
-	"special_bonus_imba_hoodwink_acorn_shot_charges"
+	"special_bonus_unique_imba_hoodwink_acorn_shot_charges"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -312,7 +312,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_hoodwink_sharpshooter_pure_damage"
+	"special_bonus_unique_imba_hoodwink_sharpshooter_pure_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -325,13 +325,13 @@
 			}
 		}
 	}
-	"special_bonus_imba_hoodwink_sharpshooter_damage"
+	"special_bonus_unique_imba_hoodwink_sharpshooter_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_hoodwink_bushwhack_cooldown"
+	"special_bonus_unique_imba_hoodwink_bushwhack_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -344,19 +344,19 @@
 			}
 		}
 	}
-	"special_bonus_imba_hoodwink_bushwhack_damage"
+	"special_bonus_unique_imba_hoodwink_bushwhack_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_hoodwink_scurry_duration"
+	"special_bonus_unique_imba_hoodwink_scurry_duration"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_hoodwink_acorn_shot_bounces"
+	"special_bonus_unique_imba_hoodwink_acorn_shot_bounces"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

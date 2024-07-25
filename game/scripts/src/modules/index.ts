@@ -47,14 +47,7 @@ export function ActivateModules() {
         GameRules.XNetTable = new XNetTable();
         GameRules.CGameMode = new CGameMode();
         new GameConfig();
-
-        // globalThis.HeroParticleList = {};
-        // globalThis.GeneircParticleList = {};
-        // globalThis.HeroParticleList = {};
-        // globalThis.AvatarHeroParticleList = {};
-        // globalThis.ItemParticleList = {};
-        // globalThis.AvatarItemParticleList = {};
-        // globalThis.UnitParticleList = {};
+        globalThis.Dispatcher = new CDispatcher();
     }
     new Debug();
     new CChat();
@@ -64,10 +57,10 @@ export function ActivateModules() {
     globalThis.CIllusionManager = new CIllusionManager();
     globalThis.CAttackData = new CAttackDataManager();
     globalThis.Random = new PseudoRandom();
-    globalThis.Dispatcher = new CDispatcher();
     globalThis.CParticleManager = new CParticleManager();
 
     globalThis.CAddDamage = CustomApplyDamage;
+    globalThis.CPerformAttack = CAttackData.PerformAttack;
     globalThis.CCreateParticle = CParticleManager.prototype.CreateParticle;
     globalThis.CSetParticleControl = CParticleManager.prototype.SetParticleControl;
     globalThis.CSetParticleControlEnt = CParticleManager.prototype.SetParticleControlEnt;

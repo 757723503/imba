@@ -314,12 +314,12 @@
 			"cannon_ball_explosion_radius"		"25"
 		}
 	}
-	"special_bonus_imba_kunkka_2"
+	"special_bonus_unique_imba_kunkka_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_imba_kunkka_3"
+	"special_bonus_unique_imba_kunkka_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -332,7 +332,7 @@
 			}
 		}
 	}
-	"special_bonus_imba_kunkka_4"
+	"special_bonus_unique_imba_kunkka_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -345,31 +345,31 @@
 			}
 		}
 	}
-	"special_bonus_imba_kunkka_6"
+	"special_bonus_unique_imba_kunkka_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_kunkka_7"
+	"special_bonus_unique_imba_kunkka_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_kunkka_tidebringer_slow"
+	"special_bonus_unique_imba_kunkka_tidebringer_slow"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_kunkka_torrent_cooldown"
+	"special_bonus_unique_imba_kunkka_torrent_cooldown"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_imba_kunkka_rum"
+	"special_bonus_unique_imba_kunkka_rum"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
