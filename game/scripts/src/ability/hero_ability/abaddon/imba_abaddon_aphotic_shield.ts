@@ -48,6 +48,9 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
         return {
             max_value: this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'damage_absorb'),
             shield_type: ShieldType.All,
+            on_remove: shiled => {
+                this.Destroy();
+            },
         };
     }
 
@@ -60,7 +63,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
             radius: radius,
             teamFilter: UnitTargetTeam.ENEMY,
             typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
-            flagFilter: UnitTargetFlags.NONE,
+            flagFilter: UnitTargetFlags.FOW_VISIBLE,
             order: FindOrder.CLOSEST,
         });
         // unit.EmitSound('Hero_Abaddon.AphoticShield.Destroy');

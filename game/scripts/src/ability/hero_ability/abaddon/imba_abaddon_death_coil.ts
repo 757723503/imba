@@ -1,7 +1,6 @@
 @registerAbility()
 export class imba_abaddon_death_coil extends BaseAbility {
     OnSpellStart(keys?: SpellStartParams): void {
-        print(this.caster);
         const target_damage = this.GetSpecialValue('imba_abaddon_death_coil', 'target_damage');
         const self_damage = this.GetSpecialValue('imba_abaddon_death_coil', 'self_damage') * target_damage * 0.01;
         const heal_amount = this.GetSpecialValue('imba_abaddon_death_coil', 'heal_amount');

@@ -63,6 +63,18 @@ function CDeepPrintTable(obj: any, level: number = 1, currentLevel: number = 0):
         }
     }
 }
+function CDeepCopy<T>(obj: T): T {
+    const result = {} as T;
+    for (const k in obj) {
+        const v = obj[k];
+        if (typeof v == 'object') {
+            result[k] = CDeepCopy(v);
+        } else {
+            result[k] = v;
+        }
+    }
+    return result;
+}
 function CIsValid(entity: undefined | null | CDOTA_Buff | CBaseEntity): boolean {
     return entity !== null && !entity.IsNull() && IsValidEntity(entity);
 }

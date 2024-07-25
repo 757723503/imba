@@ -47,7 +47,10 @@ export class CEngineEvent {
                 if (tower != null) {
                     for (const key in this._npc_custom_properties) {
                         if (this._npc_custom_properties.hasOwnProperty(key)) {
-                            (tower as any)[key] = (this._npc_custom_properties as any)[key];
+                            tower[key] =
+                                typeof this._npc_custom_properties[key] === 'object'
+                                    ? CDeepCopy(this._npc_custom_properties[key])
+                                    : this._npc_custom_properties[key];
                         }
                     }
                 }
@@ -81,7 +84,10 @@ export class CEngineEvent {
             for (const key in this._npc_custom_properties) {
                 // DebugPrint(entity.GetUnitName(), this._npc_custom_properties.hasOwnProperty(key));
                 if (this._npc_custom_properties.hasOwnProperty(key)) {
-                    (entity as any)[key] = (this._npc_custom_properties as any)[key];
+                    entity[key] =
+                        typeof this._npc_custom_properties[key] === 'object'
+                            ? CDeepCopy(this._npc_custom_properties[key])
+                            : this._npc_custom_properties[key];
                 }
             }
             Timers.CreateTimer(FrameTime() * 2, () => {

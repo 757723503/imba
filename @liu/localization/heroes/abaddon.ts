@@ -22,8 +22,8 @@ export const data: LocalizationData = {
             ability_classname: 'imba_abaddon_aphotic_shield',
             name: '无光之盾',
             description:
-                '召唤黑暗能量环绕友方单位，创造一个护盾，护盾在消失前能吸收一定量的伤害。护盾被摧毁后，它会将之前吸收的伤害反馈给周围的敌方单位。施放时移除目标身上的负面魔法效果。',
-            notes: ['亚巴顿不能使用此技能自杀。'],
+                '召唤黑暗能量环绕友方单位，创造一个全伤害护盾，护盾在消失前能吸收一定量的伤害。护盾消失或被摧毁后将会爆炸，对附近区域的单位造成伤害，伤害值为护盾的最大吸收量。施放时移除目标身上的负面状态和眩晕效果。\n\n驱散类型：强驱散',
+            notes: ['不论护盾因持续时间结束或吸收足够伤害后被摧毁都将造成最大伤害。', '爆炸将不会对战争迷雾内单位造成伤害。'],
             lore: '升腾的黑雾将敌人的招数一一吞噬，如同吞噬日光。',
             reimagined_effects: [
                 { title: 'imba效果1', description: 'imba效果1' },
@@ -31,16 +31,22 @@ export const data: LocalizationData = {
             ],
             ability_specials: [
                 { ability_special: 'AbilityCooldown', text: '冷却' },
-                { ability_special: 'duration', text: '持续时间' },
-                { ability_special: 'radius', text: '伤害范围' },
-                { ability_special: 'damage_absorb', text: '吸收伤害' },
+                { ability_special: 'duration', text: '持续时间：' },
+                { ability_special: 'radius', text: '爆炸作用范围：' },
+                { ability_special: 'damage_absorb', text: '伤害护盾：' },
                 { ability_special: 'absorb_to_damage', text: '反弹伤害', percentage: true },
-                // { ability_special: 'absorb_damage_aoeabsorb_damage_aoe', text: '持续时间' },
+                { ability_special: 'absorb_damage_aoe', text: '反弹伤害范围：' },
             ],
             shard_description: '使迷雾缠绕也会造成攻击伤害，并且施加来自物品和技能的效果。',
         },
     ],
-    ModifierArray: [],
+    ModifierArray: [
+        {
+            modifier_classname: 'modifier_imba_abaddon_aphotic_shield',
+            name: '无光之盾',
+            description: '吸收伤害；吸收的伤害达到最大后将会爆炸并对周围单位造成伤害。',
+        },
+    ],
     StandardArray: [],
     TalentArray: [
         {
@@ -61,9 +67,14 @@ export const data: LocalizationData = {
     FacetArray_B: [
         {
             facet_classname: 'abaddon_facets_imba_1',
-            name: '合并原版两种命石',
-            description: '夸夸合并',
-            related_abilities: [{ ability_classname: 'imba_abaddon_aphotic_shield', description: '直接合并的全新命石' }],
+            name: '毒雾护罩',
+            description: '无光之盾吸收更多伤害，并且实时反弹伤害.',
+            related_abilities: [
+                {
+                    ability_classname: 'imba_abaddon_aphotic_shield',
+                    description: '伤害护盾数值提升，但是护盾被摧毁后不再爆炸。 {absorb_to_damage}% 吸收伤害会反弹给附近的敌人。',
+                },
+            ],
         },
     ],
 };

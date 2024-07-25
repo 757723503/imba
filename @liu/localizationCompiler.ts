@@ -344,28 +344,28 @@ export class LocalizationCompiler {
             for (const facet of localized_data.FacetArray_A) {
                 const facet_string = `DOTA_Tooltip_ability_${facet.facet_classname}`;
                 tokens[facet_string] = facet.name;
-                tokens[`${facet_string}_description`] = facet.description;
+                tokens[`${facet_string}_description`] = this.TransformForLocalization(facet.description, false);
                 if (facet.note0) {
-                    tokens[`${facet_string}_Note0`] = facet.note0;
+                    tokens[`${facet_string}_Note0`] = this.TransformForLocalization(facet.note0, false);
                 }
             }
         }
         if (localized_data.FacetArray_B) {
             for (const facet of localized_data.FacetArray_B) {
                 const facet_string = `DOTA_Tooltip_facet_${facet.facet_classname}`;
-                tokens[facet_string] = facet.name;
-                tokens[`${facet_string}_description`] = facet.description;
+                tokens[facet_string] = this.TransformForLocalization(facet.name, false);
+                tokens[`${facet_string}_description`] = this.TransformForLocalization(facet.description, false);
 
                 if (facet.related_abilities) {
                     for (const relatedAbility of facet.related_abilities) {
-                        const related_ability_string = `DOTA_Tooltip_ability_${relatedAbility.ability_classname}_${facet.facet_classname}`;
-                        tokens[related_ability_string] = relatedAbility.description;
+                        const related_ability_string = `DOTA_Tooltip_ability_${relatedAbility.ability_classname}_facet_${facet.facet_classname}`;
+                        tokens[related_ability_string] = this.TransformForLocalization(relatedAbility.description, false);
                     }
                 }
                 if (facet.related_talents) {
                     for (const relatedTalent of facet.related_talents) {
-                        const related_talent_string = `${relatedTalent.talent_key}_facet_${facet.name}`;
-                        tokens[related_talent_string] = facet.description;
+                        const related_talent_string = `${relatedTalent.talent_key}_${facet.name}`;
+                        tokens[related_talent_string] = this.TransformForLocalization(facet.description, false);
                     }
                 }
             }
