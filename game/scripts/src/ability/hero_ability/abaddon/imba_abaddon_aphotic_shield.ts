@@ -28,6 +28,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
             particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
             owner: this.parent,
             modifier: this,
+            caster: this.caster,
         });
         const ex = this.parent.GetModelScale() * 100;
         CSetParticleControlEnt(pfx, 0, this.parent, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), true);
@@ -73,6 +74,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
                     particleName: HeroParticleList.imba_abaddon_aphotic_shield_hit,
                     particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
                     owner: unit,
+                    caster: this.caster,
                 });
                 CAddDamage({
                     attacker: this.caster,

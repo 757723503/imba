@@ -30,6 +30,7 @@
 			{
 				"value"		"100 175 250 325"
 				"special_bonus_imba_abaddon_2"		"40"
+
 			}
 			"heal_amount"
 			{

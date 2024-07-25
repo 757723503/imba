@@ -11,7 +11,7 @@ declare global {
         imba_abaddon_borrowed_time = 'imba_abaddon_borrowed_time',
         /** 死亡缠绕 */
         imba_abaddon_death_coil = 'imba_abaddon_death_coil',
-        /** 霜之哀伤*/
+        /** 魔霭诅咒*/
         imba_abaddon_frostmourne = 'imba_abaddon_frostmourne',
     }
 }

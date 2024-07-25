@@ -129,6 +129,7 @@ export class CProjectileManager {
             particleAttach: ParticleAttachment.WORLDORIGIN,
             extraData: { CheckFoW: false },
             owner: data.source,
+            caster: data.source,
         });
         const dota_unit = data.target;
         const end_pos = end_position;
@@ -342,6 +343,7 @@ export class CProjectileManager {
             particleAttach: ParticleAttachment.WORLDORIGIN,
             extraData: { CheckFoW: false },
             owner: data.source,
+            caster: data.source,
         });
         CSetParticleControl(pfx, 0, start_position);
         CSetParticleControl(pfx, 1, direction.__mul(speed));

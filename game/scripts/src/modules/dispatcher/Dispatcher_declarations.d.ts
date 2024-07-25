@@ -153,4 +153,7 @@ declare const enum ModifierFunctions {
 
     /** 增加护盾 数据 */
     AddParentShieldData = 'AddParentShieldData',
+
+    /** 增加技能作用范围加成 */
+    AddCustomAOEIncrease = 'AddCustomAOEIncrease',
 }

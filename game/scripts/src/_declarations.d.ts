@@ -31,7 +31,7 @@ declare global {
         /**是否是敌人 */
         IsEnemy(target: CDOTA_BaseNPC): boolean;
         /**是否是有效单位 */
-        IsUnit(target: CDOTA_BaseNPC): boolean;
+        IsUnit(): boolean;
         /** 是否是友军 */
         IsAlly(target: CDOTA_BaseNPC): boolean;
         /** 刷新护盾显示 */
@@ -42,6 +42,8 @@ declare global {
         GetDamageBlocks_Magic(): CBlock_Magic[];
         /**自定义治疗 */
         CHeal(keys: CustomHeal): void;
+        /**获得AOE增加 */
+        GetAOEIncrease(): number;
         /**
          * @deprecated
          */
@@ -93,6 +95,9 @@ declare global {
 
         /** 储存声明偷取数据 */
         _life_steal_data_calls: LifeStealData[];
+
+        /** 储存AOE增加数据 */
+        custom_aoe_increase: number;
     }
     interface CustomHeal {
         /**治疗量 */
@@ -119,24 +124,7 @@ declare global {
     interface CDOTA_BaseNPC_Hero {
         _modifierKeys: CreateIllusionsModifierKeys;
     }
-    interface CDOTABaseAbility {
-        /**
-         * 判断减益免疫相关 技能kv标识相关
-         */
-        _SpellDispellableType: string;
-        /**
-         * 判断减益免疫相关 技能kv标识相关
-         */
-        _AbilityUnitTargetFlags: string;
-        /**
-         * 自定义获得技能kv 强类型
-         */
-        GetSpecialValue: <T extends AbilityNames>(abilityName: T, valueName: AbilityValues<T>) => number;
-        /**
-         * @deprecated
-         */
-        GetSpecialValueFor: (name: string) => number;
-    }
+    interface CDOTABaseAbility extends Custom_BaseAbility_Properties {}
     interface CBaseEntity {}
 
     interface ModifierAddedEventCustom {}
@@ -187,16 +175,28 @@ declare global {
     interface SpellStartParams {
         [key: string]: any;
     }
-    interface CDOTA_Ability_Lua {
-        OnSpellStart(keys?: SpellStartParams): void;
-    }
-    interface BaseAbility {
-        OnSpellStart(keys?: SpellStartParams): void;
-    }
-    interface CDOTA_Item_Lua {
-        OnSpellStart(keys?: SpellStartParams): void;
-    }
 
+    interface CDOTA_Ability_Lua extends Custom_BaseAbility_Properties {}
+    interface CDOTA_Item_Lua extends Custom_BaseAbility_Properties {}
+    interface Custom_BaseAbility_Properties {
+        OnSpellStart(keys?: SpellStartParams): void;
+        /**
+         * 判断减益免疫相关 技能kv标识相关
+         */
+        _SpellDispellableType: string;
+        /**
+         * 判断减益免疫相关 技能kv标识相关
+         */
+        _AbilityUnitTargetFlags: string;
+        /**
+         * 自定义获得技能kv 强类型
+         */
+        GetSpecialValue: <T extends AbilityNames>(abilityName: T, valueName: AbilityValues<T>) => number;
+        /**
+         * @deprecated
+         */
+        GetSpecialValueFor: (name: string) => number;
+    }
     interface CDOTA_Item {}
     interface CAttackEvent {
         readonly attacker: CDOTA_BaseNPC;

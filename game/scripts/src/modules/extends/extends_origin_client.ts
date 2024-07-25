@@ -1,49 +1,49 @@
 //实装 CDOTA_BaseNPC的GetMissChance 方法
-if (!CDOTA_BaseNPC.GetBlindChance) {
-    CDOTA_BaseNPC.GetBlindChance = function (this: CDOTA_BaseNPC): number {
+if (!C_DOTA_BaseNPC.GetBlindChance) {
+    C_DOTA_BaseNPC.GetBlindChance = function (this: CDOTA_BaseNPC): number {
         return this._all_blind_chance;
     };
 }
-if (!CDOTA_BaseNPC.GetEvasionChance) {
-    CDOTA_BaseNPC.GetEvasionChance = function (this: CDOTA_BaseNPC): number {
+if (!C_DOTA_BaseNPC.GetEvasionChance) {
+    C_DOTA_BaseNPC.GetEvasionChance = function (this: CDOTA_BaseNPC): number {
         return this._all_evasion_chance;
     };
 }
 
-if (!CDOTA_BaseNPC.GetAccuracyChance) {
-    CDOTA_BaseNPC.GetAccuracyChance = function (this: CDOTA_BaseNPC): number {
+if (!C_DOTA_BaseNPC.GetAccuracyChance) {
+    C_DOTA_BaseNPC.GetAccuracyChance = function (this: CDOTA_BaseNPC): number {
         return this._all_accuracy_chance;
     };
 }
 
-if (!CDOTA_BaseNPC.IsEnemy) {
-    CDOTA_BaseNPC.IsEnemy = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
+if (!C_DOTA_BaseNPC.IsEnemy) {
+    C_DOTA_BaseNPC.IsEnemy = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
         return this.GetTeamNumber() != unit.GetTeamNumber();
     };
 }
-if (!CDOTA_BaseNPC.IsAlly) {
-    CDOTA_BaseNPC.IsAlly = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
+if (!C_DOTA_BaseNPC.IsAlly) {
+    C_DOTA_BaseNPC.IsAlly = function (this: CDOTA_BaseNPC, unit: CDOTA_BaseNPC): boolean {
         return this.GetTeamNumber() == unit.GetTeamNumber();
     };
 }
-if (!CDOTA_BaseNPC.IsUnit) {
-    CDOTA_BaseNPC.IsUnit = function (this: CDOTA_BaseNPC): boolean {
+if (!C_DOTA_BaseNPC.IsUnit) {
+    C_DOTA_BaseNPC.IsUnit = function (this: CDOTA_BaseNPC): boolean {
         return this.IsHero() || this.IsCreep() || this.IsBoss();
     };
 }
 
-if (!CDOTA_BaseNPC.GetDamageBlocks_Physic) {
-    CDOTA_BaseNPC.GetDamageBlocks_Physic = function (this: CDOTA_BaseNPC): CBlock_Physic[] {
+if (!C_DOTA_BaseNPC.GetDamageBlocks_Physic) {
+    C_DOTA_BaseNPC.GetDamageBlocks_Physic = function (this: CDOTA_BaseNPC): CBlock_Physic[] {
         return this.physic_damage_blocks;
     };
 }
-if (!CDOTA_BaseNPC.GetDamageBlocks_Magic) {
-    CDOTA_BaseNPC.GetDamageBlocks_Magic = function (this: CDOTA_BaseNPC): CBlock_Magic[] {
+if (!C_DOTA_BaseNPC.GetDamageBlocks_Magic) {
+    C_DOTA_BaseNPC.GetDamageBlocks_Magic = function (this: CDOTA_BaseNPC): CBlock_Magic[] {
         return this.magic_damage_blocks;
     };
 }
-if (!CDOTA_BaseNPC.AddModifier) {
-    CDOTA_BaseNPC.AddModifier = function <T extends Constructor>(
+if (!C_DOTA_BaseNPC.AddModifier) {
+    C_DOTA_BaseNPC.AddModifier = function <T extends Constructor>(
         this: CDOTA_BaseNPC,
         caster: CDOTA_BaseNPC | undefined,
         ability: CDOTABaseAbility | undefined,
@@ -68,8 +68,8 @@ if (!CDOTA_BaseNPC.AddModifier) {
         return modifier;
     };
 }
-if (!CDOTA_BaseNPC.CHeal) {
-    CDOTA_BaseNPC.CHeal = function (this: CDOTA_BaseNPC, keys: CustomHeal): void {
+if (!C_DOTA_BaseNPC.CHeal) {
+    C_DOTA_BaseNPC.CHeal = function (this: CDOTA_BaseNPC, keys: CustomHeal): void {
         const heal = keys.amount;
         const inflictor = keys.inflictor;
         const heal_reason = keys.reason;
@@ -84,8 +84,8 @@ if (!CDOTA_BaseNPC.CHeal) {
         this.HealWithParams(heal, inflictor, heal_reason == HealReason.Life_Steal, true, source, heal_reason == HealReason.Spell_Life_Steal);
     };
 }
-if (!CDOTA_BaseNPC._refresh_shields) {
-    CDOTA_BaseNPC._refresh_shields = function (this: CDOTA_BaseNPC): void {
+if (!C_DOTA_BaseNPC._refresh_shields) {
+    C_DOTA_BaseNPC._refresh_shields = function (this: CDOTA_BaseNPC): void {
         const shieldDataContainer: Record<ShieldType, ShieldData[]> = {
             [ShieldType.Physic_Attack]: [],
             [ShieldType.Physic]: [],
@@ -122,13 +122,13 @@ if (!CDOTA_BaseNPC._refresh_shields) {
         shieldDataContainer && Object.keys(shieldDataContainer).forEach(key => (shieldDataContainer[key].length = 0));
     };
 }
-if (!CDOTA_BaseNPC.GetAOEIncrease) {
-    CDOTA_BaseNPC.GetAOEIncrease = function (this: CDOTA_BaseNPC): number {
-        return this.custom_aoe_increase;
+if (!C_DOTA_BaseNPC.GetAOEIncrease) {
+    C_DOTA_BaseNPC.GetAOEIncrease = function (this: CDOTA_BaseNPC): number {
+        return 0;
     };
 }
-if (!CDOTABaseAbility.GetSpecialValue) {
-    CDOTABaseAbility.GetSpecialValue = function <T extends AbilityNames>(
+if (!C_DOTA_Ability_Lua.GetSpecialValue) {
+    C_DOTA_Ability_Lua.GetSpecialValue = function <T extends AbilityNames>(
         this: CDOTABaseAbility,
         abilityName: T,
         valueName: AbilityValues<T>

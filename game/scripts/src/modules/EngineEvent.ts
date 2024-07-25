@@ -74,6 +74,7 @@ export class CEngineEvent {
         _shields_data_calls: [],
         _debuff_immunity_magical_resistance: [],
         _life_steal_data_calls: [],
+        custom_aoe_increase: 0,
     };
 
     private _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): void {

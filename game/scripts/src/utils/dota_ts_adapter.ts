@@ -167,7 +167,6 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
         this.ability = this.GetAbility();
         this.parent = this.GetParent();
         this.____constructor();
-
         if (!IsServer()) return;
 
         if (COnCreated) {
@@ -1245,6 +1244,27 @@ const _modifier_methods: {
             }
         },
     },
+
+    [ModifierFunctions.AddCustomAOEIncrease]: {
+        registerFunc: (instance, parent_index) => {
+            if (instance.AddCustomAOEIncrease) {
+                const parent = instance.GetParent();
+                instance['AOEIncreaseData_Saved'] = instance.AddCustomAOEIncrease();
+                if (instance['AOEIncreaseData_Saved']) {
+                    parent.custom_aoe_increase += instance['AOEIncreaseData_Saved'] as number;
+                }
+            }
+        },
+        removeFunc: (instance, parent_index) => {
+            if (instance.AddCustomAOEIncrease) {
+                const parent = instance.GetParent();
+                const aoeIncreaseData = instance['AOEIncreaseData_Saved'] as number;
+                if (aoeIncreaseData) {
+                    parent.custom_aoe_increase -= aoeIncreaseData;
+                }
+            }
+        },
+    },
 };
 // declare module './dota_ts_adapter' {
 interface BaseModifier {
@@ -1494,6 +1514,8 @@ interface BaseModifier {
     /**增加护盾 数据 */
     AddParentShieldData?(): ShieldData;
 
+    /**增加作用范围技能加成 */
+    AddCustomAOEIncrease?(): number;
     /**
      * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
      */

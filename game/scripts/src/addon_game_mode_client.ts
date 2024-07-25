@@ -2,6 +2,8 @@
 // import './modules/custom_base_modifier';
 import './utils/dota_ts_adapter';
 import './UtilityFunctions';
+import './modules/extends/extends_origin_client';
+import './modules/particle/particle_list';
 import './common_modifier/index';
 // globalThis.HeroParticleList = {};
 // globalThis.GeneircParticleList = {};

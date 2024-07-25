@@ -87,7 +87,6 @@ export class CChat {
 
                 //     EffectName: 'particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf',
                 // });
-
                 hero.AddAbility('imba_life_stealer_open_wounds');
                 // hero.CHeal({ reason: HealReason.Heal, amount: 1000, show_number: true });
                 // hero.GetTogglableWearable(LoadoutType.PERSONA_1_END);

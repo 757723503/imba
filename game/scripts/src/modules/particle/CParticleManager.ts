@@ -10,10 +10,11 @@ declare global {
 
 @reloadable
 export class CParticleManager {
+    _particle_map: Map<EntityIndex, Partial<Record<ParticleList, number[]>>> = new Map();
     CreateParticle(data: CParticleData): ParticleID {
         let pfx_name = data.particleName;
-        if (data.owner.IsBaseNPC && data.owner.IsBaseNPC() && data.owner.IsHero()) {
-            pfx_name = ParticleManager.GetParticleReplacement(data.particleName as string, data.owner) as ParticleList;
+        if (data.caster.IsBaseNPC && data.caster.IsBaseNPC() && data.caster.IsHero()) {
+            pfx_name = ParticleManager.GetParticleReplacement(data.particleName as string, data.caster) as ParticleList;
         }
         let particleID: ParticleID;
         if (data.player) {
@@ -31,9 +32,12 @@ export class CParticleManager {
             (data.modifier['AddParticle_all_particle'] as ParticleID[]).push(particleID);
         }
         const duration = data.extraData?.duration ?? 60;
+        if (duration <= 0) {
+            this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
+            return particleID;
+        }
         Timers.CreateTimer(duration, () => {
-            ParticleManager.DestroyParticle(particleID, data.extraData?.immediate ?? false);
-            ParticleManager.ReleaseParticleIndex(particleID);
+            this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
             if (data.extraData?.endCallback) {
                 CSafelyCall(() => data.extraData?.endCallback());
             }
@@ -41,6 +45,21 @@ export class CParticleManager {
         });
 
         return particleID;
+    }
+
+    CheckParticleLimit(caster: CDOTA_BaseNPC, particleName: ParticleList, time: number, limit: number): boolean {
+        const index = caster.GetEntityIndex();
+        const particle_map = this._particle_map.get(index);
+        const now = GameRules.GetGameTime();
+        if (!particle_map[particleName]) {
+            particle_map[particleName] = [];
+        }
+        particle_map[particleName] = particle_map[particleName].filter(t => now - t < time);
+        if (particle_map[particleName].length >= limit) {
+            return false;
+        }
+        particle_map[particleName].push(now);
+        return true;
     }
 
     SetParticleControl(particle: ParticleID, controlPoint: number, value: Vector): void {
@@ -59,7 +78,16 @@ export class CParticleManager {
         ParticleManager.SetParticleControlEnt(particle, controlPoint, unit, particleAttach, attachment, offset, lockOrientation);
     }
 
-    DestroyParticle(particleID: ParticleID, immediate?: boolean): void {
+    DestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
+        if (data && data.caster) {
+            const index = data.caster.GetEntityIndex();
+            const particle_map = this._particle_map.get(index);
+            if (particle_map) {
+                for (const key in particle_map) {
+                    particle_map[key] = particle_map[key].filter(t => t != particleID);
+                }
+            }
+        }
         ParticleManager.DestroyParticle(particleID, immediate ?? false);
         ParticleManager.ReleaseParticleIndex(particleID);
     }
