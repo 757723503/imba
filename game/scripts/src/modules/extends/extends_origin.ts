@@ -143,7 +143,7 @@ if (!CDOTA_BaseNPC.CGetFaceID) {
 }
 if (!CDOTA_BaseNPC.CHasTalent) {
     CDOTA_BaseNPC.CHasTalent = function (this: CDOTA_BaseNPC, talent_name: HeroTalent): boolean {
-        return this.HasAbility(talent_name) && this.FindAbilityByName(talent_name)?.IsTrained();
+        return this.FindAbilityByName(talent_name)?.GetLevel() > 0;
     };
 }
 if (!CDOTA_BaseNPC.GetAOEIncrease) {

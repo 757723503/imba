@@ -106,6 +106,11 @@ export class CParticleManager {
         ParticleManager.SetParticleControlEnt(particle, controlPoint, unit, particleAttach, attachment, offset, lockOrientation);
     }
 
+    SetParticleControlTransform(fxIndex: number, point: number, origin: Vector, qAngles?: QAngle, forward?: Vector): void {
+        qAngles && ParticleManager.SetParticleControlTransform(fxIndex, point, origin, qAngles);
+        forward && ParticleManager.SetParticleControlTransformForward(fxIndex, point, origin, forward);
+    }
+
     DestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
         if (data && data.caster) {
             const index = data.caster.GetEntityIndex();

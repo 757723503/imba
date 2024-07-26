@@ -126,17 +126,20 @@ export class CProjectileManager {
         if (!data.effectName) return;
         const pfx = CCreateParticle({
             particleName: data.effectName,
-            particleAttach: ParticleAttachment.WORLDORIGIN,
+            particleAttach: ParticleAttachment.CUSTOMORIGIN,
             extraData: { CheckFoW: false },
             owner: data.source,
             caster: data.source,
+            duration: 15,
         });
         const dota_unit = data.target;
         const end_pos = end_position;
         CSetParticleControl(pfx, 0, start_position);
+        // CSetParticleControlEnt(pfx, 0, data.source, ParticleAttachment.POINT_FOLLOW, 'attach_attack1', start_position, false);
         CSetParticleControl(pfx, 1, end_pos);
         CSetParticleControl(pfx, 2, Vector(data.moveSpeed, 0, 0));
-        CSetParticleControl(pfx, 9, start_position);
+        CSetParticleControlEnt(pfx, 9, data.source, ParticleAttachment.POINT_FOLLOW, 'attach_attack1', start_position, false);
+        CSetParticleControlTransform(pfx, 9, start_position, QAngle(90, 0, -data.source.GetAngles().y), null);
         return pfx;
     }
 

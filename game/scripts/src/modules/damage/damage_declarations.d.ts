@@ -113,6 +113,24 @@ declare interface ShieldData {
     /** 护盾值 */
     max_value: number;
     /** 护盾吸收伤害时的回调 */
+    on_absorb?: (shield: ShieldCallBackData) => void;
+    /** 护盾归零时回调 */
+    on_remove?: (shiled: ShieldCallBackData) => void;
+}
+declare interface ShieldCallBackData {
+    /** 护盾吸收伤害类型类型 */
+    shield_type: ShieldType;
+    /** 伤害吸收比例？默认是100。1~100 */
+    absorb_rate?: number;
+    /** 当前护盾值 */
+    value?: number;
+    /** 护盾值 */
+    max_value: number;
+    /** 吸收的伤害 */
+    absorb_damage: number;
+    /** 吸收的伤害类型 */
+    absorb_damage_type: DamageType;
+    /** 护盾吸收伤害时的回调 */
     on_absorb?: (shield: ShieldData) => void;
     /** 护盾归零时回调 */
     on_remove?: (shiled: ShieldData) => void;

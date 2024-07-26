@@ -270,21 +270,25 @@ export class modifier_attack_data_thinker extends BaseModifier {
 
     OnAttackRecord(event: ModifierAttackEvent): void {
         if (!IsServer()) return;
+        if (!event.target?.IsBaseNPC()) return;
         CAttackData.OnAttackStart(event);
     }
 
     OnAttack(event: ModifierAttackEvent): void {
         if (!IsServer()) return;
+        if (!event.target?.IsBaseNPC()) return;
         CAttackData.OnAttack(event);
     }
 
     OnAttackCancelled(event: ModifierAttackEvent): void {
         if (!IsServer()) return;
+        if (!event.target?.IsBaseNPC()) return;
         CAttackData.OnAttackCancelled(event);
     }
 
     OnAttackFinished(event: ModifierAttackEvent): void {
         if (!IsServer()) return;
+        if (!event.target?.IsBaseNPC()) return;
         CAttackData.OnAttackFinished(event);
     }
 

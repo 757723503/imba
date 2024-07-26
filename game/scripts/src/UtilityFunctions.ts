@@ -178,6 +178,9 @@ function CSetParticleControlEnt(
 function CDestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
     return CParticleManager.DestroyParticle(particleID, immediate, data);
 }
+function CSetParticleControlTransform(fxIndex: number, point: number, origin: Vector, qAngles: QAngle, forward: Vector): void {
+    return CParticleManager.SetParticleControlTransform(fxIndex, point, origin, qAngles, forward);
+}
 function CDeclareFunctions(...functions: ModifierFunction[]): ModifierFunction[] {
     if (globalThis.globalDeclareFunctions === undefined) {
         DebugWarning('globalDeclareFunctions is undefined');

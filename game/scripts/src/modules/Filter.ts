@@ -14,11 +14,11 @@ export class CFilter {
     }
 
     _ProjectileFilter(event: TrackingProjectileFilterEvent): boolean {
-        const target = EntIndexToHScript(event.entindex_target_const) as CDOTA_BaseNPC;
+        const target = EntIndexToHScript(event.entindex_target_const);
         const attacker = EntIndexToHScript(event.entindex_source_const) as CDOTA_BaseNPC;
         if (target.IsNull() || attacker.IsNull()) return false;
-        if (event.is_attack) {
-            // CAttackData.PerformAttack(attacker, target, { use_projectile: true, use_effect: true });
+        if (event.is_attack && !target.IsBaseNPC()) {
+            return true;
         }
         return false;
     }

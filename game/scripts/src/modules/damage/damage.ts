@@ -35,7 +35,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
-    if (attacker.IsHero()) record_list = [];
+    // if (attacker.IsHero()) record_list = [];
 
     // 先创建fixed damage table
     const fixed_tb: FixedDamageTable = <FixedDamageTable>{
@@ -463,8 +463,8 @@ namespace DamageHelper {
                         damage_type: dmgTable.damageType,
                         damage_flag: dmgTable.damageFlags,
                     };
-                    // - 回光返照的友方伤害记录(传入原伤害table并记录)
-                    Dispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', victim_handle, total_dmg_tb);
+                    // - 回光返照的友方伤害记录(传入原伤害table并记录)(全域触发)
+                    Dispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', null, total_dmg_tb);
 
                     // - 末端伤害格挡
                     // 同时触发时，仅数值最高者生效。
@@ -983,8 +983,8 @@ namespace DamageHelper {
                 if (!is_hp_cost) {
                     const total_dmg2 = dmgTable.true_damage;
                     if (total_dmg2 > 0) {
-                        // - 回光返照的友方伤害记录(传入原伤害table并记录)
-                        Dispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', victim_handle, {
+                        // - 回光返照的友方伤害记录(传入原伤害table并记录)(全域触发)
+                        Dispatcher.Send('DAMAGE_BORROWED_TIME_EVENT', null, {
                             attacker: attacker,
                             victim: victim,
                             damage: total_dmg2,
@@ -1266,14 +1266,14 @@ namespace DamageHelper {
             return acc;
         }, shieldDataContainer);
         // 临时变量存储回调的护盾
-        const callbackShields: ShieldData[] = [];
-        const removeShields: ShieldData[] = [];
+        const callbackShields: ShieldCallBackData[] = [];
+        const removeShields: ShieldCallBackData[] = [];
         /**
          * @param shields 检验的护盾
          * @param damage 传入的原始伤害
          * @returns 返回经过护盾吸收后的剩余伤害
          */
-        function _on_shield(shields: ShieldData[], damage: number | undefined): number | undefined {
+        function _on_shield(shields: ShieldData[], damage: number | undefined, damage_type: DamageType): number | undefined {
             if (!damage || damage <= 0) return damage;
             for (const shield of shields) {
                 const shieldValue = shield.value ?? shield.max_value;
@@ -1289,12 +1289,22 @@ namespace DamageHelper {
                 const shieldLeftValue = shieldValue - absorbedDamage;
                 // 扣除护盾值
                 shield.value = shieldLeftValue;
+                const callback_data: ShieldCallBackData = {
+                    absorb_damage: absorbedDamage,
+                    max_value: shield.max_value,
+                    shield_type: shield.shield_type,
+                    absorb_rate: shield.absorb_rate,
+                    value: shield.value,
+                    on_absorb: shield.on_absorb,
+                    on_remove: shield.on_remove,
+                    absorb_damage_type: damage_type,
+                };
                 // 记录回调和移除。移除和回调都放到最后
                 if (shield.on_absorb) {
-                    callbackShields.push(shield);
+                    callbackShields.push(callback_data);
                 }
                 if (shield.value <= 0) {
-                    removeShields.push(shield);
+                    removeShields.push(callback_data);
                 }
                 // 如果伤害未全部吸收，继续调用下一个护盾
                 damage -= absorbedDamage;
@@ -1304,20 +1314,40 @@ namespace DamageHelper {
             return damage;
         }
         // dota2顺序 - 物理攻击伤害护盾、魔法伤害护盾 - 全伤害护盾 - 物理伤害护盾
-        damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic_Attack], damageTable.attack_physical_damage);
-        damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.attack_physical_damage);
-        damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_physical_damage);
+        damageTable.attack_physical_damage = _on_shield(
+            shieldDataContainer[ShieldType.Physic_Attack],
+            damageTable.attack_physical_damage,
+            DamageType.Physical
+        );
+        damageTable.attack_physical_damage = _on_shield(
+            shieldDataContainer[ShieldType.Physic],
+            damageTable.attack_physical_damage,
+            DamageType.Physical
+        );
+        damageTable.attack_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_physical_damage, DamageType.Physical);
         // 魔法攻击伤害
-        damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.attack_magical_damage);
-        damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_magical_damage);
+        damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.attack_magical_damage, DamageType.Magical);
+        damageTable.attack_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.attack_magical_damage, DamageType.Magical);
         // 魔法伤害
-        damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.Magic], damageTable.ability_magical_damage);
-        damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_magical_damage);
+        damageTable.ability_magical_damage = _on_shield(
+            shieldDataContainer[ShieldType.Magic],
+            damageTable.ability_magical_damage,
+            DamageType.Magical
+        );
+        damageTable.ability_magical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_magical_damage, DamageType.Magical);
         // 纯粹伤害
-        damageTable.pure_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.pure_damage);
+        damageTable.pure_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.pure_damage, DamageType.Pure);
         // 物理伤害
-        damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.Physic], damageTable.ability_physical_damage);
-        damageTable.ability_physical_damage = _on_shield(shieldDataContainer[ShieldType.All], damageTable.ability_physical_damage);
+        damageTable.ability_physical_damage = _on_shield(
+            shieldDataContainer[ShieldType.Physic],
+            damageTable.ability_physical_damage,
+            DamageType.Physical
+        );
+        damageTable.ability_physical_damage = _on_shield(
+            shieldDataContainer[ShieldType.All],
+            damageTable.ability_physical_damage,
+            DamageType.Physical
+        );
         // 更新护盾数据到网表
         const shieldDataForNetTable: Record<string, { max_shield: string; now_shield: string }> = {
             Physic_Attack: { max_shield: '0', now_shield: '0' },

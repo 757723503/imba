@@ -13,6 +13,8 @@ enum HeroParticleList {
     imba_abaddon_death_coil = 'particles/units/heroes/hero_abaddon/abaddon_death_coil.vpcf',
     /**无光之盾*/
     imba_abaddon_aphotic_shield = 'particles/units/heroes/hero_abaddon/abaddon_aphotic_shield.vpcf',
+    /**无光之盾命石*/
+    imba_abaddon_aphotic_shield_mist = 'particles/units/heroes/hero_abaddon/abaddon_avernal_mist.vpcf',
     /**无光之盾击中 */
     imba_abaddon_aphotic_shield_hit = 'particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_hit.vpcf',
     /**无光之盾命石反弹 */

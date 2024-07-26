@@ -1040,7 +1040,7 @@ const _modifier_methods: {
     [ModifierFunctions.DamageEvent_BorrowedTimeRecord]: {
         registerFunc: (instance, parent_index) => {
             const dispatcherId = Dispatcher.Register('DAMAGE_BORROWED_TIME_EVENT', parent_index, event => {
-                if (instance.DamageEvent_BorrowedTimeRecord)
+                if (instance.DamageEvent_BorrowedTimeRecord) {
                     instance.DamageEvent_BorrowedTimeRecord(
                         event.attacker,
                         event.victim,
@@ -1049,6 +1049,7 @@ const _modifier_methods: {
                         event.damage_type,
                         event.damage_flag
                     );
+                }
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },

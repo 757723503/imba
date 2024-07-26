@@ -40,12 +40,25 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
         CSetParticleControl(pfx, 2, this.parent.GetAbsOrigin());
         CSetParticleControl(pfx, 4, this.parent.GetAbsOrigin());
         CSetParticleControl(pfx, 5, this.parent.GetAbsOrigin());
+
+        if (this.caster.CGetFaceID() == 1) {
+            const pfx2 = CCreateParticle({
+                particleName: HeroParticleList.imba_abaddon_aphotic_shield_mist,
+                particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
+                owner: this.parent,
+                modifier: this,
+                caster: this.caster,
+            });
+            const ex2 = this.parent.GetModelScale() * 100;
+            CSetParticleControlEnt(pfx2, 0, this.parent, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), true);
+            CSetParticleControl(pfx2, 1, Vector(ex2, 0, 0));
+            CSetParticleControl(pfx2, 2, this.parent.GetAbsOrigin());
+            CSetParticleControl(pfx2, 4, this.parent.GetAbsOrigin());
+            CSetParticleControl(pfx2, 5, this.parent.GetAbsOrigin());
+        }
     }
 
-    _shield_value =
-        this.caster.CGetFaceID() == 1
-            ? [ModifierFunctions.AddParentShieldData, ModifierFunctions.DamageEvent_ReflectSharedDamage]
-            : [ModifierFunctions.AddParentShieldData];
+    _shield_value = [ModifierFunctions.AddParentShieldData];
 
     _absorb_to_damage = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'absorb_to_damage');
     _regen = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'regen');
@@ -62,43 +75,6 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
         return this._regen;
     }
 
-    DamageEvent_ReflectSharedDamage(attacker: CDOTA_BaseNPC, damage_type: DamageType, damage: number): void {
-        if (this.caster.CGetFaceID() != 1) return;
-        const enemies = CFindUnitsInRadius({
-            flagFilter: UnitTargetFlags.FOW_VISIBLE,
-            location: this.parent.GetAbsOrigin(),
-            order: FindOrder.CLOSEST,
-            radius: this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'absorb_damage_aoe'),
-            team: this.caster.GetTeamNumber(),
-            teamFilter: UnitTargetTeam.ENEMY,
-            typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
-        });
-        enemies.forEach(unit => {
-            const pfx = CCreateParticle({
-                particleName: HeroParticleList.imba_abaddon_aphotic_shield_face_hit,
-                particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
-                owner: unit,
-                caster: this.caster,
-                duration: 1,
-
-                extraData: {
-                    immediate: true,
-                    limits: { time: FrameTime(), limit: 10 },
-                },
-            });
-            CSetParticleControlEnt(pfx, 0, unit, ParticleAttachment.CENTER_FOLLOW, 'attach_hitloc', unit.GetAbsOrigin(), false);
-            CSetParticleControlEnt(pfx, 1, this.parent, ParticleAttachment.CENTER_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), false);
-            CAddDamage({
-                attacker: this.caster,
-                damage: damage * this._absorb_to_damage * 0.01,
-                damageProperty: DamageProperty.Ability,
-                damageType: damage_type,
-                victim: unit,
-                damageFlags: DamageFlags.DoNotReflect,
-            });
-        });
-    }
-
     AddParentShieldData(): ShieldData {
         if (!IsServer()) return;
         return {
@@ -106,6 +82,43 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
             shield_type: ShieldType.All,
             on_remove: shiled => {
                 this.Destroy();
+            },
+            on_absorb: shield => {
+                if (this.caster.CGetFaceID() != 1) return;
+                const damage = shield.absorb_damage;
+                const enemies = CFindUnitsInRadius({
+                    flagFilter: UnitTargetFlags.FOW_VISIBLE,
+                    location: this.parent.GetAbsOrigin(),
+                    order: FindOrder.CLOSEST,
+                    radius: this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'absorb_damage_aoe'),
+                    team: this.caster.GetTeamNumber(),
+                    teamFilter: UnitTargetTeam.ENEMY,
+                    typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
+                });
+                enemies.forEach(unit => {
+                    const pfx = CCreateParticle({
+                        particleName: HeroParticleList.imba_abaddon_aphotic_shield_face_hit,
+                        particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
+                        owner: unit,
+                        caster: this.caster,
+                        duration: 1,
+
+                        extraData: {
+                            immediate: true,
+                            limits: { time: FrameTime(), limit: 10 },
+                        },
+                    });
+                    CSetParticleControlEnt(pfx, 0, unit, ParticleAttachment.CENTER_FOLLOW, 'attach_hitloc', unit.GetAbsOrigin(), false);
+                    CSetParticleControlEnt(pfx, 1, this.parent, ParticleAttachment.CENTER_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), false);
+                    CAddDamage({
+                        attacker: this.caster,
+                        damage: damage * this._absorb_to_damage * 0.01,
+                        damageProperty: DamageProperty.Ability,
+                        damageType: shield.absorb_damage_type,
+                        victim: unit,
+                        damageFlags: DamageFlags.DoNotReflect,
+                    });
+                });
             },
         };
     }

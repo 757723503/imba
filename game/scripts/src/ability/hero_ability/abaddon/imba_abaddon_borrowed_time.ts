@@ -42,6 +42,7 @@ export class modifier_imba_abaddon_borrowed_time_passive extends BaseModifier {
         damage: number
     ): void {
         if (victim != this.parent) return;
+        if (this.parent.PassivesDisabled()) return;
         if (damage <= 0) return;
         if (this.parent.GetHealth() - damage <= this._hp_threshold && this.ability.IsCooldownReady()) {
             this.ability.OnSpellStart();
@@ -51,17 +52,27 @@ export class modifier_imba_abaddon_borrowed_time_passive extends BaseModifier {
 @registerModifier()
 class modifier_imba_abaddon_borrowed_time extends BaseModifier {
     GetModifierConfig(): ModifierConfig {
-        print(this.ability, this, IsServer(), 'GetModifierConfig');
         return {
-            is_debuff: this.GetElapsedTime() > 5,
+            is_debuff: false,
+            is_hidden: false,
+            not_purgable: false,
+            not_purgable_exception: false,
         };
     }
-    // GetModifierConfig = (): ModifierConfig => {
-    //     print(this.ability, this, IsServer(), 'GetModifierConfig');
-    //     return {
-    //         is_debuff: this.GetElapsedTime() > 5,
-    //     };
-    // };
+
+    GetAuraConfig(): AuraConfig {
+        return {
+            aura_modifier: 'modifier_imba_abaddon_borrowed_time_talent',
+            aura_radius: this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'immolate_aoe'),
+            is_aura: this.parent.CHasTalent(HeroTalent.imba_abaddon_6),
+            search_flag: UnitTargetFlags.NONE,
+            search_team: UnitTargetTeam.BOTH,
+            search_type: UnitTargetType.HERO + UnitTargetType.BASIC,
+            aura_entity_reject: unit => {
+                return unit != this.parent && this.parent.IsAlly(unit);
+            },
+        };
+    }
 
     OnCreated(params: ModifierParams): void {
         if (!IsServer() || !CIsValid(this.ability)) return;
@@ -74,19 +85,6 @@ class modifier_imba_abaddon_borrowed_time extends BaseModifier {
         });
         CSetParticleControl(pfx, 0, this.parent.GetAbsOrigin());
     }
-    // GetAuraConfig(): AuraConfig {
-    //     return {
-    //         aura_entity_reject: unit => {
-    //             return unit != this.parent && this.parent.IsAlly(unit);
-    //         },
-    //         aura_modifier: 'modifier_imba_abaddon_borrowed_time_talent',
-    //         aura_radius: this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'immolate_aoe'),
-    //         is_aura: this.parent.CHasTalent(HeroTalent.imba_abaddon_6),
-    //         search_flag: UnitTargetFlags.NONE,
-    //         search_team: UnitTargetTeam.BOTH,
-    //         search_type: UnitTargetType.HERO + UnitTargetType.BASIC,
-    //     };
-    // }
 
     GetStatusEffectName(): string {
         return HeroParticleList.imba_abaddon_borrowed_time_status;
@@ -104,10 +102,12 @@ class modifier_imba_abaddon_borrowed_time extends BaseModifier {
         CSetParticleControl(pfx, 0, this.parent.GetAbsOrigin());
     }
 
+    _shield_value = this.caster.HasScepter()
+        ? [ModifierFunctions.DamageFixed_VictimIgnoreAllDamage, ModifierFunctions.DamageEvent_BorrowedTimeRecord]
+        : [ModifierFunctions.DamageFixed_VictimIgnoreAllDamage];
+
     CustomDeclareFunctions(): ModifierFunctions[] {
-        if (!IsServer()) return;
-        const _shield_value = [ModifierFunctions.DamageFixed_VictimIgnoreAllDamage];
-        return _shield_value;
+        return this._shield_value;
     }
 
     DamageFixed_VictimIgnoreAllDamage(origin_all: number, attacker: CDOTA_BaseNPC): boolean {
@@ -125,8 +125,69 @@ class modifier_imba_abaddon_borrowed_time extends BaseModifier {
             duration: 1.5,
             extraData: {
                 immediate: true,
+                limits: { limit: 1, time: FrameTime() },
             },
         });
         return true;
+    }
+
+    _ally: Record<EntityIndex, { damage: number; record: boolean }> = {};
+    _ally_threshold_scepter = this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'ally_threshold_scepter');
+    _redirect_range_scepter = this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'redirect_range_scepter');
+    DamageEvent_BorrowedTimeRecord(
+        attacker: CDOTA_BaseNPC,
+        victim: CDOTA_BaseNPC_Hero,
+        damage: number,
+        damage_property: DamageProperty,
+        damage_type: DamageType,
+        damage_flag: DamageFlags
+    ): void {
+        if (!this.caster.HasScepter()) return;
+        if (this.caster.IsEnemy(victim)) return;
+        if (GetDistance(this.parent.GetAbsOrigin(), victim.GetAbsOrigin()) > this._redirect_range_scepter) return;
+        if (this._ally[victim.entindex()] == undefined) {
+            this._ally[victim.entindex()] = { damage: 0, record: true };
+        }
+        this._ally[victim.entindex()].record && (this._ally[victim.entindex()].damage += damage);
+        if (this._ally[victim.entindex()].damage >= this._ally_threshold_scepter && this._ally[victim.entindex()].record) {
+            const ability = this.caster.FindAbilityByName(HeroAbility.imba_abaddon_death_coil);
+            if (ability && ability.GetLevel() > 0) {
+                this._ally[victim.entindex()].record = false;
+                ability['PlayEffect'](victim, () => {
+                    this._ally[victim.entindex()].record = true;
+                    this._ally[victim.entindex()].damage -= this._ally_threshold_scepter;
+                });
+            }
+        }
+    }
+}
+@registerModifier()
+class modifier_imba_abaddon_borrowed_time_talent extends BaseModifier {
+    GetModifierConfig(): ModifierConfig {
+        return {
+            is_debuff: true,
+            is_hidden: false,
+            not_purgable: false,
+            not_purgable_exception: false,
+        };
+    }
+
+    _immolate_damage = this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'immolate_damage');
+    _immolate_tick = this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'immolate_tick');
+    OnCreated(): void {
+        if (!IsServer()) return;
+        this.StartIntervalThink(this._immolate_tick);
+    }
+
+    OnIntervalThink(): void {
+        CAddDamage({
+            attacker: this.caster,
+            victim: this.parent,
+            sourceAbility: this.ability,
+            damage: this._immolate_damage * this._immolate_tick,
+            damageType: DamageType.Magical,
+            damageFlags: DamageFlags.None,
+            damageProperty: DamageProperty.Ability,
+        });
     }
 }

@@ -53,7 +53,7 @@ export const data: LocalizationData = {
                 { ability_special: 'curse_duration', text: '持续时间：' },
                 { ability_special: 'curse_slow', text: '移动速度减缓：', percentage: true },
                 { ability_special: 'curse_dps', text: ' 每秒伤害：' },
-                { ability_special: 'curse_attack_speed ', text: ' 攻击速度：' },
+                { ability_special: 'curse_attack_speed', text: ' 攻击速度：' },
             ],
         },
 
@@ -90,17 +90,22 @@ export const data: LocalizationData = {
         {
             modifier_classname: 'modifier_imba_abaddon_frostmourne_debuff',
             name: '魔霭诅咒',
-            description: '移动速度被减缓{${MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE}}%',
+            description: '移动速度被减缓{MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE}%',
         },
         {
             modifier_classname: 'modifier_imba_abaddon_frostmourne_buff',
             name: '魔霭诅咒',
-            description: '攻击速度提升{${MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT}}',
+            description: '攻击速度提升{MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT}',
         },
         {
             modifier_classname: 'modifier_imba_abaddon_borrowed_time',
             name: '回光返照',
             description: '受到的伤害将会转化为治疗效果。',
+        },
+        {
+            modifier_classname: 'modifier_imba_abaddon_borrowed_time_talent',
+            name: '魔霭献祭',
+            description: '回光返照生效时持续受到并造成伤害',
         },
     ],
     StandardArray: [],
