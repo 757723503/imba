@@ -259,13 +259,13 @@ export class modifier_attack_data_thinker extends BaseModifier {
     }
 
     DeclareFunctions(): ModifierFunction[] {
-        return [
+        return CDeclareFunctions(
             ModifierFunction.ON_ATTACK_RECORD,
             ModifierFunction.ON_ATTACK_CANCELLED,
             ModifierFunction.ON_ATTACK,
             ModifierFunction.ON_ATTACK_FINISHED,
-            ModifierFunction.ON_MODIFIER_ADDED,
-        ];
+            ModifierFunction.ON_MODIFIER_ADDED
+        );
     }
 
     OnAttackRecord(event: ModifierAttackEvent): void {
@@ -333,12 +333,12 @@ export class modifier_attack_data_miss extends BaseModifier {
     }
 
     DeclareFunctions(): modifierfunction[] {
-        return [
+        return CDeclareFunctions(
             ModifierFunction.MISS_PERCENTAGE,
             ModifierFunction.INCOMING_DAMAGE_CONSTANT,
             ModifierFunction.INCOMING_PHYSICAL_DAMAGE_CONSTANT,
-            ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT,
-        ];
+            ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT
+        );
     }
 
     OnCreated(params: ModifierParams): void {

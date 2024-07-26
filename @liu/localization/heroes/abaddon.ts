@@ -9,8 +9,8 @@ export const data: LocalizationData = {
             notes: ['亚巴顿不能使用此技能自杀。'],
             lore: '亚巴顿的气息中充盈着来自魔霭圣池的神秘之汽，他能随意将其释放。',
             reimagined_effects: [
-                { title: 'imba效果1', description: 'imba效果1' },
-                { title: 'imba效果2', description: 'imba效果2' },
+                // { title: 'imba效果1', description: 'imba效果1' },
+                // { title: 'imba效果2', description: 'imba效果2' },
             ],
             ability_specials: [
                 { ability_special: 'target_damage', text: '伤害/治疗' },
@@ -26,8 +26,8 @@ export const data: LocalizationData = {
             notes: ['不论护盾因持续时间结束或吸收足够伤害后被摧毁都将造成最大伤害。', '爆炸将不会对战争迷雾内单位造成伤害。'],
             lore: '升腾的黑雾将敌人的招数一一吞噬，如同吞噬日光。',
             reimagined_effects: [
-                { title: 'imba效果1', description: 'imba效果1' },
-                { title: 'imba效果2', description: 'imba效果2' },
+                // { title: 'imba效果1', description: 'imba效果1' },
+                // { title: 'imba效果2', description: 'imba效果2' },
             ],
             ability_specials: [
                 { ability_special: 'AbilityCooldown', text: '冷却：' },
@@ -46,8 +46,8 @@ export const data: LocalizationData = {
                 ' 亚巴顿打击一个敌人，使其受到寒心诅咒的作用，被减速，并且持续受到伤害，同时所有攻击目标的单位将提升攻击速度。对建筑的持续伤害减少%tower_dps_pct%%%。',
             lore: '受洗之人能从圣池中汲取能量，而魔霭的恩赐会让一无所知的人逐渐衰弱。',
             reimagined_effects: [
-                { title: 'imba效果1', description: 'imba效果1' },
-                { title: 'imba效果2', description: 'imba效果2' },
+                // { title: 'imba效果1', description: 'imba效果1' },
+                // { title: 'imba效果2', description: 'imba效果2' },
             ],
             ability_specials: [
                 { ability_special: 'curse_duration', text: '持续时间：' },
@@ -68,8 +68,8 @@ export const data: LocalizationData = {
                 ' 无光之盾在回光返照生效期间不会吸收伤害，因此也不会影响治疗效果。',
             ],
             reimagined_effects: [
-                { title: 'imba效果1', description: 'imba效果1' },
-                { title: 'imba效果2', description: 'imba效果2' },
+                // { title: 'imba效果1', description: 'imba效果1' },
+                // { title: 'imba效果2', description: 'imba效果2' },
             ],
             ability_specials: [
                 { ability_special: 'hp_threshold ', text: '生命临界值：' },
@@ -106,7 +106,7 @@ export const data: LocalizationData = {
     StandardArray: [],
     TalentArray: [
         {
-            talent_classname: 'special_bonus_imba_abaddon',
+            talent_classname: 'special_bonus_unique_imba_abaddon',
             talents: [
                 // +{s:bonus_damage_absorb} 无光之盾护盾数值
                 // +{s:bonus_target_damage} 迷雾缠绕治疗/伤害
@@ -117,14 +117,17 @@ export const data: LocalizationData = {
                 // 无光之盾提供+{s:bonus_regen} 生命恢复
                 // {s:bonus_immolate_damage} 回光返照献祭每秒伤害
                 // 作用于亚巴顿和{s:bonus_immolate_aoe}范围内所有敌人。
-                { name: '+{s:value} 无光之盾护盾数值' },
-                { name: '+{s:value} 迷雾缠绕治疗/伤害' },
-                { name: '+{s:value} 魔霭诅咒攻速加成' },
-                { name: '{s:value} 范围型迷雾缠绕' },
-                { name: '+{s:value} 魔霭诅咒每秒伤害' },
-                { name: '-{s:value}% 魔霭诅咒诅咒减速' },
-                { name: '无光之盾提供+{s:value} 生命恢复' },
-                { name: '{s:value} 回光返照献祭每秒伤害' },
+                { name: '-{s:bonus_curse_slow}% 魔霭诅咒诅咒减速' }, //1
+                { name: '无光之盾提供+{s:bonus_regen} 生命恢复' }, //2
+
+                { name: '+{s:bonus_curse_dps} 魔霭诅咒每秒伤害' }, //3
+                { name: '+{s:bonus_target_damage} 迷雾缠绕治疗/伤害' }, //4
+
+                { name: '+{s:bonus_damage_absorb} 无光之盾护盾数值' }, //5
+                { name: '{s:bonus_immolate_damage} 回光返照献祭每秒伤害', description: '作用于亚巴顿和{s:bonus_immolate_aoe}范围内所有敌人。' }, //6
+
+                { name: '+{s:bonus_curse_attack_speed} 魔霭诅咒攻速加成' }, //7
+                { name: '{s:bonus_effect_radius} 范围型迷雾缠绕' }, //8
             ],
         },
     ],
@@ -132,8 +135,8 @@ export const data: LocalizationData = {
     FacetArray_B: [
         {
             facet_classname: 'abaddon_facets_imba_1',
-            name: '毒雾护罩',
-            description: '无光之盾吸收更多伤害，并且实时反弹伤害.',
+            name: '毒雾护罩 | 畅快淋漓',
+            description: '无光之盾吸收更多伤害，同时实时反弹伤害,并且亚巴顿附近阵亡的单位会降低他的冷却时间。 ',
             related_abilities: [
                 {
                     ability_classname: 'imba_abaddon_aphotic_shield',

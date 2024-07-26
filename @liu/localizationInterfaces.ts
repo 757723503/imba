@@ -43,8 +43,11 @@ export interface AbilityLocalizationContent {
 }
 
 export interface ModifierLocalization {
+    /** modifier类名 */
     modifier_classname: string;
+    /** modifier文本名 */
     name?: string;
+    /** modifier描述 */
     description?: string;
     language_overrides?: Array<ModifierLocalizationContent>;
 }

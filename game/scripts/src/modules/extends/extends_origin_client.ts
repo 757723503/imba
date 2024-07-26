@@ -148,4 +148,17 @@ if (!C_DOTA_Ability_Lua.GetSpecialValue) {
         return this.GetSpecialValueFor(valueName as string);
     };
 }
+if (!C_DOTA_BaseNPC.CGetFaceID) {
+    C_DOTA_BaseNPC.CGetFaceID = function (this: CDOTA_BaseNPC): number {
+        if (this.IsHero()) {
+            return tonumber(this.GetHeroFacetID());
+        }
+        return -1;
+    };
+}
+if (!C_DOTA_BaseNPC.CHasTalent) {
+    C_DOTA_BaseNPC.CHasTalent = function (this: CDOTA_BaseNPC, talent_name: HeroTalent): boolean {
+        return this.HasAbility(talent_name) && this.FindAbilityByName(talent_name)?.IsTrained();
+    };
+}
 export {};

@@ -46,8 +46,12 @@ declare global {
         GetAOEIncrease(): number;
         /**判断魔晶 */
         HasShard(): boolean;
+        /**获得命石ID */
+        CGetFaceID(): number;
         /**自定义驱散 */
         CPurge(keys: PurgeData): void;
+        /**判断天赋是否生效 */
+        CHasTalent(talentName: HeroTalent): boolean;
         /**
          * @deprecated
          */
@@ -72,6 +76,7 @@ declare global {
         /**
          * @deprecated
          */
+
         HealWithParams(amount: number, inflictor: object, lifesteal: boolean, amplify: boolean, source: object, spellLifesteal: boolean): void;
         _ability_custom_base_attack: CDOTABaseAbility;
     }
@@ -131,6 +136,10 @@ declare global {
     }
     interface CDOTA_BaseNPC_Hero {
         _modifierKeys: CreateIllusionsModifierKeys;
+        /**
+         * @deprecated
+         */
+        GetHeroFacetID(): number;
     }
     interface CDOTABaseAbility extends Custom_BaseAbility_Properties {}
     interface CBaseEntity {}
@@ -146,6 +155,10 @@ declare global {
          * 自定义modifier配置
          */
         GetModifierConfig?(): ModifierConfig;
+        /**
+         * 自定义modifier光环配置
+         */
+        GetAuraConfig?(): AuraConfig;
         OnCreated(params: ModifierParams): void;
 
         // GetAbility(): CDOTABaseAbility | undefined;
@@ -353,6 +366,23 @@ declare global {
         not_destroy_on_expire?: boolean;
         /** 允许幻象复制 默认是`false` */
         allow_illusion_duplicate?: boolean;
+    }
+    interface AuraConfig {
+        /** 是否是光环*/
+        is_aura: boolean;
+        /** 光环类型 */
+        aura_radius: number;
+        /** 子光环 */
+        aura_modifier: string;
+        /** 光环buff的黏连时间   */
+        aura_buff_stiff?: number;
+        /** 死亡时光环也生效 */
+        active_on_death?: boolean;
+        search_team: UnitTargetTeam;
+        search_type: UnitTargetType;
+        search_flag: UnitTargetFlags;
+        /** 过滤回调 返回true ，单位不会被添加子光环 */
+        aura_entity_reject?: (unit: CDOTA_BaseNPC) => boolean;
     }
     interface FindUnitsInRadiusOptions {
         team: DotaTeam;

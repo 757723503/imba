@@ -2,10 +2,11 @@ import { reloadable } from '../../utils/tstl-utils';
 import './particle_list';
 declare global {
     var CParticleManager: CParticleManager;
-    var CCreateParticle: CParticleManager['CreateParticle'];
-    var CSetParticleControl: CParticleManager['SetParticleControl'];
-    var CSetParticleControlEnt: CParticleManager['SetParticleControlEnt'];
-    var CDestroyParticle: CParticleManager['DestroyParticle'];
+    // var CParticleManager.CreateParticle: CParticleManager['CreateParticle'];
+    // var CParticleManager.SetParticleControl: CParticleManager['SetParticleControl'];
+    // var CParticleManager.SetParticleControlEnt: CParticleManager['SetParticleControlEnt'];
+    // var CDestroyParticle: CParticleManager['DestroyParticle'];
+    // var CCheckParticleLimit: CParticleManager['CheckParticleLimit'];
 }
 
 @reloadable
@@ -37,13 +38,13 @@ export class CParticleManager {
             (data.modifier['AddParticle_all_particle'] as ParticleID[]) = (data.modifier['AddParticle_all_particle'] as ParticleID[]) || [];
             (data.modifier['AddParticle_all_particle'] as ParticleID[]).push(particleID);
         }
-        const duration = data.extraData?.duration ?? 60;
+        const duration = data?.duration ?? 60;
         if (duration <= 0) {
             this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
             return particleID;
         }
         Timers.CreateTimer(duration, () => {
-            CDestroyParticle(particleID, data.extraData?.immediate ?? false);
+            this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
             if (data.extraData?.endCallback) {
                 CSafelyCall(() => data.extraData?.endCallback());
             }
@@ -54,7 +55,7 @@ export class CParticleManager {
     }
 
     // 检查粒子特效限制
-    public CheckParticleLimit(caster: CDOTA_BaseNPC, particleName: ParticleList, time: number, limit: number): boolean {
+    CheckParticleLimit(caster: CDOTA_BaseNPC, particleName: ParticleList, time: number, limit: number): boolean {
         const index = caster.GetEntityIndex();
 
         // 获取或初始化该实体的粒子特效映射
@@ -105,7 +106,7 @@ export class CParticleManager {
         ParticleManager.SetParticleControlEnt(particle, controlPoint, unit, particleAttach, attachment, offset, lockOrientation);
     }
 
-    public DestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
+    DestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
         if (data && data.caster) {
             const index = data.caster.GetEntityIndex();
             const particle_map = this._particle_map.get(index);

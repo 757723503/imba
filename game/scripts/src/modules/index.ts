@@ -34,6 +34,8 @@ declare global {
     }
     var MEM: MemoryReferenceInfo;
     var CAddDamage: typeof CustomApplyDamage;
+
+    var globalDeclareFunctions: ModifierFunction[];
 }
 math.randomseed(Time());
 
@@ -48,6 +50,8 @@ export function ActivateModules() {
         GameRules.CGameMode = new CGameMode();
         new GameConfig();
         globalThis.Dispatcher = new CDispatcher();
+
+        globalThis.globalDeclareFunctions = [];
     }
     new Debug();
     new CChat();
@@ -61,8 +65,4 @@ export function ActivateModules() {
 
     globalThis.CAddDamage = CustomApplyDamage;
     globalThis.CPerformAttack = CAttackData.PerformAttack;
-    globalThis.CCreateParticle = CParticleManager.prototype.CreateParticle;
-    globalThis.CSetParticleControl = CParticleManager.prototype.SetParticleControl;
-    globalThis.CSetParticleControlEnt = CParticleManager.prototype.SetParticleControlEnt;
-    globalThis.CDestroyParticle = CParticleManager.prototype.DestroyParticle;
 }

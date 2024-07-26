@@ -29,17 +29,17 @@
 			"target_damage"
 			{
 				"value"		"100 175 250 325"
-				"special_bonus_unique_abaddon_2"		"40"
+				"special_bonus_unique_imba_abaddon_4"		"40"
 			}
 			"heal_amount"
 			{
 				"value"		"100 175 250 325"
-				"special_bonus_unique_abaddon_2"		"40"
+				"special_bonus_unique_imba_abaddon_4"		"40"
 			}
 			"effect_radius"
 			{
 				"value"		"0"
-				"special_bonus_unique_abaddon_4"		"400"
+				"special_bonus_unique_imba_abaddon_8"		"400"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -67,40 +67,40 @@
 			"AbilityCooldown"
 			{
 				"value"		"12 10 8 6"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"2"
+				"special_bonus_facet_abaddon_facets_imba_1"		"2"
 			}
 			"duration"
 			{
 				"value"		"15"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"2"
+				"special_bonus_facet_abaddon_facets_imba_1"		"2"
 			}
 			"radius"
 			{
 				"value"		"675"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"=0"
+				// "special_bonus_facet_abaddon_facets_imba_1"		"=0"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage_absorb"
 			{
 				"value"		"120 150 180 210"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"=170 =210 =250 =290"
-				"special_bonus_unique_abaddon"		"100"
+				"special_bonus_facet_abaddon_facets_imba_1"		"=170 =210 =250 =290"
+				"special_bonus_unique_imba_abaddon_5"		"100"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 			}
 			"regen"
 			{
 				"value"		"0"
-				"special_bonus_unique_abaddon_7"		"15"
+				"special_bonus_unique_imba_abaddon_2"		"15"
 			}
 			"absorb_to_damage"
 			{
 				"value"		"0"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"75"
+				"special_bonus_facet_abaddon_facets_imba_1"		"75"
 			}
 			"absorb_damage_aoe"
 			{
 				"value"		"0"
-				"special_bonus_facet_abaddon_mephitic_shroud"		"675"
+				"special_bonus_facet_abaddon_facets_imba_1"		"675"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -125,6 +125,25 @@
 			}
 		}
 	}
+	"abaddon_the_quickening"
+	{
+		// "BaseClass"		"ability_lua"
+		// "ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_the_quickening"
+		// "AbilityTextureName"	"abaddon_the_quickening"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"MaxLevel"		"1"
+		"AbilityValues"
+		{
+			"cooldown_reduction_creeps"		"0.1"
+			"cooldown_reduction_heroes"		"2"
+			"radius"
+			{
+				"value"		"900"
+				"affected_by_aoe_increase"		"1"
+			}
+		}
+	}
 	"imba_abaddon_font_of_avernus"
 	{
 		"BaseClass"		"ability_lua"
@@ -136,6 +155,16 @@
 		"AbilityValues"
 		{
 			"respawn_reduction"		"10"
+		}
+	}
+	"abaddon_font_of_avernus"
+	{
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"AbilityValues"
+		{
+			"respawn_reduction"		"25"
 		}
 	}
 	"imba_abaddon_frostmourne"
@@ -159,17 +188,17 @@
 			"curse_slow"
 			{
 				"value"		"10 15 20 25"
-				"special_bonus_unique_abaddon_6"		"15"
+				"special_bonus_unique_imba_abaddon_1"		"15"
 			}
 			"curse_attack_speed"
 			{
 				"value"		"10 20 30 40"
-				"special_bonus_unique_abaddon_3"		"80"
+				"special_bonus_unique_imba_abaddon_7"		"80"
 			}
 			"curse_dps"
 			{
 				"value"		"10 20 30 40"
-				"special_bonus_unique_abaddon_5"		"50"
+				"special_bonus_unique_imba_abaddon_3"		"50"
 			}
 			"tower_dps_pct"		"70"
 			"curse_interval"		"0.5"
@@ -217,18 +246,18 @@
 			"immolate_damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_abaddon_immolation"		"100"
+				"special_bonus_unique_imba_abaddon_6"		"100"
 			}
 			"immolate_aoe"
 			{
 				"value"		"0"
-				"special_bonus_unique_abaddon_immolation"		"400"
+				"special_bonus_unique_imba_abaddon_6"		"400"
 				"affected_by_aoe_increase"		"1"
 			}
 			"immolate_tick"		"0.25"
 		}
 	}
-	"special_bonus_unique_imba_abaddon"
+	"special_bonus_unique_imba_abaddon_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -270,10 +299,11 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_unique_imba_abaddon_immolation"
+	"special_bonus_unique_imba_abaddon_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
+	
 	}
 }

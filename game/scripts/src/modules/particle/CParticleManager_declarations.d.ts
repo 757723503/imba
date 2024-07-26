@@ -13,10 +13,10 @@ interface CParticleData {
     team?: DotaTeam;
     /**绑定的modifier */
     modifier?: CDOTA_Buff;
+    /** 持续时间(默认持续60秒) */
+    duration?: number;
     /** 自定义数据 */
     extraData?: {
-        /** 持续时间(默认持续60秒) */
-        duration?: number;
         /** 结束回调 */
         endCallback?: () => void;
         /** 是否立即删除 */

@@ -26,6 +26,8 @@ export class modifier_imba_abaddon_frostmourne_passive extends BaseModifier {
 
     OnAttackLanded_Attacker(AttackData: UnitEventAttackDamageData): void {
         const victim = AttackData.damageTable.victim;
+        if (this.parent.IsIllusion()) return;
+        if (this.parent.PassivesDisabled()) return;
         if (victim.IsUnit() || victim.IsBuilding()) {
             victim
                 .AddModifier(
@@ -75,8 +77,7 @@ export class modifier_imba_abaddon_frostmourne_debuff extends BaseModifier {
     }
 
     DeclareFunctions(): ModifierFunction[] {
-        const _declare = [ModifierFunction.MOVESPEED_BONUS_PERCENTAGE, ModifierFunction.ATTACKSPEED_BONUS_CONSTANT];
-        return _declare;
+        return CDeclareFunctions(ModifierFunction.MOVESPEED_BONUS_PERCENTAGE, ModifierFunction.ATTACKSPEED_BONUS_CONSTANT);
     }
 
     GetModifierMoveSpeedBonus_Percentage(): number {
@@ -91,8 +92,8 @@ export class modifier_imba_abaddon_frostmourne_debuff extends BaseModifier {
         CAddDamage({
             attacker: this.caster,
             damage: this.parent.IsBlind()
-                ? this._curse_dps * this._curse_interval * this._tower_dps_pct * 0.01
-                : this._curse_dps * this._curse_interval * 0.01,
+                ? this._curse_dps * this._curse_interval * (this._tower_dps_pct * 0.01)
+                : this._curse_dps * this._curse_interval,
             damageType: DamageType.Magical,
             victim: this.parent,
             sourceAbility: this.ability,
@@ -126,8 +127,7 @@ export class modifier_imba_abaddon_frostmourne_buff extends BaseModifier {
     }
 
     DeclareFunctions(): ModifierFunction[] {
-        const _declare = [ModifierFunction.MOVESPEED_BONUS_PERCENTAGE, ModifierFunction.ATTACKSPEED_BONUS_CONSTANT];
-        return _declare;
+        return CDeclareFunctions(ModifierFunction.MOVESPEED_BONUS_PERCENTAGE, ModifierFunction.ATTACKSPEED_BONUS_CONSTANT);
     }
 
     GetModifierMoveSpeedBonus_Percentage(): number {

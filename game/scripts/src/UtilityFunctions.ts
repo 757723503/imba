@@ -158,6 +158,35 @@ function checkTag(tag: number, ...values: number[]): boolean {
     }
     return false;
 }
+function CCreateParticle(data: CParticleData): ParticleID {
+    return CParticleManager.CreateParticle(data);
+}
+function CSetParticleControl(particle: ParticleID, controlPoint: number, value: Vector): void {
+    return CParticleManager.SetParticleControl(particle, controlPoint, value);
+}
+function CSetParticleControlEnt(
+    particle: ParticleID,
+    controlPoint: number,
+    unit: CBaseEntity,
+    particleAttach: ParticleAttachment,
+    attachment: string,
+    offset: Vector,
+    lockOrientation: boolean
+): void {
+    return CParticleManager.SetParticleControlEnt(particle, controlPoint, unit, particleAttach, attachment, offset, lockOrientation);
+}
+function CDestroyParticle(particleID: ParticleID, immediate?: boolean, data?: CParticleData): void {
+    return CParticleManager.DestroyParticle(particleID, immediate, data);
+}
+function CDeclareFunctions(...functions: ModifierFunction[]): ModifierFunction[] {
+    if (globalThis.globalDeclareFunctions === undefined) {
+        DebugWarning('globalDeclareFunctions is undefined');
+        globalThis.globalDeclareFunctions = [];
+    }
+    globalThis.globalDeclareFunctions.length = 0;
+    globalThis.globalDeclareFunctions.push(...functions);
+    return globalThis.globalDeclareFunctions;
+}
 // function convertModifierParamData<T>(data: T): ModifierParamData<T> {
 //     if (typeof data === 'boolean') {
 //         return (data ? 1 : 0) as ModifierParamData<T>;

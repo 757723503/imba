@@ -133,6 +133,19 @@ if (!CDOTA_BaseNPC.CPurge) {
         this.Purge(keys.removePositiveBuffs, keys.removeDebuffs, false, false, keys.removeExceptions);
     };
 }
+if (!CDOTA_BaseNPC.CGetFaceID) {
+    CDOTA_BaseNPC.CGetFaceID = function (this: CDOTA_BaseNPC): number {
+        if (this.IsHero()) {
+            return tonumber(this.GetHeroFacetID());
+        }
+        return -1;
+    };
+}
+if (!CDOTA_BaseNPC.CHasTalent) {
+    CDOTA_BaseNPC.CHasTalent = function (this: CDOTA_BaseNPC, talent_name: HeroTalent): boolean {
+        return this.HasAbility(talent_name) && this.FindAbilityByName(talent_name)?.IsTrained();
+    };
+}
 if (!CDOTA_BaseNPC.GetAOEIncrease) {
     CDOTA_BaseNPC.GetAOEIncrease = function (this: CDOTA_BaseNPC): number {
         return this.custom_aoe_increase;

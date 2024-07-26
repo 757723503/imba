@@ -33,7 +33,7 @@ export class CChat {
                 SendToServerConsole('script_reload');
                 SendToServerConsole('cl_script_reload');
                 for (let index = 0; index < 20; index++) {
-                    const new_hero = PlayerResource.GetSelectedHeroEntity(keys.playerid);
+                    const new_hero = PlayerResource.GetSelectedHeroEntity(index as PlayerID);
                     PlayerResource.ReplaceHeroWithNoTransfer(index as PlayerID, new_hero.GetUnitName(), 0, 0);
                     // new_hero.RemoveSelf();
                 }
@@ -226,12 +226,16 @@ export class CChat {
                 // });
                 break;
             case ChatCommand.hero:
-                DebugCreateUnit(player, DotaHero.slardar, DotaTeam.BADGUYS, false, (unit): void => {
+                DebugCreateUnit(player, DotaHero.sniper, DotaTeam.BADGUYS, false, (unit): void => {
+                    unit.AddItemByName(DotaItem.blade_mail);
+                });
+                DebugCreateUnit(player, DotaHero.sniper, DotaTeam.GOODGUYS, false, (unit): void => {
                     unit.AddItemByName(DotaItem.blade_mail);
                 });
                 break;
             case ChatCommand.dm:
                 const dummy = CreateUnitByName('npc_dota_hero_target_dummy', hero.GetAbsOrigin(), true, null, null, DotaTeam.NEUTRALS);
+                dummy.SetBaseMagicalResistanceValue(0);
                 // dummy.SetControllableByPlayer(keys.playerid, true);
                 break;
             case ChatCommand.mem:

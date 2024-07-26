@@ -26603,17 +26603,31 @@
 		{
 			"abaddon_facets_imba_1"
 			{
-				"Icon"				"cooldown"
+				"Icon"				"barrier"
 				"Color"				"Green"
-				"GradientID"		"4"
+				"GradientID"		"1"
 
-				// "Abilities"
-				// {
-				// 	"Ability1"
-				// 	{
-				// 		"AbilityName"	"imba_abaddon_the_quickening"
-				// 	}
-				// }
+				"Abilities"
+				{
+					"Ability1"
+					{
+						"AbilityName"	"abaddon_the_quickening"
+					}
+				}
+			}
+			"abaddon_death_dude"
+			{
+				"Icon"				"cooldown"
+				"Color"				"Gray"
+				"GradientID"		"0"
+
+				"Abilities"
+				{
+					"Ability1"
+					{
+						"AbilityName"	"abaddon_the_quickening"
+					}
+				}
 			}
 		}
 //		"VariantAbility1"		""

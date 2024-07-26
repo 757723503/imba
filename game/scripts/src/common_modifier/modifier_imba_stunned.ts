@@ -87,27 +87,14 @@ export class modifier_imba_stunned extends BaseModifier {
     }
 
     DeclareFunctions(): ModifierFunction[] {
-        return [
-            // ModifierFunction.ON_ATTACK_START,
-            // ModifierFunction.ON_ATTACKED,
-            // ModifierFunction.ON_ATTACK_LANDED,
-            // ModifierFunction.ON_ATTACK_ALLIED,
-            // ModifierFunction.ON_ATTACK_FAIL,
-            // ModifierFunction.ON_ATTACK_FINISHED,
-            // ModifierFunction.ON_ATTACK_RECORD,
-            // ModifierFunction.ON_ATTACK_RECORD_DESTROY,
-            // ModifierFunction.ON_ATTACK_CANCELLED,
-            // ModifierFunction.ON_ATTACK,
-            // ModifierFunction.MODEL_CHANGE,
-            // ModifierFunction.MAGICAL_RESISTANCE_BONUS,
-            // ModifierFunction.INCOMING_DAMAGE_CONSTANT,
+        return CDeclareFunctions(
             ModifierFunction.SPELL_AMPLIFY_PERCENTAGE,
             ModifierFunction.HEAL_AMPLIFY_PERCENTAGE_SOURCE,
             ModifierFunction.HEAL_AMPLIFY_PERCENTAGE_TARGET,
             ModifierFunction.HP_REGEN_AMPLIFY_PERCENTAGE,
             ModifierFunction.LIFESTEAL_AMPLIFY_PERCENTAGE,
-            ModifierFunction.SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
-        ];
+            ModifierFunction.SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE
+        );
     }
 
     GetModifierSpellAmplify_Percentage(event: ModifierAttackEvent): number {
