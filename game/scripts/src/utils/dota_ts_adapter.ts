@@ -178,7 +178,7 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     };
 
     const originalGetTexture = originalGetModifier.GetTexture;
-    env[name].GetTexture = function () {
+    env[name].GetTexture = function (): string {
         if (originalGetTexture) {
             return originalGetTexture.call(this);
         }
