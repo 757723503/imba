@@ -4629,7 +4629,7 @@
 	}
 	"npc_dota_hero_abyssal_underlord"
 	{
-"Ability1"		"abyssal_underlord_firestorm"
+		"Ability1"		"abyssal_underlord_firestorm"
 		"Ability2"		"abyssal_underlord_pit_of_malice"
 		"Ability3"		"abyssal_underlord_atrophy_aura"
 		"Ability4"		"generic_hidden"
@@ -4643,29 +4643,29 @@
 		"Ability15"		"special_bonus_unique_underlord_3"
 		"Ability16"		"special_bonus_unique_underlord"
 		"Ability17"		"special_bonus_unique_underlord_9"
-		"Facets"
-		{
-			"abyssal_underlord_demons_reach"
-			{
-				"Icon"		"area_of_effect"
-				"Color"		"Green"
-				"GradientID"		"0"
-			}
-			"abyssal_underlord_summons"
-			{
-				"Icon"		"summons"
-				"Color"		"Yellow"
-				"GradientID"		"3"
-				"Abilities"
-				{
-					"Ability1"
-					{
-						"AbilityName"		"abyssal_underlord_abyssal_horde"
-						"AutoLevelAbility"		"false"
-					}
-				}
-			}
-		}
+		// "Facets"
+		// {
+		// 	"abyssal_underlord_demons_reach"
+		// 	{
+		// 		"Icon"		"area_of_effect"
+		// 		"Color"		"Green"
+		// 		"GradientID"		"0"
+		// 	}
+		// 	"abyssal_underlord_summons"
+		// 	{
+		// 		"Icon"		"summons"
+		// 		"Color"		"Yellow"
+		// 		"GradientID"		"3"
+		// 		"Abilities"
+		// 		{
+		// 			"Ability1"
+		// 			{
+		// 				"AbilityName"		"abyssal_underlord_abyssal_horde"
+		// 				"AutoLevelAbility"		"false"
+		// 			}
+		// 		}
+		// 	}
+		// }
 		"precache"
 		{
 			"particle"		"particles/econ/events/anniversary_10th/anniversary_10th_hat_ambient_npc_dota_hero_abyssal_underlord.vpcf"

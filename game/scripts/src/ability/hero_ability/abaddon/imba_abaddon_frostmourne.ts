@@ -109,6 +109,7 @@ export class modifier_imba_abaddon_frostmourne_debuff extends BaseModifier {
             modifier: this,
             caster: this.caster,
         });
+        this.parent.EmitSound('Hero_Abaddon.Curse.Proc');
     }
 
     GetStatusEffectName(): string {

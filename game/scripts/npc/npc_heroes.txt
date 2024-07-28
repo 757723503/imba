@@ -26615,20 +26615,20 @@
 					}
 				}
 			}
-			"abaddon_death_dude"
-			{
-				"Icon"				"cooldown"
-				"Color"				"Gray"
-				"GradientID"		"0"
+			// "abaddon_death_dude"
+			// {
+			// 	"Icon"				"cooldown"
+			// 	"Color"				"Gray"
+			// 	"GradientID"		"0"
 
-				"Abilities"
-				{
-					"Ability1"
-					{
-						"AbilityName"	"abaddon_the_quickening"
-					}
-				}
-			}
+			// 	"Abilities"
+			// 	{
+			// 		"Ability1"
+			// 		{
+			// 			"AbilityName"	"abaddon_the_quickening"
+			// 		}
+			// 	}
+			// }
 		}
 //		"VariantAbility1"		""
 

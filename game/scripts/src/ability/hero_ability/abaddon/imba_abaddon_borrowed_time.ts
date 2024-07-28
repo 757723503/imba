@@ -5,6 +5,7 @@ export class imba_abaddon_borrowed_time extends BaseAbility {
     }
 
     OnSpellStart(): void {
+        this.caster.EmitSound('Hero_Abaddon.BorrowedTime');
         this.caster.CPurge({
             removeDebuffs: true,
             removeExceptions: true,

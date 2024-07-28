@@ -2,6 +2,7 @@
 
 
 #base "custom_heroes/npc_dota_hero_abaddon.txt"
+#base "custom_heroes/npc_dota_hero_abyssal_underlord.txt"
 "DOTAAbilities"
 {
     "imba_life_stealer_open_wounds"

@@ -1,6 +1,8 @@
+//死亡缠绕
 @registerAbility()
 export class imba_abaddon_death_coil extends BaseAbility {
     OnSpellStart(keys?: SpellStartParams): void {
+        this.caster.EmitSound('Hero_Abaddon.DeathCoil.Cast');
         if (this.caster.CHasTalent(HeroTalent.imba_abaddon_8)) {
             const enemies = CFindUnitsInRadius({
                 flagFilter: UnitTargetFlags.FOW_VISIBLE,
@@ -65,6 +67,7 @@ export class imba_abaddon_death_coil extends BaseAbility {
                         callback();
                     });
                 }
+                unit.EmitSound('Hero_Abaddon.DeathCoil.Target');
             },
         });
     }

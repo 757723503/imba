@@ -1,6 +1,9 @@
+//无光之盾
 @registerAbility()
 export class imba_abaddon_aphotic_shield extends BaseAbility {
     OnSpellStart(): void {
+        this.caster.EmitSound('Hero_Abaddon.AphoticShield.Cast');
+
         if (this.target.HasModifier('modifier_imba_abaddon_aphotic_shield')) {
             this.target.FindModifierByName('modifier_imba_abaddon_aphotic_shield')?.Destroy();
         }
@@ -125,6 +128,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
 
     OnDestroy(): void {
         if (!IsServer() || !CIsValid(this.ability)) return;
+        this.parent.EmitSound('Hero_Abaddon.AphoticShield.Destroy');
         const radius = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'radius');
         const enemy = CFindUnitsInRadius({
             team: this.caster.GetTeamNumber(),
