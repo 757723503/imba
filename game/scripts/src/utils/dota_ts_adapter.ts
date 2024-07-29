@@ -10,6 +10,8 @@ class BaseAbility {
     readonly target: CDOTA_BaseNPC;
     /**目标位置 */
     readonly target_pos: Vector;
+
+    private values: { [key: string]: number };
 }
 
 interface BaseItem extends CDOTA_Item_Lua {}

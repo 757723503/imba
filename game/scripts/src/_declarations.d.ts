@@ -32,6 +32,7 @@ declare global {
         IsEnemy(target: CDOTA_BaseNPC): boolean;
         /**是否是有效单位 */
         IsUnit(): boolean;
+
         /** 是否是友军 */
         IsAlly(target: CDOTA_BaseNPC): boolean;
         /** 刷新护盾显示 */
@@ -50,6 +51,8 @@ declare global {
         CGetFaceID(): number;
         /**自定义驱散 */
         CPurge(keys: PurgeData): void;
+        /**触发林肯莲花 */
+        CTargetTriggerAbsorbReflect(triggerSpellType: TriggerSpellType, ability: CDOTABaseAbility): boolean;
         /**判断天赋是否生效 */
         CHasTalent(talentName: HeroTalent): boolean;
         /**
@@ -133,6 +136,14 @@ declare global {
         Life_Steal = 1,
         /** 技能吸血 */
         Spell_Life_Steal = 2,
+    }
+    const enum TriggerSpellType {
+        /**只林肯 */
+        ABSORB = 0,
+        /**只莲花 */
+        REFLECT = 2,
+        /**莲花和林肯 */
+        BOTH = 4,
     }
     interface CDOTA_BaseNPC_Hero {
         _modifierKeys: CreateIllusionsModifierKeys;
@@ -393,6 +404,7 @@ declare global {
         flagFilter: UnitTargetFlags;
         order: FindOrder;
     }
+
     interface PurgeData {
         // removePositiveBuffs: boolean,
         // removeDebuffs: boolean,

@@ -4,6 +4,7 @@ export class imba_abaddon_borrowed_time extends BaseAbility {
         return 'modifier_imba_abaddon_borrowed_time_passive';
     }
 
+    _duration = this.GetSpecialValue('imba_abaddon_borrowed_time', 'duration');
     OnSpellStart(): void {
         this.caster.EmitSound('Hero_Abaddon.BorrowedTime');
         this.caster.CPurge({
@@ -12,7 +13,7 @@ export class imba_abaddon_borrowed_time extends BaseAbility {
             removePositiveBuffs: false,
         });
         this.caster.AddModifier(this.caster, this, modifier_imba_abaddon_borrowed_time, {
-            duration: this.GetSpecialValue('imba_abaddon_borrowed_time', 'duration'),
+            duration: this._duration,
         });
     }
 }
@@ -61,10 +62,11 @@ class modifier_imba_abaddon_borrowed_time extends BaseModifier {
         };
     }
 
+    _immolate_aoe = this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'immolate_aoe');
     GetAuraConfig(): AuraConfig {
         return {
             aura_modifier: 'modifier_imba_abaddon_borrowed_time_talent',
-            aura_radius: this.ability.GetSpecialValue('imba_abaddon_borrowed_time', 'immolate_aoe'),
+            aura_radius: this._immolate_aoe,
             is_aura: this.parent.CHasTalent(HeroTalent.imba_abaddon_6),
             search_flag: UnitTargetFlags.NONE,
             search_team: UnitTargetTeam.BOTH,

@@ -78,10 +78,12 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
         return this._regen;
     }
 
+    _damage_absorb = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'damage_absorb');
+    _absorb_damage_aoe = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'absorb_damage_aoe');
     AddParentShieldData(): ShieldData {
         if (!IsServer()) return;
         return {
-            max_value: this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'damage_absorb'),
+            max_value: this._damage_absorb,
             shield_type: ShieldType.All,
             on_remove: shiled => {
                 this.Destroy();
@@ -93,7 +95,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
                     flagFilter: UnitTargetFlags.FOW_VISIBLE,
                     location: this.parent.GetAbsOrigin(),
                     order: FindOrder.CLOSEST,
-                    radius: this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'absorb_damage_aoe'),
+                    radius: this._absorb_damage_aoe,
                     team: this.caster.GetTeamNumber(),
                     teamFilter: UnitTargetTeam.ENEMY,
                     typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
@@ -120,20 +122,22 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
                         damageType: shield.absorb_damage_type,
                         victim: unit,
                         damageFlags: DamageFlags.DoNotReflect,
+                        sourceAbility: this.ability,
                     });
                 });
             },
         };
     }
 
+    _radius = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'radius');
     OnDestroy(): void {
         if (!IsServer() || !CIsValid(this.ability)) return;
         this.parent.EmitSound('Hero_Abaddon.AphoticShield.Destroy');
-        const radius = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'radius');
+
         const enemy = CFindUnitsInRadius({
             team: this.caster.GetTeamNumber(),
             location: this.parent.GetAbsOrigin(),
-            radius: radius,
+            radius: this._radius,
             teamFilter: UnitTargetTeam.ENEMY,
             typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
             flagFilter: UnitTargetFlags.FOW_VISIBLE,
@@ -154,6 +158,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
                     damageProperty: DamageProperty.Ability,
                     damageType: DamageType.Magical,
                     victim: unit,
+                    sourceAbility: this.ability,
                 });
             }
         });

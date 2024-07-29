@@ -33,6 +33,7 @@ export class CAttackDataManager {
             damageType: DamageType.Physical,
             damageFlags: crit_obj ? DamageFlags.AttackCrit : undefined,
             crit_obj: crit_obj,
+            sourceAbility: attacker._ability_custom_base_attack,
         };
         // 初始化攻击数据
         const attack_data: UnitEventAttackDamageData = {
@@ -182,6 +183,7 @@ export class CAttackDataManager {
                 damageType: DamageType.Physical,
                 damageFlags: (crit_obj ? DamageFlags.AttackCrit : 0) + (disable_celled ? DamageFlags.DisableCelled : 0),
                 crit_obj: crit_obj,
+                sourceAbility: attacker._ability_custom_base_attack,
             };
             attack_data = {
                 damageTable: dmgTable,

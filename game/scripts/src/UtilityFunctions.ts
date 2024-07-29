@@ -19,14 +19,26 @@ function DebugError(...str: any[]): void {
 /**
  * 安全调用函数
  */
-function CSafelyCall<T extends (...params: any) => any>(func: () => ReturnType<T>, error_msg?: string): ReturnType<T> {
+function CSafelyCall<T extends (...params: any[]) => any>(func: () => ReturnType<T>, error_msg?: string): ReturnType<T> | undefined {
     // 如果报错信息不明显，接触注释后再尝试复现即可
     if (IsInToolsMode()) return func();
-    let result;
+    let result: ReturnType<T> | undefined;
     try {
         result = func();
     } catch (error) {
-        DebugError(`\n${error_msg ? error_msg : ''}error on pcall : ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
+        DebugWarning(`\n${error_msg ? error_msg : ''} error on pcall: ${error}`);
     }
     return result;
 }
@@ -190,6 +202,7 @@ function CDeclareFunctions(...functions: ModifierFunction[]): ModifierFunction[]
     globalThis.globalDeclareFunctions.push(...functions);
     return globalThis.globalDeclareFunctions;
 }
+/** 睡眠函数 随后所有代码块全部延迟执行 调用前 必须加 await */
 function sleep(duration: number) {
     return new Promise((resolve, reject) => {
         Timers.CreateTimer(duration, () => resolve(''));

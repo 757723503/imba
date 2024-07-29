@@ -520,7 +520,7 @@ namespace DamageHelper {
                         damageType: dmgTable.damageType,
                         damage_flag: dmgTable.damageFlags,
                         damage: end_atk_phy_dmg,
-                        ability: origin_dmg_table.sourceAbility,
+                        sourceAbility: origin_dmg_table.sourceAbility,
                     };
                     Dispatcher.Send('DAMAGE_LIFE_LEECH_EVENT', attacker_handle, life_total_tb);
                 }
@@ -1038,7 +1038,7 @@ namespace DamageHelper {
                     damageType: dmgTable.damageType,
                     damage_flag: dmgTable.damageFlags,
                     damage: end_dmg,
-                    ability: dmgTable.sourceAbility,
+                    sourceAbility: dmgTable.sourceAbility,
                 };
                 Dispatcher.Send('DAMAGE_LIFE_LEECH_EVENT', attacker_handle, life_total_tb);
             }
@@ -1413,13 +1413,14 @@ namespace DamageHelper {
         // 吸血
         // if (FilterLifeStealTarget(victim)) {
         // }
-
+        //不致死
+        // const no_death = checkTag(damageTable.damageFlags, DamageFlags.HPCost + DamageFlags.NotKill) || damageTable.victim.GetMinHealth() > 0;
         const damage_table = {
             attacker: damageTable.attacker,
             victim: damageTable.victim,
             damage: true_damage,
             damage_type: damage_type,
-            ability: damageTable.victim.IsRealHero() ? damageTable.sourceAbility ?? damageTable.attacker._ability_custom_base_attack : null,
+            ability: damageTable.victim.IsRealHero() && CIsValid(damageTable.sourceAbility) ? damageTable.sourceAbility : null,
             damage_flags:
                 DamageFlag.HPLOSS +
                 DamageFlag.NO_SPELL_AMPLIFICATION +

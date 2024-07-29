@@ -158,7 +158,22 @@ if (!C_DOTA_BaseNPC.CGetFaceID) {
 }
 if (!C_DOTA_BaseNPC.CHasTalent) {
     C_DOTA_BaseNPC.CHasTalent = function (this: CDOTA_BaseNPC, talent_name: HeroTalent): boolean {
-        return this.FindAbilityByName(talent_name)?.GetLevel() > 0;
+        return (this.FindAbilityByName(talent_name)?.GetLevel() ?? 0) > 0;
     };
 }
+// if (!C_DOTA_BaseNPC.CTargetTriggerAbsorbReflect) {
+//     C_DOTA_BaseNPC.CTargetTriggerAbsorbReflect = function (
+//         this: CDOTA_BaseNPC,
+//         triggerSpellType: TriggerSpellType,
+//         ability: CDOTABaseAbility
+//     ): boolean {
+//         if (triggerSpellType == TriggerSpellType.REFLECT || triggerSpellType == TriggerSpellType.BOTH) {
+//             this.TriggerSpellReflect(ability);
+//         }
+//         if (triggerSpellType != TriggerSpellType.REFLECT) {
+//             return this.TriggerSpellAbsorb(ability);
+//         }
+//         return false;
+//     };
+// }
 export {};

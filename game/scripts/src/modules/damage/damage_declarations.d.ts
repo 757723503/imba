@@ -54,10 +54,10 @@ interface DamageTable {
     damageType: DamageType;
     /** 必填 伤害值 */
     damage: number;
+    /** 必填 来源技能 */
+    sourceAbility: CDOTABaseAbility | undefined;
     /** 可选 伤害标记 */
     damageFlags?: DamageFlags;
-    /** 可选 来源技能 */
-    sourceAbility?: CDOTABaseAbility;
     /** 可选 无视护甲 */
     ignoreArmor?: boolean;
     /** 可选 无视基础护甲比例 当ignoreArmor为true且自己没有值时, 默认为0, 加法 */

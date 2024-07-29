@@ -3,82 +3,92 @@ import type { LocalizationData } from '../../localizationInterfaces';
 export const data: LocalizationData = {
     AbilityArray: [
         {
-            ability_classname: 'imba_abaddon_death_coil',
-            name: '迷雾缠绕',
-            description: '亚巴顿以自身的部分生命为代价，释放出一团致命迷雾，可以对敌方单位造成伤害，或者治疗友方单位。',
-            notes: ['亚巴顿不能使用此技能自杀。'],
-            lore: '亚巴顿的气息中充盈着来自魔霭圣池的神秘之汽，他能随意将其释放。',
+            ability_classname: 'antimage_mana_break',
+            name: '法力损毁',
+            description: '每次攻击损毁目标魔法值，并造成相当于损毁魔法值一定百分比的伤害。',
+            notes: ['幻象继承的法力损毁效果为{illusion_percentage}%。'],
+            lore: '一种格斗技巧，改良自星隐寺僧侣们的温和招式，可以让魔法能量反噬其拥有者。',
             reimagined_effects: [
                 // { title: 'imba效果1', description: 'imba效果1' },
                 // { title: 'imba效果2', description: 'imba效果2' },
             ],
             ability_specials: [
-                { ability_special: 'target_damage', text: '伤害/治疗' },
-                { ability_special: 'self_damage', text: '对自身伤害', percentage: true },
+                { ability_special: 'mana_per_hit', text: '每次攻击损毁魔法：' },
+                { ability_special: 'mana_per_hit_pct', text: '每次攻击损毁最大魔法值：', percentage: true },
+                { ability_special: 'move_slow', text: '魔法耗尽时减速：', percentage: true },
+                { ability_special: 'percent_damage_per_burn', text: '损毁魔法值伤害系数：', percentage: true },
+                { ability_special: 'slow_duration', text: '减速持续时间：' },
             ],
-            shard_description: '使迷雾缠绕也会造成攻击伤害，并且施加来自物品和技能的效果。',
         },
         {
-            ability_classname: 'imba_abaddon_aphotic_shield',
-            name: '无光之盾',
-            description:
-                '召唤黑暗能量环绕友方单位，创造一个全伤害护盾，护盾在消失前能吸收一定量的伤害。护盾消失或被摧毁后将会爆炸，对附近区域的单位造成伤害，伤害值为护盾的最大吸收量。施放时移除目标身上的负面状态和眩晕效果。\n\n驱散类型：强驱散',
-            notes: ['不论护盾因持续时间结束或吸收足够伤害后被摧毁都将造成最大伤害。', '爆炸将不会对战争迷雾内单位造成伤害。'],
-            lore: '升腾的黑雾将敌人的招数一一吞噬，如同吞噬日光。',
+            ability_classname: 'antimage_blink',
+            name: '闪烁',
+            description: '短距离传送，能让敌法师自由出入战场。',
+            notes: ['闪烁可以躲避多种飞行过程中的攻击和技能弹道。'],
+            lore: '在与死亡之神遭遇时，敌法师明白了让人捉摸不定是多么重要。',
             reimagined_effects: [
                 // { title: 'imba效果1', description: 'imba效果1' },
                 // { title: 'imba效果2', description: 'imba效果2' },
             ],
-            ability_specials: [
-                { ability_special: 'AbilityCooldown', text: '冷却：' },
-                { ability_special: 'duration', text: '持续时间：' },
-                { ability_special: 'radius', text: '爆炸作用范围：' },
-                { ability_special: 'damage_absorb', text: '伤害护盾：' },
-                { ability_special: 'absorb_to_damage', text: '反弹伤害：', percentage: true },
-                { ability_special: 'absorb_damage_aoe', text: '反弹伤害范围：' },
-            ],
-            shard_description: '使迷雾缠绕也会造成攻击伤害，并且施加来自物品和技能的效果。',
+            ability_specials: [],
         },
         {
-            ability_classname: 'imba_abaddon_frostmourne',
-            name: '魔霭诅咒',
-            description:
-                ' 亚巴顿打击一个敌人，使其受到寒心诅咒的作用，被减速，并且持续受到伤害，同时所有攻击目标的单位将提升攻击速度。对建筑的持续伤害减少%tower_dps_pct%%%。',
-            lore: '受洗之人能从圣池中汲取能量，而魔霭的恩赐会让一无所知的人逐渐衰弱。',
-            reimagined_effects: [
-                // { title: 'imba效果1', description: 'imba效果1' },
-                // { title: 'imba效果2', description: 'imba效果2' },
-            ],
+            ability_classname: 'antimage_counterspell',
+            name: '法术反制',
+            description: '被动提升魔法抗性。可以主动开启法术反制，创造一个环绕敌法师的反魔法外壳，抵挡所有指向性技能。',
+            notes: [],
+            lore: '经过潜心的专注后，敌法师将内在的韧性转为精心的报复。',
+            // reimagined_effects: [{ title: 'Facet_antimage_magebanes_mirror', description: '法术反制会把技能反弹给施法者，技能的伤害还得到了增强。' }],
             ability_specials: [
-                { ability_special: 'curse_duration', text: '持续时间：' },
-                { ability_special: 'curse_slow', text: '移动速度减缓：', percentage: true },
-                { ability_special: 'curse_dps', text: ' 每秒伤害：' },
-                { ability_special: 'curse_attack_speed', text: ' 攻击速度：' },
+                { ability_special: 'magic_resistance', text: '魔法抗性：', percentage: true },
+                { ability_special: 'duration', text: '外壳持续时间：' },
+                { ability_special: 'reflected_spell_amp', text: '反弹技能的技能增强：', percentage: true },
+            ],
+            shard_description: '法术反制被动提供光环，降低敌人的技能伤害。降低效果对近距离的敌人更强。',
+        },
+        {
+            ability_classname: 'antimage_counterspell_ally',
+            name: '友军法术反制',
+            description:
+                '在附近一个友军目标周围制造一个反魔法外壳，抵挡所有指向性技能。法术反制或友军法术反制抵挡技能后，都会在敌人身旁产生一个敌法师的幻象。',
+            notes: [],
+            lore: '',
+            reimagined_effects: [
+                // { title: 'Facet_antimage_magebanes_mirror', description: '友军法术反制会把技能反弹给施法者，技能的伤害还得到了增强。' },
+            ],
+            ability_specials: [{ ability_special: 'reflected_spell_amp', text: '反弹技能的技能增强：', percentage: true }],
+        },
+        {
+            ability_classname: 'antimage_mana_void',
+            name: '法力虚空',
+            description: '根据目标损失的魔法值，对目标和其周围的敌人造成伤害。所有受到伤害的单位都会被短暂眩晕。',
+            notes: ['伤害的计算根据主目标失去的魔法，但是对作用范围内所有敌人均有效。'],
+            lore: '敌人倒下之后，将因使用奥术而受到敌法师的惩戒。',
+            // reimagined_effects: [
+            //     {
+            //         title: 'Facet_antimage_mana_thirst',
+            //         description:
+            //             '敌方英雄的魔法值低于%min_bonus_pct%%%时会被动提供攻击力，而且魔法值越低，提升效果越大。<br><br>如果敌人的魔法值低于%threshold_pct%%%，敌法师获得攻击力加成的最大值，以及该英雄的视野和真实视域。会施加给%thirst_range%范围内的敌方英雄。每个英雄提供的加成效果可以叠加。',
+            //     },
+            // ],
+            ability_specials: [
+                { ability_special: 'mana_void_damage_per_mana', text: '伤害系数：' },
+                { ability_special: 'mana_void_ministun', text: '眩晕时间：' },
+                { ability_special: 'mana_void_aoe_radius', text: '作用范围：' },
+                { ability_special: 'bonus_attack_damage', text: '法力渴望攻击力加成上限：' },
             ],
         },
-
         {
-            ability_classname: 'imba_abaddon_borrowed_time',
-            name: '回光返照',
-            description:
-                '  启动后所有受到的伤害转而产生治疗效果，启动时还将移除大部分的负面效果。只要技能不在冷却中，在生命值低于%hp_threshold%点时技能会自动启动。\n\n驱散类型：强驱散',
-            lore: '魔霭圣池中最为扭曲的馈赠，凡人对死亡的认知在此力量前显得异常可笑。敌之尖刀，我之伤药；死地后生，回光返照。',
-            notes: [
-                '在亚巴顿受到眩晕作用时依然可以手动开启回光返照，但是受到沉默作用时不可以。不过被沉默时被动效果依然能生效。',
-                ' 无光之盾在回光返照生效期间不会吸收伤害，因此也不会影响治疗效果。',
-            ],
-            reimagined_effects: [
-                // { title: 'imba效果1', description: 'imba效果1' },
-                // { title: 'imba效果2', description: 'imba效果2' },
-            ],
+            ability_classname: 'antimage_mana_overload',
+            name: '闪烁碎片',
+            description: '使一个幻象闪烁至敌方目标或地点，对其发动攻击，持续一段较短的时间。施放法术反制时碎片幻象也有效果。',
+            notes: [],
+            lore: '',
+            reimagined_effects: [],
             ability_specials: [
-                { ability_special: 'hp_threshold ', text: '生命临界值：' },
-                { ability_special: 'duration', text: '持续时间：' },
-                { ability_special: 'redirect_range_scepter', text: '作用范围：' },
-                { ability_special: 'ally_threshold_scepter', text: '伤害临界值：' },
+                { ability_special: 'duration', text: '幻象持续时间：' },
+                { ability_special: 'outgoing_damage', text: '幻象攻击力减少：', percentage: true },
             ],
-            scepter_description:
-                '提升持续时间。启动回光返照后，亚巴顿附近{redirect_range_scepter}范围内友方英雄受到的伤害超过{ally_threshold_scepter}点时亚巴顿就会自动对其施放迷雾缠绕。',
         },
     ],
     ModifierArray: [
