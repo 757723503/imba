@@ -190,6 +190,11 @@ function CDeclareFunctions(...functions: ModifierFunction[]): ModifierFunction[]
     globalThis.globalDeclareFunctions.push(...functions);
     return globalThis.globalDeclareFunctions;
 }
+function sleep(duration: number) {
+    return new Promise((resolve, reject) => {
+        Timers.CreateTimer(duration, () => resolve(''));
+    });
+}
 // function convertModifierParamData<T>(data: T): ModifierParamData<T> {
 //     if (typeof data === 'boolean') {
 //         return (data ? 1 : 0) as ModifierParamData<T>;

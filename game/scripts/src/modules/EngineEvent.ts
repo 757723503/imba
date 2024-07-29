@@ -77,7 +77,7 @@ export class CEngineEvent {
         custom_aoe_increase: 0,
     };
 
-    private _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): void {
+    private async _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): Promise<void> {
         if (data.entindex == null || data.entindex <= 0) return;
         const entity = EntIndexToHScript(data.entindex) as CDOTA_BaseNPC_Hero;
         if (entity.IsBaseNPC() && data.is_respawn == 0) {
@@ -91,21 +91,18 @@ export class CEngineEvent {
                             : this._npc_custom_properties[key];
                 }
             }
-            Timers.CreateTimer(FrameTime() * 2, () => {
-                //会引起内存泄露 ? (造成伤害带有原技能会有内存泄露)
-                if (entity.AddAbility != null && entity.HasAbility('imba_custom_base_attack') == false) {
-                    entity._ability_custom_base_attack = entity.AddAbility('imba_custom_base_attack');
-                }
-                if (entity.AddAbility != null) {
-                    entity.AddAbility('imba_custom_base_attack')?.SetAbilityIndex(30);
-                    entity.AddAbility('imba_custom_debuff_immune')?.SetAbilityIndex(31);
-                }
-                if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
-                    entity.AddNewModifier(entity, entity.FindAbilityByName('imba_custom_debuff_immune'), 'modifier_attack_data_miss', {});
-                }
-
-                return null;
-            });
+            await sleep(FrameTime() * 2);
+            //会引起内存泄露 ? (造成伤害带有原技能会有内存泄露)
+            if (entity.AddAbility != null && entity.HasAbility('imba_custom_base_attack') == false) {
+                entity._ability_custom_base_attack = entity.AddAbility('imba_custom_base_attack');
+            }
+            if (entity.AddAbility != null) {
+                entity.AddAbility('imba_custom_base_attack')?.SetAbilityIndex(30);
+                entity.AddAbility('imba_custom_debuff_immune')?.SetAbilityIndex(31);
+            }
+            if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
+                entity.AddNewModifier(entity, entity.FindAbilityByName('imba_custom_debuff_immune'), 'modifier_attack_data_miss', {});
+            }
         }
     }
 }

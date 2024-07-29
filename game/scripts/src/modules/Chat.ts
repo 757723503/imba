@@ -227,10 +227,10 @@ export class CChat {
                 break;
             case ChatCommand.hero:
                 DebugCreateUnit(player, DotaHero.phoenix, DotaTeam.BADGUYS, false, (unit): void => {
-                    unit.AddItemByName(DotaItem.blade_mail);
+                    unit.AddItemByName(DotaItem.cyclone);
                 });
                 DebugCreateUnit(player, DotaHero.sniper, DotaTeam.GOODGUYS, false, (unit): void => {
-                    unit.AddItemByName(DotaItem.blade_mail);
+                    unit.AddItemByName(DotaItem.cyclone);
                 });
                 break;
             case ChatCommand.dm:

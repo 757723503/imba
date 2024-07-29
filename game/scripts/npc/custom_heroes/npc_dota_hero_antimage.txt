@@ -271,7 +271,7 @@
 			"incoming_damage"		"100"
 		}
 	}
-	"special_bonus_unique_imba_antimage"
+	"special_bonus_unique_imba_antimage_1"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -306,7 +306,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
-	"special_bonus_unique_imba_antimage_manavoid_aoe"
+	"special_bonus_unique_imba_antimage_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
