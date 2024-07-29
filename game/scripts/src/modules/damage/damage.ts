@@ -35,7 +35,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
-    // if (attacker.IsHero()) record_list = [];
+    if (attacker.IsHero()) record_list = [];
 
     // 先创建fixed damage table
     const fixed_tb: FixedDamageTable = <FixedDamageTable>{

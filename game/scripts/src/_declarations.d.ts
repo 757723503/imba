@@ -52,7 +52,7 @@ declare global {
         /**自定义驱散 */
         CPurge(keys: PurgeData): void;
         /**触发林肯莲花 */
-        CTargetTriggerAbsorbReflect(triggerSpellType: TriggerSpellType, ability: CDOTABaseAbility): boolean;
+        // CTargetTriggerAbsorbReflect(triggerSpellType: TriggerSpellType, ability: CDOTABaseAbility): boolean;
         /**判断天赋是否生效 */
         CHasTalent(talentName: HeroTalent): boolean;
         /**

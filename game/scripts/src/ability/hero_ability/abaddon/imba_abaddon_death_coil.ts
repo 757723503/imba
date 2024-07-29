@@ -44,11 +44,7 @@ export class imba_abaddon_death_coil extends BaseAbility {
             ability: this,
             effectName: HeroParticleList.imba_abaddon_death_coil,
             OnHitUnit: (unit, position, extraData, thisProjectileID) => {
-                // if (unit.CTargetTriggerAbsorbReflect(TriggerSpellType.BOTH, this)) {
-                //     return;
-                // }
                 if (unit.TriggerSpellAbsorb(this)) return;
-                unit.TriggerSpellReflect(this);
                 if (unit.IsEnemy(this.caster)) {
                     if (this.caster.HasShard()) {
                         CPerformAttack(this.caster, unit, {

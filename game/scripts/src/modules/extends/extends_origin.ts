@@ -142,21 +142,21 @@ if (!CDOTA_BaseNPC.CGetFaceID) {
         return -1;
     };
 }
-if (!CDOTA_BaseNPC.CTargetTriggerAbsorbReflect) {
-    CDOTA_BaseNPC.CTargetTriggerAbsorbReflect = function (
-        this: CDOTA_BaseNPC,
-        triggerSpellType: TriggerSpellType,
-        ability: CDOTABaseAbility
-    ): boolean {
-        if (triggerSpellType == TriggerSpellType.REFLECT || triggerSpellType == TriggerSpellType.BOTH) {
-            this.TriggerSpellReflect(ability);
-        }
-        if (triggerSpellType != TriggerSpellType.REFLECT) {
-            return this.TriggerSpellAbsorb(ability);
-        }
-        return false;
-    };
-}
+// if (!CDOTA_BaseNPC.CTargetTriggerAbsorbReflect) {
+//     CDOTA_BaseNPC.CTargetTriggerAbsorbReflect = function (
+//         this: CDOTA_BaseNPC,
+//         triggerSpellType: TriggerSpellType,
+//         ability: CDOTABaseAbility
+//     ): boolean {
+//         if (triggerSpellType == TriggerSpellType.REFLECT || triggerSpellType == TriggerSpellType.BOTH) {
+//             this.TriggerSpellReflect(ability);
+//         }
+//         if (triggerSpellType != TriggerSpellType.REFLECT) {
+//             return this.TriggerSpellAbsorb(ability);
+//         }
+//         return false;
+//     };
+// }
 if (!CDOTA_BaseNPC.CHasTalent) {
     CDOTA_BaseNPC.CHasTalent = function (this: CDOTA_BaseNPC, talent_name: HeroTalent): boolean {
         return (this.FindAbilityByName(talent_name)?.GetLevel() ?? 0) > 0;
