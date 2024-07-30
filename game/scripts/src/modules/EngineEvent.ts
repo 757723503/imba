@@ -75,6 +75,7 @@ export class CEngineEvent {
         _debuff_immunity_magical_resistance: [],
         _life_steal_data_calls: [],
         custom_aoe_increase: 0,
+        _never_die: [],
     };
 
     private async _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): Promise<void> {

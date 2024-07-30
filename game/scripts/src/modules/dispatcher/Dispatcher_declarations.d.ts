@@ -156,4 +156,7 @@ declare const enum ModifierFunctions {
 
     /** 增加技能作用范围加成 */
     AddCustomAOEIncrease = 'AddCustomAOEIncrease',
+
+    /**增加不死数据 */
+    AddCustomNeverDie = 'AddCustomNeverDie',
 }

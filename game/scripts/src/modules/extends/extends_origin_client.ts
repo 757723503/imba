@@ -161,6 +161,11 @@ if (!C_DOTA_BaseNPC.CHasTalent) {
         return (this.FindAbilityByName(talent_name)?.GetLevel() ?? 0) > 0;
     };
 }
+// if (!C_DOTA_BaseNPC.CIsNeverDie) {
+//     C_DOTA_BaseNPC.CIsNeverDie = function (this: CDOTA_BaseNPC): boolean {
+//         return this._never_die.length > 0;
+//     };
+// }
 // if (!C_DOTA_BaseNPC.CTargetTriggerAbsorbReflect) {
 //     C_DOTA_BaseNPC.CTargetTriggerAbsorbReflect = function (
 //         this: CDOTA_BaseNPC,

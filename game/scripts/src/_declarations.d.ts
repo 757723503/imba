@@ -55,6 +55,8 @@ declare global {
         // CTargetTriggerAbsorbReflect(triggerSpellType: TriggerSpellType, ability: CDOTABaseAbility): boolean;
         /**判断天赋是否生效 */
         CHasTalent(talentName: HeroTalent): boolean;
+        /**是否有不会死标签 */
+        CIsNeverDie(): boolean;
         /**
          * @deprecated
          */
@@ -114,6 +116,9 @@ declare global {
 
         /** 储存AOE增加数据 */
         custom_aoe_increase: number;
+
+        /**储存不死数据 */
+        _never_die: number[];
     }
     interface CustomHeal {
         /**治疗量 */
@@ -190,7 +195,10 @@ declare global {
          */
         GetModifierSpellLifestealRegenAmplify_Percentage?(): number;
     }
-
+    interface ModifierParticle {
+        ParticleID: ParticleID;
+        immediate: boolean;
+    }
     interface CDOTA_Buff {
         /**
          * @deprecated
@@ -220,6 +228,11 @@ declare global {
          * 判断减益免疫相关 技能kv标识相关
          */
         _AbilityUnitTargetFlags: string;
+
+        /**
+         * 自定义调用OnSpellStart() 直接使用OnSpellStart没有自定义需要的数据
+         */
+        COnSpellStart(target: CDOTA_BaseNPC, pos: Vector): void;
         /**
          * 自定义获得技能kv 强类型
          */
@@ -417,6 +430,10 @@ declare global {
         removeDebuffs: boolean;
         /**强驱散buff */
         removeExceptions: boolean;
+    }
+    const enum ModifierState {
+        /** 不会死亡 */
+        NEVER_TO_DIE = 999,
     }
     // /** 通用特效 */
     // var GeneircParticleList: { [key: string]: string };

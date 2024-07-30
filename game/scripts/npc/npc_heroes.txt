@@ -241,13 +241,7 @@
 		"Ability17"		"special_bonus_unique_antimage_2"
 		"Facets"
 		{
-			"antimage_magebanes_mirror" 
-			{
-				"Icon"				"ricochet"
-				"Color"				"Purple"
-				"GradientID"		"1"
-			}
-			"antimage_mana_thirst" 
+			"antimage_facets_imba_1" 
 			{
 				"Icon"				"mana"
 				"Color"				"Blue"

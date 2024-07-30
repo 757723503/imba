@@ -167,6 +167,11 @@ if (!CDOTA_BaseNPC.GetAOEIncrease) {
         return this.custom_aoe_increase;
     };
 }
+if (!CDOTA_BaseNPC.CIsNeverDie) {
+    CDOTA_BaseNPC.CIsNeverDie = function (this: CDOTA_BaseNPC): boolean {
+        return this._never_die.length > 0;
+    };
+}
 if (!CDOTABaseAbility.GetSpecialValue) {
     CDOTABaseAbility.GetSpecialValue = function <T extends AbilityNames>(
         this: CDOTABaseAbility,
@@ -187,6 +192,12 @@ if (!CDOTABaseAbility.GetSpecialValue) {
             }
         }
         return this.GetSpecialValueFor(valueName as string);
+    };
+}
+
+if (!CDOTABaseAbility.COnSpellStart) {
+    CDOTABaseAbility.COnSpellStart = function (this: CDOTABaseAbility, target: CDOTA_BaseNPC | undefined, pos: Vector | undefined): void {
+        this;
     };
 }
 export {};

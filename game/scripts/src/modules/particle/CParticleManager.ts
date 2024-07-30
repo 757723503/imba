@@ -35,10 +35,14 @@ export class CParticleManager {
             ParticleManager.SetParticleShouldCheckFoW(particleID, data.extraData.CheckFoW);
         }
         if (data.modifier) {
-            (data.modifier['AddParticle_all_particle'] as ParticleID[]) = (data.modifier['AddParticle_all_particle'] as ParticleID[]) || [];
-            (data.modifier['AddParticle_all_particle'] as ParticleID[]).push(particleID);
+            (data.modifier['AddParticle_all_particle'] as ModifierParticle[]) =
+                (data.modifier['AddParticle_all_particle'] as ModifierParticle[]) || [];
+            (data.modifier['AddParticle_all_particle'] as ModifierParticle[]).push({
+                ParticleID: particleID,
+                immediate: data.extraData?.immediate ?? false,
+            });
         }
-        const duration = data?.duration ?? 60;
+        const duration = data?.duration ?? 20;
         if (duration <= 0) {
             this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
             return particleID;

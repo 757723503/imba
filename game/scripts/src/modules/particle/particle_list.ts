@@ -30,6 +30,22 @@ enum HeroParticleList {
     imba_abaddon_borrowed_time_heal = 'particles/units/heroes/hero_abaddon/abaddon_borrowed_time_heal.vpcf',
     /**回光返照状态 */
     imba_abaddon_borrowed_time_status = 'particles/status_fx/status_effect_abaddon_borrowed_time.vpcf',
+
+    /** 法力损毁 */
+    imba_antimage_mana_break = 'particles/generic_gameplay/generic_manaburn.vpcf',
+    /** 法力损毁减速 */
+    imba_antimage_mana_break_slow = 'particles/units/heroes/hero_antimage/antimage_manabreak_slow.vpcf',
+    /**闪烁开始 */
+    imba_antimage_blink_start = 'particles/units/heroes/hero_antimage/antimage_blink_start.vpcf',
+    /**闪烁结束 */
+    imba_antimage_blink_end = 'particles/units/heroes/hero_antimage/antimage_blink_end.vpcf',
+
+    /** 法术反制buff */
+    imba_antimage_counterspell_buff = 'particles/units/heroes/hero_antimage/antimage_counter.vpcf',
+    /** 法术反制林肯效果 */
+    imba_antimage_counterspell_absorb = 'particles/units/heroes/hero_antimage/antimage_spellshield.vpcf',
+    /** 法术反制莲花效果 */
+    imba_antimage_counterspell_reflect = 'particles/units/heroes/hero_antimage/antimage_spellshield_reflect.vpcf',
 }
 
 /** 英雄饰品特效 */

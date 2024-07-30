@@ -1413,12 +1413,18 @@ namespace DamageHelper {
         // 吸血
         // if (FilterLifeStealTarget(victim)) {
         // }
-        //不致死
-        // const no_death = checkTag(damageTable.damageFlags, DamageFlags.HPCost + DamageFlags.NotKill) || damageTable.victim.GetMinHealth() > 0;
+        // 不致死
+        const no_death = checkTag(damageTable.damageFlags, DamageFlags.HPCost, DamageFlags.NotKill) || damageTable.victim.CIsNeverDie();
+        let damage = true_damage;
+        const now_health = damageTable.victim.GetHealth();
+        if (no_death && now_health - damage <= 5) {
+            const victimHealth = damageTable.victim.GetHealth();
+            damage = Math.max(victimHealth - 5, 0);
+        }
         const damage_table = {
             attacker: damageTable.attacker,
             victim: damageTable.victim,
-            damage: true_damage,
+            damage: damage,
             damage_type: damage_type,
             ability: damageTable.victim.IsRealHero() && CIsValid(damageTable.sourceAbility) ? damageTable.sourceAbility : null,
             damage_flags:

@@ -92,7 +92,8 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
 
     toDotaClassInstance(env[name], ability);
     const originalSpawn = (env[name] as CDOTA_Ability_Lua).Spawn;
-    const originalOnSpellStart = (env[name] as CDOTA_Ability_Lua).OnSpellStart;
+    const originalOnAbilityPhaseStart = (env[name] as CDOTA_Ability_Lua).OnAbilityPhaseStart;
+    const originalOnUpgrade = (env[name] as CDOTA_Ability_Lua).OnUpgrade;
     env[name].Spawn = function () {
         this.caster = this.GetCaster();
         this.ability = this;
@@ -102,7 +103,6 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
             originalSpawn.call(this);
         }
 
-        // print((env[name] as CDOTA_Ability_Lua).GetAbilityKeyValues, 'GetAbilityKeyValues');
         if (IsServer() && (env[name] as CDOTA_Ability_Lua).GetAbilityKeyValues) {
             const ability_special_value = this.GetAbilityKeyValues();
             if (ability_special_value) {
@@ -112,12 +112,20 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
         }
     };
 
-    env[name].OnSpellStart = function (keys?: SpellStartParams) {
+    env[name].OnAbilityPhaseStart = function (keys?: SpellStartParams) {
         this.target = this.GetCursorTarget();
         this.target_pos = this.GetCursorPosition();
+        const srt = Object.keys(this as CDOTA_Ability_Lua).filter(key => key.startsWith('_'));
+        if (originalOnAbilityPhaseStart) {
+            originalOnAbilityPhaseStart.call(this, keys);
+        }
+    };
+    env[name].OnUpgrade = function (keys?: SpellStartParams) {
         this.____constructor();
-        if (originalOnSpellStart) {
-            originalOnSpellStart.call(this, keys);
+        // const srt = Object.keys(this as CDOTA_Ability_Lua).filter(key => key.startsWith('_'));
+        // DeepPrintTable(srt);
+        if (originalOnUpgrade) {
+            originalOnUpgrade.call(this, keys);
         }
     };
 };
@@ -204,9 +212,11 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
             originalOnDestroy.call(this, parameters);
         }
         CustomNetTables.SetTableValue('custom_ability_textur', tostring(this.GetCaster()?.GetEntityIndex()), null);
-        if ((this.AddParticle_all_particle as ParticleID[]) && (this.AddParticle_all_particle as ParticleID[]).length > 0) {
-            (this.AddParticle_all_particle as ParticleID[]).forEach(particleID => {
-                CDestroyParticle(particleID, false);
+        if ((this.AddParticle_all_particle as ModifierParticle[]) && (this.AddParticle_all_particle as ModifierParticle[]).length > 0) {
+            (this.AddParticle_all_particle as ModifierParticle[]).forEach(keys => {
+                const particleID = keys.ParticleID;
+                const immediate = keys.immediate;
+                CDestroyParticle(particleID, immediate);
             });
         }
     };
@@ -1281,6 +1291,30 @@ const _modifier_methods: {
             }
         },
     },
+
+    [ModifierFunctions.AddCustomNeverDie]: {
+        registerFunc: (instance, parent_index) => {
+            if (instance.AddCustomNeverDie) {
+                const parent = instance.GetParent();
+                instance['NeverDie_Saved'] = instance.AddCustomNeverDie();
+                if (instance['NeverDie_Saved']) {
+                    parent._never_die.push(instance['NeverDie_Saved']);
+                }
+            }
+        },
+        removeFunc: (instance, parent_index) => {
+            if (instance.AddCustomNeverDie) {
+                const parent = instance.GetParent();
+                const never_die = instance['NeverDie_Saved'] as number;
+                if (never_die) {
+                    const index = parent._never_die.indexOf(never_die);
+                    if (index != -1) {
+                        parent._never_die.splice(index, 1);
+                    }
+                }
+            }
+        },
+    },
 };
 // declare module './dota_ts_adapter' {
 interface BaseModifier {
@@ -1532,6 +1566,9 @@ interface BaseModifier {
 
     /**增加作用范围技能加成 */
     AddCustomAOEIncrease?(): number;
+    /**增加不死数据 */
+    // _never_die
+    AddCustomNeverDie?(): number;
     /**
      * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
      */
