@@ -46,6 +46,11 @@ enum HeroParticleList {
     imba_antimage_counterspell_absorb = 'particles/units/heroes/hero_antimage/antimage_spellshield.vpcf',
     /** 法术反制莲花效果 */
     imba_antimage_counterspell_reflect = 'particles/units/heroes/hero_antimage/antimage_spellshield_reflect.vpcf',
+
+    /** 法力虚空 */
+    imba_antimage_mana_void = 'particles/units/heroes/hero_antimage/antimage_manavoid.vpcf',
+    /** 法力虚空buff */
+    imba_antimage_mana_void_buff = 'particles/units/heroes/hero_antimage/antimage_manavoid_buff.vpcf',
 }
 
 /** 英雄饰品特效 */

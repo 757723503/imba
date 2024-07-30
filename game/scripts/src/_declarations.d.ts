@@ -51,12 +51,21 @@ declare global {
         CGetFaceID(): number;
         /**自定义驱散 */
         CPurge(keys: PurgeData): void;
+        /** 自定义反弹技能(莲花)
+         *  @param reflect_ability 技能
+         *  @param reflect_target 目标
+         */
+        CReflectAbility(reflect_ability: CDOTABaseAbility, reflect_target: CDOTA_BaseNPC): void;
         /**触发林肯莲花 */
         // CTargetTriggerAbsorbReflect(triggerSpellType: TriggerSpellType, ability: CDOTABaseAbility): boolean;
         /**判断天赋是否生效 */
         CHasTalent(talentName: HeroTalent): boolean;
         /**是否有不会死标签 */
         CIsNeverDie(): boolean;
+        /**获得自定义技能增强
+         * @param ability 是否计算针对此技能增加的增强
+         */
+        CGetSpellAmp(ability_name?: string): number;
         /**
          * @deprecated
          */
@@ -119,6 +128,9 @@ declare global {
 
         /**储存不死数据 */
         _never_die: number[];
+
+        /**储存技能增强数据 */
+        _spell_amp_data_calls: SpellAmpData[];
     }
     interface CustomHeal {
         /**治疗量 */
@@ -230,10 +242,6 @@ declare global {
         _AbilityUnitTargetFlags: string;
 
         /**
-         * 自定义调用OnSpellStart() 直接使用OnSpellStart没有自定义需要的数据
-         */
-        COnSpellStart(target: CDOTA_BaseNPC, pos: Vector): void;
-        /**
          * 自定义获得技能kv 强类型
          */
         GetSpecialValue: <T extends AbilityNames>(abilityName: T, valueName: AbilityValues<T>) => number;
@@ -241,6 +249,9 @@ declare global {
          * @deprecated
          */
         GetSpecialValueFor: (name: string) => number;
+
+        /**是否是反弹技能 */
+        IsReflectSpell(): boolean;
     }
     interface CDOTA_Item {}
     interface CAttackEvent {

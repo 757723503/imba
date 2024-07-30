@@ -1,9 +1,9 @@
+//闪烁
 @registerAbility()
 export class imba_antimage_blink extends BaseAbility {
     _min_blink_range = this.GetSpecialValue('imba_antimage_blink', 'min_blink_range');
-    _AbilityCastRange = this.GetSpecialValue('imba_antimage_blink', 'AbilityCastRange');
     OnSpellStart(keys?: SpellStartParams): void {
-        const cast_range = this._AbilityCastRange;
+        const cast_range = this.GetEffectiveCastRange(this.caster.GetAbsOrigin(), this.caster);
         const distance = math.max(this._min_blink_range, math.min(cast_range, GetDistance(this.target_pos, this.caster.GetAbsOrigin())));
         const direction = GetDirection(this.target_pos, this.caster.GetAbsOrigin());
         CProjectileManager.ProjectileDodge(this.caster);

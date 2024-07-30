@@ -1,3 +1,4 @@
+// 闪烁碎片
 @registerAbility()
 export class imba_antimage_mana_overload extends BaseAbility {
     _duration = this.GetSpecialValue('imba_antimage_mana_overload', 'duration');

@@ -1,3 +1,4 @@
+//法术反制
 @registerAbility()
 export class imba_antimage_counterspell extends BaseAbility {
     GetIntrinsicModifierName(): string {
@@ -59,6 +60,20 @@ export class modifier_imba_antimage_counterspell extends BaseModifier {
         return CDeclareFunctions(ModifierFunction.ABSORB_SPELL, ModifierFunction.REFLECT_SPELL);
     }
 
+    _dec = [ModifierFunctions.AddSpellAmpData];
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return this._dec;
+    }
+
+    _spell_amp_data: SpellAmpData = {
+        value: 20,
+        ability_name: ['imba_antimage_counterspell'],
+    };
+
+    AddSpellAmpData(): SpellAmpData {
+        return this._spell_amp_data;
+    }
+
     GetAbsorbSpell(event: ModifierAbilityEvent): 0 | 1 {
         const pfx = CCreateParticle({
             caster: this.caster,
@@ -73,6 +88,9 @@ export class modifier_imba_antimage_counterspell extends BaseModifier {
     }
 
     GetReflectSpell(event: ModifierAbilityEvent): 0 | 1 {
+        const ability = event.ability;
+        const reflect_target = ability.GetCaster();
+        if (reflect_target.IsAlly(this.parent)) return 0;
         const pfx = CCreateParticle({
             caster: this.caster,
             owner: this.parent,
@@ -82,17 +100,9 @@ export class modifier_imba_antimage_counterspell extends BaseModifier {
         });
         CSetParticleControlEnt(pfx, 0, this.parent, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), true);
 
-        const ability = event.ability;
-        const reflect_target = ability.GetCaster();
         if (CIsValid(ability) && CIsValid(reflect_target)) {
-            const reflect_ability = this.parent.AddAbility(ability.GetAbilityName());
-            reflect_ability.SetLevel(ability.GetLevel());
-            // reflect_ability.SetHidden(true);
-            // reflect_ability.SetStolen(true);
-            // reflect_ability.target = reflect_target;
-            reflect_ability.OnSpellStart();
-            // this.parent.SetCursorTargetingNothing(true);
-            // this.parent.RemoveAbilityByHandle(reflect_ability);
+            this.parent.CReflectAbility(ability, reflect_target);
+            this._spell_amp_data.ability_name.push(ability?.GetAbilityName());
         }
         return 1;
     }

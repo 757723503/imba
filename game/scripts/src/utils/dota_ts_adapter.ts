@@ -223,8 +223,8 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     const originalOnRefresh = originalGetModifier.OnRefresh;
     env[name].OnRefresh = function (parameters: any) {
         this._ignore_onrefresh_oncreated = true;
+        this.____constructor();
         if (!IsServer()) return;
-        // this.____constructor();
         if (originalOnRefresh) {
             originalOnRefresh.call(this, parameters);
         }
@@ -1315,6 +1315,34 @@ const _modifier_methods: {
             }
         },
     },
+
+    [ModifierFunctions.AddSpellAmpData]: {
+        registerFunc: (instance, parent_index) => {
+            if (instance.AddSpellAmpData) {
+                const parent = instance.GetParent();
+                instance['SpellAmpData_Saved'] = instance.AddSpellAmpData();
+                if (instance['SpellAmpData_Saved']) {
+                    parent._spell_amp_data_calls.push(instance['SpellAmpData_Saved']);
+                    const all_amp = parent.CGetSpellAmp();
+                    CustomNetTables.SetTableValue('custom_spell_amplify', tostring(parent.GetEntityIndex()), { all_amp: tostring(all_amp) });
+                }
+            }
+        },
+        removeFunc: (instance, parent_index) => {
+            if (instance.AddSpellAmpData) {
+                const parent = instance.GetParent();
+                const spell_amp_data = instance['SpellAmpData_Saved'] as SpellAmpData;
+                if (spell_amp_data) {
+                    const index = parent._spell_amp_data_calls.indexOf(spell_amp_data);
+                    if (index != -1) {
+                        parent._spell_amp_data_calls.splice(index, 1);
+                        const all_amp = parent.CGetSpellAmp();
+                        CustomNetTables.SetTableValue('custom_spell_amplify', tostring(parent.GetEntityIndex()), { all_amp: tostring(all_amp) });
+                    }
+                }
+            }
+        },
+    },
 };
 // declare module './dota_ts_adapter' {
 interface BaseModifier {
@@ -1344,7 +1372,7 @@ interface BaseModifier {
     //  * - 触发者: 攻击方
     //  * @param attackEffectData 攻击特效数据, 直接修改内容即可, 只有从物理转变为魔法时才需要添加 sourceAbility, 其他情况不需要
     //  */
-    DamageFixed_AttackEffectDamage?(dmgTable: FixedDamageTable): void;
+    DamageFixed_AttackEffectDamage?(dmgTable: DamageFixedAttackEffectData): void;
     /**
      * 攻击分裂的广播, 和 **溅射** 不一样, 事件名 DAMAGE_ATTACKER_ATK_CLEAVE_EVENT
      * - 触发者: 攻击方
@@ -1567,8 +1595,11 @@ interface BaseModifier {
     /**增加作用范围技能加成 */
     AddCustomAOEIncrease?(): number;
     /**增加不死数据 */
-    // _never_die
     AddCustomNeverDie?(): number;
+
+    /**技能增强数据 */
+    AddSpellAmpData?(): SpellAmpData;
+
     /**
      * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
      */

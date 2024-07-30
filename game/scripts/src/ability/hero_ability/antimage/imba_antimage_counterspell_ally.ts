@@ -1,3 +1,4 @@
+//法术反制 友军
 import { modifier_imba_antimage_counterspell } from './imba_antimage_counterspell';
 
 @registerAbility()

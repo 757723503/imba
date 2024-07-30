@@ -1,3 +1,4 @@
+// 法力虚空
 import { modifier_imba_stunned } from '../../../common_modifier/modifier_imba_stunned';
 
 @registerAbility()
@@ -17,7 +18,7 @@ export class imba_antimage_mana_void extends BaseAbility {
             typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
         });
         const lost_mana = this.target.GetMaxMana() - this.target.GetMana();
-        const damage = lost_mana * this._mana_void_damage_per_mana * 0.01;
+        const damage = lost_mana * this._mana_void_damage_per_mana;
         enemies.forEach(enemy => {
             enemy.AddModifier(this.caster, this, modifier_imba_stunned, { duration: this._mana_void_ministun });
             CAddDamage({

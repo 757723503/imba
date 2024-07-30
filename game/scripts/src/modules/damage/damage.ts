@@ -96,7 +96,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
                 extra_data: not_use_dmgTable.extra_data,
             };
             // 攻击特效伤害 只有攻击者,攻击伤害能接收 物理 + 魔法, 并回传
-            Dispatcher.Send('DAMAGE_FIXED_ATTACKER_ATK_DAMAGE', attacker_handle, fixed_tb);
+            Dispatcher.Send('DAMAGE_FIXED_ATTACKER_ATK_DAMAGE', attacker_handle, atk_effct_tb);
             // 如果本次攻击伤害变为魔法 那所有的物理特效触发都转化为同数值的魔法攻击特效
             if (atk_effct_tb.damageType == DamageType.Magical) {
                 fixed_tb.attack_magical_damage = fixed_tb.attack_physical_damage;
@@ -559,8 +559,10 @@ namespace DamageHelper {
         // 可以被格挡的技能物理伤害
         const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
         const attacker = dmgTable.attacker;
-        // 是否是生命流失 如果是生命流失跳过一些阶段
+        // 是否是消耗 如果是消耗跳过一些阶段
         const is_hp_cost = checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
+        // 是否需不要计算技能增强
+        const no_amplify = checkTag(dmgTable.damageFlags, DamageFlags.NOSpellAmplify);
         // 其他全干掉
         dmgTable.attack_physical_damage = 0;
         dmgTable.attack_magical_damage = 0;
@@ -569,6 +571,18 @@ namespace DamageHelper {
         // 处理伤害到技能物理伤害
         dmgTable.ability_physical_damage = origin_dmg_table.damage;
         // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
+
+        //技能增强计算
+        if (!no_amplify && !is_hp_cost) {
+            const amplification = _CalSpellAmplification(dmgTable, origin_dmg_table.sourceAbility);
+            // 实装技能增强
+            dmgTable.ability_physical_damage *= 1 + amplification / 100;
+            amplification > 0 &&
+                DamageHelper.AddRecord(
+                    record_list,
+                    string.format('计算技能增强 技能增强:%.1f%%, 增强后%.1f', amplification, dmgTable.ability_physical_damage)
+                );
+        }
         // - 伤害共享和伤害反弹的伤害传递(只传递物理攻击伤害和攻击者)
         if (!is_hp_remove && !is_hp_cost && !is_reflect && dmgTable.ability_physical_damage > 0 && isNormalTarget) {
             Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
@@ -704,6 +718,7 @@ namespace DamageHelper {
         // 是否是生命流失 如果是生命流失跳过一些阶段
         const is_hp_cost = checkTag(dmgTable.damageFlags, DamageFlags.HPCost);
         const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
+        const no_amplify = checkTag(dmgTable.damageFlags, DamageFlags.NOSpellAmplify);
         // 其他全干掉
         dmgTable.attack_physical_damage = 0;
         dmgTable.pure_damage = 0;
@@ -716,6 +731,19 @@ namespace DamageHelper {
             dmgTable.ability_magical_damage = origin_dmg_table.damage;
         }
         // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
+
+        //技能增强计算
+        if (!no_amplify && !is_hp_cost) {
+            const amplification = _CalSpellAmplification(dmgTable, origin_dmg_table.sourceAbility);
+            // 实装技能增强
+            dmgTable.ability_magical_damage *= 1 + amplification / 100;
+            amplification > 0 &&
+                DamageHelper.AddRecord(
+                    record_list,
+                    string.format('计算技能增强 技能增强:%.1f%%, 增强后%.1f', amplification, dmgTable.ability_magical_damage)
+                );
+        }
+        //伤害共享和伤害反弹的伤害传递 反射伤害时不触发
         if (!is_hp_remove && !is_hp_cost && !is_reflect && dmgTable.ability_magical_damage > 0 && isNormalTarget) {
             Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
                 damage: dmgTable.ability_magical_damage,
@@ -837,6 +865,7 @@ namespace DamageHelper {
         const is_hp_remove = checkTag(dmgTable.damageFlags, DamageFlags.HPRemove);
         const attacker = dmgTable.attacker;
         const is_reflect = checkTag(dmgTable.damageFlags, DamageFlags.DoNotReflect);
+        const no_amplify = checkTag(dmgTable.damageFlags, DamageFlags.NOSpellAmplify);
         // 其他全干掉
         dmgTable.attack_physical_damage = 0;
         dmgTable.attack_magical_damage = 0;
@@ -844,80 +873,90 @@ namespace DamageHelper {
         dmgTable.ability_magical_damage = 0;
         dmgTable.pure_damage = origin_dmg_table.damage;
         // 非生命流失做逻辑
-        if (!is_hp_cost) {
-            if (!is_culling_down) {
-                // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
+        if (!is_culling_down) {
+            // - TODO: 暂无: 强断连招的伤害施加无效化 如果这时物理和魔法攻击均为0, 则应该直接返回(?)
+            //技能增强计算
+            if (!no_amplify && !is_hp_cost) {
+                const amplification = _CalSpellAmplification(dmgTable, origin_dmg_table.sourceAbility);
+                // 实装技能增强
+                dmgTable.pure_damage *= 1 + amplification / 100;
 
-                if (!is_hp_remove && !is_hp_cost && !is_reflect && dmgTable.pure_damage > 0 && isNormalTarget) {
-                    Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
-                        damage: dmgTable.pure_damage,
-                        attacker: attacker,
-                        type: DamageType.Pure,
-                    });
-                }
-
-                // - 魔法护盾的伤害格挡(传入一个总伤害量(一个数字), 回传一个实际减少数字)
-                if (victim_is_hero) {
-                    const mg_shield_tb = {
-                        block_pct: 0,
-                        origin_table: dmgTable,
-                    };
-                    // 魔法护盾的伤害格挡 只有受击者, 所有伤害能接受 包含生命移除
-                    Dispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
-                    const result_pct = mg_shield_tb.block_pct;
-                    if (result_pct > 0) {
-                        const remain_value = 1 - result_pct * 0.01;
-                        // 给所有伤害缩减百分比
-                        dmgTable.pure_damage *= remain_value;
-                        DamageHelper.AddRecord(
-                            record_list,
-                            string.format('魔法护盾的伤害格挡 缩减比例:%.1f%%, 剩余技能纯粹伤害 %.2f', result_pct, dmgTable.pure_damage)
-                        );
-                    }
-                }
-
-                // - 伤害无效化(只记录flag, 结束后计算)
-                const ignore_pct = {
-                    pure: false,
-                    all: false,
-                };
-                //     纯粹伤害无效化 伤害无视技能减益免疫时 不触发
-                if (isNormalTarget && dmgTable.pure_damage > 0) {
-                    const ignore_pct_tb = { origin_pure: dmgTable.pure_damage, ignore: false };
-                    // 纯粹伤害无效化 只有受击者
-                    Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE', victim_handle, ignore_pct_tb);
-                    // 减益免疫时 无视  纯粹伤害  除非是无视减益免疫
-                    ignore_pct.pure = !origin_dmg_table.ignoreMagicImmune && ignore_pct_tb.ignore;
-                }
-                if (!ignore_pct.pure) {
-                    //     - 全类型伤害无效化
-                    if (isNormalTarget && dmgTable.pure_damage > 0) {
-                        const ignore_pct_tb = { origin_all: dmgTable.pure_damage, ignore: false, attacker: dmgTable.attacker };
-                        // 全类型伤害无效化 只有受击者
-                        Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
-                        ignore_pct.all = ignore_pct_tb.ignore;
-                        if (ignore_pct.all == true) {
-                            ignore_pct.pure = true;
-                        }
-                    }
-                }
-                if (
-                    !origin_dmg_table.ignoreMagicImmune &&
-                    origin_dmg_table.victim.IsDebuffImmune() &&
-                    checkTag(origin_dmg_table.damageFlags, DamageFlags.DoNotReflect)
-                ) {
-                    DamageHelper.AddRecord(record_list, '减益免疫,免疫技能纯粹的反射伤害');
-                    ignore_pct.pure = true;
-                }
-                // 如果纯粹
-                if (ignore_pct.pure) {
-                    dmgTable.pure_damage = 0;
-                    DamageHelper.AddRecord(record_list, '纯粹伤害无效化');
-                }
-
-                // 伤害护盾 单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
-                _CalShieldAbsorbOnDamaged(dmgTable);
+                amplification > 0 &&
+                    DamageHelper.AddRecord(
+                        record_list,
+                        string.format('计算技能增强 技能增强:%.1f%%, 增强后%.1f', amplification, dmgTable.pure_damage)
+                    );
             }
+
+            if (!is_hp_remove && !is_hp_cost && !is_reflect && dmgTable.pure_damage > 0 && isNormalTarget) {
+                Dispatcher.Send('DAMAGE_VICITIM_REFLECT_SHARED_DAMAGE_EVENT', victim_handle, {
+                    damage: dmgTable.pure_damage,
+                    attacker: attacker,
+                    type: DamageType.Pure,
+                });
+            }
+
+            // - 魔法护盾的伤害格挡(传入一个总伤害量(一个数字), 回传一个实际减少数字)
+            if (victim_is_hero) {
+                const mg_shield_tb = {
+                    block_pct: 0,
+                    origin_table: dmgTable,
+                };
+                // 魔法护盾的伤害格挡 只有受击者, 所有伤害能接受 包含生命移除
+                Dispatcher.Send('DAMAGE_FIXED_MAGIC_SHIELD_BLOCK_PCT', victim_handle, mg_shield_tb);
+                const result_pct = mg_shield_tb.block_pct;
+                if (result_pct > 0) {
+                    const remain_value = 1 - result_pct * 0.01;
+                    // 给所有伤害缩减百分比
+                    dmgTable.pure_damage *= remain_value;
+                    DamageHelper.AddRecord(
+                        record_list,
+                        string.format('魔法护盾的伤害格挡 缩减比例:%.1f%%, 剩余技能纯粹伤害 %.2f', result_pct, dmgTable.pure_damage)
+                    );
+                }
+            }
+
+            // - 伤害无效化(只记录flag, 结束后计算)
+            const ignore_pct = {
+                pure: false,
+                all: false,
+            };
+            //     纯粹伤害无效化 伤害无视技能减益免疫时 不触发
+            if (isNormalTarget && dmgTable.pure_damage > 0) {
+                const ignore_pct_tb = { origin_pure: dmgTable.pure_damage, ignore: false };
+                // 纯粹伤害无效化 只有受击者
+                Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_PURE_DAMAGE', victim_handle, ignore_pct_tb);
+                // 减益免疫时 无视  纯粹伤害  除非是无视减益免疫
+                ignore_pct.pure = !origin_dmg_table.ignoreMagicImmune && ignore_pct_tb.ignore;
+            }
+            if (!ignore_pct.pure) {
+                //     - 全类型伤害无效化
+                if (isNormalTarget && dmgTable.pure_damage > 0) {
+                    const ignore_pct_tb = { origin_all: dmgTable.pure_damage, ignore: false, attacker: dmgTable.attacker };
+                    // 全类型伤害无效化 只有受击者
+                    Dispatcher.Send('DAMAGE_FIXED_VICITIM_IGNORE_ALL_DAMAGE', victim_handle, ignore_pct_tb);
+                    ignore_pct.all = ignore_pct_tb.ignore;
+                    if (ignore_pct.all == true) {
+                        ignore_pct.pure = true;
+                    }
+                }
+            }
+            if (
+                !origin_dmg_table.ignoreMagicImmune &&
+                origin_dmg_table.victim.IsDebuffImmune() &&
+                checkTag(origin_dmg_table.damageFlags, DamageFlags.DoNotReflect)
+            ) {
+                DamageHelper.AddRecord(record_list, '减益免疫,免疫技能纯粹的反射伤害');
+                ignore_pct.pure = true;
+            }
+            // 如果纯粹
+            if (ignore_pct.pure) {
+                dmgTable.pure_damage = 0;
+                DamageHelper.AddRecord(record_list, '纯粹伤害无效化');
+            }
+
+            // 伤害护盾 单独类做 依次计算 物理攻击/魔法伤害/全类型伤害/物理伤害
+            _CalShieldAbsorbOnDamaged(dmgTable);
         }
     }
 
@@ -1245,7 +1284,12 @@ namespace DamageHelper {
             return 0;
         }
     }
-
+    /** 计算技能增强(包含业务和显示层面) */
+    function _CalSpellAmplification(dmgTable: FixedDamageTable, ability: CDOTABaseAbility): number {
+        const attacker = dmgTable.attacker;
+        const spell_amplification = attacker.CGetSpellAmp(ability['name']);
+        return spell_amplification;
+    }
     /** 能量护盾吸收伤害 */
     function _CalShieldAbsorbOnDamaged(damageTable: FixedDamageTable) {
         const { victim } = damageTable;

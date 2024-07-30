@@ -12,4 +12,5 @@ declare interface CustomNetTableDeclarations {
 
     custom_ability_textur: Record<string, { name: string }>;
     custom_shield_data: Record<string, { [shieldType: string]: { max_shield: string; now_shield: string } }>;
+    custom_spell_amplify: Record<string, { all_amp: string }>;
 }

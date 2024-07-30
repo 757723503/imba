@@ -32,8 +32,8 @@ declare const enum DamageFlags {
     NotKill = 32,
     /** 生命消耗 会对目标造成纯粹伤害 同时还具有不致死标记 */
     HPCost = 34,
-    /** 可反补 */
-    KillFriendly = 64,
+    /** 没有技能增强 */
+    NOSpellAmplify = 64,
     /** 暴击 标记普攻用 用于显示暴击数字 */
     AttackCrit = 128,
 
@@ -177,6 +177,15 @@ declare interface CBlock_Magic {
     damage_min?: number;
     on_block?: (blocl: CBlock_Magic) => void;
 }
+declare interface SpellAmpData {
+    /** 增强数值 */
+    value: number;
+    /** 唯一标示 同一个标示取最高属性 */
+    identification?: string;
+    /** 单技能增强标示 此增强数值 只对此技能有效 */
+    ability_name?: string[];
+}
+
 declare interface UnitEventAttackDamageData {
     damageTable: DamageTable;
     /** 远程攻击 - 投射物弹道 */

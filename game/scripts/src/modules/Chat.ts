@@ -92,7 +92,7 @@ export class CChat {
 
                 //     EffectName: 'particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf',
                 // });
-                hero.AddAbility('imba_life_stealer_open_wounds');
+                // hero.AddAbility('imba_life_stealer_open_wounds');
                 // hero.CHeal({ reason: HealReason.Heal, amount: 1000, show_number: true });
                 // hero.GetTogglableWearable(LoadoutType.PERSONA_1_END);
 
@@ -161,11 +161,12 @@ export class CChat {
                         for (let index = 0; index < 5; index++) {
                             CAttackData.PerformAttack(hero, enemy, {
                                 use_projectile: false,
+                                use_effect: true,
                             });
                         }
                     }
                     cont++;
-                    if (cont < 10000) {
+                    if (cont < 10) {
                         return FrameTime();
                     }
                     return null;

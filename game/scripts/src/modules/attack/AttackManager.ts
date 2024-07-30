@@ -34,6 +34,7 @@ export class CAttackDataManager {
             damageFlags: crit_obj ? DamageFlags.AttackCrit : undefined,
             crit_obj: crit_obj,
             sourceAbility: attacker._ability_custom_base_attack,
+            use_attack_effect: true,
         };
         // 初始化攻击数据
         const attack_data: UnitEventAttackDamageData = {
@@ -184,6 +185,7 @@ export class CAttackDataManager {
                 damageFlags: (crit_obj ? DamageFlags.AttackCrit : 0) + (disable_celled ? DamageFlags.DisableCelled : 0),
                 crit_obj: crit_obj,
                 sourceAbility: attacker._ability_custom_base_attack,
+                use_attack_effect: use_effect,
             };
             attack_data = {
                 damageTable: dmgTable,
@@ -343,7 +345,8 @@ export class modifier_attack_data_miss extends BaseModifier {
             ModifierFunction.MISS_PERCENTAGE,
             ModifierFunction.INCOMING_DAMAGE_CONSTANT,
             ModifierFunction.INCOMING_PHYSICAL_DAMAGE_CONSTANT,
-            ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT
+            ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT,
+            ModifierFunction.SPELL_AMPLIFY_PERCENTAGE
         );
     }
 
@@ -355,6 +358,15 @@ export class modifier_attack_data_miss extends BaseModifier {
                 Magic: { max_shield: tostring(0), now_shield: tostring(0) },
                 All: { max_shield: tostring(0), now_shield: tostring(0) },
             });
+        }
+    }
+
+    GetModifierSpellAmplify_Percentage(event: ModifierAttackEvent): number {
+        if (IsClient()) {
+            const custom_amp = CustomNetTables.GetTableValue('custom_spell_amplify', tostring(this.GetParent()?.GetEntityIndex()))?.all_amp;
+            print(custom_amp);
+            if (!custom_amp) return 0;
+            return tonumber(custom_amp);
         }
     }
 
@@ -398,6 +410,7 @@ export class modifier_attack_data_miss extends BaseModifier {
     OnDestroy(): void {
         if (IsServer()) {
             CustomNetTables.SetTableValue('custom_shield_data', tostring(this.GetParent()?.GetEntityIndex()), null);
+            CustomNetTables.SetTableValue('custom_spell_amplify', tostring(this.GetParent()?.GetEntityIndex()), null);
         }
     }
 }

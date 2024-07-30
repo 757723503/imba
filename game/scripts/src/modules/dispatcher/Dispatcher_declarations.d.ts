@@ -159,4 +159,6 @@ declare const enum ModifierFunctions {
 
     /**增加不死数据 */
     AddCustomNeverDie = 'AddCustomNeverDie',
+    /**增加技能增强数据 */
+    AddSpellAmpData = 'AddSpellAmpData',
 }

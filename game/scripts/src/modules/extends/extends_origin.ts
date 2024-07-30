@@ -42,6 +42,41 @@ if (!CDOTA_BaseNPC.GetDamageBlocks_Magic) {
         return this.magic_damage_blocks;
     };
 }
+if (!CDOTA_BaseNPC.CGetSpellAmp) {
+    CDOTA_BaseNPC.CGetSpellAmp = function (this: CDOTA_BaseNPC, ability_name?: string): number {
+        const all_amp = this._spell_amp_data_calls;
+        const maxValues: { [key: string]: number } = {};
+        let spell_amp = 0;
+        let ability_amp = 0;
+
+        // 遍历所有的 ampdata
+        all_amp.forEach(ampdata => {
+            // 如果有identification，记录每个唯一标示的最大值
+            if (ampdata.identification) {
+                if (!maxValues[ampdata.identification] || ampdata.value > maxValues[ampdata.identification]) {
+                    maxValues[ampdata.identification] = ampdata.value;
+                }
+            } else {
+                // 没有identification的情况，直接累加value
+                spell_amp += ampdata.value;
+            }
+
+            // 如果提供了 ability_name 字符串，检查其是否在 ampdata.ability_name 数组中
+            if (ability_name && ampdata.ability_name) {
+                const isAbilityNameMatched = ampdata.ability_name.includes(ability_name);
+                if (isAbilityNameMatched) {
+                    ability_amp += ampdata.value;
+                }
+            }
+        });
+
+        // 计算所有最大值的总和
+        spell_amp += Object.values(maxValues).reduce((sum, value) => sum + value, 0);
+
+        // 返回总和加上 ability_name 的值（如果有提供）
+        return spell_amp + ability_amp;
+    };
+}
 
 if (!CDOTA_BaseNPC.AddModifier) {
     CDOTA_BaseNPC.AddModifier = function <T extends Constructor>(
@@ -142,6 +177,19 @@ if (!CDOTA_BaseNPC.CGetFaceID) {
         return -1;
     };
 }
+if (!CDOTA_BaseNPC.CReflectAbility) {
+    CDOTA_BaseNPC.CReflectAbility = function (this: CDOTA_BaseNPC, reflect_Ability: CDOTABaseAbility, reflect_target: CDOTA_BaseNPC): void {
+        const reflect_ability = this.AddAbility(reflect_Ability.GetAbilityName());
+        reflect_ability.SetLevel(reflect_Ability.GetLevel());
+        reflect_ability.SetHidden(true);
+        reflect_ability.SetStolen(true);
+        reflect_ability['target'] = reflect_target;
+        reflect_ability['isreflectspell'] = true;
+
+        reflect_ability.OnSpellStart();
+        this.RemoveAbilityByHandle(reflect_ability);
+    };
+}
 // if (!CDOTA_BaseNPC.CTargetTriggerAbsorbReflect) {
 //     CDOTA_BaseNPC.CTargetTriggerAbsorbReflect = function (
 //         this: CDOTA_BaseNPC,
@@ -172,6 +220,12 @@ if (!CDOTA_BaseNPC.CIsNeverDie) {
         return this._never_die.length > 0;
     };
 }
+
+if (!CDOTABaseAbility.IsReflectSpell) {
+    CDOTABaseAbility.IsReflectSpell = function (this: CDOTABaseAbility): boolean {
+        return this['isreflectspell'] == true;
+    };
+}
 if (!CDOTABaseAbility.GetSpecialValue) {
     CDOTABaseAbility.GetSpecialValue = function <T extends AbilityNames>(
         this: CDOTABaseAbility,
@@ -192,12 +246,6 @@ if (!CDOTABaseAbility.GetSpecialValue) {
             }
         }
         return this.GetSpecialValueFor(valueName as string);
-    };
-}
-
-if (!CDOTABaseAbility.COnSpellStart) {
-    CDOTABaseAbility.COnSpellStart = function (this: CDOTABaseAbility, target: CDOTA_BaseNPC | undefined, pos: Vector | undefined): void {
-        this;
     };
 }
 export {};

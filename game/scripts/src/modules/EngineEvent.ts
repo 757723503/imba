@@ -76,6 +76,7 @@ export class CEngineEvent {
         _life_steal_data_calls: [],
         custom_aoe_increase: 0,
         _never_die: [],
+        _spell_amp_data_calls: [],
     };
 
     private async _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): Promise<void> {
