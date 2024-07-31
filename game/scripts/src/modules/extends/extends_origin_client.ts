@@ -26,6 +26,19 @@ if (!C_DOTA_BaseNPC.IsAlly) {
         return this.GetTeamNumber() == unit.GetTeamNumber();
     };
 }
+if (!C_DOTA_BaseNPC.CGetAbilityIcon) {
+    C_DOTA_BaseNPC.CGetAbilityIcon = function (this: CDOTA_BaseNPC, ability_name: DotaAbility | string | HeroAbility): string {
+        const ability_data = HERO_ICON_LIST[ability_name];
+        const pfx_name = ParticleManager.GetParticleReplacement(HeroParticleList[ability_name], this as CDOTA_BaseNPC_Hero);
+        let icon = '';
+        if (ability_data?.Particle) {
+            icon = ability_data.Particle[pfx_name];
+        }
+        if (icon == '') {
+        }
+        return icon == '' ? null : icon;
+    };
+}
 if (!C_DOTA_BaseNPC.IsUnit) {
     C_DOTA_BaseNPC.IsUnit = function (this: CDOTA_BaseNPC): boolean {
         return this.IsHero() || this.IsCreep() || this.IsBoss();

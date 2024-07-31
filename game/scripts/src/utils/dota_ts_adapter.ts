@@ -102,6 +102,11 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
         if (originalSpawn) {
             originalSpawn.call(this);
         }
+        if (IsClient() && this.GetCaster().CGetAbilityIcon(this)) {
+            this.GetAbilityTextureName = () => {
+                return this.GetCaster().CGetAbilityIcon(this);
+            };
+        }
 
         if (IsServer() && (env[name] as CDOTA_Ability_Lua).GetAbilityKeyValues) {
             const ability_special_value = this.GetAbilityKeyValues();

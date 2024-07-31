@@ -24,6 +24,8 @@ declare global {
         ): CDOTA_Buff;
         /**获得自定义致盲攻击丢失概率 */
         GetBlindChance(): number;
+        /**获得自定义原版饰品技能图标 */
+        CGetAbilityIcon(ability_name: DotaAbility | string | HeroAbility): string;
         /**获得自定义闪避概率 */
         GetEvasionChance(): number;
         /** 获得自定义必中概率  */
