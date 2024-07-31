@@ -11,11 +11,8 @@
 		"Ability6"		"imba_antimage_mana_void"
 
 
-		"Ability8"		"antimage_blink"
-		"Ability9"		"antimage_counterspell"
-		"Ability18"		"antimage_mana_overload"
-		"Ability18"		"antimage_counterspell_ally"
-		"Ability18"		"antimage_mana_void"
+	 
+		 
 
 
 

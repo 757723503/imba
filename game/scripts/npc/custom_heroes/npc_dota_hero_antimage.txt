@@ -51,7 +51,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"13.5 11 8.5 6"
-				"special_bonus_unique_imba_antimage"		"-1"
+				"special_bonus_unique_imba_antimage_1"		"-1"
 			}
 			"AbilityCastRange"
 			{
@@ -189,7 +189,7 @@
 			"mana_void_aoe_radius"
 			{
 				"value"		"500"
-				"special_bonus_unique_antimage_manavoid_aoe"		"150"
+				"special_bonus_unique_imba_antimage_8"		"150"
 				"affected_by_aoe_increase"		"1"
 			}
 			"thirst_enabled"
@@ -263,36 +263,43 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_antimage_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_antimage_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_antimage_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_antimage_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_antimage_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_antimage_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_antimage_8"
 	{

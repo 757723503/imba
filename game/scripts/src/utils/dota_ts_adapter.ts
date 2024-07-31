@@ -315,7 +315,9 @@ const initializeConfig = (modifier: CDOTA_Modifier_Lua, name: string) => {
         modifier.GetAuraSearchTeam = () => getAuraConfig().search_team;
         modifier.GetAuraSearchType = () => getAuraConfig().search_type;
         modifier.GetAuraSearchFlags = () => getAuraConfig().search_flag;
-        modifier.GetAuraEntityReject = (entity: CDOTA_BaseNPC) => getAuraConfig().aura_entity_reject(entity);
+        modifier.GetAuraEntityReject = getAuraConfig().aura_entity_reject
+            ? (entity: CDOTA_BaseNPC) => getAuraConfig().aura_entity_reject(entity)
+            : (entity: CDOTA_BaseNPC) => false;
     }
 };
 

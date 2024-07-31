@@ -38,7 +38,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
             caster: this.caster,
         });
         const ex = this.parent.GetModelScale() * 100;
-        CSetParticleControlEnt(pfx, 0, this.parent, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), true);
+        CSetParticleControlEnt(pfx, 0, this.parent, ParticleAttachment.POINT_FOLLOW, Attachment.ATTACH_HITLOC, this.parent.GetAbsOrigin(), true);
         CSetParticleControl(pfx, 1, Vector(ex, 0, 0));
         CSetParticleControl(pfx, 2, this.parent.GetAbsOrigin());
         CSetParticleControl(pfx, 4, this.parent.GetAbsOrigin());
@@ -53,7 +53,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
                 caster: this.caster,
             });
             const ex2 = this.parent.GetModelScale() * 100;
-            CSetParticleControlEnt(pfx2, 0, this.parent, ParticleAttachment.POINT_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), true);
+            CSetParticleControlEnt(pfx2, 0, this.parent, ParticleAttachment.POINT_FOLLOW, Attachment.ATTACH_HITLOC, this.parent.GetAbsOrigin(), true);
             CSetParticleControl(pfx2, 1, Vector(ex2, 0, 0));
             CSetParticleControl(pfx2, 2, this.parent.GetAbsOrigin());
             CSetParticleControl(pfx2, 4, this.parent.GetAbsOrigin());
@@ -113,8 +113,16 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
                             limits: { time: FrameTime(), limit: 10 },
                         },
                     });
-                    CSetParticleControlEnt(pfx, 0, unit, ParticleAttachment.CENTER_FOLLOW, 'attach_hitloc', unit.GetAbsOrigin(), false);
-                    CSetParticleControlEnt(pfx, 1, this.parent, ParticleAttachment.CENTER_FOLLOW, 'attach_hitloc', this.parent.GetAbsOrigin(), false);
+                    CSetParticleControlEnt(pfx, 0, unit, ParticleAttachment.CENTER_FOLLOW, Attachment.ATTACH_HITLOC, unit.GetAbsOrigin(), false);
+                    CSetParticleControlEnt(
+                        pfx,
+                        1,
+                        this.parent,
+                        ParticleAttachment.CENTER_FOLLOW,
+                        Attachment.ATTACH_HITLOC,
+                        this.parent.GetAbsOrigin(),
+                        false
+                    );
                     CAddDamage({
                         attacker: this.caster,
                         damage: damage * this._absorb_to_damage * 0.01,

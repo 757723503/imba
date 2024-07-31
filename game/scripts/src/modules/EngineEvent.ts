@@ -105,6 +105,11 @@ export class CEngineEvent {
             if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {
                 entity.AddNewModifier(entity, entity.FindAbilityByName('imba_custom_debuff_immune'), 'modifier_attack_data_miss', {});
             }
+
+            const ability = entity.AddAbility('antimage_mana_break');
+            DebugPrint('初始化自定义属性', GetAbilityTextureNameForAbility('antimage_mana_break'));
+            // ability.GetAbilityTextureName()
+            // ability.text;
         }
     }
 }

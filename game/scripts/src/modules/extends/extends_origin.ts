@@ -31,17 +31,6 @@ if (!CDOTA_BaseNPC.IsUnit) {
         return this.IsHero() || this.IsCreep() || this.IsBoss();
     };
 }
-
-if (!CDOTA_BaseNPC.GetDamageBlocks_Physic) {
-    CDOTA_BaseNPC.GetDamageBlocks_Physic = function (this: CDOTA_BaseNPC): CBlock_Physic[] {
-        return this.physic_damage_blocks;
-    };
-}
-if (!CDOTA_BaseNPC.GetDamageBlocks_Magic) {
-    CDOTA_BaseNPC.GetDamageBlocks_Magic = function (this: CDOTA_BaseNPC): CBlock_Magic[] {
-        return this.magic_damage_blocks;
-    };
-}
 if (!CDOTA_BaseNPC.CGetSpellAmp) {
     CDOTA_BaseNPC.CGetSpellAmp = function (this: CDOTA_BaseNPC, ability_name?: string): number {
         const all_amp = this._spell_amp_data_calls;
@@ -75,6 +64,28 @@ if (!CDOTA_BaseNPC.CGetSpellAmp) {
 
         // 返回总和加上 ability_name 的值（如果有提供）
         return spell_amp + ability_amp;
+    };
+}
+if (!CDOTA_BaseNPC.GetDamageBlocks_Physic) {
+    CDOTA_BaseNPC.GetDamageBlocks_Physic = function (this: CDOTA_BaseNPC): CBlock_Physic[] {
+        return this.physic_damage_blocks;
+    };
+}
+if (!CDOTA_BaseNPC.CIsStrongIllusion) {
+    CDOTA_BaseNPC.CIsStrongIllusion = function (this: CDOTA_BaseNPC): boolean {
+        // const all_modifiers = this.FindAllModifiers();
+        // for (const modifier of all_modifiers) {
+        //     if (modifier.HasFunction(ModifierFunction.STRONG_ILLUSION)) {
+        //         return true;
+        //     }
+        // }
+        return this._isStrongIllusion == true;
+    };
+}
+
+if (!CDOTA_BaseNPC.GetDamageBlocks_Magic) {
+    CDOTA_BaseNPC.GetDamageBlocks_Magic = function (this: CDOTA_BaseNPC): CBlock_Magic[] {
+        return this.magic_damage_blocks;
     };
 }
 

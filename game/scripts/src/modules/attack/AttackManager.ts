@@ -364,7 +364,6 @@ export class modifier_attack_data_miss extends BaseModifier {
     GetModifierSpellAmplify_Percentage(event: ModifierAttackEvent): number {
         if (IsClient()) {
             const custom_amp = CustomNetTables.GetTableValue('custom_spell_amplify', tostring(this.GetParent()?.GetEntityIndex()))?.all_amp;
-            print(custom_amp);
             if (!custom_amp) return 0;
             return tonumber(custom_amp);
         }

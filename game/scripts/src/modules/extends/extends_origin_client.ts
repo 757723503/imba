@@ -84,6 +84,17 @@ if (!C_DOTA_BaseNPC.CHeal) {
         this.HealWithParams(heal, inflictor, heal_reason == HealReason.Life_Steal, true, source, heal_reason == HealReason.Spell_Life_Steal);
     };
 }
+if (!C_DOTA_BaseNPC.CIsStrongIllusion) {
+    C_DOTA_BaseNPC.CIsStrongIllusion = function (this: CDOTA_BaseNPC): boolean {
+        // const all_modifiers = this.FindAllModifiers();
+        // for (const modifier of all_modifiers) {
+        //     if (modifier.HasFunction(ModifierFunction.STRONG_ILLUSION)) {
+        //         return true;
+        //     }
+        // }
+        return this._isStrongIllusion == true;
+    };
+}
 if (!C_DOTA_BaseNPC._refresh_shields) {
     C_DOTA_BaseNPC._refresh_shields = function (this: CDOTA_BaseNPC): void {
         const shieldDataContainer: Record<ShieldType, ShieldData[]> = {

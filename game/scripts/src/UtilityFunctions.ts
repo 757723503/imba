@@ -181,7 +181,7 @@ function CSetParticleControlEnt(
     controlPoint: number,
     unit: CBaseEntity,
     particleAttach: ParticleAttachment,
-    attachment: string,
+    attachment: Attachment,
     offset: Vector,
     lockOrientation: boolean
 ): void {

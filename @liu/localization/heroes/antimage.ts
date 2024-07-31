@@ -119,33 +119,33 @@ export const data: LocalizationData = {
     //     },
     // ],
     // StandardArray: [],
-    // TalentArray: [
-    //     {
-    //         talent_classname: 'special_bonus_unique_imba_abaddon',
-    //         talents: [
-    //             // +{s:bonus_damage_absorb} 无光之盾护盾数值
-    //             // +{s:bonus_target_damage} 迷雾缠绕治疗/伤害
-    //             // +{s:bonus_curse_attack_speed} 魔霭诅咒攻速加成
-    //             // {s:bonus_effect_radius} 范围型迷雾缠绕
-    //             // +{s:bonus_curse_dps} 魔霭诅咒每秒伤害
-    //             // -{s:bonus_curse_slow}% 魔霭诅咒诅咒减速
-    //             // 无光之盾提供+{s:bonus_regen} 生命恢复
-    //             // {s:bonus_immolate_damage} 回光返照献祭每秒伤害
-    //             // 作用于亚巴顿和{s:bonus_immolate_aoe}范围内所有敌人。
-    //             { name: '-{s:bonus_curse_slow}% 魔霭诅咒诅咒减速' }, //1
-    //             { name: '无光之盾提供+{s:bonus_regen} 生命恢复' }, //2
+    TalentArray: [
+        {
+            talent_classname: 'special_bonus_unique_imba_antimage',
+            talents: [
+                //1  -{s:bonus_AbilityCooldown}秒 闪烁冷却
+                //2  -{s:bonus_AbilityCooldown}秒 法力虚空冷却
+                //3  +{s:bonus_AbilityCastRange} 闪烁施法距离
+                //4  +{s:bonus_magic_resistance}% 法术反制魔法抗性
+                //5  对空蓝目标减速{s:bonus_move_slow}%
+                //5  攻击没有魔法值的敌人时施加减速效果，持续 {s:bonus_slow_duration}秒。
+                //6  +{s:bonus_mana_void_damage_per_mana} 法力虚空伤害系数
+                //7  +{s:bonus_mana_per_hit_pct}% 法力损毁最大魔法值
+                //8  +{s:bonus_mana_void_aoe_radius} 法力虚空范围
+                { name: '-{s:bonus_AbilityCooldown}秒 闪烁冷却' },
+                { name: '-{s:bonus_AbilityCooldown}秒 法力虚空冷却' },
 
-    //             { name: '+{s:bonus_curse_dps} 魔霭诅咒每秒伤害' }, //3
-    //             { name: '+{s:bonus_target_damage} 迷雾缠绕治疗/伤害' }, //4
+                { name: '+{s:bonus_AbilityCastRange} 闪烁施法距离' },
+                { name: '+{s:bonus_magic_resistance} % 法术反制魔法抗性' },
 
-    //             { name: '+{s:bonus_damage_absorb} 无光之盾护盾数值' }, //5
-    //             { name: '{s:bonus_immolate_damage} 回光返照献祭每秒伤害', description: '作用于亚巴顿和{s:bonus_immolate_aoe}范围内所有敌人。' }, //6
+                { name: '对空蓝目标减速{s:bonus_move_slow} %', description: '攻击没有魔法值的敌人时施加减速效果，持续 {s:bonus_slow_duration}秒。' },
+                { name: ' +{s:bonus_mana_void_damage_per_mana} 法力虚空伤害系数' },
 
-    //             { name: '+{s:bonus_curse_attack_speed} 魔霭诅咒攻速加成' }, //7
-    //             { name: '{s:bonus_effect_radius} 范围型迷雾缠绕' }, //8
-    //         ],
-    //     },
-    // ],
+                { name: '+{s:bonus_mana_per_hit_pct} % 法力损毁最大魔法值' },
+                { name: '+{s:bonus_mana_void_aoe_radius} 法力虚空范围' },
+            ],
+        },
+    ],
     FacetArray_A: [],
     FacetArray_B: [
         {

@@ -1,11 +1,9 @@
-// import { CustomBaseModifier } from '../modules/custom_base_modifier';
-// import { BaseModifier, registerModifier } from '../utils/dota_ts_adapter';
 @registerModifier()
 export class modifier_imba_stunned extends BaseModifier {
     GetModifierConfig(): ModifierConfig {
         return {
             is_hidden: false,
-            is_debuff: false,
+            is_debuff: true,
             not_purgable: false,
             not_purgable_exception: false,
         };
@@ -17,14 +15,28 @@ export class modifier_imba_stunned extends BaseModifier {
         };
     }
 
-    OnCreated(keys: ModifierParams): void {
-        // DebugPrint('modifier_imba_stunned OnCreated', this.GetAbility()?.GetAbilityName(), this._origin_ability_textur);
-        // if (IsServer()) {
-        // }
+    OnCreated(keys: ModifierParams): void {}
+    GetEffectName(): string {
+        return ParticleManager.GetParticleReplacement('particles/generic_gameplay/generic_stunned.vpcf', this.caster as CDOTA_BaseNPC_Hero);
     }
 
-    OnDestroy(): void {
-        // if (IsServer()) {
-        // }
+    GetEffectAttachType(): ParticleAttachment {
+        return ParticleAttachment.OVERHEAD_FOLLOW;
+    }
+
+    SetOverheadEffectOffset(offset: number): boolean {
+        return true;
+    }
+
+    GetOverrideAnimation(): GameActivity {
+        return GameActivity.DOTA_DISABLED;
+    }
+
+    DeclareFunctions(): ModifierFunction[] {
+        return CDeclareFunctions(ModifierFunction.OVERRIDE_ANIMATION);
+    }
+
+    ShouldUseOverheadOffset(): boolean {
+        return true;
     }
 }

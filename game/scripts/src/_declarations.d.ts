@@ -93,6 +93,9 @@ declare global {
 
         HealWithParams(amount: number, inflictor: object, lifesteal: boolean, amplify: boolean, source: object, spellLifesteal: boolean): void;
         _ability_custom_base_attack: CDOTABaseAbility;
+        /**自定义 是不是强幻想 */
+        CIsStrongIllusion(): boolean;
+        _isStrongIllusion: boolean;
     }
 
     //CDOTA_BaseNPC 初始化表 自定义内容
@@ -445,6 +448,11 @@ declare global {
     const enum ModifierState {
         /** 不会死亡 */
         NEVER_TO_DIE = 999,
+    }
+    const enum Attachment {
+        ATTACH_HITLOC = 'attach_hitloc',
+        ATTACH_ATTACK_1 = 'attach_attack1',
+        ATTACH_ATTACK_2 = 'attach_attack2',
     }
     // /** 通用特效 */
     // var GeneircParticleList: { [key: string]: string };

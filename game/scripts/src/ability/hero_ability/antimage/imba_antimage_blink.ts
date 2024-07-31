@@ -17,7 +17,7 @@ export class imba_antimage_blink extends BaseAbility {
         });
         CSetParticleControl(pfx, 0, this.caster.GetAbsOrigin());
         CSetParticleControlTransform(pfx, 0, this.caster.GetAbsOrigin(), null, direction);
-        CSetParticleControlEnt(pfx, 1, this.caster, ParticleAttachment.POINT, 'attach_hitloc', this.caster.GetAbsOrigin(), false);
+        CSetParticleControlEnt(pfx, 1, this.caster, ParticleAttachment.POINT, Attachment.ATTACH_HITLOC, this.caster.GetAbsOrigin(), false);
         FindClearSpaceForUnit(this.caster, end_pos, true);
 
         const pfx2 = CCreateParticle({

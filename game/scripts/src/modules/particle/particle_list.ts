@@ -49,6 +49,8 @@ enum HeroParticleList {
 
     /** 法力虚空 */
     imba_antimage_mana_void = 'particles/units/heroes/hero_antimage/antimage_manavoid.vpcf',
+    /** 法力虚空施法 */
+    imba_antimage_mana_void_caster = 'particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_basher_cast.vpcf',
     /** 法力虚空buff */
     imba_antimage_mana_void_buff = 'particles/units/heroes/hero_antimage/antimage_manavoid_buff.vpcf',
 }

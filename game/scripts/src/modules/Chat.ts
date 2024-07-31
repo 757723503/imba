@@ -243,18 +243,29 @@ export class CChat {
                 MEM.m_cMethods.DumpMemorySnapshot(null, null, -1);
                 break;
             case ChatCommand.in:
-                const ill = CIllusionManager.CreateIllusions(
-                    hero,
-                    hero,
-                    { duration: 10, outgoing_damage: 10, incoming_damage: 1000 },
-                    1,
-                    100,
-                    true,
-                    true
-                );
-                for (const illusion of ill) {
-                    illusion.AddModifier(illusion, null, modifier_imba_stunned, { duration: 10 });
-                }
+                const time = 0;
+                // Timers.CreateTimer(1, () => {
+                CIllusionManager.CreateIllusionsAsync({
+                    callback(illusion) {
+                        // print(illusion.GetUnitName());
+                        // DeepPrintTable(illusion._modifierKeys);
+                    },
+                    heroToCopy: hero,
+                    modifierKeys: {
+                        duration: 5,
+                        outgoing_damage: 100,
+                        incoming_damage: 100,
+                    },
+                    numIllusions: 2,
+                    owner: hero,
+                    isStrongIllusion: true,
+                });
+                //     time++;
+                //     if (time < 500) {
+                //         return 1;
+                //     }
+                //     return null;
+                // });
 
                 break;
             case ChatCommand.ge:
