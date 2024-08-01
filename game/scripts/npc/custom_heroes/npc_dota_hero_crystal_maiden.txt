@@ -4,8 +4,8 @@
 	"imba_crystal_maiden_let_it_go"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_let_it_go"
-		"AbilityTextureName"	"crystal_maiden_let_it_go"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_let_it_go"
+		"AbilityTextureName"		"crystal_maiden_let_it_go"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"MaxLevel"		"1"
 		"FightRecapLevel"		"1"
@@ -25,10 +25,10 @@
 	}
 	"imba_crystal_maiden_crystal_nova"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_crystal_nova"
-		"AbilityTextureName"	"crystal_maiden_crystal_nova"
 		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_crystal_nova"
+		"AbilityTextureName"		"crystal_maiden_crystal_nova"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -42,13 +42,13 @@
 			"AbilityCooldown"
 			{
 				"value"		"11 10 9 8"
-				"special_bonus_unique_crystal_maiden_5"		"-4"
+				"special_bonus_unique_imba_crystal_maiden_5"		"-4"
 			}
 			"AbilityManaCost"		"115 135 155 175"
 			"radius"
 			{
 				"value"		"425"
-				"special_bonus_unique_crystal_maiden_6"		"100"
+				"special_bonus_unique_imba_crystal_maiden_6"		"100"
 				"affected_by_aoe_increase"		"1"
 			}
 			"movespeed_slow"		"-20 -30 -40 -50"
@@ -58,17 +58,17 @@
 			"nova_damage"
 			{
 				"value"		"110 160 210 260"
-				"special_bonus_unique_crystal_maiden_2"		"300"
+				"special_bonus_unique_imba_crystal_maiden_2"		"300"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
 	}
 	"imba_crystal_maiden_frostbite"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_frostbite"
-		"AbilityTextureName"	"crystal_maiden_frostbite"
 		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_frostbite"
+		"AbilityTextureName"		"crystal_maiden_frostbite"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -91,7 +91,7 @@
 			"AbilityCastRange"
 			{
 				"value"		"600"
-				"special_bonus_unique_crystal_maiden_frostbite_castrange"		"100"
+				"special_bonus_unique_imba_crystal_maiden_frostbite_castrange"		"100"
 			}
 			"AbilityCastPoint"		"0.3 0.3 0.3 0.3"
 			"AbilityCooldown"		"9 8 7 6"
@@ -104,7 +104,7 @@
 			"duration"
 			{
 				"value"		"1.5 2 2.5 3"
-				"special_bonus_unique_crystal_maiden_1"		"1"
+				"special_bonus_unique_imba_crystal_maiden_1"		"1"
 			}
 			"creep_multiplier"		"4"
 			"tick_interval"		"0.25"
@@ -114,11 +114,12 @@
 	"imba_crystal_maiden_brilliance_aura"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_brilliance_aura"
-		"AbilityTextureName"	"crystal_maiden_brilliance_aura"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_brilliance_aura"
+		"AbilityTextureName"		"crystal_maiden_brilliance_aura"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"base_mana_regen"
@@ -133,29 +134,30 @@
 			"proximity_bonus_radius"
 			{
 				"value"		"1200"
-				"special_bonus_facet_crystal_maiden_cold_comfort"		"=1200"
+				"special_bonus_facet_crystal_maiden_facets_imba_1"		"=1200"
 				"affected_by_aoe_increase"		"1"
 			}
 			"mana_battery_mana_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_crystal_maiden_cold_comfort"		"10 15 20 25"
+				"special_bonus_facet_crystal_maiden_facets_imba_1"		"10 15 20 25"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
 	"imba_crystal_maiden_freezing_field"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_freezing_field"
-		"AbilityTextureName"	"crystal_maiden_freezing_field"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_freezing_field"
+		"AbilityTextureName"		"crystal_maiden_freezing_field"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"		"2"
 		"AbilitySound"		"hero_Crystal.freezingField.wind"
 		"HasScepterUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityChannelAnimation"		"ACT_DOTA_CHANNEL_ABILITY_4"
 		"AbilityModifierSupportValue"		"0.35"
@@ -189,7 +191,7 @@
 			"damage"
 			{
 				"value"		"105 170 250"
-				"special_bonus_unique_crystal_maiden_3"		"50"
+				"special_bonus_unique_imba_crystal_maiden_3"		"50"
 			}
 			"frostbite_delay"
 			{
@@ -217,21 +219,21 @@
 			"self_cast_range_bonus"
 			{
 				"value"		"0"
-				"special_bonus_facet_crystal_maiden_frozen_expanse"		"75 100 125"
+				"special_bonus_facet_crystal_maiden_facets_imba_1"		"75 100 125"
 			}
 			"aoe_bonus"
 			{
 				"value"		"0"
-				"special_bonus_facet_crystal_maiden_frozen_expanse"		"6 8 10"
+				"special_bonus_facet_crystal_maiden_facets_imba_1"		"6 8 10"
 			}
 		}
 	}
 	"imba_crystal_maiden_freezing_field_stop"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_freezing_field_stop"
-		"AbilityTextureName"	"crystal_maiden_freezing_field_stop"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_freezing_field_stop"
+		"AbilityTextureName"		"crystal_maiden_freezing_field_stop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -240,8 +242,8 @@
 	"imba_crystal_maiden_crystal_clone"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_crystal_clone"
-		"AbilityTextureName"	"crystal_maiden_crystal_clone"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_crystal_clone"
+		"AbilityTextureName"		"crystal_maiden_crystal_clone"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"1"
@@ -270,15 +272,20 @@
 	"imba_crystal_maiden_blueheart_floe"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/crystal/imba_crystal_maiden_blueheart_floe"
-		"AbilityTextureName"	"crystal_maiden_blueheart_floe"
+		"ScriptFile"		"ability/hero_ability/crystal_maiden/imba_crystal_maiden_blueheart_floe"
+		"AbilityTextureName"		"crystal_maiden_blueheart_floe"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"AbilityTextureName"		"crystal_maiden_let_it_go"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"mana_regen_multiplier"		"50"
+			"mana_regen_multiplier"
+			{
+				"value"		"50"
+				"special_bonus_facet_crystal_maiden_facets_imba_1"		"25"
+			}
 		}
 	}
 	"special_bonus_unique_imba_crystal_maiden_1"

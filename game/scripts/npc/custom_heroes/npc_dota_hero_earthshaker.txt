@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/earthshaker/imba_earthshaker_fissure"
-		"AbilityTextureName"	"earthshaker_fissure"
+		"AbilityTextureName"		"earthshaker_fissure"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -22,7 +22,7 @@
 			"AbilityCastRange"
 			{
 				"value"		"1600"
-				"special_bonus_unique_earthshaker_3"		"200"
+				"special_bonus_unique_imba_earthshaker_3"		"200"
 			}
 			"fissure_duration"		"6.5 7 7.5 8.0"
 			"fissure_radius"		"225"
@@ -30,7 +30,7 @@
 			"fissure_damage"
 			{
 				"value"		"110 160 210 260"
-				"special_bonus_unique_earthshaker_4"		"90"
+				"special_bonus_unique_imba_earthshaker_4"		"90"
 			}
 			"AbilityCooldown"
 			{
@@ -54,7 +54,7 @@
 			"fissure_movement_speed"
 			{
 				"value"		"0"
-				"special_bonus_facet_earthshaker_fissuresplit"		"100"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"100"
 			}
 			"fissure_max_distance_moved"		"300"
 		}
@@ -64,7 +64,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/earthshaker/imba_earthshaker_enchant_totem"
-		"AbilityTextureName"	"earthshaker_enchant_totem"
+		"AbilityTextureName"		"earthshaker_enchant_totem"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -83,7 +83,7 @@
 			{
 				"value"		"100 200 300 400"
 				"CalculateSpellDamageTooltip"		"0"
-				"special_bonus_unique_earthshaker_totem_damage"		"50"
+				"special_bonus_unique_imba_earthshaker_totem_damage"		"50"
 			}
 			"distance_scepter"
 			{
@@ -93,7 +93,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"5"
-				"special_bonus_unique_earthshaker"		"-1.5"
+				"special_bonus_unique_imba_earthshaker"		"-1.5"
 			}
 			"scepter_height"		"950"
 			"scepter_height_arcbuffer"		"100"
@@ -126,46 +126,46 @@
 			"bonus_attack_range"		"100"
 			"projectile_body_on_kill"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=1"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=1"
 			}
 			"projectile_body_initial_impact_radius"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=225"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=225"
 			}
 			"projectile_body_speed"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=1600"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=1600"
 			}
 			"projectile_body_distance"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=1200"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=1200"
 			}
 			"projectile_body_width_creep"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=175"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=175"
 				"affected_by_aoe_increase"		"1"
 			}
 			"projectile_body_width_hero"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=175"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=175"
 				"affected_by_aoe_increase"		"1"
 			}
 			"projectile_body_vision"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=175"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=175"
 				"affected_by_aoe_increase"		"1"
 			}
 			"projectile_body_damage_creep"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=50 =80 =110 =140"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=50 =80 =110 =140"
 			}
 			"projectile_body_damage_hero"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=150 =250 =350 =450"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=150 =250 =350 =450"
 			}
 			"projectile_body_damage_additional_percent_health"
 			{
-				"special_bonus_facet_earthshaker_slugger"		"=7"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"=7"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -174,15 +174,13 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/earthshaker/imba_earthshaker_aftershock"
-		"AbilityTextureName"	"earthshaker_aftershock"
+		"AbilityTextureName"		"earthshaker_aftershock"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES_STRONG"
-		"MaxLevel"		"5"
-		"RequiredLevel"		"-1"
-		"Innate"		"1"
-		"AbilityDuration"		"0.5 1.0 1.1 1.2 1.3"
+		"IsBreakable"		"1"
+		"AbilityDuration"		"1.0 1.1 1.2 1.3"
 		"AbilityModifierSupportBonus"		"100"
 		"AbilityValues"
 		{
@@ -193,28 +191,28 @@
 			}
 			"aftershock_damage"
 			{
-				"value"		"35 70 100 130 160"
-				"special_bonus_unique_earthshaker_6"		"50"
+				"value"		"70 100 130 160"
+				"special_bonus_unique_imba_earthshaker_6"		"50"
 			}
 			"aftershock_range_increase_per_level_interval"
 			{
 				"value"		"0"
-				"special_bonus_facet_earthshaker_tectonic_buildup"		"50"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"50"
 			}
 			"aftershock_range_level_interval"
 			{
 				"value"		"0"
-				"special_bonus_facet_earthshaker_tectonic_buildup"		"10"
+				"special_bonus_facet_earthshaker_facets_imba_1"		"10"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
 	"imba_earthshaker_echo_slam"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/earthshaker/imba_earthshaker_echo_slam"
-		"AbilityTextureName"	"earthshaker_echo_slam"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"earthshaker_echo_slam"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -245,14 +243,28 @@
 			"echo_slam_echo_damage"
 			{
 				"value"		"90 110 130"
-				"special_bonus_unique_earthshaker_2"		"50"
+				"special_bonus_unique_imba_earthshaker_2"		"50"
 			}
 			"echo_slam_initial_damage"		"100 140 180"
 			"AbilityCooldown"
 			{
 				"value"		"130.0 120.0 110.0"
-				"special_bonus_unique_earthshaker_echo_cd"		"-50%"
+				"special_bonus_unique_imba_earthshaker_echo_cd"		"-50%"
 			}
+		}
+	}
+	"imba_earthshaker_spirit_cairn"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/earthshaker/imba_earthshaker_spirit_cairn"
+		"AbilityTextureName"		"earthshaker_spirit_cairn"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"AbilityValues"
+		{
+			"fissure_radius"		"75"
 		}
 	}
 	"special_bonus_unique_imba_earthshaker"

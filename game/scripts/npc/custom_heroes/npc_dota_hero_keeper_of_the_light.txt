@@ -4,8 +4,8 @@
 	"imba_keeper_of_the_light_illuminate"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_illuminate"
-		"AbilityTextureName"	"keeper_of_the_light_illuminate"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_illuminate"
+		"AbilityTextureName"		"keeper_of_the_light_illuminate"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -21,7 +21,7 @@
 			"total_damage"
 			{
 				"value"		"185 290 395 500"
-				"special_bonus_unique_keeper_of_the_light"		"200"
+				"special_bonus_unique_imba_keeper_of_the_light"		"200"
 			}
 			"max_channel_time"		"3"
 			"radius"
@@ -40,7 +40,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"13"
-				"special_bonus_unique_keeper_of_the_light_illuminate_cooldown"		"-2"
+				"special_bonus_unique_imba_keeper_of_the_light_illuminate_cooldown"		"-2"
 			}
 			"channel_vision_radius"
 			{
@@ -56,8 +56,8 @@
 	"imba_keeper_of_the_light_mana_leak"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_mana_leak"
-		"AbilityTextureName"	"keeper_of_the_light_mana_leak"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_mana_leak"
+		"AbilityTextureName"		"keeper_of_the_light_mana_leak"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -88,8 +88,8 @@
 	"imba_keeper_of_the_light_radiant_bind"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_radiant_bind"
-		"AbilityTextureName"	"keeper_of_the_light_radiant_bind"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_radiant_bind"
+		"AbilityTextureName"		"keeper_of_the_light_radiant_bind"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -132,8 +132,8 @@
 	"imba_keeper_of_the_light_will_o_wisp"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_will_o_wisp"
-		"AbilityTextureName"	"keeper_of_the_light_will_o_wisp"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_will_o_wisp"
+		"AbilityTextureName"		"keeper_of_the_light_will_o_wisp"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -169,8 +169,8 @@
 	"imba_keeper_of_the_light_chakra_magic"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_chakra_magic"
-		"AbilityTextureName"	"keeper_of_the_light_chakra_magic"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_chakra_magic"
+		"AbilityTextureName"		"keeper_of_the_light_chakra_magic"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -185,7 +185,7 @@
 			"mana_restore"
 			{
 				"value"		"75 150 225 300"
-				"special_bonus_unique_keeper_of_the_light_2"		"200"
+				"special_bonus_unique_imba_keeper_of_the_light_2"		"200"
 			}
 			"cooldown_reduction"		"3 4 5 6"
 			"mana_leak_pct"		"4.5 5 5.5 6.0"
@@ -193,7 +193,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"18 16 14 12"
-				"special_bonus_unique_keeper_of_the_light_7"		"-3"
+				"special_bonus_unique_imba_keeper_of_the_light_7"		"-3"
 			}
 			"self_bonus"		"25"
 		}
@@ -202,24 +202,24 @@
 	"imba_keeper_of_the_light_empty1"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_empty1"
-		"AbilityTextureName"	"keeper_of_the_light_empty1"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_empty1"
+		"AbilityTextureName"		"keeper_of_the_light_empty1"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 	}
 	"imba_keeper_of_the_light_empty2"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_empty2"
-		"AbilityTextureName"	"keeper_of_the_light_empty2"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_empty2"
+		"AbilityTextureName"		"keeper_of_the_light_empty2"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 	}
 	"imba_keeper_of_the_light_spirit_form"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_spirit_form"
-		"AbilityTextureName"	"keeper_of_the_light_spirit_form"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_spirit_form"
+		"AbilityTextureName"		"keeper_of_the_light_spirit_form"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -248,7 +248,7 @@
 			"duration"
 			{
 				"value"		"40.0 40.0 40.0"
-				"special_bonus_unique_keeper_of_the_light_11"		"15"
+				"special_bonus_unique_imba_keeper_of_the_light_11"		"15"
 			}
 			"movement_speed"		"15 20 25"
 			"cast_range"		"125 250 375"
@@ -262,8 +262,8 @@
 	"imba_keeper_of_the_light_recall"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_recall"
-		"AbilityTextureName"	"keeper_of_the_light_recall"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_recall"
+		"AbilityTextureName"		"keeper_of_the_light_recall"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CUSTOM"
@@ -308,8 +308,8 @@
 	"imba_keeper_of_the_light_blinding_light"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_blinding_light"
-		"AbilityTextureName"	"keeper_of_the_light_blinding_light"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_blinding_light"
+		"AbilityTextureName"		"keeper_of_the_light_blinding_light"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -327,7 +327,7 @@
 			"miss_rate"
 			{
 				"value"		"40"
-				"special_bonus_unique_keeper_of_the_light_8"		"40"
+				"special_bonus_unique_imba_keeper_of_the_light_8"		"40"
 			}
 			"duration"		"4"
 			"radius"
@@ -345,15 +345,15 @@
 			"AbilityCooldown"
 			{
 				"value"		"25 22 19 16"
-				"special_bonus_unique_keeper_of_the_light_5"		"-5"
+				"special_bonus_unique_imba_keeper_of_the_light_5"		"-5"
 			}
 		}
 	}
 	"imba_keeper_of_the_light_illuminate_end"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_illuminate_end"
-		"AbilityTextureName"	"keeper_of_the_light_illuminate_end"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_illuminate_end"
+		"AbilityTextureName"		"keeper_of_the_light_illuminate_end"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -361,8 +361,8 @@
 	"imba_keeper_of_the_light_mana_magnifier"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/keeper/imba_keeper_of_the_light_mana_magnifier"
-		"AbilityTextureName"	"keeper_of_the_light_mana_magnifier"
+		"ScriptFile"		"ability/hero_ability/keeper_of_the_light/imba_keeper_of_the_light_mana_magnifier"
+		"AbilityTextureName"		"keeper_of_the_light_mana_magnifier"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"MaxLevel"		"1"
 		"Innate"		"1"

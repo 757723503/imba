@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_defense_matrix"
-		"AbilityTextureName"	"tinker_defense_matrix"
+		"AbilityTextureName"		"tinker_defense_matrix"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -21,13 +21,13 @@
 		{
 			"damage_absorb"
 			{
-				"value"		"100 180 240 320"
-				"special_bonus_unique_tinker_7"		"125"
+				"value"		"80 160 240 320"
+				"special_bonus_unique_imba_tinker_7"		"125"
 			}
 			"status_resistance"
 			{
 				"value"		"10 20 30 40"
-				"special_bonus_unique_tinker_defense_matrix_status_resistance"		"10"
+				"special_bonus_unique_imba_tinker_defense_matrix_status_resistance"		"10"
 			}
 			"barrier_duration"		"15"
 			"cooldown_reduction"
@@ -37,7 +37,7 @@
 			"flicker_range"
 			{
 				"value"		"0"
-				"special_bonus_facet_tinker_translocator"		"350"
+				"special_bonus_facet_tinker_facets_imba_1"		"350"
 			}
 			"flicker_angle"		"90"
 		}
@@ -46,7 +46,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_keen_teleport"
-		"AbilityTextureName"	"tinker_keen_teleport"
+		"AbilityTextureName"		"tinker_keen_teleport"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BUILDING"
@@ -71,12 +71,12 @@
 			"AbilityChannelTime"
 			{
 				"value"		"3"
-				"special_bonus_unique_tinker_5"		"-0.5"
+				"special_bonus_unique_imba_tinker_5"		"-0.5"
 			}
 			"channel_time_tooltip"
 			{
 				"value"		"3"
-				"special_bonus_unique_tinker_5"		"-0.5"
+				"special_bonus_unique_imba_tinker_5"		"-0.5"
 			}
 			"additional_starting_cooldown"		"20"
 			"creep_teleport_level"		"2"
@@ -84,12 +84,12 @@
 			"outpost_channel_time"
 			{
 				"value"		"6"
-				"special_bonus_unique_tinker_5"		"-0.5"
+				"special_bonus_unique_imba_tinker_5"		"-0.5"
 			}
 			"jungle_outpost_channel_time"
 			{
 				"value"		"4"
-				"special_bonus_unique_tinker_5"		"-0.5"
+				"special_bonus_unique_imba_tinker_5"		"-0.5"
 			}
 		}
 	}
@@ -97,22 +97,27 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_eureka"
-		"AbilityTextureName"	"tinker_eureka"
+		"AbilityTextureName"		"tinker_eureka"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Innate"		"1"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"int_per_one_cdr"		"3"
 			"one_percent_tooltip"		"1"
 			"max_cdr"		"60"
+			"item_cooldown_tooltip"
+			{
+				"dynamic_value"		"true"
+			}
 		}
 	}
 	"imba_tinker_innate_keen_teleport_gold_on_death"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_innate_keen_teleport_gold_on_death"
-		"AbilityTextureName"	"tinker_innate_keen_teleport_gold_on_death"
+		"AbilityTextureName"		"tinker_innate_keen_teleport_gold_on_death"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"AbilityValues"
@@ -124,7 +129,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_innate_keen_teleport_xp_on_death"
-		"AbilityTextureName"	"tinker_innate_keen_teleport_xp_on_death"
+		"AbilityTextureName"		"tinker_innate_keen_teleport_xp_on_death"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"AbilityValues"
@@ -136,7 +141,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_laser"
-		"AbilityTextureName"	"tinker_laser"
+		"AbilityTextureName"		"tinker_laser"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -161,12 +166,12 @@
 			"laser_damage"
 			{
 				"value"		"75 150 225 300"
-				"special_bonus_unique_tinker"		"40"
+				"special_bonus_unique_imba_tinker"		"40"
 			}
 			"radius_explosion"
 			{
 				"value"		"0"
-				"special_bonus_unique_tinker_4"		"250"
+				"special_bonus_unique_imba_tinker_4"		"250"
 				"affected_by_aoe_increase"		"1"
 			}
 			"splash_pct"		"100"
@@ -193,7 +198,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_shrink_ray"
-		"AbilityTextureName"	"tinker_shrink_ray"
+		"AbilityTextureName"		"tinker_shrink_ray"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -243,7 +248,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_heat_seeking_missile"
-		"AbilityTextureName"	"tinker_heat_seeking_missile"
+		"AbilityTextureName"		"tinker_heat_seeking_missile"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -277,7 +282,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_march_of_the_machines"
-		"AbilityTextureName"	"tinker_march_of_the_machines"
+		"AbilityTextureName"		"tinker_march_of_the_machines"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -299,7 +304,7 @@
 			"duration"
 			{
 				"value"		"6"
-				"special_bonus_unique_tinker_march_duration"		"1"
+				"special_bonus_unique_imba_tinker_march_duration"		"1"
 			}
 			"speed"		"400"
 			"machines_per_sec"		"24"
@@ -308,12 +313,12 @@
 			"heal_per_second"
 			{
 				"value"		"0"
-				"special_bonus_facet_tinker_repair_bots"		"+15 +20 +25 +30"
+				"special_bonus_facet_tinker_facets_imba_1"		"+15 +25 +35 +45"
 			}
 			"heal_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_tinker_repair_bots"		"4"
+				"special_bonus_facet_tinker_facets_imba_1"		"4"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -322,7 +327,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_rearm"
-		"AbilityTextureName"	"tinker_rearm"
+		"AbilityTextureName"		"tinker_rearm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilitySound"		"Hero_Tinker.Rearm"
@@ -338,12 +343,12 @@
 			"magic_resistance"
 			{
 				"value"		"0"
-				"special_bonus_unique_tinker_rearm_magic_resistance"		"50"
+				"special_bonus_unique_imba_tinker_rearm_magic_resistance"		"50"
 			}
 			"armor_duration"
 			{
 				"value"		"0"
-				"special_bonus_unique_tinker_rearm_magic_resistance"		"4"
+				"special_bonus_unique_imba_tinker_rearm_magic_resistance"		"4"
 			}
 			"affects_items"
 			{
@@ -355,7 +360,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tinker/imba_tinker_warp_grenade"
-		"AbilityTextureName"	"tinker_warp_grenade"
+		"AbilityTextureName"		"tinker_warp_grenade"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -373,11 +378,8 @@
 		"AbilityValues"
 		{
 			"damage"		"150"
-			"knockback_distance"
-			{
-				"value"		"600"
-				"affected_by_aoe_increase"		"1"
-			}
+			"bonus_distance"		"100"
+			"max_distance"		"2000"
 			"range_reduction"		"40"
 			"debuff_duration"		"2"
 		}

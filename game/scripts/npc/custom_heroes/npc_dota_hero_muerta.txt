@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_dead_shot"
-		"AbilityTextureName"	"muerta_dead_shot"
+		"AbilityTextureName"		"muerta_dead_shot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_TREE"
@@ -23,12 +23,12 @@
 			"AbilityCastRange"
 			{
 				"value"		"1000"
-				"special_bonus_unique_muerta_dead_shot_range"		"350"
+				"special_bonus_unique_imba_muerta_dead_shot_range"		"350"
 			}
 			"damage"
 			{
 				"value"		"100 175 250 325"
-				"special_bonus_unique_muerta_dead_shot_damage"		"80"
+				"special_bonus_unique_imba_muerta_dead_shot_damage"		"80"
 			}
 			"speed"		"2000"
 			"radius"
@@ -48,7 +48,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_the_calling"
-		"AbilityTextureName"	"muerta_the_calling"
+		"AbilityTextureName"		"muerta_the_calling"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CAN_SELF_CAST"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -76,7 +76,7 @@
 			"num_revenants"
 			{
 				"value"		"4"
-				"special_bonus_unique_muerta_the_calling_num_revenants"		"2"
+				"special_bonus_unique_imba_muerta_the_calling_num_revenants"		"2"
 			}
 			"speed_initial"		"0.2"
 			"speed_max"		"1"
@@ -91,22 +91,22 @@
 			{
 				"affected_by_aoe_increase"		"1"
 				"value"		"0"
-				"special_bonus_facet_muerta_dance_of_the_dead"		"200"
+				"special_bonus_facet_muerta_facets_imba_1"		"200"
 			}
 			"kill_radius_expansion"
 			{
 				"affected_by_aoe_increase"		"1"
 				"value"		"0"
-				"special_bonus_facet_muerta_dance_of_the_dead"		"100"
+				"special_bonus_facet_muerta_facets_imba_1"		"100"
 			}
 			"kill_radius_expansion_speed"
 			{
 				"value"		"0"
-				"special_bonus_facet_muerta_dance_of_the_dead"		"0.25"
+				"special_bonus_facet_muerta_facets_imba_1"		"0.25"
 			}
 			"hp_regen_pct"
 			{
-				"special_bonus_unique_muerta_calling_hp_regen"		"1.5"
+				"special_bonus_unique_imba_muerta_calling_hp_regen"		"1.5"
 			}
 		}
 	}
@@ -114,21 +114,22 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_gunslinger"
-		"AbilityTextureName"	"muerta_gunslinger"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES"
+		"AbilityTextureName"		"muerta_gunslinger"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"double_shot_chance"
 			{
 				"value"		"26 34 42 50"
-				"special_bonus_unique_muerta_gunslinger_double_shot_chance"		"20"
+				"special_bonus_unique_imba_muerta_gunslinger_double_shot_chance"		"20"
 			}
 			"target_search_bonus_range"		"175"
 			"bonus_damage"
 			{
-				"special_bonus_unique_muerta_gunslinger_bonus_damage"		"=55"
+				"special_bonus_unique_imba_muerta_gunslinger_bonus_damage"		"=55"
 			}
 		}
 	}
@@ -136,7 +137,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_pierce_the_veil"
-		"AbilityTextureName"	"muerta_pierce_the_veil"
+		"AbilityTextureName"		"muerta_pierce_the_veil"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
@@ -178,9 +179,10 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_ofrenda"
-		"AbilityTextureName"	"muerta_ofrenda"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
-		"MaxLevel"		"1"
+		"AbilityTextureName"		"muerta_ofrenda"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"		"4"
+		"DependentOnAbility"		"muerta_pierce_the_veil"
 		"AbilityCastRange"		"300"
 		"AbilityCastPoint"		"0.3"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_6"
@@ -189,13 +191,15 @@
 		"AbilityValues"
 		{
 			"pierce_the_veil_duration_pct"		"50"
+			"attackspeed_bonus"		"15 25 35 45"
+			"effect_radius"		"450"
 		}
 	}
 	"imba_muerta_supernatural"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_supernatural"
-		"AbilityTextureName"	"muerta_supernatural"
+		"AbilityTextureName"		"muerta_supernatural"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"Innate"		"1"
@@ -204,7 +208,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_ofrenda_destroy"
-		"AbilityTextureName"	"muerta_ofrenda_destroy"
+		"AbilityTextureName"		"muerta_ofrenda_destroy"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -262,7 +266,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_grave_tracker"
-		"AbilityTextureName"	"muerta_grave_tracker"
+		"AbilityTextureName"		"muerta_grave_tracker"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
 	}
@@ -270,7 +274,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_grave_visitation"
-		"AbilityTextureName"	"muerta_grave_visitation"
+		"AbilityTextureName"		"muerta_grave_visitation"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"1"
 		"FightRecapLevel"		"1"
@@ -295,7 +299,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/muerta/imba_muerta_parting_shot"
-		"AbilityTextureName"	"muerta_parting_shot"
+		"AbilityTextureName"		"muerta_parting_shot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"

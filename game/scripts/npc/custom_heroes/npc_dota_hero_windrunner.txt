@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/windrunner/imba_windrunner_gale_force"
-		"AbilityTextureName"	"windrunner_gale_force"
+		"AbilityTextureName"		"windrunner_gale_force"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"1"
@@ -31,7 +31,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/windrunner/imba_windrunner_shackleshot"
-		"AbilityTextureName"	"windrunner_shackleshot"
+		"AbilityTextureName"		"windrunner_shackleshot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -54,7 +54,7 @@
 			"stun_duration"
 			{
 				"value"		"1.6 2.1 2.6 3.1"
-				"special_bonus_unique_windranger_6"		"0.75"
+				"special_bonus_unique_imba_windranger_6"		"0.75"
 			}
 			"shackle_distance"
 			{
@@ -78,7 +78,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/windrunner/imba_windrunner_powershot"
-		"AbilityTextureName"	"windrunner_powershot"
+		"AbilityTextureName"		"windrunner_powershot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -99,13 +99,13 @@
 			"slow"
 			{
 				"value"		"20 25 30 35"
-				"special_bonus_unique_windranger_powershot_slow"		"20"
+				"special_bonus_unique_imba_windranger_powershot_slow"		"20"
 			}
 			"slow_duration"		"4"
 			"damage_reduction"
 			{
 				"value"		"15"
-				"special_bonus_unique_windranger_3"		"-15"
+				"special_bonus_unique_imba_windranger_3"		"-15"
 				"CalculateSpellDamageTooltip"		"0"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 			}
@@ -134,7 +134,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/windrunner/imba_windrunner_windrun"
-		"AbilityTextureName"	"windrunner_windrun"
+		"AbilityTextureName"		"windrunner_windrun"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -155,7 +155,7 @@
 			}
 			"radius"
 			{
-				"special_bonus_facet_windrunner_tailwind"		"700"
+				"special_bonus_facet_windrunner_facets_imba_1"		"700"
 				"affected_by_aoe_increase"		"1"
 			}
 			"scepter_movespeed_bonus_pct"
@@ -171,12 +171,12 @@
 			"cannot_be_dispelled"
 			{
 				"value"		"0"
-				"special_bonus_unique_windranger_windrun_undispellable"		"1"
+				"special_bonus_unique_imba_windranger_windrun_undispellable"		"1"
 			}
 			"ally_movespeed_bonus_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_windrunner_tailwind"		"=15"
+				"special_bonus_facet_windrunner_facets_imba_1"		"=15"
 			}
 			"duration"		"3 4 5 6"
 		}
@@ -184,10 +184,10 @@
 	}
 	"imba_windrunner_focusfire"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/windrunner/imba_windrunner_focusfire"
-		"AbilityTextureName"	"windrunner_focusfire"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"windrunner_focusfire"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
@@ -206,21 +206,21 @@
 			"AbilityDuration"
 			{
 				"value"		"20.0 20.0 20.0"
-				"special_bonus_facet_windrunner_whirlwind"		"=8.0"
+				"special_bonus_facet_windrunner_facets_imba_1"		"=9.0"
 			}
 			"bonus_attack_speed"
 			{
 				"value"		"350 425 500"
-				"special_bonus_facet_windrunner_whirlwind"		"=0"
+				"special_bonus_facet_windrunner_facets_imba_1"		"=0"
 			}
 			"attacks_per_second"
 			{
-				"special_bonus_facet_windrunner_whirlwind"		"7 9 11"
+				"special_bonus_facet_windrunner_facets_imba_1"		"7 9 11"
 			}
 			"focusfire_damage_reduction"
 			{
 				"value"		"-30"
-				"special_bonus_unique_windranger_8"		"12"
+				"special_bonus_unique_imba_windranger_8"		"12"
 			}
 			"focusfire_fire_on_the_move"		"1"
 			"process_procs"
@@ -230,19 +230,24 @@
 			"is_unfocused"
 			{
 				"value"		"0"
-				"special_bonus_facet_windrunner_whirlwind"		"=1"
+				"special_bonus_facet_windrunner_facets_imba_1"		"=1"
 			}
 			"duration_increase_per_kill"
 			{
 				"value"		"0"
-				"special_bonus_unique_windranger_2"		"2"
+				"special_bonus_unique_imba_windranger_2"		"2"
 				"RequiresFacet"		"windrunner_whirlwind"
 			}
 			"cooldown_reduction_per_kill"
 			{
 				"value"		"0"
-				"special_bonus_unique_windranger_2"		"18"
-				"RequiresFacet"		"windrunner_tailwind"
+				"special_bonus_unique_imba_windranger_2"		"18"
+				"RequiresFacet"		"windrunner_focusfire"
+			}
+			"bonus_range"
+			{
+				"value"		"0"
+				"special_bonus_facet_windrunner_facets_imba_1"		"150"
 			}
 			"unfocused_cancel_initial_cooldown"		"0.5"
 		}
@@ -251,7 +256,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/windrunner/imba_windrunner_focusfire_cancel"
-		"AbilityTextureName"	"windrunner_focusfire_cancel"
+		"AbilityTextureName"		"windrunner_focusfire_cancel"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"MaxLevel"		"1"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
@@ -330,7 +335,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/windrunner/imba_windrunner_easy_breezy"
-		"AbilityTextureName"	"windrunner_easy_breezy"
+		"AbilityTextureName"		"windrunner_easy_breezy"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"Innate"		"1"

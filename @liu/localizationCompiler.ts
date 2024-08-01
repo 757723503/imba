@@ -292,8 +292,8 @@ export class LocalizationCompiler {
         // Go over talents for that language
         if (localized_data.TalentArray) {
             for (const hero_talent_list of localized_data.TalentArray) {
-                const talent_classname = `DOTA_Tooltip_Ability_${hero_talent_list.talent_classname}`;
-                let talent_counter = 1;
+                // const talent_classname = `DOTA_Tooltip_Ability_${hero_talent_list.talent_classname}`;
+                // let talent_counter = 1;
 
                 for (const talent of hero_talent_list.talents) {
                     let talent_name = talent.name;
@@ -315,26 +315,26 @@ export class LocalizationCompiler {
                             }
                         }
                     }
-
-                    const talent_string = `${talent_classname}_${talent_counter}`;
+                    const talent_classname = `DOTA_Tooltip_Ability_${talent.talent_classname}`;
+                    // const talent_string = `${talent_classname}_${talent_counter}`;
 
                     // Talent name
-                    tokens[talent_string] = talent_name;
+                    tokens[talent_classname] = talent_name;
 
                     // Talent description
                     if (talent_description) {
                         talent_description = this.TransformForLocalization(talent_description, false);
-                        tokens[`${talent_string}_description`] = talent_description;
+                        tokens[`${talent_classname}_description`] = talent_description;
                     }
 
                     // Talent lore
                     if (talent_lore) {
                         talent_lore = this.TransformForLocalization(talent_lore, false);
-                        tokens[`${talent_string}_Lore`] = talent_lore;
+                        tokens[`${talent_classname}_Lore`] = talent_lore;
                     }
 
                     // Increment talent counter
-                    talent_counter++;
+                    // talent_counter++;
                 }
             }
         }

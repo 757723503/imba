@@ -4,8 +4,8 @@
 	"imba_phantom_lancer_spirit_lance"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/phantom/imba_phantom_lancer_spirit_lance"
-		"AbilityTextureName"	"phantom_lancer_spirit_lance"
+		"ScriptFile"		"ability/hero_ability/phantom_lancer/imba_phantom_lancer_spirit_lance"
+		"AbilityTextureName"		"phantom_lancer_spirit_lance"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -24,7 +24,7 @@
 			"lance_damage"
 			{
 				"value"		"70 140 210 280"
-				"special_bonus_unique_phantom_lancer_lance_damage"		"35"
+				"special_bonus_unique_imba_phantom_lancer_lance_damage"		"35"
 			}
 			"lance_speed"		"1000 1000 1000 1000"
 			"duration"		"3.75"
@@ -33,8 +33,8 @@
 				"value"		"-14 -21 -28 -35"
 			}
 			"illusion_duration"		"2.0 4.0 6.0 8.0"
-			"illusion_damage_out_pct"		"-80"
-			"tooltip_illusion_damage"		"20"
+			"illusion_damage_out_pct"		"-85"
+			"tooltip_illusion_damage"		"15"
 			"illusion_damage_in_pct"		"300 300 300 300"
 			"tooltip_illusion_total_damage_in_pct"		"400 400 400 400"
 			"fake_lance_distance"		"675"
@@ -46,7 +46,7 @@
 			}
 			"scepter_bonus_illusion_damage"
 			{
-				"value"		"30"
+				"value"		"20"
 				"RequiresScepter"		"1"
 			}
 			"scepter_total_hits"
@@ -60,8 +60,8 @@
 	"imba_phantom_lancer_doppelwalk"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/phantom/imba_phantom_lancer_doppelwalk"
-		"AbilityTextureName"	"phantom_lancer_doppelwalk"
+		"ScriptFile"		"ability/hero_ability/phantom_lancer/imba_phantom_lancer_doppelwalk"
+		"AbilityTextureName"		"phantom_lancer_doppelwalk"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"FightRecapLevel"		"1"
 		"AbilitySound"		"Hero_PhantomLancer.Doppelganger.Cast"
@@ -95,7 +95,7 @@
 			"hp_missing_per_extra_illusion_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_phantom_lancer_convergence"		"25"
+				"special_bonus_facet_phantom_lancer_facets_imba_1"		"25"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -103,12 +103,13 @@
 	"imba_phantom_lancer_juxtapose"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/phantom/imba_phantom_lancer_juxtapose"
-		"AbilityTextureName"	"phantom_lancer_juxtapose"
+		"ScriptFile"		"ability/hero_ability/phantom_lancer/imba_phantom_lancer_juxtapose"
+		"AbilityTextureName"		"phantom_lancer_juxtapose"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
 		"HasShardUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityCooldown"		"15"
 		"AbilityManaCost"		"75"
 		"AbilityValues"
@@ -122,16 +123,17 @@
 			"illusion_duration"		"8"
 			"illusion_damage_out_pct"
 			{
-				"value"		"-82 -80 -78"
+				"value"		"-87 -85 -83"
 				"CalculateSpellDamageTooltip"		"0"
-				"special_bonus_facet_phantom_lancer_divergence"		"6"
+				"special_bonus_facet_phantom_lancer_facets_imba_1"		"2"
+				"special_bonus_unique_imba_phantom_lancer_6"		"6"
 			}
 			"tooltip_illusion_damage"
 			{
-				"value"		"18 20 22"
+				"value"		"13 15 17"
 				"CalculateSpellDamageTooltip"		"0"
-				"special_bonus_facet_phantom_lancer_divergence"		"4"
-				"special_bonus_unique_phantom_lancer_6"		"10"
+				"special_bonus_facet_phantom_lancer_facets_imba_1"		"2"
+				"special_bonus_unique_imba_phantom_lancer_6"		"6"
 			}
 			"illusion_damage_in_pct"
 			{
@@ -162,12 +164,12 @@
 			"uncontrollable_illusions"
 			{
 				"value"		"0"
-				"special_bonus_facet_phantom_lancer_divergence"		"1"
+				"special_bonus_facet_phantom_lancer_facets_imba_1"		"1"
 			}
 			"new_target_radius"
 			{
 				"value"		"0"
-				"special_bonus_facet_phantom_lancer_divergence"		"700"
+				"special_bonus_facet_phantom_lancer_facets_imba_1"		"700"
 				"RequiresFacet"		"2"
 			}
 		}
@@ -175,37 +177,53 @@
 	"imba_phantom_lancer_phantom_edge"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/phantom/imba_phantom_lancer_phantom_edge"
-		"AbilityTextureName"	"phantom_lancer_phantom_edge"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES"
+		"ScriptFile"		"ability/hero_ability/phantom_lancer/imba_phantom_lancer_phantom_edge"
+		"AbilityTextureName"		"phantom_lancer_phantom_edge"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"AbilitySound"		"Hero_PhantomLancer.PhantomEdge"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"HasScepterUpgrade"		"0"
-		"Innate"		"1"
-		"MaxLevel"		"5"
-		"RequiredLevel"		"-1"
-		"AbilityCooldown"		"16 13 10 7 4"
+		"MaxLevel"		"4"
+		"IsBreakable"		"1"
+		"AbilityCooldown"		"13 10 7 4"
 		"AbilityValues"
 		{
 			"min_distance"		"275"
 			"max_distance"
 			{
-				"value"		"525 600 675 750 825"
-				"special_bonus_unique_phantom_lancer"		"300"
+				"value"		"600 675 750 825"
+				"special_bonus_unique_imba_phantom_lancer"		"300"
 			}
 			"bonus_speed"		"800"
 			"bonus_agility"
 			{
-				"value"		"5 10 20 30 40"
-				"special_bonus_unique_phantom_lancer_phantom_rush_agility"		"10"
+				"value"		"10 20 30 40"
+				"special_bonus_unique_imba_phantom_lancer_phantom_rush_agility"		"10"
 			}
 			"agility_duration"
 			{
 				"value"		"1.5"
-				"special_bonus_unique_phantom_lancer_2"		"2.5"
+				"special_bonus_unique_imba_phantom_lancer_2"		"2.5"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+	"imba_phantom_lancer_illusory_armaments"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/phantom_lancer/imba_phantom_lancer_illusory_armaments"
+		"AbilityTextureName"		"phantom_lancer_illusory_armaments"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"Innate"		"1"
+		"MaxLevel"		"1"
+		"AbilityValues"
+		{
+			"bonus_to_base"
+			{
+				"value"		"65"
+				"special_bonus_unique_imba_phantom_lancer_illusory_armaments_dmg"		"15"
+			}
+		}
 	}
 	"special_bonus_unique_imba_phantom_lancer"
 	{
@@ -270,5 +288,11 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 		"ad_linked_abilities"		"phantom_lancer_phantom_edge"
+	}
+	"special_bonus_unique_imba_phantom_lancer_illusory_armaments_dmg"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 }

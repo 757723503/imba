@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/leshrac/imba_leshrac_split_earth"
-		"AbilityTextureName"	"leshrac_split_earth"
+		"AbilityTextureName"		"leshrac_split_earth"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -19,7 +19,7 @@
 		"AbilityCastPoint"		"0.7 0.7 0.7 0.7"
 		"AbilityCooldown"		"11"
 		"AbilityManaCost"		"80 100 120 140"
-		"AbilityDamage"		"120 180 240 300"
+		"AbilityDamage"		"115 170 225 280"
 		"AbilityDuration"		"1.6"
 		"AbilityValues"
 		{
@@ -52,7 +52,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/leshrac/imba_leshrac_diabolic_edict"
-		"AbilityTextureName"	"leshrac_diabolic_edict"
+		"AbilityTextureName"		"leshrac_diabolic_edict"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
@@ -69,7 +69,7 @@
 			"num_explosions"
 			{
 				"value"		"40"
-				"special_bonus_unique_leshrac_1"		"20"
+				"special_bonus_unique_imba_leshrac_1"		"20"
 			}
 			"radius"
 			{
@@ -80,7 +80,7 @@
 			"affects_buildings"
 			{
 				"value"		"1"
-				"special_bonus_facet_leshrac_misanthropy"		"=0"
+				"special_bonus_facet_leshrac_facets_imba_1"		"=0"
 			}
 			"damage"
 			{
@@ -89,11 +89,12 @@
 			"targets"
 			{
 				"value"		"1"
+				"special_bonus_facet_leshrac_facets_imba_1"		"=1"
 			}
 			"AbilityDuration"
 			{
 				"value"		"10"
-				"special_bonus_facet_leshrac_misanthropy"		"=7"
+				"special_bonus_facet_leshrac_facets_imba_1"		"=6"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -102,7 +103,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/leshrac/imba_leshrac_lightning_storm"
-		"AbilityTextureName"	"leshrac_lightning_storm"
+		"AbilityTextureName"		"leshrac_lightning_storm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -120,7 +121,7 @@
 			"damage"
 			{
 				"value"		"90 140 190 240"
-				"special_bonus_unique_leshrac_6"		"80"
+				"special_bonus_unique_imba_leshrac_6"		"80"
 			}
 			"jump_count"		"5 7 9 11"
 			"radius"
@@ -139,7 +140,7 @@
 			"pulse_nova_lightning_interval"
 			{
 				"value"		"0"
-				"special_bonus_unique_leshrac_pulse_nova_lightning"		"2"
+				"special_bonus_unique_imba_leshrac_pulse_nova_lightning"		"2"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -148,7 +149,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/leshrac/imba_leshrac_greater_lightning_storm"
-		"AbilityTextureName"	"leshrac_greater_lightning_storm"
+		"AbilityTextureName"		"leshrac_greater_lightning_storm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -177,7 +178,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/leshrac/imba_leshrac_pulse_nova"
-		"AbilityTextureName"	"leshrac_pulse_nova"
+		"AbilityTextureName"		"leshrac_pulse_nova"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -202,17 +203,17 @@
 			"damage"
 			{
 				"value"		"80 135 180"
-				"special_bonus_unique_leshrac_3"		"30"
+				"special_bonus_unique_imba_leshrac_3"		"30"
 			}
 			"damage_resistance"
 			{
 				"value"		"0"
-				"special_bonus_unique_leshrac_4"		"20"
+				"special_bonus_unique_imba_leshrac_4"		"20"
 			}
 			"bonus_movespeed"
 			{
 				"value"		"0"
-				"special_bonus_unique_leshrac_7"		"10"
+				"special_bonus_unique_imba_leshrac_7"		"10"
 			}
 		}
 	}
@@ -220,11 +221,12 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/leshrac/imba_leshrac_chronoptic_nourishment"
-		"AbilityTextureName"	"leshrac_chronoptic_nourishment"
+		"AbilityTextureName"		"leshrac_chronoptic_nourishment"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"4"
 		"DependentOnAbility"		"leshrac_pulse_nova"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"mana_pct_per_hit"		"10 14 18 22"
@@ -235,7 +237,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/leshrac/imba_leshrac_defilement"
-		"AbilityTextureName"	"leshrac_defilement"
+		"AbilityTextureName"		"leshrac_defilement"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Innate"		"1"
 		"MaxLevel"		"1"

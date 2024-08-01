@@ -4,8 +4,8 @@
 	"imba_sandking_burrowstrike"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/sandking/imba_sandking_burrowstrike"
-		"AbilityTextureName"	"sandking_burrowstrike"
+		"ScriptFile"		"ability/hero_ability/sand_king/imba_sandking_burrowstrike"
+		"AbilityTextureName"		"sandking_burrowstrike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -22,7 +22,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"14 13 12 11"
-				"special_bonus_unique_sand_king_7"		"-2"
+				"special_bonus_unique_imba_sand_king_7"		"-2"
 			}
 			"burrow_width"
 			{
@@ -32,13 +32,14 @@
 			"burrow_duration"
 			{
 				"value"		"1.2 1.4 1.6 1.8"
-				"special_bonus_unique_sand_king_burrowstrike_stun"		"0.3"
+				"special_bonus_unique_imba_sand_king_burrowstrike_stun"		"0.3"
 			}
 			"burrow_speed"		"2000"
 			"burrow_anim_time"		"0.52"
 			"AbilityCastRange"
 			{
 				"value"		"525 600 675 750"
+				"special_bonus_unique_imba_sand_king_8"		"150"
 			}
 			"burrow_speed_scepter"
 			{
@@ -53,15 +54,14 @@
 	"imba_sandking_sand_storm"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/sandking/imba_sandking_sand_storm"
-		"AbilityTextureName"	"sandking_sand_storm"
+		"ScriptFile"		"ability/hero_ability/sand_king/imba_sandking_sand_storm"
+		"AbilityTextureName"		"sandking_sand_storm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"FightRecapLevel"		"1"
 		"AbilitySound"		"Ability.SandKing_SandStorm.start"
-		"HasScepterUpgrade"		"1"
 		"AbilityCastRange"		"0"
 		"AbilityDuration"		"20 25 30 35"
 		"AbilityCooldown"		"40 34 28 22"
@@ -72,55 +72,32 @@
 			"damage_tick_rate"		"0.2"
 			"sand_storm_radius"
 			{
-				"value"		"300 350 400 450"
-				"special_bonus_facet_sand_king_sandshroud"		"=575 =650 =725 =800"
+				"value"		"450 500 550 600"
+				"special_bonus_facet_sand_king_facets_imba_1"		"=575 =650 =725 =800"
 				"affected_by_aoe_increase"		"1"
 			}
 			"sand_storm_damage"
 			{
 				"value"		"25 50 75 100"
-				"special_bonus_unique_sand_king_2"		"10"
+				"special_bonus_unique_imba_sand_king_2"		"25"
 			}
 			"fade_delay"
 			{
 				"value"		"-1"
-				"special_bonus_facet_sand_king_sandshroud"		"=0.7"
+				"special_bonus_facet_sand_king_facets_imba_1"		"=0.7"
 			}
 			"sand_storm_move_speed_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_sand_king_dust_devil"		"70"
+				"special_bonus_facet_sand_king_facets_imba_1"		"70"
 			}
 			"sand_storm_max_distance_from_caster"
 			{
-				"special_bonus_facet_sand_king_dust_devil"		"2500"
+				"special_bonus_facet_sand_king_facets_imba_1"		"2500"
 			}
 			"sand_storm_move_speed_bonus_when_outside_radius"
 			{
-				"special_bonus_facet_sand_king_dust_devil"		"55"
-			}
-			"scepter_explosion_radius_pct"
-			{
-				"value"		"0"
-				"special_bonus_scepter"		"10"
-			}
-			"scepter_explosion_min_dist"
-			{
-				"value"		"0"
-				"special_bonus_scepter"		"90"
-			}
-			"scepter_explosions_per_pulse"
-			{
-				"value"		"0"
-				"special_bonus_scepter"		"3"
-			}
-			"spine_tick_rate"
-			{
-				"special_bonus_scepter"		"=0.4"
-			}
-			"spine_damage_pct"
-			{
-				"special_bonus_scepter"		"=70"
+				"special_bonus_facet_sand_king_facets_imba_1"		"55"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -128,8 +105,8 @@
 	"imba_sandking_caustic_finale"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/sandking/imba_sandking_caustic_finale"
-		"AbilityTextureName"	"sandking_caustic_finale"
+		"ScriptFile"		"ability/hero_ability/sand_king/imba_sandking_caustic_finale"
+		"AbilityTextureName"		"sandking_caustic_finale"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -138,6 +115,7 @@
 		"DependentOnAbility"		"sandking_epicenter"
 		"Innate"		"1"
 		"MaxLevel"		"4"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"caustic_finale_radius"
@@ -146,16 +124,16 @@
 				"affected_by_aoe_increase"		"1"
 			}
 			"caustic_finale_damage_base"		"20 40 60 80"
-			"caustic_finale_damage_pct"		"6 9 12 15"
-			"caustic_finale_duration"		"6"
+			"caustic_finale_damage_pct"		"4 8 12 16"
+			"caustic_finale_duration"		"4.5 5 5.5 6"
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
 	"imba_sandking_innate_caustic_impediment"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/sandking/imba_sandking_innate_caustic_impediment"
-		"AbilityTextureName"	"sandking_innate_caustic_impediment"
+		"ScriptFile"		"ability/hero_ability/sand_king/imba_sandking_innate_caustic_impediment"
+		"AbilityTextureName"		"sandking_innate_caustic_impediment"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
@@ -163,8 +141,8 @@
 	"imba_sandking_innate_caustic_volatility"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/sandking/imba_sandking_innate_caustic_volatility"
-		"AbilityTextureName"	"sandking_innate_caustic_volatility"
+		"ScriptFile"		"ability/hero_ability/sand_king/imba_sandking_innate_caustic_volatility"
+		"AbilityTextureName"		"sandking_innate_caustic_volatility"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
@@ -175,10 +153,10 @@
 	}
 	"imba_sandking_epicenter"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/sandking/imba_sandking_epicenter"
-		"AbilityTextureName"	"sandking_epicenter"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/sand_king/imba_sandking_epicenter"
+		"AbilityTextureName"		"sandking_epicenter"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -186,7 +164,7 @@
 		"FightRecapLevel"		"2"
 		"AbilitySound"		"Ability.SandKing_Epicenter"
 		"HasShardUpgrade"		"1"
-		"AbilityCooldown"		"120 110 100"
+		"HasScepterUpgrade"		"1"
 		"AbilityDuration"		"6"
 		"AbilityCastPoint"		"2"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
@@ -195,10 +173,14 @@
 		"AbilityModifierSupportValue"		"0.2"
 		"AbilityValues"
 		{
+			"AbilityCooldown"
+			{
+				"value"		"120 110 100"
+			}
 			"epicenter_pulses"
 			{
 				"value"		"12 16 20"
-				"special_bonus_unique_sand_king"		"10"
+				"special_bonus_unique_imba_sand_king"		"10"
 			}
 			"epicenter_damage"
 			{
@@ -209,13 +191,13 @@
 			"epicenter_radius_base"
 			{
 				"value"		"500"
-				"special_bonus_unique_sand_king_5"		"100"
+				"special_bonus_unique_imba_sand_king_5"		"100"
 				"affected_by_aoe_increase"		"1"
 			}
 			"epicenter_radius_increment"
 			{
 				"value"		"13"
-				"special_bonus_unique_sand_king_5"		"12"
+				"special_bonus_unique_imba_sand_king_5"		"12"
 			}
 			"epicenter_slow"
 			{
@@ -228,7 +210,7 @@
 			"shard_radius"
 			{
 				"value"		"425"
-				"special_bonus_unique_sand_king_5"		"100"
+				"special_bonus_unique_imba_sand_king_5"		"100"
 				"RequiresShard"		"1"
 				"affected_by_aoe_increase"		"1"
 			}
@@ -238,13 +220,41 @@
 				"RequiresShard"		"1"
 			}
 			"linger_duration"		"3"
+			"scepter_explosion_radius_pct"
+			{
+				"value"		"0"
+				"special_bonus_scepter"		"15"
+			}
+			"scepter_explosion_min_dist"
+			{
+				"value"		"0"
+				"special_bonus_scepter"		"120"
+			}
+			"scepter_explosions_per_pulse"
+			{
+				"value"		"0"
+				"special_bonus_scepter"		"3"
+			}
+			"spine_tick_rate"
+			{
+				"special_bonus_scepter"		"=0.5"
+			}
+			"spine_damage_pct"
+			{
+				"special_bonus_scepter"		"=50"
+			}
+			"shard_explosions_per_pulse"
+			{
+				"value"		"0"
+				"special_bonus_scepter"		"1"
+			}
 		}
 	}
 	"imba_sandking_scorpion_strike"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/sandking/imba_sandking_scorpion_strike"
-		"AbilityTextureName"	"sandking_scorpion_strike"
+		"ScriptFile"		"ability/hero_ability/sand_king/imba_sandking_scorpion_strike"
+		"AbilityTextureName"		"sandking_scorpion_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -255,8 +265,8 @@
 		"AbilityCastRange"		"200"
 		"FightRecapLevel"		"1"
 		"AbilityCastPoint"		"0.4"
-		"AbilityManaCost"		"30"
-		"AbilityCooldown"		"14.0 11.0 8.0 5.0"
+		"AbilityManaCost"		"35 40 45 50"
+		"AbilityCooldown"		"15.0 12.0 9.0 6.0"
 		"AbilityValues"
 		{
 			"radius"
@@ -272,14 +282,14 @@
 			"inner_radius_bonus_damage_pct"		"40"
 			"attack_damage"
 			{
-				"value"		"40 80 120 160"
-				"special_bonus_unique_sand_king_scorpion_strike_damage"		"50"
+				"value"		"35 70 105 140"
+				"special_bonus_unique_imba_sand_king_scorpion_strike_damage"		"40"
 			}
 			"debuff_duration"		"4 5 6 7"
 			"strike_slow"
 			{
 				"value"		"10 12 14 16"
-				"special_bonus_unique_sand_king_3"		"12"
+				"special_bonus_unique_imba_sand_king_3"		"8"
 			}
 		}
 	}
@@ -328,6 +338,12 @@
 		}
 	}
 	"special_bonus_unique_imba_sand_king_7"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_sand_king_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

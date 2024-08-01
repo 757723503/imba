@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_swashbuckle"
-		"AbilityTextureName"	"pangolier_swashbuckle"
+		"AbilityTextureName"		"pangolier_swashbuckle"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -17,13 +17,13 @@
 			"AbilityCooldown"
 			{
 				"value"		"21 18 15 12"
-				"special_bonus_unique_pangolier_4"		"-2.5"
+				"special_bonus_unique_imba_pangolier_4"		"-3"
 			}
 			"dash_range"		"400 500 600 700"
 			"range"
 			{
 				"value"		"700"
-				"special_bonus_unique_pangolier"		"200"
+				"special_bonus_unique_imba_pangolier"		"200"
 			}
 			"damage"
 			{
@@ -33,7 +33,7 @@
 			"attack_damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_pangolier_3"		"15"
+				"special_bonus_unique_imba_pangolier_3"		"15"
 			}
 			"dash_speed"		"2000"
 			"attack_interval"		"0.1 0.1 0.1 0.1"
@@ -59,7 +59,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_shield_crash"
-		"AbilityTextureName"	"pangolier_shield_crash"
+		"AbilityTextureName"		"pangolier_shield_crash"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -75,25 +75,25 @@
 			{
 				"value"		"70 130 190 250"
 				"CalculateSpellDamageTooltip"		"1"
-				"special_bonus_unique_pangolier_shield_crash_radius"		"125"
+				"special_bonus_unique_imba_pangolier_shield_crash_radius"		"125"
 			}
 			"base_shield"		"0"
 			"hero_shield"
 			{
 				"value"		"50 100 150 200"
-				"special_bonus_unique_pangolier_shield_crash_herostacks"		"80"
+				"special_bonus_unique_imba_pangolier_shield_crash_herostacks"		"80"
 			}
 			"duration"		"10"
 			"radius"
 			{
 				"value"		"500"
-				"special_bonus_unique_pangolier_shield_crash_radius"		"125"
+				"special_bonus_unique_imba_pangolier_shield_crash_radius"		"125"
 				"affected_by_aoe_increase"		"1"
 			}
 			"can_double_jump"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_double_jump"		"=1"
+				"special_bonus_facet_pangolier_facets_imba_1"		"=1"
 			}
 			"AbilityCooldown"
 			{
@@ -102,17 +102,17 @@
 			"max_damage_increase_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_double_jump"		"=50"
+				"special_bonus_facet_pangolier_facets_imba_1"		"=50"
 			}
 			"min_damage_increase_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_double_jump"		"=25"
+				"special_bonus_facet_pangolier_facets_imba_1"		"=25"
 			}
 			"max_barrier_increase_pct_tooltip"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_double_jump"		"=50"
+				"special_bonus_facet_pangolier_facets_imba_1"		"=50"
 			}
 			"jump_duration"		"0.4"
 			"jump_duration_gyroshell"		"0.75"
@@ -124,25 +124,25 @@
 			"parry_swashbuckles"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_auto_swashbuckle"		"2"
+				"special_bonus_facet_pangolier_facets_imba_1"		"2"
 				"RequiresFacet"		"pangolier_auto_swashbuckle"
 			}
 			"parry_chance"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_auto_swashbuckle"		"50"
+				"special_bonus_facet_pangolier_facets_imba_1"		"50"
 				"RequiresFacet"		"pangolier_auto_swashbuckle"
 			}
 			"parry_cooldown"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_auto_swashbuckle"		"2"
+				"special_bonus_facet_pangolier_facets_imba_1"		"2"
 				"RequiresFacet"		"pangolier_auto_swashbuckle"
 			}
 			"parry_damage_threshold"
 			{
 				"value"		"0"
-				"special_bonus_facet_pangolier_auto_swashbuckle"		"25"
+				"special_bonus_facet_pangolier_facets_imba_1"		"25"
 				"RequiresFacet"		"pangolier_auto_swashbuckle"
 			}
 		}
@@ -152,20 +152,22 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_heartpiercer"
-		"AbilityTextureName"	"pangolier_heartpiercer"
+		"AbilityTextureName"		"pangolier_heartpiercer"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"IsBreakable"		"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
 	"imba_pangolier_lucky_shot"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_lucky_shot"
-		"AbilityTextureName"	"pangolier_lucky_shot"
+		"AbilityTextureName"		"pangolier_lucky_shot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"chance_pct"		"17"
@@ -174,7 +176,7 @@
 			"armor"
 			{
 				"value"		"3 5 7 9"
-				"special_bonus_unique_pangolier_luckyshot_armor"		"4"
+				"special_bonus_unique_imba_pangolier_luckyshot_armor"		"4"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -183,7 +185,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_gyroshell"
-		"AbilityTextureName"	"pangolier_gyroshell"
+		"AbilityTextureName"		"pangolier_gyroshell"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -195,7 +197,7 @@
 		"AbilityCastPoint"		"1.2"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityManaCost"		"100 125 150"
-		"AbilityDamage"		"100 150 200"
+		"AbilityDamage"		"75 150 225"
 		"precache"
 		{
 			"model"		"models/heroes/pangolier/pangolier_gyroshell2.vmdl"
@@ -206,24 +208,24 @@
 			"AbilityCooldown"
 			{
 				"value"		"90 85 80"
-				"special_bonus_unique_pangolier_5"		"-16"
+				"special_bonus_unique_imba_pangolier_5"		"-16"
 			}
 			"cast_time_tooltip"		"1.2"
 			"tick_interval"		"0.05"
 			"forward_move_speed"
 			{
 				"value"		"550"
-				"special_bonus_facet_pangolier_thunderbolt"		"115"
+				"special_bonus_facet_pangolier_facets_imba_1"		"115"
 			}
 			"turn_rate_boosted"
 			{
 				"value"		"165"
-				"special_bonus_facet_pangolier_thunderbolt"		"115"
+				"special_bonus_facet_pangolier_facets_imba_1"		"115"
 			}
 			"turn_rate"
 			{
 				"value"		"120"
-				"special_bonus_facet_pangolier_thunderbolt"		"110"
+				"special_bonus_facet_pangolier_facets_imba_1"		"110"
 			}
 			"radius"
 			{
@@ -245,8 +247,8 @@
 			"duration"
 			{
 				"value"		"10"
-				"special_bonus_unique_pangolier_6"		"2"
-				"special_bonus_facet_pangolier_thunderbolt"		"-2"
+				"special_bonus_unique_imba_pangolier_6"		"2"
+				"special_bonus_facet_pangolier_facets_imba_1"		"-2"
 			}
 			"jump_recover_time"		"0.25"
 			"shield_crash_cooldown"		"9 6 3"
@@ -257,10 +259,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_fortune_favors_the_bold"
-		"AbilityTextureName"	"pangolier_fortune_favors_the_bold"
+		"AbilityTextureName"		"pangolier_fortune_favors_the_bold"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"aura_radius"
@@ -275,7 +278,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_gyroshell_stop"
-		"AbilityTextureName"	"pangolier_gyroshell_stop"
+		"AbilityTextureName"		"pangolier_gyroshell_stop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
@@ -285,7 +288,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_rollup"
-		"AbilityTextureName"	"pangolier_rollup"
+		"AbilityTextureName"		"pangolier_rollup"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -336,7 +339,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/pangolier/imba_pangolier_rollup_stop"
-		"AbilityTextureName"	"pangolier_rollup_stop"
+		"AbilityTextureName"		"pangolier_rollup_stop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_INVALID"

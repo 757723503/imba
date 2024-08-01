@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_icarus_dive"
-		"AbilityTextureName"	"phoenix_icarus_dive"
+		"AbilityTextureName"		"phoenix_icarus_dive"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -21,7 +21,7 @@
 			"dash_length"
 			{
 				"value"		"1100 1200 1300 1400"
-				"special_bonus_unique_phoenix_4"		"1000"
+				"special_bonus_unique_imba_phoenix_4"		"1000"
 			}
 			"dash_width"
 			{
@@ -37,13 +37,13 @@
 			"damage_per_second"
 			{
 				"value"		"20 40 60 80"
-				"special_bonus_unique_phoenix_dive_damage"		"20"
+				"special_bonus_unique_imba_phoenix_dive_damage"		"20"
 			}
 			"burn_tick_interval"		"0.2"
 			"slow_movement_speed_pct"
 			{
-				"value"		"16 19 22 25"
-				"special_bonus_unique_phoenix_6"		"25"
+				"value"		"10 15 20 25"
+				"special_bonus_unique_imba_phoenix_6"		"25"
 			}
 			"dive_duration"		"2"
 		}
@@ -53,7 +53,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_icarus_dive_stop"
-		"AbilityTextureName"	"phoenix_icarus_dive_stop"
+		"AbilityTextureName"		"phoenix_icarus_dive_stop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -62,7 +62,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_fire_spirits"
-		"AbilityTextureName"	"phoenix_fire_spirits"
+		"AbilityTextureName"		"phoenix_fire_spirits"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -89,7 +89,7 @@
 			"damage_per_second"
 			{
 				"value"		"20 40 60 80"
-				"special_bonus_unique_phoenix_3"		"20"
+				"special_bonus_unique_imba_phoenix_3"		"20"
 			}
 			"spirit_count"		"5"
 			"tick_interval"		"0.2"
@@ -99,7 +99,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_sun_ray"
-		"AbilityTextureName"	"phoenix_sun_ray"
+		"AbilityTextureName"		"phoenix_sun_ray"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -119,7 +119,7 @@
 			"hp_perc_damage"
 			{
 				"value"		"1 2.75 4.5 6.25"
-				"special_bonus_unique_phoenix_5"		"1.5"
+				"special_bonus_unique_imba_phoenix_5"		"1.5"
 			}
 			"base_heal"		"7 10 13 16"
 			"hp_perc_heal"		"0.5 1.0 1.5 2.0"
@@ -140,17 +140,17 @@
 			"focal_point_max_multiplier"
 			{
 				"value"		"0"
-				"special_bonus_facet_phoenix_hotspot"		"150"
+				"special_bonus_facet_phoenix_facets_imba_1"		"150"
 			}
 			"focal_point_start_length_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_phoenix_hotspot"		"50"
+				"special_bonus_facet_phoenix_facets_imba_1"		"50"
 			}
 			"focal_point_full_length_tooltip_only"
 			{
 				"value"		"0"
-				"special_bonus_facet_phoenix_hotspot"		"1200"
+				"special_bonus_facet_phoenix_facets_imba_1"		"1200"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -159,7 +159,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_sun_ray_stop"
-		"AbilityTextureName"	"phoenix_sun_ray_stop"
+		"AbilityTextureName"		"phoenix_sun_ray_stop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -168,7 +168,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_sun_ray_toggle_move"
-		"AbilityTextureName"	"phoenix_sun_ray_toggle_move"
+		"AbilityTextureName"		"phoenix_sun_ray_toggle_move"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"MaxLevel"		"1"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
@@ -176,10 +176,10 @@
 	}
 	"imba_phoenix_supernova"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_supernova"
-		"AbilityTextureName"	"phoenix_supernova"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"phoenix_supernova"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -208,18 +208,18 @@
 			"stun_duration"
 			{
 				"value"		"1.6 2 2.4"
-				"special_bonus_unique_phoenix_2"		"0.5"
+				"special_bonus_unique_imba_phoenix_2"		"0.5"
 			}
 			"max_hero_attacks"
 			{
 				"value"		"6 8 10"
-				"special_bonus_unique_phoenix_1"		"2"
+				"special_bonus_unique_imba_phoenix_1"		"2"
 			}
 			"max_hero_attacks_scepter"
 			{
 				"value"		"7 10 13"
 				"RequiresScepter"		"1"
-				"special_bonus_unique_phoenix_1"		"2"
+				"special_bonus_unique_imba_phoenix_1"		"2"
 			}
 			"cast_range_tooltip_scepter"
 			{
@@ -230,10 +230,10 @@
 	}
 	"imba_phoenix_launch_fire_spirit"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_launch_fire_spirit"
-		"AbilityTextureName"	"phoenix_launch_fire_spirit"
-		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityTextureName"		"phoenix_launch_fire_spirit"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -257,7 +257,7 @@
 			"damage_per_second"
 			{
 				"value"		"20 40 60 80"
-				"special_bonus_unique_phoenix_3"		"20"
+				"special_bonus_unique_imba_phoenix_3"		"20"
 			}
 			"spirit_count"		"5"
 			"tick_interval"		"0.2"
@@ -267,15 +267,16 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_dying_light"
-		"AbilityTextureName"	"phoenix_dying_light"
+		"AbilityTextureName"		"phoenix_dying_light"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"radius"
 			{
-				"value"		"450"
+				"value"		"400"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage_pct"		"4.5"
@@ -285,11 +286,12 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/phoenix/imba_phoenix_blinding_sun"
-		"AbilityTextureName"	"phoenix_blinding_sun"
+		"AbilityTextureName"		"phoenix_blinding_sun"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_NONE"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"blind_per_second"		"2"

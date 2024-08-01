@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_rain_of_vermin"
-		"AbilityTextureName"	"dazzle_rain_of_vermin"
+		"AbilityTextureName"		"dazzle_rain_of_vermin"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -51,7 +51,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_poison_touch"
-		"AbilityTextureName"	"dazzle_poison_touch"
+		"AbilityTextureName"		"dazzle_poison_touch"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -86,12 +86,12 @@
 			"damage"
 			{
 				"value"		"16 28 40 52"
-				"special_bonus_unique_dazzle_3"		"60"
+				"special_bonus_unique_imba_dazzle_3"		"60"
 			}
 			"slow"
 			{
 				"value"		"-16 -18 -20 -22"
-				"special_bonus_unique_dazzle_1"		"-40"
+				"special_bonus_unique_imba_dazzle_1"		"-40"
 			}
 			"projectile_speed"		"1300"
 			"duration"		"5 6 7 8"
@@ -105,24 +105,24 @@
 			"attack_range_bonus"
 			{
 				"value"		"0"
-				"special_bonus_unique_dazzle_poison_touch_attack_range_bonus"		"300"
+				"special_bonus_unique_imba_dazzle_poison_touch_attack_range_bonus"		"300"
 			}
 			"split_radius"
 			{
 				"value"		"0"
-				"special_bonus_facet_dazzle_poison_bloom"		"=450"
+				"special_bonus_facet_dazzle_facets_imba_1"		"=450"
 			}
 			"split_damage"
 			{
 				"value"		"0"
-				"special_bonus_facet_dazzle_poison_bloom"		"=25 =50 =75 =100"
-				"special_bonus_unique_dazzle_3"		"60"
+				"special_bonus_facet_dazzle_facets_imba_1"		"=30 =60 =90 =120"
+				"special_bonus_unique_imba_dazzle_3"		"60"
 				"RequiresFacet"		"dazzle_poison_bloom"
 			}
 			"attacks_to_split"
 			{
 				"value"		"0"
-				"special_bonus_facet_dazzle_poison_bloom"		"=4"
+				"special_bonus_facet_dazzle_facets_imba_1"		"=4"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -131,7 +131,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_shallow_grave"
-		"AbilityTextureName"	"dazzle_shallow_grave"
+		"AbilityTextureName"		"dazzle_shallow_grave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -165,7 +165,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_shadow_wave"
-		"AbilityTextureName"	"dazzle_shadow_wave"
+		"AbilityTextureName"		"dazzle_shadow_wave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -197,7 +197,7 @@
 			"damage"
 			{
 				"value"		"85 105 125 145"
-				"special_bonus_unique_dazzle_2"		"45"
+				"special_bonus_unique_imba_dazzle_2"		"45"
 			}
 			"scepter_heal_pct"		"150"
 			"scepter_cd_increase"		"2"
@@ -208,7 +208,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_weave"
-		"AbilityTextureName"	"dazzle_weave"
+		"AbilityTextureName"		"dazzle_weave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
@@ -244,7 +244,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_bad_juju"
-		"AbilityTextureName"	"dazzle_bad_juju"
+		"AbilityTextureName"		"dazzle_bad_juju"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -269,7 +269,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_good_juju"
-		"AbilityTextureName"	"dazzle_good_juju"
+		"AbilityTextureName"		"dazzle_good_juju"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -295,7 +295,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_innate_weave"
-		"AbilityTextureName"	"dazzle_innate_weave"
+		"AbilityTextureName"		"dazzle_innate_weave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"		"1"
 		"Innate"		"1"
@@ -304,7 +304,7 @@
 			"armor_change"
 			{
 				"value"		"1"
-				"special_bonus_unique_dazzle_4"		"1"
+				"special_bonus_unique_imba_dazzle_4"		"1"
 			}
 			"duration"		"8"
 			"affects_allies"		"1"
@@ -317,7 +317,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dazzle/imba_dazzle_nothl_boon"
-		"AbilityTextureName"	"dazzle_nothl_boon"
+		"AbilityTextureName"		"dazzle_nothl_boon"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"1"
@@ -325,7 +325,7 @@
 		{
 			"duration"
 			{
-				"value"		"10"
+				"value"		"12"
 			}
 		}
 	}

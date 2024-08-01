@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_area_poison"
-		"AbilityTextureName"	"venomancer_area_poison"
+		"AbilityTextureName"		"venomancer_area_poison"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -32,7 +32,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_venomous_gale"
-		"AbilityTextureName"	"venomancer_venomous_gale"
+		"AbilityTextureName"		"venomancer_venomous_gale"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -69,12 +69,12 @@
 			"create_wards"
 			{
 				"value"		"0"
-				"special_bonus_unique_venomancer_gale_plagueward"		"2"
+				"special_bonus_unique_imba_venomancer_gale_plagueward"		"2"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"21 20 19 18"
-				"special_bonus_unique_venomancer_3"		"-5"
+				"special_bonus_unique_imba_venomancer_3"		"-5"
 			}
 			"explosion_damage"
 			{
@@ -88,40 +88,32 @@
 	}
 	"imba_venomancer_poison_sting"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_poison_sting"
-		"AbilityTextureName"	"venomancer_poison_sting"
-		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityTextureName"		"venomancer_poison_sting"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
-		"MaxLevel"		"5"
-		"RequiredLevel"		"-1"
-		"Innate"		"1"
-		"HasScepterUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"duration"		"3 6 9 12 15"
+			"duration"		"6 9 12 15"
 			"damage"
 			{
-				"value"		"2 6 14 22 30"
+				"value"		"8 16 24 32"
 				"CalculateSpellDamageTooltip"		"1"
 			}
 			"movement_speed"
 			{
-				"value"		"-3 -6 -9 -12 -15"
-				"special_bonus_unique_venomancer_2"		"-5"
+				"value"		"-8 -10 -12 -14"
+				"special_bonus_unique_imba_venomancer_2"		"-5"
 			}
 			"hp_regen_reduction"
 			{
 				"value"		"0"
-				"special_bonus_unique_venomancer_poisonsting_regen_reduction"		"15"
-			}
-			"bonus_dmg_per_debuff_pct"
-			{
-				"special_bonus_scepter"		"15"
-				"DamageTypeTooltip"		"DAMAGE_TYPE_MAGICAL"
+				"special_bonus_unique_imba_venomancer_poisonsting_regen_reduction"		"15"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -130,7 +122,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_plague_ward"
-		"AbilityTextureName"	"venomancer_plague_ward"
+		"AbilityTextureName"		"venomancer_plague_ward"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -139,28 +131,28 @@
 		"AbilitySound"		"Hero_Venomancer.Plague_Ward"
 		"AbilityCastRange"		"850"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
-		"AbilityManaCost"		"21 24 27 30"
+		"AbilityManaCost"		"24 26 28 30"
 		"AbilityValues"
 		{
 			"AbilityCooldown"
 			{
 				"value"		"5"
-				"special_bonus_unique_venomancer_8"		"-1"
+				"special_bonus_unique_imba_venomancer_8"		"-1"
 			}
 			"can_target"
 			{
 				"value"		"0"
-				"special_bonus_facet_venomancer_plague_carrier"		"=1"
+				"special_bonus_facet_venomancer_facets_imba_1"		"=1"
 			}
 			"gold_bounty_pct"
 			{
 				"value"		"100"
-				"special_bonus_facet_venomancer_plague_carrier"		"=20"
+				"special_bonus_facet_venomancer_facets_imba_1"		"=20"
 			}
 			"max_charges"
 			{
 				"value"		"0"
-				"special_bonus_facet_venomancer_plague_carrier"		"=3"
+				"special_bonus_facet_venomancer_facets_imba_1"		"=3"
 			}
 			"duration"
 			{
@@ -169,37 +161,44 @@
 			"ward_multiplier"
 			{
 				"value"		"1"
-				"special_bonus_unique_venomancer"		"x2.5"
+				"special_bonus_unique_imba_venomancer"		"x2.5"
 			}
 			"ward_model_scale"
 			{
 				"value"		"1"
-				"special_bonus_unique_venomancer"		"x1.5"
+				"special_bonus_unique_imba_venomancer"		"x1.5"
 			}
 			"ward_hp_tooltip"
 			{
 				"value"		"120 230 340 450"
-				"special_bonus_unique_venomancer"		"x2.5"
+				"special_bonus_unique_imba_venomancer"		"x2.5"
 			}
 			"ward_damage_tooltip"
 			{
 				"value"		"14 22 30 38"
-				"special_bonus_unique_venomancer"		"x2.5"
+				"special_bonus_unique_imba_venomancer"		"x2.5"
 			}
 			"threshold"
 			{
 				"value"		"100 150 200 250"
-				"special_bonus_unique_venomancer"		"x2.5"
+				"special_bonus_unique_imba_venomancer"		"x2.5"
+				"RequiresFacet"		"venomancer_plague_carrier"
+			}
+			"threshold_max_hp_pct"
+			{
+				"value"		"1 1.5 2 2.5"
+				"special_bonus_unique_imba_venomancer"		"x2.5"
+				"RequiresFacet"		"venomancer_plague_carrier"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
 	"imba_venomancer_noxious_plague"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_noxious_plague"
-		"AbilityTextureName"	"venomancer_noxious_plague"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"venomancer_noxious_plague"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -221,7 +220,7 @@
 			"health_damage"
 			{
 				"value"		"3 4 5"
-				"special_bonus_unique_venomancer_4"		"1"
+				"special_bonus_unique_imba_venomancer_4"		"1"
 			}
 			"debuff_radius"
 			{
@@ -232,26 +231,26 @@
 			"attack_slow"
 			{
 				"value"		"0"
-				"special_bonus_unique_venomancer_5"		"200"
+				"special_bonus_unique_imba_venomancer_5"		"200"
 			}
 			"spread_count"
 			{
 				"value"		"1"
-				"special_bonus_facet_venomancer_patient_zero"		"1"
+				"special_bonus_facet_venomancer_facets_imba_1"		"1"
 			}
 			"impact_damage_reduce"
 			{
-				"special_bonus_facet_venomancer_patient_zero"		"100"
+				"special_bonus_facet_venomancer_facets_imba_1"		"100"
 			}
 			"projectile_speed"		"1200"
 		}
 	}
 	"imba_venomancer_poison_nova"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_poison_nova"
-		"AbilityTextureName"	"venomancer_poison_nova"
-		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityTextureName"		"venomancer_poison_nova"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -278,7 +277,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_latent_poison"
-		"AbilityTextureName"	"venomancer_latent_poison"
+		"AbilityTextureName"		"venomancer_latent_poison"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -307,6 +306,34 @@
 			"explosion_stun_duration"		"1.6"
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_6"
+	}
+	"imba_venomancer_sepsis"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/venomancer/imba_venomancer_sepsis"
+		"AbilityTextureName"		"venomancer_sepsis"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"HasScepterUpgrade"		"1"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"bonus_dmg_per_debuff_pct"
+			{
+				"value"		"10"
+				"special_bonus_scepter"		"10"
+				"DamageTypeTooltip"		"DAMAGE_TYPE_MAGICAL"
+			}
+			"apply_from_ward_attacks"
+			{
+				"value"		"0"
+				"special_bonus_scepter"		"=1"
+			}
+		}
 	}
 	"special_bonus_unique_imba_venomancer"
 	{

@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_ice_shards"
-		"AbilityTextureName"	"tusk_ice_shards"
+		"AbilityTextureName"		"tusk_ice_shards"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -58,7 +58,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_ice_shards_stop"
-		"AbilityTextureName"	"tusk_ice_shards_stop"
+		"AbilityTextureName"		"tusk_ice_shards_stop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 	}
@@ -66,7 +66,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_snowball"
-		"AbilityTextureName"	"tusk_snowball"
+		"AbilityTextureName"		"tusk_snowball"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -84,7 +84,7 @@
 			"snowball_damage"
 			{
 				"value"		"80 140 200 260"
-				"special_bonus_unique_tusk_2"		"120"
+				"special_bonus_unique_imba_tusk_2"		"120"
 			}
 			"snowball_speed"		"575 600 625 650"
 			"snowball_damage_bonus"		"40 65 90 115"
@@ -119,7 +119,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_launch_snowball"
-		"AbilityTextureName"	"tusk_launch_snowball"
+		"AbilityTextureName"		"tusk_launch_snowball"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"AbilityTextureName"		"tusk_snowball"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
@@ -129,7 +129,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_frozen_sigil"
-		"AbilityTextureName"	"tusk_frozen_sigil"
+		"AbilityTextureName"		"tusk_frozen_sigil"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilitySound"		"Hero_Tusk.FrozenSigil"
@@ -163,7 +163,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_tag_team"
-		"AbilityTextureName"	"tusk_tag_team"
+		"AbilityTextureName"		"tusk_tag_team"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -181,7 +181,7 @@
 			"bonus_damage"
 			{
 				"value"		"20 45 70 95"
-				"special_bonus_unique_tusk_3"		"25"
+				"special_bonus_unique_imba_tusk_3"		"25"
 			}
 			"movement_slow"		"75"
 			"slow_duration"		"0.5"
@@ -197,8 +197,8 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_drinking_buddies"
-		"AbilityTextureName"	"tusk_drinking_buddies"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityTextureName"		"tusk_drinking_buddies"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -220,7 +220,7 @@
 			"attackdamage_bonus"
 			{
 				"value"		"20 45 70 95"
-				"special_bonus_unique_tusk_3"		"25"
+				"special_bonus_unique_imba_tusk_3"		"25"
 			}
 		}
 	}
@@ -228,7 +228,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_bitter_chill"
-		"AbilityTextureName"	"tusk_bitter_chill"
+		"AbilityTextureName"		"tusk_bitter_chill"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"AbilityTextureName"		"tusk_frozen_sigil"
 		"MaxLevel"		"5"
@@ -247,7 +247,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_walrus_punch"
-		"AbilityTextureName"	"tusk_walrus_punch"
+		"AbilityTextureName"		"tusk_walrus_punch"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -269,12 +269,12 @@
 			"crit_multiplier"
 			{
 				"value"		"200 250 300"
-				"special_bonus_unique_tusk"		"75"
+				"special_bonus_unique_imba_tusk"		"75"
 			}
 			"air_time"
 			{
 				"value"		"1"
-				"special_bonus_unique_tusk_7"		"0.5"
+				"special_bonus_unique_imba_tusk_7"		"0.5"
 			}
 			"push_length"		"1000"
 		}
@@ -283,7 +283,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/tusk/imba_tusk_walrus_kick"
-		"AbilityTextureName"	"tusk_walrus_kick"
+		"AbilityTextureName"		"tusk_walrus_kick"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

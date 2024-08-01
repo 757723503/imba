@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_waveform"
-		"AbilityTextureName"	"morphling_waveform"
+		"AbilityTextureName"		"morphling_waveform"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -30,22 +30,22 @@
 			"AbilityCastRange"
 			{
 				"value"		"700 800 900 1000"
-				"special_bonus_unique_morphling_1"		"250"
+				"special_bonus_unique_imba_morphling_1"		"250"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"21 18 15 12"
-				"special_bonus_unique_morphling_waveform_cooldown"		"-40%"
+				"special_bonus_unique_imba_morphling_waveform_cooldown"		"-40%"
 			}
 			"pct_damage"
 			{
 				"value"		"50"
-				"special_bonus_unique_morphling_4"		"75"
+				"special_bonus_unique_imba_morphling_4"		"75"
 			}
 			"process_procs"
 			{
 				"value"		"0"
-				"special_bonus_unique_morphling_4"		"1"
+				"special_bonus_unique_imba_morphling_4"		"1"
 			}
 		}
 	}
@@ -53,7 +53,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_adaptive_strike_agi"
-		"AbilityTextureName"	"morphling_adaptive_strike_agi"
+		"AbilityTextureName"		"morphling_adaptive_strike_agi"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -96,7 +96,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_adaptive_strike_str"
-		"AbilityTextureName"	"morphling_adaptive_strike_str"
+		"AbilityTextureName"		"morphling_adaptive_strike_str"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -119,23 +119,23 @@
 			"stun_min"
 			{
 				"value"		"0.5"
-				"special_bonus_unique_morphling_10"		"1"
+				"special_bonus_unique_imba_morphling_10"		"1"
 			}
 			"stun_max"
 			{
 				"value"		"1.2 1.6 2.0 2.4"
-				"special_bonus_unique_morphling_10"		"1"
+				"special_bonus_unique_imba_morphling_10"		"1"
 			}
 			"knockback_min"
 			{
 				"value"		"0"
-				"special_bonus_facet_morphling_agi"		"=100"
+				"special_bonus_facet_morphling_facets_imba_1"		"=100"
 				"RequiresFacet"		"morphling_agi"
 			}
 			"knockback_max"
 			{
 				"value"		"0"
-				"special_bonus_facet_morphling_agi"		"=500"
+				"special_bonus_facet_morphling_facets_imba_1"		"=500"
 				"RequiresFacet"		"morphling_agi"
 			}
 			"projectile_speed"		"1150"
@@ -146,14 +146,14 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_morph"
-		"AbilityTextureName"	"morphling_morph"
+		"AbilityTextureName"		"morphling_morph"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	}
 	"imba_morphling_morph_agi"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_morph_agi"
-		"AbilityTextureName"	"morphling_morph_agi"
+		"AbilityTextureName"		"morphling_morph_agi"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"LinkedAbility"		"morphling_morph_str"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -167,7 +167,7 @@
 			"mana_cost"
 			{
 				"value"		"5 10 15 20"
-				"special_bonus_unique_morphling_morph_no_manacost"		"-100%"
+				"special_bonus_unique_imba_morphling_morph_no_manacost"		"-100%"
 				"special_bonus_shard"		"-50%"
 			}
 			"castable_while_stunned"
@@ -181,7 +181,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_morph_str"
-		"AbilityTextureName"	"morphling_morph_str"
+		"AbilityTextureName"		"morphling_morph_str"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"LinkedAbility"		"morphling_morph_agi"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -195,7 +195,7 @@
 			"mana_cost"
 			{
 				"value"		"5 10 15 20"
-				"special_bonus_unique_morphling_morph_no_manacost"		"-100%"
+				"special_bonus_unique_imba_morphling_morph_no_manacost"		"-100%"
 				"special_bonus_shard"		"-50%"
 			}
 			"castable_while_stunned"
@@ -209,7 +209,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_ebb"
-		"AbilityTextureName"	"morphling_ebb"
+		"AbilityTextureName"		"morphling_ebb"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"1"
 	}
@@ -217,7 +217,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_flow"
-		"AbilityTextureName"	"morphling_flow"
+		"AbilityTextureName"		"morphling_flow"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"1"
 		"AbilityValues"
@@ -226,14 +226,18 @@
 			"agi_pct_at_min_cooldown_speed"		"50"
 			"min_cooldown_speed_pct"		"0"
 			"max_cooldown_speed_pct"		"60"
+			"cooldown_reduction_tooltip"
+			{
+				"dynamic_value"		"true"
+			}
 		}
 	}
 	"imba_morphling_replicate"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_replicate"
-		"AbilityTextureName"	"morphling_replicate"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"morphling_replicate"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CUSTOM"
@@ -251,7 +255,7 @@
 			"duration"
 			{
 				"value"		"24"
-				"special_bonus_unique_morphling_8"		"16"
+				"special_bonus_unique_imba_morphling_8"		"16"
 			}
 			"scepter_stat_steal"
 			{
@@ -297,10 +301,10 @@
 	}
 	"imba_morphling_morph_replicate"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_morph_replicate"
-		"AbilityTextureName"	"morphling_morph_replicate"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"morphling_morph_replicate"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityCastAnimation"		"ACT_INVALID"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -312,7 +316,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_hybrid"
-		"AbilityTextureName"	"morphling_hybrid"
+		"AbilityTextureName"		"morphling_hybrid"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CUSTOM"
@@ -358,7 +362,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/morphling/imba_morphling_accumulation"
-		"AbilityTextureName"	"morphling_accumulation"
+		"AbilityTextureName"		"morphling_accumulation"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"MaxLevel"		"1"
 		"Innate"		"1"

@@ -4,8 +4,8 @@
 	"imba_winter_wyvern_arctic_burn"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/winter/imba_winter_wyvern_arctic_burn"
-		"AbilityTextureName"	"winter_wyvern_arctic_burn"
+		"ScriptFile"		"ability/hero_ability/winter_wyvern/imba_winter_wyvern_arctic_burn"
+		"AbilityTextureName"		"winter_wyvern_arctic_burn"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -26,12 +26,12 @@
 				"value"		"5"
 				"CalculateSpellDamageTooltip"		"0"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
-				"special_bonus_unique_winter_wyvern_6"		"3"
+				"special_bonus_unique_imba_winter_wyvern_6"		"3"
 			}
 			"move_slow"
 			{
 				"value"		"16 24 32 40"
-				"special_bonus_unique_winter_wyvern_1"		"17"
+				"special_bonus_unique_imba_winter_wyvern_1"		"17"
 			}
 			"projectile_speed_bonus"		"500"
 			"tree_destruction_radius"
@@ -57,8 +57,8 @@
 	"imba_winter_wyvern_splinter_blast"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/winter/imba_winter_wyvern_splinter_blast"
-		"AbilityTextureName"	"winter_wyvern_splinter_blast"
+		"ScriptFile"		"ability/hero_ability/winter_wyvern/imba_winter_wyvern_splinter_blast"
+		"AbilityTextureName"		"winter_wyvern_splinter_blast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -78,7 +78,7 @@
 			{
 				"value"		"500"
 				"affected_by_aoe_increase"		"1"
-				"special_bonus_unique_winter_wyvern_2"		"400"
+				"special_bonus_unique_imba_winter_wyvern_2"		"400"
 			}
 			"bonus_movespeed"		"-28 -32 -36 -40"
 			"movespeed_slow_tooltip"		"28 32 36 40"
@@ -87,12 +87,12 @@
 			"damage"
 			{
 				"value"		"80 160 240 320"
-				"special_bonus_unique_winter_wyvern_7"		"100"
+				"special_bonus_unique_imba_winter_wyvern_7"		"100"
 			}
 			"stun_duration"
 			{
 				"value"		"0"
-				"special_bonus_unique_winter_wyvern_4"		"1.5"
+				"special_bonus_unique_imba_winter_wyvern_4"		"1.5"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -100,8 +100,8 @@
 	"imba_winter_wyvern_cold_embrace"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/winter/imba_winter_wyvern_cold_embrace"
-		"AbilityTextureName"	"winter_wyvern_cold_embrace"
+		"ScriptFile"		"ability/hero_ability/winter_wyvern/imba_winter_wyvern_cold_embrace"
+		"AbilityTextureName"		"winter_wyvern_cold_embrace"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -120,7 +120,7 @@
 			"heal_additive"
 			{
 				"value"		"40 45 50 55"
-				"special_bonus_unique_winter_wyvern_5"		"25"
+				"special_bonus_unique_imba_winter_wyvern_5"		"25"
 			}
 			"heal_percentage"		"2.25 3 3.75 4.5"
 			"shard_cooldown_reduction"
@@ -139,11 +139,11 @@
 	}
 	"imba_winter_wyvern_winters_curse"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/winter/imba_winter_wyvern_winters_curse"
-		"AbilityTextureName"	"winter_wyvern_winters_curse"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/winter_wyvern/imba_winter_wyvern_winters_curse"
+		"AbilityTextureName"		"winter_wyvern_winters_curse"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_DONT_PROC_OTHER_ABILITIES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
@@ -167,7 +167,7 @@
 			"bonus_attack_speed"
 			{
 				"value"		"65"
-				"special_bonus_unique_winter_wyvern_3"		"55"
+				"special_bonus_unique_imba_winter_wyvern_3"		"55"
 			}
 			"duration"		"2"
 			"max_duration"		"4 5.5 7"
@@ -178,8 +178,8 @@
 	"imba_winter_wyvern_eldwurm_scholar"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/winter/imba_winter_wyvern_eldwurm_scholar"
-		"AbilityTextureName"	"winter_wyvern_eldwurm_scholar"
+		"ScriptFile"		"ability/hero_ability/winter_wyvern/imba_winter_wyvern_eldwurm_scholar"
+		"AbilityTextureName"		"winter_wyvern_eldwurm_scholar"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"MaxLevel"		"1"
 		"Innate"		"1"
@@ -233,8 +233,8 @@
 	"imba_winter_wyvern_essence_of_the_blueheart"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/winter/imba_winter_wyvern_essence_of_the_blueheart"
-		"AbilityTextureName"	"winter_wyvern_essence_of_the_blueheart"
+		"ScriptFile"		"ability/hero_ability/winter_wyvern/imba_winter_wyvern_essence_of_the_blueheart"
+		"AbilityTextureName"		"winter_wyvern_essence_of_the_blueheart"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
@@ -246,12 +246,13 @@
 	"imba_winter_wyvern_dragon_sight"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/winter/imba_winter_wyvern_dragon_sight"
-		"AbilityTextureName"	"winter_wyvern_dragon_sight"
+		"ScriptFile"		"ability/hero_ability/winter_wyvern/imba_winter_wyvern_dragon_sight"
+		"AbilityTextureName"		"winter_wyvern_dragon_sight"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"4"
 		"DependentOnAbility"		"winter_wyvern_winters_curse"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"attack_range_per_damage"		"40 30 20 10"

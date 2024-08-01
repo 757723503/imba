@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_frost_nova"
-		"AbilityTextureName"	"lich_frost_nova"
+		"AbilityTextureName"		"lich_frost_nova"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -25,12 +25,12 @@
 			"AbilityCooldown"
 			{
 				"value"		"7"
-				"special_bonus_unique_lich_3"		"-3.5"
+				"special_bonus_unique_imba_lich_3"		"-3.5"
 			}
 			"radius"
 			{
 				"value"		"200"
-				"special_bonus_unique_lich_6"		"125"
+				"special_bonus_unique_imba_lich_6"		"125"
 				"affected_by_aoe_increase"		"1"
 			}
 			"slow_movement_speed"		"-25"
@@ -38,7 +38,7 @@
 			"aoe_damage"
 			{
 				"value"		"80 120 160 200"
-				"special_bonus_unique_lich_6"		"125"
+				"special_bonus_unique_imba_lich_6"		"125"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -47,7 +47,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_dark_sorcery"
-		"AbilityTextureName"	"lich_dark_sorcery"
+		"AbilityTextureName"		"lich_dark_sorcery"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"FightRecapLevel"		"1"
@@ -68,7 +68,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_death_charge"
-		"AbilityTextureName"	"lich_death_charge"
+		"AbilityTextureName"		"lich_death_charge"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"Innate"		"1"
@@ -90,7 +90,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_sinister_gaze"
-		"AbilityTextureName"	"lich_sinister_gaze"
+		"AbilityTextureName"		"lich_sinister_gaze"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -106,12 +106,12 @@
 			"AbilityChannelTime"
 			{
 				"value"		"1.10 1.4 1.7 2.0"
-				"special_bonus_unique_lich_2"		"0.4"
+				"special_bonus_unique_imba_lich_2"		"0.4"
 			}
 			"channel_duration"
 			{
 				"value"		"1.10 1.4 1.7 2.0"
-				"special_bonus_unique_lich_2"		"0.4"
+				"special_bonus_unique_imba_lich_2"		"0.4"
 			}
 			"destination"		"32 38 44 50"
 			"mana_drain"		"12"
@@ -129,7 +129,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_frost_aura"
-		"AbilityTextureName"	"lich_frost_aura"
+		"AbilityTextureName"		"lich_frost_aura"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityCastRange"		"1200"
@@ -145,7 +145,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_frost_armor"
-		"AbilityTextureName"	"lich_frost_armor"
+		"AbilityTextureName"		"lich_frost_armor"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
@@ -172,7 +172,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_frost_shield"
-		"AbilityTextureName"	"lich_frost_shield"
+		"AbilityTextureName"		"lich_frost_shield"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
@@ -191,7 +191,7 @@
 			{
 				"value"		"30 40 50 60"
 				"CalculateSpellDamageTooltip"		"0"
-				"special_bonus_unique_lich_8"		"10"
+				"special_bonus_unique_imba_lich_8"		"10"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 			}
 			"movement_slow"		"20 25 30 35"
@@ -210,31 +210,31 @@
 			"duration"
 			{
 				"value"		"5 6 7 8"
-				"special_bonus_unique_lich_4"		"4"
+				"special_bonus_unique_imba_lich_4"		"4"
 			}
 			"health_regen"
 			{
-				"special_bonus_unique_lich_1"		"50"
+				"special_bonus_unique_imba_lich_1"		"50"
 			}
 			"bonus_duration_per_hero_killed"
 			{
 				"value"		"0"
-				"special_bonus_facet_lich_growing_cold"		"4"
+				"special_bonus_facet_lich_facets_imba_1"		"4"
 			}
 			"bonus_duration_per_creep_killed"
 			{
 				"value"		"0"
-				"special_bonus_facet_lich_growing_cold"		"1"
+				"special_bonus_facet_lich_facets_imba_1"		"1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 	}
 	"imba_lich_chain_frost"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_chain_frost"
-		"AbilityTextureName"	"lich_chain_frost"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"lich_chain_frost"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -279,26 +279,26 @@
 			}
 			"has_unlimited_jumps"
 			{
-				"special_bonus_unique_lich_5"		"1"
+				"special_bonus_unique_imba_lich_5"		"1"
 			}
 			"should_fire_chain_frost_on_death"
 			{
-				"special_bonus_unique_lich_7"		"1"
+				"special_bonus_unique_imba_lich_7"		"1"
 			}
 			"bonus_jumps_per_hero_killed"
 			{
 				"value"		"0"
-				"special_bonus_facet_lich_growing_cold"		"3"
+				"special_bonus_facet_lich_facets_imba_1"		"3"
 			}
 			"bonus_jumps_per_creep_killed"
 			{
 				"value"		"0"
-				"special_bonus_facet_lich_growing_cold"		"1"
+				"special_bonus_facet_lich_facets_imba_1"		"1"
 			}
 			"frostbound_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_lich_frostbound"		"=2 =3 =4"
+				"special_bonus_facet_lich_facets_imba_1"		"=2 =3 =4"
 			}
 		}
 	}
@@ -306,7 +306,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_variant_ice_rite"
-		"AbilityTextureName"	"lich_variant_ice_rite"
+		"AbilityTextureName"		"lich_variant_ice_rite"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -316,6 +316,7 @@
 		"AbilityCastPoint"		"0.3"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_5"
 		"AbilityCastGestureSlot"		"DEFAULT"
+		"IsBreakable"		"1"
 		"AbilityCooldown"		"25"
 		"AbilityManaCost"		"150"
 		"AbilityValues"
@@ -333,7 +334,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_innate_chain_frost_projectile_speed"
-		"AbilityTextureName"	"lich_innate_chain_frost_projectile_speed"
+		"AbilityTextureName"		"lich_innate_chain_frost_projectile_speed"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"AbilityValues"
@@ -345,7 +346,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_innate_chain_frost_bounces"
-		"AbilityTextureName"	"lich_innate_chain_frost_bounces"
+		"AbilityTextureName"		"lich_innate_chain_frost_bounces"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"AbilityValues"
@@ -357,7 +358,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lich/imba_lich_ice_spire"
-		"AbilityTextureName"	"lich_ice_spire"
+		"AbilityTextureName"		"lich_ice_spire"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"

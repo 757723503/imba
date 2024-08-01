@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_fire_wreath"
-		"AbilityTextureName"	"dawnbreaker_fire_wreath"
+		"AbilityTextureName"		"dawnbreaker_fire_wreath"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CAN_SELF_CAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -21,7 +21,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"17 15 13 11"
-				"special_bonus_unique_dawnbreaker_fire_wreath_cooldown"		"-5"
+				"special_bonus_unique_imba_dawnbreaker_fire_wreath_cooldown"		"-5"
 			}
 			"duration"		"1.1"
 			"swipe_radius"
@@ -32,7 +32,7 @@
 			"swipe_damage"
 			{
 				"value"		"25 40 55 70"
-				"special_bonus_unique_dawnbreaker_fire_wreath_swipe"		"20"
+				"special_bonus_unique_imba_dawnbreaker_fire_wreath_swipe"		"20"
 			}
 			"smash_radius"
 			{
@@ -42,7 +42,7 @@
 			"smash_damage"
 			{
 				"value"		"25 40 55 70"
-				"special_bonus_unique_dawnbreaker_fire_wreath_swipe"		"18"
+				"special_bonus_unique_imba_dawnbreaker_fire_wreath_swipe"		"18"
 			}
 			"movement_speed"		"215"
 			"total_attacks"		"3"
@@ -68,7 +68,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_celestial_hammer"
-		"AbilityTextureName"	"dawnbreaker_celestial_hammer"
+		"AbilityTextureName"		"dawnbreaker_celestial_hammer"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -88,7 +88,7 @@
 			"projectile_speed"
 			{
 				"value"		"1500"
-				"special_bonus_unique_dawnbreaker_celestial_hammer_cast_range"		"+80%"
+				"special_bonus_unique_imba_dawnbreaker_celestial_hammer_cast_range"		"+80%"
 			}
 			"flare_debuff_duration"		"2.5 3 3.5 4"
 			"flare_radius"
@@ -99,14 +99,14 @@
 			"move_slow"
 			{
 				"value"		"24 28 32 36"
-				"special_bonus_unique_dawnbreaker_celestial_hammer_slow"		"15"
+				"special_bonus_unique_imba_dawnbreaker_celestial_hammer_slow"		"15"
 			}
 			"burn_damage"		"20 30 40 50"
 			"burn_interval"		"0.5"
 			"pause_duration"
 			{
 				"value"		"2"
-				"special_bonus_facet_dawnbreaker_gleaming_hammer"		"2"
+				"special_bonus_facet_dawnbreaker_facets_imba_1"		"2"
 			}
 			"hammer_aoe_radius"		"200"
 			"travel_speed_pct"		"100"
@@ -114,18 +114,18 @@
 			"range"
 			{
 				"value"		"700 900 1100 1300"
-				"special_bonus_unique_dawnbreaker_celestial_hammer_cast_range"		"+80%"
+				"special_bonus_unique_imba_dawnbreaker_celestial_hammer_cast_range"		"+80%"
 			}
 			"hammer_solar_guardian_radius"
 			{
 				"value"		"0"
-				"special_bonus_facet_dawnbreaker_gleaming_hammer"		"200"
+				"special_bonus_facet_dawnbreaker_facets_imba_1"		"200"
 				"affected_by_aoe_increase"		"1"
 			}
 			"hammer_solar_guardian_effectiveness_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_dawnbreaker_gleaming_hammer"		"=50"
+				"special_bonus_facet_dawnbreaker_facets_imba_1"		"=50"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -134,7 +134,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_converge"
-		"AbilityTextureName"	"dawnbreaker_converge"
+		"AbilityTextureName"		"dawnbreaker_converge"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityCastPoint"		"0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -148,19 +148,20 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_luminosity"
-		"AbilityTextureName"	"dawnbreaker_luminosity"
+		"AbilityTextureName"		"dawnbreaker_luminosity"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
 		"AbilityCastAnimation"		"ACT_DOTA_OVERRIDE_ABILITY_3"
 		"AbilityCastGestureSlot"		"DEFAULT"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"attack_count"
 			{
 				"value"		"3"
-				"special_bonus_unique_dawnbreaker_luminosity_attack_count"		"-1"
+				"special_bonus_unique_imba_dawnbreaker_luminosity_attack_count"		"-1"
 			}
 			"heal_radius"
 			{
@@ -172,33 +173,33 @@
 			"bonus_damage"
 			{
 				"value"		"125 150 175 200"
-				"special_bonus_unique_dawnbreaker_luminosity_crit"		"50"
+				"special_bonus_unique_imba_dawnbreaker_luminosity_crit"		"50"
 			}
 			"proc_cooldown"		"0"
 			"allied_healing_pct"		"50"
 			"cooldown_reduction"
 			{
 				"value"		"0"
-				"special_bonus_facet_dawnbreaker_solar_charged"		"1"
+				"special_bonus_facet_dawnbreaker_facets_imba_1"		"1"
 			}
 			"attackspeed_bonus_max"
 			{
 				"value"		"0"
-				"special_bonus_facet_dawnbreaker_solar_battery"		"50"
+				"special_bonus_facet_dawnbreaker_facets_imba_1"		"50"
 			}
 			"movespeed_bonus_max"
 			{
 				"value"		"0"
-				"special_bonus_facet_dawnbreaker_solar_battery"		"20"
+				"special_bonus_facet_dawnbreaker_facets_imba_1"		"20"
 			}
 		}
 	}
 	"imba_dawnbreaker_solar_guardian"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_solar_guardian"
-		"AbilityTextureName"	"dawnbreaker_solar_guardian"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"dawnbreaker_solar_guardian"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -217,13 +218,13 @@
 			"AbilityCooldown"
 			{
 				"value"		"120 105 90"
-				"special_bonus_unique_dawnbreaker_solar_guardian_cooldown"		"-20"
+				"special_bonus_unique_imba_dawnbreaker_solar_guardian_cooldown"		"-20"
 			}
 			"airtime_duration"		"0.8"
 			"radius"
 			{
 				"value"		"500"
-				"special_bonus_unique_dawnbreaker_solar_guardian_radius"		"150"
+				"special_bonus_unique_imba_dawnbreaker_solar_guardian_radius"		"150"
 				"affected_by_aoe_increase"		"1"
 			}
 			"base_damage"
@@ -267,7 +268,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_land"
-		"AbilityTextureName"	"dawnbreaker_land"
+		"AbilityTextureName"		"dawnbreaker_land"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE"
 		"LinkedAbility"		"dawnbreaker_solar_guardian"
 		"MaxLevel"		"1"
@@ -278,7 +279,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_break_of_dawn"
-		"AbilityTextureName"	"dawnbreaker_break_of_dawn"
+		"AbilityTextureName"		"dawnbreaker_break_of_dawn"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"		"1"
 		"Innate"		"1"
@@ -295,7 +296,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/dawnbreaker/imba_dawnbreaker_unbreakable"
-		"AbilityTextureName"	"dawnbreaker_unbreakable"
+		"AbilityTextureName"		"dawnbreaker_unbreakable"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 	}

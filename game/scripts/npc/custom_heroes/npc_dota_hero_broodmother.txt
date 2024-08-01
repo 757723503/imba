@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_spawn_spiderlings"
-		"AbilityTextureName"	"broodmother_spawn_spiderlings"
+		"AbilityTextureName"		"broodmother_spawn_spiderlings"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"		"1"
@@ -28,13 +28,13 @@
 			"damage"
 			{
 				"value"		"220 320 420"
-				"special_bonus_unique_broodmother_3"		"80"
+				"special_bonus_unique_imba_broodmother_3"		"80"
 			}
 			"damage_bonus"		"0 3 6"
 			"hp_bonus"
 			{
 				"value"		"0"
-				"special_bonus_unique_broodmother_7"		"125"
+				"special_bonus_unique_imba_broodmother_7"		"125"
 			}
 			"count"
 			{
@@ -44,7 +44,7 @@
 			"tooltip_spiderling_hp"
 			{
 				"value"		"300"
-				"special_bonus_unique_broodmother_7"		"125"
+				"special_bonus_unique_imba_broodmother_7"		"125"
 			}
 			"slow_duration"
 			{
@@ -58,7 +58,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_poison_sting"
-		"AbilityTextureName"	"broodmother_poison_sting"
+		"AbilityTextureName"		"broodmother_poison_sting"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -76,7 +76,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_spawn_spiderite"
-		"AbilityTextureName"	"broodmother_spawn_spiderite"
+		"AbilityTextureName"		"broodmother_spawn_spiderite"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilityValues"
@@ -90,7 +90,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_spin_web"
-		"AbilityTextureName"	"broodmother_spin_web"
+		"AbilityTextureName"		"broodmother_spin_web"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"AbilitySound"		"Hero_Broodmother.SpinWebCast"
@@ -110,7 +110,7 @@
 			"count"
 			{
 				"value"		"3 5 7 9"
-				"special_bonus_unique_broodmother_6"		"3"
+				"special_bonus_unique_imba_broodmother_6"		"2"
 			}
 			"health_regen"
 			{
@@ -120,12 +120,12 @@
 			"AbilityChargeRestoreTime"
 			{
 				"value"		"27"
-				"special_bonus_unique_broodmother_5"		"-7"
+				"special_bonus_unique_imba_broodmother_5"		"-5"
 			}
 			"bonus_turn_rate"		"0.2"
 			"degen"
 			{
-				"special_bonus_facet_broodmother_necrotic_webs"		"=15 =20 =25 =30"
+				"special_bonus_facet_broodmother_facets_imba_1"		"=15 =20 =25 =30"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -134,10 +134,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_spiders_milk"
-		"AbilityTextureName"	"broodmother_spiders_milk"
+		"AbilityTextureName"		"broodmother_spiders_milk"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"kill_heal_heroes"		"2"
@@ -155,7 +156,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_silken_bola"
-		"AbilityTextureName"	"broodmother_silken_bola"
+		"AbilityTextureName"		"broodmother_silken_bola"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -207,27 +208,28 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_incapacitating_bite"
-		"AbilityTextureName"	"broodmother_incapacitating_bite"
+		"AbilityTextureName"		"broodmother_incapacitating_bite"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"miss_chance"
 			{
 				"value"		"30 40 50 60"
-				"special_bonus_unique_broodmother_4"		"30"
+				"special_bonus_unique_imba_broodmother_4"		"30"
 			}
 			"bonus_movespeed"
 			{
 				"value"		"-15 -20 -25 -30"
-				"special_bonus_unique_broodmother_4"		"-30"
+				"special_bonus_unique_imba_broodmother_4"		"-30"
 			}
 			"duration"		"2.0 2.0 2.0 2.0"
 			"attack_damage"
 			{
 				"value"		"2 4 6 8"
-				"special_bonus_unique_broodmother_2"		"10"
+				"special_bonus_unique_imba_broodmother_2"		"12"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -236,7 +238,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_insatiable_hunger"
-		"AbilityTextureName"	"broodmother_insatiable_hunger"
+		"AbilityTextureName"		"broodmother_insatiable_hunger"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -266,7 +268,7 @@
 			"bat_bonus"
 			{
 				"value"		"0"
-				"special_bonus_unique_broodmother_1"		"0.3"
+				"special_bonus_unique_imba_broodmother_1"		"0.3"
 			}
 			"shard_damage_per_tick"
 			{
@@ -281,7 +283,7 @@
 			"aura_radius"
 			{
 				"value"		"0"
-				"special_bonus_facet_broodmother_feeding_frenzy"		"=800"
+				"special_bonus_facet_broodmother_facets_imba_1"		"=800"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -290,7 +292,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_sticky_snare"
-		"AbilityTextureName"	"broodmother_sticky_snare"
+		"AbilityTextureName"		"broodmother_sticky_snare"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -328,7 +330,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/broodmother/imba_broodmother_spin_web_destroy"
-		"AbilityTextureName"	"broodmother_spin_web_destroy"
+		"AbilityTextureName"		"broodmother_spin_web_destroy"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"MaxLevel"		"1"
 		"AbilityCastPoint"		"0"

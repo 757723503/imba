@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enigma/imba_enigma_malefice"
-		"AbilityTextureName"	"enigma_malefice"
+		"AbilityTextureName"		"enigma_malefice"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -31,12 +31,12 @@
 			"damage"
 			{
 				"value"		"55 70 85 100"
-				"special_bonus_unique_enigma_5"		"40"
+				"special_bonus_unique_imba_enigma_5"		"40"
 			}
 			"stun_instances"
 			{
 				"value"		"3 3 3 3"
-				"special_bonus_unique_enigma_2"		"4"
+				"special_bonus_unique_imba_enigma_2"		"4"
 			}
 			"eidolon_spawns_per_tick"
 			{
@@ -50,7 +50,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enigma/imba_enigma_demonic_conversion"
-		"AbilityTextureName"	"enigma_demonic_conversion"
+		"AbilityTextureName"		"enigma_demonic_conversion"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilitySound"		"Hero_Enigma.Demonic_Conversion"
 		"AbilityCastRange"		"400"
@@ -64,7 +64,7 @@
 			"spawn_count"
 			{
 				"value"		"3 3 3 3"
-				"special_bonus_unique_enigma"		"4"
+				"special_bonus_unique_imba_enigma"		"4"
 			}
 			"split_attack_count"		"6 6 6 6"
 			"eidelon_max_health"
@@ -77,12 +77,12 @@
 			"eidolon_bonus_damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_enigma_3"		"40"
+				"special_bonus_unique_imba_enigma_3"		"40"
 			}
 			"eidolon_bonus_attack_speed"
 			{
 				"value"		"0"
-				"special_bonus_unique_enigma_4"		"10"
+				"special_bonus_unique_imba_enigma_4"		"10"
 			}
 			"eidelon_base_movespeed"		"280 310 340 370"
 			"creep_max_level"		"4"
@@ -103,7 +103,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enigma/imba_enigma_midnight_pulse"
-		"AbilityTextureName"	"enigma_midnight_pulse"
+		"AbilityTextureName"		"enigma_midnight_pulse"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
@@ -120,7 +120,7 @@
 			"radius"
 			{
 				"value"		"600"
-				"special_bonus_unique_enigma_9"		"200"
+				"special_bonus_unique_imba_enigma_9"		"200"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage_percent"		"4 6 8 10"
@@ -136,7 +136,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enigma/imba_enigma_black_hole"
-		"AbilityTextureName"	"enigma_black_hole"
+		"AbilityTextureName"		"enigma_black_hole"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
@@ -155,7 +155,7 @@
 			"damage"
 			{
 				"value"		"100 150 200"
-				"special_bonus_unique_enigma_6"		"50"
+				"special_bonus_unique_imba_enigma_6"		"50"
 			}
 			"radius"
 			{
@@ -241,11 +241,13 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enigma/imba_enigma_gravity_well"
-		"AbilityTextureName"	"enigma_gravity_well"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
+		"AbilityTextureName"		"enigma_gravity_well"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_NONE"
-		"MaxLevel"		"1"
+		"DependentOnAbility"		"enigma_black_hole"
+		"MaxLevel"		"4"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"max_dist"
@@ -258,17 +260,18 @@
 				"value"		"200"
 				"affected_by_aoe_increase"		"1"
 			}
-			"damage_reduction"		"15"
+			"damage_reduction"		"9 11 13 15"
 		}
 	}
 	"imba_enigma_splitting_image"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enigma/imba_enigma_splitting_image"
-		"AbilityTextureName"	"enigma_splitting_image"
+		"AbilityTextureName"		"enigma_splitting_image"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"damage_threshold"		"350"
@@ -280,10 +283,12 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enigma/imba_enigma_event_horizon"
-		"AbilityTextureName"	"enigma_event_horizon"
+		"AbilityTextureName"		"enigma_event_horizon"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		"MaxLevel"		"1"
+		"MaxLevel"		"4"
+		"DependentOnAbility"		"enigma_black_hole"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"radius"
@@ -291,7 +296,7 @@
 				"value"		"600"
 				"affected_by_aoe_increase"		"1"
 			}
-			"speed_bonus"		"15"
+			"speed_bonus"		"9 11 13 15"
 			"vision_cone"		"0.08715"
 		}
 	}

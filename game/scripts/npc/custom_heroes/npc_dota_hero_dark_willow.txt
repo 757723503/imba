@@ -3,10 +3,10 @@
 	"Version"		"1"
 	"imba_dark_willow_bramble_maze"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/dark/imba_dark_willow_bramble_maze"
-		"AbilityTextureName"	"dark_willow_bramble_maze"
 		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/dark_willow/imba_dark_willow_bramble_maze"
+		"AbilityTextureName"		"dark_willow_bramble_maze"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -26,7 +26,7 @@
 			"placement_count"
 			{
 				"value"		"8"
-				"special_bonus_facet_dark_willow_thorny_thicket"		"4"
+				"special_bonus_facet_dark_willow_facets_imba_1"		"4"
 			}
 			"placement_duration"		"12"
 			"extra_brambles_placement_duration"		"4"
@@ -39,7 +39,7 @@
 			"spell_amp"
 			{
 				"value"		"0"
-				"special_bonus_facet_dark_willow_thorny_thicket"		"0"
+				"special_bonus_facet_dark_willow_facets_imba_1"		"0"
 			}
 			"latch_creation_interval"		"0.075"
 			"latch_creation_delay"		"0.1"
@@ -47,7 +47,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"22"
-				"special_bonus_unique_dark_willow_3"		"-7"
+				"special_bonus_unique_imba_dark_willow_3"		"-7"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -55,8 +55,8 @@
 	"imba_dark_willow_bedlam"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/dark/imba_dark_willow_bedlam"
-		"AbilityTextureName"	"dark_willow_bedlam"
+		"ScriptFile"		"ability/hero_ability/dark_willow/imba_dark_willow_bedlam"
+		"AbilityTextureName"		"dark_willow_bedlam"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -77,7 +77,7 @@
 			"attack_damage"
 			{
 				"value"		"70 120 170"
-				"special_bonus_unique_dark_willow_4"		"30"
+				"special_bonus_unique_imba_dark_willow_4"		"30"
 			}
 			"attack_interval"		"0.25"
 			"attack_radius"
@@ -96,7 +96,7 @@
 			"target_count"
 			{
 				"value"		"1"
-				"special_bonus_unique_dark_willow_bedlam_targets"		"2"
+				"special_bonus_unique_imba_dark_willow_bedlam_targets"		"2"
 			}
 			"travel_speed"		"1800"
 			"unit_targetable"
@@ -106,15 +106,15 @@
 			"damage_reduction_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_dark_willow_clandestine_protector"		"20"
+				"special_bonus_facet_dark_willow_facets_imba_1"		"20"
 			}
 		}
 	}
 	"imba_dark_willow_terrorize"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/dark/imba_dark_willow_terrorize"
-		"AbilityTextureName"	"dark_willow_terrorize"
+		"ScriptFile"		"ability/hero_ability/dark_willow/imba_dark_willow_terrorize"
+		"AbilityTextureName"		"dark_willow_terrorize"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -143,15 +143,15 @@
 			"telegraph_to_enemies"		"0"
 			"impact_damage"
 			{
-				"special_bonus_unique_dark_willow_2"		"500"
+				"special_bonus_unique_imba_dark_willow_2"		"500"
 			}
 		}
 	}
 	"imba_dark_willow_shadow_realm"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/dark/imba_dark_willow_shadow_realm"
-		"AbilityTextureName"	"dark_willow_shadow_realm"
+		"ScriptFile"		"ability/hero_ability/dark_willow/imba_dark_willow_shadow_realm"
+		"AbilityTextureName"		"dark_willow_shadow_realm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -166,12 +166,12 @@
 			"AbilityCooldown"
 			{
 				"value"		"22 20 18 16"
-				"special_bonus_unique_dark_willow_5"		"-2"
+				"special_bonus_unique_imba_dark_willow_5"		"-2"
 			}
 			"duration"
 			{
 				"value"		"5"
-				"special_bonus_unique_dark_willow_1"		"1.5"
+				"special_bonus_unique_imba_dark_willow_1"		"1.5"
 			}
 			"fade_time"		"0.3"
 			"damage"		"120 200 280 360"
@@ -185,26 +185,26 @@
 			"aura_radius"
 			{
 				"value"		"0"
-				"special_bonus_facet_dark_willow_throwing_shade"		"=600"
+				"special_bonus_facet_dark_willow_facets_imba_1"		"=600"
 				"affected_by_aoe_increase"		"1"
 			}
 			"aura_linger"
 			{
 				"value"		"0"
-				"special_bonus_facet_dark_willow_throwing_shade"		"=0.75"
+				"special_bonus_facet_dark_willow_facets_imba_1"		"=0.75"
 			}
 			"aura_damage_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_dark_willow_throwing_shade"		"=30"
+				"special_bonus_facet_dark_willow_facets_imba_1"		"=30"
 			}
 		}
 	}
 	"imba_dark_willow_cursed_crown"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/dark/imba_dark_willow_cursed_crown"
-		"AbilityTextureName"	"dark_willow_cursed_crown"
+		"ScriptFile"		"ability/hero_ability/dark_willow/imba_dark_willow_cursed_crown"
+		"AbilityTextureName"		"dark_willow_cursed_crown"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -221,13 +221,13 @@
 			"stun_duration"
 			{
 				"value"		"1.2 1.6 2.0 2.4"
-				"special_bonus_unique_dark_willow_6"		"0.5"
+				"special_bonus_unique_imba_dark_willow_6"		"0.5"
 			}
 			"stun_radius"
 			{
 				"value"		"360"
 				"affected_by_aoe_increase"		"1"
-				"special_bonus_unique_dark_willow_7"		"150"
+				"special_bonus_unique_imba_dark_willow_7"		"150"
 			}
 			"shard_delay_reduction"
 			{
@@ -250,12 +250,13 @@
 	"imba_dark_willow_pixie_dust"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/dark/imba_dark_willow_pixie_dust"
-		"AbilityTextureName"	"dark_willow_pixie_dust"
+		"ScriptFile"		"ability/hero_ability/dark_willow/imba_dark_willow_pixie_dust"
+		"AbilityTextureName"		"dark_willow_pixie_dust"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_NONE"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"hp_regen"		"100"

@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_land_mines"
-		"AbilityTextureName"	"techies_land_mines"
+		"AbilityTextureName"		"techies_land_mines"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -33,7 +33,7 @@
 			"activation_delay"
 			{
 				"value"		"1"
-				"special_bonus_unique_techies_4"		"-0.8"
+				"special_bonus_unique_imba_techies_4"		"-0.8"
 			}
 			"cast_range_scepter_bonus"
 			{
@@ -43,7 +43,7 @@
 			"AbilityChargeRestoreTime"
 			{
 				"value"		"19 17 15"
-				"special_bonus_unique_techies_3"		"-3"
+				"special_bonus_unique_imba_techies_3"		"-3"
 			}
 			"outer_damage"		"50"
 			"min_distance"		"150"
@@ -57,7 +57,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_stasis_trap"
-		"AbilityTextureName"	"techies_stasis_trap"
+		"AbilityTextureName"		"techies_stasis_trap"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_AOE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -108,7 +108,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_suicide"
-		"AbilityTextureName"	"techies_suicide"
+		"AbilityTextureName"		"techies_suicide"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -129,17 +129,21 @@
 			"damage"
 			{
 				"value"		"200 300 400 500"
-				"special_bonus_unique_techies"		"200"
+				"special_bonus_unique_imba_techies"		"200"
 			}
 			"stun_duration"		"0.8 1 1.2 1.4"
 			"hp_cost"
 			{
 				"value"		"20"
+				"DamageTypeTooltip"		"DAMAGE_TYPE_PURE"
+				"CalculateSpellDamageTooltip"		"0"
 			}
 			"hp_dmg"
 			{
 				"value"		"0"
-				"special_bonus_facet_techies_spleens_secret_sauce"		"=15"
+				"special_bonus_facet_techies_facets_imba_1"		"=15"
+				"DamageTypeTooltip"		"DAMAGE_TYPE_PURE"
+				"CalculateSpellDamageTooltip"		"0"
 			}
 			"duration"		"0.75"
 		}
@@ -149,7 +153,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_sticky_bomb"
-		"AbilityTextureName"	"techies_sticky_bomb"
+		"AbilityTextureName"		"techies_sticky_bomb"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -168,7 +172,7 @@
 			"radius"
 			{
 				"value"		"300"
-				"special_bonus_unique_techies_2"		"125"
+				"special_bonus_unique_imba_techies_2"		"125"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage"
@@ -181,7 +185,7 @@
 			"explosion_radius"
 			{
 				"value"		"350"
-				"special_bonus_unique_techies_2"		"125"
+				"special_bonus_unique_imba_techies_2"		"125"
 				"affected_by_aoe_increase"		"1"
 			}
 			"speed"		"500"
@@ -194,7 +198,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_reactive_tazer"
-		"AbilityTextureName"	"techies_reactive_tazer"
+		"AbilityTextureName"		"techies_reactive_tazer"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -230,7 +234,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_reactive_tazer_stop"
-		"AbilityTextureName"	"techies_reactive_tazer_stop"
+		"AbilityTextureName"		"techies_reactive_tazer_stop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -240,7 +244,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_remote_mines"
-		"AbilityTextureName"	"techies_remote_mines"
+		"AbilityTextureName"		"techies_remote_mines"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
@@ -312,7 +316,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_focused_detonate"
-		"AbilityTextureName"	"techies_focused_detonate"
+		"AbilityTextureName"		"techies_focused_detonate"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastRange"		"0"
@@ -331,7 +335,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_remote_mines_self_detonate"
-		"AbilityTextureName"	"techies_remote_mines_self_detonate"
+		"AbilityTextureName"		"techies_remote_mines_self_detonate"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastRange"		"0"
@@ -349,7 +353,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_minefield_sign"
-		"AbilityTextureName"	"techies_minefield_sign"
+		"AbilityTextureName"		"techies_minefield_sign"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_NONE"
 		"Innate"		"1"
@@ -398,9 +402,10 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_squees_scope"
-		"AbilityTextureName"	"techies_squees_scope"
+		"AbilityTextureName"		"techies_squees_scope"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"attack_range_tooltip"		"1"
@@ -410,7 +415,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/techies/imba_techies_spoons_stash"
-		"AbilityTextureName"	"techies_spoons_stash"
+		"AbilityTextureName"		"techies_spoons_stash"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 	}

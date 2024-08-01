@@ -4,8 +4,8 @@
 	"imba_bounty_hunter_shuriken_toss"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_shuriken_toss"
-		"AbilityTextureName"	"bounty_hunter_shuriken_toss"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_shuriken_toss"
+		"AbilityTextureName"		"bounty_hunter_shuriken_toss"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"FightRecapLevel"		"1"
 		"AbilitySound"		"Hero_BountyHunter.Shuriken"
@@ -24,7 +24,7 @@
 			"bonus_damage"
 			{
 				"value"		"100 170 240 310"
-				"special_bonus_unique_bounty_hunter_2"		"275"
+				"special_bonus_unique_imba_bounty_hunter_2"		"250"
 			}
 			"speed"		"1000 1000 1000 1000"
 			"bounce_aoe"
@@ -34,11 +34,11 @@
 			"slow_duration"
 			{
 				"value"		"0.35"
-				"special_bonus_unique_bounty_hunter_5"		"0.65"
+				"special_bonus_unique_imba_bounty_hunter_5"		"0.6"
 			}
 			"scepter_cast_range"
 			{
-				"value"		"700"
+				"value"		"600"
 				"RequiresScepter"		"1"
 			}
 			"scepter_cooldown"
@@ -48,11 +48,11 @@
 			}
 			"passthrough_damage"
 			{
-				"special_bonus_facet_bounty_hunter_shuriken"		"1"
+				"special_bonus_facet_bounty_hunter_facets_imba_1"		"1"
 			}
 			"passthrough_width"
 			{
-				"special_bonus_facet_bounty_hunter_shuriken"		"175"
+				"special_bonus_facet_bounty_hunter_facets_imba_1"		"175"
 				"affected_by_aoe_increase"		"1"
 			}
 			"cast_range"		"375 425 475 525"
@@ -63,9 +63,9 @@
 	"imba_bounty_hunter_jinada"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_jinada"
-		"AbilityTextureName"	"bounty_hunter_jinada"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK | DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_jinada"
+		"AbilityTextureName"		"bounty_hunter_jinada"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilitySound"		"Hero_BountyHunter.Jinada"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -74,22 +74,23 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityCastRange"		"150"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"bonus_damage"
 			{
 				"value"		"60 100 140 180"
-				"special_bonus_unique_bounty_hunter_4"		"30"
+				"special_bonus_unique_imba_bounty_hunter_4"		"30"
 			}
 			"gold_steal"
 			{
 				"value"		"12 20 28 36"
-				"special_bonus_unique_bounty_hunter"		"50"
+				"special_bonus_unique_imba_bounty_hunter"		"50"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"9 7 5 3"
-				"special_bonus_unique_bounty_hunter_jinada_no_cooldown"		"-100%"
+				"special_bonus_unique_imba_bounty_hunter_jinada_no_cooldown"		"-100%"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -97,8 +98,8 @@
 	"imba_bounty_hunter_wind_walk"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_wind_walk"
-		"AbilityTextureName"	"bounty_hunter_wind_walk"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_wind_walk"
+		"AbilityTextureName"		"bounty_hunter_wind_walk"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -136,7 +137,7 @@
 			"damage_reduction_pct"
 			{
 				"value"		"0"
-				"special_bonus_unique_bounty_hunter_9"		"30"
+				"special_bonus_unique_imba_bounty_hunter_9"		"30"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -144,8 +145,8 @@
 	"imba_bounty_hunter_wind_walk_ally"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_wind_walk_ally"
-		"AbilityTextureName"	"bounty_hunter_wind_walk_ally"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_wind_walk_ally"
+		"AbilityTextureName"		"bounty_hunter_wind_walk_ally"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -168,8 +169,8 @@
 	"imba_bounty_hunter_track"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_track"
-		"AbilityTextureName"	"bounty_hunter_track"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_track"
+		"AbilityTextureName"		"bounty_hunter_track"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
@@ -194,12 +195,12 @@
 			"bonus_gold_self"
 			{
 				"value"		"130 225 320"
-				"special_bonus_unique_bounty_hunter_3"		"45"
+				"special_bonus_unique_imba_bounty_hunter_3"		"45"
 			}
 			"bonus_gold"
 			{
 				"value"		"40 80 120"
-				"special_bonus_unique_bounty_hunter_3"		"45"
+				"special_bonus_unique_imba_bounty_hunter_3"		"45"
 			}
 			"duration"		"25"
 			"gold_steal"		"0.3 0.4 0.5"
@@ -209,8 +210,8 @@
 	"imba_bounty_hunter_lookout"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_lookout"
-		"AbilityTextureName"	"bounty_hunter_lookout"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_lookout"
+		"AbilityTextureName"		"bounty_hunter_lookout"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -233,13 +234,14 @@
 	"imba_bounty_hunter_cutpurse"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_cutpurse"
-		"AbilityTextureName"	"bounty_hunter_cutpurse"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_cutpurse"
+		"AbilityTextureName"		"bounty_hunter_cutpurse"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"DependentOnAbility"		"bounty_hunter_track"
 		"MaxLevel"		"4"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"gold_steal"		"4 8 12 16"
@@ -248,14 +250,14 @@
 	"imba_bounty_hunter_big_game_hunter"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/bounty/imba_bounty_hunter_big_game_hunter"
-		"AbilityTextureName"	"bounty_hunter_big_game_hunter"
+		"ScriptFile"		"ability/hero_ability/bounty_hunter/imba_bounty_hunter_big_game_hunter"
+		"AbilityTextureName"		"bounty_hunter_big_game_hunter"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"Innate"		"1"
 		"AbilityValues"
 		{
-			"bonus_killstreak_bounty"		"10"
+			"bonus_killstreak_bounty"		"20"
 		}
 	}
 	"special_bonus_unique_imba_bounty_hunter"

@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/viper/imba_viper_poison_attack"
-		"AbilityTextureName"	"viper_poison_attack"
+		"AbilityTextureName"		"viper_poison_attack"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -25,17 +25,17 @@
 			"damage"
 			{
 				"value"		"4 8 12 16"
-				"special_bonus_unique_viper_7"		"+20%"
+				"special_bonus_unique_imba_viper_7"		"+20%"
 			}
 			"movement_speed"
 			{
 				"value"		"3 6 9 12"
-				"special_bonus_unique_viper_7"		"+20%"
+				"special_bonus_unique_imba_viper_7"		"+20%"
 			}
 			"magic_resistance"
 			{
 				"value"		"4 6 8 10"
-				"special_bonus_unique_viper_4"		"4"
+				"special_bonus_unique_imba_viper_4"		"4"
 			}
 			"max_stacks"		"6"
 			"bonus_range"		"25"
@@ -56,12 +56,12 @@
 			}
 			"expiration_damage_radius"
 			{
-				"special_bonus_facet_viper_poison_burst"		"=300"
+				"special_bonus_facet_viper_facets_imba_1"		"=300"
 				"affected_by_aoe_increase"		"1"
 			}
 			"accumulated_damage_explosion_pct"
 			{
-				"special_bonus_facet_viper_poison_burst"		"=100"
+				"special_bonus_facet_viper_facets_imba_1"		"=100"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -70,7 +70,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/viper/imba_viper_nethertoxin"
-		"AbilityTextureName"	"viper_nethertoxin"
+		"AbilityTextureName"		"viper_nethertoxin"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -83,12 +83,12 @@
 			"min_damage"
 			{
 				"value"		"15 20 25 30"
-				"special_bonus_unique_viper_3"		"40"
+				"special_bonus_unique_imba_viper_3"		"40"
 			}
 			"max_damage"
 			{
 				"value"		"35 65 95 125"
-				"special_bonus_unique_viper_3"		"40"
+				"special_bonus_unique_imba_viper_3"		"40"
 			}
 			"max_duration"		"4"
 			"radius"
@@ -106,33 +106,31 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/viper/imba_viper_corrosive_skin"
-		"AbilityTextureName"	"viper_corrosive_skin"
+		"AbilityTextureName"		"viper_corrosive_skin"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilitySound"		"hero_viper.CorrosiveSkin"
-		"MaxLevel"		"5"
-		"RequiredLevel"		"-1"
-		"Innate"		"1"
 		"HasScepterUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityModifierSupportBonus"		"10"
 		"AbilityValues"
 		{
 			"duration"		"4"
 			"bonus_attack_speed"
 			{
-				"value"		"3 6 14 22 30"
-				"special_bonus_unique_viper_6"		"20"
+				"value"		"8 16 24 32"
+				"special_bonus_unique_imba_viper_6"		"20"
 			}
 			"bonus_magic_resistance"
 			{
-				"value"		"5 10 15 20 25"
+				"value"		"10 15 20 25"
 			}
 			"damage"
 			{
-				"value"		"3 6 14 22 30"
-				"special_bonus_unique_viper_1"		"20"
+				"value"		"8 16 24 32"
+				"special_bonus_unique_imba_viper_1"		"20"
 			}
 			"max_range"
 			{
@@ -153,51 +151,43 @@
 			"nethertoxin_bonus_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_viper_caustic_bath"		"=100"
+				"special_bonus_facet_viper_facets_imba_1"		"=100"
 			}
 			"nethertoxin_bonus_pct_max_duration_tooltip"
 			{
 				"value"		"0"
-				"special_bonus_facet_viper_caustic_bath"		"=4.0"
+				"special_bonus_facet_viper_facets_imba_1"		"=4.0"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
-	"imba_viper_innate_corrosive_skin_vile"
+	"imba_viper_predator"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/viper/imba_viper_innate_corrosive_skin_vile"
-		"AbilityTextureName"	"viper_innate_corrosive_skin_vile"
+		"ScriptFile"		"ability/hero_ability/viper/imba_viper_predator"
+		"AbilityTextureName"		"viper_predator"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"MaxLevel"		"1"
+		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"additional_duration"		"1"
-		}
-	}
-	"imba_viper_innate_corrosive_skin_virulent"
-	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/viper/imba_viper_innate_corrosive_skin_virulent"
-		"AbilityTextureName"	"viper_innate_corrosive_skin_virulent"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
-		"MaxLevel"		"1"
-		"AbilityValues"
-		{
-			"bonus_status_resistance"		"3"
+			"damage_base"		"0.25"
+			"damage_per_level"		"0.05"
+			"total_damage_per_missing_health"
+			{
+				"dynamic_value"		"true"
+			}
 		}
 	}
 	"imba_viper_viper_strike"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/viper/imba_viper_viper_strike"
-		"AbilityTextureName"	"viper_viper_strike"
+		"AbilityTextureName"		"viper_viper_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -218,19 +208,19 @@
 			"damage"
 			{
 				"value"		"70 110 150"
-				"special_bonus_unique_viper_2"		"80"
+				"special_bonus_unique_imba_viper_2"		"80"
 			}
 			"bonus_movement_speed"		"-60 -70 -80"
 			"bonus_attack_speed"		"-80 -120 -160"
 			"AbilityCooldown"
 			{
 				"value"		"50 40 30"
-				"special_bonus_unique_viper_8"		"-50%"
+				"special_bonus_unique_imba_viper_8"		"-50%"
 			}
 			"AbilityManaCost"
 			{
 				"value"		"100 150 200"
-				"special_bonus_unique_viper_8"		"-50%"
+				"special_bonus_unique_imba_viper_8"		"-50%"
 			}
 			"projectile_speed"		"1500"
 			"max_charges"		"2"
@@ -245,7 +235,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/viper/imba_viper_nose_dive"
-		"AbilityTextureName"	"viper_nose_dive"
+		"AbilityTextureName"		"viper_nose_dive"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"

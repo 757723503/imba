@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_mark_of_the_beast"
-		"AbilityTextureName"	"beastmaster_mark_of_the_beast"
+		"AbilityTextureName"		"beastmaster_mark_of_the_beast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -31,7 +31,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_wild_axes"
-		"AbilityTextureName"	"beastmaster_wild_axes"
+		"AbilityTextureName"		"beastmaster_wild_axes"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -42,7 +42,7 @@
 		"AbilitySound"		"Hero_Beastmaster.Wild_Axes"
 		"AbilityCastRange"		"1500"
 		"AbilityCastPoint"		"0.3"
-		"AbilityManaCost"		"50"
+		"AbilityManaCost"		"50 55 60 65"
 		"AbilityValues"
 		{
 			"radius"
@@ -65,12 +65,12 @@
 			"damage_amp"
 			{
 				"value"		"6 8 10 12"
-				"special_bonus_unique_beastmaster_9"		"2"
+				"special_bonus_unique_imba_beastmaster_9"		"2"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"8"
-				"special_bonus_unique_beastmaster_wild_axe_cooldown"		"-8"
+				"special_bonus_unique_imba_beastmaster_wild_axe_cooldown"		"-8"
 			}
 			"min_throw_duration"		"0.4"
 			"max_throw_duration"		"1"
@@ -81,7 +81,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_call_of_the_wild"
-		"AbilityTextureName"	"beastmaster_call_of_the_wild"
+		"AbilityTextureName"		"beastmaster_call_of_the_wild"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilitySound"		"Hero_Beastmaster.Call.Boar"
 	}
@@ -89,7 +89,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_call_of_the_wild_boar"
-		"AbilityTextureName"	"beastmaster_call_of_the_wild_boar"
+		"AbilityTextureName"		"beastmaster_call_of_the_wild_boar"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"AbilitySound"		"Hero_Beastmaster.Call.Boar"
@@ -104,13 +104,13 @@
 			"boar_total_damage_tooltip"
 			{
 				"value"		"25 40 55 70"
-				"special_bonus_unique_beastmaster_2"		"30"
+				"special_bonus_unique_imba_beastmaster_2"		"30"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 			"boar_bonus_damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_beastmaster_2"		"30"
+				"special_bonus_unique_imba_beastmaster_2"		"30"
 			}
 			"boar_base_xp_bounty"		"60 70 80 90"
 			"boar_base_movespeed"		"320 330 340 350"
@@ -123,7 +123,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_hawk_dive"
-		"AbilityTextureName"	"beastmaster_hawk_dive"
+		"AbilityTextureName"		"beastmaster_hawk_dive"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -142,7 +142,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_hawk_perch"
-		"AbilityTextureName"	"beastmaster_hawk_perch"
+		"AbilityTextureName"		"beastmaster_hawk_perch"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_TREE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -169,7 +169,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_call_of_the_wild_hawk"
-		"AbilityTextureName"	"beastmaster_call_of_the_wild_hawk"
+		"AbilityTextureName"		"beastmaster_call_of_the_wild_hawk"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -205,7 +205,7 @@
 			"dive_damage"
 			{
 				"value"		"60 90 120 150"
-				"special_bonus_unique_beastmaster_2"		"30"
+				"special_bonus_unique_imba_beastmaster_2"		"30"
 			}
 			"dive_root_duration"		"0.25 0.5 0.75 1.0"
 			"roaming_radius"		"280"
@@ -220,7 +220,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_call_of_the_wild_hawk_attack"
-		"AbilityTextureName"	"beastmaster_call_of_the_wild_hawk_attack"
+		"AbilityTextureName"		"beastmaster_call_of_the_wild_hawk_attack"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -239,7 +239,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_hawk_invisibility"
-		"AbilityTextureName"	"beastmaster_hawk_invisibility"
+		"AbilityTextureName"		"beastmaster_hawk_invisibility"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"AbilityValues"
@@ -252,11 +252,12 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_boar_poison"
-		"AbilityTextureName"	"beastmaster_boar_poison"
+		"AbilityTextureName"		"beastmaster_boar_poison"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"attack_speed"		"-10 -18 -26 -34"
@@ -269,7 +270,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_greater_boar_poison"
-		"AbilityTextureName"	"beastmaster_greater_boar_poison"
+		"AbilityTextureName"		"beastmaster_greater_boar_poison"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
@@ -285,16 +286,14 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_inner_beast"
-		"AbilityTextureName"	"beastmaster_inner_beast"
+		"AbilityTextureName"		"beastmaster_inner_beast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
+		"IsBreakable"		"1"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCastGestureSlot"		"DEFAULT"
-		"Innate"		"1"
-		"RequiredLevel"		"-1"
-		"MaxLevel"		"5"
 		"AbilityValues"
 		{
 			"radius"
@@ -304,50 +303,50 @@
 			}
 			"bonus_attack_speed"
 			{
-				"value"		"5 10 25 40 55"
-				"special_bonus_unique_beastmaster_4"		"10"
+				"value"		"15 30 45 60"
+				"special_bonus_unique_imba_beastmaster_4"		"10"
 			}
 			"attack_speed_per_unit"
 			{
 				"value"		"0"
-				"special_bonus_facet_beastmaster_wild_hunt"		"1 2 3 4 5"
+				"special_bonus_facet_beastmaster_facets_imba_1"		"2 3 4 5"
 			}
 			"berserk_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_beastmaster_beast_mode"		"6"
+				"special_bonus_facet_beastmaster_facets_imba_1"		"6"
 			}
 			"berserk_bonus_attack_speed"
 			{
 				"value"		"0"
-				"special_bonus_facet_beastmaster_beast_mode"		"10 20 30 40 50"
+				"special_bonus_facet_beastmaster_facets_imba_1"		"20 30 40 50"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"0"
-				"special_bonus_facet_beastmaster_beast_mode"		"=20"
+				"special_bonus_facet_beastmaster_facets_imba_1"		"=20"
 			}
 			"AbilityManaCost"
 			{
 				"value"		"0"
-				"special_bonus_facet_beastmaster_beast_mode"		"=35"
+				"special_bonus_facet_beastmaster_facets_imba_1"		"=35"
 			}
 			"magic_resist"
 			{
-				"special_bonus_unique_beastmaster_3"		"5"
+				"special_bonus_unique_imba_beastmaster_3"		"5"
 			}
 			"bonus_damage"
 			{
-				"special_bonus_unique_beastmaster_2"		"30"
+				"special_bonus_unique_imba_beastmaster_2"		"30"
 			}
 		}
 	}
 	"imba_beastmaster_primal_roar"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_primal_roar"
-		"AbilityTextureName"	"beastmaster_primal_roar"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"beastmaster_primal_roar"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -397,7 +396,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"90 75 60"
-				"special_bonus_unique_beastmaster_7"		"-30"
+				"special_bonus_unique_imba_beastmaster_7"		"-30"
 			}
 		}
 	}
@@ -405,7 +404,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_drums_of_slom"
-		"AbilityTextureName"	"beastmaster_drums_of_slom"
+		"AbilityTextureName"		"beastmaster_drums_of_slom"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -414,6 +413,7 @@
 		"AbilitySound"		"Hero_ElderTitan.EchoStomp"
 		"IsGrantedByScepter"		"1"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityCastPoint"		"0"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_5"
 		"AbilityValues"
@@ -425,11 +425,11 @@
 			}
 			"max_stacks"		"20"
 			"stack_decay_time"		"1"
-			"min_drum_hit_interval"		"0.4"
+			"min_drum_hit_interval"		"0.5"
 			"max_drum_hit_interval"		"3"
 			"base_damage"
 			{
-				"value"		"90"
+				"value"		"85"
 				"CalculateSpellDamageTooltip"		"1"
 			}
 			"heal_pct"		"25"
@@ -439,6 +439,21 @@
 				"value"		"1200"
 				"affected_by_aoe_increase"		"1"
 			}
+		}
+	}
+	"imba_beastmaster_rugged"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/beastmaster/imba_beastmaster_rugged"
+		"AbilityTextureName"		"beastmaster_rugged"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"damage_block_pct_fifty_tooltip"		"50"
+			"damage_block_pct_vs_creeps"		"100"
 		}
 	}
 	"special_bonus_unique_imba_beastmaster_2"

@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/puck/imba_puck_illusory_orb"
-		"AbilityTextureName"	"puck_illusory_orb"
+		"AbilityTextureName"		"puck_illusory_orb"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -25,7 +25,7 @@
 			"orb_speed"
 			{
 				"value"		"550"
-				"special_bonus_facet_puck_curveball"		"200"
+				"special_bonus_facet_puck_facets_imba_1"		"200"
 			}
 			"orb_vision"
 			{
@@ -36,7 +36,7 @@
 			"damage"
 			{
 				"value"		"75 150 225 300"
-				"special_bonus_unique_puck_orb_damage"		"50"
+				"special_bonus_unique_imba_puck_orb_damage"		"50"
 			}
 			"AbilityCooldown"
 			{
@@ -46,42 +46,37 @@
 			"curve_orb"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"=1"
+				"special_bonus_facet_puck_facets_imba_1"		"=1"
 			}
 			"curve_orb_duration_multiplier"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"=100"
+				"special_bonus_facet_puck_facets_imba_1"		"=100"
 			}
 			"curve_orb_max_acceleration"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"=0.0015"
+				"special_bonus_facet_puck_facets_imba_1"		"=0.0015"
 			}
 			"curve_orb_pullback_bonus_launch_speed"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"0.25"
+				"special_bonus_facet_puck_facets_imba_1"		"0.25"
 			}
 			"curve_strength"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"0.6"
-			}
-			"orb_particle_offset_z"
-			{
-				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"80"
+				"special_bonus_facet_puck_facets_imba_1"		"0.6"
 			}
 			"vector_reticle_distance"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"300"
+				"special_bonus_facet_puck_facets_imba_1"		"200"
 			}
 			"vector_reticle_radius"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_curveball"		"50"
+				"special_bonus_facet_puck_facets_imba_1"		"0"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -90,7 +85,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/puck/imba_puck_ethereal_jaunt"
-		"AbilityTextureName"	"puck_ethereal_jaunt"
+		"AbilityTextureName"		"puck_ethereal_jaunt"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilitySound"		"Hero_Puck.EtherealJaunt"
 		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
@@ -100,10 +95,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/puck/imba_puck_puckish"
-		"AbilityTextureName"	"puck_puckish"
+		"AbilityTextureName"		"puck_puckish"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Innate"		"1"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"mana_restore_pct"		"2"
@@ -115,7 +111,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/puck/imba_puck_waning_rift"
-		"AbilityTextureName"	"puck_waning_rift"
+		"AbilityTextureName"		"puck_waning_rift"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -130,53 +126,53 @@
 			"radius"
 			{
 				"value"		"400"
-				"special_bonus_unique_puck_rift_radius"		"300"
+				"special_bonus_unique_imba_puck_rift_radius"		"300"
 				"affected_by_aoe_increase"		"1"
 			}
 			"silence_duration"
 			{
 				"value"		"2.0 2.5 3.0 3.5"
-				"special_bonus_unique_puck_7"		"1"
+				"special_bonus_unique_imba_puck_7"		"1.25"
 			}
 			"damage"
 			{
 				"value"		"60 120 180 240"
-				"special_bonus_unique_puck_6"		"60"
+				"special_bonus_unique_imba_puck_6"		"60"
 			}
 			"max_distance"
 			{
 				"value"		"400"
-				"special_bonus_unique_puck_rift_radius"		"300"
+				"special_bonus_unique_imba_puck_rift_radius"		"300"
 			}
 			"push_pull_enabled"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_jostling_rift"		"=1"
+				"special_bonus_facet_puck_facets_imba_1"		"=1"
 			}
 			"knock_distance"
 			{
 				"value"		"0"
 				"affected_by_aoe_increase"		"1"
-				"special_bonus_facet_puck_jostling_rift"		"+75 +100 +125 +150"
+				"special_bonus_facet_puck_facets_imba_1"		"+75 +100 +125 +150"
 				"RequiresFacet"		"puck_jostling_rift"
 			}
 			"knock_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_jostling_rift"		"0.3"
+				"special_bonus_facet_puck_facets_imba_1"		"0.3"
 				"RequiresFacet"		"puck_jostling_rift"
 			}
 			"pull_distance"
 			{
 				"value"		"0"
 				"affected_by_aoe_increase"		"1"
-				"special_bonus_facet_puck_jostling_rift"		"+75 +100 +125 +150"
+				"special_bonus_facet_puck_facets_imba_1"		"+75 +100 +125 +150"
 				"RequiresFacet"		"puck_jostling_rift"
 			}
 			"pull_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_puck_jostling_rift"		"0.3"
+				"special_bonus_facet_puck_facets_imba_1"		"0.3"
 				"RequiresFacet"		"puck_jostling_rift"
 			}
 		}
@@ -186,7 +182,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/puck/imba_puck_phase_shift"
-		"AbilityTextureName"	"puck_phase_shift"
+		"AbilityTextureName"		"puck_phase_shift"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilitySound"		"Hero_Puck.Phase_Shift"
 		"HasShardUpgrade"		"1"
@@ -217,7 +213,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/puck/imba_puck_dream_coil"
-		"AbilityTextureName"	"puck_dream_coil"
+		"AbilityTextureName"		"puck_dream_coil"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -230,18 +226,22 @@
 		"AbilityCastRange"		"750"
 		"AbilityCastPoint"		"0.1 0.1 0.1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_5"
-		"AbilityCooldown"		"75"
 		"AbilityManaCost"		"100 150 200"
 		"AbilityModifierSupportValue"		"0.5"
 		"AbilityValues"
 		{
+			"AbilityCooldown"
+			{
+				"value"		"75"
+				"special_bonus_unique_imba_puck"		"-10"
+			}
 			"coil_duration"		"6"
 			"coil_break_radius"		"600"
 			"stun_duration"		"0.5"
 			"coil_initial_damage"
 			{
 				"value"		"175 250 325"
-				"special_bonus_unique_puck_coil_damage"		"150"
+				"special_bonus_unique_imba_puck_coil_damage"		"200"
 			}
 			"coil_stun_duration"
 			{
@@ -250,7 +250,7 @@
 			"coil_break_damage"
 			{
 				"value"		"200 300 400"
-				"special_bonus_unique_puck_coil_damage"		"175"
+				"special_bonus_unique_imba_puck_coil_damage"		"200"
 			}
 			"coil_radius"
 			{
@@ -278,11 +278,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ad_linked_abilities"		"puck_dream_coil"
-		"AbilityValues"
-		{
-			"value"		"10"
-		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_puck_2"
 	{

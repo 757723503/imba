@@ -4,8 +4,8 @@
 	"imba_arc_warden_scepter"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/arc/imba_arc_warden_scepter"
-		"AbilityTextureName"	"arc_warden_scepter"
+		"ScriptFile"		"ability/hero_ability/arc_warden/imba_arc_warden_scepter"
+		"AbilityTextureName"		"arc_warden_scepter"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"FightRecapLevel"		"1"
 		"MaxLevel"		"1"
@@ -31,8 +31,8 @@
 	"imba_arc_warden_flux"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/arc/imba_arc_warden_flux"
-		"AbilityTextureName"	"arc_warden_flux"
+		"ScriptFile"		"ability/hero_ability/arc_warden/imba_arc_warden_flux"
+		"AbilityTextureName"		"arc_warden_flux"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -49,7 +49,7 @@
 			"duration"
 			{
 				"value"		"6"
-				"special_bonus_unique_arc_warden_4"		"2"
+				"special_bonus_unique_imba_arc_warden_4"		"2"
 			}
 			"search_radius"		"225"
 			"think_interval"		"0.5"
@@ -60,7 +60,7 @@
 			}
 			"move_speed_slow_pct"
 			{
-				"value"		"14 21 28 35"
+				"value"		"15 22 30 39"
 				"RequiresFacet"		"arc_warden_order"
 			}
 			"tempest_damage_per_second"
@@ -70,13 +70,18 @@
 			}
 			"tempest_move_speed_slow_pct"
 			{
-				"value"		"6 10 14 18"
+				"value"		"5 8 11 14"
 				"RequiresFacet"		"arc_warden_disorder"
 			}
 			"AbilityCastRange"
 			{
 				"value"		"500 600 700 800"
-				"special_bonus_unique_arc_warden_5"		"200"
+				"special_bonus_unique_imba_arc_warden_5"		"200"
+			}
+			"applies_silence"
+			{
+				"value"		"0"
+				"special_bonus_unique_imba_arc_warden_flux_silences"		"1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -84,8 +89,8 @@
 	"imba_arc_warden_magnetic_field"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/arc/imba_arc_warden_magnetic_field"
-		"AbilityTextureName"	"arc_warden_magnetic_field"
+		"ScriptFile"		"ability/hero_ability/arc_warden/imba_arc_warden_magnetic_field"
+		"AbilityTextureName"		"arc_warden_magnetic_field"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
 		"FightRecapLevel"		"1"
@@ -123,7 +128,7 @@
 			"attack_speed_bonus"
 			{
 				"value"		"30 60 90 120"
-				"special_bonus_unique_arc_warden_3"		"20"
+				"special_bonus_unique_imba_arc_warden_3"		"20"
 				"RequiresFacet"		"arc_warden_order"
 			}
 			"evasion_chance"
@@ -144,31 +149,31 @@
 			"attack_damage_bonus"
 			{
 				"value"		"20 40 60 80"
-				"special_bonus_unique_arc_warden_3"		"25"
+				"special_bonus_unique_imba_arc_warden_3"		"25"
 				"RequiresFacet"		"arc_warden_disorder"
 			}
 			"attack_magic_damage"
 			{
 				"value"		"20 40 60 80"
-				"special_bonus_unique_arc_warden_3"		"20"
+				"special_bonus_unique_imba_arc_warden_3"		"20"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"20 19 18 17"
-				"special_bonus_unique_arc_warden_9"		"-7"
+				"special_bonus_unique_imba_arc_warden_9"		"-7"
 			}
 			"affects_buildings"
 			{
 				"value"		"0"
-				"special_bonus_unique_arc_warden_7"		"=1"
+				"special_bonus_unique_imba_arc_warden_7"		"=1"
 			}
 		}
 	}
 	"imba_arc_warden_spark_wraith"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/arc/imba_arc_warden_spark_wraith"
-		"AbilityTextureName"	"arc_warden_spark_wraith"
+		"ScriptFile"		"ability/hero_ability/arc_warden/imba_arc_warden_spark_wraith"
+		"AbilityTextureName"		"arc_warden_spark_wraith"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -196,7 +201,7 @@
 			"spark_damage_base"
 			{
 				"value"		"100 180 260 340"
-				"special_bonus_unique_arc_warden"		"+35%"
+				"special_bonus_unique_imba_arc_warden"		"+35%"
 				"RequiresFacet"		"arc_warden_order"
 			}
 			"wraith_speed_base"
@@ -206,7 +211,7 @@
 			}
 			"ministun_duration"
 			{
-				"value"		"0.4 0.5 0.6 0.7"
+				"value"		"0.6 0.8 1.0 1.2"
 				"RequiresFacet"		"arc_warden_order"
 			}
 			"tempest_activation_delay"
@@ -217,7 +222,7 @@
 			"spark_damage_tempest"
 			{
 				"value"		"75 140 205 270"
-				"special_bonus_unique_arc_warden"		"+35%"
+				"special_bonus_unique_imba_arc_warden"		"+35%"
 				"RequiresFacet"		"arc_warden_disorder"
 			}
 			"wraith_speed_tempest"
@@ -227,7 +232,7 @@
 			}
 			"ministun_duration_tempest"
 			{
-				"value"		"0.6 0.8 1.0 1.2"
+				"value"		"0.4 0.5 0.6 0.7"
 				"RequiresFacet"		"arc_warden_disorder"
 			}
 			"think_interval"		"0.2"
@@ -260,8 +265,8 @@
 	"imba_arc_warden_tempest_double"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/arc/imba_arc_warden_tempest_double"
-		"AbilityTextureName"	"arc_warden_tempest_double"
+		"ScriptFile"		"ability/hero_ability/arc_warden/imba_arc_warden_tempest_double"
+		"AbilityTextureName"		"arc_warden_tempest_double"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"		"2"
@@ -286,7 +291,7 @@
 			"ignore_penalty_distance"
 			{
 				"value"		"0"
-				"special_bonus_unique_arc_warden_8"		"1"
+				"special_bonus_unique_imba_arc_warden_8"		"1"
 			}
 			"incoming_damage_penalty"		"60"
 		}
@@ -294,8 +299,8 @@
 	"imba_arc_warden_tempest_recall"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/arc/imba_arc_warden_tempest_recall"
-		"AbilityTextureName"	"arc_warden_tempest_recall"
+		"ScriptFile"		"ability/hero_ability/arc_warden/imba_arc_warden_tempest_recall"
+		"AbilityTextureName"		"arc_warden_tempest_recall"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"		"2"
@@ -315,8 +320,8 @@
 	"imba_arc_warden_runic_infusion"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/arc/imba_arc_warden_runic_infusion"
-		"AbilityTextureName"	"arc_warden_runic_infusion"
+		"ScriptFile"		"ability/hero_ability/arc_warden/imba_arc_warden_runic_infusion"
+		"AbilityTextureName"		"arc_warden_runic_infusion"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"AbilityTextureName"		"arc_warden_scepter"
 		"MaxLevel"		"1"
@@ -365,6 +370,12 @@
 		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_arc_warden_9"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_arc_warden_flux_silences"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

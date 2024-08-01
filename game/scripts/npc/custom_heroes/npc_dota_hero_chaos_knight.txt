@@ -4,8 +4,8 @@
 	"imba_chaos_knight_chaos_bolt"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/chaos/imba_chaos_knight_chaos_bolt"
-		"AbilityTextureName"	"chaos_knight_chaos_bolt"
+		"ScriptFile"		"ability/hero_ability/chaos_knight/imba_chaos_knight_chaos_bolt"
+		"AbilityTextureName"		"chaos_knight_chaos_bolt"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -23,12 +23,12 @@
 			"stun_min"
 			{
 				"value"		"1.25 1.5 1.75 2"
-				"special_bonus_unique_chaos_knight_3"		"0.6"
+				"special_bonus_unique_imba_chaos_knight_3"		"0.6"
 			}
 			"stun_max"
 			{
 				"value"		"1.75 2.25 2.75 3.25"
-				"special_bonus_unique_chaos_knight_3"		"0.6"
+				"special_bonus_unique_imba_chaos_knight_3"		"0.6"
 			}
 			"damage_min"		"90 120 150 180"
 			"damage_max"		"150 230 310 390"
@@ -41,7 +41,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"13 12 11 10"
-				"special_bonus_unique_chaos_knight_8"		"-3"
+				"special_bonus_unique_imba_chaos_knight_8"		"-3"
 			}
 			"illusion_duration"
 			{
@@ -59,8 +59,8 @@
 	"imba_chaos_knight_reality_rift"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/chaos/imba_chaos_knight_reality_rift"
-		"AbilityTextureName"	"chaos_knight_reality_rift"
+		"ScriptFile"		"ability/hero_ability/chaos_knight/imba_chaos_knight_reality_rift"
+		"AbilityTextureName"		"chaos_knight_reality_rift"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -79,43 +79,44 @@
 			"pull_distance"
 			{
 				"value"		"300 350 400 450"
-				"special_bonus_unique_chaos_knight_2"		"225"
+				"special_bonus_unique_imba_chaos_knight_2"		"225"
 			}
 			"armor_reduction"		"4 5 6 7"
 			"duration"		"6"
 			"pierces_immunity"
 			{
 				"value"		"0"
-				"special_bonus_unique_chaos_knight"		"=1"
+				"special_bonus_unique_imba_chaos_knight"		"=1"
 			}
 			"additional_debuff_duration_percent"
 			{
 				"value"		"0"
-				"special_bonus_facet_chaos_knight_irrationality"		"=50"
+				"special_bonus_facet_chaos_knight_facets_imba_1"		"=50"
 			}
 		}
 	}
 	"imba_chaos_knight_chaos_strike"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/chaos/imba_chaos_knight_chaos_strike"
-		"AbilityTextureName"	"chaos_knight_chaos_strike"
+		"ScriptFile"		"ability/hero_ability/chaos_knight/imba_chaos_knight_chaos_strike"
+		"AbilityTextureName"		"chaos_knight_chaos_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilitySound"		"Hero_ChaosKnight.ChaosStrike"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"chance"
 			{
 				"value"		"33.33"
-				"special_bonus_unique_chaos_knight_5"		"10"
+				"special_bonus_unique_imba_chaos_knight_5"		"10"
 			}
 			"crit_min"		"125"
 			"crit_max"		"140 175 210 245"
 			"lifesteal"
 			{
 				"value"		"24 36 48 60"
-				"special_bonus_unique_chaos_knight_6"		"30"
+				"special_bonus_unique_imba_chaos_knight_6"		"30"
 			}
 			"creep_multiplier"		"2"
 			"creep_lifesteal_reduction_pct"		"70"
@@ -125,8 +126,8 @@
 	"imba_chaos_knight_phantasm"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/chaos/imba_chaos_knight_phantasm"
-		"AbilityTextureName"	"chaos_knight_phantasm"
+		"ScriptFile"		"ability/hero_ability/chaos_knight/imba_chaos_knight_phantasm"
+		"AbilityTextureName"		"chaos_knight_phantasm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"FightRecapLevel"		"2"
@@ -145,7 +146,7 @@
 			"illusion_duration"
 			{
 				"value"		"30"
-				"special_bonus_unique_chaos_knight_4"		"10"
+				"special_bonus_unique_imba_chaos_knight_4"		"10"
 			}
 			"outgoing_damage"		"0"
 			"outgoing_damage_tooltip"		"100"
@@ -173,10 +174,11 @@
 	"imba_chaos_knight_phantasmagoria"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/chaos/imba_chaos_knight_phantasmagoria"
-		"AbilityTextureName"	"chaos_knight_phantasmagoria"
+		"ScriptFile"		"ability/hero_ability/chaos_knight/imba_chaos_knight_phantasmagoria"
+		"AbilityTextureName"		"chaos_knight_phantasmagoria"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"aura_radius"
@@ -190,30 +192,16 @@
 	"imba_chaos_knight_reins_of_chaos"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/chaos/imba_chaos_knight_reins_of_chaos"
-		"AbilityTextureName"	"chaos_knight_reins_of_chaos"
+		"ScriptFile"		"ability/hero_ability/chaos_knight/imba_chaos_knight_reins_of_chaos"
+		"AbilityTextureName"		"chaos_knight_reins_of_chaos"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"bonus_illusion_chance"		"50"
 			"bonus_illusion_count"		"1"
-		}
-	}
-	"imba_chaos_knight_innate_spell_refund"
-	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/chaos/imba_chaos_knight_innate_spell_refund"
-		"AbilityTextureName"	"chaos_knight_innate_spell_refund"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"MaxLevel"		"1"
-		"AbilityValues"
-		{
-			"refund_percent"		"33"
-			"refund_chance"		"50"
-			"chance_for_extra_illusion_tooltip"		"50"
-			"extra_illusion_number_tooltip"		"1"
 		}
 	}
 	"special_bonus_unique_imba_chaos_knight"

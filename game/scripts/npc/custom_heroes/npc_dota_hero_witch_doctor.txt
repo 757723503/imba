@@ -4,8 +4,8 @@
 	"imba_witch_doctor_paralyzing_cask"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/witch/imba_witch_doctor_paralyzing_cask"
-		"AbilityTextureName"	"witch_doctor_paralyzing_cask"
+		"ScriptFile"		"ability/hero_ability/witch_doctor/imba_witch_doctor_paralyzing_cask"
+		"AbilityTextureName"		"witch_doctor_paralyzing_cask"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -36,7 +36,7 @@
 			"bounces"
 			{
 				"value"		"2 4 6 8"
-				"special_bonus_unique_witch_doctor_3"		"2"
+				"special_bonus_unique_imba_witch_doctor_3"		"2"
 			}
 			"speed"		"1200"
 			"bounce_delay"		"0.1"
@@ -44,7 +44,7 @@
 			{
 				"value"		"0"
 				"CalculateSpellDamageTooltip"		"1"
-				"special_bonus_facet_witch_doctor_headhunter"		"30"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"30"
 				"RequiresFacet"		"witch_doctor_headhunter"
 			}
 			"creep_damage_pct"		"150"
@@ -54,8 +54,8 @@
 	"imba_witch_doctor_voodoo_restoration"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/witch/imba_witch_doctor_voodoo_restoration"
-		"AbilityTextureName"	"witch_doctor_voodoo_restoration"
+		"ScriptFile"		"ability/hero_ability/witch_doctor/imba_witch_doctor_voodoo_restoration"
+		"AbilityTextureName"		"witch_doctor_voodoo_restoration"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -68,39 +68,39 @@
 			"mana_per_second"
 			{
 				"value"		"8 12 16 20"
-				"special_bonus_unique_witch_doctor_4"		"x0.75"
+				"special_bonus_unique_imba_witch_doctor_4"		"x0.75"
 			}
 			"tooltip_mana_per_second"
 			{
-				"special_bonus_unique_witch_doctor_4"		"25"
+				"special_bonus_unique_imba_witch_doctor_4"		"25"
 			}
 			"radius"
 			{
 				"value"		"500 550 600 650"
-				"special_bonus_facet_witch_doctor_voodoo_festeration"		"100"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"100"
 				"affected_by_aoe_increase"		"1"
 			}
 			"heal"
 			{
 				"value"		"20 30 40 50"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_MAGICAL"
-				"special_bonus_facet_witch_doctor_voodoo_festeration"		"10"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"10"
 			}
 			"heal_interval"		"0.33 0.33 0.33 0.33"
 			"does_heal_all_allies"
 			{
 				"value"		"1"
-				"special_bonus_facet_witch_doctor_voodoo_festeration"		"=0"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"=0"
 			}
 			"does_damage"
 			{
 				"value"		"0"
-				"special_bonus_facet_witch_doctor_voodoo_festeration"		"1"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"1"
 			}
 			"self_only_heal_percentage"
 			{
-				"value"		"0"
-				"special_bonus_facet_witch_doctor_voodoo_festeration"		"=25"
+				"value"		"0 0 0 0"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"=25 =30 =35 =40"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -108,8 +108,8 @@
 	"imba_witch_doctor_maledict"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/witch/imba_witch_doctor_maledict"
-		"AbilityTextureName"	"witch_doctor_maledict"
+		"ScriptFile"		"ability/hero_ability/witch_doctor/imba_witch_doctor_maledict"
+		"AbilityTextureName"		"witch_doctor_maledict"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -121,7 +121,7 @@
 		"AbilityCastPoint"		"0.35 0.35 0.35 0.35"
 		"AbilityCooldown"		"30 26 22 18"
 		"AbilityDuration"		"12"
-		"AbilityDamage"		"15 20 25 30"
+		"AbilityDamage"		"18 22 26 30"
 		"AbilityManaCost"		"105 110 115 120"
 		"AbilityValues"
 		{
@@ -129,12 +129,12 @@
 			{
 				"value"		"200"
 				"affected_by_aoe_increase"		"1"
-				"special_bonus_unique_witch_doctor_6"		"100"
+				"special_bonus_unique_imba_witch_doctor_6"		"100"
 			}
 			"bonus_damage"
 			{
 				"value"		"16 24 32 40"
-				"special_bonus_unique_witch_doctor_7"		"30"
+				"special_bonus_unique_imba_witch_doctor_7"		"30"
 			}
 			"bonus_damage_threshold"		"100"
 			"ticks"
@@ -148,8 +148,8 @@
 	"imba_witch_doctor_death_ward"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/witch/imba_witch_doctor_death_ward"
-		"AbilityTextureName"	"witch_doctor_death_ward"
+		"ScriptFile"		"ability/hero_ability/witch_doctor/imba_witch_doctor_death_ward"
+		"AbilityTextureName"		"witch_doctor_death_ward"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
@@ -172,19 +172,19 @@
 			"damage"
 			{
 				"value"		"60 95 130"
-				"special_bonus_unique_witch_doctor_5"		"45"
-				"special_bonus_facet_witch_doctor_cleft_death"		"=45 =70 =95"
+				"special_bonus_unique_imba_witch_doctor_5"		"45"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"=45 =70 =95"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 			"attack_range_tooltip"
 			{
 				"value"		"600"
-				"special_bonus_unique_witch_doctor_1"		"75"
+				"special_bonus_unique_imba_witch_doctor_1"		"75"
 			}
 			"bonus_attack_range"
 			{
 				"value"		"0"
-				"special_bonus_unique_witch_doctor_1"		"75"
+				"special_bonus_unique_imba_witch_doctor_1"		"75"
 			}
 			"bounce_radius"
 			{
@@ -201,15 +201,15 @@
 			"initial_target_count"
 			{
 				"value"		"1"
-				"special_bonus_facet_witch_doctor_cleft_death"		"1"
+				"special_bonus_facet_witch_doctor_facets_imba_1"		"1"
 			}
 		}
 	}
 	"imba_witch_doctor_voodoo_switcheroo"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/witch/imba_witch_doctor_voodoo_switcheroo"
-		"AbilityTextureName"	"witch_doctor_voodoo_switcheroo"
+		"ScriptFile"		"ability/hero_ability/witch_doctor/imba_witch_doctor_voodoo_switcheroo"
+		"AbilityTextureName"		"witch_doctor_voodoo_switcheroo"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
@@ -233,8 +233,8 @@
 	"imba_witch_doctor_innate_maledict_heal_reduction"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/witch/imba_witch_doctor_innate_maledict_heal_reduction"
-		"AbilityTextureName"	"witch_doctor_innate_maledict_heal_reduction"
+		"ScriptFile"		"ability/hero_ability/witch_doctor/imba_witch_doctor_innate_maledict_heal_reduction"
+		"AbilityTextureName"		"witch_doctor_innate_maledict_heal_reduction"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"AbilityValues"
@@ -245,8 +245,8 @@
 	"imba_witch_doctor_gris_gris"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/witch/imba_witch_doctor_gris_gris"
-		"AbilityTextureName"	"witch_doctor_gris_gris"
+		"ScriptFile"		"ability/hero_ability/witch_doctor/imba_witch_doctor_gris_gris"
+		"AbilityTextureName"		"witch_doctor_gris_gris"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"Innate"		"1"

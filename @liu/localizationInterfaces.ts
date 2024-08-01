@@ -82,11 +82,11 @@ export interface AbilitySpecialLocalization {
 }
 
 export interface HeroTalents {
-    talent_classname: string;
-    talents: Array<HeroTalentLocalization>;
+    talents: HeroTalentLocalization[];
 }
 
 export interface HeroTalentLocalization {
+    talent_classname: string;
     name: string;
     description?: string;
     lore?: string;

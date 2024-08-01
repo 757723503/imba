@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/slark/imba_slark_fish_bait"
-		"AbilityTextureName"	"slark_fish_bait"
+		"AbilityTextureName"		"slark_fish_bait"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -40,7 +40,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/slark/imba_slark_depth_shroud"
-		"AbilityTextureName"	"slark_depth_shroud"
+		"AbilityTextureName"		"slark_depth_shroud"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"MaxLevel"		"1"
 		"FightRecapLevel"		"1"
@@ -67,7 +67,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/slark/imba_slark_dark_pact"
-		"AbilityTextureName"	"slark_dark_pact"
+		"AbilityTextureName"		"slark_dark_pact"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -89,7 +89,7 @@
 			"total_damage"
 			{
 				"value"		"75 150 225 300"
-				"special_bonus_unique_slark_2"		"70"
+				"special_bonus_unique_imba_slark_2"		"70"
 			}
 			"total_pulses"		"10"
 			"pulse_interval"		"0.1"
@@ -100,7 +100,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/slark/imba_slark_pounce"
-		"AbilityTextureName"	"slark_pounce"
+		"AbilityTextureName"		"slark_pounce"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -123,7 +123,7 @@
 			"leash_duration"
 			{
 				"value"		"2.5 2.75 3 3.25"
-				"special_bonus_unique_slark"		"0.5"
+				"special_bonus_unique_imba_slark"		"0.5"
 			}
 			"leash_radius"
 			{
@@ -147,7 +147,7 @@
 			"essence_stacks"
 			{
 				"value"		"0"
-				"special_bonus_facet_slark_leeching_leash"		"1 2 3 4"
+				"special_bonus_facet_slark_facets_imba_1"		"1 2 3 4"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -156,23 +156,24 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/slark/imba_slark_essence_shift"
-		"AbilityTextureName"	"slark_essence_shift"
+		"AbilityTextureName"		"slark_essence_shift"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"4"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"agi_gain"
 			{
 				"value"		"3"
-				"special_bonus_unique_slark_5"		"1"
+				"special_bonus_unique_imba_slark_5"		"1"
 			}
 			"stat_loss"		"1"
 			"duration"
 			{
 				"value"		"20 40 60 80"
-				"special_bonus_unique_slark_4"		"40"
+				"special_bonus_unique_imba_slark_4"		"40"
 			}
 			"steal_radius"
 			{
@@ -190,26 +191,27 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/slark/imba_slark_barracuda"
-		"AbilityTextureName"	"slark_barracuda"
+		"AbilityTextureName"		"slark_barracuda"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
 		"DependentOnAbility"		"slark_shadow_dance"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"bonus_movement_speed"		"6 24 36 48"
 			"bonus_regen"
 			{
 				"value"		"10 70 100 130"
-				"special_bonus_unique_slark_8"		"50"
+				"special_bonus_unique_imba_slark_8"		"50"
 			}
 			"linger_search_radius"
 			{
-				"special_bonus_facet_slark_dark_reef_renegade"		"900"
+				"special_bonus_facet_slark_facets_imba_1"		"900"
 			}
 			"linger_duration"
 			{
-				"special_bonus_facet_slark_dark_reef_renegade"		"1.5 2 2.5 3"
+				"special_bonus_facet_slark_facets_imba_1"		"1.5 2 2.5 3"
 			}
 			"activation_delay"		"0.5"
 			"neutral_disable"		"2"
@@ -218,10 +220,10 @@
 	}
 	"imba_slark_shadow_dance"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/slark/imba_slark_shadow_dance"
-		"AbilityTextureName"	"slark_shadow_dance"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"slark_shadow_dance"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"FightRecapLevel"		"2"
@@ -236,7 +238,7 @@
 			"duration"
 			{
 				"value"		"4 4.25 4.5"
-				"special_bonus_unique_slark_3"		"1"
+				"special_bonus_unique_imba_slark_3"		"1.25"
 			}
 			"fade_time"		"0"
 		}
@@ -292,7 +294,7 @@
 		{
 			"value"
 			{
-				"value"		"80"
+				"value"		"90"
 				"ad_linked_abilities"		"slark_shadow_dance"
 			}
 		}

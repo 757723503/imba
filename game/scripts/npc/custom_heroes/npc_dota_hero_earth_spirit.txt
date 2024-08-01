@@ -4,8 +4,8 @@
 	"imba_earth_spirit_boulder_smash"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/earth/imba_earth_spirit_boulder_smash"
-		"AbilityTextureName"	"earth_spirit_boulder_smash"
+		"ScriptFile"		"ability/hero_ability/earth_spirit/imba_earth_spirit_boulder_smash"
+		"AbilityTextureName"		"earth_spirit_boulder_smash"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -36,7 +36,7 @@
 			"rock_damage"
 			{
 				"value"		"120 180 240 300"
-				"special_bonus_unique_earth_spirit_6"		"100"
+				"special_bonus_unique_imba_earth_spirit_6"		"100"
 			}
 			"move_slow"		"50"
 			"duration"		"1.25 2.5 3.25 4"
@@ -60,8 +60,8 @@
 	"imba_earth_spirit_rolling_boulder"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/earth/imba_earth_spirit_rolling_boulder"
-		"AbilityTextureName"	"earth_spirit_rolling_boulder"
+		"ScriptFile"		"ability/hero_ability/earth_spirit/imba_earth_spirit_rolling_boulder"
+		"AbilityTextureName"		"earth_spirit_rolling_boulder"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -78,22 +78,32 @@
 			}
 			"speed"		"1000"
 			"rock_speed"		"1600"
+			"allied_hero_speed"
+			{
+				"value"		"0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"1900"
+			}
 			"distance"
 			{
 				"value"		"750"
-				"special_bonus_unique_earth_spirit_4"		"200"
+				"special_bonus_unique_imba_earth_spirit_4"		"200"
 			}
 			"rock_distance_multiplier"		"2"
+			"allied_hero_multiplier"
+			{
+				"value"		"0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"2.5"
+			}
 			"delay"		"0.6"
 			"damage"
 			{
-				"value"		"60"
-				"special_bonus_unique_earth_spirit"		"110"
+				"value"		"60 70 80 90"
+				"special_bonus_unique_imba_earth_spirit"		"110"
 			}
 			"stun_duration"
 			{
 				"value"		"0.3 0.5 0.7 0.9"
-				"special_bonus_unique_earth_spirit_3"		"0.5"
+				"special_bonus_unique_imba_earth_spirit_3"		"0.5"
 			}
 			"rock_bonus_duration"		"0.3 0.5 0.7 0.9"
 			"damage_str"		"100"
@@ -104,7 +114,27 @@
 			"destroy_stone"
 			{
 				"value"		"1"
-				"special_bonus_facet_earth_spirit_stepping_stone"		"=0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=0"
+			}
+			"can_roll_over_allied_heroes"
+			{
+				"value"		"0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"1"
+			}
+			"allied_bonus_movespeed"
+			{
+				"value"		"0 0 0 0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"15 20 25 30"
+			}
+			"allied_bonus_movespeed_duration"
+			{
+				"value"		"0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"4"
+			}
+			"allied_bonus_stun_duration"
+			{
+				"value"		"0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"0.3 0.5 0.7 0.9"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -112,8 +142,8 @@
 	"imba_earth_spirit_geomagnetic_grip"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/earth/imba_earth_spirit_geomagnetic_grip"
-		"AbilityTextureName"	"earth_spirit_geomagnetic_grip"
+		"ScriptFile"		"ability/hero_ability/earth_spirit/imba_earth_spirit_geomagnetic_grip"
+		"AbilityTextureName"		"earth_spirit_geomagnetic_grip"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -145,15 +175,15 @@
 			"AbilityCooldown"
 			{
 				"value"		"13"
-				"special_bonus_unique_earth_spirit_5"		"-3"
+				"special_bonus_unique_imba_earth_spirit_5"		"-3"
 			}
 		}
 	}
 	"imba_earth_spirit_stone_caller"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/earth/imba_earth_spirit_stone_caller"
-		"AbilityTextureName"	"earth_spirit_stone_caller"
+		"ScriptFile"		"ability/hero_ability/earth_spirit/imba_earth_spirit_stone_caller"
+		"AbilityTextureName"		"earth_spirit_stone_caller"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityType"		"DOTA_ABILITY_TYPE_BASIC"
 		"Innate"		"1"
@@ -170,7 +200,7 @@
 			"duration"
 			{
 				"value"		"60"
-				"special_bonus_facet_earth_spirit_stepping_stone"		"=20.0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=20.0"
 			}
 			"polarization_distance"
 			{
@@ -183,36 +213,36 @@
 			"AbilityCharges"
 			{
 				"value"		"7 8 9 10 11 12 13"
-				"special_bonus_facet_earth_spirit_stepping_stone"		"=0 =0 =0 =0 =0 =0 =0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=0 =0 =0 =0 =0 =0 =0"
 			}
 			"rolling_offset_distance"		"150"
 			"hero_level_increment"		"5"
 			"AbilityManaCost"
 			{
 				"value"		"0"
-				"special_bonus_facet_earth_spirit_stepping_stone"		"0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"0"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"0"
-				"special_bonus_facet_earth_spirit_stepping_stone"		"=4.0"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=4.0"
 			}
 			"AbilityChargeRestoreTime"
 			{
 				"value"		"18"
-				"special_bonus_facet_earth_spirit_stepping_stone"		"=4"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=4"
 			}
 			"is_stepping_stone"
 			{
-				"special_bonus_facet_earth_spirit_stepping_stone"		"=1"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=1"
 			}
 		}
 	}
 	"imba_earth_spirit_petrify"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/earth/imba_earth_spirit_petrify"
-		"AbilityTextureName"	"earth_spirit_petrify"
+		"ScriptFile"		"ability/hero_ability/earth_spirit/imba_earth_spirit_petrify"
+		"AbilityTextureName"		"earth_spirit_petrify"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CUSTOM"
@@ -249,8 +279,8 @@
 	"imba_earth_spirit_magnetize"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/earth/imba_earth_spirit_magnetize"
-		"AbilityTextureName"	"earth_spirit_magnetize"
+		"ScriptFile"		"ability/hero_ability/earth_spirit/imba_earth_spirit_magnetize"
+		"AbilityTextureName"		"earth_spirit_magnetize"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -275,13 +305,13 @@
 			}
 			"damage_per_second"
 			{
-				"value"		"40 80 120"
-				"special_bonus_unique_earth_spirit_8"		"+30%"
+				"value"		"45 85 125"
+				"special_bonus_unique_imba_earth_spirit_8"		"+30%"
 			}
 			"damage_duration"
 			{
 				"value"		"6"
-				"special_bonus_unique_earth_spirit_8"		"+30%"
+				"special_bonus_unique_imba_earth_spirit_8"		"+30%"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 				"CalculateSpellDamageTooltip"		"0"
 			}
@@ -302,17 +332,17 @@
 			"magnetized_rocks_buff_self"
 			{
 				"value"		"0"
-				"special_bonus_facet_earth_spirit_resonance"		"=1"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=1"
 			}
 			"magnetized_rocks_buff_self_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_earth_spirit_resonance"		"8"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"8"
 			}
 			"magnetized_rocks_bonus_self_damage"
 			{
 				"value"		"0"
-				"special_bonus_facet_earth_spirit_resonance"		"=40 =80 =120"
+				"special_bonus_facet_earth_spirit_facets_imba_1"		"=40 =80 =120"
 			}
 		}
 	}

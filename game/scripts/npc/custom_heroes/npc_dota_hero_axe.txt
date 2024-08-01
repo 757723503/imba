@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/axe/imba_axe_berserkers_call"
-		"AbilityTextureName"	"axe_berserkers_call"
+		"AbilityTextureName"		"axe_berserkers_call"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -23,14 +23,14 @@
 			"radius"
 			{
 				"value"		"315"
-				"special_bonus_unique_axe_2"		"100"
+				"special_bonus_unique_imba_axe_2"		"100"
 				"affected_by_aoe_increase"		"1"
 			}
 			"bonus_armor"
 			{
 				"value"		"12 13 14 15"
-				"special_bonus_facet_axe_call_out"		"5"
-				"special_bonus_unique_axe_7"		"12"
+				"special_bonus_facet_axe_facets_imba_1"		"5"
+				"special_bonus_unique_imba_axe_7"		"12"
 			}
 			"duration"		"1.8 2.2 2.6 3.0"
 			"applies_battle_hunger"
@@ -40,7 +40,7 @@
 			"bonus_attack_speed"
 			{
 				"value"		"0"
-				"special_bonus_facet_axe_call_out"		"45"
+				"special_bonus_facet_axe_facets_imba_1"		"45"
 			}
 		}
 	}
@@ -48,7 +48,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/axe/imba_axe_battle_hunger"
-		"AbilityTextureName"	"axe_battle_hunger"
+		"AbilityTextureName"		"axe_battle_hunger"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -72,7 +72,7 @@
 			"slow"
 			{
 				"value"		"-11 -19 -27 -35"
-				"special_bonus_unique_axe_6"		"-10"
+				"special_bonus_unique_imba_axe_6"		"-10"
 			}
 			"damage_per_second"
 			{
@@ -82,12 +82,12 @@
 			"armor_multiplier"
 			{
 				"value"		"1"
-				"special_bonus_unique_axe"		"x2"
+				"special_bonus_unique_imba_axe"		"x2"
 			}
 			"speed_bonus"
 			{
 				"value"		"0"
-				"special_bonus_unique_axe_8"		"10"
+				"special_bonus_unique_imba_axe_8"		"10"
 			}
 			"should_stack"
 			{
@@ -99,18 +99,19 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/axe/imba_axe_counter_helix"
-		"AbilityTextureName"	"axe_counter_helix"
+		"AbilityTextureName"		"axe_counter_helix"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilitySound"		"Hero_Axe.CounterHelix"
 		"HasScepterUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"damage"
 			{
 				"value"		"95 120 145 170"
-				"special_bonus_unique_axe_4"		"20"
+				"special_bonus_unique_imba_axe_4"		"20"
 			}
 			"radius"
 			{
@@ -144,10 +145,10 @@
 	}
 	"imba_axe_culling_blade"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/axe/imba_axe_culling_blade"
-		"AbilityTextureName"	"axe_culling_blade"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"axe_culling_blade"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -167,14 +168,14 @@
 			"damage"
 			{
 				"value"		"275 375 475"
-				"special_bonus_unique_axe_5"		"100"
+				"special_bonus_unique_imba_axe_5"		"100"
 			}
 			"speed_bonus"		"20 25 30"
 			"armor_bonus"		"20 25 30"
 			"speed_duration"
 			{
 				"value"		"6"
-				"special_bonus_unique_axe_culling_blade_speed_duration"		"3"
+				"special_bonus_unique_imba_axe_culling_blade_speed_duration"		"3"
 			}
 			"speed_aoe"
 			{
@@ -192,10 +193,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/axe/imba_axe_one_man_army"
-		"AbilityTextureName"	"axe_one_man_army"
+		"AbilityTextureName"		"axe_one_man_army"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"armor_pct_as_strength"		"50"
@@ -207,7 +209,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/axe/imba_axe_coat_of_blood"
-		"AbilityTextureName"	"axe_coat_of_blood"
+		"AbilityTextureName"		"axe_coat_of_blood"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"4"
 		"Innate"		"1"

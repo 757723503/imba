@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lina/imba_lina_dragon_slave"
-		"AbilityTextureName"	"lina_dragon_slave"
+		"AbilityTextureName"		"lina_dragon_slave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -29,7 +29,7 @@
 			"dragon_slave_burn_damage_tooltip"
 			{
 				"value"		"0"
-				"special_bonus_facet_lina_dot"		"=85 =165 =245 =325"
+				"special_bonus_facet_lina_facets_imba_1"		"=85 =165 =245 =325"
 				"LinkedSpecialBonus"		"lina_slow_burn"
 				"LinkedSpecialBonusField"		"burn_percent_tooltip"
 				"LinkedSpecialBonusOperation"		"SPECIAL_BONUS_MULTIPLY"
@@ -56,7 +56,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"11 10 9 8"
-				"special_bonus_unique_lina_1"		"-3.5"
+				"special_bonus_unique_imba_lina_1"		"-3.5"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -65,7 +65,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lina/imba_lina_light_strike_array"
-		"AbilityTextureName"	"lina_light_strike_array"
+		"AbilityTextureName"		"lina_light_strike_array"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -88,7 +88,7 @@
 			"light_strike_array_damage"
 			{
 				"value"		"110 160 210 260"
-				"special_bonus_unique_lina_3"		"150"
+				"special_bonus_unique_imba_lina_3"		"150"
 				"LinkedSpecialBonus"		"lina_slow_burn"
 				"LinkedSpecialBonusField"		"impact_damage_pct"
 				"LinkedSpecialBonusOperation"		"SPECIAL_BONUS_MULTIPLY"
@@ -96,8 +96,8 @@
 			"light_strike_array_burn_damage_tooltip"
 			{
 				"value"		"0"
-				"special_bonus_unique_lina_3"		"150"
-				"special_bonus_facet_lina_dot"		"=110 =160 =210 =260"
+				"special_bonus_unique_imba_lina_3"		"150"
+				"special_bonus_facet_lina_facets_imba_1"		"=110 =160 =210 =260"
 				"LinkedSpecialBonus"		"lina_slow_burn"
 				"LinkedSpecialBonusField"		"burn_percent_tooltip"
 				"LinkedSpecialBonusOperation"		"SPECIAL_BONUS_MULTIPLY"
@@ -116,28 +116,26 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lina/imba_lina_fiery_soul"
-		"AbilityTextureName"	"lina_fiery_soul"
+		"AbilityTextureName"		"lina_fiery_soul"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		"MaxLevel"		"5"
-		"Innate"		"1"
-		"RequiredLevel"		"-1"
 		"HasShardUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"fiery_soul_attack_speed_bonus"
 			{
-				"value"		"4 8 16 24 32"
-				"special_bonus_unique_lina_2"		"10"
+				"value"		"8 16 24 32"
+				"special_bonus_unique_imba_lina_2"		"10"
 			}
 			"fiery_soul_move_speed_bonus"
 			{
-				"value"		"1 1.5 2 2.5 3.0"
-				"special_bonus_unique_lina_2"		"1"
+				"value"		"1.5 2 2.5 3.0"
+				"special_bonus_unique_imba_lina_2"		"1"
 			}
 			"fiery_soul_magic_resist"
 			{
-				"special_bonus_unique_lina_4"		"5"
+				"special_bonus_unique_imba_lina_4"		"5"
 			}
 			"fiery_soul_max_stacks"		"7"
 			"fiery_soul_stack_duration"		"18"
@@ -149,12 +147,12 @@
 			"target_crit_multiplier"
 			{
 				"value"		"0"
-				"special_bonus_unique_lina_crit_debuff"		"150"
+				"special_bonus_unique_imba_lina_crit_debuff"		"150"
 			}
 			"target_crit_debuff_duration"
 			{
 				"value"		"0"
-				"special_bonus_unique_lina_crit_debuff"		"3"
+				"special_bonus_unique_imba_lina_crit_debuff"		"3"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -163,7 +161,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lina/imba_lina_flame_cloak"
-		"AbilityTextureName"	"lina_flame_cloak"
+		"AbilityTextureName"		"lina_flame_cloak"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"IsGrantedByScepter"		"1"
@@ -184,10 +182,10 @@
 	}
 	"imba_lina_laguna_blade"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lina/imba_lina_laguna_blade"
-		"AbilityTextureName"	"lina_laguna_blade"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"lina_laguna_blade"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -213,7 +211,7 @@
 			"burn_damage_tooltip"
 			{
 				"value"		"0"
-				"special_bonus_facet_lina_dot"		"=500 =700 =900"
+				"special_bonus_facet_lina_facets_imba_1"		"=500 =700 =900"
 				"LinkedSpecialBonus"		"lina_slow_burn"
 				"LinkedSpecialBonusField"		"burn_percent_tooltip"
 				"LinkedSpecialBonusOperation"		"SPECIAL_BONUS_MULTIPLY"
@@ -229,7 +227,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"70 60 50"
-				"special_bonus_unique_lina_6"		"-25"
+				"special_bonus_unique_imba_lina_6"		"-25"
 			}
 			"pierce_immunity"
 			{
@@ -238,21 +236,21 @@
 			"supercharge_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_lina_supercharge"		"5"
+				"special_bonus_facet_lina_facets_imba_1"		"5"
 				"RequiresFacet"		"lina_supercharge"
 			}
 			"supercharge_stacks"
 			{
 				"value"		"0"
-				"special_bonus_facet_lina_supercharge"		"12"
+				"special_bonus_facet_lina_facets_imba_1"		"12"
 			}
 			"barrier_pct"
 			{
-				"special_bonus_unique_lina_7"		"125"
+				"special_bonus_unique_imba_lina_7"		"125"
 			}
 			"barrier_duration"
 			{
-				"special_bonus_unique_lina_7"		"15"
+				"special_bonus_unique_imba_lina_7"		"15"
 			}
 		}
 	}
@@ -260,7 +258,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/lina/imba_lina_slow_burn"
-		"AbilityTextureName"	"lina_slow_burn"
+		"AbilityTextureName"		"lina_slow_burn"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"		"1"
@@ -268,20 +266,45 @@
 		{
 			"impact_damage_pct"
 			{
-				"special_bonus_facet_lina_dot"		"0.6"
+				"special_bonus_facet_lina_facets_imba_1"		"0.6"
 			}
 			"damage_penalty_tooltip"		"60"
 			"burn_percent"		"36"
 			"burn_percent_tooltip"
 			{
-				"special_bonus_facet_lina_dot"		"0.22"
+				"special_bonus_facet_lina_facets_imba_1"		"0.22"
 			}
 			"burn_percent_tooltip_damage"		"65"
 			"total_damage_tooltip"		"125"
 			"burn_duration"
 			{
-				"special_bonus_facet_lina_dot"		"3"
+				"special_bonus_facet_lina_facets_imba_1"		"3"
 			}
+		}
+	}
+	"imba_lina_combustion"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lina/imba_lina_combustion"
+		"AbilityTextureName"		"lina_combustion"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"		"4"
+		"DependentOnAbility"		"lina_laguna_blade"
+		"Innate"		"1"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"damage_threshold"		"150"
+			"damage"		"10 30 50 70"
+			"damage_illusions"		"10 15 20 25"
+			"damage_aoe"
+			{
+				"value"		"400"
+				"affected_by_aoe_increase"		"1"
+			}
+			"duration"		"6"
 		}
 	}
 	"special_bonus_unique_imba_lina_1"

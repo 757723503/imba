@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_death_coil"
-		"AbilityTextureName"	"abaddon_death_coil"
+		"AbilityTextureName"		"abaddon_death_coil"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -29,17 +29,17 @@
 			"target_damage"
 			{
 				"value"		"100 175 250 325"
-				"special_bonus_unique_imba_abaddon_4"		"40"
+				"special_bonus_unique_imba_abaddon_2"		"40"
 			}
 			"heal_amount"
 			{
 				"value"		"100 175 250 325"
-				"special_bonus_unique_imba_abaddon_4"		"40"
+				"special_bonus_unique_imba_abaddon_2"		"40"
 			}
 			"effect_radius"
 			{
 				"value"		"0"
-				"special_bonus_unique_imba_abaddon_8"		"400"
+				"special_bonus_unique_imba_abaddon_4"		"400"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -49,7 +49,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_aphotic_shield"
-		"AbilityTextureName"	"abaddon_aphotic_shield"
+		"AbilityTextureName"		"abaddon_aphotic_shield"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -77,20 +77,20 @@
 			"radius"
 			{
 				"value"		"675"
-				// "special_bonus_facet_abaddon_facets_imba_1"		"=0"
+				"special_bonus_facet_abaddon_facets_imba_1"		"=0"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage_absorb"
 			{
 				"value"		"120 150 180 210"
 				"special_bonus_facet_abaddon_facets_imba_1"		"=170 =210 =250 =290"
-				"special_bonus_unique_imba_abaddon_5"		"100"
+				"special_bonus_unique_imba_abaddon"		"80"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 			}
 			"regen"
 			{
 				"value"		"0"
-				"special_bonus_unique_imba_abaddon_2"		"15"
+				"special_bonus_unique_imba_abaddon_7"		"15"
 			}
 			"absorb_to_damage"
 			{
@@ -102,6 +102,8 @@
 				"value"		"0"
 				"special_bonus_facet_abaddon_facets_imba_1"		"675"
 				"affected_by_aoe_increase"		"1"
+				"CalculateSpellDamageTooltip"		"0"
+				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -110,10 +112,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_the_quickening"
-		"AbilityTextureName"	"abaddon_the_quickening"
+		"AbilityTextureName"		"abaddon_the_quickening"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"cooldown_reduction_creeps"		"0.2"
@@ -125,58 +128,33 @@
 			}
 		}
 	}
-	"abaddon_the_quickening"
-	{
-		// "BaseClass"		"ability_lua"
-		// "ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_the_quickening"
-		// "AbilityTextureName"	"abaddon_the_quickening"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		"MaxLevel"		"1"
-		"AbilityValues"
-		{
-			"cooldown_reduction_creeps"		"0.1"
-			"cooldown_reduction_heroes"		"2"
-			"radius"
-			{
-				"value"		"900"
-				"affected_by_aoe_increase"		"1"
-			}
-		}
-	}
-	"imba_abaddon_font_of_avernus"
+	"imba_abaddon_withering_mist"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_font_of_avernus"
-		"AbilityTextureName"	"abaddon_font_of_avernus"
+		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_withering_mist"
+		"AbilityTextureName"		"abaddon_withering_mist"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"respawn_reduction"		"10"
-		}
-	}
-	"abaddon_font_of_avernus"
-	{
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"MaxLevel"		"1"
-		"Innate"		"1"
-		"AbilityValues"
-		{
-			"respawn_reduction"		"25"
+			"hp_threshold_pct"		"40"
+			"heal_reduction_pct"		"35"
+			"duration"		"5"
 		}
 	}
 	"imba_abaddon_frostmourne"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_frostmourne"
-		"AbilityTextureName"	"abaddon_frostmourne"
+		"AbilityTextureName"		"abaddon_frostmourne"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"		"4"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"slow_duration"		"2"
@@ -188,17 +166,17 @@
 			"curse_slow"
 			{
 				"value"		"10 15 20 25"
-				"special_bonus_unique_imba_abaddon_1"		"15"
+				"special_bonus_unique_imba_abaddon_6"		"15"
 			}
 			"curse_attack_speed"
 			{
 				"value"		"10 20 30 40"
-				"special_bonus_unique_imba_abaddon_7"		"80"
+				"special_bonus_unique_imba_abaddon_3"		"80"
 			}
 			"curse_dps"
 			{
 				"value"		"10 20 30 40"
-				"special_bonus_unique_imba_abaddon_3"		"50"
+				"special_bonus_unique_imba_abaddon_5"		"50"
 			}
 			"tower_dps_pct"		"70"
 			"curse_interval"		"0.5"
@@ -208,7 +186,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_borrowed_time"
-		"AbilityTextureName"	"abaddon_borrowed_time"
+		"AbilityTextureName"		"abaddon_borrowed_time"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -216,6 +194,7 @@
 		"AbilitySound"		"Hero_Abaddon.BorrowedTime"
 		"HasShardUpgrade"		"0"
 		"HasScepterUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastGestureSlot"		"ABSOLUTE"
 		"AbilityManaCost"		"0 0 0"
@@ -223,7 +202,7 @@
 		{
 			"AbilityCooldown"
 			{
-				"value"		"80 70 60"
+				"value"		"90 80 70"
 			}
 			"hp_threshold"		"400"
 			"duration"		"4.0 5.0 6.0"
@@ -246,18 +225,18 @@
 			"immolate_damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_imba_abaddon_6"		"100"
+				"special_bonus_unique_imba_abaddon_immolation"		"100"
 			}
 			"immolate_aoe"
 			{
 				"value"		"0"
-				"special_bonus_unique_imba_abaddon_6"		"400"
+				"special_bonus_unique_imba_abaddon_immolation"		"400"
 				"affected_by_aoe_increase"		"1"
 			}
 			"immolate_tick"		"0.25"
 		}
 	}
-	"special_bonus_unique_imba_abaddon_1"
+	"special_bonus_unique_imba_abaddon"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -299,11 +278,10 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"special_bonus_unique_imba_abaddon_8"
+	"special_bonus_unique_imba_abaddon_immolation"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
-	
 	}
 }

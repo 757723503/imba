@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/razor/imba_razor_plasma_field"
-		"AbilityTextureName"	"razor_plasma_field"
+		"AbilityTextureName"		"razor_plasma_field"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -23,12 +23,12 @@
 			"damage_min"
 			{
 				"value"		"35 40 45 50"
-				"special_bonus_unique_razor_4"		"30"
+				"special_bonus_unique_imba_razor_4"		"30"
 			}
 			"damage_max"
 			{
 				"value"		"80 115 150 185"
-				"special_bonus_unique_razor_4"		"30"
+				"special_bonus_unique_imba_razor_4"		"30"
 			}
 			"radius"
 			{
@@ -37,17 +37,21 @@
 			}
 			"total_ability_time"		"2.2"
 			"slow_min"		"5"
-			"slow_max"		"25 30 35 40"
+			"slow_max"
+			{
+				"value"		"25 30 35 40"
+				"special_bonus_unique_imba_razor_plasmafield_max_slow"		"20"
+			}
 			"slow_duration"		"1.5"
 			"second_ring_delay"
 			{
 				"value"		"0"
-				"special_bonus_unique_razor_plasmafield_second_ring"		"0.8"
+				"special_bonus_unique_imba_razor_plasmafield_second_ring"		"0.8"
 			}
 			"second_ring_reduction"
 			{
 				"value"		"0"
-				"special_bonus_unique_razor_plasmafield_second_ring"		"30"
+				"special_bonus_unique_imba_razor_plasmafield_second_ring"		"30"
 			}
 		}
 	}
@@ -55,7 +59,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/razor/imba_razor_static_link"
-		"AbilityTextureName"	"razor_static_link"
+		"AbilityTextureName"		"razor_static_link"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -77,7 +81,7 @@
 			"drain_rate"
 			{
 				"value"		"5 10 15 20"
-				"special_bonus_unique_razor"		"5"
+				"special_bonus_unique_imba_razor"		"5"
 			}
 			"drain_range_buffer"		"250"
 			"radius"		"200 200 200 200"
@@ -86,7 +90,7 @@
 			"attack_speed_factor"
 			{
 				"value"		"0"
-				"special_bonus_unique_razor_static_link_aspd"		"1"
+				"special_bonus_unique_imba_razor_static_link_aspd"		"1"
 			}
 			"pull_speed"
 			{
@@ -110,9 +114,10 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/razor/imba_razor_storm_surge"
-		"AbilityTextureName"	"razor_storm_surge"
+		"AbilityTextureName"		"razor_storm_surge"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"strike_pct_chance"		"18"
@@ -120,12 +125,12 @@
 			"strike_damage"
 			{
 				"value"		"50 90 130 170"
-				"special_bonus_unique_razor_storm_surge_damage_and_slow"		"+25%"
+				"special_bonus_unique_imba_razor_storm_surge_damage_and_slow"		"+25%"
 			}
 			"strike_move_slow_pct"
 			{
 				"value"		"25 30 35 40"
-				"special_bonus_unique_razor_storm_surge_damage_and_slow"		"25"
+				"special_bonus_unique_imba_razor_storm_surge_damage_and_slow"		"25"
 			}
 			"strike_slow_duration"		"1"
 			"strike_search_radius"
@@ -136,17 +141,21 @@
 			"strike_internal_cd"
 			{
 				"value"		"3"
-				"special_bonus_unique_razor_3"		"-1"
+			}
+			"strike_cd_reduction_during_storm"
+			{
+				"value"		"0"
+				"special_bonus_facet_razor_facets_imba_1"		"=2.5"
 			}
 			"hit_targets_inside_eye_of_the_storm"
 			{
 				"value"		"0"
-				"special_bonus_facet_razor_thunderhead"		"=1"
+				"special_bonus_facet_razor_facets_imba_1"		"=1"
 			}
 			"eye_of_the_storm_chance_multiplier"
 			{
 				"value"		"0"
-				"special_bonus_facet_razor_thunderhead"		"=2"
+				"special_bonus_facet_razor_facets_imba_1"		"=2"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -155,20 +164,25 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/razor/imba_razor_unstable_current"
-		"AbilityTextureName"	"razor_unstable_current"
+		"AbilityTextureName"		"razor_unstable_current"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"movespeed_per_level_pct"		"1"
+			"movement_speed_tooltip"
+			{
+				"dynamic_value"		"true"
+			}
 		}
 	}
 	"imba_razor_eye_of_the_storm"
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/razor/imba_razor_eye_of_the_storm"
-		"AbilityTextureName"	"razor_eye_of_the_storm"
+		"AbilityTextureName"		"razor_eye_of_the_storm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -194,7 +208,7 @@
 			"strike_interval"
 			{
 				"value"		"0.7 0.6 0.5"
-				"special_bonus_unique_razor_2"		"+-0.1"
+				"special_bonus_unique_imba_razor_2"		"+-0.1"
 			}
 			"armor_reduction"
 			{
@@ -207,14 +221,19 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/razor/imba_razor_dynamo"
-		"AbilityTextureName"	"razor_dynamo"
+		"AbilityTextureName"		"razor_dynamo"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"spell_amp_damage_divisor"		"20"
 			"spell_amp_mult"		"1"
+			"total_spell_amp"
+			{
+				"dynamic_value"		"true"
+			}
 		}
 	}
 	"special_bonus_unique_imba_razor"
@@ -268,6 +287,12 @@
 		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_razor_storm_surge_damage_and_slow"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_razor_plasmafield_max_slow"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

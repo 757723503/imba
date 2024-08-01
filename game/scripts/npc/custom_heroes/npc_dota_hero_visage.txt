@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/visage/imba_visage_grave_chill"
-		"AbilityTextureName"	"visage_grave_chill"
+		"AbilityTextureName"		"visage_grave_chill"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -21,12 +21,12 @@
 			"AbilityCooldown"
 			{
 				"value"		"17 15 13 11"
-				"special_bonus_unique_visage_8"		"-3"
+				"special_bonus_unique_imba_visage_8"		"-3"
 			}
 			"chill_duration"
 			{
 				"value"		"6"
-				"special_bonus_unique_visage_grave_chill_duration"		"2"
+				"special_bonus_unique_imba_visage_grave_chill_duration"		"2"
 			}
 			"movespeed_bonus"		"15 20 25 30"
 			"attackspeed_bonus"		"25 40 55 70"
@@ -40,13 +40,13 @@
 				"value"		"0"
 				"affected_by_aoe_increase"		"1"
 				"RequiresFacet"		"visage_sepulchre"
-				"special_bonus_facet_visage_sepulchre"		"250"
+				"special_bonus_facet_visage_facets_imba_1"		"250"
 			}
 			"penalty"
 			{
 				"value"		"0"
 				"RequiresFacet"		"visage_sepulchre"
-				"special_bonus_facet_visage_sepulchre"		"75"
+				"special_bonus_facet_visage_facets_imba_1"		"75"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -55,7 +55,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/visage/imba_visage_soul_assumption"
-		"AbilityTextureName"	"visage_soul_assumption"
+		"AbilityTextureName"		"visage_soul_assumption"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -74,7 +74,27 @@
 			"soul_charge_damage"
 			{
 				"value"		"70"
-				"special_bonus_unique_visage_4"		"25"
+				"special_bonus_unique_imba_visage_4"		"25"
+			}
+			"soul_charge_gold"
+			{
+				"value"		"0"
+				"special_bonus_facet_visage_facets_imba_1"		"35"
+			}
+			"gold_creep_pct"
+			{
+				"value"		"0"
+				"special_bonus_facet_visage_facets_imba_1"		"15"
+			}
+			"gold_grace_period_hero"
+			{
+				"value"		"0"
+				"special_bonus_facet_visage_facets_imba_1"		"3"
+			}
+			"gold_max_tooltip"
+			{
+				"value"		"0"
+				"special_bonus_facet_visage_facets_imba_1"		"105 140 175 210"
 			}
 			"stack_limit"		"3 4 5 6"
 			"stack_duration"		"6"
@@ -97,14 +117,12 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/visage/imba_visage_gravekeepers_cloak"
-		"AbilityTextureName"	"visage_gravekeepers_cloak"
+		"AbilityTextureName"		"visage_gravekeepers_cloak"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"HasShardUpgrade"		"1"
 		"AbilityDraftPreAbility"		"visage_summon_familiars_stone_form"
-		"MaxLevel"		"5"
-		"RequiredLevel"		"-1"
-		"Innate"		"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"max_layers"
@@ -113,11 +131,11 @@
 			}
 			"damage_reduction"
 			{
-				"value"		"4 8 12 16 20"
+				"value"		"8 12 16 20"
 			}
 			"recovery_time"
 			{
-				"value"		"7 6 5 4 3"
+				"value"		"7 6 5 4"
 			}
 			"minimum_damage"
 			{
@@ -153,7 +171,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/visage/imba_visage_summon_familiars"
-		"AbilityTextureName"	"visage_summon_familiars"
+		"AbilityTextureName"		"visage_summon_familiars"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
@@ -170,17 +188,17 @@
 			"familiar_attack_range"
 			{
 				"value"		"180"
-				"special_bonus_facet_visage_faithful_followers"		"170"
+				"special_bonus_facet_visage_facets_imba_1"		"170"
 			}
 			"familiar_base_movespeed"
 			{
 				"value"		"430"
-				"special_bonus_facet_visage_faithful_followers"		"40"
+				"special_bonus_facet_visage_facets_imba_1"		"40"
 			}
 			"familiar_bounty"
 			{
 				"value"		"100"
-				"special_bonus_facet_visage_faithful_followers"		"=70"
+				"special_bonus_facet_visage_facets_imba_1"		"=70"
 			}
 			"bonus_movement_speed"
 			{
@@ -194,28 +212,28 @@
 			"bonus_damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_visage_7"		"6"
+				"special_bonus_unique_imba_visage_7"		"6"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 			"familiar_count"
 			{
 				"value"		"2"
-				"special_bonus_unique_visage_6"		"1"
+				"special_bonus_unique_imba_visage_6"		"1"
 			}
 			"armor_reduction_per_hit"
 			{
 				"value"		"0"
-				"special_bonus_unique_visage_1"		"1"
+				"special_bonus_unique_imba_visage_1"		"1"
 			}
 			"armor_reduction_duration"
 			{
 				"value"		"0"
-				"special_bonus_unique_visage_1"		"10"
+				"special_bonus_unique_imba_visage_1"		"10"
 			}
 			"in_formation"
 			{
 				"value"		"0"
-				"special_bonus_facet_visage_faithful_followers"		"1"
+				"special_bonus_facet_visage_facets_imba_1"		"1"
 			}
 			"back_distance"		"75"
 			"side_distance"		"75"
@@ -241,7 +259,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/visage/imba_visage_silent_as_the_grave"
-		"AbilityTextureName"	"visage_silent_as_the_grave"
+		"AbilityTextureName"		"visage_silent_as_the_grave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -251,7 +269,7 @@
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_5"
 		"AbilityCastGestureSlot"		"DEFAULT"
 		"AbilityCooldown"		"45"
-		"AbilityManaCost"		"100"
+		"AbilityManaCost"		"115"
 		"AbilityValues"
 		{
 			"bonus_duration"
@@ -260,11 +278,11 @@
 			}
 			"bonus_damage"
 			{
-				"value"		"25"
+				"value"		"20"
 			}
 			"invis_duration"
 			{
-				"value"		"35"
+				"value"		"30"
 			}
 			"movespeed_bonus"
 			{
@@ -276,7 +294,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/visage/imba_visage_stone_form_self_cast"
-		"AbilityTextureName"	"visage_stone_form_self_cast"
+		"AbilityTextureName"		"visage_stone_form_self_cast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_SILENCE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -300,7 +318,7 @@
 			"AbilityCastRange"
 			{
 				"value"		"0"
-				"special_bonus_facet_visage_faithful_followers"		"=1200"
+				"special_bonus_facet_visage_facets_imba_1"		"=1200"
 			}
 		}
 	}
@@ -308,7 +326,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/visage/imba_visage_summon_familiars_stone_form"
-		"AbilityTextureName"	"visage_summon_familiars_stone_form"
+		"AbilityTextureName"		"visage_summon_familiars_stone_form"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -333,6 +351,23 @@
 			"hp_regen"		"150.0 175.0 200.0"
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_5"
+	}
+	"imba_visage_lurker"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/visage/imba_visage_lurker"
+		"AbilityTextureName"		"visage_lurker"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"max_stacks"		"10"
+			"stack_gain_time"		"2"
+			"cooldown_speed_per_stack"		"2"
+			"linger_duration"		"2"
+		}
 	}
 	"special_bonus_unique_imba_visage_1"
 	{

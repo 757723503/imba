@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/riki/imba_riki_poison_dart"
-		"AbilityTextureName"	"riki_poison_dart"
+		"AbilityTextureName"		"riki_poison_dart"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -38,7 +38,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/riki/imba_riki_smoke_screen"
-		"AbilityTextureName"	"riki_smoke_screen"
+		"AbilityTextureName"		"riki_smoke_screen"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -46,7 +46,7 @@
 		"HasShardUpgrade"		"1"
 		"AbilityCastRange"		"550"
 		"AbilityCastPoint"		"0.2"
-		"AbilityCooldown"		"20 17 14 11"
+		"AbilityCooldown"		"17 15 13 11"
 		"AbilityManaCost"		"65 70 75 80"
 		"AbilityValues"
 		{
@@ -57,7 +57,7 @@
 			"radius"
 			{
 				"value"		"425"
-				"special_bonus_unique_riki_7"		"50"
+				"special_bonus_unique_imba_riki_7"		"50"
 				"affected_by_aoe_increase"		"1"
 			}
 			"miss_rate"		"30 45 60 75"
@@ -78,7 +78,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/riki/imba_riki_blink_strike"
-		"AbilityTextureName"	"riki_blink_strike"
+		"AbilityTextureName"		"riki_blink_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CUSTOM"
@@ -100,7 +100,7 @@
 			"AbilityChargeRestoreTime"
 			{
 				"value"		"25 21 17 13"
-				"special_bonus_unique_riki_9"		"-4"
+				"special_bonus_unique_imba_riki_9"		"-4"
 			}
 			"slow"		"0.4"
 		}
@@ -110,13 +110,14 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/riki/imba_riki_backstab"
-		"AbilityTextureName"	"riki_backstab"
+		"AbilityTextureName"		"riki_backstab"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"3"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"fade_delay"		"4 3 2"
@@ -127,7 +128,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/riki/imba_riki_innate_backstab"
-		"AbilityTextureName"	"riki_innate_backstab"
+		"AbilityTextureName"		"riki_innate_backstab"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
@@ -137,7 +138,7 @@
 			"damage_multiplier"
 			{
 				"value"		"0.4 0.8 1.2 1.6"
-				"special_bonus_unique_riki_1"		"0.3"
+				"special_bonus_unique_imba_riki_1"		"0.3"
 				"CalculateSpellDamageTooltip"		"0"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
 			}
@@ -145,12 +146,12 @@
 			"bonus_xp_kill"
 			{
 				"value"		"0"
-				"special_bonus_facet_riki_contract_killer"		"25 150 250 350"
+				"special_bonus_facet_riki_facets_imba_1"		"25 150 250 350"
 			}
 			"bonus_xp_assist"
 			{
 				"value"		"0"
-				"special_bonus_facet_riki_contract_killer"		"25 100 100 100"
+				"special_bonus_facet_riki_facets_imba_1"		"25 100 100 100"
 			}
 		}
 	}
@@ -158,12 +159,13 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/riki/imba_riki_permanent_invisibility"
-		"AbilityTextureName"	"riki_permanent_invisibility"
+		"AbilityTextureName"		"riki_permanent_invisibility"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"fade_delay"		"4 3 2"
@@ -175,7 +177,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/riki/imba_riki_tricks_of_the_trade"
-		"AbilityTextureName"	"riki_tricks_of_the_trade"
+		"AbilityTextureName"		"riki_tricks_of_the_trade"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -194,7 +196,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"18 16 14 12"
-				"special_bonus_unique_riki_6"		"-3"
+				"special_bonus_unique_imba_riki_6"		"-3"
 			}
 			"radius"
 			{
@@ -206,7 +208,7 @@
 			"agility_pct"
 			{
 				"value"		"40 60 80 100"
-				"special_bonus_unique_riki_2"		"50"
+				"special_bonus_unique_imba_riki_2"		"50"
 			}
 			"scepter_duration"
 			{
@@ -226,12 +228,12 @@
 			"dispel"
 			{
 				"value"		"0"
-				"special_bonus_unique_riki_5"		"1"
+				"special_bonus_unique_imba_riki_5"		"1"
 			}
 			"creep_agility_multiplier"
 			{
 				"value"		"1"
-				"special_bonus_facet_riki_exterminator"		"=4"
+				"special_bonus_facet_riki_facets_imba_1"		"=4.5"
 			}
 		}
 	}

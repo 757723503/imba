@@ -4,8 +4,8 @@
 	"imba_storm_spirit_electric_rave"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/storm/imba_storm_spirit_electric_rave"
-		"AbilityTextureName"	"storm_spirit_electric_rave"
+		"ScriptFile"		"ability/hero_ability/storm_spirit/imba_storm_spirit_electric_rave"
+		"AbilityTextureName"		"storm_spirit_electric_rave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -32,8 +32,8 @@
 	"imba_storm_spirit_static_remnant"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/storm/imba_storm_spirit_static_remnant"
-		"AbilityTextureName"	"storm_spirit_static_remnant"
+		"ScriptFile"		"ability/hero_ability/storm_spirit/imba_storm_spirit_static_remnant"
+		"AbilityTextureName"		"storm_spirit_static_remnant"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -59,38 +59,38 @@
 			"AbilityCooldown"
 			{
 				"value"		"3.5"
-				"special_bonus_unique_storm_spirit_8"		"-1.25"
+				"special_bonus_unique_imba_storm_spirit_8"		"-1.25"
 			}
 			"static_remnant_damage"
 			{
 				"value"		"100 160 220 280"
-				"special_bonus_unique_storm_spirit_5"		"60"
+				"special_bonus_unique_imba_storm_spirit_5"		"60"
 			}
 			"is_point_targeted"
 			{
 				"value"		"0"
-				"special_bonus_facet_storm_spirit_static_slide"		"1"
+				"special_bonus_facet_storm_spirit_facets_imba_1"		"1"
 			}
 			"AbilityCastRange"
 			{
 				"value"		"0"
-				"special_bonus_facet_storm_spirit_static_slide"		"800"
+				"special_bonus_facet_storm_spirit_facets_imba_1"		"800"
 			}
 			"static_remnant_travel_speed"
 			{
 				"value"		"0"
-				"special_bonus_facet_storm_spirit_static_slide"		"300"
+				"special_bonus_facet_storm_spirit_facets_imba_1"		"300"
 			}
 			"static_remnant_vision_radius_day"
 			{
 				"value"		"100"
-				"special_bonus_facet_storm_spirit_static_slide"		"=100"
+				"special_bonus_facet_storm_spirit_facets_imba_1"		"=100"
 				"affected_by_aoe_increase"		"1"
 			}
 			"static_remnant_vision_radius_night"
 			{
 				"value"		"100"
-				"special_bonus_facet_storm_spirit_static_slide"		"=100"
+				"special_bonus_facet_storm_spirit_facets_imba_1"		"=100"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -99,8 +99,8 @@
 	"imba_storm_spirit_electric_vortex"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/storm/imba_storm_spirit_electric_vortex"
-		"AbilityTextureName"	"storm_spirit_electric_vortex"
+		"ScriptFile"		"ability/hero_ability/storm_spirit/imba_storm_spirit_electric_vortex"
+		"AbilityTextureName"		"storm_spirit_electric_vortex"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -122,7 +122,7 @@
 			"AbilityDuration"
 			{
 				"value"		"1.1 1.4 1.7 2.0"
-				"special_bonus_unique_storm_spirit"		"0.3"
+				"special_bonus_unique_imba_storm_spirit"		"0.2"
 			}
 			"radius_scepter"
 			{
@@ -133,7 +133,7 @@
 			"enemy_overload_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_storm_spirit_shock_collar"		"=5"
+				"special_bonus_facet_storm_spirit_facets_imba_1"		"=5"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -141,8 +141,8 @@
 	"imba_storm_spirit_overload"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/storm/imba_storm_spirit_overload"
-		"AbilityTextureName"	"storm_spirit_overload"
+		"ScriptFile"		"ability/hero_ability/storm_spirit/imba_storm_spirit_overload"
+		"AbilityTextureName"		"storm_spirit_overload"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -150,6 +150,7 @@
 		"AbilitySound"		"Hero_StormSpirit.Overload"
 		"AbilityDuration"		"0.8"
 		"HasShardUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityModifierSupportBonus"		"40"
 		"AbilityValues"
 		{
@@ -162,8 +163,8 @@
 			"overload_attack_slow"		"-80"
 			"overload_damage"
 			{
-				"var_type"		"FIELD_INTEGER"
 				"value"		"25 50 75 100"
+				"special_bonus_unique_imba_storm_spirit_overload_aspd"		"20"
 			}
 			"shard_activation_radius"
 			{
@@ -199,15 +200,14 @@
 			"overload_cast_range"
 			{
 				"value"		"0"
-				"special_bonus_unique_storm_spirit_overload_aspd"		"150"
 			}
 			"overload_bounces"
 			{
-				"special_bonus_unique_storm_spirit_7"		"=2"
+				"special_bonus_unique_imba_storm_spirit_7"		"=2"
 			}
 			"overload_damage_pct"
 			{
-				"special_bonus_unique_storm_spirit_7"		"=65"
+				"special_bonus_unique_imba_storm_spirit_7"		"=65"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -215,8 +215,8 @@
 	"imba_storm_spirit_ball_lightning"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/storm/imba_storm_spirit_ball_lightning"
-		"AbilityTextureName"	"storm_spirit_ball_lightning"
+		"ScriptFile"		"ability/hero_ability/storm_spirit/imba_storm_spirit_ball_lightning"
+		"AbilityTextureName"		"storm_spirit_ball_lightning"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_CAN_SELF_CAST | DOTA_ABILITY_BEHAVIOR_OPTIONAL_UNIT_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -250,12 +250,13 @@
 	"imba_storm_spirit_galvanized"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/storm/imba_storm_spirit_galvanized"
-		"AbilityTextureName"	"storm_spirit_galvanized"
+		"ScriptFile"		"ability/hero_ability/storm_spirit/imba_storm_spirit_galvanized"
+		"AbilityTextureName"		"storm_spirit_galvanized"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"perma_mp_per_kill"		"0.1"
@@ -283,7 +284,7 @@
 		{
 			"value"
 			{
-				"value"		"500"
+				"value"		"450"
 				"ad_linked_abilities"		"storm_spirit_ball_lightning && storm_spirit_static_remnant"
 			}
 		}

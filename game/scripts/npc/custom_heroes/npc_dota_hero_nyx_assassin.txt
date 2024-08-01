@@ -4,8 +4,8 @@
 	"imba_nyx_assassin_impale"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_impale"
-		"AbilityTextureName"	"nyx_assassin_impale"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_impale"
+		"AbilityTextureName"		"nyx_assassin_impale"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -28,14 +28,14 @@
 			"duration"
 			{
 				"value"		"1.1 1.4 1.7 2.0"
-				"special_bonus_unique_nyx_4"		"0.2"
+				"special_bonus_unique_imba_nyx_4"		"0.2"
 			}
 			"length"		"750"
 			"speed"		"1600"
 			"impale_damage"
 			{
 				"value"		"100 160 220 280"
-				"special_bonus_unique_nyx_2"		"120"
+				"special_bonus_unique_imba_nyx_2"		"100"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -43,8 +43,8 @@
 	"imba_nyx_assassin_mana_burn"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_mana_burn"
-		"AbilityTextureName"	"nyx_assassin_mana_burn"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_mana_burn"
+		"AbilityTextureName"		"nyx_assassin_mana_burn"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -61,8 +61,8 @@
 	"imba_nyx_assassin_jolt"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_jolt"
-		"AbilityTextureName"	"nyx_assassin_jolt"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_jolt"
+		"AbilityTextureName"		"nyx_assassin_jolt"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -78,7 +78,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"13 11 9 7"
-				"special_bonus_unique_nyx_jolt_cooldown"		"-3"
+				"special_bonus_unique_imba_nyx_jolt_cooldown"		"-3"
 			}
 			"max_mana_as_damage_pct"
 			{
@@ -87,7 +87,7 @@
 			"aoe"
 			{
 				"value"		"0"
-				"special_bonus_unique_nyx"		"600"
+				"special_bonus_unique_imba_nyx"		"600"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage_echo_duration"		"15"
@@ -99,8 +99,8 @@
 	"imba_nyx_assassin_spiked_carapace"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_spiked_carapace"
-		"AbilityTextureName"	"nyx_assassin_spiked_carapace"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_spiked_carapace"
+		"AbilityTextureName"		"nyx_assassin_spiked_carapace"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -114,12 +114,12 @@
 			"reflect_duration"
 			{
 				"value"		"2"
-				"special_bonus_unique_nyx_carapace_reflect_duration"		"0.5"
+				"special_bonus_unique_imba_nyx_carapace_reflect_duration"		"0.5"
 			}
 			"stun_duration"
 			{
 				"value"		"0.4 0.8 1.2 1.6"
-				"special_bonus_unique_nyx_6"		"0.5"
+				"special_bonus_unique_imba_nyx_6"		"0.5"
 			}
 			"damage_reflect_pct"		"125"
 		}
@@ -129,8 +129,8 @@
 	"imba_nyx_assassin_vendetta"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_vendetta"
-		"AbilityTextureName"	"nyx_assassin_vendetta"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_vendetta"
+		"AbilityTextureName"		"nyx_assassin_vendetta"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
@@ -163,34 +163,25 @@
 			"bonus_damage"
 			{
 				"value"		"300 400 500"
-				"special_bonus_unique_nyx_vendetta_damage"		"50"
+				"special_bonus_unique_imba_nyx_vendetta_damage"		"40"
 				"CalculateSpellDamageTooltip"		"1"
 			}
 			"health_regen_rate_scepter"		"3"
 			"mana_regen_rate_scepter"		"3"
 			"break_duration"
 			{
-				"special_bonus_unique_nyx_vendetta_cd_manacost"		"5"
-			}
-			"shard_debuff_duration"
-			{
-				"value"		"4"
-				"RequiresShard"		"1"
-			}
-			"shard_magic_resist_reduction"
-			{
-				"value"		"17"
-				"RequiresShard"		"1"
+				"value"		"0"
+				"special_bonus_shard"		"4"
 			}
 			"free_pathing_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_nyx_assassin_scuttle"		"=15"
+				"special_bonus_facet_nyx_assassin_facets_imba_1"		"=15"
 			}
 			"free_pathing_movement_speed_bonus"
 			{
 				"value"		"0"
-				"special_bonus_facet_nyx_assassin_scuttle"		"=200"
+				"special_bonus_facet_nyx_assassin_facets_imba_1"		"=200"
 			}
 			"attack_animation_bonus"		"70"
 			"attack_range_bonus"		"75"
@@ -199,8 +190,8 @@
 	"imba_nyx_assassin_burrow"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_burrow"
-		"AbilityTextureName"	"nyx_assassin_burrow"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_burrow"
+		"AbilityTextureName"		"nyx_assassin_burrow"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
@@ -228,8 +219,8 @@
 	"imba_nyx_assassin_unburrow"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_unburrow"
-		"AbilityTextureName"	"nyx_assassin_unburrow"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_unburrow"
+		"AbilityTextureName"		"nyx_assassin_unburrow"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"MaxLevel"		"1"
 		"FightRecapLevel"		"1"
@@ -242,17 +233,18 @@
 	"imba_nyx_assassin_nyxth_sense"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_nyxth_sense"
-		"AbilityTextureName"	"nyx_assassin_nyxth_sense"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_nyxth_sense"
+		"AbilityTextureName"		"nyx_assassin_nyxth_sense"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"radius"
 			{
-				"value"		"400"
+				"value"		"350"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -260,16 +252,14 @@
 	"imba_nyx_assassin_innate_mana_burn"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/nyx/imba_nyx_assassin_innate_mana_burn"
-		"AbilityTextureName"	"nyx_assassin_innate_mana_burn"
+		"ScriptFile"		"ability/hero_ability/nyx_assassin/imba_nyx_assassin_innate_mana_burn"
+		"AbilityTextureName"		"nyx_assassin_innate_mana_burn"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		"MaxLevel"		"4"
-		"DependentOnAbility"		"nyx_assassin_vendetta"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"mana_pct"		"15 20 25 30"
-			"damage_threshold"		"100"
+			"mana_pct"		"15"
 		}
 	}
 	"special_bonus_unique_imba_nyx"

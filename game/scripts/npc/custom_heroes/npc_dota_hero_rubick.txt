@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_telekinesis"
-		"AbilityTextureName"	"rubick_telekinesis"
+		"AbilityTextureName"		"rubick_telekinesis"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -20,12 +20,12 @@
 			"lift_duration"
 			{
 				"value"		"0.95 1.2 1.45 1.7"
-				"special_bonus_unique_rubick_7"		"0.4"
+				"special_bonus_unique_imba_rubick_7"		"0.4"
 			}
 			"stun_duration"
 			{
 				"value"		"0.9 1.1 1.3 1.5"
-				"special_bonus_unique_rubick_7"		"0.4"
+				"special_bonus_unique_imba_rubick_7"		"0.4"
 			}
 			"radius"
 			{
@@ -35,7 +35,7 @@
 			"max_land_distance"
 			{
 				"value"		"375 375 375 375"
-				"special_bonus_unique_rubick"		"400"
+				"special_bonus_unique_imba_rubick"		"400"
 			}
 			"fall_duration"		"0.3 0.3 0.3 0.3"
 			"shard_max_land_distance_bonus_pct"
@@ -56,7 +56,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"24 21 18 15"
-				"special_bonus_unique_rubick_4"		"-4"
+				"special_bonus_unique_imba_rubick_4"		"-4"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -65,7 +65,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_telekinesis_land"
-		"AbilityTextureName"	"rubick_telekinesis_land"
+		"AbilityTextureName"		"rubick_telekinesis_land"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_AOE"
 		"MaxLevel"		"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -82,7 +82,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_telekinesis_land_self"
-		"AbilityTextureName"	"rubick_telekinesis_land_self"
+		"AbilityTextureName"		"rubick_telekinesis_land_self"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"MaxLevel"		"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -99,7 +99,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_fade_bolt"
-		"AbilityTextureName"	"rubick_fade_bolt"
+		"AbilityTextureName"		"rubick_fade_bolt"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -128,7 +128,7 @@
 				"value"		"5 15 25 35"
 				"CalculateSpellDamageTooltip"		"0"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_NONE"
-				"special_bonus_unique_rubick_2"		"12"
+				"special_bonus_unique_imba_rubick_2"		"12"
 			}
 			"duration"		"10.0 10.0 10.0 10.0"
 			"radius"
@@ -143,10 +143,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_null_field"
-		"AbilityTextureName"	"rubick_null_field"
+		"AbilityTextureName"		"rubick_null_field"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastGestureSlot"		"DEFAULT"
+		"IsBreakable"		"1"
 		"AbilityCooldown"		"30"
 		"AbilityValues"
 		{
@@ -164,21 +165,22 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_arcane_supremacy"
-		"AbilityTextureName"	"rubick_arcane_supremacy"
+		"AbilityTextureName"		"rubick_arcane_supremacy"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"cast_range"		"60 120 180 240"
-			"spell_amp"		"14 18 22 26"
+			"spell_amp"		"11 16 21 26"
 			"aoe_bonus"
 			{
 				"value"		"0"
-				"special_bonus_facet_rubick_arcane_accumulation"		"25"
+				"special_bonus_facet_rubick_facets_imba_1"		"25"
 			}
 			"aoe_bonus_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_rubick_arcane_accumulation"		"20"
+				"special_bonus_facet_rubick_facets_imba_1"		"20"
 			}
 		}
 	}
@@ -186,14 +188,16 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_might_and_magus"
-		"AbilityTextureName"	"rubick_might_and_magus"
+		"AbilityTextureName"		"rubick_might_and_magus"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"bonus_damage_pct"		"100"
-			"bonus_damage_pct_tooltip"		"1"
+			"one_tooltip"		"1"
+			"bonus_damage_pct"		"75"
+			"bonus_damage_pct_tooltip"		"0.75"
 			"magic_resist_pct"		"75"
 			"magic_resist_pct_tooltip"		"0.75"
 		}
@@ -202,7 +206,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_spell_steal"
-		"AbilityTextureName"	"rubick_spell_steal"
+		"AbilityTextureName"		"rubick_spell_steal"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -234,7 +238,7 @@
 			"stolen_mana_reduction"
 			{
 				"value"		"0"
-				"special_bonus_facet_rubick_frugal_filch"		"40 50 60"
+				"special_bonus_facet_rubick_facets_imba_1"		"40 50 60"
 			}
 		}
 	}
@@ -242,7 +246,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_empty1"
-		"AbilityTextureName"	"rubick_empty1"
+		"AbilityTextureName"		"rubick_empty1"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_5"
@@ -251,7 +255,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_empty2"
-		"AbilityTextureName"	"rubick_empty2"
+		"AbilityTextureName"		"rubick_empty2"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_6"
@@ -260,7 +264,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_hidden1"
-		"AbilityTextureName"	"rubick_hidden1"
+		"AbilityTextureName"		"rubick_hidden1"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -269,7 +273,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_hidden2"
-		"AbilityTextureName"	"rubick_hidden2"
+		"AbilityTextureName"		"rubick_hidden2"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -278,7 +282,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/rubick/imba_rubick_hidden3"
-		"AbilityTextureName"	"rubick_hidden3"
+		"AbilityTextureName"		"rubick_hidden3"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_INVALID"

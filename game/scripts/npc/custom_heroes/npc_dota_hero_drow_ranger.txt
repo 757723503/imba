@@ -4,8 +4,8 @@
 	"imba_drow_ranger_frost_arrows"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_frost_arrows"
-		"AbilityTextureName"	"drow_ranger_frost_arrows"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_frost_arrows"
+		"AbilityTextureName"		"drow_ranger_frost_arrows"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -25,8 +25,8 @@
 			"frost_arrows_movement_speed"		"-10 -20 -30 -40"
 			"damage"
 			{
-				"value"		"6 12 18 24"
-				"special_bonus_unique_drow_ranger_2"		"15"
+				"value"		"10 15 20 25"
+				"special_bonus_unique_imba_drow_ranger_2"		"15"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 			"shard_regen_reduction_pct_per_stack"
@@ -85,8 +85,8 @@
 	"imba_drow_ranger_multishot"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_multishot"
-		"AbilityTextureName"	"drow_ranger_multishot"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_multishot"
+		"AbilityTextureName"		"drow_ranger_multishot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -101,13 +101,13 @@
 			"wave_count"
 			{
 				"value"		"3"
-				"special_bonus_unique_drow_ranger_8"		"1"
+				"special_bonus_unique_imba_drow_ranger_8"		"1"
 			}
 			"arrow_count_per_wave"		"4"
 			"arrow_damage_pct"
 			{
 				"value"		"100 120 140 160"
-				"special_bonus_unique_drow_ranger_1"		"25"
+				"special_bonus_unique_imba_drow_ranger_1"		"25"
 			}
 			"arrow_width"		"90"
 			"arrow_speed"		"1300"
@@ -117,12 +117,12 @@
 			"AbilityCooldown"
 			{
 				"value"		"24 21 18 15"
-				"special_bonus_unique_drow_ranger_6"		"-6"
+				"special_bonus_unique_imba_drow_ranger_6"		"-6"
 			}
 			"multishot_movespeed"
 			{
 				"value"		"0"
-				"special_bonus_facet_drow_ranger_sidestep"		"40"
+				"special_bonus_facet_drow_ranger_facets_imba_1"		"25"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CHANNEL_ABILITY_3"
@@ -130,8 +130,8 @@
 	"imba_drow_ranger_silence"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_silence"
-		"AbilityTextureName"	"drow_ranger_silence"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_silence"
+		"AbilityTextureName"		"drow_ranger_silence"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -150,8 +150,8 @@
 	"imba_drow_ranger_wave_of_silence"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_wave_of_silence"
-		"AbilityTextureName"	"drow_ranger_wave_of_silence"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_wave_of_silence"
+		"AbilityTextureName"		"drow_ranger_wave_of_silence"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -176,12 +176,12 @@
 			"bonus_movespeed"
 			{
 				"value"		"0"
-				"special_bonus_unique_drow_ranger_gust_selfmovespeed"		"50"
+				"special_bonus_unique_imba_drow_ranger_gust_selfmovespeed"		"50"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"19 17 15 13"
-				"special_bonus_unique_drow_ranger_7"		"-3.5"
+				"special_bonus_unique_imba_drow_ranger_7"		"-3.5"
 			}
 			"miss_chance"
 			{
@@ -197,11 +197,12 @@
 	"imba_drow_ranger_trueshot"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_trueshot"
-		"AbilityTextureName"	"drow_ranger_trueshot"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_trueshot"
+		"AbilityTextureName"		"drow_ranger_trueshot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Innate"		"1"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"trueshot_agi_bonus_self"		"2"
@@ -209,7 +210,7 @@
 			"trueshot_aspd_bonus_creeps"
 			{
 				"value"		"0"
-				"special_bonus_facet_1"		"3"
+				"special_bonus_facet_drow_ranger_facets_imba_1"		"3"
 			}
 			"radius"
 			{
@@ -221,8 +222,8 @@
 	"imba_drow_ranger_marksmanship"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_marksmanship"
-		"AbilityTextureName"	"drow_ranger_marksmanship"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_marksmanship"
+		"AbilityTextureName"		"drow_ranger_marksmanship"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -231,12 +232,13 @@
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"AbilityDraftUltShardAbility"		"drow_ranger_glacier"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"chance"
 			{
 				"value"		"30 35 40"
-				"special_bonus_unique_drow_ranger_3"		"10"
+				"special_bonus_unique_imba_drow_ranger_3"		"10"
 			}
 			"bonus_damage"		"40 60 80"
 			"disable_range"		"400"
@@ -245,8 +247,8 @@
 	"imba_drow_ranger_glacier"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_glacier"
-		"AbilityTextureName"	"drow_ranger_glacier"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_glacier"
+		"AbilityTextureName"		"drow_ranger_glacier"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -284,8 +286,8 @@
 	"imba_drow_ranger_creep_rally"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_creep_rally"
-		"AbilityTextureName"	"drow_ranger_creep_rally"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_creep_rally"
+		"AbilityTextureName"		"drow_ranger_creep_rally"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
@@ -293,11 +295,12 @@
 	"imba_drow_ranger_vantage_point"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/drow/imba_drow_ranger_vantage_point"
-		"AbilityTextureName"	"drow_ranger_vantage_point"
+		"ScriptFile"		"ability/hero_ability/drow_ranger/imba_drow_ranger_vantage_point"
+		"AbilityTextureName"		"drow_ranger_vantage_point"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"damage_bonus"		"20"

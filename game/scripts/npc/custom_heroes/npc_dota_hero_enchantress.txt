@@ -5,19 +5,20 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_untouchable"
-		"AbilityTextureName"	"enchantress_untouchable"
+		"AbilityTextureName"		"enchantress_untouchable"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityDraftUltScepterAbility"		"enchantress_bunny_hop"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"slow_attack_speed"
 			{
 				"value"		"-100 -150 -200"
-				"special_bonus_unique_enchantress_3"		"-65"
+				"special_bonus_unique_imba_enchantress_3"		"-65"
 			}
 			"slow_duration"
 			{
@@ -29,7 +30,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_bunny_hop"
-		"AbilityTextureName"	"enchantress_bunny_hop"
+		"AbilityTextureName"		"enchantress_bunny_hop"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"1"
@@ -53,7 +54,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_little_friends"
-		"AbilityTextureName"	"enchantress_little_friends"
+		"AbilityTextureName"		"enchantress_little_friends"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -87,7 +88,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_enchant"
-		"AbilityTextureName"	"enchantress_enchant"
+		"AbilityTextureName"		"enchantress_enchant"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -104,31 +105,31 @@
 			"AbilityCastRange"
 			{
 				"value"		"500 550 600 650"
-				"special_bonus_facet_enchantress_spellbound"		"50 100 150 200"
+				"special_bonus_facet_enchantress_facets_imba_1"		"50 100 150 200"
 			}
 			"slow_movement_speed"		"-30 -40 -50 -60"
 			"slow_duration"		"5"
 			"attack_range_bonus"
 			{
 				"value"		"0"
-				"special_bonus_facet_enchantress_spellbound"		"50 100 150 200"
+				"special_bonus_facet_enchantress_facets_imba_1"		"50 100 150 200"
 				"RequiresFacet"		"enchantress_spellbound"
 			}
 			"dominate_duration"		"30 60 90 120"
 			"enchant_health"
 			{
 				"value"		"150 250 350 450"
-				"special_bonus_unique_enchantress_enchant_health_damage"		"150"
+				"special_bonus_unique_imba_enchantress_enchant_health_damage"		"150"
 			}
 			"enchant_armor"
 			{
 				"value"		"0"
-				"special_bonus_unique_enchantress_enchant_armor"		"10"
+				"special_bonus_unique_imba_enchantress_enchant_armor"		"10"
 			}
 			"enchant_damage"
 			{
 				"value"		"0 25 50 75"
-				"special_bonus_unique_enchantress_enchant_health_damage"		"25"
+				"special_bonus_unique_imba_enchantress_enchant_health_damage"		"25"
 			}
 			"xp_gain_pct"		"50"
 			"level_req"		"4 5 6 6"
@@ -144,11 +145,12 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_natures_attendants"
-		"AbilityTextureName"	"enchantress_natures_attendants"
+		"AbilityTextureName"		"enchantress_natures_attendants"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
 		"AbilitySound"		"Hero_Enchantress.NaturesAttendantsCast"
+		"IsBreakable"		"1"
 		"AbilityCastPoint"		"0.3 0.3 0.3 0.3"
 		"AbilityCooldown"		"35"
 		"AbilityManaCost"		"140"
@@ -159,7 +161,7 @@
 			"heal"
 			{
 				"value"		"4 8 12 16"
-				"special_bonus_unique_enchantress_5"		"8"
+				"special_bonus_unique_imba_enchantress_5"		"8"
 			}
 			"radius"
 			{
@@ -169,37 +171,37 @@
 			"wisp_count"
 			{
 				"value"		"8"
-				"special_bonus_unique_enchantress_2"		"12"
+				"special_bonus_unique_imba_enchantress_2"		"12"
 			}
 			"movespeed"
 			{
 				"value"		"0"
-				"special_bonus_unique_enchantress_6"		"30"
+				"special_bonus_unique_imba_enchantress_6"		"30"
 			}
 			"overprotective_damage_threshold"
 			{
 				"value"		"0"
-				"special_bonus_facet_enchantress_overprotective_wisps"		"=250"
+				"special_bonus_facet_enchantress_facets_imba_1"		"=250"
 			}
 			"overprotective_damage_reset_interval"
 			{
 				"value"		"0"
-				"special_bonus_facet_enchantress_overprotective_wisps"		"=7"
+				"special_bonus_facet_enchantress_facets_imba_1"		"=7"
 			}
 			"overprotective_wisp_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_enchantress_overprotective_wisps"		"=4"
+				"special_bonus_facet_enchantress_facets_imba_1"		"=4"
 			}
 			"overprotective_wisp_count"
 			{
 				"value"		"0"
-				"special_bonus_facet_enchantress_overprotective_wisps"		"=1"
+				"special_bonus_facet_enchantress_facets_imba_1"		"=1"
 			}
 			"overprotective_max_wisps"
 			{
 				"value"		"0"
-				"special_bonus_facet_enchantress_overprotective_wisps"		"=4"
+				"special_bonus_facet_enchantress_facets_imba_1"		"=4"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -208,7 +210,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_impetus"
-		"AbilityTextureName"	"enchantress_impetus"
+		"AbilityTextureName"		"enchantress_impetus"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -227,23 +229,31 @@
 			"distance_damage_pct"
 			{
 				"value"		"5 10 15 20"
-				"special_bonus_unique_enchantress_4"		"6.5"
+				"special_bonus_unique_imba_enchantress_4"		"6.5"
 			}
 			"distance_cap"		"1750"
 			"creep_multiplier"		"2"
 		}
 	}
-	"imba_enchantress_forest_freebie"
+	"imba_enchantress_rabblerouser"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_forest_freebie"
-		"AbilityTextureName"	"enchantress_forest_freebie"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"ScriptFile"		"ability/hero_ability/enchantress/imba_enchantress_rabblerouser"
+		"AbilityTextureName"		"enchantress_rabblerouser"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"additional_neutral_tokens"		"1"
+			"base_damage_amp"		"10"
+			"damage_amp_per_level"		"3"
+			"damage_increase_tooltip"
+			{
+				"dynamic_value"		"true"
+			}
 		}
 	}
 	"special_bonus_unique_imba_enchantress_2"

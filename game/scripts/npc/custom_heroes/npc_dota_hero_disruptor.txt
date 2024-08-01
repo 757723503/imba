@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/disruptor/imba_disruptor_thunder_strike"
-		"AbilityTextureName"	"disruptor_thunder_strike"
+		"AbilityTextureName"		"disruptor_thunder_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -42,19 +42,19 @@
 			"strike_damage_bonus"
 			{
 				"value"		"0"
-				"special_bonus_unique_disruptor_consecutive_strike_damage"		"10"
+				"special_bonus_unique_imba_disruptor_consecutive_strike_damage"		"10"
 			}
 			"slow_duration"
 			{
 				"value"		"0.4"
-				"special_bonus_unique_disruptor"		"0.5"
+				"special_bonus_unique_imba_disruptor"		"0.5"
 			}
 			"slow_amount"		"100"
 			"shard_ground_delay"		"5"
 			"hits_units_inside_kinetic"
 			{
 				"value"		"0"
-				"special_bonus_facet_disruptor_thunderstorm"		"1"
+				"special_bonus_facet_disruptor_facets_imba_1"		"1"
 			}
 		}
 	}
@@ -62,7 +62,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/disruptor/imba_disruptor_glimpse"
-		"AbilityTextureName"	"disruptor_glimpse"
+		"AbilityTextureName"		"disruptor_glimpse"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -82,15 +82,19 @@
 			"AbilityCooldown"
 			{
 				"value"		"24 22 20 18"
-				"special_bonus_unique_disruptor_4"		"-12"
+				"special_bonus_unique_imba_disruptor_4"		"-12"
 			}
 			"min_damage"		"25"
 			"max_damage"
 			{
 				"value"		"100 160 220 280"
-				"special_bonus_unique_disruptor_9"		"275"
+				"special_bonus_unique_imba_disruptor_9"		"280"
 			}
-			"max_distance"		"1400"
+			"damage_to_distance_pct"
+			{
+				"value"		"20 25 30 35"
+				"special_bonus_unique_imba_disruptor_9"		"10"
+			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 	}
@@ -98,7 +102,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/disruptor/imba_disruptor_kinetic_field"
-		"AbilityTextureName"	"disruptor_kinetic_field"
+		"AbilityTextureName"		"disruptor_kinetic_field"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"		"1"
@@ -113,7 +117,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"20 18 16 14"
-				"special_bonus_unique_disruptor_2"		"-3"
+				"special_bonus_unique_imba_disruptor_2"		"-3"
 			}
 			"radius"
 			{
@@ -127,7 +131,7 @@
 			"duration"
 			{
 				"value"		"2.6 3.2 3.8 4.4"
-				"special_bonus_unique_disruptor_5"		"2"
+				"special_bonus_unique_imba_disruptor_5"		"2"
 			}
 			"damage_per_second"		"0"
 		}
@@ -136,7 +140,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/disruptor/imba_disruptor_kinetic_fence"
-		"AbilityTextureName"	"disruptor_kinetic_fence"
+		"AbilityTextureName"		"disruptor_kinetic_fence"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"		"1"
@@ -147,13 +151,13 @@
 		"AbilityManaCost"		"70"
 		"AbilityCooldown"		"0"
 		"AbilityCharges"		"2"
-		"AbilityCastRange"		"900 900 900 900"
+		"AbilityCastRange"		"1050 1050 1050 1050"
 		"AbilityValues"
 		{
 			"AbilityChargeRestoreTime"
 			{
 				"value"		"20 18 16 14"
-				"special_bonus_unique_disruptor_2"		"-3"
+				"special_bonus_unique_imba_disruptor_2"		"-3"
 			}
 			"radius"		"350"
 			"formation_time"
@@ -163,7 +167,7 @@
 			"duration"
 			{
 				"value"		"2.6 3.2 3.8 4.4"
-				"special_bonus_unique_disruptor_5"		"2"
+				"special_bonus_unique_imba_disruptor_5"		"2"
 			}
 			"wall_width"
 			{
@@ -174,10 +178,10 @@
 	}
 	"imba_disruptor_static_storm"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/disruptor/imba_disruptor_static_storm"
-		"AbilityTextureName"	"disruptor_static_storm"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"disruptor_static_storm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -197,18 +201,18 @@
 			{
 				"value"		"550"
 				"affected_by_aoe_increase"		"1"
-				"special_bonus_unique_disruptor_8"		"150"
+				"special_bonus_unique_imba_disruptor_8"		"150"
 			}
 			"pulses"
 			{
 				"value"		"20"
-				"special_bonus_unique_disruptor_7"		"6"
+				"special_bonus_unique_imba_disruptor_7"		"6"
 			}
 			"damage_max"		"200 275 350"
 			"duration"
 			{
 				"value"		"6"
-				"special_bonus_unique_disruptor_7"		"1.5"
+				"special_bonus_unique_imba_disruptor_7"		"1.5"
 			}
 		}
 	}
@@ -216,12 +220,13 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/disruptor/imba_disruptor_electromagnetic_repulsion"
-		"AbilityTextureName"	"disruptor_electromagnetic_repulsion"
+		"AbilityTextureName"		"disruptor_electromagnetic_repulsion"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
 		"Innate"		"1"
 		"AbilityCooldown"		"4"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"damage_threshold"		"250"
@@ -298,7 +303,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/disruptor/imba_disruptor_innate_kinetic_circle"
-		"AbilityTextureName"	"disruptor_innate_kinetic_circle"
+		"AbilityTextureName"		"disruptor_innate_kinetic_circle"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"

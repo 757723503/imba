@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/ursa/imba_ursa_earthshock"
-		"AbilityTextureName"	"ursa_earthshock"
+		"AbilityTextureName"		"ursa_earthshock"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -23,7 +23,7 @@
 			{
 				"value"		"385"
 				"affected_by_aoe_increase"		"1"
-				"special_bonus_unique_ursa_2"		"400"
+				"special_bonus_unique_imba_ursa_2"		"400"
 			}
 			"movement_slow"		"-22 -28 -34 -40"
 			"hop_distance"
@@ -40,17 +40,17 @@
 			"fury_swipe_stacks_on_hit"
 			{
 				"value"		"0"
-				"special_bonus_unique_ursa_earthshock_furyswipes"		"2"
+				"special_bonus_unique_imba_ursa_earthshock_furyswipes"		"2"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"15 13 11 9"
-				"special_bonus_unique_ursa_3"		"=0.25"
+				"special_bonus_unique_imba_ursa_3"		"=0.25"
 			}
 			"AbilityCharges"
 			{
 				"value"		"0"
-				"special_bonus_unique_ursa_3"		"2"
+				"special_bonus_unique_imba_ursa_3"		"2"
 			}
 			"AbilityChargeRestoreTime"
 			{
@@ -64,7 +64,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/ursa/imba_ursa_overpower"
-		"AbilityTextureName"	"ursa_overpower"
+		"AbilityTextureName"		"ursa_overpower"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilitySound"		"Hero_Ursa.Overpower"
@@ -80,7 +80,7 @@
 			"max_attacks"
 			{
 				"value"		"3 4 5 6"
-				"special_bonus_unique_ursa_7"		"3"
+				"special_bonus_unique_imba_ursa_7"		"3"
 			}
 			"attack_speed_bonus_pct"		"400"
 			"slow_resist"		"10 20 30 40"
@@ -90,33 +90,34 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/ursa/imba_ursa_fury_swipes"
-		"AbilityTextureName"	"ursa_fury_swipes"
+		"AbilityTextureName"		"ursa_fury_swipes"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"bonus_reset_time"
 			{
 				"value"		"8 12 16 20"
-				"special_bonus_unique_ursa_4"		"15"
+				"special_bonus_unique_imba_ursa_4"		"15"
 			}
 			"bonus_reset_time_roshan"		"10"
 			"damage_per_stack"
 			{
 				"value"		"13 21 29 37"
-				"special_bonus_unique_ursa"		"10"
+				"special_bonus_unique_imba_ursa"		"10"
 			}
 			"stun_stack_count"
 			{
 				"value"		"0"
-				"special_bonus_unique_ursa_furyswipes_stun"		"5"
+				"special_bonus_unique_imba_ursa_furyswipes_stun"		"5"
 			}
 			"stun_duration"
 			{
 				"value"		"0"
-				"special_bonus_unique_ursa_furyswipes_stun"		"1.5"
+				"special_bonus_unique_imba_ursa_furyswipes_stun"		"1.5"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -125,7 +126,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/ursa/imba_ursa_enrage"
-		"AbilityTextureName"	"ursa_enrage"
+		"AbilityTextureName"		"ursa_enrage"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
@@ -144,7 +145,7 @@
 			"status_resistance"
 			{
 				"value"		"50"
-				"special_bonus_unique_ursa_8"		"20"
+				"special_bonus_unique_imba_ursa_8"		"20"
 			}
 			"duration"
 			{
@@ -163,12 +164,12 @@
 			"damage_increase"
 			{
 				"value"		"0"
-				"special_bonus_facet_ursa_grudge_bearer"		"=5"
+				"special_bonus_facet_ursa_facets_imba_1"		"=5"
 			}
 			"damage_increase_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_ursa_grudge_bearer"		"=5"
+				"special_bonus_facet_ursa_facets_imba_1"		"=5"
 			}
 		}
 	}
@@ -176,10 +177,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/ursa/imba_ursa_maul"
-		"AbilityTextureName"	"ursa_maul"
+		"AbilityTextureName"		"ursa_maul"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"health_as_damage_pct"
@@ -247,13 +249,14 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/ursa/imba_ursa_bear_down"
-		"AbilityTextureName"	"ursa_bear_down"
+		"AbilityTextureName"		"ursa_bear_down"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		"MaxLevel"		"1"
+		"MaxLevel"		"4"
+		"DependentOnAbility"		"ursa_enrage"
 		"AbilityValues"
 		{
-			"debuff_amp"		"20"
+			"debuff_amp"		"14 16 18 20"
 		}
 	}
 }

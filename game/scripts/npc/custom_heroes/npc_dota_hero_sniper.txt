@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/sniper/imba_sniper_concussive_grenade"
-		"AbilityTextureName"	"sniper_concussive_grenade"
+		"AbilityTextureName"		"sniper_concussive_grenade"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -54,7 +54,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/sniper/imba_sniper_shrapnel"
-		"AbilityTextureName"	"sniper_shrapnel"
+		"AbilityTextureName"		"sniper_shrapnel"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -71,13 +71,13 @@
 			"AbilityChargeRestoreTime"
 			{
 				"value"		"35"
-				"special_bonus_unique_sniper_2"		"-30"
+				"special_bonus_unique_imba_sniper_2"		"-30"
 			}
 			"slow_movement_speed"
 			{
 				"value"		"-12 -18 -24 -30"
-				"special_bonus_facet_sniper_scattershot"		"=-30 =-45 =-60 =-75"
-				"special_bonus_unique_sniper_5"		"-10"
+				"special_bonus_facet_sniper_facets_imba_1"		"=-30 =-45 =-60 =-75"
+				"special_bonus_unique_imba_sniper_5"		"-10"
 			}
 			"radius"
 			{
@@ -86,23 +86,24 @@
 			}
 			"shrapnel_damage"
 			{
-				"value"		"25 40 55 70"
-				"special_bonus_facet_sniper_scattershot"		"x4"
+				"value"		"30 45 60 75"
+				"special_bonus_facet_sniper_facets_imba_1"		"x4"
+				"special_bonus_unique_imba_sniper_shrapnel_damage"		"+30%"
 			}
 			"duration"
 			{
 				"value"		"10"
-				"special_bonus_facet_sniper_scattershot"		"=1"
+				"special_bonus_facet_sniper_facets_imba_1"		"=1"
 			}
 			"damage_delay"
 			{
 				"value"		"1.2"
-				"special_bonus_facet_sniper_scattershot"		"=0.8"
+				"special_bonus_facet_sniper_facets_imba_1"		"=0.8"
 			}
 			"slow_duration"
 			{
 				"value"		"2"
-				"special_bonus_facet_sniper_scattershot"		"=2"
+				"special_bonus_facet_sniper_facets_imba_1"		"=2"
 			}
 			"AbilityCharges"
 			{
@@ -115,22 +116,23 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/sniper/imba_sniper_headshot"
-		"AbilityTextureName"	"sniper_headshot"
+		"AbilityTextureName"		"sniper_headshot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"damage"
 			{
 				"value"		"20 50 80 110"
-				"special_bonus_unique_sniper_headshot_damage"		"30"
+				"special_bonus_unique_imba_sniper_headshot_damage"		"30"
 			}
 			"proc_chance"		"40"
 			"knockback_distance"
 			{
 				"value"		"50"
-				"special_bonus_unique_sniper_3"		"50"
+				"special_bonus_unique_imba_sniper_3"		"50"
 			}
 			"slow"		"-100"
 			"slow_duration"		"0.5"
@@ -141,7 +143,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/sniper/imba_sniper_take_aim"
-		"AbilityTextureName"	"sniper_take_aim"
+		"AbilityTextureName"		"sniper_take_aim"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -156,7 +158,7 @@
 			"duration"
 			{
 				"value"		"3"
-				"special_bonus_unique_sniper_4"		"1"
+				"special_bonus_unique_imba_sniper_4"		"1"
 			}
 			"slow"
 			{
@@ -170,7 +172,7 @@
 			"bonus_armor"
 			{
 				"value"		"5 10 15 20"
-				"special_bonus_unique_sniper_take_aim_armor"		"15"
+				"special_bonus_unique_imba_sniper_take_aim_armor"		"15"
 			}
 			"does_root"
 			{
@@ -182,17 +184,17 @@
 			}
 			"no_reveal"
 			{
-				"special_bonus_facet_sniper_ghillie_suit"		"1"
+				"special_bonus_facet_sniper_facets_imba_1"		"1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
 	"imba_sniper_assassinate"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/sniper/imba_sniper_assassinate"
-		"AbilityTextureName"	"sniper_assassinate"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"sniper_assassinate"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -254,14 +256,15 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/sniper/imba_sniper_keen_scope"
-		"AbilityTextureName"	"sniper_keen_scope"
+		"AbilityTextureName"		"sniper_keen_scope"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
 		"DependentOnAbility"		"sniper_assassinate"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"bonus_range"		"160 240 320 400"
+			"bonus_range"		"160 260 360 460"
 		}
 	}
 	"special_bonus_unique_imba_sniper_2"
@@ -294,6 +297,12 @@
 		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_sniper_take_aim_armor"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_sniper_shrapnel_damage"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"

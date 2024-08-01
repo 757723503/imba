@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_sprout"
-		"AbilityTextureName"	"furion_sprout"
+		"AbilityTextureName"		"furion_sprout"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"FightRecapLevel"		"1"
 		"AbilitySound"		"Hero_Furion.Sprout"
@@ -28,12 +28,12 @@
 			"leash"
 			{
 				"value"		"0"
-				"special_bonus_unique_furion_7"		"1"
+				"special_bonus_unique_imba_furion_7"		"1"
 			}
 			"sprout_damage"
 			{
 				"value"		"70 140 210 280"
-				"special_bonus_unique_furion_4"		"170"
+				"special_bonus_unique_imba_furion_4"		"170"
 			}
 			"sprout_damage_radius"
 			{
@@ -43,17 +43,17 @@
 			"sprout_heal_interval"
 			{
 				"value"		"0"
-				"special_bonus_facet_furion_soothing_saplings"		"=0.5"
+				"special_bonus_facet_furion_facets_imba_1"		"=0.5"
 			}
 			"sprout_heal_per_second"
 			{
 				"value"		"0"
-				"special_bonus_facet_furion_soothing_saplings"		"=10 =20 =30 =40"
+				"special_bonus_facet_furion_facets_imba_1"		"=10 =20 =30 =40"
 			}
 			"building_healing_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_furion_soothing_saplings"		"50"
+				"special_bonus_facet_furion_facets_imba_1"		"50"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -62,7 +62,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_greater_sprout"
-		"AbilityTextureName"	"furion_greater_sprout"
+		"AbilityTextureName"		"furion_greater_sprout"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"FightRecapLevel"		"1"
 		"AbilitySound"		"Hero_Furion.Sprout"
@@ -93,7 +93,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_teleportation"
-		"AbilityTextureName"	"furion_teleportation"
+		"AbilityTextureName"		"furion_teleportation"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilitySound"		"Hero_Furion.Teleport_Grow"
@@ -109,12 +109,12 @@
 			"AbilityCooldown"
 			{
 				"value"		"65 50 35 20"
-				"special_bonus_unique_furion_3"		"-100%"
+				"special_bonus_unique_imba_furion_3"		"-100%"
 			}
 			"barrier"
 			{
 				"value"		"100 150 200 250"
-				"special_bonus_unique_furion_teleportation_barrier"		"100"
+				"special_bonus_unique_imba_furion_teleportation_barrier"		"100"
 			}
 			"buff_duration"		"15"
 		}
@@ -123,7 +123,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_force_of_nature"
-		"AbilityTextureName"	"furion_force_of_nature"
+		"AbilityTextureName"		"furion_force_of_nature"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilitySound"		"Hero_Furion.ForceOfNature"
 		"AbilityCastRange"		"750"
@@ -134,46 +134,58 @@
 			"area_of_effect"
 			{
 				"value"		"150 225 300 375"
+				"special_bonus_facet_furion_facets_imba_1"		"=100 =100 =100 =100"
 				"affected_by_aoe_increase"		"1"
 			}
 			"max_treants"
 			{
 				"value"		"2 3 4 5"
-				"special_bonus_facet_furion_ironwood_treant"		"=1 =1 =1 =1"
+				"special_bonus_facet_furion_facets_imba_1"		"=1 =1 =1 =1"
 			}
 			"siege_treants"
 			{
 				"value"		"0"
-				"special_bonus_facet_furion_ironwood_treant"		"1"
+				"special_bonus_facet_furion_facets_imba_1"		"1"
 			}
 			"treant_duration"		"50"
 			"treant_health"
 			{
 				"value"		"550 550 550 550"
-				"special_bonus_facet_furion_ironwood_treant"		"=800 =1050 =1300 =1550"
-				"special_bonus_unique_furion"		"x3"
+				"special_bonus_facet_furion_facets_imba_1"		"=800 =1050 =1300 =1550"
+				"special_bonus_unique_imba_furion"		"x3"
 			}
 			"treant_damage_min"
 			{
 				"value"		"13 21 29 37"
-				"special_bonus_facet_furion_ironwood_treant"		"=28 =44 =60 =76"
-				"special_bonus_unique_furion"		"x3"
+				"special_bonus_facet_furion_facets_imba_1"		"=28 =44 =60 =76"
+				"special_bonus_unique_imba_furion"		"x3"
 			}
 			"treant_damage_max"
 			{
 				"value"		"17 25 33 41"
-				"special_bonus_facet_furion_ironwood_treant"		"=32 =48 =64 =80"
-				"special_bonus_unique_furion"		"x3"
+				"special_bonus_facet_furion_facets_imba_1"		"=32 =48 =64 =80"
+				"special_bonus_unique_imba_furion"		"x3"
 			}
 			"treant_movespeed"
 			{
 				"value"		"300"
-				"special_bonus_unique_furion_2"		"50"
+				"special_bonus_facet_furion_facets_imba_1"		"=350"
+				"special_bonus_unique_imba_furion_2"		"50"
+			}
+			"treant_vision_day"
+			{
+				"value"		"500"
+				"special_bonus_facet_furion_facets_imba_1"		"700"
+			}
+			"treant_vision_night"
+			{
+				"value"		"500"
+				"special_bonus_facet_furion_facets_imba_1"		"300"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"45 40 35 30"
-				"special_bonus_unique_furion_6"		"-10"
+				"special_bonus_unique_imba_furion_6"		"-10"
 			}
 			"treewalking"
 			{
@@ -186,7 +198,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_wrath_of_nature"
-		"AbilityTextureName"	"furion_wrath_of_nature"
+		"AbilityTextureName"		"furion_wrath_of_nature"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -204,11 +216,11 @@
 		"AbilityManaCost"		"130 160 190"
 		"AbilityValues"
 		{
-			"max_targets"		"18"
+			"max_targets"		"16"
 			"damage"
 			{
 				"value"		"120 155 190"
-				"special_bonus_unique_furion_5"		"30"
+				"special_bonus_unique_imba_furion_5"		"30"
 			}
 			"damage_percent_add"
 			{
@@ -236,12 +248,12 @@
 			}
 			"scepter_min_entangle_duration"
 			{
-				"value"		"2"
+				"value"		"1.5"
 				"RequiresScepter"		"1"
 			}
 			"scepter_max_entangle_duration"
 			{
-				"value"		"3.8"
+				"value"		"3"
 				"RequiresScepter"		"1"
 			}
 		}
@@ -250,7 +262,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_curse_of_the_forest"
-		"AbilityTextureName"	"furion_curse_of_the_forest"
+		"AbilityTextureName"		"furion_curse_of_the_forest"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -286,7 +298,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_hedgerow"
-		"AbilityTextureName"	"furion_hedgerow"
+		"AbilityTextureName"		"furion_hedgerow"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"AbilitySound"		"Hero_Furion.Teleport_Grow"
@@ -314,7 +326,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_arboreal_might"
-		"AbilityTextureName"	"furion_arboreal_might"
+		"AbilityTextureName"		"furion_arboreal_might"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilitySound"		"Hero_Furion.ForceOfNature"
 		"AbilityCastRange"		"750"
@@ -328,7 +340,7 @@
 			"max_trees"
 			{
 				"value"		"14 18 22 26"
-				"special_bonus_unique_furion_arboreal_might_trees"		"8"
+				"special_bonus_unique_imba_furion_arboreal_might_trees"		"8"
 			}
 			"duration"		"15"
 			"trees_per_stack"		"2"
@@ -340,12 +352,13 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_spirit_of_the_forest"
-		"AbilityTextureName"	"furion_spirit_of_the_forest"
+		"AbilityTextureName"		"furion_spirit_of_the_forest"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"4"
 		"DependentOnAbility"		"furion_force_of_nature"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"damage_per_tree_pct"		"2 3 4 5 6"
@@ -362,8 +375,8 @@
 			"multiplier"
 			{
 				"value"		"1 1 1 1"
-				"special_bonus_facet_furion_ironwood_treant"		"x2 x3 x4 x5"
-				"special_bonus_unique_furion"		"x3"
+				"special_bonus_facet_furion_facets_imba_1"		"x2 x3 x4 x5"
+				"special_bonus_unique_imba_furion"		"x3"
 			}
 		}
 	}
@@ -371,7 +384,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/furion/imba_furion_fecundity"
-		"AbilityTextureName"	"furion_fecundity"
+		"AbilityTextureName"		"furion_fecundity"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"

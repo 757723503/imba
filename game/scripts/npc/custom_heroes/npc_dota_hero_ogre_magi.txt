@@ -4,8 +4,8 @@
 	"imba_ogre_magi_dumb_luck"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_dumb_luck"
-		"AbilityTextureName"	"ogre_magi_dumb_luck"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_dumb_luck"
+		"AbilityTextureName"		"ogre_magi_dumb_luck"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_NONE"
 		"MaxLevel"		"1"
@@ -15,30 +15,30 @@
 			"mana_per_str"
 			{
 				"value"		"6"
-				"special_bonus_unique_ogre_magi_dumb_luck_mana"		"2"
+				"special_bonus_unique_imba_ogre_magi_dumb_luck_mana"		"2"
 			}
 			"mana_regen_per_str"
 			{
-				"value"		"0.03"
-				"special_bonus_unique_ogre_magi_dumb_luck_mana"		"0.01"
+				"value"		"0.02"
+				"special_bonus_unique_imba_ogre_magi_dumb_luck_mana"		"0.01"
 			}
 			"level_one_ability_points"
 			{
 				"value"		"1"
-				"special_bonus_facet_ogre_magi_learning_curve"		"=0"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"=0"
 			}
 			"level_two_ability_points"
 			{
 				"value"		"1"
-				"special_bonus_facet_ogre_magi_learning_curve"		"=3"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"=3"
 			}
 		}
 	}
 	"imba_ogre_magi_fireblast"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_fireblast"
-		"AbilityTextureName"	"ogre_magi_fireblast"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_fireblast"
+		"AbilityTextureName"		"ogre_magi_fireblast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -57,19 +57,19 @@
 			"AbilityCooldown"
 			{
 				"value"		"11 10 9 8"
-				"special_bonus_unique_ogre_magi_5"		"-1"
+				"special_bonus_unique_imba_ogre_magi_5"		"-1"
 			}
 			"stun_duration"		"1.2"
 			"multicast_delay"		"0.6"
 			"fireblast_damage"
 			{
 				"value"		"70 130 190 250"
-				"special_bonus_unique_ogre_magi_2"		"240"
+				"special_bonus_unique_imba_ogre_magi_2"		"240"
 			}
 			"required_level"
 			{
 				"value"		"1"
-				"special_bonus_facet_ogre_magi_learning_curve"		"-1"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"-1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -77,8 +77,8 @@
 	"imba_ogre_magi_smash"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_smash"
-		"AbilityTextureName"	"ogre_magi_smash"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_smash"
+		"AbilityTextureName"		"ogre_magi_smash"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
@@ -114,8 +114,8 @@
 	"imba_ogre_magi_unrefined_fireblast"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_unrefined_fireblast"
-		"AbilityTextureName"	"ogre_magi_unrefined_fireblast"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_unrefined_fireblast"
+		"AbilityTextureName"		"ogre_magi_unrefined_fireblast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -134,7 +134,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"6"
-				"special_bonus_unique_ogre_magi_5"		"-1"
+				"special_bonus_unique_imba_ogre_magi_5"		"-1"
 			}
 			"stun_duration"		"1.2"
 			"multicast_delay"		"0.6"
@@ -146,8 +146,8 @@
 	"imba_ogre_magi_ignite"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_ignite"
-		"AbilityTextureName"	"ogre_magi_ignite"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_ignite"
+		"AbilityTextureName"		"ogre_magi_ignite"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -166,7 +166,7 @@
 			"burn_damage"
 			{
 				"value"		"20 30 40 50"
-				"special_bonus_unique_ogre_magi_4"		"15"
+				"special_bonus_unique_imba_ogre_magi_4"		"15"
 			}
 			"slow_movement_speed_pct"		"-20 -23 -26 -29"
 			"projectile_speed"		"1000"
@@ -179,7 +179,7 @@
 			"required_level"
 			{
 				"value"		"1"
-				"special_bonus_facet_ogre_magi_learning_curve"		"-1"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"-1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -187,8 +187,8 @@
 	"imba_ogre_magi_bloodlust"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_bloodlust"
-		"AbilityTextureName"	"ogre_magi_bloodlust"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_bloodlust"
+		"AbilityTextureName"		"ogre_magi_bloodlust"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
@@ -207,12 +207,12 @@
 			"bonus_attack_speed"
 			{
 				"value"		"30 45 60 75"
-				"special_bonus_unique_ogre_magi"		"30"
+				"special_bonus_unique_imba_ogre_magi"		"30"
 			}
 			"self_bonus"
 			{
 				"value"		"40 60 80 100"
-				"special_bonus_unique_ogre_magi"		"30"
+				"special_bonus_unique_imba_ogre_magi"		"30"
 			}
 			"duration"		"30"
 			"multicast_bloodlust_aoe"
@@ -223,7 +223,7 @@
 			"required_level"
 			{
 				"value"		"1"
-				"special_bonus_facet_ogre_magi_learning_curve"		"-1"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"-1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -231,46 +231,50 @@
 	"imba_ogre_magi_multicast"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_multicast"
-		"AbilityTextureName"	"ogre_magi_multicast"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_multicast"
+		"AbilityTextureName"		"ogre_magi_multicast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastAnimation"		"ACT_INVALID"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"multicast_2_times"
 			{
 				"value"		"75"
-				"special_bonus_facet_ogre_magi_fat_chance"		"0"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"0"
+				"dynamic_value"		"true"
 			}
 			"multicast_3_times"
 			{
 				"value"		"0 30 30"
-				"special_bonus_facet_ogre_magi_fat_chance"		"0"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"0"
+				"dynamic_value"		"true"
 			}
 			"multicast_4_times"
 			{
 				"value"		"0 0 15"
-				"special_bonus_facet_ogre_magi_fat_chance"		"0"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"0"
+				"dynamic_value"		"true"
 			}
 			"strength_mult"
 			{
 				"value"		"0"
-				"special_bonus_facet_ogre_magi_fat_chance"		"=0.06"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"=0.06"
 			}
 			"required_level"
 			{
 				"value"		"6"
-				"special_bonus_facet_ogre_magi_learning_curve"		"-1"
+				"special_bonus_facet_ogre_magi_facets_imba_1"		"-1"
 			}
 		}
 	}
 	"imba_ogre_magi_frost_armor"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ogre/imba_ogre_magi_frost_armor"
-		"AbilityTextureName"	"ogre_magi_frost_armor"
 		"MaxLevel"		"1"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/ogre_magi/imba_ogre_magi_frost_armor"
+		"AbilityTextureName"		"ogre_magi_frost_armor"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"

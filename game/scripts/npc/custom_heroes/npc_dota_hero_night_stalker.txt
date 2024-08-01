@@ -4,8 +4,8 @@
 	"imba_night_stalker_void"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/night/imba_night_stalker_void"
-		"AbilityTextureName"	"night_stalker_void"
+		"ScriptFile"		"ability/hero_ability/night_stalker/imba_night_stalker_void"
+		"AbilityTextureName"		"night_stalker_void"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilitySound"		"Hero_Nightstalker.Void"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -24,7 +24,7 @@
 			"damage"
 			{
 				"value"		"80 160 240 320"
-				"special_bonus_unique_night_stalker_4"		"80"
+				"special_bonus_unique_imba_night_stalker_4"		"80"
 			}
 			"duration_day"		"1.25"
 			"duration_night"		"2.5 3 3.5 4"
@@ -38,13 +38,13 @@
 			"invisible_damage_pers"
 			{
 				"value"		"0"
-				"special_bonus_facet_night_stalker_blinding_void"		"50"
+				"special_bonus_facet_night_stalker_facets_imba_1"		"50"
 			}
 			"invisible_damage_tickrate"		"0.1"
 			"disable_vision"
 			{
 				"value"		"0"
-				"special_bonus_facet_night_stalker_blinding_void"		"1"
+				"special_bonus_facet_night_stalker_facets_imba_1"		"1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -52,8 +52,8 @@
 	"imba_night_stalker_crippling_fear"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/night/imba_night_stalker_crippling_fear"
-		"AbilityTextureName"	"night_stalker_crippling_fear"
+		"ScriptFile"		"ability/hero_ability/night_stalker/imba_night_stalker_crippling_fear"
+		"AbilityTextureName"		"night_stalker_crippling_fear"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"FightRecapLevel"		"1"
 		"AbilitySound"		"Hero_Nightstalker.Trickling_Fear"
@@ -99,7 +99,7 @@
 			"dps"
 			{
 				"value"		"25 30 35 40"
-				"special_bonus_unique_night_stalker_crippling_fear_damage"		"20"
+				"special_bonus_unique_imba_night_stalker_crippling_fear_damage"		"20"
 			}
 			"tick_rate"		"0.1"
 			"death_refresh"
@@ -111,10 +111,11 @@
 	"imba_night_stalker_hunter_in_the_night"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/night/imba_night_stalker_hunter_in_the_night"
-		"AbilityTextureName"	"night_stalker_hunter_in_the_night"
+		"ScriptFile"		"ability/hero_ability/night_stalker/imba_night_stalker_hunter_in_the_night"
+		"AbilityTextureName"		"night_stalker_hunter_in_the_night"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"HasShardUpgrade"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"bonus_movement_speed_pct_night"
@@ -124,12 +125,12 @@
 			"bonus_attack_speed_night"
 			{
 				"value"		"20 40 60 80"
-				"special_bonus_unique_night_stalker_2"		"100"
+				"special_bonus_unique_imba_night_stalker_2"		"100"
 			}
 			"bonus_status_resist_night"
 			{
 				"value"		"0"
-				"special_bonus_unique_night_stalker_hunter_status_resist"		"35"
+				"special_bonus_unique_imba_night_stalker_hunter_status_resist"		"35"
 			}
 			"shard_hp_restore_pct"
 			{
@@ -162,8 +163,8 @@
 	"imba_night_stalker_darkness"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/night/imba_night_stalker_darkness"
-		"AbilityTextureName"	"night_stalker_darkness"
+		"ScriptFile"		"ability/hero_ability/night_stalker/imba_night_stalker_darkness"
+		"AbilityTextureName"		"night_stalker_darkness"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
@@ -178,12 +179,12 @@
 			"duration"
 			{
 				"value"		"30"
-				"special_bonus_unique_night_stalker_7"		"6"
+				"special_bonus_unique_imba_night_stalker_7"		"6"
 			}
 			"bonus_damage"
 			{
 				"value"		"50 100 150"
-				"special_bonus_unique_night_stalker_3"		"25"
+				"special_bonus_unique_imba_night_stalker_3"		"25"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 		}
@@ -191,8 +192,8 @@
 	"imba_night_stalker_heart_of_darkness"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/night/imba_night_stalker_heart_of_darkness"
-		"AbilityTextureName"	"night_stalker_heart_of_darkness"
+		"ScriptFile"		"ability/hero_ability/night_stalker/imba_night_stalker_heart_of_darkness"
+		"AbilityTextureName"		"night_stalker_heart_of_darkness"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"Innate"		"1"
 		"MaxLevel"		"1"
@@ -205,8 +206,8 @@
 	"imba_night_stalker_night_reign"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/night/imba_night_stalker_night_reign"
-		"AbilityTextureName"	"night_stalker_night_reign"
+		"ScriptFile"		"ability/hero_ability/night_stalker/imba_night_stalker_night_reign"
+		"AbilityTextureName"		"night_stalker_night_reign"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"1"
 		"AbilityValues"

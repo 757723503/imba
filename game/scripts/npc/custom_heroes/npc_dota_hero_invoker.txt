@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_quas"
-		"AbilityTextureName"	"invoker_quas"
+		"AbilityTextureName"		"invoker_quas"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"MaxLevel"		"7"
@@ -17,15 +17,15 @@
 			"lifesteal_per_instance"
 			{
 				"value"		"0"
-				"special_bonus_facet_invoker_elitist"		"2 4 6 8 10 12 14"
-				"special_bonus_unique_invoker_13"		"x2"
+				"special_bonus_facet_invoker_facets_imba_1"		"2 4 6 8 10 12 14"
+				"special_bonus_unique_imba_invoker_13"		"x2"
 				"RequiresFacet"		"invoker_elitist"
 			}
 			"intrinsic_attack_damage_dot_per_second"
 			{
 				"value"		"0"
-				"special_bonus_facet_invoker_agnostic"		"3 6 9 12 15 18 21"
-				"special_bonus_unique_invoker_13"		"x2"
+				"special_bonus_facet_invoker_facets_imba_1"		"3 6 9 12 15 18 21"
+				"special_bonus_unique_imba_invoker_13"		"x2"
 				"RequiresFacet"		"invoker_agnostic"
 				"CalculateSpellDamageTooltip"		"0"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_MAGICAL"
@@ -33,7 +33,7 @@
 			"intrinsic_attack_damage_dot_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_invoker_agnostic"		"2"
+				"special_bonus_facet_invoker_facets_imba_1"		"2"
 			}
 			"strength_bonus"
 			{
@@ -45,7 +45,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_wex"
-		"AbilityTextureName"	"invoker_wex"
+		"AbilityTextureName"		"invoker_wex"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"7"
@@ -57,15 +57,15 @@
 			"move_speed_per_instance"
 			{
 				"value"		"0"
-				"special_bonus_facet_invoker_elitist"		"0.6 1.2 1.8 2.4 3.0 3.6 4.2"
-				"special_bonus_unique_invoker_13"		"x2"
+				"special_bonus_facet_invoker_facets_imba_1"		"0.6 1.2 1.8 2.4 3.0 3.6 4.2"
+				"special_bonus_unique_imba_invoker_13"		"x2"
 				"RequiresFacet"		"invoker_elitist"
 			}
 			"intrinsic_attack_speed"
 			{
 				"value"		"0"
-				"special_bonus_facet_invoker_agnostic"		"5 10 15 20 25 30 35"
-				"special_bonus_unique_invoker_13"		"x2"
+				"special_bonus_facet_invoker_facets_imba_1"		"5 10 15 20 25 30 35"
+				"special_bonus_unique_imba_invoker_13"		"x2"
 				"RequiresFacet"		"invoker_agnostic"
 			}
 			"agility_bonus"
@@ -78,7 +78,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_exort"
-		"AbilityTextureName"	"invoker_exort"
+		"AbilityTextureName"		"invoker_exort"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"7"
@@ -90,25 +90,25 @@
 			"bonus_damage_per_instance"
 			{
 				"value"		"2 4 6 8 10 12 14"
-				"special_bonus_unique_invoker_13"		"x2"
+				"special_bonus_unique_imba_invoker_13"		"x2"
 			}
 			"magic_amp"
 			{
 				"value"		"0"
-				"special_bonus_facet_invoker_elitist"		"2 3 4 5 6 7 8"
-				"special_bonus_unique_invoker_13"		"x2"
+				"special_bonus_facet_invoker_facets_imba_1"		"2 3 4 5 6 7 8"
+				"special_bonus_unique_imba_invoker_13"		"x2"
 				"RequiresFacet"		"invoker_elitist"
 			}
 			"resist_debuff_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_invoker_elitist"		"4"
+				"special_bonus_facet_invoker_facets_imba_1"		"4"
 			}
 			"intrinsic_attack_damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_invoker_13"		"x2"
-				"special_bonus_facet_invoker_agnostic"		"3 6 9 12 15 18 21"
+				"special_bonus_unique_imba_invoker_13"		"x2"
+				"special_bonus_facet_invoker_facets_imba_1"		"3 6 9 12 15 18 21"
 				"RequiresFacet"		"invoker_agnostic"
 				"CalculateSpellDamageTooltip"		"0"
 				"DamageTypeTooltip"		"DAMAGE_TYPE_PHYSICAL"
@@ -123,7 +123,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_empty1"
-		"AbilityTextureName"	"invoker_empty1"
+		"AbilityTextureName"		"invoker_empty1"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -132,7 +132,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_empty2"
-		"AbilityTextureName"	"invoker_empty2"
+		"AbilityTextureName"		"invoker_empty2"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"0"
 		"AbilityCastAnimation"		"ACT_INVALID"
@@ -141,7 +141,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_invoke"
-		"AbilityTextureName"	"invoker_invoke"
+		"AbilityTextureName"		"invoker_invoke"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"		"1"
@@ -158,10 +158,10 @@
 	}
 	"imba_invoker_attribute_bonus"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_attribute_bonus"
-		"AbilityTextureName"	"invoker_attribute_bonus"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityTextureName"		"invoker_attribute_bonus"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"		"1"
 		"LevelsBetweenUpgrades"		"1"
@@ -175,7 +175,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_cold_snap"
-		"AbilityTextureName"	"invoker_cold_snap"
+		"AbilityTextureName"		"invoker_cold_snap"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -196,7 +196,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"18"
-				"special_bonus_unique_invoker_9"		"-5"
+				"special_bonus_unique_imba_invoker_9"		"-5"
 			}
 			"duration"
 			{
@@ -226,7 +226,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_ghost_walk"
-		"AbilityTextureName"	"invoker_ghost_walk"
+		"AbilityTextureName"		"invoker_ghost_walk"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -276,7 +276,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_tornado"
-		"AbilityTextureName"	"invoker_tornado"
+		"AbilityTextureName"		"invoker_tornado"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -293,7 +293,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"27"
-				"special_bonus_unique_invoker_3"		"-4"
+				"special_bonus_unique_imba_invoker_3"		"-4"
 			}
 			"travel_distance"
 			{
@@ -338,7 +338,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_emp"
-		"AbilityTextureName"	"invoker_emp"
+		"AbilityTextureName"		"invoker_emp"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"1"
@@ -385,7 +385,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_alacrity"
-		"AbilityTextureName"	"invoker_alacrity"
+		"AbilityTextureName"		"invoker_alacrity"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"MaxLevel"		"1"
 		"HotKeyOverride"		"Z"
@@ -406,13 +406,13 @@
 			{
 				"value"		"10 22 34 46 58 70 82 94"
 				"levelkey"		"wexlevel"
-				"special_bonus_unique_invoker_5"		"30"
+				"special_bonus_unique_imba_invoker_5"		"30"
 			}
 			"bonus_damage"
 			{
 				"value"		"10 22 34 46 58 70 82 94"
 				"levelkey"		"exortlevel"
-				"special_bonus_unique_invoker_5"		"30"
+				"special_bonus_unique_imba_invoker_5"		"30"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 			"duration"		"9"
@@ -422,7 +422,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_chaos_meteor"
-		"AbilityTextureName"	"invoker_chaos_meteor"
+		"AbilityTextureName"		"invoker_chaos_meteor"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"MaxLevel"		"1"
 		"HotKeyOverride"		"D"
@@ -482,7 +482,7 @@
 			"meteor_count"
 			{
 				"value"		"1"
-				"special_bonus_unique_invoker_additional_chaos_meteors"		"2"
+				"special_bonus_unique_imba_invoker_additional_chaos_meteors"		"2"
 			}
 		}
 	}
@@ -490,7 +490,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_sun_strike"
-		"AbilityTextureName"	"invoker_sun_strike"
+		"AbilityTextureName"		"invoker_sun_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"MaxLevel"		"1"
 		"HotKeyOverride"		"T"
@@ -552,7 +552,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_forge_spirit"
-		"AbilityTextureName"	"invoker_forge_spirit"
+		"AbilityTextureName"		"invoker_forge_spirit"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"1"
@@ -605,7 +605,7 @@
 			}
 			"spirit_attack_speed"
 			{
-				"special_bonus_unique_invoker_11"		"50"
+				"special_bonus_unique_imba_invoker_11"		"50"
 			}
 			"extra_spirit_count_quas"		"0 0 0 1 1 1 1 1"
 			"extra_spirit_count_exort"		"0 0 0 1 1 1 1 1"
@@ -614,8 +614,8 @@
 	"imba_forged_spirit_melting_strike"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/forged/imba_forged_spirit_melting_strike"
-		"AbilityTextureName"	"forged_spirit_melting_strike"
+		"ScriptFile"		"ability/hero_ability/invoker/imba_forged_spirit_melting_strike"
+		"AbilityTextureName"		"forged_spirit_melting_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -632,7 +632,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_ice_wall"
-		"AbilityTextureName"	"invoker_ice_wall"
+		"AbilityTextureName"		"invoker_ice_wall"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -662,7 +662,7 @@
 			{
 				"value"		"6 12 18 24 30 36 42 48"
 				"levelkey"		"exortlevel"
-				"special_bonus_unique_invoker_ice_wall_dps"		"50"
+				"special_bonus_unique_imba_invoker_ice_wall_dps"		"50"
 			}
 			"wall_place_distance"		"200"
 			"num_wall_elements"		"15"
@@ -685,7 +685,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_deafening_blast"
-		"AbilityTextureName"	"invoker_deafening_blast"
+		"AbilityTextureName"		"invoker_deafening_blast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -737,7 +737,7 @@
 			"radial_count"
 			{
 				"value"		"1"
-				"special_bonus_unique_invoker_2"		"11"
+				"special_bonus_unique_imba_invoker_2"		"11"
 			}
 		}
 	}
@@ -745,7 +745,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_mastermind"
-		"AbilityTextureName"	"invoker_mastermind"
+		"AbilityTextureName"		"invoker_mastermind"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"MaxLevel"		"1"
 		"Innate"		"1"
@@ -758,7 +758,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_cold_snap_ad"
-		"AbilityTextureName"	"invoker_cold_snap_ad"
+		"AbilityTextureName"		"invoker_cold_snap_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -779,7 +779,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"20"
-				"special_bonus_unique_invoker_9"		"-5"
+				"special_bonus_unique_imba_invoker_9"		"-5"
 			}
 			"duration"
 			{
@@ -795,7 +795,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_ghost_walk_ad"
-		"AbilityTextureName"	"invoker_ghost_walk_ad"
+		"AbilityTextureName"		"invoker_ghost_walk_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -826,7 +826,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_tornado_ad"
-		"AbilityTextureName"	"invoker_tornado_ad"
+		"AbilityTextureName"		"invoker_tornado_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
@@ -843,7 +843,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"30"
-				"special_bonus_unique_invoker_3"		"-4"
+				"special_bonus_unique_imba_invoker_3"		"-4"
 			}
 			"travel_distance"		"1200 1865 2530 3200"
 			"travel_speed"		"1000"
@@ -871,7 +871,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_emp_ad"
-		"AbilityTextureName"	"invoker_emp_ad"
+		"AbilityTextureName"		"invoker_emp_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"4"
@@ -916,7 +916,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_alacrity_ad"
-		"AbilityTextureName"	"invoker_alacrity_ad"
+		"AbilityTextureName"		"invoker_alacrity_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"MaxLevel"		"4"
 		"HotKeyOverride"		"Z"
@@ -935,12 +935,12 @@
 			"bonus_attack_speed"
 			{
 				"value"		"22 42 62 82"
-				"special_bonus_unique_invoker_5"		"30"
+				"special_bonus_unique_imba_invoker_5"		"30"
 			}
 			"bonus_damage"
 			{
 				"value"		"22 42 62 82"
-				"special_bonus_unique_invoker_5"		"30"
+				"special_bonus_unique_imba_invoker_5"		"30"
 			}
 			"duration"		"9"
 		}
@@ -949,7 +949,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_sun_strike_ad"
-		"AbilityTextureName"	"invoker_sun_strike_ad"
+		"AbilityTextureName"		"invoker_sun_strike_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"MaxLevel"		"4"
 		"HotKeyOverride"		"T"
@@ -1001,7 +1001,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_forge_spirit_ad"
-		"AbilityTextureName"	"invoker_forge_spirit_ad"
+		"AbilityTextureName"		"invoker_forge_spirit_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"4"
@@ -1025,7 +1025,7 @@
 			}
 			"spirit_attack_speed"
 			{
-				"special_bonus_unique_invoker_11"		"50"
+				"special_bonus_unique_imba_invoker_11"		"50"
 			}
 		}
 	}
@@ -1033,7 +1033,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_chaos_meteor_ad"
-		"AbilityTextureName"	"invoker_chaos_meteor_ad"
+		"AbilityTextureName"		"invoker_chaos_meteor_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"MaxLevel"		"4"
 		"HotKeyOverride"		"D"
@@ -1090,7 +1090,7 @@
 			"meteor_count"
 			{
 				"value"		"1"
-				"special_bonus_unique_invoker_additional_chaos_meteors"		"2"
+				"special_bonus_unique_imba_invoker_additional_chaos_meteors"		"2"
 			}
 		}
 	}
@@ -1098,7 +1098,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_ice_wall_ad"
-		"AbilityTextureName"	"invoker_ice_wall_ad"
+		"AbilityTextureName"		"invoker_ice_wall_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -1139,7 +1139,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/invoker/imba_invoker_deafening_blast_ad"
-		"AbilityTextureName"	"invoker_deafening_blast_ad"
+		"AbilityTextureName"		"invoker_deafening_blast_ad"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -1175,7 +1175,7 @@
 			"radial_count"
 			{
 				"value"		"1"
-				"special_bonus_unique_invoker_2"		"11"
+				"special_bonus_unique_imba_invoker_2"		"11"
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/queenofpain/imba_queenofpain_shadow_strike"
-		"AbilityTextureName"	"queenofpain_shadow_strike"
+		"AbilityTextureName"		"queenofpain_shadow_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -18,7 +18,7 @@
 		"AbilityCastRange"		"450 500 550 600"
 		"AbilityCastPoint"		"0.4"
 		"AbilityCooldown"		"13 10 7 4"
-		"AbilityManaCost"		"125 130 135 140"
+		"AbilityManaCost"		"100 110 120 130"
 		"AbilityValues"
 		{
 			"strike_damage"
@@ -31,12 +31,12 @@
 			"projectile_speed"		"900"
 			"attack_speed"
 			{
-				"special_bonus_unique_queen_of_pain_1"		"40"
+				"special_bonus_unique_imba_queen_of_pain_1"		"35"
 			}
 			"damage_interval"
 			{
 				"value"		"3"
-				"special_bonus_unique_queen_of_pain_4"		"-1"
+				"special_bonus_unique_imba_queen_of_pain_4"		"-1"
 			}
 			"duration_heal"
 			{
@@ -61,7 +61,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/queenofpain/imba_queenofpain_blink"
-		"AbilityTextureName"	"queenofpain_blink"
+		"AbilityTextureName"		"queenofpain_blink"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
 		"AbilitySound"		"Hero_QueenOfPain.Blink_in"
 		"HasShardUpgrade"		"1"
@@ -95,7 +95,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/queenofpain/imba_queenofpain_scream_of_pain"
-		"AbilityTextureName"	"queenofpain_scream_of_pain"
+		"AbilityTextureName"		"queenofpain_scream_of_pain"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -115,7 +115,7 @@
 			"damage"
 			{
 				"value"		"75 150 225 300"
-				"special_bonus_unique_queen_of_pain_2"		"100"
+				"special_bonus_unique_imba_queen_of_pain_2"		"100"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -123,10 +123,10 @@
 	}
 	"imba_queenofpain_sonic_wave"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/queenofpain/imba_queenofpain_sonic_wave"
-		"AbilityTextureName"	"queenofpain_sonic_wave"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"queenofpain_sonic_wave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
@@ -155,7 +155,7 @@
 			"damage"
 			{
 				"value"		"350 500 650"
-				"special_bonus_unique_queen_of_pain_7"		"250"
+				"special_bonus_unique_imba_queen_of_pain_7"		"250"
 			}
 			"tick_rate"		"0.1"
 			"knockback_distance"
@@ -167,7 +167,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"110 95 80"
-				"special_bonus_unique_queen_of_pain_3"		"-45"
+				"special_bonus_unique_imba_queen_of_pain_3"		"-45"
 			}
 		}
 	}
@@ -175,7 +175,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/queenofpain/imba_queenofpain_masochist"
-		"AbilityTextureName"	"queenofpain_masochist"
+		"AbilityTextureName"		"queenofpain_masochist"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"1"
 		"AbilityValues"
@@ -189,9 +189,10 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/queenofpain/imba_queenofpain_succubus"
-		"AbilityTextureName"	"queenofpain_succubus"
+		"AbilityTextureName"		"queenofpain_succubus"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"spell_lifesteal"		"12"
@@ -212,14 +213,15 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/queenofpain/imba_queenofpain_bondage"
-		"AbilityTextureName"	"queenofpain_bondage"
+		"AbilityTextureName"		"queenofpain_bondage"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
-			"spell_reflect_pct"		"10"
+			"spell_reflect_pct"		"15"
 			"radius"
 			{
 				"value"		"1200"

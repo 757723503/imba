@@ -4,8 +4,8 @@
 	"imba_shadow_demon_disruption"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_disruption"
-		"AbilityTextureName"	"shadow_demon_disruption"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_disruption"
+		"AbilityTextureName"		"shadow_demon_disruption"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -33,12 +33,12 @@
 			"AbilityCooldown"
 			{
 				"value"		"26 24 22 20"
-				"special_bonus_unique_shadow_demon_7"		"=0.25"
+				"special_bonus_unique_imba_shadow_demon_7"		"=0.25"
 			}
 			"AbilityCharges"
 			{
 				"value"		"0"
-				"special_bonus_unique_shadow_demon_7"		"2"
+				"special_bonus_unique_imba_shadow_demon_7"		"2"
 			}
 			"AbilityChargeRestoreTime"		"26 24 22 20"
 			"illusion_bounty_base"		"0"
@@ -46,7 +46,7 @@
 			"can_cast"
 			{
 				"value"		"0"
-				"special_bonus_facet_shadow_demon_disruption_cast"		"1"
+				"special_bonus_facet_shadow_demon_facets_imba_1"		"1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -54,8 +54,8 @@
 	"imba_shadow_demon_soul_catcher"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_soul_catcher"
-		"AbilityTextureName"	"shadow_demon_soul_catcher"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_soul_catcher"
+		"AbilityTextureName"		"shadow_demon_soul_catcher"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -89,8 +89,8 @@
 	"imba_shadow_demon_shadow_servant"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_shadow_servant"
-		"AbilityTextureName"	"shadow_demon_shadow_servant"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_shadow_servant"
+		"AbilityTextureName"		"shadow_demon_shadow_servant"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"5"
 		"DependentOnAbility"		"shadow_demon_disruption"
@@ -110,8 +110,8 @@
 	"imba_shadow_demon_shadow_poison"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_shadow_poison"
-		"AbilityTextureName"	"shadow_demon_shadow_poison"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_shadow_poison"
+		"AbilityTextureName"		"shadow_demon_shadow_poison"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -128,13 +128,13 @@
 			"stack_damage"
 			{
 				"value"		"24 36 48 60"
-				"special_bonus_unique_shadow_demon_4"		"+15%"
+				"special_bonus_unique_imba_shadow_demon_4"		"+15%"
 			}
 			"max_multiply_stacks"		"5"
 			"bonus_stack_damage"
 			{
 				"value"		"50"
-				"special_bonus_unique_shadow_demon_4"		"+15%"
+				"special_bonus_unique_imba_shadow_demon_4"		"+15%"
 			}
 			"radius"
 			{
@@ -145,7 +145,7 @@
 			"hit_damage"
 			{
 				"value"		"30 40 50 60"
-				"special_bonus_unique_shadow_demon_4"		"+15%"
+				"special_bonus_unique_imba_shadow_demon_4"		"+15%"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -153,8 +153,8 @@
 	"imba_shadow_demon_shadow_poison_release"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_shadow_poison_release"
-		"AbilityTextureName"	"shadow_demon_shadow_poison_release"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_shadow_poison_release"
+		"AbilityTextureName"		"shadow_demon_shadow_poison_release"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"MaxLevel"		"1"
 		"AbilityCastPoint"		"0.3"
@@ -164,8 +164,8 @@
 	"imba_shadow_demon_demonic_purge"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_demonic_purge"
-		"AbilityTextureName"	"shadow_demon_demonic_purge"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_demonic_purge"
+		"AbilityTextureName"		"shadow_demon_demonic_purge"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -189,7 +189,7 @@
 			"purge_damage"
 			{
 				"value"		"300 450 600"
-				"special_bonus_unique_shadow_demon_1"		"150"
+				"special_bonus_unique_imba_shadow_demon_1"		"150"
 			}
 			"max_charges"
 			{
@@ -219,8 +219,8 @@
 	"imba_shadow_demon_demonic_cleanse"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_demonic_cleanse"
-		"AbilityTextureName"	"shadow_demon_demonic_cleanse"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_demonic_cleanse"
+		"AbilityTextureName"		"shadow_demon_demonic_cleanse"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -245,7 +245,7 @@
 			"purge_damage"
 			{
 				"value"		"300 450 600"
-				"special_bonus_unique_shadow_demon_1"		"150"
+				"special_bonus_unique_imba_shadow_demon_1"		"150"
 			}
 			"max_charges"
 			{
@@ -267,14 +267,14 @@
 	"imba_shadow_demon_disseminate"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_disseminate"
-		"AbilityTextureName"	"shadow_demon_disseminate"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_disseminate"
+		"AbilityTextureName"		"shadow_demon_disseminate"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilitySound"		"Hero_ShadowDemon.Soul_Catcher"
-		"AbilityCooldown"		"30 25 20 15"
+		"AbilityCooldown"		"26 22 18 14"
 		"AbilityCastRange"		"700 800 900 1000"
 		"AbilityCastPoint"		"0.3 0.3 0.3 0.3"
 		"AbilityManaCost"		"100"
@@ -284,12 +284,12 @@
 			"health_lost"
 			{
 				"value"		"0"
-				"special_bonus_facet_shadow_demon_promulgate"		"=15"
+				"special_bonus_facet_shadow_demon_facets_imba_1"		"=20"
 			}
 			"damage_reflection_pct"
 			{
 				"value"		"20 25 30 35"
-				"special_bonus_unique_shadow_demon_disseminate_damage"		"15"
+				"special_bonus_unique_imba_shadow_demon_disseminate_damage"		"15"
 			}
 			"radius"
 			{
@@ -302,12 +302,13 @@
 	"imba_shadow_demon_menace"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/shadow/imba_shadow_demon_menace"
-		"AbilityTextureName"	"shadow_demon_menace"
+		"ScriptFile"		"ability/hero_ability/shadow_demon/imba_shadow_demon_menace"
+		"AbilityTextureName"		"shadow_demon_menace"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"stack"		"2"

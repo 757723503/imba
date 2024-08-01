@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/alchemist/imba_alchemist_berserk_potion"
-		"AbilityTextureName"	"alchemist_berserk_potion"
+		"AbilityTextureName"		"alchemist_berserk_potion"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -30,7 +30,7 @@
 			"chemical_rage_cooldown_reduction_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_alchemist_mixologist"		"=50"
+				"special_bonus_facet_alchemist_facets_imba_1"		"=50"
 			}
 		}
 	}
@@ -38,7 +38,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/alchemist/imba_alchemist_acid_spray"
-		"AbilityTextureName"	"alchemist_acid_spray"
+		"AbilityTextureName"		"alchemist_acid_spray"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -62,12 +62,12 @@
 			"armor_reduction"
 			{
 				"value"		"3 4 5 6"
-				"special_bonus_unique_alchemist_5"		"1"
+				"special_bonus_unique_imba_alchemist_5"		"1"
 			}
 			"armor_allies"
 			{
 				"value"		"0"
-				"special_bonus_unique_alchemist_3"		"1"
+				"special_bonus_unique_imba_alchemist_3"		"1"
 			}
 			"tick_rate"		"1"
 		}
@@ -77,7 +77,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/alchemist/imba_alchemist_unstable_concoction"
-		"AbilityTextureName"	"alchemist_unstable_concoction"
+		"AbilityTextureName"		"alchemist_unstable_concoction"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -98,19 +98,19 @@
 			"max_damage"
 			{
 				"value"		"150 220 290 360"
-				"special_bonus_unique_alchemist_2"		"400"
+				"special_bonus_unique_imba_alchemist_2"		"400"
 			}
 			"radius"
 			{
 				"value"		"250"
-				"special_bonus_unique_alchemist"		"125"
+				"special_bonus_unique_imba_alchemist"		"125"
 				"affected_by_aoe_increase"		"1"
 			}
 			"move_speed"		"4 8 12 16"
 			"chemical_rage_cooldown_reduction_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_alchemist_mixologist"		"=30"
+				"special_bonus_facet_alchemist_facets_imba_1"		"=30"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -119,7 +119,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/alchemist/imba_alchemist_unstable_concoction_throw"
-		"AbilityTextureName"	"alchemist_unstable_concoction_throw"
+		"AbilityTextureName"		"alchemist_unstable_concoction_throw"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -138,13 +138,13 @@
 			"max_damage"
 			{
 				"value"		"150 220 290 360"
-				"special_bonus_unique_alchemist_2"		"400"
+				"special_bonus_unique_imba_alchemist_2"		"400"
 			}
 			"projectile_speed"		"900"
 			"midair_explosion_radius"
 			{
 				"value"		"250"
-				"special_bonus_unique_alchemist"		"125"
+				"special_bonus_unique_imba_alchemist"		"125"
 				"affected_by_aoe_increase"		"1"
 			}
 			"brew_explosion"		"7"
@@ -154,12 +154,13 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/alchemist/imba_alchemist_goblins_greed"
-		"AbilityTextureName"	"alchemist_goblins_greed"
+		"AbilityTextureName"		"alchemist_goblins_greed"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_SELF"
 		"MaxLevel"		"1"
 		"Innate"		"1"
+		"IsBreakable"		"1"
 		"AbilityCastRange"		"0"
 		"AbilityCastPoint"		"0.2"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -172,7 +173,7 @@
 			"damage"
 			{
 				"value"		"0"
-				"special_bonus_unique_alchemist_7"		"2"
+				"special_bonus_unique_imba_alchemist_7"		"2"
 			}
 			"bonus_gold_cap"
 			{
@@ -181,7 +182,7 @@
 			"starting_gold_bonus"
 			{
 				"value"		"0"
-				"special_bonus_facet_alchemist_seed_money"		"=250"
+				"special_bonus_facet_alchemist_facets_imba_1"		"=250"
 			}
 		}
 	}
@@ -189,7 +190,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/alchemist/imba_alchemist_chemical_rage"
-		"AbilityTextureName"	"alchemist_chemical_rage"
+		"AbilityTextureName"		"alchemist_chemical_rage"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -209,19 +210,19 @@
 			"base_attack_time"
 			{
 				"value"		"1.2 1.1 1.0"
-				"special_bonus_unique_alchemist_8"		"-0.1"
+				"special_bonus_unique_imba_alchemist_8"		"-0.1"
 			}
 			"bonus_health"		"0"
 			"bonus_health_regen"
 			{
 				"value"		"60 90 120"
-				"special_bonus_unique_alchemist_4"		"50"
+				"special_bonus_unique_imba_alchemist_4"		"50"
 			}
 			"bonus_mana_regen"		"0"
 			"bonus_movespeed"
 			{
 				"value"		"30 45 60"
-				"special_bonus_unique_alchemist_6"		"50"
+				"special_bonus_unique_imba_alchemist_6"		"50"
 			}
 			"scepter_gold_damage"
 			{
@@ -244,10 +245,11 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/alchemist/imba_alchemist_corrosive_weaponry"
-		"AbilityTextureName"	"alchemist_corrosive_weaponry"
+		"AbilityTextureName"		"alchemist_corrosive_weaponry"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilitySound"		"Hero_Meepo.Geostrike"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"max_stacks"		"4 6 8 10"

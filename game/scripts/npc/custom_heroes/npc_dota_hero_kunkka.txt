@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_tidal_wave"
-		"AbilityTextureName"	"kunkka_tidal_wave"
+		"AbilityTextureName"		"kunkka_tidal_wave"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -37,24 +37,22 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_torrent"
-		"AbilityTextureName"	"kunkka_torrent"
+		"AbilityTextureName"		"kunkka_torrent"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"FightRecapLevel"		"1"
 		"AbilitySound"		"Ability.Torrent"
-		"HasScepterUpgrade"		"1"
-		"AbilityDraftScepterAbility"		"kunkka_torrent_storm"
 		"AbilityCastRange"		"1300"
 		"AbilityCastPoint"		"0.4"
-		"AbilityManaCost"		"100"
+		"AbilityManaCost"		"90"
 		"AbilityModifierSupportValue"		"0.5"
 		"AbilityValues"
 		{
 			"radius"
 			{
-				"value"		"225"
+				"value"		"250"
 				"affected_by_aoe_increase"		"1"
 			}
 			"movespeed_bonus"		"-40"
@@ -62,20 +60,20 @@
 			"stun_duration"
 			{
 				"value"		"1.4"
-				"special_bonus_unique_kunkka_7"		"+20%"
+				"special_bonus_unique_imba_kunkka_7"		"+20%"
 			}
 			"delay"		"1.6 1.6 1.6 1.6"
 			"torrent_damage"
 			{
 				"value"		"80 160 240 320"
-				"special_bonus_unique_kunkka_7"		"+20%"
+				"special_bonus_unique_imba_kunkka_7"		"+20%"
 			}
 			"percent_instant"		"0"
 			"damage_tick_interval"		"0.2"
 			"AbilityCooldown"
 			{
 				"value"		"16 14 12 10"
-				"special_bonus_unique_kunkka_torrent_cooldown"		"-4"
+				"special_bonus_unique_imba_kunkka_torrent_cooldown"		"-4"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -84,14 +82,14 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_torrent_storm"
-		"AbilityTextureName"	"kunkka_torrent_storm"
+		"AbilityTextureName"		"kunkka_torrent_storm"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"
 		"FightRecapLevel"		"1"
-		"IsGrantedByScepter"		"1"
+		"IsGrantedByScepter"		"0"
 		"HasScepterUpgrade"		"1"
 		"AbilitySound"		"Ability.Torrent"
 		"AbilityCastPoint"		"0.4"
@@ -128,17 +126,15 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_tidebringer"
-		"AbilityTextureName"	"kunkka_tidebringer"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK | DOTA_ABILITY_BEHAVIOR_BREAK_DISABLES"
+		"AbilityTextureName"		"kunkka_tidebringer"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilitySound"		"Hero_Kunkka.Tidebringer.Attack"
-		"MaxLevel"		"5"
-		"Innate"		"1"
-		"RequiredLevel"		"-1"
+		"IsBreakable"		"1"
 		"AbilityCastRange"		"150"
-		"AbilityCastPoint"		"0.0 0.0 0.0 0.0 0.0"
+		"AbilityCastPoint"		"0.0 0.0 0.0 0.0"
 		"AbilityValues"
 		{
 			"cleave_starting_width"
@@ -148,42 +144,42 @@
 			}
 			"cleave_ending_width"
 			{
-				"value"		"450 500 550 600 650"
+				"value"		"500 550 600 650"
 				"affected_by_aoe_increase"		"1"
 			}
 			"cleave_distance"
 			{
-				"value"		"500 650 800 950 1100"
+				"value"		"650 800 950 1100"
 				"affected_by_aoe_increase"		"1"
 			}
 			"damage_bonus"
 			{
-				"value"		"10 30 60 90 120"
-				"special_bonus_unique_kunkka_2"		"60"
+				"value"		"30 60 90 120"
+				"special_bonus_unique_imba_kunkka_2"		"60"
 			}
 			"cleave_damage"
 			{
 				"value"		"150"
-				"special_bonus_unique_kunkka_4"		"100"
+				"special_bonus_unique_imba_kunkka_4"		"100"
 			}
 			"movespeed_slow"
 			{
 				"value"		"0"
-				"special_bonus_unique_kunkka_tidebringer_slow"		"-60"
+				"special_bonus_unique_imba_kunkka_tidebringer_slow"		"-60"
 			}
 			"movespeed_slow_duration"
 			{
 				"value"		"0"
-				"special_bonus_unique_kunkka_tidebringer_slow"		"1"
+				"special_bonus_unique_imba_kunkka_tidebringer_slow"		"1"
 			}
 			"AbilityCooldown"
 			{
-				"value"		"16.0 13.0 10.0 7.0 4.0"
+				"value"		"13.0 10.0 7.0 4.0"
 			}
 			"cooldown_reduction_per_hero_hit"
 			{
 				"value"		"0"
-				"special_bonus_facet_kunkka_high_tide"		"0.8"
+				"special_bonus_facet_kunkka_facets_imba_1"		"0.8"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -192,7 +188,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_x_marks_the_spot"
-		"AbilityTextureName"	"kunkka_x_marks_the_spot"
+		"AbilityTextureName"		"kunkka_x_marks_the_spot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -213,25 +209,25 @@
 			"ally_ms"
 			{
 				"value"		"0"
-				"special_bonus_unique_kunkka_6"		"25"
+				"special_bonus_unique_imba_kunkka_6"		"25"
 			}
 			"ally_armor"		"0"
 			"rum_allies_radius"
 			{
 				"value"		"0"
-				"special_bonus_facet_kunkka_grog"		"400"
+				"special_bonus_facet_kunkka_facets_imba_1"		"400"
 				"affected_by_aoe_increase"		"1"
 			}
 			"buff_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_kunkka_grog"		"3"
+				"special_bonus_facet_kunkka_facets_imba_1"		"3"
 			}
 			"movespeed_bonus"		"15"
 			"ghostship_absorb"
 			{
 				"value"		"35"
-				"special_bonus_unique_kunkka_rum"		"15"
+				"special_bonus_unique_imba_kunkka_rum"		"15"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -240,7 +236,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_return"
-		"AbilityTextureName"	"kunkka_return"
+		"AbilityTextureName"		"kunkka_return"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilitySound"		"Ability.XMarksTheSpot.Return"
@@ -252,10 +248,10 @@
 	}
 	"imba_kunkka_ghostship"
 	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_ghostship"
-		"AbilityTextureName"	"kunkka_ghostship"
-		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityTextureName"		"kunkka_ghostship"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -263,6 +259,7 @@
 		"FightRecapLevel"		"2"
 		"AbilitySound"		"Ability.Ghostship"
 		"AbilityDraftUltShardAbility"		"kunkka_tidal_wave"
+		"HasScepterUpgrade"		"1"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_GHOST_SHIP"
 		"AbilityCastGestureSlot"		"DEFAULT"
 		"AbilityCastRange"		"1000"
@@ -285,33 +282,75 @@
 			"ghostship_absorb"
 			{
 				"value"		"35"
-				"special_bonus_unique_kunkka_rum"		"15"
+				"special_bonus_unique_imba_kunkka_rum"		"15"
 			}
 			"AbilityCooldown"
 			{
 				"value"		"80 70 60"
 			}
+			"fleet_interval"
+			{
+				"special_bonus_scepter"		"2.5"
+			}
+			"fleet_count"
+			{
+				"special_bonus_scepter"		"2"
+			}
+			"fire_cannons"
+			{
+				"special_bonus_scepter"		"1"
+			}
+			"cannon_ball_damage_pct"
+			{
+				"special_bonus_scepter"		"40"
+			}
+			"cannon_ball_distance"
+			{
+				"special_bonus_scepter"		"1200"
+			}
+			"cannon_ball_speed"
+			{
+				"special_bonus_scepter"		"1400"
+			}
+			"cannon_count"
+			{
+				"special_bonus_scepter"		"4"
+			}
+			"cannon_ball_radius"
+			{
+				"special_bonus_scepter"		"100"
+			}
+			"num_cannon_volleys"		"3"
+			"cannon_fire_interval"
+			{
+				"special_bonus_scepter"		"0.78"
+			}
+			"base_cannon_rotation"		"20"
+			"rotation_per_cannon"		"12"
+			"initial_cannon_offset"		"-150"
+			"distance_between_cannons"		"75"
 		}
 	}
-	"imba_kunkka_ghost_ship_fire_cannons"
+	"imba_kunkka_admirals_rum"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_ghost_ship_fire_cannons"
-		"AbilityTextureName"	"kunkka_ghost_ship_fire_cannons"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_admirals_rum"
+		"AbilityTextureName"		"kunkka_admirals_rum"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"1"
+		"Innate"		"1"
+		"IsBreakable"		"1"
+		"AbilityCooldown"		"60"
 		"AbilityValues"
 		{
-			"cannon_ball_damage_pct"		"40"
-			"cannon_ball_distance"		"700"
-			"cannon_ball_speed"		"1000"
-			"cannon_count"		"5"
-			"cannon_ball_radius"		"50"
-			"cannon_fire_interval"		"0.78"
-			"cannon_ball_explosion_radius"		"25"
+			"damage_threshold"		"65"
+			"ghostship_absorb"
+			{
+				"value"		"20"
+				"special_bonus_unique_imba_kunkka_rum"		"15"
+			}
+			"buff_duration"		"10"
+			"movespeed_bonus"		"10"
 		}
 	}
 	"special_bonus_unique_imba_kunkka_2"
@@ -375,32 +414,10 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"		"special_bonus_base"
 	}
-	"imba_kunkka_innate_kunkkas_spyglass"
+	"special_bonus_unique_imba_kunkka_admirals_rum_delay"
 	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_innate_kunkkas_spyglass"
-		"AbilityTextureName"	"kunkka_innate_kunkkas_spyglass"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"MaxLevel"		"1"
-		"AbilityValues"
-		{
-			"tooltip_cast_range_bonus_consumed"		"75"
-			"tooltip_cast_range_bonus"		"75"
-			"tooltip_radius"		"375"
-			"tooltip_duration"		"5"
-		}
-	}
-	"imba_kunkka_innate_kunkkas_flask"
-	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/kunkka/imba_kunkka_innate_kunkkas_flask"
-		"AbilityTextureName"	"kunkka_innate_kunkkas_flask"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"MaxLevel"		"1"
-		"AbilityValues"
-		{
-			"tidebringer_bonus_damage"		"20"
-			"tooltip_duration"		"5"
-		}
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 }

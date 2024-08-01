@@ -4,8 +4,8 @@
 	"imba_legion_commander_overwhelming_odds"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/legion/imba_legion_commander_overwhelming_odds"
-		"AbilityTextureName"	"legion_commander_overwhelming_odds"
+		"ScriptFile"		"ability/hero_ability/legion_commander/imba_legion_commander_overwhelming_odds"
+		"AbilityTextureName"		"legion_commander_overwhelming_odds"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -23,7 +23,7 @@
 			"damage_per_hero"
 			{
 				"value"		"40 70 100 130"
-				"special_bonus_unique_legion_commander_4"		"35"
+				"special_bonus_unique_imba_legion_commander_4"		"35"
 			}
 			"bonus_attack_speed_creeps"		"0"
 			"bonus_attack_speed"		"50 75 100 125"
@@ -51,7 +51,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"18"
-				"special_bonus_unique_legion_commander_9"		"-2"
+				"special_bonus_unique_imba_legion_commander_9"		"-2"
 			}
 			"duel_radius_bonus"
 			{
@@ -62,12 +62,12 @@
 			"shield_per_damage_pct"
 			{
 				"value"		"0"
-				"special_bonus_facet_legion_commander_stonehall_plate"		"40"
+				"special_bonus_facet_legion_commander_facets_imba_1"		"40"
 			}
 			"shield_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_legion_commander_stonehall_plate"		"8"
+				"special_bonus_facet_legion_commander_facets_imba_1"		"8"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -75,8 +75,8 @@
 	"imba_legion_commander_press_the_attack"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/legion/imba_legion_commander_press_the_attack"
-		"AbilityTextureName"	"legion_commander_press_the_attack"
+		"ScriptFile"		"ability/hero_ability/legion_commander/imba_legion_commander_press_the_attack"
+		"AbilityTextureName"		"legion_commander_press_the_attack"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -95,17 +95,17 @@
 			"move_speed"
 			{
 				"value"		"10 14 18 22"
-				"special_bonus_unique_legion_commander_pta_movespeed"		"10"
+				"special_bonus_unique_imba_legion_commander_pta_movespeed"		"10"
 			}
 			"hp_regen"
 			{
 				"value"		"24 36 48 60"
-				"special_bonus_unique_legion_commander_6"		"40"
+				"special_bonus_unique_imba_legion_commander_6"		"40"
 			}
 			"radius"
 			{
 				"value"		"0"
-				"special_bonus_unique_legion_commander_5"		"300"
+				"special_bonus_unique_imba_legion_commander_5"		"300"
 				"affected_by_aoe_increase"		"1"
 			}
 		}
@@ -114,26 +114,24 @@
 	"imba_legion_commander_moment_of_courage"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/legion/imba_legion_commander_moment_of_courage"
-		"AbilityTextureName"	"legion_commander_moment_of_courage"
+		"ScriptFile"		"ability/hero_ability/legion_commander/imba_legion_commander_moment_of_courage"
+		"AbilityTextureName"		"legion_commander_moment_of_courage"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilitySound"		"Hero_LegionCommander.Courage"
-		"MaxLevel"		"5"
-		"Innate"		"1"
-		"RequiredLevel"		"-1"
-		"AbilityCooldown"		"2.3 1.9 1.5 1.1 0.7"
+		"IsBreakable"		"1"
+		"AbilityCooldown"		"1.9 1.5 1.1 0.7"
 		"AbilityValues"
 		{
 			"trigger_chance"
 			{
 				"value"		"25"
-				"special_bonus_unique_legion_commander_3"		"8"
+				"special_bonus_unique_imba_legion_commander_3"		"8"
 			}
 			"buff_duration"		"1"
 			"hp_leech_percent"
 			{
-				"value"		"40 60 70 80 90"
-				"special_bonus_unique_legion_commander_7"		"75"
+				"value"		"55 65 75 85"
+				"special_bonus_unique_imba_legion_commander_7"		"75"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -141,8 +139,8 @@
 	"imba_legion_commander_duel"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/legion/imba_legion_commander_duel"
-		"AbilityTextureName"	"legion_commander_duel"
+		"ScriptFile"		"ability/hero_ability/legion_commander/imba_legion_commander_duel"
+		"AbilityTextureName"		"legion_commander_duel"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -177,7 +175,7 @@
 			"assist_reward_damage"
 			{
 				"value"		"0"
-				"special_bonus_facet_legion_commander_spoils_of_war"		"5 10 15"
+				"special_bonus_facet_legion_commander_facets_imba_1"		"5 10 15"
 			}
 			"debuff_immunity"
 			{
@@ -197,6 +195,21 @@
 				"value"		"8"
 				"RequiresShard"		"1"
 			}
+		}
+	}
+	"imba_legion_commander_outfight_them"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/legion_commander/imba_legion_commander_outfight_them"
+		"AbilityTextureName"		"legion_commander_outfight_them"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"heal_bonus_pct"		"50"
+			"duration"		"4"
 		}
 	}
 	"special_bonus_unique_imba_legion_commander_3"

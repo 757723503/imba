@@ -4,8 +4,8 @@
 	"imba_ancient_apparition_cold_feet"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ancient/imba_ancient_apparition_cold_feet"
-		"AbilityTextureName"	"ancient_apparition_cold_feet"
+		"ScriptFile"		"ability/hero_ability/ancient_apparition/imba_ancient_apparition_cold_feet"
+		"AbilityTextureName"		"ancient_apparition_cold_feet"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -27,12 +27,12 @@
 			"frost_stacks"
 			{
 				"value"		"2 4 6 8"
-				"special_bonus_unique_ancient_apparition_8"		"2"
+				"special_bonus_unique_imba_ancient_apparition_8"		"2"
 			}
 			"break_distance"
 			{
 				"value"		"725 750 775 800"
-				"special_bonus_unique_ancient_apparition_1"		"300"
+				"special_bonus_unique_imba_ancient_apparition_1"		"300"
 				"affected_by_aoe_increase"		"1"
 			}
 			"stun_duration"		"1.9 2.2 2.5 2.8"
@@ -45,8 +45,8 @@
 	"imba_ancient_apparition_ice_vortex"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ancient/imba_ancient_apparition_ice_vortex"
-		"AbilityTextureName"	"ancient_apparition_ice_vortex"
+		"ScriptFile"		"ability/hero_ability/ancient_apparition/imba_ancient_apparition_ice_vortex"
+		"AbilityTextureName"		"ancient_apparition_ice_vortex"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -62,7 +62,7 @@
 			"AbilityCooldown"
 			{
 				"value"		"10 8 6 4"
-				"special_bonus_unique_ancient_apparition_3"		"-2"
+				"special_bonus_unique_imba_ancient_apparition_3"		"-2"
 			}
 			"radius"
 			{
@@ -94,8 +94,8 @@
 	"imba_ancient_apparition_chilling_touch"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ancient/imba_ancient_apparition_chilling_touch"
-		"AbilityTextureName"	"ancient_apparition_chilling_touch"
+		"ScriptFile"		"ability/hero_ability/ancient_apparition/imba_ancient_apparition_chilling_touch"
+		"AbilityTextureName"		"ancient_apparition_chilling_touch"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -109,7 +109,7 @@
 			"damage"
 			{
 				"value"		"30 60 90 120"
-				"special_bonus_unique_ancient_apparition_2"		"80"
+				"special_bonus_unique_imba_ancient_apparition_2"		"80"
 			}
 			"frost_stacks"		"1"
 			"duration"		"4"
@@ -118,7 +118,7 @@
 			"attack_range_bonus"
 			{
 				"value"		"60 120 180 240"
-				"special_bonus_unique_ancient_apparition_7"		"300"
+				"special_bonus_unique_imba_ancient_apparition_7"		"300"
 			}
 			"AbilityManaCost"
 			{
@@ -135,8 +135,8 @@
 	"imba_ancient_apparition_ice_blast"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ancient/imba_ancient_apparition_ice_blast"
-		"AbilityTextureName"	"ancient_apparition_ice_blast"
+		"ScriptFile"		"ability/hero_ability/ancient_apparition/imba_ancient_apparition_ice_blast"
+		"AbilityTextureName"		"ancient_apparition_ice_blast"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -175,14 +175,14 @@
 			"frostbite_duration"
 			{
 				"value"		"10"
-				"special_bonus_unique_ancient_apparition_ice_vortex_duration"		"5"
+				"special_bonus_unique_imba_ancient_apparition_ice_vortex_duration"		"5"
 			}
 			"frost_stacks"		"2"
-			"speed"		"1500 1500 1500 1500"
+			"speed"		"1500 1500 1500"
 			"kill_pct"
 			{
 				"value"		"12 13 14"
-				"special_bonus_unique_ancient_apparition_5"		"4"
+				"special_bonus_unique_imba_ancient_apparition_5"		"4"
 			}
 			"cold_feet_stun_duration_pct"
 			{
@@ -191,7 +191,7 @@
 			}
 			"cold_feet_aoe"
 			{
-				"special_bonus_facet_ancient_apparition_exposure"		"200 350 500"
+				"special_bonus_facet_ancient_apparition_facets_imba_1"		"200 350 500"
 				"affected_by_aoe_increase"		"1"
 			}
 			"target_sight_radius"
@@ -204,8 +204,8 @@
 	"imba_ancient_apparition_death_rime"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ancient/imba_ancient_apparition_death_rime"
-		"AbilityTextureName"	"ancient_apparition_death_rime"
+		"ScriptFile"		"ability/hero_ability/ancient_apparition/imba_ancient_apparition_death_rime"
+		"AbilityTextureName"		"ancient_apparition_death_rime"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -217,12 +217,12 @@
 			"damage"
 			{
 				"value"		"10"
-				"special_bonus_unique_ancient_apparition_6"		"+50%"
+				"special_bonus_unique_imba_ancient_apparition_6"		"+50%"
 			}
 			"slow"
 			{
 				"value"		"1.5"
-				"special_bonus_unique_ancient_apparition_6"		"+50%"
+				"special_bonus_unique_imba_ancient_apparition_6"		"+50%"
 			}
 			"cast_slow"
 			{
@@ -231,15 +231,15 @@
 			"strength_decrease"
 			{
 				"value"		"0"
-				"special_bonus_facet_ancient_apparition_bone_chill"		"0.5 0.75 1 1.25"
+				"special_bonus_facet_ancient_apparition_facets_imba_1"		"0.5 0.75 1 1.25"
 			}
 		}
 	}
 	"imba_ancient_apparition_ice_blast_release"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ancient/imba_ancient_apparition_ice_blast_release"
-		"AbilityTextureName"	"ancient_apparition_ice_blast_release"
+		"ScriptFile"		"ability/hero_ability/ancient_apparition/imba_ancient_apparition_ice_blast_release"
+		"AbilityTextureName"		"ancient_apparition_ice_blast_release"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"		"1"
@@ -250,8 +250,8 @@
 	"imba_ancient_apparition_ice_age"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/ancient/imba_ancient_apparition_ice_age"
-		"AbilityTextureName"	"ancient_apparition_ice_age"
+		"ScriptFile"		"ability/hero_ability/ancient_apparition/imba_ancient_apparition_ice_age"
+		"AbilityTextureName"		"ancient_apparition_ice_age"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"

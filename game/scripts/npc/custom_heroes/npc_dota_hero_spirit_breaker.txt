@@ -4,8 +4,8 @@
 	"imba_spirit_breaker_charge_of_darkness"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_charge_of_darkness"
-		"AbilityTextureName"	"spirit_breaker_charge_of_darkness"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_charge_of_darkness"
+		"AbilityTextureName"		"spirit_breaker_charge_of_darkness"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -40,26 +40,27 @@
 			"AbilityCooldown"
 			{
 				"value"		"22 19 16 13"
-				"special_bonus_unique_spirit_breaker_4"		"-4"
+				"special_bonus_unique_imba_spirit_breaker_4"		"-4"
 			}
 			"out_of_world_time"		"0"
 			"guaranteed_bash_time"		"0"
 			"reveal_charge"		"0"
-			"windup_time"		"0"
+			"windup_time"		"1.5"
+			"min_movespeed_bonus_pct"		"25"
 			"linger_time_min"
 			{
 				"value"		"0"
-				"special_bonus_facet_spirit_breaker_bull_rush"		"0.5"
+				"special_bonus_facet_spirit_breaker_facets_imba_1"		"0.5"
 			}
 			"linger_time_max"
 			{
 				"value"		"0"
-				"special_bonus_facet_spirit_breaker_bull_rush"		"2.5"
+				"special_bonus_facet_spirit_breaker_facets_imba_1"		"2.5"
 			}
 			"charge_for_max_linger"
 			{
 				"value"		"0"
-				"special_bonus_facet_spirit_breaker_bull_rush"		"5"
+				"special_bonus_facet_spirit_breaker_facets_imba_1"		"5"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -67,8 +68,8 @@
 	"imba_spirit_breaker_bulldoze"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_bulldoze"
-		"AbilityTextureName"	"spirit_breaker_bulldoze"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_bulldoze"
+		"AbilityTextureName"		"spirit_breaker_bulldoze"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"FightRecapLevel"		"1"
@@ -83,7 +84,7 @@
 			"damage_barrier"
 			{
 				"value"		"0"
-				"special_bonus_unique_spirit_breaker_shield"		"400"
+				"special_bonus_unique_imba_spirit_breaker_shield"		"400"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -92,12 +93,13 @@
 	"imba_spirit_breaker_empowering_haste"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_empowering_haste"
-		"AbilityTextureName"	"spirit_breaker_empowering_haste"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_empowering_haste"
+		"AbilityTextureName"		"spirit_breaker_empowering_haste"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"AbilitySound"		"Hero_Spirit_Breaker.EmpoweringHaste.Cast"
+		"IsBreakable"		"1"
 		"AbilityCooldown"		"20"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityValues"
@@ -127,13 +129,14 @@
 	"imba_spirit_breaker_greater_bash"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_greater_bash"
-		"AbilityTextureName"	"spirit_breaker_greater_bash"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_greater_bash"
+		"AbilityTextureName"		"spirit_breaker_greater_bash"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES_STRONG"
 		"AbilitySound"		"Hero_Spirit_Breaker.GreaterBash"
+		"IsBreakable"		"1"
 		"AbilityCooldown"		"1.2"
 		"AbilityModifierSupportBonus"		"40"
 		"AbilityValues"
@@ -141,12 +144,12 @@
 			"chance_pct"
 			{
 				"value"		"17"
-				"special_bonus_unique_spirit_breaker_1"		"17"
+				"special_bonus_unique_imba_spirit_breaker_1"		"17"
 			}
 			"damage"
 			{
 				"value"		"25 30 35 40"
-				"special_bonus_unique_spirit_breaker_3"		"25"
+				"special_bonus_unique_imba_spirit_breaker_3"		"25"
 			}
 			"duration"		"0.9 1.1 1.3 1.5"
 			"knockback_duration"		"0.5"
@@ -161,8 +164,8 @@
 	"imba_spirit_breaker_nether_strike"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_nether_strike"
-		"AbilityTextureName"	"spirit_breaker_nether_strike"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_nether_strike"
+		"AbilityTextureName"		"spirit_breaker_nether_strike"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -206,13 +209,13 @@
 			"knockback_amp"
 			{
 				"value"		"0"
-				"special_bonus_facet_spirit_breaker_imbalanced"		"100"
+				"special_bonus_facet_spirit_breaker_facets_imba_1"		"100"
 				"RequiresFacet"		"spirit_breaker_imbalanced"
 			}
 			"knockback_amp_duration"
 			{
 				"value"		"0"
-				"special_bonus_facet_spirit_breaker_imbalanced"		"6"
+				"special_bonus_facet_spirit_breaker_facets_imba_1"		"6"
 				"RequiresFacet"		"spirit_breaker_imbalanced"
 			}
 		}
@@ -220,8 +223,8 @@
 	"imba_spirit_breaker_planar_pocket"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_planar_pocket"
-		"AbilityTextureName"	"spirit_breaker_planar_pocket"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_planar_pocket"
+		"AbilityTextureName"		"spirit_breaker_planar_pocket"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
@@ -249,8 +252,8 @@
 	"imba_spirit_breaker_knockback_amp"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_knockback_amp"
-		"AbilityTextureName"	"spirit_breaker_knockback_amp"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_knockback_amp"
+		"AbilityTextureName"		"spirit_breaker_knockback_amp"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityValues"
 		{
@@ -260,8 +263,8 @@
 	"imba_spirit_breaker_herd_mentality"
 	{
 		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/spirit/imba_spirit_breaker_herd_mentality"
-		"AbilityTextureName"	"spirit_breaker_herd_mentality"
+		"ScriptFile"		"ability/hero_ability/spirit_breaker/imba_spirit_breaker_herd_mentality"
+		"AbilityTextureName"		"spirit_breaker_herd_mentality"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"1"

@@ -5,7 +5,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_hunters_boomerang"
-		"AbilityTextureName"	"hoodwink_hunters_boomerang"
+		"AbilityTextureName"		"hoodwink_hunters_boomerang"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -47,7 +47,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_decoy"
-		"AbilityTextureName"	"hoodwink_decoy"
+		"AbilityTextureName"		"hoodwink_decoy"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"IsGrantedByScepter"		"1"
@@ -76,7 +76,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_acorn_shot"
-		"AbilityTextureName"	"hoodwink_acorn_shot"
+		"AbilityTextureName"		"hoodwink_acorn_shot"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -85,13 +85,13 @@
 		"AbilityCooldown"		"16 14 12 10"
 		"AbilityCastRange"		"575"
 		"AbilityCastPoint"		"0.2"
-		"AbilityManaCost"		"70 75 80 85"
+		"AbilityManaCost"		"85 90 95 100"
 		"AbilityValues"
 		{
 			"bonus_range"		"75 150 225 300"
 			"acorn_shot_damage"
 			{
-				"value"		"55 90 125 160"
+				"value"		"40 80 120 160"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 			"base_damage_pct"
@@ -102,7 +102,7 @@
 			"bounce_count"
 			{
 				"value"		"2 3 4 5"
-				"special_bonus_unique_hoodwink_acorn_shot_bounces"		"2"
+				"special_bonus_unique_imba_hoodwink_acorn_shot_bounces"		"1"
 			}
 			"bounce_range"
 			{
@@ -116,12 +116,12 @@
 			"can_bounce_off_of_trees"
 			{
 				"value"		"0"
-				"special_bonus_facet_hoodwink_treebounce_trickshot"		"1"
+				"special_bonus_facet_hoodwink_facets_imba_1"		"1"
 			}
 			"bounces_after_tree_bounce"
 			{
 				"value"		"0"
-				"special_bonus_facet_hoodwink_treebounce_trickshot"		"1"
+				"special_bonus_facet_hoodwink_facets_imba_1"		"1"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -130,7 +130,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_bushwhack"
-		"AbilityTextureName"	"hoodwink_bushwhack"
+		"AbilityTextureName"		"hoodwink_bushwhack"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
@@ -153,7 +153,7 @@
 			{
 				"value"		"90 180 270 360"
 				"CalculateSpellDamageTooltip"		"1"
-				"special_bonus_unique_hoodwink_bushwhack_damage"		"60"
+				"special_bonus_unique_imba_hoodwink_bushwhack_damage"		"60"
 			}
 			"animation_rate"		"0.3"
 			"visual_height"		"50"
@@ -163,7 +163,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_scurry"
-		"AbilityTextureName"	"hoodwink_scurry"
+		"AbilityTextureName"		"hoodwink_scurry"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityCastPoint"		"0"
 		"AbilityCastRange"		"275"
@@ -177,7 +177,7 @@
 			"duration"
 			{
 				"value"		"3.5 4.0 4.5 5.0"
-				"special_bonus_unique_hoodwink_scurry_duration"		"1"
+				"special_bonus_unique_imba_hoodwink_scurry_duration"		"1"
 			}
 			"decoy_duration"		"6"
 			"decoy_detonate_radius"
@@ -193,12 +193,12 @@
 			"cast_range"
 			{
 				"value"		"0"
-				"special_bonus_facet_hoodwink_hunter"		"50 100 150 200"
+				"special_bonus_facet_hoodwink_facets_imba_1"		"100 150 200 250"
 			}
 			"attack_range"
 			{
 				"value"		"0"
-				"special_bonus_facet_hoodwink_hunter"		"50 100 150 200"
+				"special_bonus_facet_hoodwink_facets_imba_1"		"100 150 200 250"
 			}
 			"radius_increase"
 			{
@@ -213,7 +213,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_sharpshooter"
-		"AbilityTextureName"	"hoodwink_sharpshooter"
+		"AbilityTextureName"		"hoodwink_sharpshooter"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
@@ -254,7 +254,7 @@
 			"max_damage"
 			{
 				"value"		"550 900 1250"
-				"special_bonus_unique_hoodwink_sharpshooter_damage"		"125"
+				"special_bonus_unique_imba_hoodwink_sharpshooter_damage"		"125"
 			}
 			"recoil_distance"		"350"
 			"recoil_height"		"75"
@@ -271,7 +271,7 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_sharpshooter_release"
-		"AbilityTextureName"	"hoodwink_sharpshooter_release"
+		"AbilityTextureName"		"hoodwink_sharpshooter_release"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"		"0"
@@ -284,11 +284,12 @@
 	{
 		"BaseClass"		"ability_lua"
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_mistwoods_wayfarer"
-		"AbilityTextureName"	"hoodwink_mistwoods_wayfarer"
+		"AbilityTextureName"		"hoodwink_mistwoods_wayfarer"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"DependentOnAbility"		"hoodwink_sharpshooter"
 		"Innate"		"1"
 		"MaxLevel"		"4"
+		"IsBreakable"		"1"
 		"AbilityValues"
 		{
 			"radius"
