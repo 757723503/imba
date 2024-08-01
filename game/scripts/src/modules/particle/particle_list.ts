@@ -36,6 +36,7 @@ enum HeroParticleList {
     /** 法力损毁减速 */
     imba_antimage_mana_break_slow = 'particles/units/heroes/hero_antimage/antimage_manabreak_slow.vpcf',
     /**闪烁开始 */
+    imba_antimage_blink = 'particles/units/heroes/hero_antimage/antimage_blink_start.vpcf',
     imba_antimage_blink_start = 'particles/units/heroes/hero_antimage/antimage_blink_start.vpcf',
     /**闪烁结束 */
     imba_antimage_blink_end = 'particles/units/heroes/hero_antimage/antimage_blink_end.vpcf',
