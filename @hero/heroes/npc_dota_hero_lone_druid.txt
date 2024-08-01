@@ -1,0 +1,531 @@
+"DOTAAbilities"
+{
+	"Version"		"1"
+	"imba_lone_druid_gift_bearer"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_gift_bearer"
+		"AbilityTextureName"		"lone_druid_gift_bearer"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"AbilityValues"
+		{
+			"reroll"		"1"
+		}
+	}
+	"imba_lone_druid_bear_necessities"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_bear_necessities"
+		"AbilityTextureName"		"lone_druid_bear_necessities"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"MaxLevel"		"4"
+		"DependentOnAbility"		"lone_druid_true_form"
+		"AbilityValues"
+		{
+			"item_slots"		"3"
+			"bonus_stat_percent"		"50 60 70 80"
+		}
+	}
+	"imba_lone_druid_spirit_bear"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_spirit_bear"
+		"AbilityTextureName"		"lone_druid_spirit_bear"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"DisplayAdditionalHeroes"		"1"
+		"AbilitySound"		"Hero_LoneDruid.SpiritBear.Cast"
+		"HasScepterUpgrade"		"1"
+		"AbilityCastPoint"		"0.5 0.5 0.5 0.5"
+		"AbilityCooldown"		"150 140 130 120"
+		"AbilityManaCost"		"75 75 75 75"
+		"AbilityValues"
+		{
+			"bear_hp"		"1100 1400 1700 2000"
+			"bear_regen_tooltip"		"5 6 7 8"
+			"bear_bat"
+			{
+				"value"		"1.75 1.65 1.55 1.45"
+			}
+			"bear_armor"		"0 2 4 6"
+			"backlash_damage"
+			{
+				"value"		"20"
+			}
+			"bear_movespeed"
+			{
+				"value"		"300 330 360 390"
+				"special_bonus_unique_imba_lone_druid_11"		"30"
+			}
+			"bear_magic_resistance"
+			{
+				"value"		"0"
+			}
+			"bonus_bear_hp"
+			{
+				"value"		"0"
+			}
+			"bonus_bear_armor"
+			{
+				"value"		"0"
+				"special_bonus_unique_imba_lone_druid_2"		"7"
+			}
+			"damage_gain_per_druid_level"		"5"
+			"hp_gain_per_druid_level"		"90"
+			"bear_attack_leash_range"
+			{
+				"value"		"1100"
+				"special_bonus_facet_lone_druid_facets_imba_1"		"500"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+	"imba_lone_druid_rabid"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_rabid"
+		"AbilityTextureName"		"lone_druid_rabid"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"		"1"
+		"AbilitySound"		"Hero_LoneDruid.Rabid"
+		"AbilityCastAnimation"		"ACT_DOTA_OVERRIDE_ABILITY_2"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCooldown"		"35"
+		"AbilityManaCost"		"50 50 50 50"
+		"AbilityValues"
+		{
+			"bonus_attack_speed"
+			{
+				"value"		"20 30 40 50"
+			}
+			"bonus_move_speed"		"10 15 20 25"
+			"rabid_duration"		"25"
+		}
+	}
+	"imba_lone_druid_spirit_link"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_spirit_link"
+		"AbilityTextureName"		"lone_druid_spirit_link"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"		"1"
+		"AbilitySound"		"Hero_LoneDruid.Rabid"
+		"HasScepterUpgrade"		"1"
+		"AbilityCastAnimation"		"ACT_DOTA_OVERRIDE_ABILITY_2"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastRange"		"1200"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"bonus_attack_speed"
+			{
+				"value"		"20 35 50 65"
+				"special_bonus_unique_imba_lone_druid_spirit_link_attack_speed"		"45"
+			}
+			"lifesteal_percent"
+			{
+				"value"		"15 30 45 60"
+			}
+			"armor_sharing"
+			{
+				"value"		"8 12 16 20"
+				"special_bonus_facet_lone_druid_facets_imba_1"		"+25%"
+			}
+			"lifesteal_both_ways"
+			{
+				"value"		"0"
+				"special_bonus_facet_lone_druid_facets_imba_1"		"=1"
+			}
+			"duration"		"20"
+			"active_bonus"		"35"
+			"AbilityCooldown"
+			{
+				"value"		"0"
+				"special_bonus_scepter"		"40"
+			}
+			"AbilityManaCost"
+			{
+				"value"		"0"
+				"special_bonus_scepter"		"50"
+			}
+		}
+	}
+	"imba_lone_druid_savage_roar"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_savage_roar"
+		"AbilityTextureName"		"lone_druid_savage_roar"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"AbilitySound"		"Hero_LoneDruid.SavageRoar.Cast"
+		"HasShardUpgrade"		"1"
+		"AbilityCastPoint"		"0.1"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityManaCost"		"50"
+		"AbilityValues"
+		{
+			"radius"
+			{
+				"value"		"350"
+				"special_bonus_unique_imba_lone_druid_savage_roar_aoe"		"150"
+				"affected_by_aoe_increase"		"1"
+			}
+			"bonus_speed"		"20"
+			"duration"		"0.8 1.2 1.6 2.0"
+			"only_affects_player_units"		"1"
+			"shard_radius"
+			{
+				"value"		"700"
+				"RequiresShard"		"1"
+				"affected_by_aoe_increase"		"1"
+			}
+			"shard_movement_speed_pct"
+			{
+				"value"		"15"
+				"RequiresShard"		"1"
+			}
+			"shard_attack_speed"
+			{
+				"value"		"40"
+				"RequiresShard"		"1"
+			}
+			"shard_duration"
+			{
+				"value"		"5"
+				"RequiresShard"		"1"
+			}
+			"AbilityCooldown"
+			{
+				"value"		"38 32 26 20"
+				"special_bonus_unique_imba_lone_druid_4"		"-7"
+			}
+		}
+	}
+	"imba_lone_druid_savage_roar_bear"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_savage_roar_bear"
+		"AbilityTextureName"		"lone_druid_savage_roar_bear"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"MaxLevel"		"1"
+		"AbilityCastPoint"		"0.1"
+		"AbilityCooldown"		"38 32 26 20"
+		"AbilityManaCost"		"50"
+		"AbilityValues"
+		{
+			"radius"
+			{
+				"value"		"375"
+				"affected_by_aoe_increase"		"1"
+				"special_bonus_unique_imba_lone_druid_savage_roar_aoe"		"150"
+			}
+			"bonus_speed"		"20"
+			"duration"		"0.8 1.2 1.6 2.0"
+			"only_affects_player_units"		"1"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+	"imba_lone_druid_true_form"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_true_form"
+		"AbilityTextureName"		"lone_druid_true_form"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"AbilitySound"		"Hero_LoneDruid.TrueForm.Cast"
+		"AbilityCastAnimation"		"ACT_DOTA_OVERRIDE_ABILITY_3"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"		"0 0 0"
+		"AbilityManaCost"		"200"
+		"AbilityValues"
+		{
+			"bonus_armor"
+			{
+				"value"		"8 10 12"
+			}
+			"bonus_hp"
+			{
+				"value"		"500 1000 1500"
+				"special_bonus_facet_lone_druid_facets_imba_1"		"-100%"
+				"RequiresFacet"		"lone_druid_bear_with_me"
+			}
+			"attack_speed_pct"
+			{
+				"value"		"0"
+				"special_bonus_facet_lone_druid_facets_imba_1"		"15"
+				"RequiresFacet"		"lone_druid_unbearable"
+			}
+			"duration"
+			{
+				"value"		"40"
+			}
+			"transformation_time"		"1.933"
+			"AbilityCooldown"
+			{
+				"value"		"100"
+				"special_bonus_unique_imba_lone_druid_8"		"-50%"
+			}
+			"transform_bear"
+			{
+				"value"		"0"
+				"special_bonus_facet_lone_druid_facets_imba_1"		"1"
+			}
+			"entangling_claws_cooldown_reduction_pct"
+			{
+				"value"		"0"
+				"special_bonus_facet_lone_druid_facets_imba_1"		"75"
+			}
+		}
+	}
+	"imba_lone_druid_true_form_druid"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_true_form_druid"
+		"AbilityTextureName"		"lone_druid_true_form_druid"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"AbilityCastPoint"		"0 0 0"
+		"AbilityCastAnimation"		"ACT_INVALID"
+		"AbilityCooldown"		"0.0 0.0 0.0"
+		"AbilityManaCost"		"25 25 25"
+		"AbilityValues"
+		{
+			"transformation_time"
+			{
+				"value"		"1.933"
+			}
+		}
+	}
+	"imba_lone_druid_true_form_battle_cry"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_true_form_battle_cry"
+		"AbilityTextureName"		"lone_druid_true_form_battle_cry"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
+		"MaxLevel"		"3"
+		"AbilitySound"		"Hero_LoneDruid.BattleCry"
+		"AbilityCastPoint"		"0.5 0.5 0.5"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"		"45"
+		"AbilityManaCost"		"50 50 50"
+		"AbilityValues"
+		{
+			"bonus_damage"
+			{
+				"value"		"70 100 130"
+			}
+			"bonus_armor"
+			{
+				"value"		"10 15 20"
+			}
+			"cry_duration"
+			{
+				"value"		"5"
+			}
+			"range"
+			{
+				"value"		"1000"
+			}
+		}
+	}
+	"imba_lone_druid_spirit_bear_return"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_spirit_bear_return"
+		"AbilityTextureName"		"lone_druid_spirit_bear_return"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"HasScepterUpgrade"		"1"
+		"AbilityCooldown"		"30"
+		"AbilityCastPoint"		"0"
+		"AbilityChannelTime"		"3"
+		"MaxLevel"		"1"
+		"AbilityManaCost"		"0"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityValues"
+		{
+			"channel_tooltip"
+			{
+				"value"		"3"
+			}
+		}
+	}
+	"imba_lone_druid_spirit_bear_entangle"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_spirit_bear_entangle"
+		"AbilityTextureName"		"lone_druid_spirit_bear_entangle"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"AbilitySound"		"LoneDruid_SpiritBear.Entangle"
+		"IsBreakable"		"1"
+		"AbilityCooldown"		"5"
+		"AbilityValues"
+		{
+			"damage"
+			{
+				"value"		"30 40 50 60"
+				"special_bonus_unique_imba_lone_druid_entangle_dps"		"30"
+			}
+			"entangle_chance"		"20"
+			"hero_duration"		"1 1.6 2.2 2.8"
+			"creep_damage_multiplier"		"3"
+			"hero_entangle_chance"		"30"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+	"imba_lone_druid_entangling_claws"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_entangling_claws"
+		"AbilityTextureName"		"lone_druid_entangling_claws"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"		"1"
+		"AbilitySound"		"LoneDruid_SpiritBear.Entangle"
+		"AbilityCastRange"		"450"
+		"AbilityCastPoint"		"0.3 0.3 0.3 0.3"
+		"AbilityCooldown"		"16 14 12 10"
+		"AbilityManaCost"		"75 90 105 120"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityValues"
+		{
+			"duration"
+			{
+				"value"		"1.5 2.25 3.0 3.75"
+			}
+			"attack_amp"
+			{
+				"value"		"25"
+			}
+		}
+	}
+	"imba_lone_druid_spirit_bear_defender"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_spirit_bear_defender"
+		"AbilityTextureName"		"lone_druid_spirit_bear_defender"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"damage_share"
+			{
+				"value"		"30"
+			}
+		}
+	}
+	"imba_lone_druid_spirit_bear_fetch"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_spirit_bear_fetch"
+		"AbilityTextureName"		"lone_druid_spirit_bear_fetch"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_RUNE_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CUSTOM"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"		"2"
+		"AbilitySound"		"Hero_Batrider.FlamingLasso.Cast"
+		"IsGrantedByShard"		"1"
+		"MaxLevel"		"1"
+		"AbilityCastPoint"		"0.2 0.2 0.2 0.2"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastRange"		"200"
+		"AbilityManaCost"		"75"
+		"AbilityValues"
+		{
+			"duration"		"2.5"
+			"drag_distance"		"200"
+			"break_distance"		"425"
+			"damage"		"300"
+			"self_slow"		"0"
+			"AbilityCooldown"		"30"
+			"tick_rate"		"0.5"
+		}
+	}
+	"imba_lone_druid_spirit_bear_demolish"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/lone_druid/imba_lone_druid_spirit_bear_demolish"
+		"AbilityTextureName"		"lone_druid_spirit_bear_demolish"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"spell_resistance"
+			{
+				"value"		"33"
+			}
+			"bonus_building_damage"
+			{
+				"value"		"10 20 30 40"
+			}
+			"true_form_bonus_building_damage"
+			{
+				"value"		"15 30 45 60"
+			}
+		}
+	}
+	"special_bonus_unique_imba_lone_druid_2"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_lone_druid_4"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_lone_druid_8"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_lone_druid_11"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_lone_druid_spirit_link_attack_speed"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_lone_druid_entangle_dps"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_lone_druid_savage_roar_aoe"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+}

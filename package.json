@@ -83,6 +83,7 @@
         "node": ">=16.0.0"
     },
     "dependencies": {
+        "easy-keyvalues": "^1.2.3",
         "link-module-alias": "^1.2.0",
         "node-watch": "^0.7.1",
         "valve-kv": "^1.1.0"

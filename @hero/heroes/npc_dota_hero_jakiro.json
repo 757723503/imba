@@ -1,0 +1,304 @@
+{
+  "Version": 1,
+  "jakiro_dual_breath": {
+    "AbilityBehavior": [
+      "DOTA_ABILITY_BEHAVIOR_POINT",
+      "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    ],
+    "AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+    "AbilityUnitTargetType": [
+      "DOTA_UNIT_TARGET_HERO",
+      "DOTA_UNIT_TARGET_BASIC"
+    ],
+    "AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
+    "SpellImmunityType": "SPELL_IMMUNITY_ENEMIES_NO",
+    "SpellDispellableType": "SPELL_DISPELLABLE_YES",
+    "FightRecapLevel": 1,
+    "AbilitySound": "Hero_Jakiro.DualBreath.Cast",
+    "AbilityCastPoint": 0.35,
+    "AbilityCooldown": 10,
+    "AbilityDuration": 5,
+    "AbilityDamage": 0,
+    "AbilityManaCost": "125 140 155 170",
+    "AbilityModifierSupportValue": 0.25,
+    "AbilityValues": {
+      "start_radius": {
+        "value": 150,
+        "affected_by_aoe_increase": 1
+      },
+      "end_radius": {
+        "value": 275,
+        "affected_by_aoe_increase": 1
+      },
+      "AbilityCastRange": {
+        "value": 850,
+        "special_bonus_unique_jakiro_2": "+100%"
+      },
+      "speed": 1050,
+      "fire_delay": 0.2,
+      "burn_damage": {
+        "value": "20 40 60 80",
+        "special_bonus_unique_jakiro_2": "+100%"
+      },
+      "slow_movement_speed_pct": {
+        "value": "-25 -30 -35 -40",
+        "special_bonus_unique_jakiro_dualbreath_slow": -10
+      },
+      "slow_attack_speed_pct": {
+        "value": "-25 -30 -35 -40",
+        "special_bonus_unique_jakiro_dualbreath_slow": -10
+      },
+      "speed_fire": 1050
+    },
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_1"
+  },
+  "jakiro_ice_path": {
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_POINT",
+    "AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+    "AbilityUnitTargetType": [
+      "DOTA_UNIT_TARGET_HERO",
+      "DOTA_UNIT_TARGET_BASIC"
+    ],
+    "AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
+    "SpellImmunityType": "SPELL_IMMUNITY_ENEMIES_NO",
+    "SpellDispellableType": "SPELL_DISPELLABLE_YES_STRONG",
+    "FightRecapLevel": 1,
+    "AbilitySound": "Hero_Jakiro.IcePath",
+    "AbilityCastRange": 1100,
+    "AbilityCastPoint": 0.65,
+    "AbilityDamage": 0,
+    "AbilityManaCost": 100,
+    "AbilityValues": {
+      "path_delay": 0.2,
+      "stun_duration": {
+        "value": "1.25 1.50 1.75 2.0",
+        "special_bonus_unique_jakiro": 0.4
+      },
+      "path_duration": {
+        "value": "3 3.5 4 4.5",
+        "special_bonus_unique_jakiro": 0.5
+      },
+      "path_radius": {
+        "value": 150,
+        "affected_by_aoe_increase": 1
+      },
+      "damage": {
+        "value": 50,
+        "CalculateSpellDamageTooltip": 1
+      },
+      "AbilityCooldown": {
+        "value": "18 15 12 9",
+        "special_bonus_unique_jakiro_6": -1.5
+      }
+    },
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_2"
+  },
+  "jakiro_liquid_fire": {
+    "AbilityBehavior": [
+      "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+      "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+      "DOTA_ABILITY_BEHAVIOR_ATTACK"
+    ],
+    "AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
+    "AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+    "AbilityUnitTargetType": [
+      "DOTA_UNIT_TARGET_HERO",
+      "DOTA_UNIT_TARGET_BASIC",
+      "DOTA_UNIT_TARGET_BUILDING"
+    ],
+    "AbilityUnitTargetFlags": [
+      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+      "DOTA_UNIT_TARGET_FLAG_DEAD"
+    ],
+    "SpellImmunityType": "SPELL_IMMUNITY_ENEMIES_NO",
+    "SpellDispellableType": "SPELL_DISPELLABLE_YES",
+    "AbilitySound": "Hero_Jakiro.LiquidFire",
+    "HasShardUpgrade": 1,
+    "AbilityCooldown": "13 10 7 4",
+    "AbilityDuration": 5,
+    "AbilityCastRange": 600,
+    "AbilityCastPoint": "0.0 0.0 0.0 0.0",
+    "AbilityModifierSupportBonus": 35,
+    "AbilityValues": {
+      "slow_attack_speed_pct": {
+        "value": "-30 -40 -50 -60",
+        "special_bonus_unique_jakiro_4": -50
+      },
+      "radius": {
+        "value": 300,
+        "affected_by_aoe_increase": 1
+      },
+      "damage": {
+        "value": "20 30 40 50"
+      },
+      "pct_health_damage": {
+        "value": 0,
+        "special_bonus_shard": 2.5
+      },
+      "tick_rate": 0.5,
+      "building_dmg_pct": 75,
+      "double_head": {
+        "special_bonus_unique_jakiro_3": 1
+      }
+    },
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_3"
+  },
+  "jakiro_liquid_ice": {
+    "AbilityBehavior": [
+      "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+      "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+      "DOTA_ABILITY_BEHAVIOR_ATTACK",
+      "DOTA_ABILITY_BEHAVIOR_DONT_PROC_OTHER_ABILITIES"
+    ],
+    "AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
+    "AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+    "AbilityUnitTargetType": [
+      "DOTA_UNIT_TARGET_HERO",
+      "DOTA_UNIT_TARGET_BASIC"
+    ],
+    "AbilityUnitTargetFlags": "DOTA_UNIT_TARGET_FLAG_DEAD",
+    "SpellImmunityType": "SPELL_IMMUNITY_ENEMIES_NO",
+    "SpellDispellableType": "SPELL_DISPELLABLE_YES",
+    "AbilitySound": "Hero_Jakiro.LiquidFire",
+    "FightRecapLevel": 1,
+    "HasShardUpgrade": 1,
+    "AbilityCooldown": "13 10 7 4",
+    "AbilityCastRange": 600,
+    "AbilityCastPoint": "0.0 0.0 0.0 0.0",
+    "AbilityModifierSupportBonus": 35,
+    "AbilityValues": {
+      "movement_slow": {
+        "value": "15 20 25 30"
+      },
+      "damage": {
+        "value": "10 15 20 25"
+      },
+      "bonus_instance_damage_from_other_abilities": {
+        "value": "15 20 25 30",
+        "special_bonus_unique_jakiro_4": 10
+      },
+      "pct_health_damage": {
+        "value": 0,
+        "special_bonus_shard": 2.5
+      },
+      "duration": 4,
+      "radius": {
+        "value": 0,
+        "affected_by_aoe_increase": 1
+      },
+      "tick_rate": 0.5,
+      "double_head": {
+        "special_bonus_unique_jakiro_3": 1
+      }
+    },
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_3"
+  },
+  "jakiro_macropyre": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ULTIMATE",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_POINT",
+    "AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+    "AbilityUnitTargetType": [
+      "DOTA_UNIT_TARGET_HERO",
+      "DOTA_UNIT_TARGET_BASIC"
+    ],
+    "AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
+    "SpellImmunityType": "SPELL_IMMUNITY_ENEMIES_NO",
+    "SpellDispellableType": "SPELL_DISPELLABLE_NO",
+    "FightRecapLevel": 2,
+    "AbilitySound": "Hero_Jakiro.Macropyre.Cast",
+    "HasScepterUpgrade": 1,
+    "AbilityCastPoint": 0.4,
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_4",
+    "AbilityCooldown": "90 80 70",
+    "AbilityManaCost": "300 400 500",
+    "AbilityValues": {
+      "damage": {
+        "value": "100 150 200",
+        "special_bonus_unique_jakiro_7": 20
+      },
+      "path_width": {
+        "value": 500,
+        "special_bonus_scepter": 70,
+        "affected_by_aoe_increase": 1
+      },
+      "duration": {
+        "value": 10,
+        "special_bonus_scepter": 5
+      },
+      "AbilityCastRange": {
+        "value": 1400
+      },
+      "burn_interval": "0.5 0.5 0.5",
+      "linger_duration": 2,
+      "pure_damage_type": {
+        "value": 0,
+        "special_bonus_scepter": 1
+      },
+      "pierces_magic_immunity": {
+        "value": 0,
+        "special_bonus_scepter": 1
+      },
+      "ice_edge_path_radius": {
+        "value": 0,
+        "special_bonus_scepter": 50
+      },
+      "ice_edge_linger_duration": {
+        "value": 0,
+        "special_bonus_scepter": 0.4
+      },
+      "ice_edge_movement_slow": {
+        "value": 0,
+        "special_bonus_scepter": 60
+      }
+    }
+  },
+  "special_bonus_unique_jakiro": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_jakiro_2": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_jakiro_3": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  },
+  "special_bonus_unique_jakiro_4": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_jakiro_6": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "AbilityValues": {
+      "value": {
+        "value": 2.5,
+        "ad_linked_abilities": "jakiro_ice_path"
+      }
+    }
+  },
+  "special_bonus_unique_jakiro_7": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_jakiro_dualbreath_slow": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "jakiro_double_trouble": {
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "SpellDispellableType": "SPELL_DISPELLABLE_NO",
+    "MaxLevel": 1,
+    "Innate": 1,
+    "AbilityValues": {
+      "second_attack_delay": 0.2,
+      "attack_damage_reduction": 50
+    }
+  }
+}

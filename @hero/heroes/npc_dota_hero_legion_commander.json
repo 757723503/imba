@@ -1,0 +1,226 @@
+{
+  "Version": 1,
+  "legion_commander_overwhelming_odds": {
+    "AbilityBehavior": [
+      "DOTA_ABILITY_BEHAVIOR_AOE",
+      "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+      "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    ],
+    "AbilityUnitDamageType": "DAMAGE_TYPE_MAGICAL",
+    "SpellImmunityType": "SPELL_IMMUNITY_ENEMIES_NO",
+    "SpellDispellableType": "SPELL_DISPELLABLE_YES",
+    "FightRecapLevel": 1,
+    "AbilitySound": "Hero_LegionCommander.Overwhelming.Location",
+    "HasShardUpgrade": 1,
+    "AbilityCastRange": 0,
+    "AbilityCastPoint": "0.3 0.3 0.3 0.3",
+    "AbilityManaCost": "100 110 120 130",
+    "AbilityValues": {
+      "damage": "40 70 100 130",
+      "damage_per_unit": "14 16 18 20",
+      "damage_per_hero": {
+        "value": "40 70 100 130",
+        "special_bonus_unique_legion_commander_4": 35
+      },
+      "bonus_attack_speed_creeps": 0,
+      "bonus_attack_speed": "50 75 100 125",
+      "duration": 6,
+      "radius": {
+        "value": 600,
+        "affected_by_aoe_increase": 1
+      },
+      "armor_per_creep": {
+        "value": 1,
+        "RequiresShard": 1
+      },
+      "armor_per_hero": {
+        "value": 5,
+        "RequiresShard": 1
+      },
+      "shard_duration": {
+        "value": 8,
+        "RequiresShard": 1
+      },
+      "AbilityCooldown": {
+        "value": 18,
+        "special_bonus_unique_legion_commander_9": -2
+      },
+      "duel_radius_bonus": {
+        "value": 0,
+        "special_bonus_shard": 150,
+        "RequiresShard": 1
+      },
+      "shield_per_damage_pct": {
+        "value": 0,
+        "special_bonus_facet_legion_commander_stonehall_plate": 40
+      },
+      "shield_duration": {
+        "value": 0,
+        "special_bonus_facet_legion_commander_stonehall_plate": 8
+      }
+    },
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_1"
+  },
+  "legion_commander_press_the_attack": {
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+    "AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+    "AbilityUnitTargetType": [
+      "DOTA_UNIT_TARGET_HERO",
+      "DOTA_UNIT_TARGET_BASIC"
+    ],
+    "AbilityUnitTargetFlags": "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES",
+    "SpellImmunityType": "SPELL_IMMUNITY_ALLIES_NO",
+    "SpellDispellableType": "SPELL_DISPELLABLE_YES",
+    "AbilitySound": "Hero_LegionCommander.PressTheAttack",
+    "AbilityCastRange": 700,
+    "AbilityCastPoint": 0.2,
+    "AbilityCooldown": "16.0 15.0 14.0 13.0",
+    "AbilityManaCost": 110,
+    "AbilityModifierSupportValue": 3,
+    "AbilityValues": {
+      "duration": 5,
+      "move_speed": {
+        "value": "10 14 18 22",
+        "special_bonus_unique_legion_commander_pta_movespeed": 10
+      },
+      "hp_regen": {
+        "value": "24 36 48 60",
+        "special_bonus_unique_legion_commander_6": 40
+      },
+      "radius": {
+        "value": 0,
+        "special_bonus_unique_legion_commander_5": 300,
+        "affected_by_aoe_increase": 1
+      }
+    },
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_2"
+  },
+  "legion_commander_moment_of_courage": {
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "AbilitySound": "Hero_LegionCommander.Courage",
+    "IsBreakable": 1,
+    "AbilityCooldown": "1.9 1.5 1.1 0.7",
+    "AbilityValues": {
+      "trigger_chance": {
+        "value": 25,
+        "special_bonus_unique_legion_commander_3": 8
+      },
+      "buff_duration": 1,
+      "hp_leech_percent": {
+        "value": "55 65 75 85",
+        "special_bonus_unique_legion_commander_7": 75
+      }
+    },
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_3"
+  },
+  "legion_commander_duel": {
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+    "AbilityUnitTargetTeam": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+    "AbilityUnitTargetType": "DOTA_UNIT_TARGET_HERO",
+    "AbilityType": "DOTA_ABILITY_TYPE_ULTIMATE",
+    "AbilityUnitTargetFlags": [
+      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+      "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+    ],
+    "SpellImmunityType": "SPELL_IMMUNITY_ENEMIES_YES",
+    "SpellDispellableType": "SPELL_DISPELLABLE_NO",
+    "FightRecapLevel": 2,
+    "AbilitySound": "Hero_LegionCommander.Duel",
+    "HasShardUpgrade": 1,
+    "HasScepterUpgrade": 1,
+    "AbilityCastPoint": "0.3 0.3 0.3 0.3",
+    "AbilityCastAnimation": "ACT_DOTA_CAST_ABILITY_4",
+    "AbilityManaCost": "75 75 75",
+    "AbilityModifierSupportValue": 3,
+    "AbilityValues": {
+      "duration": {
+        "value": "3.75 4.5 5.25",
+        "special_bonus_scepter": 2.25
+      },
+      "AbilityCastRange": {
+        "value": "200 250 300"
+      },
+      "reward_damage": {
+        "value": "10 20 30",
+        "special_bonus_shard": 8
+      },
+      "assist_reward_damage": {
+        "value": 0,
+        "special_bonus_facet_legion_commander_spoils_of_war": "5 10 15"
+      },
+      "debuff_immunity": {
+        "value": 0,
+        "special_bonus_scepter": 1
+      },
+      "damage_reduction_pct": {
+        "value": 0
+      },
+      "AbilityCooldown": {
+        "value": "60 55 50"
+      },
+      "shard_duel_damage_bonus": {
+        "value": 8,
+        "RequiresShard": 1
+      }
+    }
+  },
+  "legion_commander_outfight_them": {
+    "AbilityBehavior": [
+      "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+      "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+    ],
+    "MaxLevel": 1,
+    "Innate": 1,
+    "IsBreakable": 1,
+    "AbilityValues": {
+      "heal_bonus_pct": 50,
+      "duration": 4
+    }
+  },
+  "special_bonus_unique_legion_commander_3": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_legion_commander_4": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_legion_commander_5": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_legion_commander_6": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_legion_commander_7": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_legion_commander_8": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base",
+    "ad_linked_abilities": "legion_commander_press_the_attack",
+    "AbilityValues": {
+      "value": {
+        "value": 1.5
+      }
+    }
+  },
+  "special_bonus_unique_legion_commander_9": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  },
+  "special_bonus_unique_legion_commander_pta_movespeed": {
+    "AbilityType": "DOTA_ABILITY_TYPE_ATTRIBUTES",
+    "AbilityBehavior": "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+    "BaseClass": "special_bonus_base"
+  }
+}

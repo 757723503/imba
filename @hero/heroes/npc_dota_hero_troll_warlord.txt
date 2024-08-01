@@ -1,0 +1,447 @@
+"DOTAAbilities"
+{
+	"Version"		"1"
+	"imba_troll_warlord_rampage"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_rampage"
+		"AbilityTextureName"		"troll_warlord_rampage"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"MaxLevel"		"1"
+		"AbilityCastPoint"		"0"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCooldown"		"80"
+		"AbilityManaCost"		"75"
+		"AbilityValues"
+		{
+			"attack_speed"
+			{
+				"value"		"70"
+			}
+			"status_resistance"
+			{
+				"value"		"25"
+			}
+			"duration"
+			{
+				"value"		"5"
+			}
+		}
+	}
+	"imba_troll_warlord_berserkers_rage"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_berserkers_rage"
+		"AbilityTextureName"		"troll_warlord_berserkers_rage"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilitySound"		"Hero_TrollWarlord.BerserkersRage.Toggle"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
+		"IsBreakable"		"1"
+		"MaxLevel"		"4"
+		"AbilityValues"
+		{
+			"bonus_move_speed"
+			{
+				"value"		"15 25 35 45"
+				"special_bonus_unique_imba_troll_warlord_2"		"25"
+			}
+			"bonus_armor"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"value"		"2 3 4 5"
+				"special_bonus_unique_imba_troll_warlord"		"8"
+			}
+			"bonus_range"		"350"
+			"base_attack_time"		"1.4"
+			"ensnare_chance"		"20"
+			"ensnare_duration"		"0.8 1.2 1.6 2.0"
+			"maim_chance"		"20"
+			"maim_duration"		"0.8 1.2 1.6 2.0"
+			"maim_slow"		"8 16 24 32"
+			"maim_attack_slow"		"8 16 24 32"
+			"maim_damage"
+			{
+				"value"		"5 10 15 20"
+				"CalculateSpellDamageTooltip"		"0"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+	"imba_troll_warlord_switch_stance"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_switch_stance"
+		"AbilityTextureName"		"troll_warlord_switch_stance"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilitySound"		"Hero_TrollWarlord.BerserkersRage.Toggle"
+		"MaxLevel"		"1"
+		"Innate"		"1"
+		"AbilityCastPoint"		"0.2"
+		"AbilityValues"
+		{
+			"bonus_range"		"350"
+			"base_attack_time"		"1.4"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+	"imba_troll_warlord_innate_masterful"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_innate_masterful"
+		"AbilityTextureName"		"troll_warlord_innate_masterful"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"MaxLevel"		"1"
+		"AbilityValues"
+		{
+			"bonus_range_pct"		"15"
+		}
+	}
+	"imba_troll_warlord_whirling_axes_ranged"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_whirling_axes_ranged"
+		"AbilityTextureName"		"troll_warlord_whirling_axes_ranged"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"		"1"
+		"AbilitySound"		"Hero_TrollWarlord.WhirlingAxes.Ranged"
+		"HasScepterUpgrade"		"1"
+		"AbilityCastAnimation"		"ACT_DOTA_WHIRLING_AXES_RANGED"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastRange"		"950"
+		"AbilityCastPoint"		"0.2 0.2 0.2 0.2"
+		"AbilityValues"
+		{
+			"axe_width"
+			{
+				"value"		"100"
+				"affected_by_aoe_increase"		"1"
+			}
+			"axe_speed"
+			{
+				"value"		"1500"
+			}
+			"axe_range"
+			{
+				"value"		"950"
+			}
+			"axe_damage"
+			{
+				"value"		"60 80 100 120"
+				"special_bonus_unique_imba_troll_warlord_3"		"100"
+			}
+			"axe_slow_duration"
+			{
+				"value"		"2.5 3 3.5 4"
+				"special_bonus_unique_imba_troll_warlord_whirling_axes_debuff_duration"		"2"
+			}
+			"movement_speed"		"40"
+			"axe_spread"		"25"
+			"axe_count"		"5"
+			"AbilityCooldown"
+			{
+				"value"		"9"
+				"special_bonus_scepter"		"-5"
+				"RequiresScepter"		"1"
+			}
+			"AbilityManacost"
+			{
+				"value"		"60"
+				"special_bonus_scepter"		"-30"
+				"RequiresScepter"		"1"
+			}
+			"pierces_magic_immunity"
+			{
+				"value"		"0"
+				"special_bonus_unique_imba_troll_warlord_6"		"1"
+			}
+		}
+	}
+	"imba_troll_warlord_whirling_axes_melee"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_whirling_axes_melee"
+		"AbilityTextureName"		"troll_warlord_whirling_axes_melee"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"		"1"
+		"AbilitySound"		"Hero_TrollWarlord.WhirlingAxes.Melee"
+		"HasScepterUpgrade"		"1"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"		"0"
+		"AbilityValues"
+		{
+			"damage"
+			{
+				"value"		"50 100 150 200"
+				"special_bonus_unique_imba_troll_warlord_3"		"100"
+			}
+			"hit_radius"
+			{
+				"value"		"100"
+				"affected_by_aoe_increase"		"1"
+			}
+			"max_range"
+			{
+				"value"		"450"
+				"affected_by_aoe_increase"		"1"
+			}
+			"axe_movement_speed"		"1250"
+			"blind_duration"
+			{
+				"value"		"5"
+				"special_bonus_unique_imba_troll_warlord_whirling_axes_debuff_duration"		"2"
+			}
+			"blind_pct"		"60"
+			"whirl_duration"		"3"
+			"AbilityCooldown"
+			{
+				"value"		"9"
+				"special_bonus_scepter"		"-5"
+			}
+			"AbilityManacost"
+			{
+				"value"		"50"
+				"special_bonus_scepter"		"-25"
+			}
+			"pierces_magic_immunity"
+			{
+				"value"		"0"
+				"special_bonus_unique_imba_troll_warlord_6"		"1"
+			}
+		}
+	}
+	"imba_troll_warlord_scepter"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_scepter"
+		"AbilityTextureName"		"troll_warlord_scepter"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"MaxLevel"		"1"
+		"FightRecapLevel"		"1"
+		"IsGrantedByScepter"		"1"
+		"HasScepterUpgrade"		"1"
+		"AbilityCastAnimation"		"ACT_DOTA_WHIRLING_AXES_RANGED"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastRange"		"800"
+		"AbilityCastPoint"		"0.2"
+		"AbilityCooldown"		"25"
+		"AbilityManaCost"		"150"
+		"AbilityValues"
+		{
+			"range"
+			{
+				"value"		"1200"
+			}
+			"duration"
+			{
+				"value"		"3"
+			}
+		}
+	}
+	"imba_troll_warlord_fervor"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_troll_warlord_fervor"
+		"AbilityTextureName"		"troll_warlord_fervor"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"AbilityCastAnimation"		"ACT_INVALID"
+		"HasShardUpgrade"		"1"
+		"IsBreakable"		"1"
+		"AbilityValues"
+		{
+			"attack_speed"
+			{
+				"value"		"15 20 25 30"
+				"special_bonus_unique_imba_troll_warlord_5"		"5"
+			}
+			"max_stacks"
+			{
+				"value"		"10"
+				"special_bonus_shard"		"3"
+			}
+			"extra_attack_chance_per_stack"
+			{
+				"value"		"3"
+				"RequiresShard"		"1"
+			}
+			"base_chance"
+			{
+				"value"		"16"
+				"RequiresShard"		"1"
+			}
+			"armor_per_stack"
+			{
+				"value"		"0"
+				"special_bonus_facet_troll_warlord_facets_imba_1"		"1"
+			}
+			"range_buffer"
+			{
+				"special_bonus_shard"		"=175"
+			}
+		}
+	}
+	"imba_troll_warlord_battle_trance"
+	{
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"FightRecapLevel"		"2"
+		"AbilitySound"		"Hero_TrollWarlord.BattleTrance.Cast"
+		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"		"3"
+		"AbilityDraftUltShardAbility"		"troll_warlord_rampage"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"		"0.0 0.0 0.0"
+		"AbilityCastRange"		"525"
+		"AbilityManaCost"		"150"
+		"AbilityValues"
+		{
+			"trance_duration"
+			{
+				"value"		"6.5"
+				"special_bonus_unique_imba_troll_warlord_battle_trance_movespeed"		"1.5"
+			}
+			"AbilityCooldown"
+			{
+				"value"		"90 80 70"
+			}
+			"lifesteal"		"40 60 80"
+			"attack_speed"		"140 170 200"
+			"attack_speed_share_percent"
+			{
+				"value"		"0"
+				"special_bonus_facet_troll_warlord_facets_imba_1"		"30"
+			}
+			"movement_speed"
+			{
+				"value"		"25 30 35"
+			}
+			"range"
+			{
+				"value"		"900"
+				"affected_by_aoe_increase"		"1"
+			}
+		}
+	}
+	"imba_dark_troll_warlord_ensnare"
+	{
+		"MaxLevel"		"1"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_dark_troll_warlord_ensnare"
+		"AbilityTextureName"		"dark_troll_warlord_ensnare"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"		"550 625 700 825"
+		"AbilityCastPoint"		"0.3"
+		"AbilityCooldown"		"15"
+		"AbilityManaCost"		"75"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityValues"
+		{
+			"duration"
+			{
+				"value"		"1.75"
+			}
+			"net_speed"
+			{
+				"value"		"1500"
+			}
+		}
+	}
+	"imba_dark_troll_warlord_raise_dead"
+	{
+		"MaxLevel"		"1"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"ability/hero_ability/troll_warlord/imba_dark_troll_warlord_raise_dead"
+		"AbilityTextureName"		"dark_troll_warlord_raise_dead"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"		"0.3"
+		"AbilityCooldown"		"20"
+		"AbilityManaCost"		"50"
+		"AbilityValues"
+		{
+			"duration"		"35"
+			"skeletons_created"		"3"
+			"skeletons_health"		"250 275 300 375"
+			"skeletons_damage"		"12 15 18 21"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+	"special_bonus_unique_imba_troll_warlord"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_troll_warlord_2"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_troll_warlord_3"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_troll_warlord_4"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"value"
+			{
+				"value"		"0"
+				"ad_linked_abilities"		"troll_warlord_battle_trance"
+			}
+		}
+	}
+	"special_bonus_unique_imba_troll_warlord_5"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_troll_warlord_6"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_troll_warlord_whirling_axes_debuff_duration"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+	"special_bonus_unique_imba_troll_warlord_battle_trance_movespeed"
+	{
+		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
+	}
+}
