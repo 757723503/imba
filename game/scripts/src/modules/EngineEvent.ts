@@ -25,6 +25,21 @@ export class CEngineEvent {
             },
             this
         );
+
+        ListenToGameEvent(
+            'dota_player_learned_ability',
+            data => {
+                this._OnPlayerLearnedAbility(data);
+            },
+            this
+        );
+        ListenToGameEvent(
+            'dota_hero_inventory_item_change',
+            data => {
+                this._OnItemChange(data);
+            },
+            this
+        );
     }
 
     private _GCTimer(): void {
@@ -36,15 +51,43 @@ export class CEngineEvent {
         });
     }
 
+    private _OnPlayerLearnedAbility(data: GameEventProvidedProperties & DotaPlayerLearnedAbilityEvent): void {
+        const abiltiyName = data.abilityname;
+        const playerID = data.PlayerID;
+        if (playerID == null || playerID == -1) return;
+        const player = PlayerResource.GetPlayer(playerID);
+        if (!CIsValid(player)) return;
+        const hero = player.GetAssignedHero();
+        if (!CIsValid(hero)) return;
+        const ability = hero.FindAbilityByName(abiltiyName);
+        if (!CIsValid(ability)) return;
+        // const level = ability.GetLevel();
+        if (ability.GetClassname() == 'special_bonus_base') {
+            // 选择天赋
+            UnitAbilitiesForEach(hero, ability => {
+                if (ability && ability['____constructor']) {
+                    ability['____constructor']();
+                }
+            });
+        }
+    }
+
+    private _OnItemChange(data: GameEventProvidedProperties & DotaHeroInventoryItemChangeEvent): void {
+        // print(data.dropped, data.item_entindex, data.hero_entindex);
+        // print('物品变化');
+        // print(EntIndexToHScript(data.hero_entindex).GetName());
+        // print((EntIndexToHScript(data.item_entindex) as BaseItem).GetAbilityName(), EntIndexToHScript(data.hero_entindex).GetName());
+    }
+
     private _EngineLevelUpEvent(data: GameEventProvidedProperties & DotaPlayerGainedLevelEvent): void {}
 
     private _GameRulesStateChange(data: GameEventProvidedProperties & object): void {
         const state = GameRules.State_Get();
         if (state == GameState.CUSTOM_GAME_SETUP) {
-            const all_towers = Entities.FindAllByClassname('npc_dota_tower');
-            for (let index = 0; index < all_towers.length; index++) {
-                const tower = all_towers[index] as CDOTA_BaseNPC_Building;
-                if (tower != null) {
+            const towers = Entities.FindAllByClassname('npc_dota_tower');
+            const buildings = Entities.FindAllByClassname('npc_dota_building');
+            for (const tower of [...towers, ...buildings]) {
+                if (CIsValid(tower) && Is_CDOTA_BaseNpc_Building(tower)) {
                     for (const key in this._npc_custom_properties) {
                         if (this._npc_custom_properties.hasOwnProperty(key)) {
                             tower[key] =
@@ -81,8 +124,8 @@ export class CEngineEvent {
 
     private async _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): Promise<void> {
         if (data.entindex == null || data.entindex <= 0) return;
-        const entity = EntIndexToHScript(data.entindex) as CDOTA_BaseNPC_Hero;
-        if (entity.IsBaseNPC() && data.is_respawn == 0) {
+        const entity = EntIndexToHScript(data.entindex);
+        if (Is_CDOTA_BaseNPC(entity) && entity.IsBaseNPC() && data.is_respawn == 0) {
             // 初始化自定义属性
             for (const key in this._npc_custom_properties) {
                 // DebugPrint(entity.GetUnitName(), this._npc_custom_properties.hasOwnProperty(key));
@@ -106,8 +149,8 @@ export class CEngineEvent {
                 entity.AddNewModifier(entity, entity.FindAbilityByName('imba_custom_debuff_immune'), 'modifier_attack_data_miss', {});
             }
 
-            const ability = entity.AddAbility('antimage_mana_break');
-            DebugPrint('初始化自定义属性', GetAbilityTextureNameForAbility('antimage_mana_break'));
+            // const ability = entity.AddAbility('antimage_mana_break');
+            // DebugPrint('初始化自定义属性', GetAbilityTextureNameForAbility('antimage_mana_break'));
             // ability.GetAbilityTextureName()
             // ability.text;
         }

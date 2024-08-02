@@ -94,6 +94,8 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
     const originalSpawn = (env[name] as CDOTA_Ability_Lua).Spawn;
     const originalOnAbilityPhaseStart = (env[name] as CDOTA_Ability_Lua).OnAbilityPhaseStart;
     const originalOnUpgrade = (env[name] as CDOTA_Ability_Lua).OnUpgrade;
+    // const originalOnHeroCalculateStatBonus = (env[name] as CDOTA_Ability_Lua).OnHeroCalculateStatBonus;
+    // const originalEnableAbilityChargesOnTalentUpgrade = (env[name] as CDOTA_Ability_Lua).EnableAbilityChargesOnTalentUpgrade;
     env[name].Spawn = function () {
         this.caster = this.GetCaster();
         this.ability = this;
@@ -133,6 +135,19 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
             originalOnUpgrade.call(this, keys);
         }
     };
+    // env[name].OnHeroCalculateStatBonus = function (keys?: SpellStartParams) {
+    //     this.____constructor();
+    //     if (originalOnHeroCalculateStatBonus) {
+    //         originalOnHeroCalculateStatBonus.call(this, keys);
+    //     }
+    // };
+    // env[name].EnableAbilityChargesOnTalentUpgrade = function (keys?: SpellStartParams) {
+    //     this.____constructor();
+    //     print('EnableAbilityChargesOnTalentUpgrade', name, keys.ability, keys.talent);
+    //     if (originalEnableAbilityChargesOnTalentUpgrade) {
+    //         originalEnableAbilityChargesOnTalentUpgrade.call(this, keys);
+    //     }
+    // };
 };
 
 const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_Lua) => {

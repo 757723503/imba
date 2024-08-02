@@ -20,6 +20,7 @@ enum HeroParticleList {
     /**无光之盾命石反弹 */
     imba_abaddon_aphotic_shield_face_hit = 'particles/units/heroes/hero_abaddon/abaddon_burning_shield.vpcf',
 
+    imba_abaddon_withering_mist = 'particles/units/heroes/hero_abaddon/abaddon_withering_mist_debuff.vpcf',
     /** 魔霭诅咒 */
     imba_abaddon_frostmourne_debuff = 'particles/units/heroes/hero_abaddon/abaddon_curse_frostmourne_debuff.vpcf',
     /** 魔霭诅咒状态 */

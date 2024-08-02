@@ -347,8 +347,14 @@ export class modifier_attack_data_miss extends BaseModifier {
             ModifierFunction.INCOMING_PHYSICAL_DAMAGE_CONSTANT,
             ModifierFunction.INCOMING_SPELL_DAMAGE_CONSTANT,
             ModifierFunction.SPELL_AMPLIFY_PERCENTAGE
+            // ModifierFunction.ON_MODIFIER_REMOVED
         );
     }
+
+    // // @ts-ignore
+    // OnModifierRemoved(keys): void {
+    //     DeepPrintTable(keys);
+    // }
 
     OnCreated(params: ModifierParams): void {
         if (IsServer()) {

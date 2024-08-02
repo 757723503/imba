@@ -6,7 +6,8 @@ export class imba_abaddon_death_coil extends BaseAbility {
     _effect_radius = this.GetSpecialValue('imba_abaddon_death_coil', 'effect_radius');
     OnSpellStart(keys?: SpellStartParams): void {
         this.caster.EmitSound('Hero_Abaddon.DeathCoil.Cast');
-        if (this.caster.CHasTalent(HeroTalent.imba_abaddon_8)) {
+        print(this._effect_radius);
+        if (this.caster.CHasTalent(HeroTalent.imba_abaddon_4)) {
             const enemies = CFindUnitsInRadius({
                 flagFilter: UnitTargetFlags.FOW_VISIBLE,
                 location: this.target.GetAbsOrigin(),

@@ -16,6 +16,16 @@ function DebugError(...str: any[]): void {
     print(prefix, ...str);
     assert(false, prefix);
 }
+
+/**遍历技能 */
+function UnitAbilitiesForEach(unit: CDOTA_BaseNPC, callback: (ability: CDOTABaseAbility) => void): void {
+    for (let i = 0; i < DOTA_MAX_ABILITIES; i++) {
+        const ability = unit.GetAbilityByIndex(i);
+        if (CIsValid(ability)) {
+            callback(ability);
+        }
+    }
+}
 /**
  * 安全调用函数
  */
@@ -207,6 +217,27 @@ function sleep(duration: number) {
     return new Promise((resolve, reject) => {
         Timers.CreateTimer(duration, () => resolve(''));
     });
+}
+/** 是不是CBaseEntity */
+function Is_CBaseEntity(param: any): param is CBaseEntity {
+    return type(param) == 'table' && param['GetEntityIndex'] != null;
+}
+/** 是不是CDOTA_BaseNPC */
+function Is_CDOTA_BaseNPC(param: any): param is CDOTA_BaseNPC {
+    return type(param) == 'table' && param['GetUnitName'] != null;
+}
+/** 是不是Vector */
+function Is_Vector(param: any): param is Vector {
+    return type(param) == 'userdata' && param['Length2D'] != null;
+}
+/** 是不是CDOTA_BaseNPC_Hero */
+function Is_CDOTA_BaseNPC_Hero(param: any): param is CDOTA_BaseNPC_Hero {
+    return type(param) == 'table' && param['GetStrength'] != null && param['GetAgility'] != null && param['GetIntellect'] != null;
+}
+
+/** 是不是BaseNpc_Building */
+function Is_CDOTA_BaseNpc_Building(param: any): param is CDOTA_BaseNPC_Building {
+    return type(param) == 'table' && param['GetInvulnCount'] != null && param['SetInvulnCount'] != null;
 }
 // function convertModifierParamData<T>(data: T): ModifierParamData<T> {
 //     if (typeof data === 'boolean') {

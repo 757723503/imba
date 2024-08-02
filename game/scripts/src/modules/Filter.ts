@@ -6,6 +6,7 @@ export class CFilter {
         const gamemode = GameRules.GetGameModeEntity();
         gamemode.SetExecuteOrderFilter(event => this._OrderFilter(event), this);
         gamemode.SetTrackingProjectileFilter(event => this._ProjectileFilter(event), this);
+        gamemode.SetModifierGainedFilter(event => this._ModifierFilter(event), this);
         // gamemode.SetDamageFilter(event => this._DamageFilter(event), this);
     }
 
@@ -23,6 +24,34 @@ export class CFilter {
         return false;
     }
 
+    _ModifierFilter(event: ModifierGainedFilterEvent): boolean {
+        if (event.entindex_parent_const <= 0) return true;
+        const parent = EntIndexToHScript(event.entindex_parent_const);
+        const modifierName = event.name_const;
+        if (CIsValid(parent) && Is_CDOTA_BaseNPC_Hero(parent)) {
+            if (
+                modifierName == 'modifier_item_ultimate_scepter' ||
+                modifierName == 'modifier_item_ultimate_scepter_consumed' ||
+                modifierName == 'modifier_item_ultimate_scepter_consumed_alchemist'
+            ) {
+                UnitAbilitiesForEach(parent, ability => {
+                    if (ability && ability['____constructor']) {
+                        ability['____constructor']();
+                    }
+                });
+            }
+            if (modifierName == 'modifier_item_aghanims_shard') {
+                UnitAbilitiesForEach(parent, ability => {
+                    if (ability && ability['____constructor']) {
+                        ability['____constructor']();
+                    }
+                });
+            }
+            return true;
+        }
+
+        return true;
+    }
     // _DamageFilter(event: DamageFilterEvent): boolean {
     //     if (!event.entindex_attacker_const) return true;
     //     if (!event.entindex_victim_const) return true;

@@ -347,9 +347,9 @@ function convertJsonFilesToTs(inputDirectory) {
         files.forEach(file => {
             if (path.extname(file) === '.json') {
                 const jsonFilePath = path.join(inputDirectory, file);
-                const heroName = path.basename(file, path.extname(file)).replace('./heroes/npc_dota_hero_', '');
+                const heroName = path.basename(file, path.extname(file)).replace('npc_dota_hero_', '');
                 const tsFilePath = path.join(outputDirectory, `${heroName}.ts`);
-
+                console.log('heroName', heroName);
                 fs.readFile(jsonFilePath, 'utf8', (err, data) => {
                     if (err) throw err;
                     const jsonData = JSON.parse(data);

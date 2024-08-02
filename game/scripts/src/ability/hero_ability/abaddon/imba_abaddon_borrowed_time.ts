@@ -67,7 +67,7 @@ class modifier_imba_abaddon_borrowed_time extends BaseModifier {
         return {
             aura_modifier: 'modifier_imba_abaddon_borrowed_time_talent',
             aura_radius: this._immolate_aoe,
-            is_aura: this.parent.CHasTalent(HeroTalent.imba_abaddon_6),
+            is_aura: this.parent.CHasTalent(HeroTalent.imba_abaddon_immolation),
             search_flag: UnitTargetFlags.NONE,
             search_team: UnitTargetTeam.BOTH,
             search_type: UnitTargetType.HERO + UnitTargetType.BASIC,

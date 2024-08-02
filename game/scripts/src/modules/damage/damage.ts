@@ -1482,7 +1482,7 @@ namespace DamageHelper {
                 DamageFlag.IGNORES_PHYSICAL_ARMOR +
                 DamageFlag.IGNORES_MAGIC_ARMOR +
                 DamageFlag.ATTACK_MODIFIER +
-                DamageFlag.BYPASSES_BLOCK,
+                DamageFlag.BYPASSES_ALL_BLOCK,
         };
         ApplyDamage(damage_table);
     }
