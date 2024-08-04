@@ -11,6 +11,28 @@ export class CFilter {
     }
 
     _OrderFilter(event: ExecuteOrderFilterEvent): boolean {
+        if (UnitOrder.MOVE_ITEM == event.order_type || UnitOrder.DROP_ITEM == event.order_type) {
+            Object.values(event.units).forEach(index => {
+                if (index <= 0) return;
+                const unit = EntIndexToHScript(index) as CDOTA_BaseNPC;
+                const item = EntIndexToHScript(event.entindex_ability) as CDOTA_Item;
+                if (
+                    CIsValid(item) &&
+                    CIsValid(unit) &&
+                    'item_ultimate_scepter' == item.GetAbilityName() &&
+                    unit.IsRealHero() &&
+                    (event.entindex_target >= 6 || event.entindex_target <= 0)
+                ) {
+                    UnitAbilitiesForEach(unit, ability => {
+                        if (ability && CIsValid(ability)) {
+                            Timers.CreateTimer(0.1, () => {
+                                CRefreshValue(ability);
+                            });
+                        }
+                    });
+                }
+            });
+        }
         return true;
     }
 

@@ -1317,9 +1317,9 @@
   integrity sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==
 
 "@moddota/dota-lua-types@^4.32.0":
-  version "4.34.1"
-  resolved "https://registry.npmmirror.com/@moddota/dota-lua-types/-/dota-lua-types-4.34.1.tgz"
-  integrity sha512-S72wqi1RRo8Tju15jz3NfcwmnOFpzQ6qaHFcLFrlok/G8yR4EJ7eceFJJ+kIJOw5VoE5U6+G7ScBC36IAVQ7gA==
+  version "4.35.0"
+  resolved "https://registry.npmmirror.com/@moddota/dota-lua-types/-/dota-lua-types-4.35.0.tgz#9ee09ad0de9255d98b1bc2cebd399ec6e10d7ac2"
+  integrity sha512-gQ3nKu2NZsrb/6JVpODpExy/lLum57LQygNjmobPNvW84+qk+YaqmeK6Uj0d378yYeulyLMO6acAg/wDBI+k3g==
   dependencies:
     lua-types "^2.13.1"
 
@@ -5466,7 +5466,7 @@ lru-queue@^0.1.0:
 
 lua-types@^2.13.1:
   version "2.13.1"
-  resolved "https://registry.npmmirror.com/lua-types/-/lua-types-2.13.1.tgz"
+  resolved "https://registry.npmmirror.com/lua-types/-/lua-types-2.13.1.tgz#8df705ae47617d4a2f189d727f075ca36e690bdb"
   integrity sha512-rRwtvX6kS+5MpuO3xpvKsnYjdSDDI064Qq1OqX8gY+r+0l7m3dFLiZPDFoHqH22jaBpEvcHcPs6+WD7qkdmFsA==
 
 lzma@^2.3.2:

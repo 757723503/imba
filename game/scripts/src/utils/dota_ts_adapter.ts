@@ -96,6 +96,7 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
     const originalOnUpgrade = (env[name] as CDOTA_Ability_Lua).OnUpgrade;
     // const originalOnHeroCalculateStatBonus = (env[name] as CDOTA_Ability_Lua).OnHeroCalculateStatBonus;
     // const originalEnableAbilityChargesOnTalentUpgrade = (env[name] as CDOTA_Ability_Lua).EnableAbilityChargesOnTalentUpgrade;
+    // const originalOnUnequip = (env[name] as CDOTA_Item_Lua).OnUnequip;
     env[name].Spawn = function () {
         this.caster = this.GetCaster();
         this.ability = this;
@@ -128,14 +129,22 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
         }
     };
     env[name].OnUpgrade = function (keys?: SpellStartParams) {
-        this.____constructor();
+        // this.____constructor();
+        // this.CRefreshValue();
+        CRefreshValue(this);
         // const srt = Object.keys(this as CDOTA_Ability_Lua).filter(key => key.startsWith('_'));
         // DeepPrintTable(srt);
         if (originalOnUpgrade) {
             originalOnUpgrade.call(this, keys);
         }
     };
+    // env[name].OnUnequip = function (keys?: SpellStartParams) {
+    //     if (originalOnUnequip) {
+    //         originalOnUnequip.call(this, keys);
+    //     }
+    // };
     // env[name].OnHeroCalculateStatBonus = function (keys?: SpellStartParams) {
+    //     print('re', name, IsServer());
     //     this.____constructor();
     //     if (originalOnHeroCalculateStatBonus) {
     //         originalOnHeroCalculateStatBonus.call(this, keys);

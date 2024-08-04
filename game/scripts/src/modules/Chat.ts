@@ -45,7 +45,9 @@ export class CChat {
 
                 break;
             case ChatCommand.qw:
-                hero.IsHero();
+                UnitAbilitiesForEach(hero, ability => {
+                    CRefreshValue(ability);
+                });
                 // DebugPrint(hero.GetHeroFacetID());
                 // const ability = hero.GetAbilityByIndex(0);
                 // ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'duration');

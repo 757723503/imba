@@ -19,12 +19,36 @@ function DebugError(...str: any[]): void {
 
 /**遍历技能 */
 function UnitAbilitiesForEach(unit: CDOTA_BaseNPC, callback: (ability: CDOTABaseAbility) => void): void {
+    if (!CIsValid(unit)) return;
     for (let i = 0; i < DOTA_MAX_ABILITIES; i++) {
-        const ability = unit.GetAbilityByIndex(i);
-        if (CIsValid(ability)) {
-            callback(ability);
+        try {
+            const ability = unit.GetAbilityByIndex(i);
+            if (CIsValid(ability)) {
+                callback(ability);
+            }
+        } catch (error) {
+            // 处理错误，例如记录日志或忽略
+            print('Error calling GetAbilityByIndex:', error);
         }
     }
+}
+/**刷新类的 _开头的数据 */
+function CRefreshValue(classes: CDOTABaseAbility | CDOTA_Modifier_Lua | CDOTA_Item): void {
+    const all_keys = Object.keys(classes);
+    all_keys.forEach(key => {
+        if (key.startsWith('_') && typeof classes[key] == 'number') {
+            const originalKey = key.substring(1);
+            if (classes['GetSpecialValueFor']) {
+                print('Refreshed:', originalKey, classes['GetSpecialValueFor'](originalKey));
+                classes[key] = classes['GetSpecialValueFor'](originalKey) ?? classes[key];
+            } else if (classes['GetAbility']) {
+                const ability = classes['GetAbility']();
+                if (ability) {
+                    classes[key] = ability.GetSpecialValueFor(originalKey) ?? classes[key];
+                }
+            }
+        }
+    });
 }
 /**
  * 安全调用函数

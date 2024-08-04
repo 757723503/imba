@@ -68,6 +68,7 @@ declare global {
          * @param ability 是否计算针对此技能增加的增强
          */
         CGetSpellAmp(ability_name?: string): number;
+
         /**
          * @deprecated
          */

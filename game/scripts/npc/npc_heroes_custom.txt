@@ -3,7 +3,15 @@
     "Version"    "1"
 	"npc_dota_hero_antimage"
 	{
-      "Facets" {}
+      "Facets" {
+            "antimage_facets_imba_1"
+			{
+				"Icon"				"barrier"
+				"Color"				"Blue"
+				"GradientID"		"4"
+			
+			}
+      }
       "Ability1"    "imba_antimage_mana_break"
       "Ability2"    "imba_antimage_blink"
       "Ability3"    "imba_antimage_counterspell"

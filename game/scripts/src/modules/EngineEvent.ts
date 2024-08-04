@@ -18,13 +18,13 @@ export class CEngineEvent {
             },
             this
         );
-        ListenToGameEvent(
-            'dota_player_gained_level',
-            data => {
-                this._EngineLevelUpEvent(data);
-            },
-            this
-        );
+        // ListenToGameEvent(
+        //     'dota_player_gained_level',
+        //     data => {
+        //         this._EngineLevelUpEvent(data);
+        //     },
+        //     this
+        // );
 
         ListenToGameEvent(
             'dota_player_learned_ability',
@@ -33,13 +33,13 @@ export class CEngineEvent {
             },
             this
         );
-        ListenToGameEvent(
-            'dota_hero_inventory_item_change',
-            data => {
-                this._OnItemChange(data);
-            },
-            this
-        );
+        // ListenToGameEvent(
+        //     'dota_hero_inventory_item_change',
+        //     data => {
+        //         this._OnItemChange(data);
+        //     },
+        //     this
+        // );
     }
 
     private _GCTimer(): void {
@@ -72,14 +72,14 @@ export class CEngineEvent {
         }
     }
 
-    private _OnItemChange(data: GameEventProvidedProperties & DotaHeroInventoryItemChangeEvent): void {
-        // print(data.dropped, data.item_entindex, data.hero_entindex);
-        // print('物品变化');
-        // print(EntIndexToHScript(data.hero_entindex).GetName());
-        // print((EntIndexToHScript(data.item_entindex) as BaseItem).GetAbilityName(), EntIndexToHScript(data.hero_entindex).GetName());
-    }
+    // private _OnItemChange(data: GameEventProvidedProperties & DotaHeroInventoryItemChangeEvent): void {
+    // print(data.dropped, data.item_entindex, data.hero_entindex);
+    // print('物品变化');
+    // print(EntIndexToHScript(data.hero_entindex).GetName());
+    // print((EntIndexToHScript(data.item_entindex) as BaseItem).GetAbilityName(), EntIndexToHScript(data.hero_entindex).GetName());
+    // }
 
-    private _EngineLevelUpEvent(data: GameEventProvidedProperties & DotaPlayerGainedLevelEvent): void {}
+    // private _EngineLevelUpEvent(data: GameEventProvidedProperties & DotaPlayerGainedLevelEvent): void {}
 
     private _GameRulesStateChange(data: GameEventProvidedProperties & object): void {
         const state = GameRules.State_Get();

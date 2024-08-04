@@ -101,7 +101,7 @@ export const data: LocalizationData = {
                 { ability_special: 'immolate_tick', text: '' },
             ],
             scepter_description:
-                '提升持续时间。启动回光返照后，亚巴顿附近{redirect_range_scepter范围内友方英雄受到的伤害超过{ally_threshold_scepter}点时亚巴顿就会自动对其施放迷雾缠绕。',
+                '提升持续时间。启动回光返照后，亚巴顿附近{redirect_range_scepter}范围内友方英雄受到的伤害超过{ally_threshold_scepter}点时亚巴顿就会自动对其施放迷雾缠绕。',
         },
     ],
     ModifierArray: [

@@ -71,6 +71,7 @@ if (!CDOTA_BaseNPC.GetDamageBlocks_Physic) {
         return this.physic_damage_blocks;
     };
 }
+
 if (!CDOTA_BaseNPC.CIsStrongIllusion) {
     CDOTA_BaseNPC.CIsStrongIllusion = function (this: CDOTA_BaseNPC): boolean {
         // const all_modifiers = this.FindAllModifiers();
@@ -237,6 +238,7 @@ if (!CDOTABaseAbility.IsReflectSpell) {
         return this['isreflectspell'] == true;
     };
 }
+
 if (!CDOTABaseAbility.GetSpecialValue) {
     CDOTABaseAbility.GetSpecialValue = function <T extends AbilityNames>(
         this: CDOTABaseAbility,
