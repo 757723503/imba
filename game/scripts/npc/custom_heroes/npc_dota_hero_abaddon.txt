@@ -108,26 +108,26 @@
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 	}
-	"imba_abaddon_the_quickening"
-	{
-		"BaseClass"		"ability_lua"
-		"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_the_quickening"
-		"AbilityTextureName"		"abaddon_the_quickening"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		"MaxLevel"		"1"
-		"IsBreakable"		"1"
-		"AbilityValues"
-		{
-			"cooldown_reduction_creeps"		"0.2"
-			"cooldown_reduction_heroes"		"4"
-			"radius"
-			{
-				"value"		"900"
-				"affected_by_aoe_increase"		"1"
-			}
-		}
-	}
+	// "imba_abaddon_the_quickening"
+	// {
+	// 	"BaseClass"		"ability_lua"
+	// 	"ScriptFile"		"ability/hero_ability/abaddon/imba_abaddon_the_quickening"
+	// 	"AbilityTextureName"		"abaddon_the_quickening"
+	// 	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	// 	"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+	// 	"MaxLevel"		"1"
+	// 	"IsBreakable"		"1"
+	// 	"AbilityValues"
+	// 	{
+	// 		"cooldown_reduction_creeps"		"0.2"
+	// 		"cooldown_reduction_heroes"		"4"
+	// 		"radius"
+	// 		{
+	// 			"value"		"900"
+	// 			"affected_by_aoe_increase"		"1"
+	// 		}
+	// 	}
+	// }
 	"abaddon_the_quickening"
 	{
 		"BaseClass"		"ability_lua"
