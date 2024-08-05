@@ -67,31 +67,7 @@ class modifier_imba_abaddon_aphotic_shield extends BaseModifier {
     _regen = this.ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'regen');
     CustomDeclareFunctions(): ModifierFunctions[] {
         if (!IsServer()) return;
-        return this._custom_on_attack_landed_attacker;
-    }
-
-    _custom_on_attack_landed_attacker = [
-        ModifierFunctions.OnAttackLanded_Attacker,
-        ModifierFunctions.AddParentAttackCritData,
-        ModifierFunctions.AddExtraAttackerCritsData,
-        ModifierFunctions.DamageFixed_AttackTypeChange,
-    ];
-
-    AddParentAttackCritData(): CritData {
-        return {
-            crit_chance: 100,
-            crit_rate: 150,
-        };
-    }
-
-    AddExtraAttackerCritsData(): GoCritData {
-        return {
-            change_crit_chance: 100,
-        };
-    }
-
-    DamageFixed_AttackTypeChange(AttackData: FixedDamageTable): DamageType {
-        return DamageType.Magical;
+        return this._shield_value;
     }
 
     DeclareFunctions(): ModifierFunction[] {
