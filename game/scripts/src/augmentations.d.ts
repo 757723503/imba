@@ -17,6 +17,10 @@ declare interface LocalEventDeclarations {
      * - 可修改:
      */
     DAMAGE_FIXED_ATTACKER_ATK_DAMAGE: DamageFixedAttackEffectData;
+
+    /** 伤害类型转换(攻击物理转魔法)  */
+    DAMAGE_FIXED_ATTACKER_ATK_TYPE_CHANGE: FixedDamageTable;
+
     /** 攻击分裂的伤害传递 只有攻击者,攻击伤害能接收, 只传递受害者和物理攻击伤害  */
     DAMAGE_ATTACKER_ATK_CLEAVE_EVENT: FixedDamageTable;
     /**

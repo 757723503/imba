@@ -234,9 +234,12 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     const originalOnDestroy = originalGetModifier.OnDestroy;
     env[name].OnDestroy = function (parameters: any) {
         if (!IsServer()) return;
+        print('运行结束1');
         if (COnDestroy) {
+            print('运行结束2');
             COnDestroy.call(this, this);
         }
+        print('运行结束3');
         if (originalOnDestroy) {
             originalOnDestroy.call(this, parameters);
         }
@@ -301,6 +304,7 @@ const COnCreated = (modifier: BaseModifier) => {
 };
 const COnDestroy = (modifier: BaseModifier) => {
     if (!modifier.CustomDeclareFunctions) return;
+    if (!CIsValid(modifier.GetParent())) return;
     const functions = modifier.CustomDeclareFunctions();
     if (functions.length > 0) {
         const parent_index = modifier.GetParent().entindex();
@@ -310,7 +314,12 @@ const COnDestroy = (modifier: BaseModifier) => {
                 func(modifier, parent_index);
             }, `Error in removing function for ${element}`);
         });
-
+        const dispatcherList = modifier.dispatcherIDList.get(parent_index);
+        if (dispatcherList) {
+            dispatcherList.forEach(dispatcherId => {
+                Dispatcher.UnRegister(dispatcherId);
+            });
+        }
         modifier.dispatcherIDList.delete(parent_index);
     }
 };
@@ -469,14 +478,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     [ModifierFunctions.DamageEvent_EndDamage]: {
         registerFunc: (instance, parent_index) => {
@@ -493,14 +495,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     [ModifierFunctions.DamageEvent_AfterIllusionDamage]: {
         registerFunc: (instance, parent_index) => {
@@ -510,14 +505,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     [ModifierFunctions.DamageEvent_PsiBlade]: {
         registerFunc: (instance, parent_index) => {
@@ -526,14 +514,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     [ModifierFunctions.DamageEvent_SpecialBounceAttack]: {
         registerFunc: (instance, parent_index) => {
@@ -543,14 +524,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.OnUnitDeath]: {
@@ -560,14 +534,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     [ModifierFunctions.OnHeroDeath]: {
         registerFunc: (instance, parent_index) => {
@@ -576,14 +543,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     [ModifierFunctions.OnBuildingDeath]: {
         registerFunc: (instance, parent_index) => {
@@ -592,14 +552,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.OnAttackStart_Attacker]: {
@@ -609,14 +562,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.OnAttackStart_Target]: {
@@ -626,14 +572,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.OnAttackLanded_Attacker]: {
@@ -643,14 +582,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     [ModifierFunctions.OnAttackLanded_Target]: {
         registerFunc: (instance, parent_index) => {
@@ -659,14 +591,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     // OnAttackFail_Both
@@ -678,14 +603,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     // [ModifierFunctions.OnAttackRecord_Attack]: {
     //     registerFunc: (instance, parent_index) => {
@@ -796,14 +714,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageFixed_BladeStormAttack]: {
@@ -815,14 +726,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     // DamageFixed_AttackEffectDamage
@@ -834,14 +738,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     // DamageEvent_AttackCleave
@@ -853,14 +750,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     // DamageFixed_MagicShieldBlock
 
@@ -873,14 +763,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     // DamageFixed_VictimIgnorePhysicalDamage
 
@@ -893,14 +776,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     // DamageFixed_VictimIgnoreMagicalDamage
 
@@ -913,14 +789,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     // DamageFixed_VictimIgnorePureDamage
 
@@ -934,14 +803,7 @@ const _modifier_methods: {
 
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
     // DamageFixed_VictimIgnoreAllDamage
 
@@ -954,14 +816,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     //DamageFixed_VictimSpecialPhysicalDamagePercent
@@ -976,14 +831,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageFixed_CoreAttackDamagePercent]: {
@@ -995,14 +843,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageFixed_VictimCoreAbilityDamagePercent]: {
@@ -1014,14 +855,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageFixed_CoreAllDamagePercent]: {
@@ -1033,14 +867,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageEvent_ReflectSharedDamage]: {
@@ -1050,14 +877,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageFixed_FalsePromiseIgnoreDamage]: {
@@ -1070,14 +890,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageEvent_BorrowedTimeRecord]: {
@@ -1096,14 +909,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.DamageFixed_EndBlockPercent]: {
@@ -1116,14 +922,7 @@ const _modifier_methods: {
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },
-        removeFunc: (instance, parent_index) => {
-            const dispatcherList = instance.dispatcherIDList.get(parent_index);
-            if (dispatcherList) {
-                dispatcherList.forEach(dispatcherId => {
-                    Dispatcher.UnRegister(dispatcherId);
-                });
-            }
-        },
+        removeFunc: (instance, parent_index) => {},
     },
 
     [ModifierFunctions.AddParentAttackCritData]: {
@@ -1369,6 +1168,66 @@ const _modifier_methods: {
                         parent._spell_amp_data_calls.splice(index, 1);
                         const all_amp = parent.CGetSpellAmp();
                         CustomNetTables.SetTableValue('custom_spell_amplify', tostring(parent.GetEntityIndex()), { all_amp: tostring(all_amp) });
+                    }
+                }
+            }
+        },
+    },
+
+    [ModifierFunctions.DamageFixed_AttackTypeChange]: {
+        registerFunc: (instance, parent_index) => {
+            const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_ATTACKER_ATK_TYPE_CHANGE', parent_index, event => {
+                if (instance.DamageFixed_AttackTypeChange) {
+                    event.damageType = instance.DamageFixed_AttackTypeChange(event);
+                }
+            });
+            instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
+        },
+        removeFunc: (instance, parent_index) => {},
+    },
+
+    [ModifierFunctions.AddExtraAttackerCritsData]: {
+        registerFunc: (instance, parent_index) => {
+            if (instance.AddExtraAttackerCritsData) {
+                const parent = instance.GetParent();
+                instance['ExtraAttackerCrits_Saved'] = instance.AddExtraAttackerCritsData();
+                if (instance['ExtraAttackerCrits_Saved']) {
+                    parent._extra_crits_data_calls.push(instance['ExtraAttackerCrits_Saved']);
+                }
+            }
+        },
+        removeFunc: (instance, parent_index) => {
+            if (instance.AddExtraAttackerCritsData) {
+                const parent = instance.GetParent();
+                const go_crit_data = instance['ExtraAttackerCrits_Saved'] as GoCritData;
+                if (go_crit_data) {
+                    const index = parent._extra_crits_data_calls.indexOf(go_crit_data);
+                    if (index != -1) {
+                        parent._extra_crits_data_calls.splice(index, 1);
+                    }
+                }
+            }
+        },
+    },
+
+    [ModifierFunctions.AddExtraVictimCritsData]: {
+        registerFunc: (instance, parent_index) => {
+            if (instance.AddExtraVictimCritsData) {
+                const parent = instance.GetParent();
+                instance['ExtraVictimCrits_Saved'] = instance.AddExtraVictimCritsData();
+                if (instance['ExtraVictimCrits_Saved']) {
+                    parent._extra_be_crits_data_calls.push(instance['ExtraVictimCrits_Saved']);
+                }
+            }
+        },
+        removeFunc: (instance, parent_index) => {
+            if (instance.AddExtraVictimCritsData) {
+                const parent = instance.GetParent();
+                const be_crit_data = instance['ExtraVictimCrits_Saved'] as BeCritData;
+                if (be_crit_data) {
+                    const index = parent._extra_be_crits_data_calls.indexOf(be_crit_data);
+                    if (index != -1) {
+                        parent._extra_be_crits_data_calls.splice(index, 1);
                     }
                 }
             }
@@ -1630,7 +1489,14 @@ interface BaseModifier {
 
     /**技能增强数据 */
     AddSpellAmpData?(): SpellAmpData;
+    /** 转换伤害类型(攻击转魔法) */
+    DamageFixed_AttackTypeChange?(AttackData: FixedDamageTable): DamageType;
 
+    /**增加额外暴击数据 攻击者*/
+    AddExtraAttackerCritsData?(): GoCritData;
+
+    /** 增加额外暴击数据 受害者 */
+    AddExtraVictimCritsData?(): BeCritData;
     /**
      * 单位回血修正 事件名 UNIT_FIXED_GAIN_HEALTH
      */

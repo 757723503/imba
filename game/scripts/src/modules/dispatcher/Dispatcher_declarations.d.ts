@@ -93,6 +93,9 @@ declare const enum ModifierFunctions {
      * 攻击特效伤害的添加 - 常量, 事件名 DAMAGE_FIXED_ATTACKER_ATK_DAMAGE
      */
     DamageFixed_AttackEffectDamage = 'DamageFixed_AttackEffectDamage',
+
+    /**伤害类型转换(攻击物理转魔法) */
+    DamageFixed_AttackTypeChange = 'DamageFixed_AttackTypeChange',
     /**
      * 击杀任意单位，事件名 UNIT_KILL_UNIT 。
      * 击杀者触发
@@ -161,4 +164,9 @@ declare const enum ModifierFunctions {
     AddCustomNeverDie = 'AddCustomNeverDie',
     /**增加技能增强数据 */
     AddSpellAmpData = 'AddSpellAmpData',
+
+    /**增加额外暴击数据 攻击者 */
+    AddExtraAttackerCritsData = 'AddExtraAttackerCritsData',
+    /**增加额外暴击数据 受害者 */
+    AddExtraVictimCritsData = 'AddExtraVictimCritsData',
 }

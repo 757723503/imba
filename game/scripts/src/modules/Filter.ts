@@ -21,6 +21,7 @@ export class CFilter {
                     CIsValid(unit) &&
                     'item_ultimate_scepter' == item.GetAbilityName() &&
                     unit.IsRealHero() &&
+                    event.entindex_target &&
                     (event.entindex_target >= 6 || event.entindex_target <= 0)
                 ) {
                     UnitAbilitiesForEach(unit, ability => {

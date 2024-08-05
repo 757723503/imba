@@ -32,6 +32,8 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     const is_cullingdown = (flag & DamageFlags.CullingDown) > 0;
     // 受害者是否是正常目标, 如果不是正常目标有很多逻辑不走
     const isNormalTarget = !victim.IsBuilding() && !victim.IsCourier();
+
+    const isCrit = checkTag(not_use_dmgTable.damageFlags, DamageFlags.AttackCrit);
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
@@ -57,9 +59,19 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // =========================
     if (not_use_dmgTable.damageProperty == DamageProperty.Attack) {
         fixed_tb.attack_physical_damage = not_use_dmgTable.damage;
+        if (attacker.IsHero()) {
+            Dispatcher.Send('DAMAGE_FIXED_ATTACKER_ATK_TYPE_CHANGE', attacker_handle, fixed_tb);
+            if (fixed_tb.damageType == DamageType.Magical) {
+                DamageHelper.AddRecord(record_list, '攻击伤害变为魔法');
+            }
+        }
         // 暴击红字
-        if ((not_use_dmgTable.damageFlags & DamageFlags.AttackCrit) > 0) {
-            DamageHelper.CritFloatingText(victim, not_use_dmgTable.extra_data?.illusion_crit_show_damage ?? not_use_dmgTable.damage);
+        if (isCrit) {
+            DamageHelper.CritFloatingText(
+                victim,
+                not_use_dmgTable.extra_data?.illusion_crit_show_damage ?? not_use_dmgTable.damage,
+                fixed_tb.damageType
+            );
             DamageHelper.AddRecord(record_list, '本次攻击暴击');
         }
         const disable_celled = (not_use_dmgTable.damageFlags & DamageFlags.DisableCelled) > 0;
@@ -97,12 +109,11 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
             };
             // 攻击特效伤害 只有攻击者,攻击伤害能接收 物理 + 魔法, 并回传
             Dispatcher.Send('DAMAGE_FIXED_ATTACKER_ATK_DAMAGE', attacker_handle, atk_effct_tb);
-            // 如果本次攻击伤害变为魔法 那所有的物理特效触发都转化为同数值的魔法攻击特效
-            if (atk_effct_tb.damageType == DamageType.Magical) {
+            // 如果本次攻击伤害变为魔法 那所有的物理特效触发都转化为同数值的魔法攻击特效 //同时处理所有攻击伤害变为魔法
+            if (fixed_tb.damageType == DamageType.Magical) {
                 fixed_tb.attack_magical_damage = fixed_tb.attack_physical_damage;
                 atk_effct_tb.addedAtkMagicalDamage = atk_effct_tb.addedAtkPhysicalDamage;
                 fixed_tb.attack_physical_damage = 0;
-                DamageHelper.AddRecord(record_list, '攻击伤害变为魔法');
             }
             // 在此之后把添加的值加入到伤害中, 暂不额外处理
             if (atk_effct_tb.addedAtkPhysicalDamage > 0) {
@@ -127,6 +138,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
                     )
                 );
             }
+
             fixed_tb.damageType = atk_effct_tb.damageType;
         }
     }
@@ -1225,9 +1237,13 @@ namespace DamageHelper {
     }
 
     /** 暴击红字 */
-    export function CritFloatingText(target: CDOTA_BaseNPC, damage: number) {
+    export function CritFloatingText(target: CDOTA_BaseNPC, damage: number, damageType: DamageType) {
         if (damage <= 0) return;
-        PopupCriticalDamage(target, damage);
+        if (damageType == DamageType.Physical) {
+            PopupCriticalDamage(target, damage);
+        } else if (damageType == DamageType.Magical) {
+            PopupCriticalDamageColored(target, damage, Vector(255, 0, 255));
+        }
     }
 
     /** 定值物理伤害格挡。返回格挡了的伤害 */
@@ -1492,25 +1508,25 @@ namespace DamageHelper {
             list.push(str);
         }
     }
-    // export function OnDamageFixed_AttackEffectData(event: DamageFixedAttackEffectData, filter: (new_data: DamageFixedAttackEffectData) => void) {
-    //     const new_data: DamageFixedAttackEffectData = {
-    //         attacker: event.attacker,
-    //         addedAtkPhysicalDamage: 0,
-    //         addedAtkMagicalDamage: 0,
-    //         damageType: event.damageType,
-    //         sourceAbility: event.sourceAbility,
-    //         victim: event.victim,
-    //         extra_data: event.extra_data,
-    //     };
-    //     filter(new_data);
-    //     // 伤害类型如果变为魔法, 则永远是魔法
-    //     if (new_data.damageType == DamageType.Magical) {
-    //         event.damageType = DamageType.Magical;
+    //     export function OnDamageFixed_AttackEffectData(event: DamageFixedAttackEffectData, filter: (new_data: DamageFixedAttackEffectData) => void) {
+    //         const new_data: DamageFixedAttackEffectData = {
+    //             attacker: event.attacker,
+    //             addedAtkPhysicalDamage: 0,
+    //             addedAtkMagicalDamage: 0,
+    //             damageType: event.damageType,
+    //             sourceAbility: event.sourceAbility,
+    //             victim: event.victim,
+    //             extra_data: event.extra_data,
+    //         };
+    //         filter(new_data);
+    //         // 伤害类型如果变为魔法, 则永远是魔法
+    //         if (new_data.damageType == DamageType.Magical) {
+    //             event.damageType = DamageType.Magical;
+    //         }
+    //         if (new_data.sourceAbility) {
+    //             event.sourceAbility = new_data.sourceAbility;
+    //         }
+    //         event.addedAtkPhysicalDamage += new_data.addedAtkPhysicalDamage ?? 0;
+    //         event.addedAtkMagicalDamage += new_data.addedAtkMagicalDamage ?? 0;
     //     }
-    //     if (new_data.sourceAbility) {
-    //         event.sourceAbility = new_data.sourceAbility;
-    //     }
-    //     event.addedAtkPhysicalDamage += new_data.addedAtkPhysicalDamage ?? 0;
-    //     event.addedAtkMagicalDamage += new_data.addedAtkMagicalDamage ?? 0;
-    // }
 }

@@ -83,23 +83,48 @@ export class CAttackDataManager {
 
     /** 攻击出手时判断暴击。返回触发了的暴击对象 */
     _CheckCritOnAttack(attacker: CDOTA_BaseNPC, attacking_target: CDOTA_BaseNPC): CritData | undefined {
-        if (!attacker._crits_data_calls) DebugWarning(attacker.GetUnitName(), 'attacker._crits_data_calls is not array');
-        if (attacker._crits_data_calls.length == 0) return;
+        if (!Array.isArray(attacker._crits_data_calls)) {
+            DebugWarning(attacker.GetUnitName(), 'attacker._crits_data_calls is not array');
+            return;
+        }
+        if (attacker._crits_data_calls.length === 0) return;
+
         // 目标允许
         if (attacking_target.IsWard() || attacking_target.IsBuilding() || !attacker.IsEnemy(attacking_target)) {
             return;
         }
-        let trigger_crit: CritData;
 
+        let trigger_crit: CritData | undefined;
+
+        // 计算额外的暴击数据修正
+        const extraCritData = attacker._extra_crits_data_calls || [];
+        const extraBeCritData = attacking_target._extra_be_crits_data_calls || [];
+
+        let totalChangeCritChance = 0;
+        let totalChangeCritRate = 0;
+
+        for (const data of extraCritData) {
+            totalChangeCritChance += data.change_crit_chance ?? 0;
+            totalChangeCritRate += data.change_crit_rate ?? 0;
+        }
+
+        for (const data of extraBeCritData) {
+            totalChangeCritChance += data.change_crit_chance ?? 0;
+            totalChangeCritRate += data.change_crit_rate ?? 0;
+        }
         for (const crit of attacker._crits_data_calls) {
-            const { crit_chance, crit_rate } = crit;
+            let { crit_chance, crit_rate } = crit;
+
+            // 应用额外的暴击数据修正
+            crit_chance = Math.max(0, crit_chance * (1 + totalChangeCritChance / 100));
+            crit_rate = crit_rate * (1 + totalChangeCritRate / 100);
+
             if (Random.RollPercentage(crit_chance, attacker, 'crit')) {
-                trigger_crit = trigger_crit ?? crit;
-                // 触发多个暴击，取倍率最高的那个
-                trigger_crit = crit_rate > trigger_crit.crit_rate ? crit : trigger_crit;
+                if (!trigger_crit || crit_rate > trigger_crit.crit_rate) {
+                    trigger_crit = { crit_chance, crit_rate };
+                }
             }
         }
-        // attacker._last_attack_trigger_crit = trigger_crit;
         return trigger_crit;
     }
 
@@ -201,6 +226,9 @@ export class CAttackDataManager {
         // 幻象攻击修正
         if (attacker.IsHero() && attacker.IsIllusion()) {
             const illusion_attack_fixed = attacker.GetAttackDamage() * (attacker._modifierKeys.outgoing_damage / 100);
+            if (attacker.IsHero() && attacker.IsIllusion()) {
+                attack_data.damageTable.extra_data.illusion_crit_show_damage = dmgTable.damage;
+            }
             dmgTable.damage = illusion_attack_fixed;
         }
 
@@ -208,9 +236,8 @@ export class CAttackDataManager {
         if (dmgTable.crit_obj) {
             const { crit_rate } = dmgTable.crit_obj;
             dmgTable.damage *= crit_rate / 100;
-
             if (attacker.IsHero() && attacker.IsIllusion()) {
-                attack_data.damageTable.extra_data.illusion_crit_show_damage = dmgTable.damage;
+                attack_data.damageTable.extra_data.illusion_crit_show_damage *= crit_rate / 100;
             }
         }
 

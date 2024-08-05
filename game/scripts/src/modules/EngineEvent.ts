@@ -120,6 +120,8 @@ export class CEngineEvent {
         custom_aoe_increase: 0,
         _never_die: [],
         _spell_amp_data_calls: [],
+        _extra_be_crits_data_calls: [],
+        _extra_crits_data_calls: [],
     };
 
     private async _NpcSpawned(data: GameEventProvidedProperties & NpcSpawnedEvent): Promise<void> {

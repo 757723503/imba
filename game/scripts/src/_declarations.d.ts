@@ -137,6 +137,12 @@ declare global {
 
         /**储存技能增强数据 */
         _spell_amp_data_calls: SpellAmpData[];
+
+        /**储存额外造成 暴击数据 attacker */
+        _extra_crits_data_calls: GoCritData[];
+
+        /**储存额外被 暴击数据 target */
+        _extra_be_crits_data_calls: BeCritData[];
     }
     interface CustomHeal {
         /**治疗量 */

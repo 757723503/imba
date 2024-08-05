@@ -84,6 +84,22 @@ declare interface CritData {
     /** 触发暴击的回调 */
     on_crit?: (attack_data: DamageTable) => void;
 }
+declare interface BeCritData {
+    /** 增减总暴击概率 */
+    change_crit_chance?: number;
+    /** 增减总暴击倍率（百分数 200 = 2倍暴击。不要低于100） */
+    change_crit_rate?: number;
+    /** 触发总增减暴击的回调 */
+    // change_on_crit?: (attack_data: DamageTable) => void;
+}
+declare interface GoCritData {
+    /** 增减总暴击概率 */
+    change_crit_chance?: number;
+    /** 增减总暴击倍率（百分数 200 = 2倍暴击。不要低于100） */
+    change_crit_rate?: number;
+    /** 触发总增减暴击的回调 */
+    // change_on_crit?: (attack_data: DamageTable) => void;
+}
 declare interface EvasionData {
     /** 闪避概率 */
     evasion_chance: number;

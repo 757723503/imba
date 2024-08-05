@@ -240,7 +240,7 @@ export class CChat {
             case ChatCommand.dm:
                 const dummy = CreateUnitByName('npc_dota_hero_target_dummy', hero.GetAbsOrigin(), true, null, null, DotaTeam.NEUTRALS);
                 dummy.SetBaseMagicalResistanceValue(0);
-                // dummy.SetControllableByPlayer(keys.playerid, true);
+                dummy.SetControllableByPlayer(keys.playerid, true);
                 break;
             case ChatCommand.mem:
                 MEM.m_cMethods.DumpMemorySnapshot(null, null, -1);
@@ -256,7 +256,7 @@ export class CChat {
                     heroToCopy: hero,
                     modifierKeys: {
                         duration: 5,
-                        outgoing_damage: 100,
+                        outgoing_damage: 1,
                         incoming_damage: 100,
                     },
                     numIllusions: 2,
