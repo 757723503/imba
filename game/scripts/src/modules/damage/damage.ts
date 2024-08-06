@@ -29,7 +29,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     Dispatcher.Send('DAMAGE_ORIGIN_DAMAGE_EVENT', attacker_handle, not_use_dmgTable);
     Dispatcher.Send('DAMAGE_ORIGIN_DAMAGE_EVENT', victim_handle, not_use_dmgTable);
     // 是否是斩杀 斩杀跳过一些阶段
-    const is_cullingdown = (flag & DamageFlags.CullingDown) > 0;
+    const is_cullingdown = checkTag(flag, DamageFlags.CullingDown);
     // 受害者是否是正常目标, 如果不是正常目标有很多逻辑不走
     const isNormalTarget = !victim.IsBuilding() && !victim.IsCourier();
 
@@ -37,7 +37,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
-    if (attacker.IsHero()) record_list = [];
+    // if (attacker.IsHero()) record_list = [];
 
     // 先创建fixed damage table
     const fixed_tb: FixedDamageTable = <FixedDamageTable>{
@@ -146,9 +146,12 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 攻击伤害 第二段
     // =========================
     const dmg_property = not_use_dmgTable.damageProperty;
+
     // 仍然是攻击 走攻击第二段
     if (dmg_property == DamageProperty.Attack) {
-        DamageHelper.Calc_Attack_Second(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
+        if (!is_cullingdown) {
+            DamageHelper.Calc_Attack_Second(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
+        }
         // 攒一个enddamagetable
         end_dmg_tb = <EndDamageTable>{
             attacker: attacker,
@@ -164,18 +167,20 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 技能伤害
     // =========================
     else if (dmg_property == DamageProperty.Ability) {
-        switch (fixed_tb.damageType) {
-            case DamageType.Physical:
-                DamageHelper.Calc_Physical_Ability_Damage_1(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
-                break;
-            case DamageType.Magical:
-                DamageHelper.Calc_Magical_Ability_Damage_1(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
-                break;
-            case DamageType.Pure:
-                {
-                    DamageHelper.Calc_Pure_Ability_Damage_1(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
-                }
-                break;
+        if (!is_cullingdown) {
+            switch (fixed_tb.damageType) {
+                case DamageType.Physical:
+                    DamageHelper.Calc_Physical_Ability_Damage_1(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
+                    break;
+                case DamageType.Magical:
+                    DamageHelper.Calc_Magical_Ability_Damage_1(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
+                    break;
+                case DamageType.Pure:
+                    {
+                        DamageHelper.Calc_Pure_Ability_Damage_1(not_use_dmgTable, fixed_tb, isNormalTarget, record_list);
+                    }
+                    break;
+            }
         }
         end_dmg_tb = <EndDamageTable>{
             attacker: attacker,
@@ -192,6 +197,9 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
         }
     } else {
         DebugError('DamageProperty出错');
+    }
+    if (!is_cullingdown) {
+        DamageHelper.AddRecord(record_list, '此次为斩杀!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n');
     }
     DamageHelper.AddRecord(record_list, string.format('最终伤害:%.2f', end_dmg_tb.true_damage));
     DamageHelper.AddRecord(record_list, '⬆️⬆️⬆️本次伤害记录结束⬆️⬆️⬆️\n');
@@ -1459,6 +1467,7 @@ namespace DamageHelper {
         const victim = damageTable.victim;
         const attacker = damageTable.attacker;
         const true_damage = damageTable.true_damage;
+        const is_cullingdown = checkTag(damageTable.damageFlags, DamageFlags.CullingDown);
         let damage_type: DamageTypes;
         if (damageTable.damageType == DamageType.Pure) {
             damage_type = DamageTypes.PURE;
@@ -1475,7 +1484,7 @@ namespace DamageHelper {
         // }
         // 不致死
         const no_death = checkTag(damageTable.damageFlags, DamageFlags.HPCost, DamageFlags.NotKill) || damageTable.victim.CIsNeverDie();
-        let damage = true_damage;
+        let damage = is_cullingdown ? victim.GetMaxHealth() : true_damage;
         const now_health = damageTable.victim.GetHealth();
         if (no_death && now_health - damage <= 5) {
             const victimHealth = damageTable.victim.GetHealth();
@@ -1501,6 +1510,15 @@ namespace DamageHelper {
                 DamageFlag.BYPASSES_ALL_BLOCK,
         };
         ApplyDamage(damage_table);
+        if (!CIsAlive(victim)) {
+            if (victim.IsHero()) {
+                Dispatcher.Send('UNIT_HERO_DEATH', null, damageTable);
+            }
+            if (victim.IsBuilding()) {
+                Dispatcher.Send('UNIT_BUILDING_DEATH', null, damageTable);
+            }
+            Dispatcher.Send('UNIT_DEATH', null, damageTable);
+        }
     }
     /** 添加record */
     export function AddRecord(list: string[], str: string) {

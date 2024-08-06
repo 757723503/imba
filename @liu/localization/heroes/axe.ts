@@ -4,10 +4,6 @@ export const data: LocalizationData = {
     AbilityArray: [
         {
             ability_classname: 'imba_axe_berserkers_call',
-            description: '斧王嘲讽附近的敌方单位，强迫他们攻击自己，同时获得额外护甲。',
-            lore: '蒙哥可汗的狂吼嘲讽使敌人不得不与他作战。',
-            name: '狂战士之吼',
-            notes: [],
             ability_specials: [
                 {
                     ability_special: 'radius',
@@ -22,23 +18,18 @@ export const data: LocalizationData = {
                     text: '持续时间：',
                 },
                 {
-                    ability_special: 'applies_battle_hunger',
-                    text: '施加战斗饥渴：',
-                },
-                {
                     ability_special: 'bonus_attack_speed',
                     text: '敌人攻击速度加成：',
                 },
             ],
+            name: '狂战士之吼',
+            description: '斧王嘲讽附近的敌方单位，强迫他们攻击自己，同时获得额外护甲。',
+            lore: '蒙哥可汗的狂吼嘲讽使敌人不得不与他作战。',
             shard_description: '狂战士之吼会对作用下单位施加战斗饥渴。',
+            notes: [],
         },
         {
             ability_classname: 'imba_axe_battle_hunger',
-            description:
-                '激怒一个敌方单位，使他受到持续伤害，直到他杀死一个单位或者持续时间结束。伤害量会根据斧王的护甲而增加。敌人只要背朝斧王还将被减速。',
-            lore: '通常英雄都无法抵挡蒙哥可汗的战斗狂怒，他们会一直受伤，直到蒙哥可汗的狂怒平息。',
-            name: '战斗饥渴',
-            notes: ['摧毁建筑也能移除该状态效果。'],
             ability_specials: [
                 {
                     ability_special: 'duration',
@@ -56,22 +47,16 @@ export const data: LocalizationData = {
                     ability_special: 'armor_multiplier',
                     text: '护甲倍数：',
                 },
-                {
-                    ability_special: 'speed_bonus',
-                    text: '速度加成：',
-                },
-                {
-                    ability_special: 'should_stack',
-                    text: '是否叠加：',
-                },
             ],
+            name: '战斗饥渴',
+            description:
+                '激怒一个敌方单位，使他受到持续伤害，直到他杀死一个单位或者持续时间结束。伤害量会根据斧王的护甲而增加。敌人只要背朝斧王还将被减速。',
+            lore: '通常英雄都无法抵挡蒙哥可汗的战斗狂怒，他们会一直受伤，直到蒙哥可汗的狂怒平息。',
+            shard_description: '多个战斗饥渴效果可以叠加在单个目标身上。',
+            notes: ['摧毁建筑也能移除该状态效果。'],
         },
         {
             ability_classname: 'imba_axe_counter_helix',
-            description: '受到一定次数攻击后，斧王就会做出螺旋反击，对附近所有敌方单位造成纯粹伤害。',
-            lore: '这支军队只要有斧王就不需要援军了。',
-            name: '反击螺旋',
-            notes: ['反击螺旋会在斧王受到攻击时触发。', '拥有神杖后自身幻象的攻击不会计入触发计数。'],
             ability_specials: [
                 {
                     ability_special: 'damage',
@@ -85,36 +70,16 @@ export const data: LocalizationData = {
                     ability_special: 'trigger_attacks',
                     text: '螺旋所需攻击次数：',
                 },
-                {
-                    ability_special: 'AbilityCooldown',
-                    text: '冷却时间：',
-                },
-                {
-                    ability_special: 'debuff_duration',
-                    text: '负面状态持续时间：',
-                },
-                {
-                    ability_special: 'damage_reduction',
-                    text: '%攻击伤害降低：',
-                },
-                {
-                    ability_special: 'max_stacks',
-                    text: '最大叠加数：',
-                },
-                {
-                    ability_special: 'attacks_increase_counter',
-                    text: '攻击增加计数：',
-                },
             ],
+            name: '反击螺旋',
+            description: '受到一定次数攻击后，斧王就会做出螺旋反击，对附近所有敌方单位造成纯粹伤害。',
+            lore: '这支军队只要有斧王就不需要援军了。',
             scepter_description:
                 '反击螺旋现在对击中的敌人施加一个可叠加的负面效果，使其对斧王造成的攻击伤害减少。反击螺旋不再具有冷却时间，并且斧王的攻击也会计入触发记数。',
+            notes: ['反击螺旋会在斧王受到攻击时触发。', '拥有神杖后自身幻象的攻击不会计入触发计数。'],
         },
         {
             ability_classname: 'imba_axe_culling_blade',
-            description: '斧王洞察到弱点并出击，造成纯粹伤害。淘汰之刃击杀敌方英雄时将重置冷却时间，而附近所有友军单位获得移动速度和护甲加成。',
-            lore: '蒙哥可汗是战斗与狂怒的化身，胆敢与斧王为敌者只有死路一条。',
-            name: '淘汰之刃',
-            notes: ['淘汰之刃的斩杀效果无法被薄葬等技能阻止。'],
             ability_specials: [
                 {
                     ability_special: 'damage',
@@ -137,54 +102,30 @@ export const data: LocalizationData = {
                     text: '斩杀后加速范围：',
                 },
                 {
-                    ability_special: 'charge_speed',
-                    text: '冲锋速度：',
-                },
-                {
                     ability_special: 'armor_per_stack',
                     text: '每次击杀护甲加成：',
                 },
             ],
+            name: '淘汰之刃',
+            description: '斧王洞察到弱点并出击，造成纯粹伤害。淘汰之刃击杀敌方英雄时将重置冷却时间，而附近所有友军单位获得移动速度和护甲加成。',
+            lore: '蒙哥可汗是战斗与狂怒的化身，胆敢与斧王为敌者只有死路一条。',
+            notes: ['淘汰之刃的斩杀效果无法被薄葬等技能阻止。'],
         },
         {
             ability_classname: 'imba_axe_one_man_army',
-            description: '斧王在远离友军时获得基于自身护甲值的力量。',
-            lore: '',
+            ability_specials: [],
             name: '一人之军',
+            description: '斧王在远离友军时获得基于自身护甲值的力量。',
             notes: [
-                '斧王附近{radius}范围内没有友方英雄时他会获得力量加成，数值为{armor_pct_as_strength}{自身护甲值。接近友军后效果还会粘滞}bonus_linger_duration%秒。',
-            ],
-            ability_specials: [
-                {
-                    ability_special: 'armor_pct_as_strength',
-                    text: '%护甲转化为力量：',
-                },
-                {
-                    ability_special: 'radius',
-                    text: '范围：',
-                },
-                {
-                    ability_special: 'bonus_linger_duration',
-                    text: '效果粘滞时间：',
-                },
+                '斧王附近{radius}范围内没有友方英雄时他会获得力量加成，数值为{armor_pct_as_strength}%自身护甲值。接近友军后效果还会粘滞{bonus_linger_duration}秒。',
             ],
         },
         {
             ability_classname: 'imba_axe_coat_of_blood',
-            description: '每当斧王击杀敌方英雄，他就会永久获得{armor_per_kill}点护甲。使用淘汰之刃的击杀会给予{culling_blade_multiplier}倍数值。',
-            lore: '',
+            ability_specials: [],
             name: '血色外衣',
+            description: '每当斧王击杀敌方英雄，他就会永久获得{armor_per_kill}点护甲。使用淘汰之刃的击杀会给予{culling_blade_multiplier}倍数值。',
             notes: [],
-            ability_specials: [
-                {
-                    ability_special: 'armor_per_kill',
-                    text: '每次击杀护甲加成：',
-                },
-                {
-                    ability_special: 'culling_blade_multiplier',
-                    text: '淘汰之刃倍数：',
-                },
-            ],
         },
     ],
     TalentArray: [
@@ -230,6 +171,17 @@ export const data: LocalizationData = {
             facet_classname: 'axe_facets_imba_1',
             name: '吼声震天',
             description: '狂战士之吼会在持续时间内使攻击的人获得额外攻击速度，斧王获得更高的护甲加成。',
+            related_abilities: [
+                {
+                    ability_classname: 'imba_axe_berserkers_call',
+                    description: '狂战士之吼提供的护甲更高，而且增加了受作用单位的攻击速度。',
+                },
+                {
+                    ability_classname: 'imba_axe_culling_blade',
+                    description: '淘汰之刃的每次击杀都会提升斧王的护甲。',
+                },
+            ],
+            related_talents: [],
         },
     ],
     ModifierArray: [
@@ -290,7 +242,7 @@ export const data: LocalizationData = {
             description: '斧王的斧头收获的{MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS}点护甲。',
         },
         {
-            modifier_classname: 'modifier_imba_axe_culling_blade_permanent_PostGame',
+            modifier_classname: 'modifier_imba_axe_culling_blade_permanent_postgame',
             name: '斧王击杀敌人后获得的护甲。',
         },
     ],

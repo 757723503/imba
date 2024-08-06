@@ -28,9 +28,7 @@ class modifier_imba_axe_battle_hunger extends BaseModifier {
     _damage_per_second = this.ability.GetSpecialValue('imba_axe_battle_hunger', 'damage_per_second');
     _armor_multiplier = this.ability.GetSpecialValue('imba_axe_battle_hunger', 'armor_multiplier');
     _bonus_speed = this.ability.GetSpecialValue('imba_axe_battle_hunger', 'speed_bonus');
-    _is_slow = false;
     OnIntervalThink(): void {
-        const axe_armor = this.parent.GetPhysicalArmorValue(false);
         const damage = this.CalculateDamage();
         CAddDamage({
             attacker: this.caster,
@@ -41,15 +39,15 @@ class modifier_imba_axe_battle_hunger extends BaseModifier {
             damageType: DamageType.Magical,
         });
 
-        const axe_forward = this.caster.GetForwardVector();
+        const axe_forward = GetDirection(this.caster.GetAbsOrigin(), this.parent.GetAbsOrigin());
         const target_forward = this.parent.GetForwardVector();
         // 使用Dot方法计算两个方向向量的点积
         const dot_product = axe_forward.Dot(target_forward);
         // 如果点积为负，则说明parent背对axe
         if (dot_product < 0) {
-            this._is_slow = true;
+            this.SetStackCount(-1);
         } else {
-            this._is_slow = false;
+            this.SetStackCount(0);
         }
     }
 
@@ -61,6 +59,16 @@ class modifier_imba_axe_battle_hunger extends BaseModifier {
 
     DeclareFunctions(): ModifierFunction[] {
         return CDeclareFunctions(ModifierFunction.MOVESPEED_BONUS_PERCENTAGE, ModifierFunction.TOOLTIP);
+    }
+
+    CustomDeclareFunctions(): ModifierFunctions[] {
+        return [ModifierFunctions.OnUnitDeath];
+    }
+
+    OnUnitDeath(dmgTable: EndDamageTable): void {
+        if (dmgTable.attacker == this.parent) {
+            this.Destroy();
+        }
     }
 
     OnTooltip(): number {
@@ -78,7 +86,7 @@ class modifier_imba_axe_battle_hunger extends BaseModifier {
     }
 
     GetModifierMoveSpeedBonus_Percentage(): number {
-        return this._is_slow && -this._bonus_speed;
+        return this.GetStackCount() == -1 && this._slow;
     }
 }
 @registerModifier()
@@ -86,7 +94,7 @@ class modifier_imba_axe_battle_hunger_self_movespeed extends BaseModifier {
     GetModifierConfig(): ModifierConfig {
         return {
             is_debuff: false,
-            is_hidden: false,
+            is_hidden: this.GetStackCount() == 0 || this._bonus_speed == 0,
             not_purgable: true,
             not_purgable_exception: true,
             not_remove_on_death: true,

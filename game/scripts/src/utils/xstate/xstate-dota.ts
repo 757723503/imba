@@ -40,11 +40,11 @@ function toActionObject<TContext extends object, TEvent extends EventObject>(
               type: action,
           }
         : typeof action === 'function'
-        ? {
-              type: tostring(action), // it is ok since it will be converted to function: 0x00c00d38 in lua vm
-              exec: action,
-          }
-        : action;
+          ? {
+                type: tostring(action), // it is ok since it will be converted to function: 0x00c00d38 in lua vm
+                exec: action,
+            }
+          : action;
 }
 
 const IS_PRODUCTION = !IsInToolsMode();
@@ -104,7 +104,7 @@ function handleActions<TContext extends object, TEvent extends EventObject = Eve
 export function createMachine<
     TContext extends object,
     TEvent extends EventObject = EventObject,
-    TState extends Typestate<TContext> = { value: any; context: TContext }
+    TState extends Typestate<TContext> = { value: any; context: TContext },
 >(
     fsmConfig: StateMachine.Config<TContext, TEvent, TState>,
     implementations: {
@@ -196,7 +196,7 @@ export function createMachine<
 const executeStateActions = <
     TContext extends object,
     TEvent extends EventObject = any,
-    TState extends Typestate<TContext> = { value: any; context: TContext }
+    TState extends Typestate<TContext> = { value: any; context: TContext },
 >(
     state: StateMachine.State<TContext, TEvent, TState>,
     event: TEvent | InitEvent
@@ -211,7 +211,7 @@ const executeStateActions = <
 export function interpret<
     TContext extends object,
     TEvent extends EventObject = EventObject,
-    TState extends Typestate<TContext> = { value: any; context: TContext }
+    TState extends Typestate<TContext> = { value: any; context: TContext },
 >(machine: StateMachine.Machine<TContext, TEvent, TState>): StateMachine.Service<TContext, TEvent, TState> {
     let state = machine.initialState;
     let status = InterpreterStatus.NotStarted;

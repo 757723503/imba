@@ -9,7 +9,7 @@ class modifier_imba_axe_counter_helix extends BaseModifier {
     GetModifierConfig(): ModifierConfig {
         return {
             is_debuff: false,
-            is_hidden: true,
+            is_hidden: false,
             not_purgable: true,
             not_purgable_exception: true,
             not_remove_on_death: true,
@@ -31,7 +31,33 @@ class modifier_imba_axe_counter_helix extends BaseModifier {
 
     OnAttackLanded_Target(AttackData: UnitEventAttackDamageData): void {
         if (AttackData.damageTable.attacker.IsUnit()) {
-            this.GetStackCount() < this._max_stacks && this.IncrementStackCount();
+            this.GetStackCount() > 0 && this.DecrementStackCount();
+            if (this.GetStackCount() <= 0) {
+                this.PlayEffects();
+                this.SetStackCount(this._trigger_attacks);
+            }
         }
+    }
+
+    PlayEffects(): void {
+        const enemies = CFindUnitsInRadius({
+            flagFilter: UnitTargetFlags.NONE,
+            location: this.parent.GetAbsOrigin(),
+            order: FindOrder.CLOSEST,
+            radius: this._radius,
+            team: this.parent.GetTeamNumber(),
+            teamFilter: UnitTargetTeam.ENEMY,
+            typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
+        });
+        enemies.forEach(enemy => {
+            CAddDamage({
+                attacker: this.parent,
+                damage: this._damage,
+                damageProperty: DamageProperty.Ability,
+                damageType: DamageType.Pure,
+                sourceAbility: this.ability,
+                victim: enemy,
+            });
+        });
     }
 }

@@ -53,6 +53,11 @@ declare global {
         CGetFaceID(): number;
         /**自定义驱散 */
         CPurge(keys: PurgeData): void;
+        /**真实斩杀
+         * @param killer 击杀者
+         * @param ability 技能
+         */
+        CTrueKill(killer: CDOTA_BaseNPC, ability: CDOTABaseAbility): boolean;
         /** 自定义反弹技能(莲花)
          *  @param reflect_ability 技能
          *  @param reflect_target 目标

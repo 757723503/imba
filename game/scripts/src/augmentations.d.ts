@@ -150,9 +150,9 @@ declare interface LocalEventDeclarations {
     /** 攻击前摇前  触发者是 攻击者 */
     ON_ATTACK_START_ATTACKER: UnitEventAttackDamageData;
 
-    UNIT_DEATH: DamageTable;
-    UNIT_HERO_DEATH: DamageTable;
-    UNIT_BUILDING_DEATH: DamageTable;
+    UNIT_DEATH: EndDamageTable;
+    UNIT_HERO_DEATH: EndDamageTable;
+    UNIT_BUILDING_DEATH: EndDamageTable;
 
     ON_ATTACK_FAIL_BOTH: UnitEventAttackDamageData;
 }

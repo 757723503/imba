@@ -28,8 +28,8 @@ const { launchDota2 } = require('./launchDota2');
         mode == `release`
             ? config.encryptDedicatedServerKeyRelease
             : mode == `release_test`
-            ? config.encryptDedicatedServerKeyRelease_Test
-            : config.encryptDedicatedServerKeyTest;
+              ? config.encryptDedicatedServerKeyRelease_Test
+              : config.encryptDedicatedServerKeyTest;
 
     const getPublishPath = source => source.replace(/^game/, 'publish');
 

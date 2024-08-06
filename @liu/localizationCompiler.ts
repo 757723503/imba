@@ -358,7 +358,7 @@ export class LocalizationCompiler {
 
                 if (facet.related_abilities) {
                     for (const relatedAbility of facet.related_abilities) {
-                        const related_ability_string = `DOTA_Tooltip_ability_${relatedAbility.ability_classname}_facet_${facet.facet_classname}`;
+                        const related_ability_string = `DOTA_Tooltip_ability_${relatedAbility.ability_classname}_Facet_${facet.facet_classname}`;
                         tokens[related_ability_string] = this.TransformForLocalization(relatedAbility.description, false);
                     }
                 }

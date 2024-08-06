@@ -1434,19 +1434,19 @@ interface BaseModifier {
      * 单位死亡 事件名 UNIT_DEATH
      * - 触发者：任意死亡单位
      */
-    OnUnitDeath?(dmgTable: DamageTable): void;
+    OnUnitDeath?(dmgTable: EndDamageTable): void;
 
     /**
      * 英雄死亡 事件名 UNIT_HERO_DEATH
      * - 触发者：任意死亡单位
      */
-    OnHeroDeath?(dmgTable: DamageTable): void;
+    OnHeroDeath?(dmgTable: EndDamageTable): void;
 
     /**
      * 建筑死亡 事件名 UNIT_BUILDING_DEATH
      * - 触发者：任意死亡建筑
      */
-    OnBuildingDeath?(dmgTable: DamageTable): void;
+    OnBuildingDeath?(dmgTable: EndDamageTable): void;
 
     /**
      * 单位复活事件 事件名 UNIT_RESPAWN

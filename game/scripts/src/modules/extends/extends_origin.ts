@@ -31,6 +31,25 @@ if (!CDOTA_BaseNPC.IsUnit) {
         return this.IsHero() || this.IsCreep() || this.IsBoss();
     };
 }
+if (!CDOTA_BaseNPC.CTrueKill) {
+    CDOTA_BaseNPC.CTrueKill = function (this: CDOTA_BaseNPC, killer: CDOTA_BaseNPC, ability: CDOTABaseAbility): boolean {
+        if (CIsAlive(this)) {
+            const all_modifiers = this.FindAllModifiers();
+            for (const modifier of all_modifiers) {
+            }
+            CAddDamage({
+                attacker: killer,
+                damage: this.GetMaxHealth(),
+                damageProperty: DamageProperty.Ability,
+                damageType: DamageType.Pure,
+                sourceAbility: ability,
+                victim: this,
+                damageFlags: DamageFlags.CullingDown,
+            });
+        }
+        return !CIsAlive(this);
+    };
+}
 if (!CDOTA_BaseNPC.CGetSpellAmp) {
     CDOTA_BaseNPC.CGetSpellAmp = function (this: CDOTA_BaseNPC, ability_name?: string): number {
         const all_amp = this._spell_amp_data_calls;

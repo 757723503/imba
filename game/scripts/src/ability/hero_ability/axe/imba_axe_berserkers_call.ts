@@ -59,7 +59,7 @@ class modifier_imba_axe_berserkers_call_armor extends BaseModifier {
 class modifier_imba_axe_berserkers_call extends BaseModifier {
     GetModifierConfig(): ModifierConfig {
         return {
-            is_debuff: false,
+            is_debuff: true,
             is_hidden: false,
             not_purgable: true,
             not_purgable_exception: true,
@@ -67,7 +67,14 @@ class modifier_imba_axe_berserkers_call extends BaseModifier {
     }
 
     OnCreated(params: ModifierParams): void {
+        this.parent.MoveToTargetToAttack(this.caster);
+        this.parent.SetAttacking(this.caster);
         this.parent.SetForceAttackTarget(this.caster);
+        this.StartIntervalThink(0.1);
+    }
+
+    OnIntervalThink(): void {
+        this.parent.MoveToTargetToAttack(this.caster);
     }
 
     OnDestroy(): void {

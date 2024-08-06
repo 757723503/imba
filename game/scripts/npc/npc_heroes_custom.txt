@@ -29,7 +29,14 @@
 	}
 	"npc_dota_hero_axe"
 	{
-      "Facets" {}
+      "Facets" {
+            "axe_facets_imba_1"
+			{
+				"Icon"				"barrier"
+				"Color"				"Blue"
+				"GradientID"		"4"
+			}
+      }
       "Ability1"    "imba_axe_berserkers_call"
       "Ability2"    "imba_axe_battle_hunger"
       "Ability3"    "imba_axe_counter_helix"

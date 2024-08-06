@@ -14,35 +14,39 @@ export interface EventObject {
 
 export type InitEvent = { type: 'xstate.init' };
 
-export type ContextFrom<T> = ReturnTypeOrValue<T> extends infer R
-    ? R extends StateMachine.Machine<infer TContext, any, any>
-        ? TContext
-        : R extends StateMachine.Service<infer TContext, any, any>
-        ? TContext
-        : never
-    : never;
+export type ContextFrom<T> =
+    ReturnTypeOrValue<T> extends infer R
+        ? R extends StateMachine.Machine<infer TContext, any, any>
+            ? TContext
+            : R extends StateMachine.Service<infer TContext, any, any>
+              ? TContext
+              : never
+        : never;
 
-export type EventFrom<T> = ReturnTypeOrValue<T> extends infer R
-    ? R extends StateMachine.Machine<any, infer TEvent, any>
-        ? TEvent
-        : R extends StateMachine.Service<any, infer TEvent, any>
-        ? TEvent
-        : never
-    : never;
+export type EventFrom<T> =
+    ReturnTypeOrValue<T> extends infer R
+        ? R extends StateMachine.Machine<any, infer TEvent, any>
+            ? TEvent
+            : R extends StateMachine.Service<any, infer TEvent, any>
+              ? TEvent
+              : never
+        : never;
 
-export type StateFrom<T> = ReturnTypeOrValue<T> extends infer R
-    ? R extends StateMachine.Machine<infer TContext, infer TEvent, infer TState>
-        ? StateMachine.State<TContext, TEvent, TState>
-        : R extends StateMachine.Service<infer TContext, infer TEvent, infer TState>
-        ? StateMachine.State<TContext, TEvent, TState>
-        : never
-    : never;
+export type StateFrom<T> =
+    ReturnTypeOrValue<T> extends infer R
+        ? R extends StateMachine.Machine<infer TContext, infer TEvent, infer TState>
+            ? StateMachine.State<TContext, TEvent, TState>
+            : R extends StateMachine.Service<infer TContext, infer TEvent, infer TState>
+              ? StateMachine.State<TContext, TEvent, TState>
+              : never
+        : never;
 
-export type ServiceFrom<T> = ReturnTypeOrValue<T> extends infer R
-    ? R extends StateMachine.Machine<infer TContext, infer TEvent, infer TState>
-        ? StateMachine.Service<TContext, TEvent, TState>
-        : never
-    : never;
+export type ServiceFrom<T> =
+    ReturnTypeOrValue<T> extends infer R
+        ? R extends StateMachine.Machine<infer TContext, infer TEvent, infer TState>
+            ? StateMachine.Service<TContext, TEvent, TState>
+            : never
+        : never;
 
 export type MachineImplementationsFrom<TMachine extends StateMachine.AnyMachine> = {
     actions?: StateMachine.ActionMap<ContextFrom<TMachine>, EventFrom<TMachine>>;
@@ -96,7 +100,7 @@ export namespace StateMachine {
     export interface Config<
         TContext extends object,
         TEvent extends EventObject,
-        TState extends Typestate<TContext> = { value: any; context: TContext }
+        TState extends Typestate<TContext> = { value: any; context: TContext },
     > {
         id?: string;
         initial: string;
@@ -123,7 +127,7 @@ export namespace StateMachine {
     export interface Service<
         TContext extends object,
         TEvent extends EventObject,
-        TState extends Typestate<TContext> = { value: any; context: TContext }
+        TState extends Typestate<TContext> = { value: any; context: TContext },
     > {
         send: (event: TEvent | TEvent['type']) => void;
         subscribe: (listener: StateListener<State<TContext, TEvent, TState>>) => {
