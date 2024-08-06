@@ -93,7 +93,6 @@ declare global {
         /**
          * @deprecated
          */
-
         HealWithParams(amount: number, inflictor: object, lifesteal: boolean, amplify: boolean, source: object, spellLifesteal: boolean): void;
         _ability_custom_base_attack: CDOTABaseAbility;
         /**自定义 是不是强幻想 */
