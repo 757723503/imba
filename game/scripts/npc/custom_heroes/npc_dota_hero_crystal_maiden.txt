@@ -293,30 +293,35 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_frostbite"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_crystal_maiden_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_crystal_nova"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_crystal_maiden_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_freezing_field"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_crystal_maiden_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_crystal_nova"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_crystal_maiden_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"crystal_maiden_crystal_nova"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_crystal_maiden_frostbite_castrange"
 	{

@@ -102,7 +102,7 @@
 		"AbilityTextureName"		"batrider_stoked"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_INNATE_UI | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
-		"DependentOnAbility"		"batrider_flaming_lasso"
+		"DependentOnAbility"		"imba_batrider_flaming_lasso"
 		"AbilityValues"
 		{
 			"duration"		"7"

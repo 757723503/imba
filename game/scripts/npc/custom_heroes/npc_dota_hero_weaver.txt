@@ -218,6 +218,7 @@
 				"ad_linked_abilities"		"weaver_shukuchi"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_weaver_2"
 	{

@@ -213,7 +213,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"axe_culling_blade"
+		"DependentOnAbility"		"imba_axe_culling_blade"
 		"AbilityValues"
 		{
 			"armor_per_kill"		"0.2 0.3 0.4 .5"

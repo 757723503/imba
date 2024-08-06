@@ -333,7 +333,7 @@
 		"MaxLevel"		"4"
 		"HasShardUpgrade"		"1"
 		"Innate"		"1"
-		"DependentOnAbility"		"warlock_rain_of_chaos"
+		"DependentOnAbility"		"imba_warlock_rain_of_chaos"
 		"AbilityValues"
 		{
 			"minor_imp_duration"		"15"
@@ -370,6 +370,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"base_class"		"special_bonus_base"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_warlock_2"
 	{
@@ -383,12 +384,14 @@
 				"ad_linked_abilities"		"warlock_rain_of_chaos"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_warlock_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"base_class"		"special_bonus_base"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_warlock_4"
 	{
@@ -402,6 +405,7 @@
 				"ad_linked_abilities"		"warlock_rain_of_chaos"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_warlock_5"
 	{
@@ -427,6 +431,7 @@
 				"ad_linked_abilities"		"warlock_upheaval"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_warlock_upheaval_aoe"
 	{

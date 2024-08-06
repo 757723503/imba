@@ -1183,35 +1183,41 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_invoker_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"invoker_tornado_ad"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_invoker_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"invoker_alacrity_ad"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_invoker_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"invoker_cold_snap_ad"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_invoker_11"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"invoker_forge_spirit_ad"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_invoker_13"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_invoker_ice_wall_dps"
 	{

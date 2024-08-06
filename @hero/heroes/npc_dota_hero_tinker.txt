@@ -54,7 +54,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"		"3"
-		"DependentOnAbility"		"tinker_rearm"
+		"DependentOnAbility"		"imba_tinker_rearm"
 		"AbilityCastRange"		"0"
 		"AbilityCooldown"		"80"
 		"AbilityCastPoint"		"0"
@@ -394,6 +394,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tinker_5"
 	{
@@ -413,6 +414,7 @@
 				"ad_linked_abilities"		"tinker_defense_matrix"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tinker_rearm_magic_resistance"
 	{

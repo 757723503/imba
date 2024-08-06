@@ -256,6 +256,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"wisp_tether"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_wisp_4"
 	{
@@ -269,6 +270,7 @@
 				"ad_linked_abilities"		"wisp_tether"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_wisp_6"
 	{
@@ -282,6 +284,7 @@
 				"ad_linked_abilities"		"wisp_relocate"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_wisp_8"
 	{
@@ -295,6 +298,7 @@
 				"ad_linked_abilities"		"wisp_tether"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_wisp_9"
 	{
@@ -308,12 +312,14 @@
 				"ad_linked_abilities"		"wisp_tether"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_wisp_10"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"wisp_overcharge"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_wisp_11"
 	{

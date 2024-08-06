@@ -356,7 +356,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"4"
-		"DependentOnAbility"		"furion_force_of_nature"
+		"DependentOnAbility"		"imba_furion_force_of_nature"
 		"Innate"		"1"
 		"IsBreakable"		"1"
 		"AbilityValues"

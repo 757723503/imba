@@ -37,7 +37,7 @@ export class modifier_imba_antimage_counterspell_passive extends BaseModifier {
 
     _magic_resistance = this.ability.GetSpecialValue('imba_antimage_counterspell', 'magic_resistance');
     GetModifierMagicalResistanceBonus(event: ModifierAttackEvent): number {
-        return this._magic_resistance;
+        return this.parent.PassivesDisabled() ? 0 : this._magic_resistance;
     }
 }
 @registerModifier()

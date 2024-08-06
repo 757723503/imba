@@ -314,6 +314,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_void_spirit_2"
 	{
@@ -333,6 +334,7 @@
 				"ad_linked_abilities"		"void_spirit_dissimilate"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_void_spirit_4"
 	{
@@ -346,6 +348,7 @@
 				"ad_linked_abilities"		"void_spirit_resonant_pulse"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_void_spirit_7"
 	{
@@ -360,6 +363,7 @@
 				"ad_linked_abilities"		"void_spirit_aether_remnant"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_void_spirit_8"
 	{
@@ -373,6 +377,7 @@
 				"ad_linked_abilities"		"void_spirit_astral_step"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_void_spirit_dissimilate_outerring"
 	{

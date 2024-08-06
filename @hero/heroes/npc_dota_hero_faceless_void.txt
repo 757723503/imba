@@ -57,7 +57,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"faceless_void_chronosphere"
+		"DependentOnAbility"		"imba_faceless_void_chronosphere"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -295,6 +295,7 @@
 				"ad_linked_abilities"		"special_bonus_inherent"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_faceless_void_5"
 	{

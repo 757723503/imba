@@ -249,6 +249,7 @@
 				"ad_linked_abilities"		"obsidian_destroyer_sanity_eclipse"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_outworld_devourer_astral_castrange"
 	{

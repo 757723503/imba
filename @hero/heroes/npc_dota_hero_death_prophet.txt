@@ -256,6 +256,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_death_prophet_5"
 	{
@@ -269,6 +270,7 @@
 				"ad_linked_abilities"		"death_prophet_spirit_siphon"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_death_prophet_crypt_swarm_damage"
 	{
@@ -315,7 +317,7 @@
 		"AbilityTextureName"		"death_prophet_mourning_ritual"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
-		"DependentOnAbility"		"death_prophet_exorcism"
+		"DependentOnAbility"		"imba_death_prophet_exorcism"
 		"Innate"		"1"
 		"IsBreakable"		"1"
 		"AbilityValues"

@@ -268,6 +268,7 @@
 				"ad_linked_abilities"		"oracle_fortunes_end"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_oracle_5"
 	{
@@ -281,6 +282,7 @@
 				"ad_linked_abilities"		"oracle_purifying_flames"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_oracle_6"
 	{
@@ -300,6 +302,7 @@
 				"ad_linked_abilities"		"oracle_fortunes_end"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_oracle_8"
 	{
@@ -313,6 +316,7 @@
 				"ad_linked_abilities"		"oracle_purifying_flames"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_oracle_9"
 	{

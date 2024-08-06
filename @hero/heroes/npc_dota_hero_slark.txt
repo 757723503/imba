@@ -195,7 +195,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"slark_shadow_dance"
+		"DependentOnAbility"		"imba_slark_shadow_dance"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -285,6 +285,7 @@
 				"ad_linked_abilities"		"slark_dark_pact"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_slark_7"
 	{
@@ -298,6 +299,7 @@
 				"ad_linked_abilities"		"slark_shadow_dance"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_slark_8"
 	{

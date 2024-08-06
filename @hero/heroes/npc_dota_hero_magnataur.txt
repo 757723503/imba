@@ -375,6 +375,7 @@
 				"ad_linked_abilities"		"magnataur_shockwave"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_magnus_2"
 	{

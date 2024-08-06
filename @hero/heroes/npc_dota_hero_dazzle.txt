@@ -365,6 +365,7 @@
 				"ad_linked_abilities"		"dazzle_shallow_grave"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_dazzle_poison_touch_attack_range_bonus"
 	{

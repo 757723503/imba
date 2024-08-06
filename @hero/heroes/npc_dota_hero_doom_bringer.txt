@@ -277,11 +277,13 @@
 				"ad_linked_abilities"		"doom_bringer_devour"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_doom_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_doom_4"
 	{
@@ -307,6 +309,7 @@
 				"ad_linked_abilities"		"doom_bringer_scorched_earth"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_doom_10"
 	{

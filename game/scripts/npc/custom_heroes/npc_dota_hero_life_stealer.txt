@@ -80,7 +80,7 @@
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"life_stealer_infest"
+		"DependentOnAbility"		"imba_life_stealer_infest"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -403,16 +403,19 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lifestealer_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lifestealer_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lifestealer_6"
 	{

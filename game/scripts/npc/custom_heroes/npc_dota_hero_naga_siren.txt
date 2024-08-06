@@ -353,6 +353,7 @@
 		{
 			"value"		"-20"
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_naga_siren_6"
 	{
@@ -366,6 +367,7 @@
 				"ad_linked_abilities"		"naga_siren_mirror_image"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_naga_siren_net_cooldown"
 	{

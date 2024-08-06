@@ -250,6 +250,7 @@
 				"ad_linked_abilities"		"pugna_life_drain"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_pugna_2"
 	{
@@ -281,6 +282,7 @@
 				"ad_linked_abilities"		"pugna_decrepify"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_pugna_6"
 	{

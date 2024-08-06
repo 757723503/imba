@@ -263,6 +263,18 @@ function Is_CDOTA_BaseNPC_Hero(param: any): param is CDOTA_BaseNPC_Hero {
 function Is_CDOTA_BaseNpc_Building(param: any): param is CDOTA_BaseNPC_Building {
     return type(param) == 'table' && param['GetInvulnCount'] != null && param['SetInvulnCount'] != null;
 }
+declare namespace math {
+    /**
+     * 限制数字在某个区间内。（比如0,255）
+     */
+    function limit(target_number: number, low_bound: number, top_bound: number): number;
+}
+
+{
+    math.limit = function (target_number: number, low_bound: number, top_bound: number) {
+        return math.max(math.min(target_number, top_bound), low_bound);
+    };
+}
 // function convertModifierParamData<T>(data: T): ModifierParamData<T> {
 //     if (typeof data === 'boolean') {
 //         return (data ? 1 : 0) as ModifierParamData<T>;

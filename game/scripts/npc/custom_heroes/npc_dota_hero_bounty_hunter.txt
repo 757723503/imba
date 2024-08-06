@@ -238,7 +238,7 @@
 		"AbilityTextureName"		"bounty_hunter_cutpurse"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		"DependentOnAbility"		"bounty_hunter_track"
+		"DependentOnAbility"		"imba_bounty_hunter_track"
 		"MaxLevel"		"4"
 		"Innate"		"1"
 		"IsBreakable"		"1"
@@ -302,6 +302,7 @@
 				"ad_linked_abilities"		"bounty_hunter_track"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_bounty_hunter_9"
 	{

@@ -158,7 +158,7 @@
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilitySound"		"Hero_EmberSpirit.FlameGuard.Cast"
-		"DependentOnAbility"		"ember_spirit_fire_remnant"
+		"DependentOnAbility"		"imba_ember_spirit_fire_remnant"
 		"MaxLevel"		"4"
 		"Innate"		"1"
 		"HasShardUpgrade"		"1"

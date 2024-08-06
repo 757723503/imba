@@ -356,6 +356,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"elder_titan_ancestral_spirit"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_elder_titan_bonus_spirit_speed"
 	{

@@ -264,6 +264,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_templar_assassin_2"
 	{
@@ -289,6 +290,7 @@
 				"ad_linked_abilities"		"templar_assassin_meld"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_templar_assassin_7"
 	{
@@ -308,6 +310,7 @@
 				"ad_linked_abilities"		"templar_assassin_psi_blades"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_templar_assassin_refraction_damage"
 	{

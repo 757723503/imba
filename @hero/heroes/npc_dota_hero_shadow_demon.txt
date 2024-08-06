@@ -93,7 +93,7 @@
 		"AbilityTextureName"		"shadow_demon_shadow_servant"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"5"
-		"DependentOnAbility"		"shadow_demon_disruption"
+		"DependentOnAbility"		"imba_shadow_demon_disruption"
 		"AbilityValues"
 		{
 			"illusion_outgoing_damage"		"-80 -75 -70 -65 -60"
@@ -232,7 +232,7 @@
 		"HasScepterUpgrade"		"1"
 		"IsGrantedByShard"		"1"
 		"AbilitySound"		"Hero_ShadowDemon.DemonicPurge.Cast"
-		"DependentOnAbility"		"shadow_demon_demonic_purge"
+		"DependentOnAbility"		"imba_shadow_demon_demonic_purge"
 		"MaxLevel"		"3"
 		"AbilityDuration"		"6"
 		"AbilityCooldown"		"60"
@@ -333,6 +333,7 @@
 				"ad_linked_abilities"		"shadow_demon_shadow_poison"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_shadow_demon_4"
 	{
@@ -358,6 +359,7 @@
 				"ad_linked_abilities"		"shadow_demon_demonic_purge"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_shadow_demon_disseminate_damage"
 	{

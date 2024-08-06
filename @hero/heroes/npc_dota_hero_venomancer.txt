@@ -371,6 +371,7 @@
 				"ad_linked_abilities"		"venomancer_poison_nova"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_venomancer_8"
 	{

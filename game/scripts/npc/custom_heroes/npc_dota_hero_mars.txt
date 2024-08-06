@@ -330,6 +330,7 @@
 				"ad_linked_abilities"		"mars_arena_of_blood"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_mars_bulwark_damage_reduction"
 	{

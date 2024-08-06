@@ -482,6 +482,7 @@
 		{
 			"bonus_ms"		"20"
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_beastmaster_6"
 	{
@@ -492,6 +493,7 @@
 		{
 			"bonus_hp"		"250"
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_beastmaster_7"
 	{

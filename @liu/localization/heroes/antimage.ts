@@ -38,7 +38,7 @@ export const data: LocalizationData = {
         {
             ability_classname: 'imba_antimage_persectur',
             description:
-                '攻击会根据敌人缺失的魔法值造成减速。{mana_threshold}{魔法时造成最低减速，{zero_tooltip}}魔法时造成最高减速。敌人高于{mana_threshold}%魔法时没有效果。',
+                '攻击会根据敌人缺失的魔法值造成减速。{mana_threshold}%魔法时造成最低减速，{zero_tooltip}%魔法时造成最高减速。敌人高于{mana_threshold}%魔法时没有效果。',
             lore: '',
             name: '绝人之路',
             notes: ['幻象造成全额效果。'],

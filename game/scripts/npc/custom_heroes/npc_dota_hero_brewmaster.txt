@@ -552,6 +552,7 @@
 				"ad_linked_abilities"		"brewmaster_cinder_brew"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_brewmaster_5"
 	{

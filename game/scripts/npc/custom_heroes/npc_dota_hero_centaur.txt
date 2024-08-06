@@ -238,7 +238,7 @@
 		"FightRecapLevel"		"1"
 		"MaxLevel"		"1"
 		"AbilitySound"		"Hero_Centaur.Stampede"
-		"DependentOnAbility"		"centaur_work_horse"
+		"DependentOnAbility"		"imba_centaur_work_horse"
 		"AbilityCastAnimation"		"ACT_DOTA_OVERRIDE_ABILITY_4"
 		"AbilityCastGestureSlot"		"DEFAULT"
 		"AbilityCooldown"		"30"
@@ -303,29 +303,34 @@
 				"ad_linked_abilities"		"centaur_return"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_centaur_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"centaur_hoof_stomp"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_centaur_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"centaur_return"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_centaur_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"centaur_double_edge"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_centaur_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"centaur_stampede"
+		"BaseClass"		"special_bonus_base"
 	}
 }

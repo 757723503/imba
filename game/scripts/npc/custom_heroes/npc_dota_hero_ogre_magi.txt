@@ -332,6 +332,7 @@
 				"ad_linked_abilities"		"ogre_magi_fireblast"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_ogre_magi_4"
 	{

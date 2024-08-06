@@ -310,6 +310,7 @@
 				"ad_linked_abilities"		"treant_living_armor"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_treant_8"
 	{
@@ -335,6 +336,7 @@
 				"ad_linked_abilities"		"treant_natures_grasp"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_treant_13"
 	{

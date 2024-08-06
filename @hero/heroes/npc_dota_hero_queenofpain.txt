@@ -265,6 +265,7 @@
 				"ad_linked_abilities"		"queenofpain_blink"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_queen_of_pain_7"
 	{

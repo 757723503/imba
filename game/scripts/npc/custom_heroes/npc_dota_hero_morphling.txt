@@ -378,6 +378,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"morphling_waveform"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_morphling_4"
 	{
@@ -391,6 +392,7 @@
 				"ad_linked_abilities"		"morphling_waveform"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_morphling_8"
 	{
@@ -410,6 +412,7 @@
 				"ad_linked_abilities"		"morphling_morph_agi"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_morphling_waveform_cooldown"
 	{

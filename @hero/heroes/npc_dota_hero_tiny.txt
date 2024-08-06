@@ -118,7 +118,7 @@
 		"FightRecapLevel"		"1"
 		"Innate"		"1"
 		"IsBreakable"		"1"
-		"DependentOnAbility"		"tiny_grow"
+		"DependentOnAbility"		"imba_tiny_grow"
 		"AbilityModifierSupportBonus"		"35"
 		"AbilityValues"
 		{
@@ -339,6 +339,7 @@
 				"ad_linked_abilities"		"tiny_avalanche"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tiny_4"
 	{
@@ -358,6 +359,7 @@
 				"ad_linked_abilities"		"tiny_toss"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tiny_6"
 	{
@@ -370,5 +372,6 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"tiny_grow"
+		"BaseClass"		"special_bonus_base"
 	}
 }

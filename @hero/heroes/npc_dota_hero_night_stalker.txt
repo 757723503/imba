@@ -229,6 +229,7 @@
 				"ad_linked_abilities"		"night_stalker_darkness"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_night_stalker_2"
 	{

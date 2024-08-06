@@ -298,47 +298,55 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lucent_beam"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_luna_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lucent_beam"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_luna_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lunar_blessing"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_luna_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lucent_beam"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_luna_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_eclipse"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_luna_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_eclipse"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_luna_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_moon_glaive"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_luna_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"luna_lucent_beam && luna_moon_glaive"
+		"BaseClass"		"special_bonus_base"
 	}
 }

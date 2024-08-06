@@ -112,7 +112,7 @@
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
 		"AbilitySound"		"Ability.SandKing_CausticFinale"
-		"DependentOnAbility"		"sandking_epicenter"
+		"DependentOnAbility"		"imba_sandking_epicenter"
 		"Innate"		"1"
 		"MaxLevel"		"4"
 		"IsBreakable"		"1"
@@ -323,6 +323,7 @@
 				"ad_linked_abilities"		"sandking_sand_storm"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_sand_king_5"
 	{
@@ -336,6 +337,7 @@
 				"ad_linked_abilities"		"sandking_epicenter"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_sand_king_7"
 	{

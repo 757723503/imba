@@ -217,7 +217,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"pudge_dismember"
+		"DependentOnAbility"		"imba_pudge_dismember"
 		"AbilityValues"
 		{
 			"flesh_heap_strength_buff_amount"
@@ -238,12 +238,14 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"pudge_flesh_heap"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_pudge_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"pudge_dismember"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_pudge_4"
 	{
@@ -262,6 +264,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"pudge_dismember"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_pudge_7"
 	{

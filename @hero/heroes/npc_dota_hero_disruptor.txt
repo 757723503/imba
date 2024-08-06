@@ -262,6 +262,7 @@
 				"ad_linked_abilities"		"disruptor_kinetic_field"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_disruptor_4"
 	{

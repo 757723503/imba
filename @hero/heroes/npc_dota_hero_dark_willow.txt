@@ -275,6 +275,7 @@
 				"ad_linked_abilities"		"dark_willow_shadow_realm"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_dark_willow_2"
 	{
@@ -288,6 +289,7 @@
 				"ad_linked_abilities"		"dark_willow_terrorize"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_dark_willow_3"
 	{

@@ -233,6 +233,7 @@
 		"AbilityValues"
 		{
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_silencer_3"
 	{
@@ -252,6 +253,7 @@
 				"ad_linked_abilities"		"silencer_last_word"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_silencer_7"
 	{
@@ -265,6 +267,7 @@
 				"ad_linked_abilities"		"silencer_global_silence"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_silencer_glaives_bounces"
 	{

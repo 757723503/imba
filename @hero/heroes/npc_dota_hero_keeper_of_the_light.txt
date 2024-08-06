@@ -394,6 +394,7 @@
 				"ad_linked_abilities"		"keeper_of_the_light_chakra_magic"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_keeper_of_the_light_5"
 	{
@@ -407,6 +408,7 @@
 				"ad_linked_abilities"		"keeper_of_the_light_blinding_light"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_keeper_of_the_light_7"
 	{
@@ -420,6 +422,7 @@
 				"ad_linked_abilities"		"keeper_of_the_light_chakra_magic"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_keeper_of_the_light_8"
 	{
@@ -445,6 +448,7 @@
 				"ad_linked_abilities"		"keeper_of_the_light_chakra_magic"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_keeper_of_the_light_illuminate_cooldown"
 	{

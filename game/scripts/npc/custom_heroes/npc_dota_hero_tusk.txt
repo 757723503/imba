@@ -350,6 +350,7 @@
 				"ad_linked_abilities"		"tusk_walrus_punch"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tusk_5"
 	{
@@ -363,6 +364,7 @@
 				"ad_linked_abilities"		"tusk_ice_shards"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tusk_6"
 	{
@@ -376,6 +378,7 @@
 				"ad_linked_abilities"		"tusk_snowball"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tusk_7"
 	{

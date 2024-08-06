@@ -342,6 +342,7 @@
 				"ad_linked_abilities"		"dragon_knight_breathe_fire"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_dragon_knight_7"
 	{

@@ -274,6 +274,7 @@
 				"ad_linked_abilities"		"witch_doctor_voodoo_restoration"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_witch_doctor_3"
 	{

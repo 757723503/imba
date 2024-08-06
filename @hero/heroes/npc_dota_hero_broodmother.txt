@@ -343,30 +343,35 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"broodmother_insatiable_hunger"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_broodmother_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"broodmother_silken_bola"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_broodmother_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"broodmother_spawn_spiderlings"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_broodmother_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"broodmother_silken_bola"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_broodmother_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"broodmother_spin_web"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_broodmother_6"
 	{

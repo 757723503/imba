@@ -208,6 +208,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"bane_brain_sap"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_bane_3"
 	{
@@ -221,18 +222,21 @@
 				"ad_linked_abilities"		"bane_fiends_grip"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_bane_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"bane_nightmare"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_bane_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"bane_brain_sap"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_bane_9"
 	{
@@ -246,6 +250,7 @@
 				"ad_linked_abilities"		"bane_fiends_grip"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_bane_10"
 	{

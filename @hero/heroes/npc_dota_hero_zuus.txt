@@ -180,7 +180,7 @@
 		"AbilitySound"		"Hero_Zuus.StaticField"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"zuus_thundergods_wrath"
+		"DependentOnAbility"		"imba_zuus_thundergods_wrath"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -296,6 +296,7 @@
 				"value"		"2"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_zeus_2"
 	{
@@ -328,6 +329,7 @@
 				"affected_by_aoe_increase"		"1"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_zeus_jump_cooldown"
 	{

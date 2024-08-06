@@ -213,7 +213,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"HasScepterUpgrade"		"1"
 		"MaxLevel"		"4"
-		"DependentOnAbility"		"nevermore_requiem"
+		"DependentOnAbility"		"imba_nevermore_requiem"
 		"Innate"		"1"
 		"IsBreakable"		"1"
 		"AbilityValues"
@@ -413,6 +413,7 @@
 				"ad_linked_abilities"		"nevermore_dark_lord"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_nevermore_4"
 	{

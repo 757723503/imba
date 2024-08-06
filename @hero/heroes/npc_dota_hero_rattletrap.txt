@@ -286,6 +286,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_clockwerk_3"
 	{
@@ -299,6 +300,7 @@
 				"ad_linked_abilities"		"rattletrap_battery_assault"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_clockwerk_4"
 	{
@@ -312,6 +314,7 @@
 				"ad_linked_abilities"		"rattletrap_rocket_flare"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_clockwerk_5"
 	{

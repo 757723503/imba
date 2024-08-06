@@ -244,7 +244,7 @@
 		"AbilityTextureName"		"enigma_gravity_well"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_NONE"
-		"DependentOnAbility"		"enigma_black_hole"
+		"DependentOnAbility"		"imba_enigma_black_hole"
 		"MaxLevel"		"4"
 		"Innate"		"1"
 		"IsBreakable"		"1"
@@ -287,7 +287,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"4"
-		"DependentOnAbility"		"enigma_black_hole"
+		"DependentOnAbility"		"imba_enigma_black_hole"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{

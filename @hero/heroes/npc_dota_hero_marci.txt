@@ -307,6 +307,7 @@
 				"ad_linked_abilities"		"marci_guardian"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_marci_lunge_range"
 	{

@@ -419,6 +419,7 @@
 				"ad_linked_abilities"		"troll_warlord_battle_trance"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_troll_warlord_5"
 	{

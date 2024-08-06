@@ -225,7 +225,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"4"
-		"DependentOnAbility"		"leshrac_pulse_nova"
+		"DependentOnAbility"		"imba_leshrac_pulse_nova"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -262,6 +262,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_leshrac_6"
 	{

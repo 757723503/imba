@@ -293,7 +293,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"abyssal_underlord_dark_portal"
+		"DependentOnAbility"		"imba_abyssal_underlord_dark_portal"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -318,7 +318,7 @@
 		"AbilityTextureName"		"abyssal_underlord_abyssal_horde"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"3"
-		"DependentOnAbility"		"abyssal_underlord_dark_portal"
+		"DependentOnAbility"		"imba_abyssal_underlord_dark_portal"
 		"AbilityValues"
 		{
 			"warrior_health"		"400 600 800"
@@ -346,30 +346,35 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_pit_of_malice"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_underlord_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_atrophy_aura"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_underlord_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_firestorm"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_underlord_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_firestorm"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_underlord_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_pit_of_malice"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_underlord_7"
 	{
@@ -382,12 +387,14 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_firestorm"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_underlord_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"abyssal_underlord_atrophy_aura"
+		"BaseClass"		"special_bonus_base"
 	}
 	"imba_abyssal_underling_warrior_last_will"
 	{

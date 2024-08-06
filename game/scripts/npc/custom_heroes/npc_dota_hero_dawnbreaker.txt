@@ -349,6 +349,7 @@
 				"ad_linked_abilities"		"dawnbreaker_fire_wreath"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_dawnbreaker_celestial_hammer_slow"
 	{

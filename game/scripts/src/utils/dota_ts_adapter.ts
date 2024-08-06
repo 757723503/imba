@@ -234,12 +234,9 @@ const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_
     const originalOnDestroy = originalGetModifier.OnDestroy;
     env[name].OnDestroy = function (parameters: any) {
         if (!IsServer()) return;
-        print('运行结束1');
         if (COnDestroy) {
-            print('运行结束2');
             COnDestroy.call(this, this);
         }
-        print('运行结束3');
         if (originalOnDestroy) {
             originalOnDestroy.call(this, parameters);
         }

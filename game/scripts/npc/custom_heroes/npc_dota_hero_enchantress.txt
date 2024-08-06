@@ -273,6 +273,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"enchantress_impetus"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_enchantress_5"
 	{

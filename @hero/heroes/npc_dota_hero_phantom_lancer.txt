@@ -243,6 +243,7 @@
 				"ad_linked_abilities"		"phantom_lancer_phantom_edge"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_phantom_lancer_4"
 	{
@@ -256,6 +257,7 @@
 				"ad_linked_abilities"		"phantom_lancer_doppelwalk"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_phantom_lancer_5"
 	{
@@ -269,6 +271,7 @@
 				"ad_linked_abilities"		"phantom_lancer_spirit_lance"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_phantom_lancer_6"
 	{

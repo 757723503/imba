@@ -132,7 +132,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"riki_backstab"
+		"DependentOnAbility"		"imba_riki_backstab"
 		"AbilityValues"
 		{
 			"damage_multiplier"
@@ -248,6 +248,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"riki_tricks_of_the_trade"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_riki_3"
 	{
@@ -261,22 +262,26 @@
 				"ad_linked_abilities"		"riki_smoke_screen"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_riki_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"riki_tricks_of_the_trade"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_riki_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_riki_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_riki_8"
 	{
@@ -290,10 +295,12 @@
 				"ad_linked_abilities"		"riki_backstab"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_riki_9"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 }

@@ -275,6 +275,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"storm_spirit_electric_vortex"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_storm_spirit_4"
 	{
@@ -288,6 +289,7 @@
 				"ad_linked_abilities"		"storm_spirit_ball_lightning && storm_spirit_static_remnant"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_storm_spirit_5"
 	{
@@ -301,6 +303,7 @@
 				"ad_linked_abilities"		"storm_spirit_static_remnant"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_storm_spirit_7"
 	{
@@ -314,6 +317,7 @@
 				"ad_linked_abilities"		"storm_spirit_overload"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_storm_spirit_8"
 	{

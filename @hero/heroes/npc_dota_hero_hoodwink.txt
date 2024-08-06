@@ -278,7 +278,7 @@
 		"AbilityCastRange"		"999999"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_7"
 		"MaxLevel"		"3"
-		"DependentOnAbility"		"hoodwink_sharpshooter"
+		"DependentOnAbility"		"imba_hoodwink_sharpshooter"
 	}
 	"imba_hoodwink_mistwoods_wayfarer"
 	{
@@ -286,7 +286,7 @@
 		"ScriptFile"		"ability/hero_ability/hoodwink/imba_hoodwink_mistwoods_wayfarer"
 		"AbilityTextureName"		"hoodwink_mistwoods_wayfarer"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"DependentOnAbility"		"hoodwink_sharpshooter"
+		"DependentOnAbility"		"imba_hoodwink_sharpshooter"
 		"Innate"		"1"
 		"MaxLevel"		"4"
 		"IsBreakable"		"1"
@@ -312,6 +312,7 @@
 				"ad_linked_abilities"		"hoodwink_acorn_shot"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_hoodwink_sharpshooter_pure_damage"
 	{
@@ -325,6 +326,7 @@
 				"ad_linked_abilities"		"hoodwink_sharpshooter"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_hoodwink_sharpshooter_damage"
 	{
@@ -344,6 +346,7 @@
 				"ad_linked_abilities"		"hoodwink_bushwhack"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_hoodwink_bushwhack_damage"
 	{

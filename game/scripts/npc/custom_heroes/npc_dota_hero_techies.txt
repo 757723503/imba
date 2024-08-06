@@ -430,18 +430,21 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"techies_sticky_bomb"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_techies_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"techies_land_mines"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_techies_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"techies_land_mines"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_techies_5"
 	{
@@ -455,5 +458,6 @@
 				"ad_linked_abilities"		"techies_suicide"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 }

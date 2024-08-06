@@ -116,7 +116,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"necrolyte_reapers_scythe"
+		"DependentOnAbility"		"imba_necrolyte_reapers_scythe"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -234,6 +234,7 @@
 				"ad_linked_abilities"		"necrolyte_death_pulse"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_necrophos_2"
 	{

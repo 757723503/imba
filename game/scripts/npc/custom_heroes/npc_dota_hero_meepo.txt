@@ -310,6 +310,7 @@
 				"ad_linked_abilities"		"meepo_poof"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_meepo_3"
 	{
@@ -319,6 +320,7 @@
 		{
 			"value"		"2.5"
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_meepo_4"
 	{
@@ -332,6 +334,7 @@
 				"ad_linked_abilities"		"meepo_earthbind"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_meepo_6"
 	{

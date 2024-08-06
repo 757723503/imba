@@ -304,18 +304,21 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"medusa_stone_gaze"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_medusa_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"medusa_split_shot"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_medusa_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"medusa_mystic_snake"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_medusa_4"
 	{
@@ -329,11 +332,13 @@
 				"ad_linked_abilities"		"medusa_split_shot"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_medusa_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_medusa_6"
 	{

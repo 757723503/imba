@@ -292,6 +292,7 @@
 				"ad_linked_abilities"		"puck_waning_rift"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_puck_5"
 	{
@@ -305,6 +306,7 @@
 				"ad_linked_abilities"		"puck_dream_coil"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_puck_6"
 	{

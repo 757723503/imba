@@ -274,12 +274,14 @@
 				"ad_linked_abilities"		"windrunner_focusfire"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_windranger_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"windrunner_powershot"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_windranger_4"
 	{
@@ -293,6 +295,7 @@
 				"value"		"2.5"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_windranger_6"
 	{
@@ -318,6 +321,7 @@
 				"ad_linked_abilities"		"windrunner_shackleshot"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_windranger_windrun_undispellable"
 	{

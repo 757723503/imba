@@ -10,7 +10,7 @@
 		"MaxLevel"		"4"
 		"Innate"		"1"
 		"HasScepterUpgrade"		"1"
-		"DependentOnAbility"		"slardar_amplify_damage"
+		"DependentOnAbility"		"imba_slardar_amplify_damage"
 		"IsBreakable"		"1"
 		"AbilityValues"
 		{
@@ -245,11 +245,13 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_slardar_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_slardar_3"
 	{
@@ -263,6 +265,7 @@
 				"ad_linked_abilities"		"slardar_amplify_damage"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_slardar_4"
 	{
@@ -276,12 +279,14 @@
 				"ad_linked_abilities"		"slardar_slithereen_crush"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_slardar_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"slardar_amplify_damage"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_slardar_7"
 	{

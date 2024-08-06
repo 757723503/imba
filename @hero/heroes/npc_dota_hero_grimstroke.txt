@@ -397,6 +397,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_grimstroke_4"
 	{
@@ -422,6 +423,7 @@
 				"ad_linked_abilities"		"grimstroke_spirit_walk"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_grimstroke_8"
 	{

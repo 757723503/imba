@@ -382,6 +382,7 @@
 				"ad_linked_abilities"		"undying_tombstone"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_undying_2"
 	{
@@ -395,6 +396,7 @@
 				"ad_linked_abilities"		"undying_decay"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_undying_3"
 	{
@@ -408,6 +410,7 @@
 				"ad_linked_abilities"		"undying_tombstone"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_undying_4"
 	{
@@ -427,6 +430,7 @@
 				"ad_linked_abilities"		"undying_tombstone"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_undying_6"
 	{

@@ -311,6 +311,7 @@
 				"ad_linked_abilities"		"rubick_fade_bolt"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_rubick_4"
 	{
@@ -330,6 +331,7 @@
 				"ad_linked_abilities"		"rubick_spell_steal"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_rubick_6"
 	{
@@ -343,11 +345,13 @@
 				"ad_linked_abilities"		"rubick_spell_steal"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_rubick_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_rubick_8"
 	{
@@ -361,5 +365,6 @@
 				"ad_linked_abilities"		"rubick_telekinesis"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 }

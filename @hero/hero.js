@@ -156,6 +156,7 @@ function jsonToKv(jsonData, indentLevel = 1, isRoot = true, heroName, rootname) 
     for (const key in jsonData) {
         const value = jsonData[key];
         let newKey = key;
+        let newValue = value;
         // 排除 "Version" 这个 key 的处理
         if (key === 'Version') {
             kvLines.push(`${indentStr}"${key}"\t\t"${value}"`);
@@ -166,6 +167,17 @@ function jsonToKv(jsonData, indentLevel = 1, isRoot = true, heroName, rootname) 
             // 将包含 "special_bonus_unique" 的 key 值改为 "special_bonus_unique_imba"
             if (key.startsWith('special_bonus_unique')) {
                 newKey = key.replace('special_bonus_unique', 'special_bonus_unique_imba');
+                if (indentLevel == 1) {
+                    let baseclass = false;
+                    for (const key2 in value) {
+                        if (key2.startsWith('BaseClass')) {
+                            baseclass = true;
+                        }
+                    }
+                    if (baseclass == false) {
+                        value.BaseClass = 'special_bonus_base';
+                    }
+                }
             } else {
                 // 其余的 key 值加上 "imba_" 前缀
                 newKey = 'imba_' + key;
@@ -188,18 +200,21 @@ function jsonToKv(jsonData, indentLevel = 1, isRoot = true, heroName, rootname) 
                 kvLines.push(`${indentStr}"AbilityTextureName"\t\t"${root_name}"`);
                 // console.log('root_name', root_name);
             }
-            // console.log('indentLevel', indentLevel, key);
+            //更改DependentOnAbility格式带有imba
+            if (key.startsWith('DependentOnAbility')) {
+                newValue = 'imba_' + value;
+            }
         }
 
-        if (typeof value === 'object' && !Array.isArray(value)) {
+        if (typeof newValue === 'object' && !Array.isArray(newValue)) {
             kvLines.push(`${indentStr}"${newKey}"`);
             kvLines.push(`${indentStr}{`);
-            kvLines = kvLines.concat(jsonToKv(value, indentLevel + 1, false, heroName, root_name));
+            kvLines = kvLines.concat(jsonToKv(newValue, indentLevel + 1, false, heroName, root_name));
             kvLines.push(`${indentStr}}`);
-        } else if (Array.isArray(value)) {
-            kvLines.push(`${indentStr}"${newKey}"\t\t"${value.join(' | ')}"`);
+        } else if (Array.isArray(newValue)) {
+            kvLines.push(`${indentStr}"${newKey}"\t\t"${newValue.join(' | ')}"`);
         } else {
-            kvLines.push(`${indentStr}"${newKey}"\t\t"${value}"`);
+            kvLines.push(`${indentStr}"${newKey}"\t\t"${newValue}"`);
         }
     }
     return kvLines;

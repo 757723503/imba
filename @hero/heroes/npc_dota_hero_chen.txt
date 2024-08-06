@@ -254,7 +254,7 @@
 		"AbilityCastAnimation"		"ACT_DOTA_OVERRIDE_ABILITY_4"
 		"AbilityManaCost"		"50"
 		"Innate"		"1"
-		"DependentOnAbility"		"chen_holy_persuasion"
+		"DependentOnAbility"		"imba_chen_holy_persuasion"
 		"AbilityValues"
 		{
 			"health_min"		"220"
@@ -297,11 +297,13 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"chen_hand_of_god"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_chen_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_chen_4"
 	{
@@ -327,6 +329,7 @@
 				"ad_linked_abilities"		"chen_hand_of_god"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_chen_8"
 	{

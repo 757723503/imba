@@ -299,7 +299,7 @@
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
 		"MaxLevel"		"3"
-		"DependentOnAbility"		"visage_summon_familiars"
+		"DependentOnAbility"		"imba_visage_summon_familiars"
 		"AbilityCastPoint"		"0"
 		"AbilityCooldown"		"0"
 		"AbilityManaCost"		"0"
@@ -335,7 +335,7 @@
 		"AbilityCastPoint"		"0"
 		"MaxLevel"		"3"
 		"AbilitySound"		"Visage_Familiar.StoneForm.Cast"
-		"DependentOnAbility"		"visage_summon_familiars"
+		"DependentOnAbility"		"imba_visage_summon_familiars"
 		"AbilityCooldown"		"11"
 		"AbilityValues"
 		{
@@ -387,6 +387,7 @@
 				"ad_linked_abilities"		"visage_soul_assumption"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_visage_4"
 	{
@@ -406,6 +407,7 @@
 				"ad_linked_abilities"		"visage_gravekeepers_cloak"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_visage_6"
 	{

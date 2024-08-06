@@ -357,6 +357,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_kunkka_3"
 	{
@@ -370,6 +371,7 @@
 				"ad_linked_abilities"		"kunkka_ghostship"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_kunkka_4"
 	{
@@ -383,6 +385,7 @@
 				"ad_linked_abilities"		"kunkka_tidebringer"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_kunkka_6"
 	{

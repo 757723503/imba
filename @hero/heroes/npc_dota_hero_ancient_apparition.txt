@@ -211,7 +211,7 @@
 		"SpellImmunityType"		"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"		"4"
 		"Innate"		"1"
-		"DependentOnAbility"		"ancient_apparition_ice_blast"
+		"DependentOnAbility"		"imba_ancient_apparition_ice_blast"
 		"AbilityValues"
 		{
 			"damage"

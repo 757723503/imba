@@ -260,6 +260,7 @@
 				"ad_linked_abilities"		"razor_static_link"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_razor_4"
 	{
@@ -273,6 +274,7 @@
 				"ad_linked_abilities"		"razor_plasma_field"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_razor_plasmafield_second_ring"
 	{

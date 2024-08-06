@@ -360,36 +360,42 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lycan_shapeshift"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lycan_2"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lycan_summon_wolves"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lycan_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lycan_summon_wolves"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lycan_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lycan_feral_impulse"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lycan_5"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lycan_howl"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lycan_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lycan_summon_wolves"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lycan_8"
 	{
@@ -403,6 +409,7 @@
 				"ad_linked_abilities"		"lycan_shapeshift"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lycan_howl_armor"
 	{

@@ -200,7 +200,7 @@
 		"AbilityTextureName"		"sven_wrath_of_god"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel"		"4"
-		"DependentOnAbility"		"sven_gods_strength"
+		"DependentOnAbility"		"imba_sven_gods_strength"
 		"AbilityValues"
 		{
 			"bonus_damage_per_str"		"0.4 0.5 0.6 0.7"
@@ -225,6 +225,7 @@
 				"ad_linked_abilities"		"sven_gods_strength"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_sven_4"
 	{

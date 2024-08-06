@@ -391,6 +391,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lich_frost_shield"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lich_2"
 	{
@@ -404,18 +405,21 @@
 				"ad_linked_abilities"		"lich_sinister_gaze"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lich_3"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lich_frost_nova"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lich_4"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lich_frost_shield"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lich_5"
 	{
@@ -429,23 +433,27 @@
 				"ad_linked_abilities"		"lich_chain_frost"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lich_6"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lich_frost_nova"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lich_7"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lich_chain_frost"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_lich_8"
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"lich_frost_shield"
+		"BaseClass"		"special_bonus_base"
 	}
 }

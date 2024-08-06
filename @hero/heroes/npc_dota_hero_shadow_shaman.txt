@@ -314,6 +314,7 @@
 				"ad_linked_abilities"		"shadow_shaman_mass_serpent_ward"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_shadow_shaman_2"
 	{

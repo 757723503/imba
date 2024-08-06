@@ -311,6 +311,7 @@
 				"ad_linked_abilities"		"tidehunter_anchor_smash"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_tidehunter_9"
 	{

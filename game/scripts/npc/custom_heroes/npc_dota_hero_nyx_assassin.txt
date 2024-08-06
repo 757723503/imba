@@ -274,6 +274,7 @@
 				"ad_linked_abilities"		"nyx_assassin_jolt"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_nyx_2"
 	{
@@ -292,6 +293,7 @@
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ad_linked_abilities"		"nyx_assassin_jolt"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_nyx_6"
 	{
@@ -305,6 +307,7 @@
 				"ad_linked_abilities"		"nyx_assassin_spiked_carapace"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_nyx_carapace_reflect_duration"
 	{

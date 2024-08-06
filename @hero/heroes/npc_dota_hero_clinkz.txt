@@ -234,7 +234,7 @@
 		"MaxLevel"		"4"
 		"Innate"		"1"
 		"HasScepterUpgrade"		"1"
-		"DependentOnAbility"		"clinkz_wind_walk"
+		"DependentOnAbility"		"imba_clinkz_wind_walk"
 		"AbilityCastRange"		"0"
 		"AbilityCastPoint"		"0"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_6"
@@ -362,6 +362,7 @@
 				"ad_linked_abilities"		"clinkz_wind_walk"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_clinkz_10"
 	{

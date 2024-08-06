@@ -292,6 +292,7 @@
 				"ad_linked_abilities"		"spirit_breaker_bulldoze"
 			}
 		}
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_spirit_breaker_3"
 	{
@@ -303,6 +304,7 @@
 	{
 		"AbilityType"		"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"		"special_bonus_base"
 	}
 	"special_bonus_unique_imba_spirit_breaker_shield"
 	{
