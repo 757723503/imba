@@ -25,11 +25,16 @@ export class CFilter {
                     (event.entindex_target >= 6 || event.entindex_target <= 0)
                 ) {
                     UnitAbilitiesForEach(unit, ability => {
-                        if (ability && CIsValid(ability)) {
-                            Timers.CreateTimer(0.1, () => {
+                        Timers.CreateTimer(0.1, () => {
+                            if (CIsValid(ability)) {
                                 CRefreshValue(ability);
-                            });
-                        }
+                                const modifeir_name = ability.GetIntrinsicModifierName();
+                                const modifier = unit.FindModifierByName(modifeir_name);
+                                if (CIsValid(modifier)) {
+                                    CRefreshValue(modifier);
+                                }
+                            }
+                        });
                     });
                 }
             });
@@ -48,7 +53,7 @@ export class CFilter {
     }
 
     _ModifierFilter(event: ModifierGainedFilterEvent): boolean {
-        if (event.entindex_parent_const <= 0) return true;
+        if (event.entindex_parent_const < 0) return true;
         const parent = EntIndexToHScript(event.entindex_parent_const);
         const modifierName = event.name_const;
         if (CIsValid(parent) && Is_CDOTA_BaseNPC_Hero(parent)) {
@@ -58,16 +63,30 @@ export class CFilter {
                 modifierName == 'modifier_item_ultimate_scepter_consumed_alchemist'
             ) {
                 UnitAbilitiesForEach(parent, ability => {
-                    if (ability && ability['____constructor']) {
-                        ability['____constructor']();
-                    }
+                    Timers.CreateTimer(0.1, () => {
+                        if (CIsValid(ability)) {
+                            CRefreshValue(ability);
+                            const modifeir_name = ability.GetIntrinsicModifierName();
+                            const modifier = parent.FindModifierByName(modifeir_name);
+                            if (CIsValid(modifier)) {
+                                CRefreshValue(modifier);
+                            }
+                        }
+                    });
                 });
             }
             if (modifierName == 'modifier_item_aghanims_shard') {
                 UnitAbilitiesForEach(parent, ability => {
-                    if (ability && ability['____constructor']) {
-                        ability['____constructor']();
-                    }
+                    Timers.CreateTimer(0.1, () => {
+                        if (CIsValid(ability)) {
+                            CRefreshValue(ability);
+                            const modifeir_name = ability.GetIntrinsicModifierName();
+                            const modifier = parent.FindModifierByName(modifeir_name);
+                            if (CIsValid(modifier)) {
+                                CRefreshValue(modifier);
+                            }
+                        }
+                    });
                 });
             }
             return true;

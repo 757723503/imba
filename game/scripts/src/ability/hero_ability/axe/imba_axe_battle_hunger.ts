@@ -8,6 +8,8 @@ export class imba_axe_battle_hunger extends BaseAbility {
 
     OnSpellStart(): void {
         this.caster.EmitSound('Hero_Axe.Battle_Hunger');
+
+        if (this.caster.TriggerSpellAbsorb(this)) return;
         this.target.AddModifier(this.caster, this, modifier_imba_axe_battle_hunger, {
             duration: this._duration,
         });
@@ -21,6 +23,10 @@ class modifier_imba_axe_battle_hunger extends BaseModifier {
             is_hidden: false,
             is_multiple: this._should_stack === 1,
         };
+    }
+
+    ShouldUseOverheadOffset(): boolean {
+        return true;
     }
 
     _should_stack = this.ability.GetSpecialValue('imba_axe_battle_hunger', 'should_stack');
@@ -55,17 +61,29 @@ class modifier_imba_axe_battle_hunger extends BaseModifier {
         return HeroParticleList.imba_axe_battle_hunger_status;
     }
 
+    SetOverheadEffectOffset(offset: number): boolean {
+        return true;
+    }
+
+    GetEffectName(): string {
+        return HeroParticleList.imba_axe_battle_hunger;
+    }
+
+    GetEffectAttachType(): ParticleAttachment_t {
+        return ParticleAttachment.OVERHEAD_FOLLOW;
+    }
+
     OnCreated(params: ModifierParams): void {
         const caster_modifier = this.caster.FindModifierByName('modifier_imba_axe_battle_hunger_self_movespeed');
         caster_modifier && caster_modifier.IncrementStackCount();
         this.StartIntervalThink(0.5);
-        CCreateParticle({
-            caster: this.caster,
-            owner: this.parent,
-            particleAttach: ParticleAttachment.OVERHEAD_FOLLOW,
-            particleName: HeroParticleList.imba_axe_battle_hunger,
-            modifier: this,
-        });
+        // CCreateParticle({
+        //     caster: this.caster,
+        //     owner: this.parent,
+        //     particleAttach: ParticleAttachment.OVERHEAD_FOLLOW,
+        //     particleName: HeroParticleList.imba_axe_battle_hunger,
+        //     modifier: this,
+        // });
     }
 
     DeclareFunctions(): ModifierFunction[] {

@@ -37,7 +37,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     // 初始化一个伤害伤害记录table
     let record_list: string[];
     // FIXME: 不想看的时候注释这行
-    // if (attacker.IsHero()) record_list = [];
+    if (attacker.IsHero()) record_list = [];
 
     // 先创建fixed damage table
     const fixed_tb: FixedDamageTable = <FixedDamageTable>{
@@ -127,7 +127,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
                     )
                 );
             }
-            if (atk_effct_tb.addedAtkMagicalDamage) {
+            if (atk_effct_tb.addedAtkMagicalDamage > 0) {
                 fixed_tb.attack_magical_damage += atk_effct_tb.addedAtkMagicalDamage;
                 DamageHelper.AddRecord(
                     record_list,
@@ -198,7 +198,7 @@ export function CustomApplyDamage(not_use_dmgTable: DamageTable) {
     } else {
         DebugError('DamageProperty出错');
     }
-    if (!is_cullingdown) {
+    if (is_cullingdown) {
         DamageHelper.AddRecord(record_list, '此次为斩杀!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n');
     }
     DamageHelper.AddRecord(record_list, string.format('最终伤害:%.2f', end_dmg_tb.true_damage));

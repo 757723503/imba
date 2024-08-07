@@ -9,6 +9,7 @@ export class imba_axe_culling_blade extends BaseAbility {
     OnSpellStart(): void {
         const heal = this._damage;
         const target_health = this.target.GetHealth();
+        if (this.caster.TriggerSpellAbsorb(this)) return;
         if (target_health <= heal) {
             if (this.target.CTrueKill(this.caster, this.ability)) {
                 const units = CFindUnitsInRadius({

@@ -31,12 +31,34 @@ class modifier_imba_axe_counter_helix extends BaseModifier {
     _max_stacks = this.ability.GetSpecialValue('imba_axe_counter_helix', 'max_stacks');
     _attacks_increase_counter = this.ability.GetSpecialValue('imba_axe_counter_helix', 'attacks_increase_counter');
     _debuff_duration = this.ability.GetSpecialValue('imba_axe_counter_helix', 'debuff_duration');
-    _custom = this.parent.HasScepter()
-        ? [ModifierFunctions.OnAttackLanded_Target, ModifierFunctions.OnAttackLanded_Attacker]
-        : [ModifierFunctions.OnAttackLanded_Target];
+    _custom = [
+        ModifierFunctions.OnAttackLanded_Target,
+        ModifierFunctions.OnAttackLanded_Attacker,
+        ModifierFunctions.DamageFixed_VictimSpecialPhysicalDamagePercent,
+    ];
+
+    DamageFixed_VictimSpecialPhysicalDamagePercent(dmgTable: FixedDamageTable): number {
+        if (!this.parent.HasScepter() || dmgTable.attack_physical_damage <= 0 || this.parent.IsIllusion()) return 0;
+        const reduce = this.GetStackCount() * this._damage_reduction;
+        const modifier = dmgTable.attacker.FindModifierByName('modifier_imba_axe_counter_helix_damage_reduction');
+        if (modifier) {
+            return -1 * modifier.GetStackCount() * this._damage_reduction;
+        }
+        return 0;
+    }
 
     CustomDeclareFunctions(): ModifierFunctions[] {
         return this._custom;
+    }
+
+    OnCreated(params: ModifierParams): void {
+        this.SetStackCount(this._trigger_attacks);
+    }
+
+    OnRefresh(params: object): void {
+        if (this.GetStackCount() > this._trigger_attacks) {
+            this.SetStackCount(this._trigger_attacks);
+        }
     }
 
     OnAttackLanded_Target(AttackData: UnitEventAttackDamageData): void {
@@ -51,6 +73,7 @@ class modifier_imba_axe_counter_helix extends BaseModifier {
     }
 
     OnAttackLanded_Attacker(AttackData: UnitEventAttackDamageData): void {
+        if (!this.parent.HasScepter()) return;
         if (AttackData.damageTable.victim.IsUnit() && !AttackData.damageTable.attacker.PassivesDisabled() && this.ability.IsCooldownReady()) {
             this.GetStackCount() > 0 && this.DecrementStackCount();
             if (this.GetStackCount() <= 0) {
@@ -72,6 +95,7 @@ class modifier_imba_axe_counter_helix extends BaseModifier {
             teamFilter: UnitTargetTeam.ENEMY,
             typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC,
         });
+        const is_scepter = this.parent.HasScepter();
         enemies.forEach(enemy => {
             CAddDamage({
                 attacker: this.parent,
@@ -81,7 +105,7 @@ class modifier_imba_axe_counter_helix extends BaseModifier {
                 sourceAbility: this.ability,
                 victim: enemy,
             });
-            if (this.parent.HasScepter()) {
+            if (is_scepter) {
                 enemy.AddModifier(this.parent, this.ability, modifier_imba_axe_counter_helix_damage_reduction, { duration: this._debuff_duration });
             }
         });
@@ -139,15 +163,15 @@ export class modifier_imba_axe_counter_helix_damage_reduction extends BaseModifi
         }
     }
 
+    DeclareFunctions(): modifierfunction[] {
+        return CDeclareFunctions(ModifierFunction.TOOLTIP);
+    }
+
+    OnTooltip(): number {
+        return this.GetStackCount() * this._damage_reduction;
+    }
+
     _max_stacks = this.ability.GetSpecialValue('imba_axe_counter_helix', 'max_stacks');
     _attacks_increase_counter = this.ability.GetSpecialValue('imba_axe_counter_helix', 'attacks_increase_counter');
     _damage_reduction = this.ability.GetSpecialValue('imba_axe_counter_helix', 'damage_reduction');
-    _customDeclare = [ModifierFunctions.DamageFixed_VictimSpecialPhysicalDamagePercent];
-    DamageFixed_VictimSpecialPhysicalDamagePercent(dmgTable: FixedDamageTable): number {
-        return -this.GetStackCount() * this._damage_reduction;
-    }
-
-    CustomDeclareFunctions(): ModifierFunctions[] {
-        return this._customDeclare;
-    }
 }

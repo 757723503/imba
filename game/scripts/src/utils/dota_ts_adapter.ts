@@ -680,15 +680,14 @@ const _modifier_methods: {
         removeFunc: (instance, parent_index) => {},
     },
 
-    //DamageFixed_VictimSpecialPhysicalDamagePercent
-
     [ModifierFunctions.DamageFixed_VictimSpecialPhysicalDamagePercent]: {
         registerFunc: (instance, parent_index) => {
             const dispatcherId = Dispatcher.Register('DAMAGE_FIXED_SPEC_PHYSICAL_DAMAGE', parent_index, event => {
                 let add_pct = 0;
-                if (instance.DamageFixed_VictimSpecialPhysicalDamagePercent)
+                if (instance.DamageFixed_VictimSpecialPhysicalDamagePercent) {
                     add_pct = instance.DamageFixed_VictimSpecialPhysicalDamagePercent(event.dmgTable);
-                event.add_pct += add_pct ?? 0;
+                    event.add_pct += add_pct ?? 0;
+                }
             });
             instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
         },

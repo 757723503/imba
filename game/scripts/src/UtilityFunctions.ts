@@ -33,7 +33,7 @@ function UnitAbilitiesForEach(unit: CDOTA_BaseNPC, callback: (ability: CDOTABase
     }
 }
 /**刷新类的 _开头的数据 */
-function CRefreshValue(classes: CDOTABaseAbility | CDOTA_Modifier_Lua | CDOTA_Item): void {
+function CRefreshValue(classes: CDOTABaseAbility | CDOTA_Buff | CDOTA_Item): void {
     const all_keys = Object.keys(classes);
     all_keys.forEach(key => {
         if (key.startsWith('_') && typeof classes[key] == 'number') {

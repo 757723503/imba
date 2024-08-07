@@ -47,7 +47,8 @@ export class modifier_imba_abaddon_borrowed_time_passive extends BaseModifier {
         if (this.parent.PassivesDisabled()) return;
         if (damage <= 0) return;
         if (this.parent.GetHealth() - damage <= this._hp_threshold && this.ability.IsCooldownReady()) {
-            this.ability.OnSpellStart();
+            // this.ability.OnSpellStart();
+            this.ability.UseResources(false, false, false, true);
         }
     }
 }

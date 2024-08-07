@@ -70,6 +70,18 @@ export const data: LocalizationData = {
                     ability_special: 'trigger_attacks',
                     text: '螺旋所需攻击次数：',
                 },
+                {
+                    ability_special: 'debuff_duration',
+                    text: '负面状态持续时间：',
+                },
+                {
+                    ability_special: 'damage_reduction',
+                    text: '%伤害减少：',
+                },
+                {
+                    ability_special: 'max_stacks',
+                    text: '最大叠加层数：',
+                },
             ],
             name: '反击螺旋',
             description: '受到一定次数攻击后，斧王就会做出螺旋反击，对附近所有敌方单位造成纯粹伤害。',

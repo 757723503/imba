@@ -25,11 +25,14 @@ export class imba_axe_berserkers_call extends BaseAbility {
                 duration: this._duration,
             });
             this._modifiers.push(modifer);
-            battle_hunger && this.caster.COnSpellStart(HeroAbility.imba_axe_battle_hunger, enemy);
+            if (this.caster.HasShard() && battle_hunger && battle_hunger.GetLevel() > 0) {
+                battle_hunger && this.caster.COnSpellStart(HeroAbility.imba_axe_battle_hunger, enemy);
+            }
         });
         this.caster.AddModifier(this.caster, this, modifier_imba_axe_berserkers_call_armor, {
             duration: this._duration,
         });
+        this.PlayEffects();
     }
 
     OnOwnerDied(): void {
@@ -42,12 +45,21 @@ export class imba_axe_berserkers_call extends BaseAbility {
         const pfx = CCreateParticle({
             caster: this.caster,
             owner: this.caster,
-            particleAttach: ParticleAttachment.CENTER_FOLLOW,
+            particleAttach: ParticleAttachment.WORLDORIGIN,
             particleName: HeroParticleList.imba_axe_beserkers_call_owner,
             duration: 2,
+            controlPointData: [
+                {
+                    CP: 0,
+                    vector: this.caster.GetAbsOrigin(),
+                },
+                {
+                    CP: 2,
+                    vector: Vector(this._radius, this._radius, this._radius),
+                },
+            ],
         });
-        CSetParticleControl(pfx, 0, this.caster.GetAbsOrigin());
-        if (this.caster.GetUnitName() === 'npc_dota_hero_axe') {
+        if (this.caster.GetUnitName() == 'npc_dota_hero_axe') {
             CSetParticleControlEnt(pfx, 1, this.caster, ParticleAttachment.CENTER_FOLLOW, Attachment.ATTACH_MOUTH, this.caster.GetAbsOrigin(), true);
         } else {
             CSetParticleControlEnt(pfx, 1, this.caster, ParticleAttachment.CENTER_FOLLOW, Attachment.ATTACH_HITLOC, this.caster.GetAbsOrigin(), true);
@@ -87,10 +99,15 @@ class modifier_imba_axe_berserkers_call extends BaseModifier {
     }
 
     OnCreated(params: ModifierParams): void {
-        this.parent.MoveToTargetToAttack(this.caster);
+        ExecuteOrderFromTable({
+            OrderType: UnitOrder.ATTACK_TARGET,
+            UnitIndex: this.parent.entindex(),
+            TargetIndex: this.caster.entindex(),
+            Queue: false,
+        });
         this.parent.SetAttacking(this.caster);
         this.parent.SetForceAttackTarget(this.caster);
-        this.StartIntervalThink(0.1);
+        // this.StartIntervalThink(0.1);
         CCreateParticle({
             caster: this.caster,
             owner: this.parent,
@@ -104,9 +121,16 @@ class modifier_imba_axe_berserkers_call extends BaseModifier {
         return HeroParticleList.imba_axe_beserkers_call_target_status;
     }
 
-    OnIntervalThink(): void {
-        this.parent.MoveToTargetToAttack(this.caster);
-    }
+    // OnIntervalThink(): void {
+    //     ExecuteOrderFromTable({
+    //         OrderType: UnitOrder.ATTACK_TARGET,
+    //         UnitIndex: this.parent.entindex(),
+    //         TargetIndex: this.caster.entindex(),
+    //         Queue: false,
+    //     });
+    //     this.parent.SetAttacking(this.caster);
+    //     this.parent.SetForceAttackTarget(this.caster);
+    // }
 
     DeclareFunctions(): ModifierFunction[] {
         return CDeclareFunctions(ModifierFunction.ATTACKSPEED_BONUS_CONSTANT);
