@@ -154,6 +154,15 @@ declare interface LocalEventDeclarations {
     UNIT_HERO_DEATH: EndDamageTable;
     UNIT_BUILDING_DEATH: EndDamageTable;
 
+    CHANGE_KILLER: {
+        attacker: CDOTA_BaseNPC;
+        victim: CDOTA_BaseNPC;
+        damage: number;
+        damage_type: DamageTypes;
+        ability: CDOTABaseAbility;
+        damage_flags: DamageFlags;
+        change_killer: CDOTA_BaseNPC;
+    };
     ON_ATTACK_FAIL_BOTH: UnitEventAttackDamageData;
 }
 

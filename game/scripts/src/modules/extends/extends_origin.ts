@@ -221,6 +221,18 @@ if (!CDOTA_BaseNPC.CReflectAbility) {
         this.RemoveAbilityByHandle(reflect_ability);
     };
 }
+if (!CDOTA_BaseNPC.COnSpellStart) {
+    CDOTA_BaseNPC.COnSpellStart = function (this: CDOTA_BaseNPC, ability_name: string, target?: CDOTA_BaseNPC, pos?: Vector): void {
+        const ability = this.FindAbilityByName(ability_name);
+        if (!ability) {
+            return;
+        }
+        ability['target'] = target;
+        ability['target_pos'] = pos;
+        ability['isonspellstart'] = true;
+        ability.OnSpellStart();
+    };
+}
 // if (!CDOTA_BaseNPC.CTargetTriggerAbsorbReflect) {
 //     CDOTA_BaseNPC.CTargetTriggerAbsorbReflect = function (
 //         this: CDOTA_BaseNPC,

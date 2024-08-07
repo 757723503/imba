@@ -55,6 +55,32 @@ enum HeroParticleList {
     imba_antimage_mana_void_caster = 'particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_basher_cast.vpcf',
     /** 法力虚空buff */
     imba_antimage_mana_void_buff = 'particles/units/heroes/hero_antimage/antimage_manavoid_buff.vpcf',
+    /** 反击螺旋 */
+    imba_axe_counter_helix1 = 'particles/units/heroes/hero_axe/axe_counterhelix.vpcf',
+    imba_axe_counter_helix2 = 'particles/units/heroes/hero_axe/axe_attack_blur_counterhelix.vpcf',
+    imba_axe_counter_helix3 = 'particles/units/heroes/hero_axe/axe_attack_blur.vpcf',
+    /** 狂战士的怒吼目标 */
+    imba_axe_beserkers_call_target = 'particles/units/heroes/hero_axe/axe_beserkers_call.vpcf',
+    /** 狂战士的怒吼目标状态 */
+    imba_axe_beserkers_call_target_status = 'particles/status_fx/status_effect_beserkers_call.vpcf',
+    /** 战斗饥渴 */
+    imba_axe_battle_hunger = 'particles/units/heroes/hero_axe/axe_battle_hunger.vpcf',
+    /** 战斗饥渴状态 */
+    imba_axe_battle_hunger_status = 'particles/status_fx/status_effect_battle_hunger.vpcf',
+    /** 战斗饥渴buff */
+    imba_axe_beserkers_call_hero_effect = 'particles/units/heroes/hero_axe/axe_beserkers_call_hero_effect.vpcf',
+    /** 狂战士的怒吼 */
+    imba_axe_beserkers_call_owner = 'particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf',
+    /** 一人之军 */
+    imba_axe_armor = 'particles/units/heroes/hero_axe/axe_armor.vpcf',
+    /**淘汰之刃 */
+    imba_axe_culling_blade = 'particles/units/heroes/hero_axe/axe_culling_blade.vpcf',
+    imba_axe_culling_blade_boost = 'particles/units/heroes/hero_axe/axe_culling_blade_boost.vpcf',
+    imba_axe_culling_blade_hero_effect = 'particles/units/heroes/hero_axe/axe_culling_blade_hero_effect.vpcf',
+    imba_axe_cullingblade_sprint = 'particles/units/heroes/hero_axe/axe_cullingblade_sprint.vpcf',
+    imba_axe_cullingblade_sprint_axe = 'particles/units/heroes/hero_axe/axe_cullingblade_sprint_axe.vpcf',
+    imba_axe_culling_blade_kill = 'particles/units/heroes/hero_axe/axe_culling_blade_kill.vpcf',
+    imba_axe_cullingblade_sprint_creep = 'particles/units/heroes/hero_axe/axe_cullingblade_sprint_creep.vpcf',
 }
 
 /** 英雄饰品特效 */

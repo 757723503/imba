@@ -45,9 +45,11 @@ export class CChat {
 
                 break;
             case ChatCommand.qw:
-                UnitAbilitiesForEach(hero, ability => {
-                    CRefreshValue(ability);
-                });
+                CreateUnitByName('npc_dota_neutral_ghost', hero.GetAbsOrigin(), true, null, null, DotaTeam.NEUTRALS);
+                // UnitAbilitiesForEach(hero, ability => {
+                // CRefreshValue(ability);
+                // DebugPrint(ability.GetAbilityName(), ability.GetLevel());
+                // });
                 // DebugPrint(hero.GetHeroFacetID());
                 // const ability = hero.GetAbilityByIndex(0);
                 // ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'duration');

@@ -1,3 +1,4 @@
+//战斗饥渴
 @registerAbility()
 export class imba_axe_battle_hunger extends BaseAbility {
     _duration = this.GetSpecialValue('imba_axe_battle_hunger', 'duration');
@@ -7,7 +8,6 @@ export class imba_axe_battle_hunger extends BaseAbility {
 
     OnSpellStart(): void {
         this.caster.EmitSound('Hero_Axe.Battle_Hunger');
-
         this.target.AddModifier(this.caster, this, modifier_imba_axe_battle_hunger, {
             duration: this._duration,
         });
@@ -51,10 +51,21 @@ class modifier_imba_axe_battle_hunger extends BaseModifier {
         }
     }
 
+    GetStatusEffectName(): string {
+        return HeroParticleList.imba_axe_battle_hunger_status;
+    }
+
     OnCreated(params: ModifierParams): void {
         const caster_modifier = this.caster.FindModifierByName('modifier_imba_axe_battle_hunger_self_movespeed');
         caster_modifier && caster_modifier.IncrementStackCount();
         this.StartIntervalThink(0.5);
+        CCreateParticle({
+            caster: this.caster,
+            owner: this.parent,
+            particleAttach: ParticleAttachment.OVERHEAD_FOLLOW,
+            particleName: HeroParticleList.imba_axe_battle_hunger,
+            modifier: this,
+        });
     }
 
     DeclareFunctions(): ModifierFunction[] {

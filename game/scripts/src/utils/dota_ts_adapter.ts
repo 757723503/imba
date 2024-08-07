@@ -356,63 +356,6 @@ const initializeConfig = (modifier: CDOTA_Modifier_Lua, name: string) => {
     }
 };
 
-//  const registerModifier = (name?: string) => (modifier: new () => CDOTA_Modifier_Lua) => {
-//     if (name !== undefined) {
-//         // @ts-ignore
-//         modifier.name = name;
-//     } else {
-//         name = modifier.name;
-//     }
-
-//     const [env, source] = getFileScope();
-//     const [fileName] = string.gsub(source, '.*scripts[\\/]vscripts[\\/]', '');
-
-//     env[name] = {};
-
-//     toDotaClassInstance(env[name], modifier);
-
-//     // 将需要指向 BaseModifier 的方法添加到列表中
-//     // const baseModifierMethods = ['OnCreated', 'OnDestroy', 'CustomDeclareFunctions'];
-//     const baseModifierMethods = ['OnCreated', 'OnDestroy'];
-
-//     baseModifierMethods.forEach(methodName => {
-//         const baseMethod = BaseModifier.prototype[methodName];
-//         const modifierMethod = modifier.prototype[methodName];
-
-//         env[name][methodName] = function (parameters: any) {
-//             this.____constructor();
-//             if (!IsServer()) return;
-//             // 调用 BaseModifier 的方法
-//             if (baseMethod) {
-//                 baseMethod.call(this, parameters);
-//             }
-//             // 调用 modifier 自己的方法
-//             if (modifierMethod && modifierMethod !== baseMethod) {
-//                 modifierMethod.call(this, parameters);
-//             }
-//         };
-//     });
-
-//     let type = LuaModifierMotionType.NONE;
-//     let base = (modifier as any).____super;
-//     while (base) {
-//         if (base === BaseModifierMotionBoth) {
-//             type = LuaModifierMotionType.BOTH;
-//             break;
-//         } else if (base === BaseModifierMotionHorizontal) {
-//             type = LuaModifierMotionType.HORIZONTAL;
-//             break;
-//         } else if (base === BaseModifierMotionVertical) {
-//             type = LuaModifierMotionType.VERTICAL;
-//             break;
-//         }
-
-//         base = base.____super;
-//     }
-
-//     LinkLuaModifier(name, fileName, type);
-// };
-
 function clearTable(table: object) {
     for (const key in table) {
         delete (table as any)[key];
@@ -542,6 +485,28 @@ const _modifier_methods: {
         },
         removeFunc: (instance, parent_index) => {},
     },
+
+    [ModifierFunctions.ChangeKiller]: {
+        registerFunc: (instance, parent_index) => {
+            const dispatcherId = Dispatcher.Register('CHANGE_KILLER', parent_index, event => {
+                let change_killer: CDOTA_BaseNPC | undefined;
+                if (instance.ChangeKiller) {
+                    change_killer = instance.ChangeKiller(
+                        event.attacker,
+                        event.victim,
+                        event.damage,
+                        event.damage_type,
+                        event.ability,
+                        event.damage_flags
+                    );
+                    event.change_killer = change_killer;
+                }
+            });
+            instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
+        },
+        removeFunc: (instance, parent_index) => {},
+    },
+
     [ModifierFunctions.OnBuildingDeath]: {
         registerFunc: (instance, parent_index) => {
             const dispatcherId = Dispatcher.Register('UNIT_BUILDING_DEATH', parent_index, event => {
@@ -602,107 +567,6 @@ const _modifier_methods: {
         },
         removeFunc: (instance, parent_index) => {},
     },
-    // [ModifierFunctions.OnAttackRecord_Attack]: {
-    //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_RECORD_ATTACK', parent_index, event => {
-    //             if (instance.OnAttackRecord_Attack) instance.OnAttackRecord_Attack(event);
-    //         });
-    //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
-    //     },
-    //     removeFunc: (instance, parent_index) => {
-    //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
-    //         if (dispatcherList) {
-    //             dispatcherList.forEach(dispatcherId => {
-    //                 Dispatcher.UnRegister(dispatcherId);
-    //             });
-    //         }
-    //     },
-    // },
-
-    // [ModifierFunctions.OnAttack]: {
-    //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = Dispatcher.Register('ON_ATTACK', parent_index, event => {
-    //             if (instance.OnAttack) instance.OnAttack(event);
-    //         });
-    //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
-    //     },
-    //     removeFunc: (instance, parent_index) => {
-    //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
-    //         if (dispatcherList) {
-    //             dispatcherList.forEach(dispatcherId => {
-    //                 Dispatcher.UnRegister(dispatcherId);
-    //             });
-    //         }
-    //     },
-    // },
-
-    // [ModifierFunctions.OnAttackFinished]: {
-    //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_FINISHED', parent_index, event => {
-    //             if (instance.OnAttackFinished) instance.OnAttackFinished(event);
-    //         });
-    //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
-    //     },
-    //     removeFunc: (instance, parent_index) => {
-    //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
-    //         if (dispatcherList) {
-    //             dispatcherList.forEach(dispatcherId => {
-    //                 Dispatcher.UnRegister(dispatcherId);
-    //             });
-    //         }
-    //     },
-    // },
-
-    // [ModifierFunctions.OnAttackRecordDestroy]: {
-    //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_RECORD_DESTROY', parent_index, event => {
-    //             if (instance.OnAttackRecordDestroy) instance.OnAttackRecordDestroy(event);
-    //         });
-    //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
-    //     },
-    //     removeFunc: (instance, parent_index) => {
-    //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
-    //         if (dispatcherList) {
-    //             dispatcherList.forEach(dispatcherId => {
-    //                 Dispatcher.UnRegister(dispatcherId);
-    //             });
-    //         }
-    //     },
-    // },
-
-    // [ModifierFunctions.OnAttackCancelled]: {
-    //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_CANCELLED', parent_index, event => {
-    //             if (instance.OnAttackCancelled) instance.OnAttackCancelled(event);
-    //         });
-    //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
-    //     },
-    //     removeFunc: (instance, parent_index) => {
-    //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
-    //         if (dispatcherList) {
-    //             dispatcherList.forEach(dispatcherId => {
-    //                 Dispatcher.UnRegister(dispatcherId);
-    //             });
-    //         }
-    //     },
-    // },
-
-    // [ModifierFunctions.OnAttackFail]: {
-    //     registerFunc: (instance, parent_index) => {
-    //         const dispatcherId = Dispatcher.Register('ON_ATTACK_FAIL', parent_index, event => {
-    //             if (instance.OnAttackFail) instance.OnAttackFail(event);
-    //         });
-    //         instance.dispatcherIDList.get(parent_index)!.push(dispatcherId);
-    //     },
-    //     removeFunc: (instance, parent_index) => {
-    //         const dispatcherList = instance.dispatcherIDList.get(parent_index);
-    //         if (dispatcherList) {
-    //             dispatcherList.forEach(dispatcherId => {
-    //                 Dispatcher.UnRegister(dispatcherId);
-    //             });
-    //         }
-    //     },
-    // },
 
     [ModifierFunctions.DamageEvent_AttackBounce]: {
         registerFunc: (instance, parent_index) => {
@@ -1441,7 +1305,15 @@ interface BaseModifier {
      * - 触发者：任意死亡单位
      */
     OnHeroDeath?(dmgTable: EndDamageTable): void;
-
+    /** 转换击杀者 */
+    ChangeKiller?(
+        attacker: CDOTA_BaseNPC,
+        victim: CDOTA_BaseNPC,
+        damage: number,
+        damage_type: DamageTypes,
+        ability: CDOTABaseAbility,
+        damage_flags: DamageFlags
+    ): CDOTA_BaseNPC;
     /**
      * 建筑死亡 事件名 UNIT_BUILDING_DEATH
      * - 触发者：任意死亡建筑

@@ -140,11 +140,10 @@ export class CEngineEvent {
             }
             await sleep(FrameTime() * 2);
             //会引起内存泄露 ? (造成伤害带有原技能会有内存泄露)
-            if (entity.AddAbility != null && entity.HasAbility('imba_custom_base_attack') == false) {
-                entity._ability_custom_base_attack = entity.AddAbility('imba_custom_base_attack');
-            }
             if (entity.AddAbility != null) {
-                entity.AddAbility('imba_custom_base_attack')?.SetAbilityIndex(30);
+                const _ability_custom_base_attack = entity.AddAbility('imba_custom_base_attack');
+                entity._ability_custom_base_attack = _ability_custom_base_attack;
+                _ability_custom_base_attack?.SetAbilityIndex(30);
                 entity.AddAbility('imba_custom_debuff_immune')?.SetAbilityIndex(31);
             }
             if (entity.HasModifier != null && entity.HasModifier('modifier_attack_data_miss') == false) {

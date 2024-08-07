@@ -47,6 +47,23 @@ export class CParticleManager {
             this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
             return particleID;
         }
+        if (data.controlPointData) {
+            data.controlPointData.forEach(cpData => {
+                if (cpData.ent) {
+                    ParticleManager.SetParticleControlEnt(
+                        particleID,
+                        cpData.CP,
+                        cpData.unit ?? data.owner,
+                        cpData.particleAttach ?? data.particleAttach,
+                        cpData.attachment ?? Attachment.ATTACH_HITLOC,
+                        cpData.vector,
+                        cpData.lockOrientation ?? false
+                    );
+                } else {
+                    ParticleManager.SetParticleControl(particleID, cpData.CP, cpData.vector);
+                }
+            });
+        }
         Timers.CreateTimer(duration, () => {
             this.DestroyParticle(particleID, data.extraData?.immediate ?? false);
             if (data.extraData?.endCallback) {

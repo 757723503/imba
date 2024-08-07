@@ -14,6 +14,7 @@ export class modifier_imba_antimage_mana_break_passive extends BaseModifier {
             not_purgable: true,
             not_purgable_exception: true,
             not_remove_on_death: true,
+            allow_illusion_duplicate: true,
         };
     }
 
@@ -31,7 +32,10 @@ export class modifier_imba_antimage_mana_break_passive extends BaseModifier {
         const victim = dmgTable.victim;
         if (victim.IsBuilding()) return;
         if (victim.IsMagicImmune()) return;
-        const mana = this._mana_per_hit + victim.GetMaxMana() * this._mana_per_hit_pct * 0.01;
+        let mana = this._mana_per_hit + victim.GetMaxMana() * this._mana_per_hit_pct * 0.01;
+        if (this.parent.IsIllusion()) {
+            mana = mana * this._illusion_percentage * 0.01;
+        }
         const reduce_mana = victim.Script_ReduceMana(mana, this.ability);
 
         const damage = reduce_mana * this._percent_damage_per_burn * 0.01;

@@ -53,6 +53,9 @@ declare global {
         CGetFaceID(): number;
         /**自定义驱散 */
         CPurge(keys: PurgeData): void;
+
+        /**自定义释放直接调用释放技能(OnSpellStart) */
+        COnSpellStart(ability_name: string, target?: CDOTA_BaseNPC, pos?: Vector): void;
         /**真实斩杀
          * @param killer 击杀者
          * @param ability 技能
@@ -466,6 +469,10 @@ declare global {
         ATTACH_HITLOC = 'attach_hitloc',
         ATTACH_ATTACK_1 = 'attach_attack1',
         ATTACH_ATTACK_2 = 'attach_attack2',
+        ATTACH_MOUTH = 'attach_mouth',
+        ATTACH_WEAPON = 'attach_weapon',
+        ATTACH_EYES_L = 'attach_eyes_l',
+        ATTACH_EYES_R = 'attach_eyes_r',
     }
     // /** 通用特效 */
     // var GeneircParticleList: { [key: string]: string };

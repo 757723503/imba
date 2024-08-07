@@ -31,11 +31,18 @@
 	{
       "Facets" {
             "axe_facets_imba_1"
-			{
-				"Icon"				"barrier"
-				"Color"				"Blue"
-				"GradientID"		"4"
-			}
+            {
+                  "Icon"				"strength"
+                  "Color"				"Red"
+                  "GradientID"		"0"
+                  "Abilities"
+                  {
+                        "Ability1"
+                        {
+                              "AbilityName"	"imba_axe_one_man_army"
+                        }
+                  }
+            }
       }
       "Ability1"    "imba_axe_berserkers_call"
       "Ability2"    "imba_axe_battle_hunger"

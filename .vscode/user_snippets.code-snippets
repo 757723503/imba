@@ -21,29 +21,64 @@
         "body": ["if (!IsServer()) return;"],
         "description": "fast type of if not is server"
     },
-    "get special value": {
+    "created ability": {
         "scope": "javascript,typescript",
-        "prefix": "letspecialvalue",
-        "body": ["let $1 = ability.GetSpecialValueFor('$2')", "$3"],
-        "description": "fast type of if not is server"
+        "prefix": "@registerAbility",
+        "body": [
+            "@registerAbility()",
+            "export class imba_$1 extends BaseAbility {",
+                "GetIntrinsicModifierName(): string {",
+                    "return '$2';",
+                "}",
+                "OnSpellStart(keys?: SpellStartParams): void {}",
+            "}",
+        ],
+        "description": "创建技能代码块"
     },
-    "get caster": {
+    "created modifier": {
         "scope": "javascript,typescript",
-        "prefix": "letcaster",
-        "body": ["let caster = this.GetCaster()"],
-        "description": "fast type of if not is server"
+        "prefix": "@registerModifier",
+        "body": [
+            "@registerModifier()",
+           "export class modifier_imba_$1 extends BaseModifier {",
+                "GetModifierConfig(): ModifierConfig {",
+                   " return {",
+                        "is_debuff: false,",
+                        "is_hidden: false,",
+                        "not_purgable: true,",
+                        "not_purgable_exception: true,",
+                        "not_remove_on_death: true,",
+                    "};",
+                "}",
+                "OnCreated(params: ModifierParams): void {",
+                "}",
+               " DeclareFunctions(): ModifierFunction[] {",
+                    "return CDeclareFunctions();",
+                "}",
+                "_customDeclare = [];",
+                "CustomDeclareFunctions(): ModifierFunctions[] {",
+                    "return this._customDeclare;",
+                "}",
+            "}",
+        ],
+        "description": "创建modifier代码块"
     },
-    "get ability": {
+
+    "findunits": {
         "scope": "javascript,typescript",
-        "prefix": "letability",
-        "body": ["let ability = this.GetAbility();"],
-        "description": "fast type of if not is server"
-    },
-    "get parent": {
-        "scope": "javascript,typescript",
-        "prefix": "letparent",
-        "body": ["let parent = this.GetParent();"],
-        "description": "fast type of if not is server"
+        "prefix": "CFindUnitsInRadius",
+        "body": [
+           " CFindUnitsInRadius({",
+                "team: this.caster.GetTeamNumber(),",
+                "location: this.caster.GetAbsOrigin(),",
+                "flagFilter: UnitTargetFlags.FOW_VISIBLE,",
+                "teamFilter: UnitTargetTeam.ENEMY,",
+               "typeFilter: UnitTargetType.HERO + UnitTargetType.BASIC ,",
+                "radius: 1000,",
+                "order: FindOrder.CLOSEST,",
+            "});",
+        ],
+        "description": "创建findunits代码块"
     },
     "rootForReactPanorama": {
         "prefix": "root",

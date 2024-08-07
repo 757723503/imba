@@ -26,4 +26,14 @@ interface CParticleData {
         /** 特效数量约束(以产生者为单位) */
         limits?: { time: number; limit: number };
     };
+    controlPointData?: ControlPointData[];
+}
+interface ControlPointData {
+    CP: number;
+    vector: Vector;
+    ent?: boolean;
+    unit?: CBaseEntity;
+    particleAttach?: ParticleAttachment;
+    attachment?: Attachment;
+    lockOrientation?: boolean;
 }

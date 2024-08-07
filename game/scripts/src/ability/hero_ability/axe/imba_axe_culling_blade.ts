@@ -1,3 +1,4 @@
+//淘汰之刃
 @registerAbility()
 export class imba_axe_culling_blade extends BaseAbility {
     _damage = this.ability.GetSpecialValue('imba_axe_culling_blade', 'damage');
@@ -22,6 +23,9 @@ export class imba_axe_culling_blade extends BaseAbility {
                 units.forEach(unit => {
                     unit.AddModifier(this.caster, this.ability, modifier_imba_axe_culling_blade_boost, { duration: this._speed_duration });
                 });
+                this.PlayEffects2(this.target);
+                this.PlayEffects3(this.target);
+                this.EndCooldown();
             }
         } else {
             CAddDamage({
@@ -33,6 +37,77 @@ export class imba_axe_culling_blade extends BaseAbility {
                 victim: this.target,
             });
         }
+        this.PlayEffects1(this.target);
+    }
+
+    PlayEffects1(target: CDOTA_BaseNPC): void {
+        CCreateParticle({
+            caster: this.caster,
+            owner: target,
+            particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
+            particleName: HeroParticleList.imba_axe_culling_blade,
+            duration: 2,
+            controlPointData: [{ CP: 0, vector: target.GetAbsOrigin() }],
+        });
+    }
+
+    PlayEffects2(target: CDOTA_BaseNPC): void {
+        CCreateParticle({
+            caster: this.caster,
+            owner: this.caster,
+            particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
+            particleName: HeroParticleList.imba_axe_culling_blade_boost,
+            duration: 2,
+            controlPointData: [
+                { CP: 0, vector: this.caster.GetAbsOrigin() },
+                { CP: 1, vector: target.GetAbsOrigin() },
+            ],
+        });
+    }
+
+    PlayEffects3(target: CDOTA_BaseNPC): void {
+        if (this.caster.GetUnitName() == 'npc_dota_hero_axe' && this.caster.GetModelName() == 'models/items/axe/ti9_jungle_axe/axe_bare.vmdl') {
+            CCreateParticle({
+                caster: this.caster,
+                owner: this.caster,
+                particleAttach: ParticleAttachment.POINT_FOLLOW,
+                particleName: HeroParticleList.imba_axe_cullingblade_sprint_axe,
+                duration: 2,
+                controlPointData: [
+                    { CP: 0, vector: this.caster.GetAbsOrigin() },
+                    {
+                        CP: 1,
+                        vector: this.target.GetAbsOrigin(),
+                        ent: true,
+                        attachment: Attachment.ATTACH_EYES_L,
+                        particleAttach: ParticleAttachment.POINT_FOLLOW,
+                    },
+                    {
+                        CP: 2,
+                        vector: this.target.GetAbsOrigin(),
+                        ent: true,
+                        attachment: Attachment.ATTACH_EYES_L,
+                        particleAttach: ParticleAttachment.POINT_FOLLOW,
+                    },
+                ],
+            });
+        }
+
+        const pfx = CCreateParticle({
+            caster: this.caster,
+            owner: this.caster,
+            particleAttach: ParticleAttachment.CUSTOMORIGIN,
+            particleName: HeroParticleList.imba_axe_culling_blade_kill,
+            duration: 2,
+            controlPointData: [
+                { CP: 0, vector: this.caster.GetAbsOrigin() },
+                { CP: 1, vector: this.caster.GetAbsOrigin() },
+                { CP: 2, vector: this.caster.GetAbsOrigin() },
+                { CP: 3, vector: this.caster.GetAbsOrigin() },
+                { CP: 4, vector: this.caster.GetAbsOrigin() },
+            ],
+        });
+        CSetParticleControlTransform(pfx, 4, target.GetAbsOrigin(), null, this.caster.GetForwardVector());
     }
 }
 @registerModifier()
@@ -41,9 +116,6 @@ class modifier_imba_axe_culling_blade_boost extends BaseModifier {
         return {
             is_debuff: false,
             is_hidden: false,
-            not_purgable: true,
-            not_purgable_exception: true,
-            not_remove_on_death: true,
         };
     }
 
@@ -59,5 +131,19 @@ class modifier_imba_axe_culling_blade_boost extends BaseModifier {
 
     GetModifierMoveSpeedBonus_Percentage(): number {
         return this._speed_bonus;
+    }
+
+    OnCreated(params: ModifierParams): void {
+        CCreateParticle({
+            caster: this.caster,
+            owner: this.parent,
+            particleAttach: ParticleAttachment.ABSORIGIN_FOLLOW,
+            particleName: HeroParticleList.imba_axe_cullingblade_sprint,
+            modifier: this,
+        });
+    }
+
+    GetStatusEffectName(): string {
+        return HeroParticleList.imba_axe_culling_blade_hero_effect;
     }
 }

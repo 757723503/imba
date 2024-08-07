@@ -1509,6 +1509,21 @@ namespace DamageHelper {
                 DamageFlag.ATTACK_MODIFIER +
                 DamageFlag.BYPASSES_ALL_BLOCK,
         };
+        if (damage_table.damage > damage_table.victim.GetHealth()) {
+            const change_killer_table = {
+                attacker: damage_table.attacker,
+                victim: damage_table.victim,
+                damage: damage_table.damage,
+                damage_type: damage_table.damage_type,
+                ability: damage_table.ability,
+                damage_flags: damage_table.damage_flags,
+                change_killer: null,
+            };
+            Dispatcher.Send('CHANGE_KILLER', null, change_killer_table);
+            if (change_killer_table.change_killer) {
+                damage_table.attacker = change_killer_table.change_killer;
+            }
+        }
         ApplyDamage(damage_table);
         if (!CIsAlive(victim)) {
             if (victim.IsHero()) {

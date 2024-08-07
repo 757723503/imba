@@ -122,7 +122,14 @@ function CDeepCopy<T>(obj: T): T {
     return result;
 }
 function CIsValid(entity: undefined | null | CDOTA_Buff | CBaseEntity): boolean {
-    return entity !== null && !entity.IsNull() && IsValidEntity(entity);
+    if (entity === null || entity === undefined) {
+        return false;
+    }
+    if (Is_CBaseEntity(entity)) {
+        return !entity.IsNull() && IsValidEntity(entity);
+    } else if (Is_CDOTA_Buff(entity)) {
+        return !entity.IsNull();
+    }
 }
 function CIsAlive(entity: CDOTA_BaseNPC | undefined | null): boolean {
     return CIsValid(entity) && entity.IsAlive();
@@ -245,6 +252,10 @@ function sleep(duration: number) {
 /** 是不是CBaseEntity */
 function Is_CBaseEntity(param: any): param is CBaseEntity {
     return type(param) == 'table' && param['GetEntityIndex'] != null;
+}
+/** 是不是CDOTA_Buff */
+function Is_CDOTA_Buff(param: any): param is CDOTA_Buff {
+    return type(param) == 'table' && param['AddParticle'] != null;
 }
 /** 是不是CDOTA_BaseNPC */
 function Is_CDOTA_BaseNPC(param: any): param is CDOTA_BaseNPC {

@@ -169,8 +169,8 @@ export const data: LocalizationData = {
     FacetArray_B: [
         {
             facet_classname: 'axe_facets_imba_1',
-            name: '吼声震天',
-            description: '狂战士之吼会在持续时间内使攻击的人获得额外攻击速度，斧王获得更高的护甲加成。',
+            name: '吼声震天 | 一人之军',
+            description: '狂战士之吼会在持续时间内使攻击的人获得额外攻击速度，斧王获得更高的护甲加成。斧王远离队友时获得基于自身护甲值的力量',
             related_abilities: [
                 {
                     ability_classname: 'imba_axe_berserkers_call',

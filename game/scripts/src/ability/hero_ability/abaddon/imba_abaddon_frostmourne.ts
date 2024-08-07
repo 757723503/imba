@@ -13,6 +13,7 @@ export class modifier_imba_abaddon_frostmourne_passive extends BaseModifier {
             not_purgable: true,
             not_purgable_exception: true,
             not_remove_on_death: true,
+            allow_illusion_duplicate: true,
         };
     }
 

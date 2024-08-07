@@ -113,6 +113,8 @@ declare const enum ModifierFunctions {
      * - 触发者：任意死亡英雄
      */
     OnHeroDeath = 'OnHeroDeath',
+    /** 转换击杀者 */
+    ChangeKiller = 'ChangeKiller',
 
     /**
      * 建筑死亡 事件名 UNIT_BUILDING_DEATH
