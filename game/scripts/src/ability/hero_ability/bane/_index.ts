@@ -14,7 +14,7 @@ declare global {
         imba_bane_nightmare = 'imba_bane_nightmare',
         /** 噩梦终止 */
         imba_bane_nightmare_end = 'imba_bane_nightmare_end',
-        /** 恶魔的掌握*/
+        /** 魔爪*/
         bane_fiends_grip = 'bane_fiends_grip',
     }
 }

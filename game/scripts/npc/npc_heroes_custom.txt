@@ -62,7 +62,14 @@
 	}
 	"npc_dota_hero_bane"
 	{
-      "Facets" {}
+      "Facets" {
+            "bane_facets_imba_1" 
+            {
+                  "Icon"				"damage"
+                  "Color"				"Gray"
+                  "GradientID"		"0"
+            }
+      }
       "Ability1"    "imba_bane_enfeeble"
       "Ability2"    "imba_bane_brain_sap"
       "Ability3"    "imba_bane_nightmare"
