@@ -30,13 +30,13 @@ if (!C_DOTA_BaseNPC.CGetAbilityIcon) {
     C_DOTA_BaseNPC.CGetAbilityIcon = function (this: CDOTA_BaseNPC, ability_name: DotaAbility | string | HeroAbility): string {
         const ability_data = HERO_ICON_LIST[ability_name];
         const pfx_name = ParticleManager.GetParticleReplacement(HeroParticleList[ability_name], this as CDOTA_BaseNPC_Hero);
-        let icon = '';
+        let icon = null;
         if (ability_data?.Particle) {
             icon = ability_data.Particle[pfx_name];
         }
         if (icon == '') {
         }
-        return icon == '' ? null : icon;
+        return icon;
     };
 }
 if (!C_DOTA_BaseNPC.IsUnit) {

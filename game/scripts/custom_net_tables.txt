@@ -6,6 +6,7 @@
         "game_timer",
         "custom_ability_textur",
         "custom_shield_data",
-        "custom_spell_amplify"
+        "custom_spell_amplify",
+        "custom_alt_ability_textur",
     ]
 }

@@ -222,7 +222,13 @@ if (!CDOTA_BaseNPC.CReflectAbility) {
     };
 }
 if (!CDOTA_BaseNPC.COnSpellStart) {
-    CDOTA_BaseNPC.COnSpellStart = function (this: CDOTA_BaseNPC, ability_name: string, target?: CDOTA_BaseNPC, pos?: Vector): void {
+    CDOTA_BaseNPC.COnSpellStart = function (
+        this: CDOTA_BaseNPC,
+        ability_name: string,
+        target?: CDOTA_BaseNPC,
+        pos?: Vector,
+        keys?: SpellStartParams
+    ): void {
         const ability = this.FindAbilityByName(ability_name);
         if (!ability) {
             return;
@@ -230,9 +236,11 @@ if (!CDOTA_BaseNPC.COnSpellStart) {
         ability['target'] = target;
         ability['target_pos'] = pos;
         ability['isonspellstart'] = true;
-        ability.OnSpellStart();
+        //@ts-ignore
+        ability.OnSpellStart(keys);
     };
 }
+
 // if (!CDOTA_BaseNPC.CTargetTriggerAbsorbReflect) {
 //     CDOTA_BaseNPC.CTargetTriggerAbsorbReflect = function (
 //         this: CDOTA_BaseNPC,
@@ -269,7 +277,34 @@ if (!CDOTABaseAbility.IsReflectSpell) {
         return this['isreflectspell'] == true;
     };
 }
-
+if (!CDOTABaseAbility.GetVectorEndPoint) {
+    CDOTABaseAbility.GetVectorEndPoint = function (this: CDOTABaseAbility): Vector {
+        return this.vectorEndPoint;
+    };
+}
+if (!CDOTABaseAbility.ToggleAltAbility) {
+    CDOTABaseAbility.ToggleAltAbility = function (this: CDOTABaseAbility): void {
+        if (this.toggleAltState != null) {
+            const caster = this.GetCaster();
+            ExecuteOrderFromTable({
+                UnitIndex: caster.entindex(),
+                OrderType: UnitOrder.CAST_TOGGLE_ALT,
+                AbilityIndex: this.entindex(),
+                Queue: false,
+            });
+        }
+    };
+}
+if (!CDOTABaseAbility.GetAltAbilityState) {
+    CDOTABaseAbility.GetAltAbilityState = function (this: CDOTABaseAbility): boolean {
+        return this.toggleAltState;
+    };
+}
+// if (!CDOTABaseAbility.GetAltAbilityTextureName) {
+//     CDOTABaseAbility.GetAltAbilityTextureName = function (this: CDOTABaseAbility): string {
+//         return this.GetAltAbilityTextureName();
+//     };
+// }
 if (!CDOTABaseAbility.GetSpecialValue) {
     CDOTABaseAbility.GetSpecialValue = function <T extends AbilityNames>(
         this: CDOTABaseAbility,

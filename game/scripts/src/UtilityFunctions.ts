@@ -274,6 +274,20 @@ function Is_CDOTA_BaseNPC_Hero(param: any): param is CDOTA_BaseNPC_Hero {
 function Is_CDOTA_BaseNpc_Building(param: any): param is CDOTA_BaseNPC_Building {
     return type(param) == 'table' && param['GetInvulnCount'] != null && param['SetInvulnCount'] != null;
 }
+/** 转换字符串为向量 */
+function StringToVector(str: string | null): Vector | undefined {
+    if (str === null) {
+        return undefined;
+    }
+    const parts = str.split(' ');
+    const x = Number(parts[0]);
+    const y = Number(parts[1]);
+    const z = Number(parts[2]);
+    if (!isNaN(x) && !isNaN(y) && !isNaN(z)) {
+        return Vector(x, y, z);
+    }
+    return undefined;
+}
 declare namespace math {
     /**
      * 限制数字在某个区间内。（比如0,255）

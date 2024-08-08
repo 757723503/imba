@@ -4,6 +4,7 @@
 #base "custom_heroes/npc_dota_hero_abaddon.txt"
 #base "custom_heroes/npc_dota_hero_antimage.txt"
 #base "custom_heroes/npc_dota_hero_axe.txt"
+#base "custom_heroes/npc_dota_hero_bane.txt"
 "DOTAAbilities"
 {
     "imba_life_stealer_open_wounds"

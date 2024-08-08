@@ -11,7 +11,14 @@ export class CFilter {
     }
 
     _OrderFilter(event: ExecuteOrderFilterEvent): boolean {
-        if (UnitOrder.MOVE_ITEM == event.order_type || UnitOrder.DROP_ITEM == event.order_type) {
+        const orderType = event.order_type;
+        const playerID = event.issuer_player_id_const;
+        const queue = event.queue;
+        const ability = EntIndexToHScript(event.entindex_ability ?? (-1 as EntityIndex)) as CDOTABaseAbility;
+        const target = EntIndexToHScript(event.entindex_target ?? (-1 as EntityIndex)) as CDOTA_BaseNPC;
+        //根据playerID拿到英雄
+        const hero = PlayerResource.GetSelectedHeroEntity(playerID);
+        if (UnitOrder.MOVE_ITEM == orderType || UnitOrder.DROP_ITEM == orderType) {
             Object.values(event.units).forEach(index => {
                 if (index <= 0) return;
                 const unit = EntIndexToHScript(index) as CDOTA_BaseNPC;
@@ -37,6 +44,19 @@ export class CFilter {
                         });
                     });
                 }
+            });
+        }
+        if (orderType == UnitOrder.VECTOR_TARGET_POSITION && CIsValid(ability) && CIsValid(target)) {
+            ability.vectorEndPoint = Vector(event.position_x, event.position_y, event.position_z);
+        }
+        if (orderType == UnitOrder.CAST_TOGGLE_ALT && CIsValid(ability)) {
+            ability.toggleAltState =
+                ability.toggleAltState == undefined ? ability.GetAbilityName() != DotaAbility.doom_bringer_devour : !ability.toggleAltState;
+
+            CustomNetTables.SetTableValue('custom_alt_ability_textur', tostring(hero?.GetEntityIndex()), {
+                ability_index: tostring(ability.GetEntityIndex()),
+                ability_textur: ability.GetAltAbilityTextureName(),
+                alt_state: tostring(ability.toggleAltState ? 1 : 0),
             });
         }
         return true;

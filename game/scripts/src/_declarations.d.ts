@@ -55,7 +55,7 @@ declare global {
         CPurge(keys: PurgeData): void;
 
         /**自定义释放直接调用释放技能(OnSpellStart) */
-        COnSpellStart(ability_name: string, target?: CDOTA_BaseNPC, pos?: Vector): void;
+        COnSpellStart(ability_name: string, target?: CDOTA_BaseNPC, pos?: Vector, keys?: SpellStartParams): void;
         /**真实斩杀
          * @param killer 击杀者
          * @param ability 技能
@@ -271,6 +271,20 @@ declare global {
 
         /**是否是反弹技能 */
         IsReflectSpell(): boolean;
+
+        //记录矢量技能的目标点
+        vectorEndPoint?: Vector;
+        //记录alt切换技能 多样式法的状态
+        toggleAltState?: boolean;
+        /**切换alt切换技能 多样施法 */
+        ToggleAltAbility(): void;
+        /**获得alt切换技能 多样施法 状态 */
+        GetAltAbilityState(): boolean;
+        /**获得向量技能第二个目标点 */
+        GetVectorEndPoint(): Vector;
+
+        /**获得alt技能图标 */
+        GetAltAbilityTextureName(): string;
     }
     interface CDOTA_Item {}
     interface CAttackEvent {

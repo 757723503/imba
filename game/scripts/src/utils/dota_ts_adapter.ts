@@ -97,6 +97,8 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
     // const originalOnHeroCalculateStatBonus = (env[name] as CDOTA_Ability_Lua).OnHeroCalculateStatBonus;
     // const originalEnableAbilityChargesOnTalentUpgrade = (env[name] as CDOTA_Ability_Lua).EnableAbilityChargesOnTalentUpgrade;
     // const originalOnUnequip = (env[name] as CDOTA_Item_Lua).OnUnequip;
+
+    // const originalGetAbilityTextureName = (env[name] as CDOTA_Ability_Lua).GetAbilityTextureName;
     env[name].Spawn = function () {
         this.caster = this.GetCaster();
         this.ability = this;
@@ -105,11 +107,33 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
         if (originalSpawn) {
             originalSpawn.call(this);
         }
-        if (IsClient() && this.GetCaster().CGetAbilityIcon(this)) {
-            this.GetAbilityTextureName = () => {
-                return this.GetCaster().CGetAbilityIcon(this);
-            };
-        }
+        // if (IsClient()) {
+        //     this.GetAbilityTextureName = () => {
+        //         const originalAbilityTexture = GetAbilityTextureNameForAbility(this.GetAbilityName());
+        // const sv_ability_index = tostring(this.GetEntityIndex());
+        // const cl_ability_index = CustomNetTables.GetTableValue(
+        //     'custom_alt_ability_textur',
+        //     tostring(this.GetCaster().GetEntityIndex())
+        // )?.ability_index;
+        // if (sv_ability_index == cl_ability_index) {
+        //     const texture = CustomNetTables.GetTableValue(
+        //         'custom_alt_ability_textur',
+        //         tostring(this.GetCaster().GetEntityIndex())
+        //     )?.ability_textur;
+        //     const alt_state = CustomNetTables.GetTableValue(
+        //         'custom_alt_ability_textur',
+        //         tostring(this.GetCaster().GetEntityIndex())
+        //     )?.alt_state;
+        //     if (texture && alt_state == '1') {
+        //         return texture;
+        //     }
+        // }
+        //         if (this.GetCaster().CGetAbilityIcon(this)) {
+        //             return this.GetCaster().CGetAbilityIcon(this) ?? originalAbilityTexture;
+        //         }
+        //         return originalAbilityTexture;
+        //     };
+        // }
 
         if (IsServer() && (env[name] as CDOTA_Ability_Lua).GetAbilityKeyValues) {
             const ability_special_value = this.GetAbilityKeyValues();
@@ -123,7 +147,7 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
     env[name].OnAbilityPhaseStart = function (keys?: SpellStartParams) {
         this.target = this.GetCursorTarget();
         this.target_pos = this.GetCursorPosition();
-        const srt = Object.keys(this as CDOTA_Ability_Lua).filter(key => key.startsWith('_'));
+        // const srt = Object.keys(this as CDOTA_Ability_Lua).filter(key => key.startsWith('_'));
         if (originalOnAbilityPhaseStart) {
             originalOnAbilityPhaseStart.call(this, keys);
         }
@@ -138,6 +162,7 @@ const registerAbility = (name?: string) => (ability: new () => CDOTA_Ability_Lua
             originalOnUpgrade.call(this, keys);
         }
     };
+
     // env[name].OnUnequip = function (keys?: SpellStartParams) {
     //     if (originalOnUnequip) {
     //         originalOnUnequip.call(this, keys);
