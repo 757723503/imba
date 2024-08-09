@@ -5,28 +5,31 @@ export class imba_bane_nightmare extends BaseAbility {
     _night_units: EntityIndex[] = [];
     _is_vector_targeted = this.GetSpecialValue('imba_bane_nightmare', 'is_vector_targeted');
     OnSpellStart(keys?: SpellStartParams): void {
-        const dir = keys?.dir ?? GetDirection(this.GetVectorEndPoint(), this.target.GetAbsOrigin());
-        this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare, { duration: this.GetDuration(), dir: dir });
-        this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare_invulnerable, { duration: this._nightmare_invuln_time });
-        this._night_units.push(this.target.entindex());
-        this.caster.UnHideAbilityToSlot('imba_bane_nightmare_end', 'imba_bane_nightmare');
+        DebugPrint(this.GetAltAbilityState(), this.GetBehaviorInt());
+        // const dir = keys?.dir ?? GetDirection(this.GetVectorEndPoint(), this.target.GetAbsOrigin());
+        // this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare, {
+        //     duration: this.GetDuration(),
+        //     dir: dir,
+        //     move: this.GetAltAbilityState(),
+        // });
+        // this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare_invulnerable, { duration: this._nightmare_invuln_time });
+        // this._night_units.push(this.target.entindex());
+        // this.caster.UnHideAbilityToSlot('imba_bane_nightmare_end', 'imba_bane_nightmare');
     }
 
     GetBehavior(): AbilityBehavior {
-        if (this._is_vector_targeted == 1) {
-            return (
-                AbilityBehavior.UNIT_TARGET +
-                AbilityBehavior.DONT_RESUME_ATTACK +
-                AbilityBehavior.VECTOR_TARGETING +
-                1099511627776 +
-                AbilityBehavior.AUTOCAST
-            );
-        }
+        // if (this._is_vector_targeted == 1) {
+        return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + AbilityBehavior.VECTOR_TARGETING + 1099511627776;
+        // }
+        // return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + 1099511627776;
     }
 
-    // GetAbilityTextureName(): string {
-    //     return 'bounty_hunter_lookout';
-    // }
+    GetBehaviorInt(): AbilityBehavior {
+        // if (this._is_vector_targeted == 1) {
+        return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + AbilityBehavior.VECTOR_TARGETING + 1099511627776;
+        // }
+        // return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + 1099511627776;
+    }
 
     OnAbilityUpgrade(upgradeAbility: object): void {
         if (upgradeAbility == this) {
@@ -62,10 +65,10 @@ export class modifier_imba_bane_nightmare extends BaseModifier {
     }
 
     _dir: Vector;
-    OnCreated(params: ModifierParams & { dir: Vector }): void {
+    OnCreated(params: ModifierParams & { dir: Vector; move }): void {
         //@ts-ignore
         this._dir = StringToVector(params.dir);
-        if (Is_Vector(this._dir)) {
+        if (Is_Vector(this._dir) && params.move == 1) {
             this.parent.SetForwardVector(this._dir);
             this.StartIntervalThink(FrameTime());
         }

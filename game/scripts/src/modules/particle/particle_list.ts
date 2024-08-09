@@ -3,6 +3,8 @@ type ParticleList = GeneircParticleList | HeroParticleList | AvatarHeroParticleL
 /** 通用特效 */
 enum GeneircParticleList {
     null = '',
+    /** 向量施法 */
+    range_finder_cone = 'particles/ui_mouseactions/range_finder_cone.vpcf',
 }
 
 /** 英雄特效 */

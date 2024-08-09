@@ -46,9 +46,27 @@ export class CFilter {
                 }
             });
         }
-        if (orderType == UnitOrder.VECTOR_TARGET_POSITION && CIsValid(ability) && CIsValid(target)) {
-            ability.vectorEndPoint = Vector(event.position_x, event.position_y, event.position_z);
+
+        if (CIsValid(ability) && checkTag(ability.GetBehaviorInt(), AbilityBehavior.VECTOR_TARGETING)) {
+            let vectorStartPoint = Vector(0, 0, 0);
+            const caster_position = hero.GetAbsOrigin();
+            if (orderType == UnitOrder.VECTOR_TARGET_POSITION) {
+                DebugPrint('VECTOR_TARGET_POSITION');
+                ability.vectorEndPoint = Vector(event.position_x, event.position_y, 0);
+            }
+            if (orderType == UnitOrder.CAST_POSITION) {
+                DebugPrint('CAST_POSITION');
+                vectorStartPoint = Vector(event.position_x, event.position_y, 0);
+            } else if (orderType == UnitOrder.CAST_TARGET && CIsValid(target)) {
+                DebugPrint('CAST_TARGET');
+                vectorStartPoint = target.GetAbsOrigin();
+            }
+            ability.vectorStartPoint = vectorStartPoint;
+            ability.vectorDirection = ability.vectorEndPoint.__eq(vectorStartPoint)
+                ? GetDirection(ability.vectorEndPoint, caster_position)
+                : GetDirection(ability.vectorEndPoint, vectorStartPoint);
         }
+
         if (orderType == UnitOrder.CAST_TOGGLE_ALT && CIsValid(ability)) {
             ability.toggleAltState =
                 ability.toggleAltState == undefined ? ability.GetAbilityName() != DotaAbility.doom_bringer_devour : !ability.toggleAltState;

@@ -8,5 +8,6 @@
         "custom_shield_data",
         "custom_spell_amplify",
         "custom_alt_ability_textur",
+        "vector_targeting",
     ]
 }

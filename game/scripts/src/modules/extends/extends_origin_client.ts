@@ -151,6 +151,12 @@ if (!C_DOTA_BaseNPC.GetAOEIncrease) {
         return 0;
     };
 }
+if (!C_DOTA_Ability_Lua.GetAltAbilityState) {
+    C_DOTA_Ability_Lua.GetAltAbilityState = function (this: CDOTABaseAbility): boolean {
+        const alt_state = CustomNetTables.GetTableValue('custom_alt_ability_textur', tostring(this.GetCaster().GetEntityIndex()))?.alt_state == '1';
+        return alt_state ?? false;
+    };
+}
 if (!C_DOTA_Ability_Lua.GetSpecialValue) {
     C_DOTA_Ability_Lua.GetSpecialValue = function <T extends AbilityNames>(
         this: CDOTABaseAbility,

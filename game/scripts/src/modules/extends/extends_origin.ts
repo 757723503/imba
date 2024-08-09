@@ -279,7 +279,7 @@ if (!CDOTABaseAbility.IsReflectSpell) {
 }
 if (!CDOTABaseAbility.GetVectorEndPoint) {
     CDOTABaseAbility.GetVectorEndPoint = function (this: CDOTABaseAbility): Vector {
-        return this.vectorEndPoint;
+        return this.vectorEndPoint ?? Vector(0, 0, 0);
     };
 }
 if (!CDOTABaseAbility.ToggleAltAbility) {

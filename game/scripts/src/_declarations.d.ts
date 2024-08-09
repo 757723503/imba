@@ -274,6 +274,11 @@ declare global {
 
         //记录矢量技能的目标点
         vectorEndPoint?: Vector;
+        //记录矢量技能的起始
+        vectorStartPoint?: Vector;
+        //记录矢量技能的方向
+        vectorDirection?: Vector;
+
         //记录alt切换技能 多样式法的状态
         toggleAltState?: boolean;
         /**切换alt切换技能 多样施法 */
