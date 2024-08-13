@@ -15,6 +15,7 @@ import { PseudoRandom } from './lib/PseudoRandom';
 import { CIllusionManager } from './IllusionManager';
 import { CParticleManager } from './particle/CParticleManager';
 import { CustomApplyDamage } from './damage/damage';
+import { VectorTargetManager } from './VectorTargetManager';
 
 declare global {
     interface CDOTAGameRules {
@@ -62,6 +63,7 @@ export function ActivateModules() {
     globalThis.CAttackData = new CAttackDataManager();
     globalThis.Random = new PseudoRandom();
     globalThis.CParticleManager = new CParticleManager();
+    globalThis.VectorTargetManager = new VectorTargetManager();
 
     globalThis.CAddDamage = CustomApplyDamage;
     globalThis.CPerformAttack = CAttackData.PerformAttack;

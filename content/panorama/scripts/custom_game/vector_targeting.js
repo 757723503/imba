@@ -1,7 +1,6 @@
 /// Vector Targeting
 const CONSUME_EVENT = true;
 const CONTINUE_PROCESSING_EVENT = false;
-
 //main variables
 var vectorTargetParticle;
 var vectorTargetUnit;
@@ -25,6 +24,7 @@ const ignoreAbilites = ['tusk_walrus_kick', 'marci_companion_run'];
 //Mouse Callback to check whever this ability was quick casted or not
 GameUI.SetMouseCallback(function (eventName, arg, arg2, arg3) {
     if (GameUI.GetClickBehaviors() == 3 && currentlyActiveVectorTargetAbility != undefined) {
+        $.Msg('按压鼠标=======================================================');
         const result = DetermineShowParticle();
         show = result.Show;
         IsLocation = result.IsLocation;
@@ -54,16 +54,17 @@ function CheckAbilityVectorTargeting(panel) {
     if (panel == null) {
         return;
     }
-
     //Check if the panel is an ability or item panel
     const abilityIndex = GetAbilityFromPanel(panel);
     // $.Msg(abilityIndex)
     if (abilityIndex >= 0) {
         //Check if the ability/item is vector targeted
         const netTable = CustomNetTables.GetTableValue('vector_targeting', abilityIndex);
+        $.Msg(netTable == null, '检查向量技能按压=======================================================');
 
         if (netTable == undefined) {
             const behavior = Abilities.GetBehavior(abilityIndex);
+
             if ((behavior & DOTA_ABILITY_BEHAVIOR.DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING) !== 0) {
                 GameEvents.SendCustomGameEventToServer('check_ability', { abilityIndex: abilityIndex });
             }

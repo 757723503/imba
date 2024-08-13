@@ -300,11 +300,7 @@ if (!CDOTABaseAbility.GetAltAbilityState) {
         return this.toggleAltState;
     };
 }
-// if (!CDOTABaseAbility.GetAltAbilityTextureName) {
-//     CDOTABaseAbility.GetAltAbilityTextureName = function (this: CDOTABaseAbility): string {
-//         return this.GetAltAbilityTextureName();
-//     };
-// }
+
 if (!CDOTABaseAbility.GetSpecialValue) {
     CDOTABaseAbility.GetSpecialValue = function <T extends AbilityNames>(
         this: CDOTABaseAbility,
@@ -327,4 +323,5 @@ if (!CDOTABaseAbility.GetSpecialValue) {
         return this.GetSpecialValueFor(valueName as string);
     };
 }
+
 export {};

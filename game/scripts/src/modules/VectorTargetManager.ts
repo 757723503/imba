@@ -2,8 +2,11 @@ declare global {
     var VectorTargetManager: VectorTargetManager;
 }
 export class VectorTargetManager {
-    constructor() {}
-    static Init() {
+    constructor() {
+        this.Init();
+    }
+
+    Init() {
         print('[VT] Initializing VectorTargetManager...');
         const mode = GameRules.GetGameModeEntity();
 
@@ -12,9 +15,26 @@ export class VectorTargetManager {
         // ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(VectorTargetManager, 'OnItemBought'), VectorTargetManager.getInstance());
         // ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(VectorTargetManager, 'OnItemPickup'), VectorTargetManager.getInstance());
 
-        // CustomGameEventManager.RegisterListener('check_ability', Dynamic_Wrap(VectorTargetManager, 'OnAbilityCheck'));
+        CustomGameEventManager.RegisterListener('check_ability', (_, data) => {
+            this.OnAbilityCheck(data);
+        });
     }
 
+    OnAbilityCheck(event: any) {
+        const ability = EntIndexToHScript(event.abilityIndex) as CDOTABaseAbility;
+        this.UpdateNettable(ability);
+    }
+
+    UpdateNettable(ability: CDOTABaseAbility) {
+        const vectorData = {
+            startWidth: tostring(ability?.GetVectorTargetStartRadius() ?? 100),
+            endWidth: tostring(ability?.GetVectorTargetEndRadius() ?? 100),
+            castLength: tostring(ability?.GetVectorTargetRange() ?? 800),
+            dual: tostring(ability?.IsDualVectorDirection() ?? false),
+            ignoreArrow: tostring(ability?.IgnoreVectorArrowWidth() ?? false),
+        };
+        CustomNetTables.SetTableValue('vector_targeting', tostring(ability.entindex()), vectorData);
+    }
     // OrderFilter(event: any): boolean {
     //     if (!event.units['0']) return true;
 
@@ -53,17 +73,6 @@ export class VectorTargetManager {
     //     self.OnVectorCastStart(position, direction);
     // }
 
-    // UpdateNettable(ability: CDOTABaseAbility) {
-    //     const vectorData = {
-    //         startWidth: ability.GetVectorTargetStartRadius(),
-    //         endWidth: ability.GetVectorTargetEndRadius(),
-    //         castLength: ability.GetVectorTargetRange(),
-    //         dual: ability.IsDualVectorDirection(),
-    //         ignoreArrow: ability.IgnoreVectorArrowWidth(),
-    //     };
-    //     CustomNetTables.SetTableValue('vector_targeting', tostring(ability.entindex()), vectorData);
-    // }
-
     // OnAbilityLearned(event: any) {
     //     const playerID = event.PlayerID;
     //     const hero = PlayerResource.GetSelectedHeroEntity(playerID);
@@ -77,10 +86,6 @@ export class VectorTargetManager {
     //     }
     // }
 
-    // OnAbilityCheck(event: any) {
-    //     const ability = EntIndexToHScript(event.abilityIndex) as CDOTABaseAbility;
-    //     this.UpdateNettable(ability);
-    // }
     // OnItemPickup(event: any) {
     //     const index = event.item_entindex || event.ItemEntityIndex;
     //     const ability = EntIndexToHScript(index) as CDOTABaseAbility;

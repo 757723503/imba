@@ -12,6 +12,25 @@ class BaseAbility {
     readonly target_pos: Vector;
 
     private values: { [key: string]: number };
+    GetVectorTargetStartRadius(): number {
+        return 100;
+    }
+
+    GetVectorTargetEndRadius(): number {
+        return 100;
+    }
+
+    GetVectorTargetRange(): number {
+        return 100;
+    }
+
+    IsDualVectorDirection(): boolean {
+        return false;
+    }
+
+    IgnoreVectorArrowWidth(): boolean {
+        return false;
+    }
 }
 
 interface BaseItem extends CDOTA_Item_Lua {}

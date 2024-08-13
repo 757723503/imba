@@ -5,30 +5,30 @@ export class imba_bane_nightmare extends BaseAbility {
     _night_units: EntityIndex[] = [];
     _is_vector_targeted = this.GetSpecialValue('imba_bane_nightmare', 'is_vector_targeted');
     OnSpellStart(keys?: SpellStartParams): void {
-        DebugPrint(this.GetAltAbilityState(), this.GetBehaviorInt());
-        // const dir = keys?.dir ?? GetDirection(this.GetVectorEndPoint(), this.target.GetAbsOrigin());
-        // this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare, {
-        //     duration: this.GetDuration(),
-        //     dir: dir,
-        //     move: this.GetAltAbilityState(),
-        // });
-        // this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare_invulnerable, { duration: this._nightmare_invuln_time });
-        // this._night_units.push(this.target.entindex());
-        // this.caster.UnHideAbilityToSlot('imba_bane_nightmare_end', 'imba_bane_nightmare');
+        // DebugPrint(this.GetAltAbilityState(), this.GetBehaviorInt());
+        const dir = keys?.dir ?? GetDirection(this.GetVectorEndPoint(), this.target.GetAbsOrigin());
+        this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare, {
+            duration: this.GetDuration(),
+            dir: dir,
+            move: this.GetAltAbilityState(),
+        });
+        this.target.AddModifier(this.caster, this, modifier_imba_bane_nightmare_invulnerable, { duration: this._nightmare_invuln_time });
+        this._night_units.push(this.target.entindex());
+        this.caster.UnHideAbilityToSlot('imba_bane_nightmare_end', 'imba_bane_nightmare');
     }
 
     GetBehavior(): AbilityBehavior {
-        // if (this._is_vector_targeted == 1) {
-        return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + AbilityBehavior.VECTOR_TARGETING + 1099511627776;
-        // }
-        // return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + 1099511627776;
+        if (this._is_vector_targeted == 1 && this.GetAltAbilityState()) {
+            return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + AbilityBehavior.VECTOR_TARGETING + 1099511627776;
+        }
+        return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + 1099511627776;
     }
 
     GetBehaviorInt(): AbilityBehavior {
-        // if (this._is_vector_targeted == 1) {
-        return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + AbilityBehavior.VECTOR_TARGETING + 1099511627776;
-        // }
-        // return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + 1099511627776;
+        if (this._is_vector_targeted == 1 && this.GetAltAbilityState()) {
+            return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + AbilityBehavior.VECTOR_TARGETING + 1099511627776;
+        }
+        return AbilityBehavior.UNIT_TARGET + AbilityBehavior.DONT_RESUME_ATTACK + 1099511627776;
     }
 
     OnAbilityUpgrade(upgradeAbility: object): void {
@@ -40,8 +40,16 @@ export class imba_bane_nightmare extends BaseAbility {
         }
     }
 
-    GetAltAbilityTextureName(): string {
-        return 'bane/bane_fall20_immortal_ability_icon/bane_fall20_immortal_fiends_grip';
+    GetVectorTargetEndRadius(): number {
+        return 200;
+    }
+
+    GetVectorTargetStartRadius(): number {
+        return 200;
+    }
+
+    GetVectorTargetRange(): number {
+        return 800;
     }
 }
 @registerModifier()

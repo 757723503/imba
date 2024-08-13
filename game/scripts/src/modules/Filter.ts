@@ -57,14 +57,18 @@ export class CFilter {
             if (orderType == UnitOrder.CAST_POSITION) {
                 DebugPrint('CAST_POSITION');
                 vectorStartPoint = Vector(event.position_x, event.position_y, 0);
+                ability.vectorStartPoint = vectorStartPoint;
+                ability.vectorDirection = ability.vectorEndPoint.__eq(vectorStartPoint)
+                    ? GetDirection(ability.vectorEndPoint, caster_position)
+                    : GetDirection(ability.vectorEndPoint, vectorStartPoint);
             } else if (orderType == UnitOrder.CAST_TARGET && CIsValid(target)) {
                 DebugPrint('CAST_TARGET');
                 vectorStartPoint = target.GetAbsOrigin();
+                ability.vectorStartPoint = vectorStartPoint;
+                ability.vectorDirection = ability.vectorEndPoint.__eq(vectorStartPoint)
+                    ? GetDirection(ability.vectorEndPoint, caster_position)
+                    : GetDirection(ability.vectorEndPoint, vectorStartPoint);
             }
-            ability.vectorStartPoint = vectorStartPoint;
-            ability.vectorDirection = ability.vectorEndPoint.__eq(vectorStartPoint)
-                ? GetDirection(ability.vectorEndPoint, caster_position)
-                : GetDirection(ability.vectorEndPoint, vectorStartPoint);
         }
 
         if (orderType == UnitOrder.CAST_TOGGLE_ALT && CIsValid(ability)) {
@@ -73,7 +77,8 @@ export class CFilter {
 
             CustomNetTables.SetTableValue('custom_alt_ability_textur', tostring(hero?.GetEntityIndex()), {
                 ability_index: tostring(ability.GetEntityIndex()),
-                ability_textur: ability.GetAltAbilityTextureName(),
+                // ability_textur: ability.GetAltAbilityTextureName(),
+                ability_textur: '',
                 alt_state: tostring(ability.toggleAltState ? 1 : 0),
             });
         }

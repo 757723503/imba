@@ -290,6 +290,12 @@ declare global {
 
         /**获得alt技能图标 */
         GetAltAbilityTextureName(): string;
+
+        GetVectorTargetStartRadius(): number;
+        GetVectorTargetEndRadius(): number;
+        GetVectorTargetRange(): number;
+        IsDualVectorDirection(): boolean;
+        IgnoreVectorArrowWidth(): boolean;
     }
     interface CDOTA_Item {}
     interface CAttackEvent {
