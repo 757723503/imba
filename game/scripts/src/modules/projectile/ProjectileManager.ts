@@ -183,15 +183,15 @@ export class CProjectileManager {
                 }
                 const data = key[1];
                 const projectile_type = data.type;
-                const vision = this._projectile_map[ProjectileID].data.providesVision;
+                const vision_data = this._projectile_map[ProjectileID].data.vision_data ?? false;
                 //视野
-                if (vision) {
-                    const team = data.data.visionTeamNumber;
-                    const vision_radius = data.data.visionRadius;
+                if (vision_data) {
+                    const team = vision_data.visionTeamNumber ?? data.data.source.GetTeamNumber();
+                    const vision_radius = vision_data.visionRadius ?? 100;
                     const vision_pos = data.now_pos;
-                    if (team && vision_pos && vision_radius) {
-                        AddFOWViewer(data.data.visionTeamNumber, data.now_pos, vision_radius, FrameTime(), false);
-                    }
+                    const vision_duration = vision_data.visionDuration ?? FrameTime();
+                    const vision_obstructed = !vision_data.highGroundVision ?? true;
+                    AddFOWViewer(team, vision_pos, vision_radius, vision_duration, vision_obstructed);
                 }
                 if (projectile_type === CProjectileType.LINEAR) {
                     this._calLinearThinkaHit(ProjectileID, data);
@@ -212,11 +212,6 @@ export class CProjectileManager {
         //暂时设置15秒超时
         if (now_duration > 15) {
             this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.TIMEOUT;
-            this._RemoveProjectile(ProjectileID);
-            return;
-        }
-        if (!IsValidEntity(dota_target)) {
-            this._projectile_map[ProjectileID].destroy_reason = CProjectileDestroyReason.NO_TARGET;
             this._RemoveProjectile(ProjectileID);
             return;
         }

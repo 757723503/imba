@@ -6,12 +6,7 @@ interface CProjectileBaseData {
     ability?: CDOTABaseAbility;
     /** 投射物来源 */
     source: CDOTA_BaseNPC;
-    /** 是否提供视野 */
-    providesVision?: boolean;
-    /** 视野半径 */
-    visionRadius?: number;
-    /** 视野队伍 */
-    visionTeamNumber?: DotaTeam;
+
     /** 额外数据 */
     extraData?: ProjectileExtraData;
     /** 投射物起始位置 */
@@ -20,7 +15,7 @@ interface CProjectileBaseData {
     sourceAttachment?: CProjectileAttachment;
     /** 投射物速度 */
     moveSpeed: number;
-
+    vision_data?: CProjectileVisionData;
     /** 命中回调 */
     OnHitUnit?: (unit: CDOTA_BaseNPC, position: Vector, extraData?: ProjectileExtraData, thisProjectileID?: SLProjectileID) => void;
     /** 移动回调 */
@@ -29,6 +24,16 @@ interface CProjectileBaseData {
 type SLProjectileID = number & {
     readonly __SLProjectileIDTag__: '__SLProjectileIDTag__';
 };
+interface CProjectileVisionData {
+    /** 视野半径 */
+    visionRadius?: number;
+    /** 视野队伍 */
+    visionTeamNumber?: DotaTeam;
+    /** 视野持续时间 */
+    visionDuration?: number;
+    /** 是否是高空视野 */
+    highGroundVision?: boolean;
+}
 /** 跟踪投射物数据 */
 interface CTrackingProjectileData extends CProjectileBaseData {
     /** 投射物目标 */
