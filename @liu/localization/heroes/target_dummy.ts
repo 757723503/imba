@@ -4,14 +4,14 @@ export const data: LocalizationData = {
     AbilityArray: [],
     TalentArray: [
         {
-            talents: []
-        }
+            talents: [],
+        },
     ],
     FacetArray_B: [
         {
-            facet_classname: "target_dummy_facets_imba_1",
-            name: "",
-            description: ""
-        }
-    ]
+            facet_classname: 'target_dummy_facets_imba_1',
+            name: '',
+            description: '',
+        },
+    ],
 };

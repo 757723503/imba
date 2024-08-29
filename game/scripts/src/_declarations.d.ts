@@ -439,7 +439,7 @@ declare global {
         not_purgable_exception?: boolean;
         /** 是否可叠加 默认是`false` */
         is_multiple?: boolean;
-        /** 死亡时不移除  默认是`fasle` */
+        /** 死亡时不移除  默认是`fasle` (光环默认死亡不移除并且覆盖此项) */
         not_remove_on_death?: boolean;
         /** 生命周期结束时不移除 默认是`false` */
         not_destroy_on_expire?: boolean;

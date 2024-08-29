@@ -1,6 +1,7 @@
 // import './utils/dota_ts_adapter';
 // import './modules/custom_base_modifier';
 import './modules/hero_icon_list';
+import './modules/hero_items';
 import './utils/dota_ts_adapter';
 import './UtilityFunctions';
 import './modules/extends/extends_origin_client';

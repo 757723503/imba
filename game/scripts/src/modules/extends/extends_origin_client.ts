@@ -28,15 +28,29 @@ if (!C_DOTA_BaseNPC.IsAlly) {
 }
 if (!C_DOTA_BaseNPC.CGetAbilityIcon) {
     C_DOTA_BaseNPC.CGetAbilityIcon = function (this: CDOTA_BaseNPC, ability_name: DotaAbility | string | HeroAbility): string {
-        const ability_data = HERO_ICON_LIST[ability_name];
-        const pfx_name = ParticleManager.GetParticleReplacement(HeroParticleList[ability_name], this as CDOTA_BaseNPC_Hero);
-        let icon = null;
-        if (ability_data?.Particle) {
-            icon = ability_data.Particle[pfx_name];
+        // const ability_data = HERO_ICON_LIST[ability_name];
+        // const pfx_name = ParticleManager.GetParticleReplacement(HeroParticleList[ability_name], this as CDOTA_BaseNPC_Hero);
+        // let icon = null;
+        // if (ability_data?.Particle) {
+        //     icon = ability_data.Particle[pfx_name];
+        // }
+        // if (icon == '') {
+        // }
+        // return icon;
+        const hero_name = this.GetUnitName();
+        const item_data = heroItemsWearable[hero_name];
+        if (item_data) {
+            for (const item of Object.values(item_data)) {
+                if (item.visuals) {
+                    for (const visual of Object.values(item.visuals)) {
+                        if (visual['type'] && visual['type'] == 'ability_icon' && GetAbilityTextureNameForAbility(ability_name) == visual['asset']) {
+                            return visual['modifier'];
+                        }
+                    }
+                }
+            }
         }
-        if (icon == '') {
-        }
-        return icon;
+        return null;
     };
 }
 if (!C_DOTA_BaseNPC.IsUnit) {

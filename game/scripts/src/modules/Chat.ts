@@ -45,103 +45,18 @@ export class CChat {
 
                 break;
             case ChatCommand.qw:
-                CreateUnitByName('npc_dota_neutral_ghost', hero.GetAbsOrigin(), true, null, null, DotaTeam.NEUTRALS);
-                // UnitAbilitiesForEach(hero, ability => {
-                // CRefreshValue(ability);
-                // DebugPrint(ability.GetAbilityName(), ability.GetLevel());
-                // });
-                // DebugPrint(hero.GetHeroFacetID());
-                // const ability = hero.GetAbilityByIndex(0);
-                // ability.GetSpecialValue('imba_abaddon_aphotic_shield', 'duration');
-                // ability.GetSpecialValue('222');
-                // for (let index = -1; index < 100; index++) {
-                //     const qw = hero.GetTogglableWearable(index);
-                //     if (qw) {
-                //         const item_model_name = qw.GetModelName();
-                //         const material_group_hash = qw.GetMaterialGroupHash();
-                //         DebugPrint(item_model_name, material_group_hash);
-                //     }
-                // }
-                // const temp = hero.GetChildren();
-                // for (const iterator of temp) {
-                //     const item_class_name = iterator.GetClassname();
-
-                //     if (item_class_name == 'dota_item_wearable') {
-                //         const item = iterator as CBaseModelEntity;
-                //         const item_model_name = item.GetModelName();
-                //         const material_group_hash = item.GetMaterialGroupHash();
-                //         DebugPrint(item_model_name, material_group_hash);
-                //     }
-                // }
-
-                // CProjectileManager.CreateLinearProjectile({
-                //     direction: Vector(1, 0, 0),
-                //     distance: 1000,
-                //     endRadius: 100,
-                //     iUnitTargetFlags: UnitTargetFlags.NONE,
-                //     iUnitTargetTeam: UnitTargetTeam.ENEMY,
-                //     iUnitTargetType: UnitTargetType.NONE,
-                //     moveSpeed: 1000,
-                //     removeOnRadiusHit: true,
-                //     source: hero,
-                //     startRadius: 100,
-                //     effectName: ParticleManager.GetParticleReplacement('particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf', hero),
-                // });
-                // print(ParticleManager.GetParticleReplacement('particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf', hero));
-                // ProjectileManager.CreateLinearProjectile({
-                //     fStartRadius: 100,
-                //     vVelocity: Vector(1, 0, 0).__mul(1000),
-                //     Source: hero,
-                //     fExpireTime: GameRules.GetGameTime() + 10,
-                //     fDistance: 1000,
-
-                //     EffectName: 'particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf',
-                // });
-                // hero.AddAbility('imba_life_stealer_open_wounds');
-                // hero.CHeal({ reason: HealReason.Heal, amount: 1000, show_number: true });
-                // hero.GetTogglableWearable(LoadoutType.PERSONA_1_END);
-
-                // const modifier = hero.AddModifier(hero, null, modifier_imba_stunned, { duration: 5 });
-                // hero.PerformAttack(hero, true, true, true, true, true, false, true);
-                // ApplyDamage({
-                //     attacker: hero,
-                //     victim: hero,
-                //     damage: 5000,
-                //     ability: null,
-                //     damage_type: DamageTypes.NONE,
-                // });
-
-                // CAddDamage({
-                //     attacker: hero,
-                //     victim: hero,
-                //     damage: 500,
-                //     damageProperty: DamageProperty.Ability,
-                //     damageType: DamageType.Physical,
-                // });
-                // let time = 0;
-                // Timers.CreateTimer(0, () => {
-                //     const _all_projectile_id = CProjectileManager.GetTrackingProjectilesID(hero);
-                //     if (_all_projectile_id && _all_projectile_id.length != 0) {
-                //         for (const id of _all_projectile_id) {
-                //             const pro_pos = CProjectileManager.GetTrackingProjectilePosition(id);
-                //             const target_pos = GetGroundPosition(
-                //                 hero.GetAbsOrigin().__add(GetDirection(pro_pos, hero.GetAbsOrigin()).__mul(300)),
-                //                 null
-                //             );
-                //             const pro_speed = CProjectileManager.GetTrackingProjectileSpeed(id);
-                //             const distance = GetDistance(pro_pos, hero.GetAbsOrigin());
-                //             // if (distance < 300) {
-                //             // CProjectileManager.SetTrackingProjectileSpeedOnFrame(id, -1500);
-                //             // }
-                //             CProjectileManager.SetTrackingProjectileOrigin(id, Vector(0, 0, 500));
-                //         }
-                //     }
-                //     // CProjectileManager.ProjectileDodge(hero);
-
-                //     time++;
-                //     if (time < 60) {
-                //         return FrameTime();
-                //     }
+                const temp = hero.GetChildren();
+                for (const iterator of temp) {
+                    if (iterator.GetClassname() == 'dota_item_wearable') {
+                        const item = iterator as CBaseModelEntity;
+                        print(item.GetModelName() + ':' + item.GetMaterialGroupHash());
+                        // for (let i = 0; i < hero.GetAbilityCount(); i++) {
+                        //     const ability = hero.GetAbilityByIndex(i);
+                        //     if (!IsValid(ability)) continue;
+                        //     GameRules.IMBAHeroItemsManager.SetHeroAbilityIcon(hero, hero, ability);
+                        // }
+                    }
+                }
                 // });
                 break;
             case ChatCommand.da:
