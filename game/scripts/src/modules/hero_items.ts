@@ -1,4 +1,4 @@
-interface Visuals {
+interface Wearable_Visuals {
     [key: string]:
         | {
               type?: string;
@@ -15,7 +15,7 @@ interface Visuals {
         | string;
 }
 
-interface Item {
+interface Wearable_Item {
     name: string;
     prefab: string;
     item_name: string;
@@ -24,12 +24,12 @@ interface Item {
     used_by_heroes: {
         [hero: string]: string;
     };
-    visuals: Visuals;
+    visuals: Wearable_Visuals;
 }
 
 interface HeroItemsWearable {
     [hero: string]: {
-        [itemId: string]: Item;
+        [itemId: string]: Wearable_Item;
     };
 }
 const heroItemsWearable: HeroItemsWearable = {

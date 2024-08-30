@@ -561,7 +561,6 @@
 		"ItemInitialCharges"			"1"
 		"ItemHideCharges"				"1"
 		"IsTempestDoubleClonable"		"0"
-		"SuggestLategame"				"1"
 		"SuggestPregame"				"1"
 		"SpeciallyBannedFromNeutralSlot"		"1"
 
@@ -2296,7 +2295,6 @@
 				"sentry_cost"			"100"
 				"lifetime_observer"				"360"
 				"lifetime_sentry"				"420"
-				"creation_delay"		"0"
 				"observer_vision_range_tooltip"		"1600"
 				"observer_duration_minutes_tooltip"		"6"
 				"sentry_duration_minutes_tooltip"		"8"
@@ -4243,7 +4241,7 @@
 				"affected_by_aoe_increase"	"1"
 			}
 			"aura_health_regen"		"2.5"
-			"heal_amount"			"275"
+			"heal_amount"			"250"
 			"heal_radius"			
 			{
 				"value"				"1200"
@@ -4614,7 +4612,7 @@
 		{
 				"bonus_health"			"0"
 				"bonus_mana"			"0"
-				"heal_increase"		"30"
+				"heal_increase"		"25"
 				"max_charges"			"20"
 				"charge_radius"			
 				{	
@@ -4693,7 +4691,7 @@
 				"value"			"1200"
 				"affected_by_aoe_increase"	"1"
 			}
-			"barrier_block"			"450"
+			"barrier_block"			"425"
 			"barrier_duration"		"10.0"
 			"barrier_radius"		
 			{
@@ -6282,6 +6280,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilitySharedCooldown"			"refresher"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -7121,7 +7120,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"FightRecapLevel"				"2"
 		"Model"							"models/props_gameplay/refresher_shard.vmdl"
-		"Effect"						"particles/generic_gameplay/dropped_refresher_shard.vpcf"	
+		"Effect"						"particles/generic_gameplay/dropped_refresher_shard.vpcf"
+		"AbilitySharedCooldown"			"refresher"
 		
 		// Stats	
 		//-------------------------------------------------------------------------------------------------------------
@@ -9075,14 +9075,14 @@
 				"chain_delay"			"0.25"
 				"chain_cooldown"		"0.2"
 				"bonus_intellect"		"24"
-				"bonus_hp"				"350"
+				"bonus_hp"				"300"
 				"duration"				"2.0"
 				"radius"				
 				{
-					"value"		"375"
+					"value"		"350"
 					"affected_by_aoe_increase"	"1"
 				}
-				"active_damage"			"180"
+				"active_damage"			"165"
 				"illusion_multiplier_pct"	"150"
 		}
 	}
@@ -10192,7 +10192,7 @@
 			"bonus_health"			"200"
 			"target_movement_speed"	"15"
 			"target_attack_speed"	"70"
-			"target_armor"			"7"
+			"target_armor"			"5"
 			"duration"				"8"
 			"absorb_amount"			"400"
 		}
@@ -10629,7 +10629,7 @@
 			"aura_mana_regen_bonus"		"5"
 			"aura_armor_bonus"			"8"
 			"aura_bonus_threshold"	"25"
-			"replenish_health"		"350"
+			"replenish_health"		"325"
 			"replenish_mana"		"200"
 			"replenish_radius"		
 			{
@@ -10700,7 +10700,7 @@
 		"AbilityValues"
 		{		
 				"bonus_intellect"		"15"
-				"bonus_hp"				"300"
+				"bonus_hp"				"275"
 				"duration"				"2.0"
 		}
 	}
@@ -12161,7 +12161,7 @@
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800"
+		"AbilityCastRange"				"400"
 		"AbilityCooldown"				"15.0"
 					
 		// Item Info

@@ -150,10 +150,66 @@ export class CEngineEvent {
                 entity.AddNewModifier(entity, entity.FindAbilityByName('imba_custom_debuff_immune'), 'modifier_attack_data_miss', {});
             }
 
-            // const ability = entity.AddAbility('antimage_mana_break');
-            // DebugPrint('初始化自定义属性', GetAbilityTextureNameForAbility('antimage_mana_break'));
-            // ability.GetAbilityTextureName()
-            // ability.text;
+            await sleep(FrameTime() * math.random(2, 6));
+            if (entity.IsHero() && entity.IsRealHero() && !entity.IsIllusion()) {
+                // const all_child = entity.GetChildren();
+                const hero_name = entity.GetUnitName();
+                const hero_list = heroItemsWearable[hero_name];
+                const hero_wearable: Wearable_Item[] = [];
+                for (const item of Object.values(hero_list)) {
+                    const is_wearable_mod = false;
+                    let is_wearable_pfx = false;
+                    // all_child.forEach(child => {
+                    //     if (
+                    //         item?.model_player == child.GetModelName() &&
+                    //         child &&
+                    //         child.GetClassname() == 'dota_item_wearable' &&
+                    //         child.GetModelName() != '' &&
+                    //         item?.model_player == child.GetModelName()
+                    //     ) {
+                    //         is_wearable_mod = true;
+                    //     }
+                    // });
+                    if (item.visuals) {
+                        for (const visual of Object.values(item.visuals)) {
+                            if (
+                                visual['type'] &&
+                                visual['type'] == 'particle' &&
+                                visual['asset'] &&
+                                visual['modifier'] &&
+                                ParticleManager.GetParticleReplacement(visual['asset'], entity) == visual['modifier']
+                            ) {
+                                is_wearable_pfx = true;
+                            }
+                            // if (visual['type'] && visual['type'] == 'ability_icon' && visual['asset'] && visual['modifier']) {
+                            //     CustomNetTables.SetTableValue('custom_wearable_textur', tostring(entity?.GetEntityIndex()), {
+                            //         [visual['asset']]: visual['modifier'],
+                            //     });
+                            //     if (
+                            //         !alter &&
+                            //         visual['type'] == 'particle' &&
+                            //         visual['asset'] &&
+                            //         visual['modifier'] &&
+                            //         ParticleManager.GetParticleReplacement(visual['asset'], entity) == visual['modifier']
+                            //     ) {
+                            //         CustomNetTables.SetTableValue('custom_wearable_textur', tostring(entity?.GetEntityIndex()), {
+                            //             original_textur: visual['asset'],
+                            //             wearable_textur: visual['modifier'],
+                            //         });
+                            //     }
+                            // }
+                        }
+                    }
+                    // if ((is_wearable_mod || !item?.model_player) && (is_wearable_pfx || !item?.visuals?.skin) && hero_wearable.indexOf(item) == -1) {
+                    //     hero_wearable.push(item);
+                    // }
+                    if ((is_wearable_pfx || !item?.visuals?.skin) && hero_wearable.indexOf(item) == -1) {
+                        hero_wearable.push(item);
+                    }
+                }
+                DeepPrintTable(hero_wearable);
+                DebugPrint(hero_name, '解析英雄饰品图标');
+            }
         }
     }
 }

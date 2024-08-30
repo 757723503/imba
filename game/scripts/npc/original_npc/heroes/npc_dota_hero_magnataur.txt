@@ -111,7 +111,7 @@
 			"basic_slow_duration"		
 			{
 				"value"					"0.7 0.8 0.9 1.0"
-				"special_bonus_unique_magnus_6"	"+0.5"
+				"special_bonus_unique_magnus_6"	"+0.75"
 			}
 			"return_damage_pct"			
 			{
@@ -304,7 +304,7 @@
 					"affected_by_aoe_increase"	"1"
 				}
 				"slow_duration"				"3.25"
-				"skewer_damage"			"75 150 225 300"
+				"skewer_damage"			"80 160 240 320"
 				"tree_radius"				
 				{
 					"value"			"200"
@@ -408,7 +408,7 @@
 			"stat_buff_duration"
 			{
 				"value"					"0"
-				"special_bonus_unique_magnus_reverse_polarity_stats"			"+15"
+				"special_bonus_unique_magnus_reverse_polarity_stats"			"+20"
 			}
 			"stats_per_stack"
 			{
@@ -441,15 +441,17 @@
 	//=================================================================================================================
 	"magnataur_solid_core"
 	{
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_NONE"	
-		"MaxLevel"						"1"
 		"Innate"						"1"
+		"MaxLevel"						"4"
+		"DependentOnAbility"			"magnataur_reverse_polarity"		
 		"IsBreakable"					"1"
 
 		"AbilityValues"
 		{
 			"knockback_reduction"		"50"
+			"slow_resistance"			"20 30 40 50"
 		}		
 	}
 	//=================================================================================================================

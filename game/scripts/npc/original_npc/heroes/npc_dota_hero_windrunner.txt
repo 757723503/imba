@@ -302,7 +302,7 @@
 			"focusfire_damage_reduction"	
 			{
 				"value"						"-30"
-				"special_bonus_unique_windranger_8"		"+12"
+				"special_bonus_unique_windranger_8"		"+10"
 			}
 			"focusfire_fire_on_the_move"	"1"
 			"process_procs"
@@ -330,7 +330,7 @@
 			"bonus_range"
 			{
 				"value"				"0"
-				"special_bonus_facet_windrunner_whirlwind"		"+150"
+				"special_bonus_facet_windrunner_whirlwind"		"+125"
 			}
 			
 			"unfocused_cancel_initial_cooldown"		"0.5"
@@ -399,7 +399,7 @@
 		{
 			"value"
 			{
-				"value" "2.5"
+				"value" "2.0"
 			}
 		}
 	}

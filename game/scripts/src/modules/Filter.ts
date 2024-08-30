@@ -75,7 +75,7 @@ export class CFilter {
             ability.toggleAltState =
                 ability.toggleAltState == undefined ? ability.GetAbilityName() != DotaAbility.doom_bringer_devour : !ability.toggleAltState;
 
-            CustomNetTables.SetTableValue('custom_alt_ability_textur', tostring(hero?.GetEntityIndex()), {
+            CustomNetTables.SetTableValue('custom_alt_ability', tostring(hero?.GetEntityIndex()), {
                 ability_index: tostring(ability.GetEntityIndex()),
                 // ability_textur: ability.GetAltAbilityTextureName(),
                 ability_textur: '',

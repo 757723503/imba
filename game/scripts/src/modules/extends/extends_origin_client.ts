@@ -167,7 +167,7 @@ if (!C_DOTA_BaseNPC.GetAOEIncrease) {
 }
 if (!C_DOTA_Ability_Lua.GetAltAbilityState) {
     C_DOTA_Ability_Lua.GetAltAbilityState = function (this: CDOTABaseAbility): boolean {
-        const alt_state = CustomNetTables.GetTableValue('custom_alt_ability_textur', tostring(this.GetCaster().GetEntityIndex()))?.alt_state == '1';
+        const alt_state = CustomNetTables.GetTableValue('custom_alt_ability', tostring(this.GetCaster().GetEntityIndex()))?.alt_state == '1';
         return alt_state ?? false;
     };
 }
